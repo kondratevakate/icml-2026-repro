@@ -1,0 +1,18 @@
+
+covariate-dependent       0% |      0.6789  0.6789 +0.0000 |    0.1728  0.1728 +0.0000
+covariate-dependent      20% |      0.6831  0.6783 +0.0048 |    0.1722  0.1731 -0.0008
+covariate-dependent      40% |      0.6894  0.6783 +0.0111 |    0.1714  0.1731 -0.0017
+covariate-dependent      60% |      0.6979  0.6783 +0.0196 |    0.1707  0.1731 -0.0024
+covariate-dependent      80% |      0.7078  0.6783 +0.0295 |    0.1731  0.1731 +0.0000
+
+CLAIM 2a - ranking preservation, WIDELY SEPARATED models (robust by construction)
+mechanism                    0%      20%      40%      60%      80%
+administrative             1.00     1.00     1.00     1.00     1.00
+independent                1.00     1.00     1.00     1.00     1.00
+covariate-dependent        1.00     1.00     1.00     1.00     1.00
+
+CLAIM 2b - ranking preservation, NEAR-TIED models (the regime the claim is about)
+mechanism                    0%      20%      40%      60%      80%
+administrative             1.00     0.88     0.79     0.71     0.33
+independent                1.00     0.88     0.79     0.62     0.29
+covariate-dependent        1.00     0.88     0.88     0.62     0.42

@@ -1,0 +1,20 @@
+{
+  "space_id": "kondratevakate/repro-a-solvable-high-dimensional-model-where-nonlinear-autoencoders-learn-structure-i",
+  "emoji": "🎯",
+  "created_at": "2026-07-18T17:16:56+00:00",
+  "last_page": "repro-a-solvable-high-dimensional-model-where-nonlinear-autoencoders-learn-structure-i",
+  "tags": [
+    "icml2026-repro",
+    "paper-wm3ABfhE7P"
+  ],
+  "paper": {
+    "arxiv_id": "2602.10680"
+  },
+  "private": false,
+  "autosync": true,
+  "local_artifacts": [
+    "repro-a-solvable-high-dimensional-model-where-nonlinear-autoencoders-learn-structure-i/repro-bundle:v0"
+  ],
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-a-solvable-high-dimensional-model-where-nonlinear-autoencoders-learn-structure-i-artifacts"
+}

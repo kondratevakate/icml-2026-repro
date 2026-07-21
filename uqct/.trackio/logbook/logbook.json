@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "title": "Reproduction: Principled Confidence Estimation for Deep Computed Tomography",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-principled-confidence-estimation-for-deep-computed-tomography",
+  "paper": {
+    "arxiv_id": "2602.05812"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-a6vCNSBBeq"
+  ],
+  "updated_at": "2026-07-18T17:26:16+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Principled Confidence Estimation for Deep Computed Tomography",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-deep-reconstruction-methods-yield-tighter-confidence-regions-than-classical-while-maintaining-coverage-guarantees",
+        "title": "Claim 1: Deep reconstruction methods yield tighter confidence regions than classical while maintaining coverage guarantees",
+        "file": "pages/claim-1-deep-reconstruction-methods-yield-tighter-confidence-regions-than-classical-while-maintaining-coverage-guarantees/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-the-framework-applies-to-both-classical-algorithms-and-deep-learning-reconstruction-methods",
+        "title": "Claim 2: The framework applies to both classical algorithms and deep learning reconstruction methods",
+        "file": "pages/claim-2-the-framework-applies-to-both-classical-algorithms-and-deep-learning-reconstruction-methods/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 2061,
+  "revision": "1784395576783390900"
+}

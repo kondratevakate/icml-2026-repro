@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "title": "Reproduction: A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-a-conflict-aware-evidential-framework-for-reliable-sleep-stage-classification",
+  "paper": {
+    "arxiv_id": "2605.17021"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-fve4MEzeSp"
+  ],
+  "updated_at": "2026-07-18T17:28:51+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-conflict-aware-aggregation-dynamically-resolves-inter-view-conflicts",
+        "title": "Claim 1: Conflict-aware aggregation dynamically resolves inter-view conflicts",
+        "file": "pages/claim-1-conflict-aware-aggregation-dynamically-resolves-inter-view-conflicts/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-adaptive-category-structures-promote-more-reasonable-evidence-learning",
+        "title": "Claim 2: Adaptive category structures promote more reasonable evidence learning",
+        "file": "pages/claim-2-adaptive-category-structures-promote-more-reasonable-evidence-learning/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-multi-view-evidence-with-conflict-aware-aggregation-gives-reliable-sleep-staging",
+        "title": "Claim 3: Multi-view evidence with conflict-aware aggregation gives reliable sleep staging",
+        "file": "pages/claim-3-multi-view-evidence-with-conflict-aware-aggregation-gives-reliable-sleep-staging/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 2207,
+  "revision": "1784395731398355200"
+}

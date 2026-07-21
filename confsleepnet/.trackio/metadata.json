@@ -1,0 +1,20 @@
+{
+  "space_id": "kondratevakate/repro-a-conflict-aware-evidential-framework-for-reliable-sleep-stage-classification",
+  "emoji": "🎯",
+  "created_at": "2026-07-18T17:26:59+00:00",
+  "last_page": "repro-a-conflict-aware-evidential-framework-for-reliable-sleep-stage-classification",
+  "tags": [
+    "icml2026-repro",
+    "paper-fve4MEzeSp"
+  ],
+  "paper": {
+    "arxiv_id": "2605.17021"
+  },
+  "private": false,
+  "autosync": true,
+  "local_artifacts": [
+    "repro-a-conflict-aware-evidential-framework-for-reliable-sleep-stage-classification/repro-bundle:v0"
+  ],
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-a-conflict-aware-evidential-framework-for-reliable-sleep-stage-classification-artifacts"
+}

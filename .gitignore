@@ -1,0 +1,29 @@
+# Downloaded/vendored data — not our IP, reproducible via the URLs documented in HANDOFF.md
+data/
+pyhealth_src/
+
+# Copyrighted paper text — working extractions for internal analysis only, not for redistribution
+*.pdf
+paper.txt
+paper.html
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Harness/local state
+.claude/
+
+# Third-party clones (external repos checked out for inspection, not our content)
+confsleepnet/repo/
+
+# Superseded local drafts from earlier non-canonical logbook attempts
+.trackio_noncanonical_bak/
+.trackio_failed/
+
+# OS
+.DS_Store
+Thumbs.db

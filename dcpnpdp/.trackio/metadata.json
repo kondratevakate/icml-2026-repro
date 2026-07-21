@@ -1,0 +1,20 @@
+{
+  "space_id": "kondratevakate/repro-plug-and-play-diffusion-meets-admm-dual-variable-coupling-for-robust-medical",
+  "emoji": "🎯",
+  "created_at": "2026-07-20T08:31:34+00:00",
+  "last_page": "conclusion",
+  "tags": [
+    "icml2026-repro",
+    "paper-jEBkuuETjr"
+  ],
+  "paper": {
+    "arxiv_id": "2602.23214"
+  },
+  "local_artifacts": [
+    "repro-plug-and-play-diffusion-meets-admm-dual-variable-coupling-for-robust-medical/repro-bundle:v0"
+  ],
+  "autosync": true,
+  "private": false,
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-plug-and-play-diffusion-meets-admm-dual-variable-coupling-for-robust-medical-artifacts"
+}

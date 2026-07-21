@@ -1,0 +1,20 @@
+{
+  "space_id": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva",
+  "emoji": "🎯",
+  "created_at": "2026-07-20T08:30:50+00:00",
+  "last_page": "conclusion",
+  "tags": [
+    "icml2026-repro",
+    "paper-LhGxRnGmGJ"
+  ],
+  "paper": {
+    "arxiv_id": "2605.18798"
+  },
+  "private": false,
+  "autosync": true,
+  "local_artifacts": [
+    "repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-survival-analysis/repro-bundle:v0"
+  ],
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-artifacts"
+}

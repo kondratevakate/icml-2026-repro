@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "title": "Reproduction: On Revisiting Entropy for Identifying Mislabeled Images",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-on-revisiting-entropy-for-identifying-mislabeled-images",
+  "paper": {
+    "arxiv_id": "2605.31090"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-BUxrIaf7Zc"
+  ],
+  "updated_at": "2026-07-19T07:38:35+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: On Revisiting Entropy for Identifying Mislabeled Images",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-correctly-labeled-samples-show-consistent-entropy-decrease-during-training-while-mislabeled-samples-stay-relatively-high",
+        "title": "Claim 1: Correctly-labeled samples show consistent entropy decrease during training while mislabeled samples stay relatively high",
+        "file": "pages/claim-1-correctly-labeled-samples-show-consistent-entropy-decrease-during-training-while-mislabeled-samples-stay-relatively-high/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-a-signed-entropy-integral-sei-statistic-over-training-identifies-mislabeled-samples",
+        "title": "Claim 2: A signed entropy integral (SEI) statistic over training identifies mislabeled samples",
+        "file": "pages/claim-2-a-signed-entropy-integral-sei-statistic-over-training-identifies-mislabeled-samples/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-state-of-the-art-mislabeled-data-identification-on-three-medical-imaging-datasets",
+        "title": "Claim 3: State-of-the-art mislabeled-data identification on three medical imaging datasets",
+        "file": "pages/claim-3-state-of-the-art-mislabeled-data-identification-on-three-medical-imaging-datasets/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 2421,
+  "revision": "1784446715539332400"
+}

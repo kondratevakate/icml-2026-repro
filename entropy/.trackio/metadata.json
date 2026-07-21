@@ -1,0 +1,20 @@
+{
+  "space_id": "kondratevakate/repro-on-revisiting-entropy-for-identifying-mislabeled-images",
+  "emoji": "🎯",
+  "created_at": "2026-07-19T07:36:53+00:00",
+  "last_page": "repro-on-revisiting-entropy-for-identifying-mislabeled-images",
+  "tags": [
+    "icml2026-repro",
+    "paper-BUxrIaf7Zc"
+  ],
+  "paper": {
+    "arxiv_id": "2605.31090"
+  },
+  "private": false,
+  "autosync": true,
+  "local_artifacts": [
+    "repro-on-revisiting-entropy-for-identifying-mislabeled-images/repro-bundle:v0"
+  ],
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-on-revisiting-entropy-for-identifying-mislabeled-images-artifacts"
+}
