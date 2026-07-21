@@ -24,6 +24,17 @@ confsleepnet/repo/
 .trackio_noncanonical_bak/
 .trackio_failed/
 
+# trackio's own branding assets, auto-copied into every logbook — not our content, pure duplication
+**/.trackio/logbook/trackio-logo*.png
+**/.trackio/logbook/trackio-wordmark*.png
+
+# The challenge's own reference datasets — public on the HF dataset, no need to duplicate here
+/papers.json
+/claims.json
+/claims_anchored.json
+/all_papers.csv
+/medical_neuro_papers.csv
+
 # OS
 .DS_Store
 Thumbs.db

@@ -15,9 +15,12 @@ follows.
   `solvable-ae/`, `uqct/`, `entropy/`, `ccd/`, `survival-eval/`, `proconmv/`) — each contains the
   verification script(s), a `.trackio/` logbook mirror, and a `repro_*` bundle staged for the published
   artifact.
-- `PAPERS.md` / `all_papers.csv` / `medical_neuro_papers.csv` — target-selection reference material.
-- `claims.json` / `claims_anchored.json` — the challenge's own claim text per paper (`claims_anchored.json`
-  is the precise, judged version — see HANDOFF.md for why the distinction matters).
+- `PAPERS.md` — target-selection reference material (own notes).
+- Not included here (public on the challenge's own HF dataset, no need to duplicate):
+  `papers.json`, `claims.json`, `claims_anchored.json`, `all_papers.csv`, `medical_neuro_papers.csv` —
+  download from `https://huggingface.co/datasets/ICML-2026-agent-repro/challenge`.
+  `claims_anchored.json` is the precise, judged version of the claim text — see HANDOFF.md for why the
+  distinction between it and `claims.json` matters.
 
 ## Published logbooks
 
