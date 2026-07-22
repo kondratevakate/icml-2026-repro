@@ -38,3 +38,9 @@ confsleepnet/repo/
 # OS
 .DS_Store
 Thumbs.db
+
+# trackio publish venv (local only)
+.venv-trackio/
+
+# verbatim paper excerpts (copyright, like paper.txt)
+**/SPEC_notes.txt
