@@ -1,0 +1,23 @@
+[
+  {
+    "id": "C1",
+    "text": "Theorem 3.6 shows that under Assumptions 2.1, 2.2, and 3.2-3.4, bridge functions satisfying E[b_t(S_t, A_t, S_{t+1}) | R_t, S_t, A_t] = R_t exist and identify the full-data policy value without modeling the missing-not-at-random mechanism."
+  },
+  {
+    "id": "C2",
+    "text": "Assumption 3.2 (relevance condition) requires that the next state S_{t+1} is not conditionally independent of the reward R_t given S_t, A_t, O_t=1, formalizing the use of future states as shadow variables."
+  },
+  {
+    "id": "C3",
+    "text": "Theorem 5.8 bounds the RKHS-based bridge function estimation error as ||b_hat_t - b_t*||_2 <= constant * tau_t delta_t max{1, ||b_t*||^2} under polynomial eigenvalue decay of the conditional expectation operator."
+  },
+  {
+    "id": "C4",
+    "text": "Theorem 5.9 establishes an overall off-policy value estimation error rate of O(K tau_max T^2 sqrt(log(T/zeta)) n^{-alpha_min/(2 alpha_min+1)} log n) under the completeness assumption."
+  },
+  {
+    "id": "C5",
+    "text": "Assumption 2.1 (no future dependence) posits that the current missingness indicator O_t is independent of future states and rewards given the current state, action, and reward, distinguishing the setting from standard missing-at-random assumptions."
+  }
+]
+

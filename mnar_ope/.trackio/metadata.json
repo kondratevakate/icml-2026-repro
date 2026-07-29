@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T15:01:03+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-vpSFJoxyDz"
+  ],
+  "paper": {
+    "arxiv_id": "2606.20206"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "last_page": "conclusion",
+  "trace_dataset": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r-traces",
+  "artifacts_bucket": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r-artifacts",
+  "workspace_bucket": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}
