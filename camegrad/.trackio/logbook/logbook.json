@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: The Double Dilemma in Multi-Task Radiology Report Generation: A Gradient Dynamics Analysis and Solution",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-came-grad-mathematical-audit",
+  "paper": {
+    "arxiv_id": "2605.22635"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-T7y2wavrFM"
+  ],
+  "updated_at": "2026-07-29T18:36:44+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: The Double Dilemma in Multi-Task Radiology Report Generation: A Gradient Dynamics Analysis and Solution",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-gradient-interaction-identity",
+        "title": "Claim 1: gradient interaction identity",
+        "file": "pages/claim-1-gradient-interaction-identity/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-stage-1-pareto-guarantee",
+        "title": "Claim 2: Stage 1 Pareto guarantee",
+        "file": "pages/claim-2-stage-1-pareto-guarantee/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-stage-2-magnitude-and-covariance",
+        "title": "Claim 3: Stage 2 magnitude and covariance",
+        "file": "pages/claim-3-stage-2-magnitude-and-covariance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-validity-after-adaptive-fusion",
+        "title": "Claim 4: validity after adaptive fusion",
+        "file": "pages/claim-4-validity-after-adaptive-fusion/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-clinical-efficacy",
+        "title": "Claim 5: clinical efficacy",
+        "file": "pages/claim-5-clinical-efficacy/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 2129,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "3cbc4f8024aead9eea38"
+}

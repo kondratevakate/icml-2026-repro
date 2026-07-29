@@ -1,0 +1,153 @@
+{
+  "audit_seed": 20260729,
+  "claims": [
+    {
+      "evidence": {
+        "identity_max_abs_error": 8.526512829121202e-14,
+        "opposing_individual_energy": 28.0,
+        "opposing_joint_energy": 0.0,
+        "paper_anchor_present": true,
+        "random_trials": 1000,
+        "sign_mutation_max_abs_error": 185.25304975804465
+      },
+      "id": "C1",
+      "score": 2,
+      "verdict": "VERIFIED_FOR_EXACT_TWO_TASK_IDENTITY"
+    },
+    {
+      "evidence": {
+        "dual_alpha_star": [
+          1.0,
+          0.0
+        ],
+        "dual_objective": -2.25,
+        "dual_recovered_u": -2.25,
+        "gradients": [
+          1.0,
+          -10.0
+        ],
+        "mu": -4.5,
+        "paper_anchor_present": true,
+        "primal_u_star": -2.25,
+        "rho": 0.5,
+        "task_inner_products": [
+          -2.25,
+          22.5
+        ],
+        "trust_region": [
+          -6.75,
+          -2.25
+        ],
+        "trust_region_residual": 0.0,
+        "worst_inner_product": -2.25
+      },
+      "id": "C2",
+      "score": 2,
+      "verdict": "FALSIFIED_AS_UNCONDITIONAL_GUARANTEE"
+    },
+    {
+      "evidence": {
+        "covariance_trace_after": 11.266907000882325,
+        "covariance_trace_before": 5.007514222614366,
+        "declared_trace_ratio": 2.25,
+        "epsilon": 1e-08,
+        "kappa": 1.5,
+        "observed_norm": 6.25,
+        "observed_trace_ratio": 2.2500000000000004,
+        "paper_anchor_present": true,
+        "relative_target_shortfall": 0.16666666666666666,
+        "target_norm": 7.5
+      },
+      "id": "C3",
+      "score": 1,
+      "verdict": "PARTIALLY_VERIFIED_WITH_EPSILON_QUALIFICATION"
+    },
+    {
+      "evidence": {
+        "dual_alpha_star": 0.0,
+        "dual_right_derivative_at_zero": 0.32606431181261053,
+        "epsilon": 1e-12,
+        "final_direction": [
+          -1.832086198167083,
+          -1.0373450524912087
+        ],
+        "final_inner_products": [
+          5.738862501316584,
+          -0.24260390681533428
+        ],
+        "final_is_geometrically_valid": false,
+        "gradients": [
+          [
+            -2.0,
+            -2.0
+          ],
+          [
+            -1.0,
+            2.0
+          ]
+        ],
+        "joint_gradient": [
+          -1.8,
+          -1.2000000000000002
+        ],
+        "kappa": 1.0,
+        "mu": [
+          -1.5,
+          0.0
+        ],
+        "nu": 0.9,
+        "paper_acknowledges_conflict_resurgence": true,
+        "paper_defines_validity_for_rectified_direction": true,
+        "paper_formula_anchor_present": true,
+        "rho": 0.25,
+        "stage1_direction": [
+          -1.6677050983124841,
+          0.33541019662496846
+        ],
+        "stage1_inner_products": [
+          2.6645898033750313,
+          2.338525491562421
+        ],
+        "stage1_is_geometrically_valid": true,
+        "stage2_direction": [
+          -2.12086198167083,
+          0.42654947508791713
+        ],
+        "stage2_observed_norm": 2.163330765277122,
+        "stage2_target_norm": 2.1633307652783937,
+        "task_weights": [
+          0.8,
+          0.2
+        ],
+        "trust_region_radius": 0.375
+      },
+      "id": "C4",
+      "score": 1,
+      "verdict": "QUALIFIED_SCOPE_LIMITATION_AFTER_ADAPTIVE_FUSION"
+    },
+    {
+      "evidence": {
+        "author_optimizer_file_present": false,
+        "paper_value_anchors_present": true,
+        "readme_says_core_withheld": true,
+        "trainer_imports_missing_optimizer": true
+      },
+      "id": "C5",
+      "score": 0,
+      "verdict": "INCONCLUSIVE_NOT_EXECUTED"
+    }
+  ],
+  "maximum_score": 10,
+  "paper": {
+    "arxiv": "2605.22635v2",
+    "forum_id": "T7y2wavrFM",
+    "title": "The Double Dilemma in Multi-Task Radiology Report Generation: A Gradient Dynamics Analysis and Solution"
+  },
+  "prepared_score": 6,
+  "provenance": {
+    "official_commit": "79059e39060d13ef6b6cb2ea9ad7a5d8e2519c83",
+    "paper_source_sha256": "32a52a8b12f4c9b71bb48aa64cf87340ae2336dd3f08321c4e8557c84d26208c",
+    "readme_sha256": "fe9d886bfd55b4cb221cfb4877b7a62e185389bddd1a8809800c3b4af23e7926",
+    "trainer_sha256": "ab02d4e8410630228c0ea8acdb4ff33f4ab79508ddc2e348604b33028e9cf9a8"
+  }
+}
