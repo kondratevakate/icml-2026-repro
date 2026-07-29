@@ -6,15 +6,21 @@ Date: 2026-07-29.
 
 `PUBLISHED` as a conservative `6/12` reproduction logbook at:
 
-`kondratevakate/repro-stable-localized-conformal-prediction-via-transduction`
+`kondratevakate/repro-stcp-transduction`
 
 Hub URL:
 
-`https://huggingface.co/spaces/kondratevakate/repro-stable-localized-conformal-prediction-via-transduction`
+`https://huggingface.co/spaces/kondratevakate/repro-stcp-transduction`
 
-Published Space revision:
-`a9ac821d4adb05be4f8f6f9bcdd4c54f695de05a`.
-The Hub runtime reported `RUNNING` after publication.
+The first publication used a title-length slug whose generated static
+hostname exceeded the DNS label limit. The short canonical target above is
+used for the working publication; the superseded long-slug Space is not
+treated as the submission artifact.
+
+Working Space revision:
+`f0069d26f84d818e3cf6e5cf63f228f5fa83c19d`.
+The Hub runtime reports `RUNNING`, and the static rendered URL returns HTTP
+200 with the expected paper title.
 
 The frozen pre-audit forecast was `8/12` realistic and `10/12` stretch.
 Current evidence supports six points before fresh canonical experiments.
@@ -45,7 +51,7 @@ python audit_claims.py --source ../official/source/main.tex \
 python -m unittest discover -s tests -v
 python -m py_compile audit_claims.py run_official_synthetic.py build_logbook.py
 python ../validate_icml_logbook.py \
-  --space kondratevakate/repro-stable-localized-conformal-prediction-via-transduction
+  --space kondratevakate/repro-stcp-transduction
 ```
 
 Results:

@@ -14,10 +14,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CANDIDATE_DIR = SCRIPT_DIR.parent
 PROJECT_DIR = CANDIDATE_DIR / ".trackio"
 EVIDENCE_PATH = SCRIPT_DIR / "evidence" / "claims_audit.json"
-SPACE_ID = (
-    "kondratevakate/"
-    "repro-stable-localized-conformal-prediction-via-transduction"
-)
+SPACE_ID = "kondratevakate/repro-stcp-transduction"
 TITLE = (
     "Reproduction: Stable Localized Conformal Prediction via Transduction"
 )

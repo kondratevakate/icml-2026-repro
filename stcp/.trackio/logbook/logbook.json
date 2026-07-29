@@ -2,7 +2,7 @@
   "schema_version": 2,
   "title": "Reproduction: Stable Localized Conformal Prediction via Transduction",
   "emoji": "🎯",
-  "space_id": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction",
+  "space_id": "kondratevakate/repro-stcp-transduction",
   "paper": {
     "arxiv_id": "2605.01452"
   },
@@ -10,7 +10,7 @@
     "icml2026-repro",
     "paper-lSMTccAN61"
   ],
-  "updated_at": "2026-07-29T16:21:46+00:00",
+  "updated_at": "2026-07-29T16:24:28+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Stable Localized Conformal Prediction via Transduction",
@@ -76,5 +76,5 @@
   "agent_view_tokens": 2487,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "078a43ba208d68c13951"
+  "revision": "c9df309ea26ba386c9eb"
 }
