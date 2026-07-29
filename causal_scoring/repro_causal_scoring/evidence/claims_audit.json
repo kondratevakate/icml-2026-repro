@@ -1,0 +1,148 @@
+{
+  "audit_seed": 20260729,
+  "claims": [
+    {
+      "evidence": {
+        "actual_mean_variance": 0.0859375,
+        "conditional_proof_max_bias_residual": -0.34282764925261344,
+        "crossfit_contribution_covariance": 0.078125,
+        "exact_crossfit_states": 4,
+        "generic_sum_variance_inequality_max_residual": -1.380299648132477,
+        "iid_formula_residual": 0.0390625,
+        "iid_variance_formula": 0.046875,
+        "paper_anchors_present": true,
+        "weakened_constant_mutation_violations": 794
+      },
+      "id": "C1",
+      "score": 1,
+      "verdict": "PARTIALLY_VERIFIED_CONDITIONAL_ON_FIXED_PROPENSITY"
+    },
+    {
+      "evidence": {
+        "grid_size": 998,
+        "max_relative_error": 3.150197414103077e-43,
+        "mutation_max_relative_error": 0.999998000002,
+        "paper_anchor_present": true,
+        "symbolic_difference": "0"
+      },
+      "id": "C2",
+      "score": 2,
+      "verdict": "VERIFIED"
+    },
+    {
+      "evidence": {
+        "label_swap_mutation_min_mean_argmin_error": 0.49494949494949486,
+        "loss0_differential_residual": "0",
+        "loss1_differential_residual": "0",
+        "max_argmin_abs_error": 1.1102230246251565e-16,
+        "minimum_declared_weight_at_half": 48.0,
+        "paper_anchor_present": true,
+        "prediction_grid_size": 3993,
+        "truth_grid_size": 99
+      },
+      "id": "C3",
+      "score": 2,
+      "verdict": "VERIFIED"
+    },
+    {
+      "evidence": {
+        "canonical_gradient_abs_at_z_1e6_y1": 0.001000998994992841,
+        "integrated_link_derivative_residual": "0",
+        "logit_grid_size": 701,
+        "max_roundtrip_relative_error": 3.0061040949707906e-12,
+        "max_symmetry_error": 3.552713678800501e-15,
+        "minimum_largest_root": 4.000000000000003,
+        "mismatched_sigmoid_max_abs_gradient": 571969715.3685957,
+        "paper_anchors_present": true,
+        "quartic_max_relative_residual": 1.2592010767420447e-12,
+        "quartic_root_vs_inverse_link_max_abs_error": 4.087952198972289e-12,
+        "quartic_symbolic_residual": "0",
+        "real_root_count_range": [
+          2,
+          4
+        ],
+        "strictly_monotone": true
+      },
+      "id": "C4",
+      "score": 1,
+      "verdict": "PARTIALLY_VERIFIED_NO_VANISH_CLAUSE_FALSIFIED"
+    },
+    {
+      "evidence": {
+        "assumed_noise": "standard_normal_not_specified_in_paper",
+        "crossfit_folds": 10,
+        "expected_fit_count_per_method": 300,
+        "latent_rmse_ratio_log_over_tailored": 1.2369334134354812,
+        "mean_boundary_rates": {
+          "latent_log": 0.00016666666666666666,
+          "latent_tailored": 0.0,
+          "observed_log": 0.004600000000000001,
+          "observed_tailored": 0.0
+        },
+        "metrics": {
+          "latent_log": {
+            "bias": 0.13409323270299406,
+            "mae": 4.470379079942446,
+            "max_abs_error": 11.625395877055144,
+            "rmse": 5.4395135689767296
+          },
+          "latent_tailored": {
+            "bias": -3.880668553198649,
+            "mae": 3.9981085484637147,
+            "max_abs_error": 7.423993447234377,
+            "rmse": 4.397579942374526
+          },
+          "observed_log": {
+            "bias": 34.70529332937124,
+            "mae": 34.70529332937124,
+            "max_abs_error": 153.416019010626,
+            "rmse": 48.52937765742344
+          },
+          "observed_tailored": {
+            "bias": -6.55449102469592,
+            "mae": 6.55449102469592,
+            "max_abs_error": 9.975654487802501,
+            "rmse": 6.8325366238235565
+          }
+        },
+        "misspecification_amplification": 5.7421751097359195,
+        "observed_rmse_ratio_log_over_tailored": 7.10268825902991,
+        "observed_tailored_abs_error_win_rate": 0.9333333333333333,
+        "paper_anchor_present": true,
+        "regularization": 0.001,
+        "samples_per_seed": 2000,
+        "seed_count": 30,
+        "seed_sha256": "b9727908367ea1475e75f3122df53b9b984a131bc7a2817e6beec661ec20c37b",
+        "successful_fit_count": {
+          "latent_log": 300,
+          "latent_tailored": 300,
+          "observed_log": 300,
+          "observed_tailored": 300
+        }
+      },
+      "id": "C5",
+      "score": 1,
+      "verdict": "PARTIALLY_VERIFIED_SCOPED_INDEPENDENT_SIMULATION"
+    },
+    {
+      "evidence": {
+        "author_code_found": false,
+        "paper_anchor_present": true
+      },
+      "id": "C6",
+      "score": 0,
+      "verdict": "INCONCLUSIVE_NOT_EXECUTED"
+    }
+  ],
+  "maximum_score": 12,
+  "paper": {
+    "arxiv": "2606.03332v1",
+    "forum_id": "JTwryHNicJ",
+    "title": "Tailoring Strictly Proper Scoring Rules for Downstream Tasks: An Application to Causal Inference"
+  },
+  "prepared_score": 7,
+  "provenance": {
+    "paper_source_sha256": "52494bc18300fe22d13650119ec5919323f09c9ce04ac3c2e0a8925c861db6d5",
+    "source_archive_sha256": "7862c54d7da9cabecfefbc7bd2308c7cdff507223be68ed9c9ebaada73fe1129"
+  }
+}

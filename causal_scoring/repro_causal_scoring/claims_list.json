@@ -1,0 +1,9 @@
+[
+  "The plug-in IPW MSE is upper-bounded by the declared task divergence under the stated assumptions",
+  "The task-divergence curvature has the declared boundary-sensitive closed form",
+  "The displayed IPW-tailored loss is a strictly proper scoring rule",
+  "The canonical probability mapping is the largest-root quartic inverse and yields a stable p-y gradient",
+  "The tailored objective improves robustness in the misspecified weak-overlap Kang-Schafer setting",
+  "The tailored objective consistently improves IPW, Hajek, and AIPW across IHDP, Jobs, and ACIC 2017"
+]
+
