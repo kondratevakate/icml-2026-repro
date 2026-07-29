@@ -27,6 +27,22 @@ follows.
 See the table in [`HANDOFF.md`](HANDOFF.md#опубликованные-логбуки-11-штук-реальные-баллы) for the
 full list with real judged scores.
 
+## Medical reproducibility map
+
+An interactive public-facing audit prototype lives at
+[`docs/medical-reproducibility.html`](docs/medical-reproducibility.html). For
+GitHub Pages, enable Pages from the `docs/` folder and link to that page.
+
+The map first shows the scale of medical/life-science papers inside all ICML
+papers, then splits the medical set by data type, and then highlights the
+simulation-plus-real-data subset. The heatmap below focuses on that subset and
+shows whether each paper was reproduced in the contest, claim load, author code,
+released weights/checkpoints, and whether GPU appears to be needed. The open
+dataset row is omitted from that focused heatmap because the subset is open-data
+by construction; restricted/private data remains visible in the medical
+data-type strip above it. Dataset size is intentionally excluded until a
+dedicated artifact-size audit is run.
+
 ## Reproducing locally
 
 Each paper's folder is self-contained: read the script's docstring for the transcribed paper spec, then
