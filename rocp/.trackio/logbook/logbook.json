@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Optimal Decision-Making Based on Prediction Sets",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-optimal-decision-making-based-on-prediction-sets",
+  "paper": {
+    "arxiv_id": "2602.00989"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-VAXW59dyfk"
+  ],
+  "updated_at": "2026-07-29T12:19:24+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Optimal Decision-Making Based on Prediction Sets",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-fixed-set-minimax-policy",
+        "title": "Claim 1: fixed-set-minimax-policy",
+        "file": "pages/claim-1-fixed-set-minimax-policy/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-optimal-prediction-set-construction",
+        "title": "Claim 2: optimal-prediction-set-construction",
+        "file": "pages/claim-2-optimal-prediction-set-construction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-rocp-finite-sample-coverage",
+        "title": "Claim 3: ROCP-finite-sample-coverage",
+        "file": "pages/claim-3-rocp-finite-sample-coverage/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-medical-and-safety-critical-gains",
+        "title": "Claim 4: medical-and-safety-critical-gains",
+        "file": "pages/claim-4-medical-and-safety-critical-gains/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-optimal-decision-making-based-on-prediction-sets-artifacts"
+  },
+  "agent_view_tokens": 2810,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "7d72cf6cb5d9e4d98d4f"
+}

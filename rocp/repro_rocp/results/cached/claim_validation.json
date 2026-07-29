@@ -1,0 +1,156 @@
+{
+  "status": "passed",
+  "scope": "Fresh evaluation of official cached probabilities/scores using the released global-beta implementation.",
+  "claim_checks": {
+    "covid_lambda0_rocp_reduces_all_critical_mistakes_vs_rac": true,
+    "covid_lambda1_rocp_eliminates_observed_critical_mistakes": true,
+    "covid_lambda1_gain_exceeds_lambda0_for_every_critical_label": true,
+    "bdd_rocp_reduces_collision_rate_for_every_hazard_label_vs_rac": true,
+    "all_rocp_miscoverage_within_0_005_of_alpha": true,
+    "stronger_bdd_all_alpha_realized_loss_statement_literal": false,
+    "stronger_bdd_all_alpha_worst_case_risk_statement_literal": false
+  },
+  "coverage_absolute_errors": {
+    "covid_lambda0": [
+      0.00044071799716580086,
+      0.0002786962683042045,
+      0.0003802550779404817,
+      0.00029995276334435564,
+      0.0017666509211147832,
+      0.000590458195559751,
+      0.002149267831837498
+    ],
+    "covid_lambda1": [
+      0.0004525271610769958,
+      0.00036136041568257064,
+      8.502598016060445e-05,
+      0.000217288615965993,
+      0.0002668871043930085,
+      0.00029522909777988243,
+      0.001452527161076994
+    ],
+    "bdd": [
+      0.00017500000000000003,
+      0.0002375000000000016,
+      0.0001499999999999991,
+      0.0003249999999999989,
+      0.0014749999999999971,
+      0.002437500000000002,
+      0.002250000000000002
+    ]
+  },
+  "covid_critical_rates": {
+    "lambda0": {
+      "rocp": {
+        "1": 0.011895910780669145,
+        "2": 0.10594744121715076,
+        "3": 0.04767248545303408
+      },
+      "rac": {
+        "1": 0.015427509293680294,
+        "2": 0.12946058091286308,
+        "3": 0.05935162094763093
+      }
+    },
+    "lambda1": {
+      "rocp": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0
+      },
+      "rac": {
+        "1": 0.015427509293680294,
+        "2": 0.12946058091286308,
+        "3": 0.05935162094763093
+      }
+    }
+  },
+  "bdd_collision_rates": {
+    "rocp": {
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.09309338208085219,
+      "5": 0.08220951450263887,
+      "6": 0.07054323438283085,
+      "7": 0.0765245860090801
+    },
+    "rac": {
+      "1": 0.0006418936444410819,
+      "2": 0.00023659305993690852,
+      "3": 0.0013959013272932515,
+      "4": 0.14756420583727103,
+      "5": 0.15174813168651533,
+      "6": 0.13709794997740904,
+      "7": 0.1508407378396988
+    }
+  },
+  "bdd_rocp_minus_rac": {
+    "realized_loss": [
+      -0.04919999999999991,
+      0.05185000000000084,
+      -0.6592499999999997,
+      -0.20294999999999996,
+      -0.012074999999999836,
+      -0.6607125000000007,
+      -3.4069000000000003
+    ],
+    "worst_case_risk": [
+      -0.06487694999999949,
+      -0.0412070000000373,
+      -0.8463689999999513,
+      -0.28614500000000165,
+      0.11210399999998799,
+      0.010177500000007278,
+      -0.4957200000000217
+    ]
+  },
+  "limitations": [
+    "The empirical runner evaluates the released global-beta approximation, not the paper's candidate-wise Algorithm 1.",
+    "The stronger BDD all-baselines/all-alpha statement has small RAC reversals; the anchored critical-mistake claim still passes."
+  ],
+  "inputs": {
+    "covid_lambda0": {
+      "path": "C:\\Projects\\02_academia\\icml-repro\\rocp\\repro_rocp\\results\\cached\\covid\\lambda0\\summary.json",
+      "sha256": "9115cdcddcd8ebb2a87bdec93bf9cf263a11f7f473b6dfbc77442012d44a2b71",
+      "checks": {
+        "dataset": true,
+        "variant": true,
+        "exact_seeds_23_through_42": true,
+        "exact_alpha_grid": true,
+        "all_values_finite": true,
+        "official_revision_pinned": true,
+        "twenty_seed_files": true,
+        "seed_files_match_summary": true
+      }
+    },
+    "covid_lambda1": {
+      "path": "C:\\Projects\\02_academia\\icml-repro\\rocp\\repro_rocp\\results\\cached\\covid\\lambda1\\summary.json",
+      "sha256": "f9fb902013826a9b09a78ba26c519662a7999608acb6af94116126543b02f0fc",
+      "checks": {
+        "dataset": true,
+        "variant": true,
+        "exact_seeds_23_through_42": true,
+        "exact_alpha_grid": true,
+        "all_values_finite": true,
+        "official_revision_pinned": true,
+        "twenty_seed_files": true,
+        "seed_files_match_summary": true
+      }
+    },
+    "bdd": {
+      "path": "C:\\Projects\\02_academia\\icml-repro\\rocp\\repro_rocp\\results\\cached\\bdd\\default\\summary.json",
+      "sha256": "e1cab6a41c4ab386b9437ee0c8eb60b68f268f915247d44dd232b6aaa5398a4d",
+      "checks": {
+        "dataset": true,
+        "variant": true,
+        "exact_seeds_23_through_42": true,
+        "exact_alpha_grid": true,
+        "all_values_finite": true,
+        "official_revision_pinned": true,
+        "twenty_seed_files": true,
+        "seed_files_match_summary": true
+      }
+    }
+  }
+}

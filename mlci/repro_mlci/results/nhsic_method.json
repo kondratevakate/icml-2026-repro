@@ -1,0 +1,41 @@
+{
+  "paper_anchor": "Section 5, DeepSets encoder and weighted nHSIC",
+  "scope": "Independent construction audit on diagnostic inputs; not a MIMIC empirical reproduction.",
+  "batch_size": 48,
+  "embedding_dimension": 128,
+  "tasks": 4,
+  "protocol": {
+    "nhsic_floor": 0.0001,
+    "weight_epsilon": 0.02,
+    "weight_exponent": 0.25,
+    "weight_clip_factor": 3.0
+  },
+  "nhsic_values": [
+    0.05490405485033989,
+    0.07622164487838745,
+    0.020180819556117058,
+    0.0639200210571289
+  ],
+  "task_weights": [
+    0.959632933139801,
+    0.8840700387954712,
+    1.2324563264846802,
+    0.9238405823707581
+  ],
+  "weighted_objective": 0.20399689674377441,
+  "permutation_max_error": 5.21540641784668e-08,
+  "padding_max_error": 0.0,
+  "delta_rank_one_max_error": 8.344650268554688e-07,
+  "score_sign_invariance_max_error": 0.0,
+  "parameter_gradient_norm": 12.6588773727417,
+  "checks": {
+    "permutation_invariant": true,
+    "padding_is_masked": true,
+    "centered_delta_kernel_rank_one": true,
+    "all_nhsic_values_are_finite_and_bounded": true,
+    "inverse_strength_weights_are_positive": true,
+    "objective_backpropagates": true,
+    "rbf_objective_is_sign_invariant": true
+  },
+  "status": "passed"
+}

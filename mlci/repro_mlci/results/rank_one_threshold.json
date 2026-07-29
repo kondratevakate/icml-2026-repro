@@ -1,0 +1,32 @@
+{
+  "paper_anchor": "Lemmas 6.1-6.2 and Theorem 6.3",
+  "scope": "Independent finite-dimensional audit of every algebraic and geometric dependency; no MIMIC data are used.",
+  "seeds": 100,
+  "max_errors_or_excesses": {
+    "delta_kernel_identity_error": 1.887379141862766e-15,
+    "weighted_alignment_error": 2.220446049250313e-16,
+    "rank_one_residual": 2.3570187775194794e-15,
+    "shared_direction_centering_error": 2.8171909249863347e-15,
+    "projected_reduction_error": 3.3306690738754696e-16,
+    "threshold_formula_error": 1.6237011735142914e-15,
+    "separation_invariance_error": 1.4155343563970746e-15,
+    "global_bound_excess": 0.0,
+    "near_optimality_excess": 0.0,
+    "uniform_bound_excess": 0.0
+  },
+  "split_failures": 0,
+  "checks": {
+    "binary_delta_kernel_is_rank_one": true,
+    "weighted_sum_equals_matrix_alignment": true,
+    "exact_shared_structure_is_rank_one": true,
+    "shared_direction_is_centered": true,
+    "projected_objective_reduces_to_direction": true,
+    "threshold_certificate_is_exact": true,
+    "threshold_value_is_separation_invariant": true,
+    "rank_one_and_full_threshold_splits_coincide": true,
+    "global_upper_bound_holds": true,
+    "near_optimality_transfer_holds": true,
+    "explicit_uniform_bound_holds": true
+  },
+  "status": "passed"
+}

@@ -1,0 +1,235 @@
+{
+  "status": "passed",
+  "official_repo": "C:\\Projects\\02_academia\\icml-repro\\rocp\\official",
+  "official_git_revision": "3ee0cf6e393d2e434368bc1fc7fe3abd03ed493f",
+  "t_zero_divergence": {
+    "probabilities": [
+      0.75,
+      0.2,
+      0.05
+    ],
+    "official_set": [
+      1
+    ],
+    "paper_remark_3_2_set": [
+      0,
+      1,
+      2
+    ]
+  },
+  "candidate_calibration_divergence_examples": [
+    {
+      "calibration_observation_indices": [
+        0,
+        2
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 0,
+      "alpha": 0.3333333333333333,
+      "official_global_beta": 21.99999999254942,
+      "official_set": [
+        0,
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        2
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 0,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        0,
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        2
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 1,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        2
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 2,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        2
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        3
+      ],
+      "calibration_labels": [
+        0,
+        0
+      ],
+      "test_feature": 1,
+      "alpha": 0.3333333333333333,
+      "official_global_beta": 9.33333333209157,
+      "official_set": [
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        3
+      ],
+      "calibration_labels": [
+        0,
+        0
+      ],
+      "test_feature": 1,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        3
+      ],
+      "calibration_labels": [
+        0,
+        0
+      ],
+      "test_feature": 2,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        2
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        5
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 1,
+      "alpha": 0.3333333333333333,
+      "official_global_beta": 9.33333333209157,
+      "official_set": [
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        5
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 1,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        1
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "calibration_observation_indices": [
+        0,
+        5
+      ],
+      "calibration_labels": [
+        0,
+        2
+      ],
+      "test_feature": 2,
+      "alpha": 0.5,
+      "official_global_beta": 0.0,
+      "official_set": [
+        2
+      ],
+      "paper_algorithm1_set": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "interpretation": "These are implementation divergences, not evidence against the paper's finite-sample theorem."
+}

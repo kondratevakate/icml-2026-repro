@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "seed": 260200989,
+  "matrices": 201,
+  "action_value_comparisons": 28950,
+  "alphas": [
+    0.0,
+    0.05,
+    0.2,
+    0.5,
+    1.0
+  ],
+  "maximum_absolute_lp_error": 1.4210854715202004e-14,
+  "policy_minimizer_set_failures": 0,
+  "counterexample": {
+    "loss_matrix_labels_by_actions": [
+      [
+        1.0,
+        2.0
+      ],
+      [
+        1.0,
+        2.0
+      ],
+      [
+        100.0,
+        2.0
+      ]
+    ],
+    "label_set": [
+      0,
+      1
+    ],
+    "alpha": 0.05,
+    "in_set_maxima": [
+      1.0,
+      2.0
+    ],
+    "robust_values": [
+      5.95,
+      2.0
+    ],
+    "max_min_action": 0,
+    "rocp_action": 1
+  }
+}
