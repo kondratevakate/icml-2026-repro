@@ -1,0 +1,6 @@
+.trackio/
+official/
+tmp/
+repro_3dmedagent/evidence/
+**/__pycache__/
+*.pyc
