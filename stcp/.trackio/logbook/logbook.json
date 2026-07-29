@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Stable Localized Conformal Prediction via Transduction",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction",
+  "paper": {
+    "arxiv_id": "2605.01452"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-lSMTccAN61"
+  ],
+  "updated_at": "2026-07-29T16:21:46+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Stable Localized Conformal Prediction via Transduction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-set-stability-criterion",
+        "title": "Claim 1: set-stability criterion",
+        "file": "pages/claim-1-set-stability-criterion/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-marginal-coverage-characterization",
+        "title": "Claim 2: marginal-coverage characterization",
+        "file": "pages/claim-2-marginal-coverage-characterization/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-stability-rate-theorem",
+        "title": "Claim 3: stability-rate theorem",
+        "file": "pages/claim-3-stability-rate-theorem/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-selected-lambda-coverage",
+        "title": "Claim 4: selected-lambda coverage",
+        "file": "pages/claim-4-selected-lambda-coverage/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-medical-stability-gains",
+        "title": "Claim 5: medical stability gains",
+        "file": "pages/claim-5-medical-stability-gains/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-logabs-stability-gains",
+        "title": "Claim 6: LogAbs stability gains",
+        "file": "pages/claim-6-logabs-stability-gains/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction-artifacts"
+  },
+  "agent_view_tokens": 2487,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "078a43ba208d68c13951"
+}

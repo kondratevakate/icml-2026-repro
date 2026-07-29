@@ -1,0 +1,8 @@
+[
+  "Set-stability criterion separates construction variance from test-point noise",
+  "Theorem 4.2 marginal-coverage characterization",
+  "Theorem 4.6 stability-rate improvement",
+  "Theorem 4.7 data-driven lambda coverage interval",
+  "DermaMNIST and TissueMNIST stability gains",
+  "LogAbs low-label synthetic stability gains"
+]

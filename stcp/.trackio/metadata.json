@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T16:17:42+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-lSMTccAN61"
+  ],
+  "paper": {
+    "arxiv_id": "2605.01452"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "last_page": "conclusion",
+  "trace_dataset": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction-traces",
+  "artifacts_bucket": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction-artifacts",
+  "workspace_bucket": "kondratevakate/repro-stable-localized-conformal-prediction-via-transduction-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

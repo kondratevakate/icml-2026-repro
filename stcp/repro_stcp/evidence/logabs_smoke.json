@@ -1,0 +1,161 @@
+{
+  "claim_verdict": "NO CLAIM VERDICT",
+  "methods": {
+    "GLCP": {
+      "base": {
+        "coverage": 1.0,
+        "mean_size": 1.3659091949462892,
+        "std_population": 0.0,
+        "std_sample_corrected": null
+      },
+      "best_acceptable_lambda_index": null,
+      "lambda_grid": [
+        {
+          "acceptable_coverage": false,
+          "coverage": 0.44712560797684936,
+          "lambda": 0.0,
+          "mean_size": 1.3659091949462892,
+          "std_population": 0.0,
+          "std_sample_corrected": null
+        },
+        {
+          "acceptable_coverage": false,
+          "coverage": 0.44712560797684936,
+          "lambda": 0.1,
+          "mean_size": 1.3659091949462892,
+          "std_population": 0.0,
+          "std_sample_corrected": null
+        }
+      ]
+    },
+    "SCC": {
+      "base": {
+        "coverage": 0.9149044460146017,
+        "mean_size": 4.292464685440064,
+        "std_population": 0.0,
+        "std_sample_corrected": null
+      },
+      "best_acceptable": {
+        "coverage": 0.9151415023831311,
+        "lambda": 0.0,
+        "mean_size": 4.296369028091431,
+        "relative_std_reduction": null,
+        "std_population": 0.0,
+        "std_sample_corrected": null
+      },
+      "best_acceptable_lambda_index": 0,
+      "lambda_grid": [
+        {
+          "acceptable_coverage": true,
+          "coverage": 0.9151415023831311,
+          "lambda": 0.0,
+          "mean_size": 4.296369028091431,
+          "std_population": 0.0,
+          "std_sample_corrected": null
+        },
+        {
+          "acceptable_coverage": true,
+          "coverage": 0.9151415023831311,
+          "lambda": 0.1,
+          "mean_size": 4.296369028091431,
+          "std_population": 0.0,
+          "std_sample_corrected": null
+        }
+      ]
+    }
+  },
+  "paper_claim": {
+    "m": 500,
+    "n": 30,
+    "nominal_coverage": 0.9,
+    "reported_std": {
+      "GLCP": {
+        "StCP": 0.77,
+        "base": 1.12
+      },
+      "SCC": {
+        "StCP": 0.82,
+        "base": 0.98
+      }
+    },
+    "setting": "LogAbs"
+  },
+  "run": {
+    "acceptable_coverage_interval": [
+      0.89,
+      0.932258064516129
+    ],
+    "elapsed_seconds": 6.033812499954365,
+    "meta": {
+      "N": 100,
+      "alpha": 0.1,
+      "alpha_tol": 0.02,
+      "available_sigma_families": [
+        "abs",
+        "exp",
+        "quad",
+        "logabs",
+        "relu",
+        "softplus",
+        "sigmoid",
+        "sqrtabs",
+        "maxabs",
+        "l1",
+        "l2",
+        "sin",
+        "mix"
+      ],
+      "d": 5,
+      "dtype": "logabs",
+      "gamma_s": 1.2,
+      "gamma_t": 1.0,
+      "lbds": [
+        0.0,
+        0.1
+      ],
+      "m": 50,
+      "method_order": [
+        "GLCP",
+        "SCC"
+      ],
+      "n": 30,
+      "n_grid": 3,
+      "r": 0.5,
+      "repeats": 1,
+      "sigma_family": "logabs",
+      "temperature": 10.0,
+      "testN": 20
+    },
+    "official_code_revision": "84118ddf19efe211250a5f024c1be5a3c8f47b4b",
+    "platform": "win32",
+    "protocol_strength": "smoke-only",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "std_note": "Released code uses population std. std_sample_corrected multiplies by sqrt(R/(R-1)) to match the paper definition."
+  },
+  "selected_lambda": [
+    [
+      0.0
+    ],
+    [
+      0.1
+    ]
+  ],
+  "selected_metrics": [
+    [
+      0.44712560797684936,
+      0.9151415023831311
+    ],
+    [
+      1.3659091949462892,
+      4.296369028091431
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.45287439202315066,
+      0.05905766955841176
+    ]
+  ]
+}
