@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T15:43:53+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-bIcz7bIZSo"
+  ],
+  "paper": {
+    "arxiv_id": "2605.14284"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "last_page": "conclusion",
+  "trace_dataset": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings-traces",
+  "artifacts_bucket": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings-artifacts",
+  "workspace_bucket": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

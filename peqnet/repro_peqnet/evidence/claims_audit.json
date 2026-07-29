@@ -1,0 +1,195 @@
+{
+  "claims": {
+    "C1": {
+      "all_requirements_available": false,
+      "blockers": {
+        "author_code_found": false,
+        "printed_dgp_executable": false,
+        "processed_mimic_iii_available": false,
+        "selected_hyperparameters_and_seeds_reported": false
+      },
+      "verdict": "INCONCLUSIVE"
+    },
+    "C2": {
+      "all_requirements_available": false,
+      "blockers": {
+        "author_code_found": false,
+        "printed_dgp_executable": false,
+        "processed_mimic_iii_available": false,
+        "selected_hyperparameters_and_seeds_reported": false
+      },
+      "verdict": "INCONCLUSIVE"
+    },
+    "C3": {
+      "all_requirements_available": false,
+      "blockers": {
+        "author_code_found": false,
+        "printed_dgp_executable": false,
+        "processed_mimic_iii_available": false,
+        "selected_hyperparameters_and_seeds_reported": false
+      },
+      "verdict": "INCONCLUSIVE"
+    },
+    "C4": {
+      "checks": {
+        "all_values_finite": true,
+        "mds_is_not_exact_identity_to_mmd": true,
+        "policy_ordering_preserved": true,
+        "symmetric_dissimilarity": true,
+        "zero_diagonal": true
+      },
+      "embedding": {
+        "checks": {
+          "all_values_finite": true,
+          "mds_is_not_exact_identity_to_mmd": true,
+          "policy_ordering_preserved": true,
+          "symmetric_dissimilarity": true,
+          "zero_diagonal": true
+        },
+        "distance_ordering_correlation": 1.0,
+        "embedding_coordinates": [
+          [
+            -0.008911504824772678,
+            -0.02733337056359062
+          ],
+          [
+            -0.002336745734407532,
+            -0.007169696703265269
+          ],
+          [
+            -0.00042654613399407753,
+            -0.0013095070670614964
+          ],
+          [
+            0.0023522186187848924,
+            0.007216414434355551
+          ],
+          [
+            0.009322578074389394,
+            0.028596159899561838
+          ]
+        ],
+        "max_error_if_treated_as_exact_mmd": 0.22166921530100492,
+        "median_pairwise_distance": 2.3132520020037983,
+        "mmd2_matrix": [
+          [
+            0.0,
+            0.009939583534236962,
+            0.019108178298730905,
+            0.036021220805758425,
+            0.07867802298581295
+          ],
+          [
+            0.009939583534236962,
+            0.0,
+            0.0015936771385103299,
+            0.008970988955112169,
+            0.037079337345071406
+          ],
+          [
+            0.019108178298730905,
+            0.0015936771385103299,
+            0.0,
+            0.0032213619137267946,
+            0.024366621335585203
+          ],
+          [
+            0.036021220805758425,
+            0.008970988955112169,
+            0.0032213619137267946,
+            0.0,
+            0.010263087534899018
+          ],
+          [
+            0.07867802298581295,
+            0.037079337345071406,
+            0.024366621335585203,
+            0.010263087534899018,
+            0.0
+          ]
+        ],
+        "n_histories": 240,
+        "paper_bandwidth_parameter": 0.21614592770994562,
+        "relative_stress_against_mmd2": 0.2951098047391738,
+        "seed": 20260729,
+        "thresholds": [
+          0.25,
+          0.4,
+          0.5,
+          0.6,
+          0.75
+        ]
+      },
+      "qualification": "The pipeline is reproduced, but metric MDS only approximately preserves the supplied MMD-squared dissimilarities; it is not exact equality to MMD.",
+      "verdict": "VERIFIED"
+    },
+    "C5": {
+      "checks": {
+        "approximate_exact_mds_mismatch_detected": true,
+        "bounded_targeting_counterexample_passes": true,
+        "pair_specific_constant_detected": true
+      },
+      "targeting_counterexample": {
+        "bounded_fluctuations": [
+          0.8,
+          -0.8
+        ],
+        "checks": {
+          "claimed_lipschitz_implication_fails": true,
+          "fluctuations_are_bounded": true,
+          "initial_models_identical": true,
+          "strict_positivity_holds": true,
+          "targeted_models_differ": true
+        },
+        "claimed_rhs_for_any_finite_constant": 0.0,
+        "initial_difference": 0.0,
+        "initial_q_values": [
+          0.5,
+          0.5
+        ],
+        "strictly_positive_treatment_probability": 0.5,
+        "targeted_difference": 0.37994896225522495,
+        "targeted_q_values": [
+          0.6899744811276125,
+          0.31002551887238755
+        ]
+      },
+      "verdict": "FALSIFIED AS A LIPSCHITZ GUARANTEE"
+    },
+    "C6": {
+      "blockers": {
+        "cohort_sql_released": false,
+        "complete_mimic_iv_available": false,
+        "item_id_mapping_released": false,
+        "preprocessing_and_seeds_released": false
+      },
+      "verdict": "INCONCLUSIVE"
+    }
+  },
+  "maximum_points": 12,
+  "paper": {
+    "arxiv": "2605.14284v2",
+    "openreview_id": "bIcz7bIZSo",
+    "title": "Smooth Multi-Policy Causal Effect Estimation in Longitudinal Settings"
+  },
+  "prepared_points": 4,
+  "source_audit": {
+    "available": true,
+    "checks": {
+      "bounded_update_asserted_without_targeting_lipschitz_assumption": true,
+      "method_states_approximate_mds_preservation": true,
+      "mimic_iv_999_patient_claim_present": true,
+      "mmd_pipeline_present": true,
+      "printed_dgp_divides_by_zero_at_first_lag": true,
+      "proof_claims_exact_mds_identity": true,
+      "subsequence_constant_is_pair_specific_ratio": true,
+      "twenty_seed_protocol_present": true
+    },
+    "file_sha256": {
+      "appendix": "b8aee991b47a20b896dd2804e12768e4425aeb6f21e39294f7a488d90bcc49cb",
+      "experiments": "91086928c711fcb4d5ead46251322662e3334be56f859cf24146501091a1ba7d",
+      "methods": "9fec387447543cb075cb991ec8f201bc885dea89c978d2236d2714ce0318f8a6"
+    },
+    "first_lag_denominator": 0
+  }
+}
