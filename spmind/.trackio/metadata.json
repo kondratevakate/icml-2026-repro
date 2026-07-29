@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-spmind-artifact-audit",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T16:58:07+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-UJcB3XrffF"
+  ],
+  "paper": {
+    "arxiv_id": "2606.24235"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "last_page": "conclusion",
+  "trace_dataset": "kondratevakate/repro-spmind-artifact-audit-traces",
+  "artifacts_bucket": "kondratevakate/repro-spmind-artifact-audit-artifacts",
+  "workspace_bucket": "kondratevakate/repro-spmind-artifact-audit-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}
