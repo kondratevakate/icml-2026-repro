@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: PyHealth 2.0: A Comprehensive Open-Source Toolkit for Accessible and Reproducible Clinical Deep Learning",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit",
+  "paper": {
+    "arxiv_id": "2601.16414"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-gMLVFN9hl8"
+  ],
+  "updated_at": "2026-07-29T14:37:05+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: PyHealth 2.0: A Comprehensive Open-Source Toolkit for Accessible and Reproducible Clinical Deep Learning",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-toolkit-coverage",
+        "title": "Claim 1: toolkit coverage",
+        "file": "pages/claim-1-toolkit-coverage/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-mortality-throughput",
+        "title": "Claim 2: mortality throughput",
+        "file": "pages/claim-2-mortality-throughput/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-drug-and-los-throughput",
+        "title": "Claim 3: drug and LOS throughput",
+        "file": "pages/claim-3-drug-and-los-throughput/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-seven-line-table-2-attribution",
+        "title": "Claim 4: seven-line Table 2 attribution",
+        "file": "pages/claim-4-seven-line-table-2-attribution/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-community-tutorials-and-rhealth",
+        "title": "Claim 5: community tutorials and RHealth",
+        "file": "pages/claim-5-community-tutorials-and-rhealth/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit-artifacts"
+  },
+  "agent_view_tokens": 2803,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "70e5761e2ad2cd6822f0"
+}
