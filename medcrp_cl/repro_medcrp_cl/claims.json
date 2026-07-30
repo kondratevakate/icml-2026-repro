@@ -1,0 +1,8 @@
+[
+  {"id": "C1", "title": "Online semantic-modality discovery", "score": 1, "max_score": 2},
+  {"id": "C2", "title": "Replay-free structure-aware continual learning", "score": 2, "max_score": 2},
+  {"id": "C3", "title": "Headline continual-segmentation performance", "score": 0, "max_score": 2},
+  {"id": "C4", "title": "Robustness and ablation evidence", "score": 0, "max_score": 2},
+  {"id": "C5", "title": "Efficiency and clinical breadth", "score": 1, "max_score": 2}
+]
+

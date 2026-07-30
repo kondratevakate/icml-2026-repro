@@ -1,0 +1,156 @@
+{
+  "artifact_hashes": {
+    "ewc_state_sha256": "76fc4e7223718c47a5bb923174950ec1ff41e9d73474062eb77338b15b804e4c",
+    "modality_state_sha256": "d98e04242a7623c4530db76d1059cdafffa454380c5ae0b7d728bf8a632f5ed4"
+  },
+  "checkpoint": {
+    "checkpoint_alpha": 2.0,
+    "code_and_paper_alpha": 5.0,
+    "group_sizes": {
+      "0": 1,
+      "1": 5,
+      "2": 1,
+      "3": 7,
+      "4": 2
+    },
+    "inter_mean": 0.4200432311605525,
+    "inter_n": 54,
+    "inter_std": 0.1212978440647021,
+    "intra_mean": 0.9132667183876038,
+    "intra_n": 8,
+    "intra_std": 0.08084310674119105,
+    "task_to_modality": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 1,
+      "6": 3,
+      "7": 1,
+      "8": 3,
+      "9": 1,
+      "10": 4,
+      "11": 3,
+      "12": 1,
+      "13": 3,
+      "14": 3,
+      "15": 3
+    },
+    "total_tasks": 16
+  },
+  "checks": {
+    "checkpoint_alpha_matches_paper_and_code": false,
+    "checkpoint_group_sizes_match": true,
+    "checkpoint_has_five_modalities": true,
+    "checkpoint_mapping_matches_interleaved_order": true,
+    "ewc_has_all_five_modalities": true,
+    "ewc_mapping_matches_modality_state": true,
+    "fixed_gaussian_error_is_zero": false,
+    "released_run_level_metric_files_present": false,
+    "requirements_is_clean_pip_lock": false
+  },
+  "ewc_state": {
+    "contains_only_aggregate_tensors_and_identifiers": true,
+    "key_summary": {
+      "0": {
+        "categories": {
+          "adapter": 14,
+          "enhancer": 10,
+          "lora": 198,
+          "seg_head": 14
+        },
+        "task_specific_key_ids": [
+          0
+        ],
+        "tensor_count": 236
+      },
+      "1": {
+        "categories": {
+          "adapter": 70,
+          "enhancer": 10,
+          "lora": 198,
+          "seg_head": 70
+        },
+        "task_specific_key_ids": [
+          1,
+          5,
+          7,
+          9,
+          12
+        ],
+        "tensor_count": 348
+      },
+      "2": {
+        "categories": {
+          "adapter": 14,
+          "enhancer": 10,
+          "lora": 198,
+          "seg_head": 14
+        },
+        "task_specific_key_ids": [
+          2
+        ],
+        "tensor_count": 236
+      },
+      "3": {
+        "categories": {
+          "adapter": 98,
+          "enhancer": 10,
+          "lora": 198,
+          "seg_head": 98
+        },
+        "task_specific_key_ids": [
+          3,
+          6,
+          8,
+          11,
+          13,
+          14,
+          15
+        ],
+        "tensor_count": 404
+      },
+      "4": {
+        "categories": {
+          "adapter": 28,
+          "enhancer": 10,
+          "lora": 198,
+          "seg_head": 28
+        },
+        "task_specific_key_ids": [
+          4,
+          10
+        ],
+        "tensor_count": 264
+      }
+    },
+    "modality_task_count": {
+      "0": 1,
+      "1": 5,
+      "2": 1,
+      "3": 7,
+      "4": 2
+    },
+    "task_specific_key_interpretation": "Task adapters and segmentation heads are shared by object alias within a modality, but Fisher keys include the current task id. On a later task the earlier aliases therefore do not match get_trainable_param_names; only modality LoRA/enhancer keys receive the intended cross-task EWC penalty."
+  },
+  "failed": 4,
+  "passed": 5,
+  "release": {
+    "non_pip_requirement_entries": [
+      "conda",
+      "libmambapy",
+      "conda-libmamba-solver",
+      "cuda-toolkit==13.0.2"
+    ],
+    "run_level_metric_files": [],
+    "tracked_non_git_file_count": 19
+  },
+  "theory_check": {
+    "fixed_distribution_tail_error": 0.03272676496918819,
+    "interpretation": "A fixed pair of overlapping Gaussian distributions has a strictly positive per-task error; increasing t only improves parameter estimates and does not make that Bayes overlap vanish.",
+    "paper_required_separation": 0.40428190161178634,
+    "paper_threshold": 0.7615631335375209,
+    "separation": 0.4932234872270513
+  }
+}
