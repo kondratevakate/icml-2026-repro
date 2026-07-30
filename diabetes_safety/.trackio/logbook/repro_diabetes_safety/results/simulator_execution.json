@@ -1,0 +1,57 @@
+{
+  "all_deterministic": true,
+  "all_observation_dimensions_14": true,
+  "environment_count": 3,
+  "environments": {
+    "t1d-v0": {
+      "action_nvec": [
+        5,
+        5
+      ],
+      "cost_sum": 1234.9112469032407,
+      "deterministic_repeat": true,
+      "maximum_glucose": 362.86309814453125,
+      "minimum_glucose": 119.3511734008789,
+      "observation_dimension": 14,
+      "repeat_sha256": "0b5c7c2f5dc2d97589f870d5c0f40de514bb089ea0d530d1208a9c376cfa0f25",
+      "reward_sum": -31.586868124082685,
+      "steps": 288,
+      "time_in_range_fraction": 0.3402777777777778,
+      "trajectory_sha256": "0b5c7c2f5dc2d97589f870d5c0f40de514bb089ea0d530d1208a9c376cfa0f25"
+    },
+    "t2d-v0": {
+      "action_nvec": [
+        5,
+        5
+      ],
+      "cost_sum": 563.1167144450046,
+      "deterministic_repeat": true,
+      "maximum_glucose": 323.26849365234375,
+      "minimum_glucose": 127.12030792236328,
+      "observation_dimension": 14,
+      "repeat_sha256": "580150d29f887cfca56c19aadf3dd7cd1641374b5bfb56e07c061b04217f4214",
+      "reward_sum": -20.623923070379533,
+      "steps": 288,
+      "time_in_range_fraction": 0.3645833333333333,
+      "trajectory_sha256": "580150d29f887cfca56c19aadf3dd7cd1641374b5bfb56e07c061b04217f4214"
+    },
+    "t2d_no_pump-v0": {
+      "action_nvec": [
+        5,
+        5
+      ],
+      "cost_sum": 461.6716947848937,
+      "deterministic_repeat": true,
+      "maximum_glucose": 249.54522705078125,
+      "minimum_glucose": 97.97340393066406,
+      "observation_dimension": 14,
+      "repeat_sha256": "5d8fc4ff320fac30a72448cfa6d789eb70897885e502710f8c95b4520eb982d3",
+      "reward_sum": 12.710048185210326,
+      "steps": 288,
+      "time_in_range_fraction": 0.7604166666666666,
+      "trajectory_sha256": "5d8fc4ff320fac30a72448cfa6d789eb70897885e502710f8c95b4520eb982d3"
+    }
+  },
+  "requested_steps": 288,
+  "seed": 20260729
+}

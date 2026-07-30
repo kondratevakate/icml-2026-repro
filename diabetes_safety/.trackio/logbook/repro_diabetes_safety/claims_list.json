@@ -1,0 +1,7 @@
+[
+  "The unified simulator supports three diabetes-treatment environments and the released benchmark covers eight safe-RL algorithms",
+  "Safe policies exhibit a safety-generalization gap between the training patient and unseen patients",
+  "BA-NODE outperforms ITransformer and NODE for 24-step blood-glucose prediction",
+  "One-sided predictor reliability plus an epsilon shield margin implies finite-horizon hypoglycemia and hyperglycemia safety",
+  "The released predictive shield implements the mechanism used for broad clinical gains"
+]
