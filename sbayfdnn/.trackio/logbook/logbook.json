@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Sparse Bayesian Deep Functional Learning with Structured Region Selection",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-sparse-bayesian-functional-deep-learning",
+  "paper": {
+    "arxiv_id": "2602.20651"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-3IFIedDIoN",
+    "arxiv:2602.20651"
+  ],
+  "updated_at": "2026-07-30T07:12:50+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Sparse Bayesian Deep Functional Learning with Structured Region Selection",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-spike-and-slab-region-selection",
+        "title": "Claim 1: spike-and-slab region selection",
+        "file": "pages/claim-1-spike-and-slab-region-selection/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-5-4-approximation-bound",
+        "title": "Claim 2: Theorem 5.4 approximation bound",
+        "file": "pages/claim-2-theorem-5-4-approximation-bound/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-5-7-posterior-contraction",
+        "title": "Claim 3: Theorem 5.7 posterior contraction",
+        "file": "pages/claim-3-theorem-5-7-posterior-contraction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-5-9-selection-consistency",
+        "title": "Claim 4: Theorem 5.9 selection consistency",
+        "file": "pages/claim-4-theorem-5-9-selection-consistency/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-ecg-performance",
+        "title": "Claim 5: ECG performance",
+        "file": "pages/claim-5-ecg-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-tecator-performance",
+        "title": "Claim 6: Tecator performance",
+        "file": "pages/claim-6-tecator-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 2213,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "aa7687e2188fe8ba87c6"
+}
