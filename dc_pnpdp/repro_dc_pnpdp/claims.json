@@ -1,0 +1,9 @@
+[
+  {"id": "C1", "title": "Dual-coupled fixed-point optimality", "score": 2, "max_score": 2},
+  {"id": "C2", "title": "Loose-PnP fixed-point bias", "score": 1, "max_score": 2},
+  {"id": "C3", "title": "Spectral Homogenization mechanics", "score": 1, "max_score": 2},
+  {"id": "C4", "title": "CT reconstruction gains", "score": 0, "max_score": 2},
+  {"id": "C5", "title": "MRI reconstruction breadth", "score": 0, "max_score": 2},
+  {"id": "C6", "title": "Components and efficiency", "score": 1, "max_score": 2}
+]
+
