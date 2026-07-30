@@ -1,0 +1,132 @@
+{
+  "artifact_hashes": {
+    "paper_sha256": "bf31eea0e1312268f3dbaee43f821cc4d90ac5e6bba57d149e6899989339d1b0",
+    "source_sha256": "d7abb8b085d2ea5183e69a32509d332967af9f45ecff33f1e5cf7fda41e6927f"
+  },
+  "checks": {
+    "canonical_ot_executes": false,
+    "containment_penalizes_large_mask": true,
+    "documented_requirements_path_exists": false,
+    "empty_nms_input_is_supported": false,
+    "perfect_metric_identity": true,
+    "preprocessed_dataset_link_present": false,
+    "released_empirical_artifacts_present": false,
+    "runtime_completed_ot_has_unit_row_sums": true,
+    "runtime_completed_ot_matches_paper_total_mass": false,
+    "self_reference_high_confidence_branch_executes": true,
+    "self_reference_precision_at_least_0_99": true,
+    "self_reference_recall_at_least_0_60": true
+  },
+  "failed": 6,
+  "metrics": {
+    "perfect_identity": {
+      "AJI": 0.9999999687500011,
+      "DQ": 0.99999950000025,
+      "Dice": 1.0,
+      "PQ": 0.9999990000007499,
+      "SQ": 0.99999950000025
+    }
+  },
+  "partial_ot": {
+    "canonical_error": "AttributeError: 'OptimalTransport' object has no attribute 'numItermax'",
+    "constructor_attributes": [
+      "b",
+      "device",
+      "epsilon",
+      "gamma",
+      "rho",
+      "semi_use",
+      "stoperr"
+    ],
+    "paper_target_real_mass": 0.6,
+    "plan_shape": [
+      4,
+      3
+    ],
+    "real_mass": 2.3999969959259033,
+    "row_sums": [
+      0.9999992847442627,
+      0.9999992847442627,
+      0.9999991655349731,
+      0.9999991655349731
+    ],
+    "runtime_completion": "numItermax=1000 assigned after construction",
+    "scaled_target_real_mass": 2.4,
+    "slack_mass": 1.6000001430511475
+  },
+  "passed": 6,
+  "refinement": {
+    "empty_input_error": "IndexError: list index out of range",
+    "input_scores": [
+      0.9,
+      0.8,
+      0.8
+    ],
+    "output_scores": [
+      0.8,
+      0.8,
+      0.21123873362053489
+    ]
+  },
+  "release": {
+    "default_backbone": "hf-hub:bioptimus/UNI2-h",
+    "default_backbone_repo_resolved_at_freeze": false,
+    "documented_requirements_exists": false,
+    "documented_requirements_path": "docs/requirements.txt",
+    "empirical_artifacts": [],
+    "preprocessed_dataset_link_is_empty": true,
+    "python_file_count": 17,
+    "released_requirements_exists": true,
+    "released_requirements_path": "docs/requirments.txt",
+    "tracked_non_git_file_count": 57
+  },
+  "self_reference": {
+    "background_pixels": 11443,
+    "foreground_pixels": 1665,
+    "high_confidence": true,
+    "precision": 1.0,
+    "recall": 0.6065573770491803,
+    "truth_pixels": 2745
+  },
+  "theory": {
+    "both_zero_cost_and_zero_marginal_kl": true,
+    "diagonal": [
+      [
+        0.5,
+        0.0
+      ],
+      [
+        0.0,
+        0.5
+      ]
+    ],
+    "diagonal_columns": [
+      0.5,
+      0.5
+    ],
+    "diagonal_rows": [
+      0.5,
+      0.5
+    ],
+    "diffuse": [
+      [
+        0.25,
+        0.25
+      ],
+      [
+        0.25,
+        0.25
+      ]
+    ],
+    "diffuse_columns": [
+      0.5,
+      0.5
+    ],
+    "diffuse_rows": [
+      0.5,
+      0.5
+    ],
+    "distinct": true,
+    "interpretation": "Convexity alone does not imply the paper proof's final equality of optimizers. It supports correspondence of optimal sets unless a strict-convexity or uniqueness condition is added."
+  }
+}
