@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: GlobalHealthAtlas release audit",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-globalhealthatlas-release-audit",
+  "paper": {
+    "arxiv_id": "2602.00491"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-02Nq73lCe6",
+    "public-health"
+  ],
+  "updated_at": "2026-07-30T06:51:34+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: GlobalHealthAtlas release audit",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-corpus-scale-and-coverage",
+        "title": "Claim 1: corpus scale and coverage",
+        "file": "pages/claim-1-corpus-scale-and-coverage/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-composition-and-quality-control",
+        "title": "Claim 2: composition and quality control",
+        "file": "pages/claim-2-composition-and-quality-control/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-evaluator-validity-and-stability",
+        "title": "Claim 3: evaluator validity and stability",
+        "file": "pages/claim-3-evaluator-validity-and-stability/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-multilingual-benchmark",
+        "title": "Claim 4: multilingual benchmark",
+        "file": "pages/claim-4-multilingual-benchmark/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-sft-and-transfer",
+        "title": "Claim 5: SFT and transfer",
+        "file": "pages/claim-5-sft-and-transfer/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-robustness-and-leakage",
+        "title": "Claim 6: robustness and leakage",
+        "file": "pages/claim-6-robustness-and-leakage/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 1926,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "ce0875f6678073168010"
+}
