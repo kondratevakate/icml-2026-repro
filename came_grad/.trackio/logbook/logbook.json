@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: CAME-Grad gradient dynamics audit",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-came-grad-equation-audit",
+  "paper": {
+    "arxiv_id": "2605.22635"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-T7y2wavrFM",
+    "radiology"
+  ],
+  "updated_at": "2026-07-29T17:13:09+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: CAME-Grad gradient dynamics audit",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-three-stage-optimizer-mechanics",
+        "title": "Claim 1: three-stage optimizer mechanics",
+        "file": "pages/claim-1-three-stage-optimizer-mechanics/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-sde-mechanism-and-convergence",
+        "title": "Claim 2: SDE mechanism and convergence",
+        "file": "pages/claim-2-sde-mechanism-and-convergence/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-eight-backbone-clinical-gains",
+        "title": "Claim 3: eight-backbone clinical gains",
+        "file": "pages/claim-3-eight-backbone-clinical-gains/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-multi-task-optimizer-comparison",
+        "title": "Claim 4: multi-task optimizer comparison",
+        "file": "pages/claim-4-multi-task-optimizer-comparison/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-stage-ablations",
+        "title": "Claim 5: stage ablations",
+        "file": "pages/claim-5-stage-ablations/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-came-grad-equation-audit-artifacts"
+  },
+  "agent_view_tokens": 1727,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "ed0220a47e407ca6db34"
+}
