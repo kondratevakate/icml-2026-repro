@@ -27,21 +27,38 @@ follows.
 See the table in [`HANDOFF.md`](HANDOFF.md#опубликованные-логбуки-11-штук-реальные-баллы) for the
 full list with real judged scores.
 
-## Medical reproducibility map
+## Medical reproducibility project page
 
-An interactive public-facing audit prototype lives at
-[`docs/medical-reproducibility.html`](docs/medical-reproducibility.html). For
-GitHub Pages, enable Pages from the `docs/` folder and link to that page.
+Open the interactive map as a GitHub Pages project page:
+[`kondratevakate.github.io/icml-2026-repro/`](https://kondratevakate.github.io/icml-2026-repro/).
+The source file is [`docs/medical-reproducibility.html`](docs/medical-reproducibility.html);
+[`docs/index.html`](docs/index.html) redirects the project-page root to it.
 
-The map first shows the scale of medical/life-science papers inside all ICML
-papers, then splits the medical set by data type, and then highlights the
-simulation-plus-real-data subset. The heatmap below focuses on that subset and
-shows whether each paper was reproduced in the contest, claim load, author code,
-released weights/checkpoints, and whether GPU appears to be needed. The open
-dataset row is omitted from that focused heatmap because the subset is open-data
-by construction; restricted/private data remains visible in the medical
-data-type strip above it. Dataset size is intentionally excluded until a
-dedicated artifact-size audit is run.
+The page is a public audit of how reproducible medical and life-science ICML
+papers look from the challenge metadata one month after the conference. It
+starts with the full scale of the corpus, then narrows to the medically relevant
+papers, and finally focuses the heatmap on papers that combine synthetic
+experiments with real or open datasets.
+
+Headline counts shown on the page:
+
+- `6,341` total ICML papers in the challenge metadata.
+- `703` life-science or medical papers, `11.1%` of the full corpus.
+- `355` synthetic-plus-real/open-data target papers used for the detailed
+  reproducibility heatmap.
+
+The focused heatmap answers the practical reproduction questions: whether the
+paper was reproduced in the contest, how many claims were checked, whether
+authors released code, whether weights/checkpoints are available, and whether
+GPU use appears necessary. Restricted/private and unknown data are shown in the
+medical data-type carpet above the heatmap instead of being hidden inside the
+open-data subset. Dataset size is intentionally excluded until a dedicated
+artifact-size audit is run.
+
+The generated audit tables are in [`audit/`](audit/), and the reproducible
+pipeline is [`audit_medical_repro.py`](audit_medical_repro.py). To publish the
+page on GitHub, enable Pages for this repository from the `docs/` folder on the
+default branch.
 
 ## Reproducing locally
 
