@@ -1,0 +1,6 @@
+numpy>=1.26
+torch>=2.1
+scikit-learn>=1.4
+scikit-survival>=0.23
+pycox>=0.3
+trackio>=0.10
