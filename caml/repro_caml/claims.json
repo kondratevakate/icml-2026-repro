@@ -1,0 +1,8 @@
+[
+  {"id": "C1", "title": "Loss-valley theorem", "score": 0, "max_score": 2},
+  {"id": "C2", "title": "Aligned-constraint mechanics", "score": 2, "max_score": 2},
+  {"id": "C3", "title": "Heat benchmark", "score": 1, "max_score": 2},
+  {"id": "C4", "title": "Cross-PDE MLP results", "score": 0, "max_score": 2},
+  {"id": "C5", "title": "Backbone generality", "score": 0, "max_score": 2},
+  {"id": "C6", "title": "Components and limitations", "score": 1, "max_score": 2}
+]

@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Mitigating Gradient Pathology with Aligned Constraint",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-caml-release-audit",
+  "paper": {
+    "arxiv_id": "2605.25001"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-Fisw2kc7EY",
+    "pinn"
+  ],
+  "updated_at": "2026-07-30T07:42:57+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Mitigating Gradient Pathology with Aligned Constraint",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-loss-valley-theorem",
+        "title": "Claim 1: loss-valley theorem",
+        "file": "pages/claim-1-loss-valley-theorem/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-aligned-constraint-mechanics",
+        "title": "Claim 2: aligned-constraint mechanics",
+        "file": "pages/claim-2-aligned-constraint-mechanics/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-heat-benchmark",
+        "title": "Claim 3: Heat benchmark",
+        "file": "pages/claim-3-heat-benchmark/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-cross-pde-mlp-results",
+        "title": "Claim 4: cross-PDE MLP results",
+        "file": "pages/claim-4-cross-pde-mlp-results/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-backbone-generality",
+        "title": "Claim 5: backbone generality",
+        "file": "pages/claim-5-backbone-generality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-components-and-limitations",
+        "title": "Claim 6: components and limitations",
+        "file": "pages/claim-6-components-and-limitations/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-caml-release-audit-artifacts"
+  },
+  "agent_view_tokens": 1758,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "30c03f676ff3325b52cb"
+}
