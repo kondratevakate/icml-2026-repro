@@ -23,7 +23,6 @@ OPEN = r"(MIMIC|PhysioNet|UK Biobank|OpenNeuro|TCGA|ADNI|eICU|public dataset|pub
 
 def main(n_per_stratum=7, seed=20260730):
     best = json.load(open(os.path.join(OUT, "best_solutions.json")))
-    abstracts = {p["orid"]: p for p in json.load(open(os.path.join(DATA, "abstracts.json")))["papers"]}
     anchored = json.load(open(os.path.join(DATA, "claims_anchored.json")))
 
     pool = []
