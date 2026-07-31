@@ -3,13 +3,13 @@
 {
  "population": 703,
  "kate_covered": 39,
- "reproduced_any_points": 206,
+ "reproduced_any_points": 211,
  "reproduced_full_points": 31,
  "reproduced_any_not_in_kate": 176,
  "reproduced_full_not_in_kate": 27,
  "gap_full_cpu_only": 18,
  "gap_any_cpu_only": 76,
- "never_attempted": 463
+ "never_attempted": 458
 }
 
 | orid | best | claims | GPU | data | title |

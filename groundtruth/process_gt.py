@@ -107,12 +107,16 @@ def load_hermes_solutions():
 
 
 def dominance(a, b):
-    """Does solution a dominate b? a proves same/stronger AND costs <= .
-    Here 'proves' is approximated by evidence_layers superset + mutation test."""
+    """Does solution a dominate b? Strict Pareto: a is STRICTLY better on at
+    least one axis (proves more OR costs less) while not worse on the other.
+    'proves' approximated by evidence_layers superset + mutation test."""
     la, lb = a["evidence_layers"], b["evidence_layers"]
     proves_ge = (a["has_mutation_test"] >= b["has_mutation_test"]) and all(la[k] >= lb[k] for k in la)
+    proves_gt = (a["has_mutation_test"] > b["has_mutation_test"]) or any(la[k] > lb[k] for k in la)
     cost_le = (a["compute_cost_s"] or 1e9) <= (b["compute_cost_s"] or 1e9)
-    return proves_ge and cost_le and (a != b)
+    cost_lt = (a["compute_cost_s"] or 1e9) < (b["compute_cost_s"] or 1e9)
+    # strict: strictly better on proves, or equal proves but strictly cheaper
+    return (proves_gt and cost_le) or (proves_ge and cost_lt)
 
 
 def main():

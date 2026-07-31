@@ -127,11 +127,27 @@ def main():
         sys.exit(f"ERROR: hermes-router not reachable: {e}")
 
     src = json.load(open(os.path.join(OUT, "process_gt_medical.json")))
+    # resume: if a prior levelB run exists, reuse its validity scores
+    prior_path = os.path.join(OUT, "process_gt_levelB_medical.json")
+    prior = json.load(open(prior_path)) if os.path.isfile(prior_path) else None
+    if prior:
+        for pp in prior["papers"]:
+            sp = next((x for x in src["papers"] if x["orid"] == pp["orid"]), None)
+            if not sp:
+                continue
+            for c in pp["claims"]:
+                if c.get("validity") is not None:
+                    sc = next((x for x in sp["claims"] if x["claim"] == c["claim"]), None)
+                    if sc:
+                        sc["validity"] = c["validity"]
+                        sc["validity_reason"] = c.get("validity_reason", "")
     papers = src["papers"]
     scored = 0
     for p in papers:
         for c in p["claims"]:
             if not c["structure"]:
+                continue
+            if c.get("validity") is not None:  # resume: already scored
                 continue
             text = load_claim_text(p["orid"], c["claim"])
             if not text:
@@ -159,8 +175,15 @@ def main():
                 lb = b["structure"]["evidence_layers"]
                 proves_ge = (a["structure"]["has_mutation_test"] >= b["structure"]["has_mutation_test"]) \
                     and all(la[k] >= lb[k] for k in la)
+                proves_gt = (a["structure"]["has_mutation_test"] > b["structure"]["has_mutation_test"]) \
+                    or any(la[k] > lb[k] for k in la)
                 cost_le = (a["structure"]["compute_cost_s"] or 1e9) <= (b["structure"]["compute_cost_s"] or 1e9)
-                if proves_ge and cost_le and va >= vb and a["structure"] != b["structure"]:
+                cost_lt = (a["structure"]["compute_cost_s"] or 1e9) < (b["structure"]["compute_cost_s"] or 1e9)
+                val_ge = va >= vb
+                val_gt = va > vb
+                # strict Pareto: strictly better on >=1 axis, not worse on others
+                if ((proves_gt and cost_le and val_ge) or (proves_ge and cost_lt and val_ge)
+                        or (proves_ge and cost_le and val_gt)):
                     edges.append([a["claim"], b["claim"]])
         dom = {e[1] for e in edges}
         p["dominance_edges_validity"] = edges

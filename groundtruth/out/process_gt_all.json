@@ -1,12 +1,12 @@
 {
  "summary": {
   "papers_with_logbook_structure": 11,
-  "total_papers_in_mode": 2005,
+  "total_papers_in_mode": 2012,
   "claims_with_structure": 29,
   "claims_judged": 57,
   "structure_coverage": 0.5088,
   "mutation_tests_found": 3,
-  "papers_with_minimal_sufficient": 10
+  "papers_with_minimal_sufficient": 9
  },
  "papers": [
   {
@@ -369,11 +369,19 @@
     ],
     [
      1,
-     2
+     3
     ],
     [
      2,
+     3
+    ],
+    [
+     3,
      1
+    ],
+    [
+     3,
+     2
     ]
    ],
    "minimal_sufficient_claims": [
@@ -651,10 +659,6 @@
    ],
    "dominance_edges": [
     [
-     0,
-     2
-    ],
-    [
      1,
      0
     ],
@@ -663,22 +667,23 @@
      2
     ],
     [
-     2,
-     0
+     1,
+     3
     ],
     [
      3,
      0
+    ],
+    [
+     3,
+     1
     ],
     [
      3,
      2
     ]
    ],
-   "minimal_sufficient_claims": [
-    1,
-    3
-   ],
+   "minimal_sufficient_claims": [],
    "n_structured": 4
   },
   {
@@ -764,17 +769,11 @@
      "structure": null
     }
    ],
-   "dominance_edges": [
-    [
-     0,
-     1
-    ],
-    [
-     1,
-     0
-    ]
+   "dominance_edges": [],
+   "minimal_sufficient_claims": [
+    0,
+    1
    ],
-   "minimal_sufficient_claims": [],
    "n_structured": 2
   },
   {
@@ -1081,12 +1080,25 @@
      "structure": null
     }
    ],
-   "dominance_edges": [],
-   "minimal_sufficient_claims": [
-    0,
-    1,
-    2
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ]
    ],
+   "minimal_sufficient_claims": [],
    "n_structured": 3
   },
   {
