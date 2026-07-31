@@ -45,3 +45,5 @@ Thumbs.db
 
 # verbatim paper excerpts (copyright, like paper.txt)
 **/SPEC_notes.txt
+experiments/**/official_code/
+experiments/**/.venv/
