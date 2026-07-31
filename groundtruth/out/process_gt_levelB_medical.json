@@ -1,0 +1,1027 @@
+{
+ "summary": {
+  "papers_with_logbook_structure": 8,
+  "total_papers_in_mode": 240,
+  "claims_with_structure": 23,
+  "claims_judged": 40,
+  "structure_coverage": 0.575,
+  "mutation_tests_found": 3,
+  "papers_with_minimal_sufficient": 8,
+  "levelB_scored_claims": 23,
+  "levelB_validity_present": 23
+ },
+ "papers": [
+  {
+   "orid": "3LRWjJTp0Y",
+   "area": "Applications",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 23
+     },
+     "validity": 0.0,
+     "validity_reason": "Admits A4 untested and evaluates A2 only on synthetic toy, not reproducing paper's claimed experiments."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 1.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     },
+     "validity": 0.9,
+     "validity_reason": "Cites script claim2_ece.py and reports concrete ECE table with baseline vs evidential, indicating actual experiment run."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     },
+     "validity": 0.0,
+     "validity_reason": "Claim explicitly marked out of scope and not attempted; no docking experiment run or concrete numbers reported."
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 3,
+   "dominance_edges_validity": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_validity": [
+    0,
+    1
+   ]
+  },
+  {
+   "orid": "SldP4LGjdz",
+   "area": "Social Aspects",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 8
+     },
+     "validity": 1.0,
+     "validity_reason": "Logbook reports concrete numeric results from named scripts (verify_survfd.py, audit_seed_fragility.py) with sample sizes, 12 seeds, and tolerance ablations, evidencing real runs."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 33
+     },
+     "validity": 0.9,
+     "validity_reason": "Logbook reports specific interaction indices, seed robustness script with 12 seeds and convergence values, evidencing real computational runs rather than pure narrative."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     },
+     "validity": 1.0,
+     "validity_reason": "Provides code, 10-seed numeric table with spreads and closed-form errors, evidencing real run."
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 3,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 9
+     },
+     "validity": 0.3,
+     "validity_reason": "Ran reduced ground-truth decomposition with concrete numbers but omitted fitted-model part; toy-level partial reproduction."
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 4,
+   "dominance_edges_validity": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "minimal_sufficient_validity": [
+    0
+   ]
+  },
+  {
+   "orid": "Y9gsOEdaNE",
+   "area": "General Machine Learning",
+   "n_claims": 2,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 8,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 30
+     },
+     "validity": 0.95,
+     "validity_reason": "Provides concrete numeric table from described ST-vs-OR ablation experiment with code reference and parameters, indicating actual execution."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": 24,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 19
+     },
+     "validity": 0.9,
+     "validity_reason": "Reports specific ranking agreement fractions from 24 reps per condition, indicating actual computational runs rather than mere narrative."
+    }
+   ],
+   "dominance_edges": [
+    [
+     1,
+     0
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1
+   ],
+   "n_structured": 2,
+   "dominance_edges_validity": [],
+   "minimal_sufficient_validity": [
+    0,
+    1
+   ]
+  },
+  {
+   "orid": "BUxrIaf7Zc",
+   "area": "Applications",
+   "n_claims": 3,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 21
+     },
+     "validity": 0.6,
+     "validity_reason": "Toy-scale run with concrete per-epoch entropy numbers, not mere narrative but limited and caveated"
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     },
+     "validity": 0.4,
+     "validity_reason": "Concrete AUC table from proxy tests on toy dataset but actual SEI unimplemented and judge deems toy/disputed."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     },
+     "validity": 0.0,
+     "validity_reason": "Claim explicitly marked NOT ATTEMPTED with no experiment run, no numbers, and no ablation performed."
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 3,
+   "dominance_edges_validity": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_validity": [
+    0
+   ]
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "area": "General Machine Learning",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.9091,
+      "falsified": 0.0909,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 30,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 20
+     },
+     "validity": 1.0,
+     "validity_reason": "Logbook reports concrete bias numbers (-0.175 vs -0.522) from 10-seed simulation runs using kmarl_repro.py, confirming KM truncation bias is smaller."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.9091,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0909
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 13
+     },
+     "validity": 0.91,
+     "validity_reason": "Reported concrete relative bias numbers from sweep_thresh.py across prevalences and length regimes, meeting pre-stated +/-5% tolerance."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 20
+     },
+     "validity": 1.0,
+     "validity_reason": "Logbook reports specific numeric bias values from multi-seed experiments under both support conditions, confirming asymptotic unbiasedness."
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.8182,
+      "falsified": 0.1818,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 10
+     },
+     "validity": 0.0,
+     "validity_reason": "Logbook explicitly marks claim as NOT ATTEMPTED numerically and not confirmed, providing only adjacent sweep numbers and narrative."
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.4545,
+      "falsified": 0.0909,
+      "toy": 0.2727,
+      "inconclusive": 0.1818
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.6364,
+      "falsified": 0.2727,
+      "toy": 0.0909,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1,
+    3
+   ],
+   "n_structured": 4,
+   "dominance_edges_validity": [
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "minimal_sufficient_validity": [
+    1,
+    3
+   ]
+  },
+  {
+   "orid": "jEBkuuETjr",
+   "area": "Applications",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 4
+     },
+     "validity": 0.9,
+     "validity_reason": "Ran synthetic ablation with concrete per-seed metrics and dual-variable removal; judge flagged as toy but evidence present"
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 3
+     },
+     "validity": 0.35,
+     "validity_reason": "Includes concrete numeric table from synthetic toy runs but only fixed-point check, not actual convergence experiment."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     1,
+     0
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1
+   ],
+   "n_structured": 2,
+   "dominance_edges_validity": [],
+   "minimal_sufficient_validity": [
+    0,
+    1
+   ]
+  },
+  {
+   "orid": "fve4MEzeSp",
+   "area": "Applications",
+   "n_claims": 5,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     },
+     "validity": 0.5,
+     "validity_reason": "Implemented and mutation-tested equations but reported no concrete numeric sweep results, only analytical limit."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": false
+      },
+      "n_numbers": 0
+     },
+     "validity": 0.0,
+     "validity_reason": "Claim explicitly marked BLOCKED with no run, no code/data, and no concrete numbers reported."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": false
+      },
+      "n_numbers": 0
+     },
+     "validity": 0.0,
+     "validity_reason": "Claim explicitly marked BLOCKED with no run, no concrete numbers, only narrative referencing theoretical part from another claim."
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [],
+   "minimal_sufficient_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_structured": 3,
+   "dominance_edges_validity": [],
+   "minimal_sufficient_validity": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "orid": "a6vCNSBBeq",
+   "area": "Probabilistic Methods",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": true,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 8
+     },
+     "validity": 0.2,
+     "validity_reason": "Reported concrete coverage numbers for classical baseline but blocked on deep comparison, so claim not reproduced; real but toy-scale run."
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 3
+     },
+     "validity": 0.3,
+     "validity_reason": "Classical part reproduced with concrete coverage numbers, but DL case explicitly not run; claiming identical mechanism validates DL is narrative, so 'both' claim not reproduced."
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 2,
+   "dominance_edges_validity": [],
+   "minimal_sufficient_validity": [
+    0,
+    1
+   ]
+  }
+ ]
+}
