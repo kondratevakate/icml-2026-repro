@@ -1,0 +1,892 @@
+{
+ "summary": {
+  "papers_with_logbook_structure": 8,
+  "total_papers_in_mode": 240,
+  "claims_with_structure": 23,
+  "claims_judged": 40,
+  "structure_coverage": 0.575,
+  "mutation_tests_found": 3,
+  "papers_with_minimal_sufficient": 8
+ },
+ "papers": [
+  {
+   "orid": "3LRWjJTp0Y",
+   "area": "Applications",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 23
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 1.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     }
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 3
+  },
+  {
+   "orid": "SldP4LGjdz",
+   "area": "Social Aspects",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 8
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 33
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     }
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 3,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 9
+     }
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 4
+  },
+  {
+   "orid": "Y9gsOEdaNE",
+   "area": "General Machine Learning",
+   "n_claims": 2,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 8,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 30
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": 24,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 19
+     }
+    }
+   ],
+   "dominance_edges": [
+    [
+     1,
+     0
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1
+   ],
+   "n_structured": 2
+  },
+  {
+   "orid": "BUxrIaf7Zc",
+   "area": "Applications",
+   "n_claims": 3,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 21
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 8
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     }
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 3
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "area": "General Machine Learning",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.9091,
+      "falsified": 0.0909,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 30,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 20
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.9091,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0909
+     },
+     "structure": {
+      "has_mutation_test": true,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 13
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 1.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 10,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 20
+     }
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.8182,
+      "falsified": 0.1818,
+      "toy": 0.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 10
+     }
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.4545,
+      "falsified": 0.0909,
+      "toy": 0.2727,
+      "inconclusive": 0.1818
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "verified",
+     "judge_dist": {
+      "verified": 0.6364,
+      "falsified": 0.2727,
+      "toy": 0.0909,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1,
+    3
+   ],
+   "n_structured": 4
+  },
+  {
+   "orid": "jEBkuuETjr",
+   "area": "Applications",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": 12,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 4
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": true
+      },
+      "n_numbers": 3
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     1,
+     0
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    1
+   ],
+   "n_structured": 2
+  },
+  {
+   "orid": "fve4MEzeSp",
+   "area": "Applications",
+   "n_claims": 5,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": true,
+       "empirics": false,
+       "numbers": false
+      },
+      "n_numbers": 0
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": false
+      },
+      "n_numbers": 0
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": false
+      },
+      "n_numbers": 0
+     }
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [],
+   "minimal_sufficient_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_structured": 3
+  },
+  {
+   "orid": "a6vCNSBBeq",
+   "area": "Probabilistic Methods",
+   "n_claims": 6,
+   "claims": [
+    {
+     "claim": 0,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": true,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 8
+     }
+    },
+    {
+     "claim": 1,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 1.0,
+      "inconclusive": 0.0
+     },
+     "structure": {
+      "has_mutation_test": false,
+      "n_seeds": null,
+      "compute_cost_s": null,
+      "evidence_layers": {
+       "mechanics": false,
+       "theory": false,
+       "empirics": true,
+       "numbers": true
+      },
+      "n_numbers": 3
+     }
+    },
+    {
+     "claim": 2,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 3,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 4,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    },
+    {
+     "claim": 5,
+     "judge_verdict": "disputed",
+     "judge_dist": {
+      "verified": 0.0,
+      "falsified": 0.0,
+      "toy": 0.0,
+      "inconclusive": 1.0
+     },
+     "structure": null
+    }
+   ],
+   "dominance_edges": [
+    [
+     0,
+     1
+    ]
+   ],
+   "minimal_sufficient_claims": [
+    0
+   ],
+   "n_structured": 2
+  }
+ ]
+}
