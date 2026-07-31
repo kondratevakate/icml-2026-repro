@@ -1,0 +1,68 @@
+[
+ {
+  "dir": "supgcl",
+  "orid": "0Y7itV1kb7",
+  "files": 22,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-supervised-graph-contrastive-learning-grn",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-supervised-graph-contrastive-learning-grn"
+ },
+ {
+  "dir": "glean",
+  "orid": "FP23eFYhAy",
+  "files": 15,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-glean-release-audit",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-glean-release-audit"
+ },
+ {
+  "dir": "lvcg",
+  "orid": "hS6iw4PM8K",
+  "files": 15,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-lvcg-release-audit",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-lvcg-release-audit"
+ },
+ {
+  "dir": "bayes_causal_meta",
+  "orid": "k76ll7aQyE",
+  "files": 13,
+  "pages": 7,
+  "index_html": true,
+  "space": "kondratevakate/repro-bayes-causal-meta-release-audit",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-bayes-causal-meta-release-audit"
+ },
+ {
+  "dir": "sprout",
+  "orid": "qYfNhYenuu",
+  "files": 14,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-sprout-release-audit",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-sprout-release-audit"
+ },
+ {
+  "dir": "medcrp_cl",
+  "orid": "v0DWbfP3b9",
+  "files": 13,
+  "pages": 7,
+  "index_html": true,
+  "space": "kondratevakate/repro-medcrp-cl-release-audit",
+  "already_exists": false,
+  "status": "PUBLISHED",
+  "url": "https://huggingface.co/spaces/kondratevakate/repro-medcrp-cl-release-audit"
+ }
+]
