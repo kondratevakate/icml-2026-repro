@@ -7,7 +7,7 @@ tagged `icml2026-repro` + `paper-<orid>` so the challenge judge picks it up.
 
 Usage: python3 publish_logbooks.py [--dry-run] [dir ...]
 """
-import json, os, subprocess, sys, tempfile, shutil
+import json, os, re, shutil, subprocess, sys, tempfile
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRANCH = "origin/codex/medical-reproducibility-map"
@@ -21,17 +21,19 @@ def git(*a):
 
 
 def export(d, dest):
-    """Extract <d>/.trackio/logbook/** from the branch into dest/."""
-    files = [f for f in git("ls-tree", "-r", "--name-only", BRANCH, "--",
-                            f"{d}/.trackio/logbook").stdout.splitlines() if f.strip()]
-    for f in files:
+    """Extract <d>/.trackio/logbook/** from the branch into dest/; return written paths."""
+    written = []
+    for f in git("ls-tree", "-r", "--name-only", BRANCH, "--",
+                 f"{d}/.trackio/logbook").stdout.splitlines():
+        if not f.strip():
+            continue
         rel = f.split(".trackio/logbook/", 1)[1]
         out = os.path.join(dest, rel)
         os.makedirs(os.path.dirname(out), exist_ok=True)
-        blob = subprocess.run(["git", "-C", REPO, "show", f"{BRANCH}:{f}"],
-                              capture_output=True)
-        open(out, "wb").write(blob.stdout)
-    return files
+        open(out, "wb").write(subprocess.run(["git", "-C", REPO, "show", f"{BRANCH}:{f}"],
+                                             capture_output=True).stdout)
+        written.append(rel)
+    return written
 
 
 def read_meta(d):
@@ -39,14 +41,13 @@ def read_meta(d):
     return json.loads(r.stdout) if r.returncode == 0 else {}
 
 
-def orid_of(d, dest, meta):
+def orid_of(dest, meta):
     """Recover the paper orid from the `paper-<orid>` tag Codex already wrote."""
     for t in meta.get("tags", []):
         if t.startswith("paper-") and len(t) == 16:
             return t[6:]
     lb = os.path.join(dest, "logbook.json")
     if os.path.exists(lb):
-        import re
         m = re.search(r"forum\?id=([A-Za-z0-9]{10})", json.dumps(json.load(open(lb))))
         if m:
             return m.group(1)
@@ -68,9 +69,9 @@ def main():
         try:
             files = export(d, tmp)
             meta = read_meta(d)
-            orid = orid_of(d, tmp, meta)
+            orid = orid_of(tmp, meta)
             has_index = os.path.exists(os.path.join(tmp, "index.html"))
-            pages = len([f for f in files if "/pages/" in f and f.endswith("page.md")])
+            pages = len([f for f in files if f.startswith("pages/") and f.endswith("page.md")])
             slug = meta.get("space_id") or f"{OWNER}/repro-{d.replace('_','-')}"
             row = {"dir": d, "orid": orid, "files": len(files), "pages": pages,
                    "index_html": has_index, "space": slug,

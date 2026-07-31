@@ -1,14 +1,23 @@
 [
  {
+  "dir": "globalhealthatlas",
+  "orid": "02Nq73lCe6",
+  "files": 15,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-globalhealthatlas-release-audit",
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
+ },
+ {
   "dir": "supgcl",
   "orid": "0Y7itV1kb7",
   "files": 22,
   "pages": 8,
   "index_html": true,
   "space": "kondratevakate/repro-supervised-graph-contrastive-learning-grn",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-supervised-graph-contrastive-learning-grn"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  },
  {
   "dir": "glean",
@@ -17,9 +26,28 @@
   "pages": 8,
   "index_html": true,
   "space": "kondratevakate/repro-glean-release-audit",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-glean-release-audit"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
+ },
+ {
+  "dir": "caml",
+  "orid": "Fisw2kc7EY",
+  "files": 15,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-caml-release-audit",
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
+ },
+ {
+  "dir": "dpsurv",
+  "orid": "RKqL4GYXz3",
+  "files": 14,
+  "pages": 8,
+  "index_html": true,
+  "space": "kondratevakate/repro-dpsurv-release-audit",
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  },
  {
   "dir": "lvcg",
@@ -28,9 +56,8 @@
   "pages": 8,
   "index_html": true,
   "space": "kondratevakate/repro-lvcg-release-audit",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-lvcg-release-audit"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  },
  {
   "dir": "bayes_causal_meta",
@@ -39,9 +66,8 @@
   "pages": 7,
   "index_html": true,
   "space": "kondratevakate/repro-bayes-causal-meta-release-audit",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-bayes-causal-meta-release-audit"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  },
  {
   "dir": "sprout",
@@ -50,9 +76,8 @@
   "pages": 8,
   "index_html": true,
   "space": "kondratevakate/repro-sprout-release-audit",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-sprout-release-audit"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  },
  {
   "dir": "medcrp_cl",
@@ -61,8 +86,7 @@
   "pages": 7,
   "index_html": true,
   "space": "kondratevakate/repro-medcrp-cl-release-audit",
-  "already_exists": false,
-  "status": "PUBLISHED",
-  "url": "https://huggingface.co/spaces/kondratevakate/repro-medcrp-cl-release-audit"
+  "already_exists": true,
+  "status": "DRY-RUN would repair"
  }
 ]
