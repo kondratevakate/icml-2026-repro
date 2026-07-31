@@ -1,16 +1,15 @@
 {
- "selection_criteria": "hard-GT (consensus>=3 ppl) AND CPU-feasible per leaderboard logbook hardware mentions AND non-Theory area; priority disputed verdict + area diversity; cap ~8/area, target 20-50",
+ "selection_criteria": "hard-GT (consensus>=3) AND CPU-feasible (explicit cpu-only/no-gpu OR cpu-mention w/o hard-gpu) per leaderboard logbook, non-Theory; priority disputed + area diversity; cap 8/area, target 20-50",
  "total_selected": 45,
- "disputed_count": 41,
+ "disputed_count": 45,
  "area_distribution": {
   "Probabilistic Methods": 8,
-  "Reinforcement Learning": 6,
-  "Deep Learning": 7,
+  "Reinforcement Learning": 5,
+  "Applications": 8,
+  "Deep Learning": 8,
   "Optimization": 8,
-  "General Machine Learning": 8,
-  "Applications": 3,
-  "Social Aspects": 3,
-  "": 2
+  "General Machine Learning": 7,
+  "Social Aspects": 1
  },
  "papers": [
   {
@@ -21,13 +20,15 @@
    "disputed": true,
    "space": "prarabdhmisra/Vv4XRZDMM0",
    "hw_signals": [
+    "numpy",
+    "scipy",
     "hour",
-    "t4",
+    "seconds",
+    "second",
     "minute",
     "minutes",
     "hours",
     "gpu",
-    "ram",
     "cpu"
    ]
   },
@@ -39,8 +40,59 @@
    "disputed": true,
    "space": "algorise/repro-geometric-coherence-learning-for-structuring-value-functions-in-plain-mdps",
    "hw_signals": [
-    "t4",
-    "cpu"
+    "second",
+    "cpu",
+    "gpu",
+    "numpy"
+   ]
+  },
+  {
+   "orid": "EzpJxPDqXB",
+   "title": "MarketSim: Simulating Stock Markets with Large-Scale Generative Agents",
+   "area": "Applications",
+   "n_claims": 3,
+   "disputed": true,
+   "space": "swaption2009/repro-marketsim-simulating-stock-markets-with-large-scale-generative-agents",
+   "hw_signals": [
+    "hour",
+    "numpy",
+    "cpu",
+    "gpu",
+    "minute",
+    "second",
+    "seconds",
+    "hours",
+    "minutes",
+    "scipy"
+   ]
+  },
+  {
+   "orid": "20hdQQQrA4",
+   "title": "CAffNet: Hard Constraint-Affine Neural Networks",
+   "area": "Deep Learning",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "Srishti280992/repro-caffnet-hard-constraint-affine-neural-networks",
+   "hw_signals": [
+    "numpy",
+    "cpu",
+    "minutes",
+    "hours"
+   ]
+  },
+  {
+   "orid": "M78xLFN7EJ",
+   "title": "Protein Design with Agent Rosetta: A Case Study for Specialized Scientific Agents",
+   "area": "Applications",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "Shibashish/repro-protein-design-with-agent-rosetta-a-case-study-for-specialized-scientific-agents",
+   "hw_signals": [
+    "numpy",
+    "scipy",
+    "second",
+    "gpu",
+    "hours"
    ]
   },
   {
@@ -52,7 +104,192 @@
    "space": "algorise/repro-maximum-likelihood-reinforcement-learning",
    "hw_signals": [
     "cpu",
-    "tpu"
+    "numpy",
+    "scipy",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "L0T4pmqkMg",
+   "title": "Near-Optimal Convergence of Accelerated Gradient Methods under Generalized and $(L_0,L_1)$-Smoothness",
+   "area": "Optimization",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "MarxistLeninist/repro-agd-l0l1-smoothness",
+   "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "OC2z7iSQKa",
+   "title": "$\\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+   "area": "Applications",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "jomasego/repro-tau2-bench",
+   "hw_signals": [
+    "gpu",
+    "cpu",
+    "minutes",
+    "a100",
+    "hours"
+   ]
+  },
+  {
+   "orid": "0xOj6kVMbb",
+   "title": "BALLAST: Bayesian Active Learning with Look-ahead Amendment for Sea-drifter Trajectories under Spatio-Temporal Vector Fields",
+   "area": "Probabilistic Methods",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "qy2100/repro-ballast-bayesian-active-learning-with-look-ahead-amendment-for-sea-drifter-trajectories-un",
+   "hw_signals": [
+    "minutes",
+    "hours",
+    "numpy",
+    "scipy",
+    "cpu",
+    "gpu",
+    "hour"
+   ]
+  },
+  {
+   "orid": "K1EPPO9t2c",
+   "title": "Loss-Aware Distributionally Robust Optimization via Trainable Optimal Transport Ambiguity Sets",
+   "area": "Optimization",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-loss-aware-dro-trainable-ot-ambiguity-sets",
+   "hw_signals": [
+    "second",
+    "cpu",
+    "minute",
+    "gpu",
+    "numpy",
+    "scipy"
+   ]
+  },
+  {
+   "orid": "syG9I9ofd8",
+   "title": "Latent Collaboration in Multi-Agent Systems",
+   "area": "Deep Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-latent-collaboration-in-multi-agent-systems",
+   "hw_signals": [
+    "cpu",
+    "gpu",
+    "a100",
+    "hour",
+    "minutes",
+    "hours"
+   ]
+  },
+  {
+   "orid": "gFPPTokv9C",
+   "title": "Expectation Consistency Loss: Rethink Confidence Calibration under Covariate Shift",
+   "area": "Probabilistic Methods",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-expectation-consistency-loss-rethink-confidence-calibration-under-covariate-shift",
+   "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "scipy",
+    "minutes"
+   ]
+  },
+  {
+   "orid": "srIStBTJiu",
+   "title": "Off-Policy Learning in Large Action Spaces: Optimization Matters More Than Estimation",
+   "area": "Reinforcement Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-off-policy-large-action-optimization-matters",
+   "hw_signals": [
+    "numpy",
+    "scipy",
+    "gpu",
+    "second",
+    "cpu",
+    "hour",
+    "minute",
+    "hours"
+   ]
+  },
+  {
+   "orid": "zlnoC4YPQ1",
+   "title": "Robust Bayesian Optimisation with Unbounded Corruptions",
+   "area": "Probabilistic Methods",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "sugan04/repro-robust-bayesian-optimisation",
+   "hw_signals": [
+    "numpy",
+    "scipy",
+    "cpu",
+    "hours"
+   ]
+  },
+  {
+   "orid": "eNvxTIZugB",
+   "title": "DAL: A Practical Prior-Free Black-Box Framework for Piecewise Stationary Bandits",
+   "area": "General Machine Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-dal-a-practical-prior-free-black-box-framework-for-piecewise-stationary-bandits",
+   "hw_signals": [
+    "second",
+    "numpy",
+    "seconds",
+    "cpu",
+    "hour",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "oiMjaUbSWp",
+   "title": "On the Epistemic Uncertainty of Overparametrized Neural Networks",
+   "area": "Probabilistic Methods",
+   "n_claims": 4,
+   "disputed": true,
+   "space": "Jaycee766/repro-on-the-epistemic-uncertainty-of-overparametrized-neural-networks",
+   "hw_signals": [
+    "numpy",
+    "gpu",
+    "cpu"
+   ]
+  },
+  {
+   "orid": "Gz0RAgBfid",
+   "title": "Gecko: A Simulation Environment with Stateful Feedback for Refining Agent Tool Calls",
+   "area": "Applications",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "gchauhan/repro-gecko-a-simulation-environment-with-stateful-feedback-for-refining-agent-tool-calls",
+   "hw_signals": [
+    "second",
+    "cpu",
+    "gpu",
+    "hours"
+   ]
+  },
+  {
+   "orid": "1KRpajnd6u",
+   "title": "FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
+   "area": "Applications",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bound",
+   "hw_signals": [
+    "numpy",
+    "gpu",
+    "cpu",
+    "seconds",
+    "minutes",
+    "hours"
    ]
   },
   {
@@ -63,8 +300,11 @@
    "disputed": true,
    "space": "nstp/repro-row-stochastic-matrices-can-provably-outperform-doubly-stochastic-matrices-in",
    "hw_signals": [
+    "numpy",
     "cpu",
-    "t4"
+    "second",
+    "scipy",
+    "gpu"
    ]
   },
   {
@@ -75,7 +315,23 @@
    "disputed": true,
    "space": "rdubwiley/repro-hierarchical-successor-representation-for-robust-transfer",
    "hw_signals": [
-    "cpu"
+    "numpy",
+    "scipy",
+    "cpu",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "TBaUfO9znF",
+   "title": "On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models",
+   "area": "Deep Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-on-the-interplay-of-pre-training-mid-training-and-rl-on-reasoning-language-models",
+   "hw_signals": [
+    "gpu",
+    "cpu",
+    "minute"
    ]
   },
   {
@@ -86,9 +342,13 @@
    "disputed": true,
    "space": "tomyimkc/repro-amortized-simulation-based-inference-in-generalized-bayes-via-neural-posterior-e",
    "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
     "gpu",
     "cpu",
-    "minute"
+    "minute",
+    "seconds"
    ]
   },
   {
@@ -99,8 +359,25 @@
    "disputed": true,
    "space": "tomyimkc/repro-exact-and-approximate-algorithms-for-polytree-learning",
    "hw_signals": [
+    "numpy",
     "minutes",
-    "cpu"
+    "cpu",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "32XNOcwH1z",
+   "title": "Efficient Preference Poisoning Attack on Offline RLHF",
+   "area": "Reinforcement Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-efficient-preference-poisoning-attack-on-offline-rlhf",
+   "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "seconds",
+    "minutes"
    ]
   },
   {
@@ -111,7 +388,10 @@
    "disputed": true,
    "space": "prarabdhmisra/TzQElzflxR",
    "hw_signals": [
+    "numpy",
+    "second",
     "cpu",
+    "seconds",
     "gpu"
    ]
   },
@@ -124,9 +404,11 @@
    "space": "DineshAI/vaApZm6MKM",
    "hw_signals": [
     "cpu",
+    "numpy",
+    "scipy",
+    "seconds",
     "hours",
-    "minutes",
-    "gpus"
+    "minutes"
    ]
   },
   {
@@ -137,7 +419,27 @@
    "disputed": true,
    "space": "sotayamashita/repro-markov-chain-monte-carlo-without-evaluating-the-target-an-auxiliary-variable-approach",
    "hw_signals": [
-    "cpu"
+    "second",
+    "cpu",
+    "gpu",
+    "minute",
+    "seconds"
+   ]
+  },
+  {
+   "orid": "OwLuqetJuB",
+   "title": "Provably Data-driven Lagrangian Relaxation for Mixed Integer Linear Programming",
+   "area": "Optimization",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "tomyimkc/repro-provably-data-driven-lagrangian-relaxation-for-mixed-integer-linear-programming",
+   "hw_signals": [
+    "second",
+    "numpy",
+    "cpu",
+    "minutes",
+    "scipy",
+    "gpu"
    ]
   },
   {
@@ -148,18 +450,80 @@
    "disputed": true,
    "space": "tomyimkc/repro-certificate-guided-pruning-for-stochastic-lipschitz-optimization",
    "hw_signals": [
-    "cpu"
+    "numpy",
+    "cpu",
+    "minutes",
+    "gpu"
    ]
   },
   {
-   "orid": "MyBVUgacQ9",
-   "title": "Last-iterate Convergence of ADMM on Multi-affine Quadratic Equality Constrained Problem",
-   "area": "Optimization",
+   "orid": "Oz335dV48X",
+   "title": "DFlash: Block Diffusion for Flash Speculative Decoding",
+   "area": "Deep Learning",
    "n_claims": 6,
    "disputed": true,
-   "space": "DineshAI/MyBVUgacQ9",
+   "space": "rahit/repro-dflash-block-diffusion-for-flash-speculative-decoding",
    "hw_signals": [
-    "cpu"
+    "numpy",
+    "cpu",
+    "second",
+    "gpu",
+    "hours"
+   ]
+  },
+  {
+   "orid": "kpgURPRMGf",
+   "title": "The Flexibility Trap: Rethinking the Value of Arbitrary Order in Diffusion Language Models",
+   "area": "Deep Learning",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "feliksier/icml2026-repro-kpgURPRMGf",
+   "hw_signals": [
+    "cpu",
+    "gpu",
+    "numpy"
+   ]
+  },
+  {
+   "orid": "zPjmtawzT8",
+   "title": "Persistent Semantic Entities in Tool-Augmented LLM Systems",
+   "area": "Deep Learning",
+   "n_claims": 3,
+   "disputed": true,
+   "space": "Srishti280992/repro-persistent-semantic-entities-in-tool-augmented-llm-systems",
+   "hw_signals": [
+    "cpu",
+    "gpu"
+   ]
+  },
+  {
+   "orid": "okzQ1x71pS",
+   "title": "Generalizing Stochastic Smoothing for Differentiation and Gradient Estimation",
+   "area": "General Machine Learning",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "Srishti280992/repro-generalizing-stochastic-smoothing-for-differentiation-and-gradient-estimation",
+   "hw_signals": [
+    "numpy",
+    "scipy",
+    "gpu",
+    "second",
+    "cpu",
+    "seconds"
+   ]
+  },
+  {
+   "orid": "S1TwW9szYm",
+   "title": "Gradient-Free Approaches is a Key to an Efficient Interaction with Markovian Stochasticity",
+   "area": "Optimization",
+   "n_claims": 5,
+   "disputed": true,
+   "space": "sotayamashita/repro-gradient-free-approaches-is-a-key-to-an-efficient-interaction-with-markovian-stochasticity",
+   "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "seconds"
    ]
   },
   {
@@ -170,8 +534,25 @@
    "disputed": true,
    "space": "SabaPivot/repro-on-the-expressive-power-of-permutation-equivariant-weight-space-networks",
    "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
     "cpu",
     "gpu"
+   ]
+  },
+  {
+   "orid": "MyBVUgacQ9",
+   "title": "Last-iterate Convergence of ADMM on Multi-affine Quadratic Equality Constrained Problem",
+   "area": "Optimization",
+   "n_claims": 6,
+   "disputed": true,
+   "space": "DineshAI/MyBVUgacQ9",
+   "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
+    "cpu"
    ]
   },
   {
@@ -182,7 +563,22 @@
    "disputed": true,
    "space": "MunchProductionz/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql",
    "hw_signals": [
+    "seconds",
     "minute",
+    "cpu",
+    "second"
+   ]
+  },
+  {
+   "orid": "VLWuEuQkCF",
+   "title": "LitReview Arena: Evaluating Literature Review Agents with Battle-style Peer Review Platform",
+   "area": "Applications",
+   "n_claims": 2,
+   "disputed": true,
+   "space": "SaiPavankumar22/repro-litreview-arena-evaluating-literature-review-agents-with-battle-style-peer-review-platform",
+   "hw_signals": [
+    "gpu",
+    "a100",
     "cpu"
    ]
   },
@@ -195,22 +591,12 @@
    "space": "DineshAI/ZVyd4r9Xl5",
    "hw_signals": [
     "cpu",
-    "ram",
+    "seconds",
+    "second",
     "a100",
     "gpu",
-    "cpus"
-   ]
-  },
-  {
-   "orid": "yTFTLj7MoN",
-   "title": "On the Role of Batch Size in Stochastic Conditional Gradient Methods",
-   "area": "Optimization",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "ProCreations/repro-on-the-role-of-batch-size-in-stochastic-conditional-gradient-methods",
-   "hw_signals": [
-    "cpu",
-    "gpu"
+    "numpy",
+    "scipy"
    ]
   },
   {
@@ -221,53 +607,39 @@
    "disputed": true,
    "space": "ProCreations/repro-inference-aware-meta-alignment-of-llms-via-non-linear-grpo",
    "hw_signals": [
-    "cpu"
+    "cpu",
+    "numpy",
+    "second",
+    "scipy"
    ]
   },
   {
-   "orid": "nEQYu4ndGA",
-   "title": "Revisiting Zeroth-Order Hessian Approximation: A Single-Step Policy Optimization Lens",
-   "area": "Optimization",
+   "orid": "dWuxvV7ekd",
+   "title": "Are Two Datasets Close Enough With Statistical Significance? A Kernel Distributional Closeness Testing Approach",
+   "area": "General Machine Learning",
    "n_claims": 6,
    "disputed": true,
-   "space": "SabaPivot/repro-revisiting-zeroth-order-hessian-approximation-a-single-step-policy-optimization-lens",
+   "space": "snaykey/repro-kernel-dataset-closeness",
    "hw_signals": [
     "cpu",
-    "gpu"
+    "gpu",
+    "numpy",
+    "scipy"
    ]
   },
   {
-   "orid": "fTl7NXYtAB",
-   "title": "Nonparametric Distribution Regression Re-calibration",
-   "area": "Probabilistic Methods",
-   "n_claims": 5,
+   "orid": "PVaFEuNnsD",
+   "title": "Discovering Scaling Exponents with Physics-Informed M\u00fcntz-Sz\u00e1sz Networks",
+   "area": "Applications",
+   "n_claims": 6,
    "disputed": true,
-   "space": "michaldobiezynski/repro-nonparametric-distribution-regression-re-calibration",
+   "space": "snaykey/repro-scaling-exponents-pinn",
    "hw_signals": [
     "cpu",
-    "hours"
-   ]
-  },
-  {
-   "orid": "eXLcL70GXO",
-   "title": "Minimizing Upper Confidence Bounds: A Data-Driven Framework for Stochastic Programming",
-   "area": "Optimization",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "snaykey/repro-ucb-minimization",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "jJur8Fq7IK",
-   "title": "A Fully First-Order Layer for Differentiable Optimization",
-   "area": "Optimization",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "ai-sherpa/ffo-layer-first-order-hypergradient-repro",
-   "hw_signals": [
-    "cpu"
+    "gpu",
+    "numpy",
+    "scipy",
+    "second"
    ]
   },
   {
@@ -277,39 +649,6 @@
    "n_claims": 5,
    "disputed": true,
    "space": "ProCreations/repro-questioning-coverage-length-metric",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "fiTjjAgkiC",
-   "title": "Stationary MMD Points",
-   "area": "Probabilistic Methods",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "michaldobiezynski/repro-stationary-mmd-points",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "DUmWdZetqZ",
-   "title": "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
-   "area": "General Machine Learning",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "ai-sherpa/fixed-budget-fixed-confidence-best-arm-repro",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "UlFOINq6SY",
-   "title": "Zeroth-Order Non-Log-Concave Sampling with Variance Reduction and Applications to Inverse Problems",
-   "area": "Probabilistic Methods",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "michaldobiezynski/repro-zeroth-order-non-log-concave-sampling-with-variance-reduction-and-applications",
    "hw_signals": [
     "cpu"
    ]
@@ -326,213 +665,12 @@
    ]
   },
   {
-   "orid": "71065",
-   "title": "",
-   "area": "",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "abhishekkataria16/the-obfuscation-atlas-mapping-logbook",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "B8sTBdGvqG",
-   "title": "Testing For Distribution Shifts with Conditional Conformal Test Martingales",
-   "area": "Probabilistic Methods",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "amkkk/repro-testing-for-distribution-shifts-with-conditional-conformal-test-martingales",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "3EcT46wsdc",
-   "title": "Efficiently Training Time-to-First-Spike Spiking Neural Networks from Scratch",
-   "area": "Applications",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "algorise/repro-efficiently-training-time-to-first-spike-spiking-neural-networks-from-scratch",
-   "hw_signals": [
-    "gpu",
-    "cpu"
-   ]
-  },
-  {
-   "orid": "GJblFvJcMb",
-   "title": "MiniMax Learning of Interpretable Factored Stochastic Policies from Conjoint Data, with Uncertainty Quantification",
+   "orid": "DUmWdZetqZ",
+   "title": "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
    "area": "General Machine Learning",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "amkkk/repro-minimax-factored-stochastic-policies",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "FhBOdaIcUw",
-   "title": "Optimal Design for Multinomial Logit Model with Applications to Best Assortment Identification",
-   "area": "General Machine Learning",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "snaykey/repro-multinomial-logit-design",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "gc7Gg18ejz",
-   "title": "Stable Deep Reinforcement Learning via Isotropic Gaussian Representations",
-   "area": "Reinforcement Learning",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "amkkk/repro-isogaussian-stable-drl",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "puNfWfBFNT",
-   "title": "Causal Representation Learning with Optimal Compression and  Complex Treatments",
-   "area": "General Machine Learning",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "snaykey/repro-causal-compression-treatments",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "Ol99zoW31J",
-   "title": "Non-Uniform Noise-to-Signal Ratio in the REINFORCE Policy-Gradient Estimator",
-   "area": "Reinforcement Learning",
    "n_claims": 5,
    "disputed": true,
-   "space": "snaykey/repro-reinforce-nsr",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "o54x4zOWuy",
-   "title": "CLASP: Online learning algorithms for Convex Losses And Squared Penalties",
-   "area": "General Machine Learning",
-   "n_claims": 4,
-   "disputed": true,
-   "space": "HamsterSashka/repro-clasp-online-convex-squared-penalties",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "t73XUJvyQr",
-   "title": "Latent Laplace Diffusion for Irregular Multivariate Time Series",
-   "area": "Deep Learning",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "sotayamashita/repro-latent-laplace-diffusion-irregular-time-series",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "tNvmMTsRqh",
-   "title": "Stability Analysis of Sharpness-Aware Minimization",
-   "area": "Deep Learning",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "ParetoOptimal/repro-tnvmmtsrqh",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "aGaBFE9pta",
-   "title": "Is Your LLM Overcharging You? Tokenization, Transparency, and Incentives",
-   "area": "Social Aspects",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "vissutagunawan/aGaBFE9pta",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "71069",
-   "title": "",
-   "area": "",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "imadreamerboy/repro-rex-a-family-of-reversible-exponential-stochastic-runge-kutta-solvers",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "Wfe1iJocjF",
-   "title": "FlashOptim: Optimizers for Memory-Efficient Training",
-   "area": "Deep Learning",
-   "n_claims": 6,
-   "disputed": true,
-   "space": "sotayamashita/repro-flashoptim-memory-efficient-optimizers",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "SDyesowNUa",
-   "title": "Private Learning with Public Feature Conditioning",
-   "area": "Social Aspects",
-   "n_claims": 5,
-   "disputed": true,
-   "space": "Edd16/icml2026-SDyesowNUa-repro",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "m1IRWFAMsa",
-   "title": "NorMuon: Making Muon more efficient and scalable",
-   "area": "Deep Learning",
-   "n_claims": 6,
-   "disputed": false,
-   "space": "MarxistLeninist/repro-normuon-making-muon-efficient",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "X6i0PB7aJQ",
-   "title": "The Role of Target Update Frequencies in Q-Learning",
-   "area": "Reinforcement Learning",
-   "n_claims": 5,
-   "disputed": false,
-   "space": "agharsallah/x6i0pb7ajq-logbook",
-   "hw_signals": [
-    "cpu"
-   ]
-  },
-  {
-   "orid": "CT2tSmahVQ",
-   "title": "Deep sequence models tend to memorize geometrically; it is unclear why",
-   "area": "Deep Learning",
-   "n_claims": 4,
-   "disputed": false,
-   "space": "JG1310/repro-deep-sequence-models-tend-to-memorize-geometrically-it-is-unclear-why",
-   "hw_signals": [
-    "cpu",
-    "gpu",
-    "a100"
-   ]
-  },
-  {
-   "orid": "T7y2wavrFM",
-   "title": "The Double Dilemma in Multi-Task Radiology Report Generation: A Gradient Dynamics Analysis and Solution",
-   "area": "Applications",
-   "n_claims": 5,
-   "disputed": false,
-   "space": "kondratevakate/repro-came-grad-mathematical-audit",
+   "space": "ai-sherpa/fixed-budget-fixed-confidence-best-arm-repro",
    "hw_signals": [
     "cpu"
    ]
