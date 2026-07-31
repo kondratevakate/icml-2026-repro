@@ -26,8 +26,7 @@ def main():
     kate = json.load(open(os.path.join(OUT, "kate_logbooks.json")))
     sols = json.load(open(os.path.join(OUT, "solutions_by_paper.json")))
     best = json.load(open(os.path.join(OUT, "best_solutions.json")))
-    dirs = kate["per_top_dir"]
-    orid2dir = {o: d for d, os_ in dirs.items() for o in os_}
+    orid2dir = {o: d for d, orids in kate["per_top_dir"].items() for o in orids}
 
     report = {}
     for key, (ref, agent) in BRANCHES.items():
