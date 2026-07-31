@@ -50,7 +50,7 @@ def build(sols, area_of, restrict=None):
         if not vecs:
             continue
         area, sub = area_of.get(orid, ("", ""))
-        consensus, disp = [], []
+        consensus, soft, disp = [], [], []
         for k in range(n_claims):
             vs = [v[k] for v in vecs]
             cnt = collections.Counter(vs)
@@ -58,8 +58,10 @@ def build(sols, area_of, restrict=None):
             share = topn / len(vs)
             if len(vs) >= MIN_PART and share >= AGREE:
                 consensus.append(top)
+                soft.append(None)            # hard label only
             else:
                 consensus.append("disputed")
+                soft.append({c: n / len(vs) for c, n in cnt.items()})
                 disp.append(k)
             if cnt["verified"] and cnt["falsified"]:
                 disputed.append({
@@ -74,10 +76,13 @@ def build(sols, area_of, restrict=None):
             "subarea": sub,
             "n_solutions": len(vecs),
             "consensus": consensus,
+            "soft_gt": soft,                 # per-claim empirical distribution (None if hard)
             "n_consensus": sum(1 for c in consensus if c != "disputed"),
+            "n_soft": sum(1 for c in consensus if c == "disputed"),
             "disputed_claims": disp,
             "n_claims": n_claims,
             "consensus_rate": round(sum(1 for c in consensus if c != "disputed") / n_claims, 4),
+            "soft_rate": round(sum(1 for c in consensus if c == "disputed") / n_claims, 4),
             "zero_point_solutions": zero,
             "best_rate": round(max(rates), 4) if rates else None,
             "mean_rate": round(statistics.mean(rates), 4) if rates else None,
@@ -103,7 +108,9 @@ def summarize(papers, disputed):
         "papers": len(papers),
         "total_claims": tot_claims,
         "consensus_claims": cons_claims,
+        "soft_claims": tot_claims - cons_claims,
         "consensus_coverage": round(cons_claims / tot_claims, 4) if tot_claims else 0,
+        "soft_coverage": round((tot_claims - cons_claims) / tot_claims, 4) if tot_claims else 0,
         "disputed_claims": tot_claims - cons_claims,
         "verdict_mix_consensus": {c: round(vc[c] / cons_claims, 4) if cons_claims else 0
                                   for c in CATS},

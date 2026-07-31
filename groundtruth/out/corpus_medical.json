@@ -3,7 +3,9 @@
   "papers": 240,
   "total_claims": 1125,
   "consensus_claims": 145,
+  "soft_claims": 980,
   "consensus_coverage": 0.1289,
+  "soft_coverage": 0.8711,
   "disputed_claims": 980,
   "verdict_mix_consensus": {
    "verified": 0.5724,
@@ -68,7 +70,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -76,6 +90,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -92,7 +107,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -102,6 +135,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.2833
@@ -115,12 +149,22 @@
     "disputed",
     "toy"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.3333333333333333,
+     "toy": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null
+   ],
    "n_consensus": 1,
+   "n_soft": 1,
    "disputed_claims": [
     0
    ],
    "n_claims": 2,
    "consensus_rate": 0.5,
+   "soft_rate": 0.5,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.5833
@@ -135,10 +179,17 @@
     "toy",
     "toy"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null
+   ],
    "n_consensus": 3,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 3,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.3889
@@ -152,10 +203,16 @@
     "toy",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null
+   ],
    "n_consensus": 2,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 2,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.3333
@@ -169,13 +226,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -193,13 +260,29 @@
     "disputed",
     "inconclusive"
    ],
+   "soft_gt": [
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    },
+    null,
+    null,
+    null,
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    null
+   ],
    "n_consensus": 4,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     4
    ],
    "n_claims": 6,
    "consensus_rate": 0.6667,
+   "soft_rate": 0.3333,
    "zero_point_solutions": 0,
    "best_rate": 0.4167,
    "mean_rate": 0.2917
@@ -213,13 +296,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -234,7 +327,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "inconclusive": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -242,6 +350,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.5
@@ -256,7 +365,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -264,6 +385,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.8333
@@ -278,10 +400,17 @@
     "verified",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null
+   ],
    "n_consensus": 3,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 3,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.8125
@@ -295,13 +424,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -315,13 +454,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -335,13 +484,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -358,7 +517,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "verified": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 0.5,
+     "falsified": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -368,6 +550,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.35
@@ -385,7 +568,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -396,6 +600,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.4167,
    "mean_rate": 0.2083
@@ -410,7 +615,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -418,6 +635,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.8333
@@ -432,7 +650,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -440,6 +670,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -457,7 +688,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -468,6 +720,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -481,13 +734,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -505,7 +768,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -516,6 +800,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4167,
    "mean_rate": 0.4167
@@ -533,7 +818,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -544,6 +850,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -558,7 +865,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -566,6 +885,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.6667,
    "mean_rate": 0.3167
@@ -580,7 +900,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -588,6 +923,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.6667,
    "mean_rate": 0.3333
@@ -601,13 +937,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -621,13 +967,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -642,7 +998,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "falsified": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -650,6 +1021,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.8333
@@ -663,13 +1035,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -684,7 +1066,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -692,6 +1086,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -705,13 +1100,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -729,7 +1134,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -740,6 +1166,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.2917
@@ -754,7 +1181,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -762,6 +1201,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -778,10 +1218,19 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 5,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 0.5,
    "mean_rate": 0.225
@@ -798,7 +1247,29 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 0.5,
+     "verified": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -808,6 +1279,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.45
@@ -823,12 +1295,24 @@
     "toy",
     "toy"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.3333333333333333,
+     "toy": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null,
+    null,
+    null
+   ],
    "n_consensus": 3,
+   "n_soft": 1,
    "disputed_claims": [
     0
    ],
    "n_claims": 4,
    "consensus_rate": 0.75,
+   "soft_rate": 0.25,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.5
@@ -846,7 +1330,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -857,6 +1364,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.1667,
    "mean_rate": 0.0833
@@ -873,7 +1381,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -883,6 +1409,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -896,13 +1423,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -920,7 +1457,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -931,6 +1489,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0833,
    "mean_rate": 0.0417
@@ -947,10 +1506,19 @@
     "verified",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 5,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.7667
@@ -968,7 +1536,42 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 0.5,
+     "verified": 0.2,
+     "toy": 0.3
+    },
+    {
+     "verified": 0.3,
+     "falsified": 0.3,
+     "toy": 0.4
+    },
+    {
+     "verified": 0.3,
+     "falsified": 0.3,
+     "toy": 0.4
+    },
+    {
+     "falsified": 0.5,
+     "toy": 0.3,
+     "verified": 0.1,
+     "inconclusive": 0.1
+    },
+    {
+     "falsified": 0.5,
+     "toy": 0.3,
+     "verified": 0.1,
+     "inconclusive": 0.1
+    },
+    {
+     "falsified": 0.4,
+     "verified": 0.3,
+     "toy": 0.3
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -979,6 +1582,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.8
@@ -995,7 +1599,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1005,6 +1627,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -1022,7 +1645,32 @@
     "inconclusive",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 0.25,
+     "toy": 0.25,
+     "inconclusive": 0.5
+    },
+    {
+     "falsified": 0.25,
+     "toy": 0.5,
+     "inconclusive": 0.25
+    },
+    null,
+    {
+     "verified": 0.25,
+     "toy": 0.5,
+     "inconclusive": 0.25
+    },
+    null,
+    {
+     "falsified": 0.25,
+     "toy": 0.5,
+     "inconclusive": 0.25
+    }
+   ],
    "n_consensus": 2,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -1031,6 +1679,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.3333,
+   "soft_rate": 0.6667,
    "zero_point_solutions": 1,
    "best_rate": 0.8333,
    "mean_rate": 0.375
@@ -1044,13 +1693,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 2,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -1068,10 +1727,20 @@
     "toy",
     "toy"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 0.8333,
    "mean_rate": 0.6
@@ -1086,7 +1755,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1094,6 +1775,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -1111,7 +1793,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1122,6 +1825,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.5278
@@ -1138,10 +1842,19 @@
     "verified",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 5,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.9333
@@ -1158,13 +1871,30 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    {
+     "toy": 0.3333333333333333,
+     "falsified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null,
+    null,
+    null
+   ],
    "n_consensus": 3,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 5,
    "consensus_rate": 0.6,
+   "soft_rate": 0.4,
    "zero_point_solutions": 1,
    "best_rate": 0.5,
    "mean_rate": 0.3
@@ -1178,13 +1908,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -1199,7 +1939,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1207,6 +1959,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -1221,7 +1974,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1229,6 +1994,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -1243,7 +2009,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1251,6 +2029,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -1265,7 +2044,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1273,6 +2064,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -1290,10 +2082,20 @@
     "verified",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.8438
@@ -1310,7 +2112,27 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1320,6 +2142,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8,
    "mean_rate": 0.7167
@@ -1337,7 +2160,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1348,6 +2192,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.2917
@@ -1363,7 +2208,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -1372,6 +2232,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.375,
    "mean_rate": 0.375
@@ -1389,7 +2250,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 0.5,
+     "verified": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1400,6 +2284,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.8056
@@ -1416,12 +2301,25 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 4,
+   "n_soft": 1,
    "disputed_claims": [
     0
    ],
    "n_claims": 5,
    "consensus_rate": 0.8,
+   "soft_rate": 0.2,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.475
@@ -1438,7 +2336,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1448,6 +2364,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -1465,12 +2382,27 @@
     "disputed",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    {
+     "verified": 0.45454545454545453,
+     "falsified": 0.09090909090909091,
+     "toy": 0.2727272727272727,
+     "inconclusive": 0.18181818181818182
+    },
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 1,
    "disputed_claims": [
     4
    ],
    "n_claims": 6,
    "consensus_rate": 0.8333,
+   "soft_rate": 0.1667,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.9306
@@ -1488,7 +2420,32 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1499,6 +2456,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.3333,
    "mean_rate": 0.1667
@@ -1513,7 +2471,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1521,6 +2491,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -1538,13 +2509,30 @@
     "falsified",
     "verified"
    ],
+   "soft_gt": [
+    {
+     "falsified": 0.5714285714285714,
+     "verified": 0.42857142857142855
+    },
+    null,
+    null,
+    {
+     "falsified": 0.5714285714285714,
+     "verified": 0.2857142857142857,
+     "inconclusive": 0.14285714285714285
+    },
+    null,
+    null
+   ],
    "n_consensus": 4,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     3
    ],
    "n_claims": 6,
    "consensus_rate": 0.6667,
+   "soft_rate": 0.3333,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.9524
@@ -1559,7 +2547,20 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -1567,6 +2568,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.1667,
    "mean_rate": 0.0833
@@ -1583,7 +2585,31 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    {
+     "falsified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333,
+     "toy": 0.3333333333333333
+    },
+    {
+     "falsified": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "toy": 0.3333333333333333
+    },
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    }
+   ],
    "n_consensus": 1,
+   "n_soft": 4,
    "disputed_claims": [
     1,
     2,
@@ -1592,6 +2618,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.2,
+   "soft_rate": 0.8,
    "zero_point_solutions": 0,
    "best_rate": 0.8,
    "mean_rate": 0.6333
@@ -1609,7 +2636,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1620,6 +2668,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.8333
@@ -1637,7 +2686,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1648,6 +2718,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5833,
    "mean_rate": 0.5833
@@ -1661,13 +2732,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -1681,13 +2762,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -1705,7 +2796,31 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1716,6 +2831,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.4167,
    "mean_rate": 0.2083
@@ -1733,7 +2849,31 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 0.5,
+     "verified": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 0.5,
+     "verified": 0.5
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1744,6 +2884,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.7083
@@ -1760,7 +2901,27 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1770,6 +2931,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.3
@@ -1786,7 +2948,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1796,6 +2976,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8,
    "mean_rate": 0.8
@@ -1813,7 +2994,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1824,6 +3026,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -1841,7 +3044,29 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1852,6 +3077,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.2083
@@ -1869,7 +3095,40 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.4444444444444444,
+     "toy": 0.3333333333333333,
+     "inconclusive": 0.2222222222222222
+    },
+    {
+     "verified": 0.5555555555555556,
+     "toy": 0.1111111111111111,
+     "inconclusive": 0.3333333333333333
+    },
+    {
+     "verified": 0.4444444444444444,
+     "toy": 0.4444444444444444,
+     "inconclusive": 0.1111111111111111
+    },
+    {
+     "verified": 0.4444444444444444,
+     "toy": 0.4444444444444444,
+     "inconclusive": 0.1111111111111111
+    },
+    {
+     "verified": 0.4444444444444444,
+     "toy": 0.4444444444444444,
+     "inconclusive": 0.1111111111111111
+    },
+    {
+     "verified": 0.4444444444444444,
+     "toy": 0.1111111111111111,
+     "inconclusive": 0.4444444444444444
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1880,6 +3139,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.6204
@@ -1897,7 +3157,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1908,6 +3191,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.4167
@@ -1925,7 +3209,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -1936,6 +3241,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -1953,12 +3259,26 @@
     "verified",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+     "verified": 0.5714285714285714,
+     "toy": 0.07142857142857142,
+     "inconclusive": 0.35714285714285715
+    }
+   ],
    "n_consensus": 5,
+   "n_soft": 1,
    "disputed_claims": [
     5
    ],
    "n_claims": 6,
    "consensus_rate": 0.8333,
+   "soft_rate": 0.1667,
    "zero_point_solutions": 1,
    "best_rate": 1.0,
    "mean_rate": 0.8036
@@ -1975,7 +3295,26 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -1985,6 +3324,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.1,
    "mean_rate": 0.05
@@ -2001,12 +3341,25 @@
     "verified",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    {
+     "verified": 0.4,
+     "inconclusive": 0.4,
+     "toy": 0.2
+    }
+   ],
    "n_consensus": 4,
+   "n_soft": 1,
    "disputed_claims": [
     4
    ],
    "n_claims": 5,
    "consensus_rate": 0.8,
+   "soft_rate": 0.2,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.72
@@ -2024,7 +3377,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2035,6 +3409,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -2050,13 +3425,29 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.42857142857142855,
+     "toy": 0.2857142857142857,
+     "inconclusive": 0.2857142857142857
+    },
+    {
+     "verified": 0.2857142857142857,
+     "toy": 0.42857142857142855,
+     "inconclusive": 0.2857142857142857
+    },
+    null,
+    null
+   ],
    "n_consensus": 2,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 4,
    "consensus_rate": 0.5,
+   "soft_rate": 0.5,
    "zero_point_solutions": 1,
    "best_rate": 0.625,
    "mean_rate": 0.2857
@@ -2074,7 +3465,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2085,6 +3497,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2102,10 +3515,20 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 2,
    "best_rate": 0.1667,
    "mean_rate": 0.0556
@@ -2123,7 +3546,34 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2134,6 +3584,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.5833,
    "mean_rate": 0.2917
@@ -2148,7 +3599,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -2156,6 +3619,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2168,12 +3632,19 @@
    "consensus": [
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 1,
    "disputed_claims": [
     0
    ],
    "n_claims": 1,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -2190,7 +3661,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -2200,6 +3689,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -2214,7 +3704,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -2222,6 +3724,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -2239,7 +3742,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2250,6 +3774,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2263,13 +3788,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -2284,7 +3819,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -2292,6 +3839,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -2309,7 +3857,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2320,6 +3889,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2336,7 +3906,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -2346,6 +3934,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2363,7 +3952,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2374,6 +3984,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.75
@@ -2390,7 +4001,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -2400,6 +4029,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -2417,7 +4047,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2428,6 +4079,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2445,7 +4097,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2456,6 +4129,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -2469,13 +4143,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -2493,7 +4177,32 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 0.5,
+     "verified": 0.5
+    },
+    {
+     "inconclusive": 0.5,
+     "verified": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2504,6 +4213,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -2521,7 +4231,29 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2532,6 +4264,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.7917
@@ -2548,13 +4281,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    {
+     "verified": 0.4,
+     "toy": 0.4,
+     "inconclusive": 0.2
+    },
+    {
+     "verified": 0.4,
+     "toy": 0.4,
+     "inconclusive": 0.2
+    }
+   ],
    "n_consensus": 3,
+   "n_soft": 2,
    "disputed_claims": [
     3,
     4
    ],
    "n_claims": 5,
    "consensus_rate": 0.6,
+   "soft_rate": 0.4,
    "zero_point_solutions": 1,
    "best_rate": 0.8,
    "mean_rate": 0.6
@@ -2572,10 +4322,20 @@
     "verified",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.9167,
    "mean_rate": 0.8542
@@ -2593,10 +4353,20 @@
     "verified",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 1,
    "best_rate": 0.9167,
    "mean_rate": 0.5833
@@ -2614,7 +4384,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2625,6 +4416,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2642,7 +4434,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2653,6 +4466,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2669,7 +4483,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "falsified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -2679,6 +4511,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -2696,7 +4529,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2707,6 +4561,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2724,7 +4579,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2735,6 +4611,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -2752,7 +4629,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2763,6 +4661,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5833,
    "mean_rate": 0.5833
@@ -2780,7 +4679,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2791,6 +4711,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -2807,7 +4728,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -2817,6 +4756,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -2834,7 +4774,34 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2845,6 +4812,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.5833,
    "mean_rate": 0.2917
@@ -2862,7 +4830,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2873,6 +4862,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -2890,7 +4880,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2901,6 +4912,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -2918,12 +4930,26 @@
     "disputed",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 1,
    "disputed_claims": [
     4
    ],
    "n_claims": 6,
    "consensus_rate": 0.8333,
+   "soft_rate": 0.1667,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.7222
@@ -2941,7 +4967,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2952,6 +4999,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.75
@@ -2969,7 +5017,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -2980,6 +5049,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -2994,7 +5064,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -3002,6 +5084,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -3018,12 +5101,24 @@
     "verified",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    }
+   ],
    "n_consensus": 4,
+   "n_soft": 1,
    "disputed_claims": [
     4
    ],
    "n_claims": 5,
    "consensus_rate": 0.8,
+   "soft_rate": 0.2,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.85
@@ -3041,7 +5136,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3052,6 +5170,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.8333
@@ -3069,7 +5188,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3080,6 +5220,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -3096,12 +5237,25 @@
     "verified",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    {
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.5,
+     "toy": 0.16666666666666666
+    }
+   ],
    "n_consensus": 4,
+   "n_soft": 1,
    "disputed_claims": [
     4
    ],
    "n_claims": 5,
    "consensus_rate": 0.8,
+   "soft_rate": 0.2,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 0.7167
@@ -3119,7 +5273,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "falsified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3130,6 +5305,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -3147,7 +5323,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3158,6 +5355,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.0833,
    "mean_rate": 0.0833
@@ -3175,7 +5373,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3186,6 +5405,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -3202,7 +5422,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3212,6 +5450,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -3229,12 +5468,26 @@
     "inconclusive",
     "disputed"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+     "toy": 0.3333333333333333,
+     "verified": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    }
+   ],
    "n_consensus": 5,
+   "n_soft": 1,
    "disputed_claims": [
     5
    ],
    "n_claims": 6,
    "consensus_rate": 0.8333,
+   "soft_rate": 0.1667,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.2222
@@ -3251,7 +5504,26 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3261,6 +5533,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.4
@@ -3277,10 +5550,19 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 5,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.3
@@ -3294,13 +5576,24 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.375
@@ -3318,7 +5611,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3329,6 +5643,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -3342,13 +5657,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -3365,7 +5690,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3375,6 +5718,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -3392,7 +5736,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3403,6 +5768,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -3419,7 +5785,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3429,6 +5813,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -3445,10 +5830,19 @@
     "inconclusive",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 5,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.15
@@ -3466,7 +5860,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3477,6 +5892,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -3493,7 +5909,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3503,6 +5937,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -3518,7 +5953,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -3527,6 +5977,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.375,
    "mean_rate": 0.375
@@ -3540,13 +5991,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -3561,7 +6022,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -3569,6 +6042,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -3585,7 +6059,26 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "falsified": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3595,6 +6088,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -3611,7 +6105,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3621,6 +6133,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -3638,7 +6151,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3649,6 +6183,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.0833,
    "mean_rate": 0.0833
@@ -3663,7 +6198,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -3671,6 +6218,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -3688,10 +6236,20 @@
     "toy",
     "toy"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.9167,
    "mean_rate": 0.75
@@ -3709,7 +6267,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3720,6 +6299,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -3736,7 +6316,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3746,6 +6344,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -3763,10 +6362,20 @@
     "verified",
     "inconclusive"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8333,
    "mean_rate": 0.8333
@@ -3783,7 +6392,27 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3793,6 +6422,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.3
@@ -3809,7 +6439,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3819,6 +6467,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.7,
    "mean_rate": 0.7
@@ -3835,7 +6484,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3845,6 +6515,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.7,
    "mean_rate": 0.5
@@ -3861,7 +6532,26 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3871,6 +6561,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.8,
    "mean_rate": 0.75
@@ -3888,12 +6579,26 @@
     "toy",
     "toy"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.3333333333333333,
+     "toy": 0.3333333333333333,
+     "inconclusive": 0.3333333333333333
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 5,
+   "n_soft": 1,
    "disputed_claims": [
     0
    ],
    "n_claims": 6,
    "consensus_rate": 0.8333,
+   "soft_rate": 0.1667,
    "zero_point_solutions": 1,
    "best_rate": 0.8333,
    "mean_rate": 0.4167
@@ -3910,7 +6615,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3920,6 +6643,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1,
    "mean_rate": 0.1
@@ -3935,7 +6659,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -3944,6 +6683,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -3960,7 +6700,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -3970,6 +6728,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -3987,7 +6746,33 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -3998,6 +6783,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.75,
    "mean_rate": 0.375
@@ -4014,7 +6800,26 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4024,6 +6829,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.9,
    "mean_rate": 0.85
@@ -4040,7 +6846,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4050,6 +6874,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -4067,7 +6892,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4078,6 +6924,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -4091,13 +6938,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4115,7 +6972,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4126,6 +7004,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4141,7 +7020,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -4150,6 +7044,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.75
@@ -4167,7 +7062,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4178,6 +7094,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -4194,7 +7111,29 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4204,6 +7143,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.6,
    "mean_rate": 0.3
@@ -4221,7 +7161,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4232,6 +7193,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4248,7 +7210,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4258,6 +7243,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.9,
    "mean_rate": 0.65
@@ -4275,7 +7261,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4286,6 +7293,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.75,
    "mean_rate": 0.75
@@ -4302,7 +7310,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4312,6 +7338,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -4328,7 +7355,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4338,6 +7383,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6,
    "mean_rate": 0.6
@@ -4354,7 +7400,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4364,6 +7428,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4381,7 +7446,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4392,6 +7478,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4407,7 +7494,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -4416,6 +7518,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.375,
    "mean_rate": 0.375
@@ -4432,7 +7535,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4442,6 +7563,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4459,7 +7581,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4470,6 +7613,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.0833,
    "mean_rate": 0.0833
@@ -4487,7 +7631,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4498,6 +7663,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -4515,7 +7681,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4526,6 +7713,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -4539,13 +7727,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4562,7 +7760,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4572,6 +7788,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -4586,7 +7803,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4594,6 +7823,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4607,13 +7837,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4628,7 +7868,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4636,6 +7888,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.3333
@@ -4650,7 +7903,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4658,6 +7923,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4674,7 +7940,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4684,6 +7968,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 2,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4700,7 +7985,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4710,6 +8013,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -4726,7 +8030,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -4736,6 +8058,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.9,
    "mean_rate": 0.9
@@ -4750,7 +8073,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4758,6 +8093,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1667,
    "mean_rate": 0.1667
@@ -4771,13 +8107,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4795,7 +8141,32 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4806,6 +8177,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.3333
@@ -4821,7 +8193,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -4830,6 +8217,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4844,7 +8232,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4852,6 +8252,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4865,13 +8266,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4885,13 +8296,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4909,7 +8330,29 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4920,6 +8363,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.5833
@@ -4934,7 +8378,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -4942,6 +8398,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -4955,13 +8412,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -4979,7 +8446,33 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "inconclusive": 0.5,
+     "verified": 0.5
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 0.5,
+     "toy": 0.5
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -4990,6 +8483,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -5006,7 +8500,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5016,6 +8528,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -5032,7 +8545,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5042,6 +8573,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.7,
    "mean_rate": 0.7
@@ -5058,7 +8590,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5068,6 +8618,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -5084,7 +8635,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5094,6 +8663,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -5111,7 +8681,31 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 0.5,
+     "toy": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "verified": 0.5,
+     "toy": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5122,6 +8716,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3333,
    "mean_rate": 0.25
@@ -5139,7 +8734,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5150,6 +8766,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -5165,7 +8782,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -5174,6 +8806,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.125,
    "mean_rate": 0.125
@@ -5190,7 +8823,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5200,6 +8851,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -5216,7 +8868,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5226,6 +8896,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.2,
    "mean_rate": 0.2
@@ -5239,13 +8910,23 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 2,
    "disputed_claims": [
     0,
     1
    ],
    "n_claims": 2,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -5263,7 +8944,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5274,6 +8976,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5291,7 +8994,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5302,6 +9026,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5319,7 +9044,30 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "falsified": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5330,6 +9078,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.3333,
    "mean_rate": 0.1667
@@ -5347,7 +9096,31 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "toy": 0.5,
+     "inconclusive": 0.5
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5358,6 +9131,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.25,
    "mean_rate": 0.125
@@ -5375,7 +9149,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5386,6 +9181,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5402,7 +9198,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5412,6 +9226,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.2,
    "mean_rate": 0.2
@@ -5429,7 +9244,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5440,6 +9276,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -5455,7 +9292,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -5464,6 +9316,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -5481,7 +9334,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5492,6 +9366,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.6667,
    "mean_rate": 0.6667
@@ -5506,7 +9381,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -5514,6 +9401,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5530,7 +9418,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5540,6 +9446,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5557,10 +9464,20 @@
     "verified",
     "verified"
    ],
+   "soft_gt": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
    "n_consensus": 6,
+   "n_soft": 0,
    "disputed_claims": [],
    "n_claims": 6,
    "consensus_rate": 1.0,
+   "soft_rate": 0.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -5577,7 +9494,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5587,6 +9522,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -5603,7 +9539,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5613,6 +9567,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -5629,7 +9584,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "falsified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5639,6 +9612,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 1.0,
    "mean_rate": 1.0
@@ -5656,7 +9630,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5667,6 +9662,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -5683,7 +9679,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "falsified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5693,6 +9707,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.4,
    "mean_rate": 0.4
@@ -5709,7 +9724,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5719,6 +9752,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.3,
    "mean_rate": 0.3
@@ -5736,7 +9770,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5747,6 +9802,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.25,
    "mean_rate": 0.25
@@ -5764,7 +9820,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5775,6 +9852,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5792,7 +9870,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "toy": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5803,6 +9902,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -5820,7 +9920,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5831,6 +9952,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5846,7 +9968,22 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 4,
    "disputed_claims": [
     0,
     1,
@@ -5855,6 +9992,7 @@
    ],
    "n_claims": 4,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5871,7 +10009,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5881,6 +10037,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1,
    "mean_rate": 0.1
@@ -5898,7 +10055,28 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "verified": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 6,
    "disputed_claims": [
     0,
     1,
@@ -5909,6 +10087,7 @@
    ],
    "n_claims": 6,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.5,
    "mean_rate": 0.5
@@ -5925,7 +10104,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "toy": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5935,6 +10132,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 0,
    "best_rate": 0.1,
    "mean_rate": 0.1
@@ -5949,7 +10147,19 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 3,
    "disputed_claims": [
     0,
     1,
@@ -5957,6 +10167,7 @@
    ],
    "n_claims": 3,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
@@ -5973,7 +10184,25 @@
     "disputed",
     "disputed"
    ],
+   "soft_gt": [
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    },
+    {
+     "inconclusive": 1.0
+    }
+   ],
    "n_consensus": 0,
+   "n_soft": 5,
    "disputed_claims": [
     0,
     1,
@@ -5983,6 +10212,7 @@
    ],
    "n_claims": 5,
    "consensus_rate": 0.0,
+   "soft_rate": 1.0,
    "zero_point_solutions": 1,
    "best_rate": 0.0,
    "mean_rate": 0.0
