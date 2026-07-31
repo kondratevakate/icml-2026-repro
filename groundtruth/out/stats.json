@@ -1,13 +1,13 @@
 {
  "papers_indexed": 6341,
- "judged_spaces": 5754,
- "papers_with_judged_solution": 1991,
- "papers_full_points": 454,
- "claims_judged": 29202,
+ "judged_spaces": 5859,
+ "papers_with_judged_solution": 2005,
+ "papers_full_points": 475,
+ "claims_judged": 29780,
  "verdict_counts": {
-  "inconclusive": 8230,
-  "toy": 6316,
-  "verified": 13624,
-  "falsified": 1032
+  "inconclusive": 8237,
+  "toy": 6257,
+  "verified": 14166,
+  "falsified": 1120
  }
 }
