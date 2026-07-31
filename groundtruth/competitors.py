@@ -7,7 +7,7 @@ stratified metric -- and is the field as a whole better or worse than her runs?
 Strata (same screen as select_sample.py): medical vs non-medical, and
 theory / simulation / open_data / other by anchored-claim text.
 
-Writes groundtruth/out/competitors.json + competitors.md
+Writes groundtruth/out/competitors.json
 """
 import collections, csv, json, os, re
 
@@ -78,10 +78,8 @@ def main():
             "full_papers": a["full_papers"],
             "medical_logbooks": a["medical_logbooks"],
             "claims": nc,
-            "verified_rate": round(v["verified"] / nc, 4) if nc else 0,
-            "falsified_rate": round(v["falsified"] / nc, 4) if nc else 0,
-            "toy_rate": round(v["toy"] / nc, 4) if nc else 0,
-            "inconclusive_rate": round(v["inconclusive"] / nc, 4) if nc else 0,
+            **{f"{k}_rate": round(v[k] / nc, 4) if nc else 0
+               for k in ("verified", "falsified", "toy", "inconclusive")},
             "by_stratum": {k: {**s, "rate": round(s["pts"] / s["max"], 4) if s["max"] else 0}
                            for k, s in a["by_stratum"].items()},
         })
