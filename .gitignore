@@ -1,3 +1,4 @@
+groundtruth/data/verdicts.json
 # Downloaded/vendored data — not our IP, reproducible via the URLs documented in HANDOFF.md
 data/
 pyhealth_src/
