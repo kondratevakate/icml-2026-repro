@@ -1,0 +1,6233 @@
+{
+ "summary": {
+  "papers": 240,
+  "total_claims": 1125,
+  "consensus_claims": 145,
+  "consensus_coverage": 0.1289,
+  "disputed_claims": 980,
+  "verdict_mix_consensus": {
+   "verified": 0.5724,
+   "falsified": 0.0138,
+   "toy": 0.1103,
+   "inconclusive": 0.3034
+  },
+  "disputed_slots": 22,
+  "falsified_vs_verified_slots": 22,
+  "zero_point_solutions": 67,
+  "by_area": {
+   "Applications": {
+    "papers": 117,
+    "claims": 530,
+    "consensus": 41
+   },
+   "General Machine Learning": {
+    "papers": 42,
+    "claims": 205,
+    "consensus": 56
+   },
+   "Deep Learning": {
+    "papers": 31,
+    "claims": 153,
+    "consensus": 5
+   },
+   "Theory": {
+    "papers": 19,
+    "claims": 95,
+    "consensus": 26
+   },
+   "Probabilistic Methods": {
+    "papers": 12,
+    "claims": 57,
+    "consensus": 6
+   },
+   "Social Aspects": {
+    "papers": 8,
+    "claims": 34,
+    "consensus": 0
+   },
+   "Reinforcement Learning": {
+    "papers": 7,
+    "claims": 31,
+    "consensus": 5
+   },
+   "Optimization": {
+    "papers": 4,
+    "claims": 20,
+    "consensus": 6
+   }
+  }
+ },
+ "papers": [
+  {
+   "orid": "wsw7Y085RY",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "UG06mAANLH",
+   "area": "Applications",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.2833
+  },
+  {
+   "orid": "DfZS0M8leJ",
+   "area": "Theory",
+   "subarea": "Online Learning And Bandits",
+   "n_solutions": 3,
+   "consensus": [
+    "disputed",
+    "toy"
+   ],
+   "n_consensus": 1,
+   "disputed_claims": [
+    0
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.5,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.5833
+  },
+  {
+   "orid": "iEtOxzAs51",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 3,
+   "consensus": [
+    "toy",
+    "toy",
+    "toy"
+   ],
+   "n_consensus": 3,
+   "disputed_claims": [],
+   "n_claims": 3,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.3889
+  },
+  {
+   "orid": "PfarHkQG8e",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 3,
+   "consensus": [
+    "toy",
+    "inconclusive"
+   ],
+   "n_consensus": 2,
+   "disputed_claims": [],
+   "n_claims": 2,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "3UcWAgr0jx",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "OMdQJQwp26",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 4,
+   "consensus": [
+    "disputed",
+    "verified",
+    "inconclusive",
+    "inconclusive",
+    "disputed",
+    "inconclusive"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    0,
+    4
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.6667,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4167,
+   "mean_rate": 0.2917
+  },
+  {
+   "orid": "RirE9gm77w",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "kHPIJ7KVCw",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "1AyRuF9ULp",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "8ewf5I4shW",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 8,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "n_consensus": 3,
+   "disputed_claims": [],
+   "n_claims": 3,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.8125
+  },
+  {
+   "orid": "yIubI9l3IT",
+   "area": "Deep Learning",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "88NO4CL9EQ",
+   "area": "Applications",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "qs9lQluekx",
+   "area": "Applications",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "qj4EnIvNU4",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.35
+  },
+  {
+   "orid": "SoilRyCv1i",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.4167,
+   "mean_rate": 0.2083
+  },
+  {
+   "orid": "fSV4XWhMB3",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "Efjuj6kanc",
+   "area": "General Machine Learning",
+   "subarea": "Scalable Algorithms",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "qbe18sZPWS",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "8GH752ZJ5j",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "qIOcJSCGn2",
+   "area": "Reinforcement Learning",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4167,
+   "mean_rate": 0.4167
+  },
+  {
+   "orid": "q2kihJvzqC",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "wpKA7G7Cqu",
+   "area": "General Machine Learning",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.6667,
+   "mean_rate": 0.3167
+  },
+  {
+   "orid": "WgrRyHYbo5",
+   "area": "General Machine Learning",
+   "subarea": "Transfer Multitask And Metalearning",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.6667,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "4F4Ziv1d9G",
+   "area": "General Machine Learning",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "F8R6Z6ty2E",
+   "area": "Theory",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "3qq7rvJzoj",
+   "area": "Reinforcement Learning",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "4iupzej9nT",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "5JUrQ67tYL",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "potpaozpjv",
+   "area": "Reinforcement Learning",
+   "subarea": "Batchoffline",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "3LRWjJTp0Y",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.2917
+  },
+  {
+   "orid": "Ue8aOgz9T9",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "jPKqiaPTEd",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [],
+   "n_claims": 5,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.5,
+   "mean_rate": 0.225
+  },
+  {
+   "orid": "QZO3oby12w",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.45
+  },
+  {
+   "orid": "VAXW59dyfk",
+   "area": "Theory",
+   "subarea": "Probabilistic Methods",
+   "n_solutions": 3,
+   "consensus": [
+    "disputed",
+    "inconclusive",
+    "toy",
+    "toy"
+   ],
+   "n_consensus": 3,
+   "disputed_claims": [
+    0
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.75,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "Tyv61ZKb9s",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.1667,
+   "mean_rate": 0.0833
+  },
+  {
+   "orid": "HDoWJi2jlj",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "QpjtK65JHO",
+   "area": "Probabilistic Methods",
+   "subarea": "Monte Carlo And Sampling Methods",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "nggzekChuU",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0833,
+   "mean_rate": 0.0417
+  },
+  {
+   "orid": "HigEPnWgLQ",
+   "area": "Reinforcement Learning",
+   "subarea": "Planning",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "inconclusive"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [],
+   "n_claims": 5,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.7667
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "area": "Theory",
+   "subarea": "Online Learning And Bandits",
+   "n_solutions": 10,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.8
+  },
+  {
+   "orid": "LfUXGnwVzw",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "bcN12UkftY",
+   "area": "General Machine Learning",
+   "subarea": "Representation Learning",
+   "n_solutions": 4,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "inconclusive",
+    "disputed",
+    "inconclusive",
+    "disputed"
+   ],
+   "n_consensus": 2,
+   "disputed_claims": [
+    0,
+    1,
+    3,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.3333,
+   "zero_point_solutions": 1,
+   "best_rate": 0.8333,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "UNvRSrguIW",
+   "area": "Deep Learning",
+   "subarea": "Robustness",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 2,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "piWlEHb4Db",
+   "area": "Optimization",
+   "subarea": "",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "toy",
+    "toy"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.8333,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "cvlPAWSeo3",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "SldP4LGjdz",
+   "area": "Social Aspects",
+   "subarea": "Accountability Transparency And Interpretability",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.5278
+  },
+  {
+   "orid": "UflglraWRa",
+   "area": "General Machine Learning",
+   "subarea": "Online Learning Active Learning And Bandits",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [],
+   "n_claims": 5,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.9333
+  },
+  {
+   "orid": "M78xLFN7EJ",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 3,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 3,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.6,
+   "zero_point_solutions": 1,
+   "best_rate": 0.5,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "Y9gsOEdaNE",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "Z6dCaMpiqV",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "BUxrIaf7Zc",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "lywUbYpYfG",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "70vztAT0Or",
+   "area": "Social Aspects",
+   "subarea": "Fairness",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "4CwO8At8Hw",
+   "area": "Theory",
+   "subarea": "Learning Theory",
+   "n_solutions": 16,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.8438
+  },
+  {
+   "orid": "sxLncu2Fhx",
+   "area": "Probabilistic Methods",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8,
+   "mean_rate": 0.7167
+  },
+  {
+   "orid": "ALVnRcngPb",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.2917
+  },
+  {
+   "orid": "zouCZ6s5Zj",
+   "area": "Optimization",
+   "subarea": "Discrete And Combinatorial Optimization",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.375,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "Xg12D1Y4H1",
+   "area": "Probabilistic Methods",
+   "subarea": "Gaussian Processes",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.8056
+  },
+  {
+   "orid": "3EcT46wsdc",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 3,
+   "consensus": [
+    "disputed",
+    "inconclusive",
+    "verified",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    0
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.8,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.475
+  },
+  {
+   "orid": "OAM1jJsMGp",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "area": "General Machine Learning",
+   "subarea": "Sequential Network And Time Series Modeling",
+   "n_solutions": 11,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "disputed",
+    "verified"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [
+    4
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.8333,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.9306
+  },
+  {
+   "orid": "5lIJrDCQll",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.3333,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "kvilWCkBqW",
+   "area": "Deep Learning",
+   "subarea": "Selfsupervised Learning",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "Ir6N7U5Kea",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 7,
+   "consensus": [
+    "disputed",
+    "verified",
+    "verified",
+    "disputed",
+    "falsified",
+    "verified"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    0,
+    3
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.6667,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.9524
+  },
+  {
+   "orid": "9zXUOLxbcL",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.1667,
+   "mean_rate": 0.0833
+  },
+  {
+   "orid": "Ipgssz2WL1",
+   "area": "Applications",
+   "subarea": "Time Series",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 1,
+   "disputed_claims": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.2,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8,
+   "mean_rate": 0.6333
+  },
+  {
+   "orid": "sDfu0qN6Y6",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "I6xz92EJ4T",
+   "area": "Theory",
+   "subarea": "Domain Adaptation And Transfer Learning",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5833,
+   "mean_rate": 0.5833
+  },
+  {
+   "orid": "wjsUR2vppX",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "Pj1Z7dWm4v",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "bSUMVAYoMq",
+   "area": "Optimization",
+   "subarea": "Zeroorder And Blackbox Optimization",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.4167,
+   "mean_rate": 0.2083
+  },
+  {
+   "orid": "y5GiPedJPV",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.7083
+  },
+  {
+   "orid": "guBK9kwmEL",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "AuiUlu3OmT",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8,
+   "mean_rate": 0.8
+  },
+  {
+   "orid": "jEBkuuETjr",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "6YVSHa3g4b",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.2083
+  },
+  {
+   "orid": "DsV89lJ58l",
+   "area": "Theory",
+   "subarea": "Learning Theory",
+   "n_solutions": 9,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.6204
+  },
+  {
+   "orid": "4dwe2wlxx5",
+   "area": "Applications",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.4167
+  },
+  {
+   "orid": "0QsbcZKCQ0",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "hXO2OP0T4w",
+   "area": "Theory",
+   "subarea": "Game Theory",
+   "n_solutions": 14,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "disputed"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.8333,
+   "zero_point_solutions": 1,
+   "best_rate": 1.0,
+   "mean_rate": 0.8036
+  },
+  {
+   "orid": "rlVGCyjqnt",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.1,
+   "mean_rate": 0.05
+  },
+  {
+   "orid": "ziqS4yXFQX",
+   "area": "Theory",
+   "subarea": "Domain Adaptation And Transfer Learning",
+   "n_solutions": 5,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "disputed"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.8,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.72
+  },
+  {
+   "orid": "DUJL3a5Y57",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "2azIa9tfl3",
+   "area": "Applications",
+   "subarea": "Computer Vision",
+   "n_solutions": 7,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 2,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.5,
+   "zero_point_solutions": 1,
+   "best_rate": 0.625,
+   "mean_rate": 0.2857
+  },
+  {
+   "orid": "oaMuJPfDUS",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "FCVPVqRLDJ",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 3,
+   "consensus": [
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 2,
+   "best_rate": 0.1667,
+   "mean_rate": 0.0556
+  },
+  {
+   "orid": "GdqrQ75Gg8",
+   "area": "Theory",
+   "subarea": "Learning Theory",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.5833,
+   "mean_rate": 0.2917
+  },
+  {
+   "orid": "aComqAqP6j",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "QQRCqb2PDj",
+   "area": "Probabilistic Methods",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0
+   ],
+   "n_claims": 1,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "EH77N5YGwV",
+   "area": "General Machine Learning",
+   "subarea": "Online Learning Active Learning And Bandits",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "L8a9GRfoly",
+   "area": "Deep Learning",
+   "subarea": "Sequential Models Time Series",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "8f5JVzcFvA",
+   "area": "Deep Learning",
+   "subarea": "Sequential Models Time Series",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "Vmt2iPfH5z",
+   "area": "Deep Learning",
+   "subarea": "Foundation Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "P0lcBIhzv0",
+   "area": "Probabilistic Methods",
+   "subarea": "Graphical Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "08tW615mgI",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "dblO6FgIvc",
+   "area": "Probabilistic Methods",
+   "subarea": "Bayesian Models And Methods",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "b1qoHUQVNy",
+   "area": "Probabilistic Methods",
+   "subarea": "Bayesian Models And Methods",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "BS8upx3Smw",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "IXsOS3hF8Y",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "B5DAV1EA8Z",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "TvLOddG9Ay",
+   "area": "General Machine Learning",
+   "subarea": "Online Learning Active Learning And Bandits",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "3tlaoBZrSg",
+   "area": "Theory",
+   "subarea": "Everything Else",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "HdhEFfEsoz",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.7917
+  },
+  {
+   "orid": "cGOX9bOWnj",
+   "area": "Theory",
+   "subarea": "Online Learning And Bandits",
+   "n_solutions": 5,
+   "consensus": [
+    "verified",
+    "verified",
+    "inconclusive",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 3,
+   "disputed_claims": [
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.6,
+   "zero_point_solutions": 1,
+   "best_rate": 0.8,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "pws8t4kBP4",
+   "area": "General Machine Learning",
+   "subarea": "Representation Learning",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "inconclusive"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.9167,
+   "mean_rate": 0.8542
+  },
+  {
+   "orid": "y3qyP3ycQi",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "inconclusive"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.9167,
+   "mean_rate": 0.5833
+  },
+  {
+   "orid": "0Y7itV1kb7",
+   "area": "Deep Learning",
+   "subarea": "Selfsupervised Learning",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "jmHpRMmcix",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "vNfbqRzash",
+   "area": "Probabilistic Methods",
+   "subarea": "Bayesian Models And Methods",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "y1AV6cX8dX",
+   "area": "Applications",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "cpKJ2GlnYT",
+   "area": "Deep Learning",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "0wxnefBSTB",
+   "area": "Social Aspects",
+   "subarea": "Privacy",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5833,
+   "mean_rate": 0.5833
+  },
+  {
+   "orid": "9GKURFWGeh",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "fFUI2PGaNG",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "xbAWn0w9kq",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.5833,
+   "mean_rate": 0.2917
+  },
+  {
+   "orid": "I3Z9za1EkO",
+   "area": "Deep Learning",
+   "subarea": "Attention Mechanisms",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "UCAda9kS57",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "ZVyd4r9Xl5",
+   "area": "General Machine Learning",
+   "subarea": "",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "toy",
+    "disputed",
+    "verified"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [
+    4
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.8333,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.7222
+  },
+  {
+   "orid": "g5Id7eZRal",
+   "area": "General Machine Learning",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "LcSPuepCDU",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "JnROrhQsyJ",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "FXWnvznHMW",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "disputed"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.8,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.85
+  },
+  {
+   "orid": "xM56OFSUaN",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "Fhtwta4397",
+   "area": "Applications",
+   "subarea": "Computer Vision",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "XEbD5cYpgV",
+   "area": "Theory",
+   "subarea": "Probabilistic Methods",
+   "n_solutions": 6,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "disputed"
+   ],
+   "n_consensus": 4,
+   "disputed_claims": [
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.8,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 0.7167
+  },
+  {
+   "orid": "0VEeF91Fm6",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "8EZamwNqld",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.0833,
+   "mean_rate": 0.0833
+  },
+  {
+   "orid": "Bd0NNopzpC",
+   "area": "Applications",
+   "subarea": "Time Series",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "bWLfplRNzt",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "Li5ki5Dopo",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 3,
+   "consensus": [
+    "toy",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "disputed"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.8333,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.2222
+  },
+  {
+   "orid": "9kWVQtpvJi",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "coHiGZOFtS",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [],
+   "n_claims": 5,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "wNL0qGb2MN",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "FP23eFYhAy",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "7tt8TwMjdJ",
+   "area": "Social Aspects",
+   "subarea": "Accountability Transparency And Interpretability",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "MpYmjfXAnF",
+   "area": "Applications",
+   "subarea": "Language Speech And Dialog",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "eh48NIgu9z",
+   "area": "Applications",
+   "subarea": "Computer Vision",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "vPUInIYURl",
+   "area": "Social Aspects",
+   "subarea": "Accountability Transparency And Interpretability",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "T7y2wavrFM",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 4,
+   "consensus": [
+    "toy",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive",
+    "inconclusive"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [],
+   "n_claims": 5,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.15
+  },
+  {
+   "orid": "v5dquZIEUt",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "pvq2AhjOy1",
+   "area": "Theory",
+   "subarea": "Active Learning And Interactive Learning",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "6pN2KNCspk",
+   "area": "Applications",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.375,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "0xJt4PqPJv",
+   "area": "General Machine Learning",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "5wMBxVaTbC",
+   "area": "Applications",
+   "subarea": "Time Series",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "Vr0kjNERRf",
+   "area": "Reinforcement Learning",
+   "subarea": "Everything Else",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "RuZi4or26i",
+   "area": "Theory",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "bTySLCPXHO",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.0833,
+   "mean_rate": 0.0833
+  },
+  {
+   "orid": "toNy7vSxa3",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "djASMk0bzO",
+   "area": "Probabilistic Methods",
+   "subarea": "Bayesian Models And Methods",
+   "n_solutions": 5,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "falsified",
+    "toy",
+    "toy"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.9167,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "RNuC8Nj6rD",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "v0AkeYfQGq",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "Np7Y3AEVNq",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 3,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "inconclusive"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8333,
+   "mean_rate": 0.8333
+  },
+  {
+   "orid": "6j88qckao7",
+   "area": "Social Aspects",
+   "subarea": "Accountability Transparency And Interpretability",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "st1MolZlTP",
+   "area": "Social Aspects",
+   "subarea": "Privacy",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.7,
+   "mean_rate": 0.7
+  },
+  {
+   "orid": "Yy37YQCvCt",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.7,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "vmMAa2HGP9",
+   "area": "Theory",
+   "subarea": "Probabilistic Methods",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.8,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "puNfWfBFNT",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 3,
+   "consensus": [
+    "disputed",
+    "inconclusive",
+    "verified",
+    "inconclusive",
+    "toy",
+    "toy"
+   ],
+   "n_consensus": 5,
+   "disputed_claims": [
+    0
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.8333,
+   "zero_point_solutions": 1,
+   "best_rate": 0.8333,
+   "mean_rate": 0.4167
+  },
+  {
+   "orid": "fve4MEzeSp",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1,
+   "mean_rate": 0.1
+  },
+  {
+   "orid": "UR1yz4AMYj",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "75AYDsndHP",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "qMI1xD8O3x",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.75,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "ADUGteohC7",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.9,
+   "mean_rate": 0.85
+  },
+  {
+   "orid": "RyxUQr2l4k",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "a6vCNSBBeq",
+   "area": "Probabilistic Methods",
+   "subarea": "",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "orzcDIBxa0",
+   "area": "Deep Learning",
+   "subarea": "Theory",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "FFXvnzM254",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "NiqWdmrxwn",
+   "area": "Optimization",
+   "subarea": "Large Scale Parallel And Distributed",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "9yts8LUZiA",
+   "area": "Deep Learning",
+   "subarea": "Foundation Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "Qbe2cfNfn1",
+   "area": "Deep Learning",
+   "subarea": "Graph Neural Networks",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.6,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "NUDNFusCDu",
+   "area": "Deep Learning",
+   "subarea": "Robustness",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "Q7lEZjtDKO",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.9,
+   "mean_rate": 0.65
+  },
+  {
+   "orid": "XJaXdi5R21",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.75,
+   "mean_rate": 0.75
+  },
+  {
+   "orid": "Bc6c2OVWRh",
+   "area": "Reinforcement Learning",
+   "subarea": "Multiagent",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "YtqaHnqv8c",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6,
+   "mean_rate": 0.6
+  },
+  {
+   "orid": "SRGpmDQjJM",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "ABhGgV7pov",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "ceErPsyO38",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.375,
+   "mean_rate": 0.375
+  },
+  {
+   "orid": "15Gs65kvHS",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "dcLjhvVU47",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.0833,
+   "mean_rate": 0.0833
+  },
+  {
+   "orid": "tQCMbay712",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "9wpwfSJCp9",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "qgyEEb6wkh",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "KidQq3EaOe",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "5ZN3tiSetW",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "VzZxoRiU3G",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "AY7L7acRtD",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "oB7gZX7MKP",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "bMsBArF8MT",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 2,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "otBTuq5AKB",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "HQTsYta4XX",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.9,
+   "mean_rate": 0.9
+  },
+  {
+   "orid": "KPsrOYaU79",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1667,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "JRsQDPWFCC",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "k5xsXvNYQS",
+   "area": "Probabilistic Methods",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.3333
+  },
+  {
+   "orid": "3vhn9kVVY5",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "IalpB5Mzaz",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "rEzGzILnVC",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "cX3r7kAqr1",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "2iFauBXg7Y",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.5833
+  },
+  {
+   "orid": "ZgJlDylia4",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "doy2uIaAYt",
+   "area": "Social Aspects",
+   "subarea": "Accountability Transparency And Interpretability",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "qZVcGlU5lN",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "FzP6XZGG4d",
+   "area": "Theory",
+   "subarea": "",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "WlCYSqjnqS",
+   "area": "Theory",
+   "subarea": "Learning Theory",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.7,
+   "mean_rate": 0.7
+  },
+  {
+   "orid": "T4Ibp5vLpE",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "uZerXmyozE",
+   "area": "Applications",
+   "subarea": "Chemistry Physics And Earth Sciences",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "4fX2DEypNL",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3333,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "emv2qsi3TG",
+   "area": "Deep Learning",
+   "subarea": "Generative Models And Autoencoders",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "Ep6EcExLIY",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.125,
+   "mean_rate": 0.125
+  },
+  {
+   "orid": "ujYdUdqWpm",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "MyorUlHKVc",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.2,
+   "mean_rate": 0.2
+  },
+  {
+   "orid": "oQSqJfJUvJ",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1
+   ],
+   "n_claims": 2,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "7j2eMymTTP",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "8vkE9kvrXa",
+   "area": "General Machine Learning",
+   "subarea": "Transfer Multitask And Metalearning",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "3IFIedDIoN",
+   "area": "Probabilistic Methods",
+   "subarea": "Bayesian Models And Methods",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.3333,
+   "mean_rate": 0.1667
+  },
+  {
+   "orid": "p1GwEz0pix",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 2,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.25,
+   "mean_rate": 0.125
+  },
+  {
+   "orid": "3sx2WRBSSO",
+   "area": "General Machine Learning",
+   "subarea": "Hardware And Software",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "vGeNaFHdET",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.2,
+   "mean_rate": 0.2
+  },
+  {
+   "orid": "02Nq73lCe6",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "ILRx5neJk6",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "WArbqRUsAe",
+   "area": "Deep Learning",
+   "subarea": "Large Language Models",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.6667,
+   "mean_rate": 0.6667
+  },
+  {
+   "orid": "YzlscRoNUj",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "FlnQlvkYR3",
+   "area": "Deep Learning",
+   "subarea": "Robustness",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "XrRqY9QOSa",
+   "area": "Applications",
+   "subarea": "Neuroscience Cognitive Science",
+   "n_solutions": 4,
+   "consensus": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "n_consensus": 6,
+   "disputed_claims": [],
+   "n_claims": 6,
+   "consensus_rate": 1.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "mZd4u9d7pQ",
+   "area": "General Machine Learning",
+   "subarea": "Sequential Network And Time Series Modeling",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "gMLVFN9hl8",
+   "area": "General Machine Learning",
+   "subarea": "Hardware And Software",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "vpSFJoxyDz",
+   "area": "Theory",
+   "subarea": "Learning Theory",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 1.0,
+   "mean_rate": 1.0
+  },
+  {
+   "orid": "bIcz7bIZSo",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "qPqJH0heR0",
+   "area": "Deep Learning",
+   "subarea": "Sequential Models Time Series",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.4,
+   "mean_rate": 0.4
+  },
+  {
+   "orid": "UJcB3XrffF",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.3,
+   "mean_rate": 0.3
+  },
+  {
+   "orid": "TH6pLxCOQ3",
+   "area": "Applications",
+   "subarea": "Computer Vision",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.25,
+   "mean_rate": 0.25
+  },
+  {
+   "orid": "S7lpdz7NAW",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "JTwryHNicJ",
+   "area": "General Machine Learning",
+   "subarea": "Causality",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "NxbSbkLNMc",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "7UR3rNXMz9",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n_claims": 4,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "coJqVkqb03",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1,
+   "mean_rate": 0.1
+  },
+  {
+   "orid": "5zbPdMNcl9",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "n_claims": 6,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.5,
+   "mean_rate": 0.5
+  },
+  {
+   "orid": "kSUGLBHd0T",
+   "area": "Reinforcement Learning",
+   "subarea": "Everything Else",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 0,
+   "best_rate": 0.1,
+   "mean_rate": 0.1
+  },
+  {
+   "orid": "EYAfw6czcC",
+   "area": "Applications",
+   "subarea": "Health Medicine",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2
+   ],
+   "n_claims": 3,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  },
+  {
+   "orid": "EAH54wIQNb",
+   "area": "General Machine Learning",
+   "subarea": "Evaluation",
+   "n_solutions": 1,
+   "consensus": [
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed",
+    "disputed"
+   ],
+   "n_consensus": 0,
+   "disputed_claims": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n_claims": 5,
+   "consensus_rate": 0.0,
+   "zero_point_solutions": 1,
+   "best_rate": 0.0,
+   "mean_rate": 0.0
+  }
+ ],
+ "disputed_slots": [
+  {
+   "orid": "3qq7rvJzoj",
+   "claim": 2,
+   "raters": 2,
+   "counts": {
+    "verified": 1,
+    "falsified": 1
+   },
+   "area": "Reinforcement Learning"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 0,
+   "raters": 10,
+   "counts": {
+    "falsified": 5,
+    "verified": 2,
+    "toy": 3
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 1,
+   "raters": 10,
+   "counts": {
+    "verified": 3,
+    "falsified": 3,
+    "toy": 4
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 2,
+   "raters": 10,
+   "counts": {
+    "verified": 3,
+    "falsified": 3,
+    "toy": 4
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 3,
+   "raters": 10,
+   "counts": {
+    "falsified": 5,
+    "toy": 3,
+    "verified": 1,
+    "inconclusive": 1
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 4,
+   "raters": 10,
+   "counts": {
+    "falsified": 5,
+    "toy": 3,
+    "verified": 1,
+    "inconclusive": 1
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "claim": 5,
+   "raters": 10,
+   "counts": {
+    "falsified": 4,
+    "verified": 3,
+    "toy": 3
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "4CwO8At8Hw",
+   "claim": 3,
+   "raters": 16,
+   "counts": {
+    "verified": 10,
+    "falsified": 1,
+    "toy": 2,
+    "inconclusive": 3
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "4CwO8At8Hw",
+   "claim": 4,
+   "raters": 16,
+   "counts": {
+    "verified": 12,
+    "falsified": 2,
+    "inconclusive": 2
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "Xg12D1Y4H1",
+   "claim": 5,
+   "raters": 2,
+   "counts": {
+    "falsified": 1,
+    "verified": 1
+   },
+   "area": "Probabilistic Methods"
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "claim": 0,
+   "raters": 11,
+   "counts": {
+    "verified": 10,
+    "falsified": 1
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "claim": 3,
+   "raters": 11,
+   "counts": {
+    "falsified": 2,
+    "verified": 9
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "claim": 4,
+   "raters": 11,
+   "counts": {
+    "verified": 5,
+    "falsified": 1,
+    "toy": 3,
+    "inconclusive": 2
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "LhGxRnGmGJ",
+   "claim": 5,
+   "raters": 11,
+   "counts": {
+    "verified": 7,
+    "falsified": 3,
+    "toy": 1
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "Ir6N7U5Kea",
+   "claim": 0,
+   "raters": 7,
+   "counts": {
+    "falsified": 4,
+    "verified": 3
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "Ir6N7U5Kea",
+   "claim": 3,
+   "raters": 7,
+   "counts": {
+    "falsified": 4,
+    "verified": 2,
+    "inconclusive": 1
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "Ir6N7U5Kea",
+   "claim": 4,
+   "raters": 7,
+   "counts": {
+    "falsified": 5,
+    "verified": 1,
+    "inconclusive": 1
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "Ipgssz2WL1",
+   "claim": 2,
+   "raters": 3,
+   "counts": {
+    "falsified": 1,
+    "verified": 1,
+    "toy": 1
+   },
+   "area": "Applications"
+  },
+  {
+   "orid": "y5GiPedJPV",
+   "claim": 4,
+   "raters": 2,
+   "counts": {
+    "falsified": 1,
+    "verified": 1
+   },
+   "area": "General Machine Learning"
+  },
+  {
+   "orid": "hXO2OP0T4w",
+   "claim": 4,
+   "raters": 14,
+   "counts": {
+    "verified": 9,
+    "falsified": 2,
+    "toy": 1,
+    "inconclusive": 2
+   },
+   "area": "Theory"
+  },
+  {
+   "orid": "Vr0kjNERRf",
+   "claim": 0,
+   "raters": 2,
+   "counts": {
+    "verified": 1,
+    "falsified": 1
+   },
+   "area": "Reinforcement Learning"
+  },
+  {
+   "orid": "djASMk0bzO",
+   "claim": 2,
+   "raters": 5,
+   "counts": {
+    "verified": 3,
+    "falsified": 1,
+    "inconclusive": 1
+   },
+   "area": "Probabilistic Methods"
+  }
+ ]
+}
