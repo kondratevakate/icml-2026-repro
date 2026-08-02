@@ -7,7 +7,10 @@
 - batch_prompts/*.txt regenerated without compaction block.
 
 ## Launch plan (per user: 1-2 parallel)
-- Wave 1 (RUNNING): TBSyYj4VV6 + l35QweVxgn — deleg_ca0a1336 (background)
+## Wave 1 (RUNNING→finalizing)
+- TBSyYj4VV6: done, logbook 87 lines, results regenerated. Score+publish pending watchdog.
+- l35QweVxgn: agent cut off before logbook.md. Launched deleg_2a3f55f2 to write logbook from results (no re-run). Watchdog waits for it.
+- watchdog_wave1 (proc_41d83b965118) will score+publish both when l35QweVxgn logbook appears, write NEXT_WAVE.txt.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
