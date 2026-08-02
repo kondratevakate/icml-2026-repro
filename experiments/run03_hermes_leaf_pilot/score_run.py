@@ -91,13 +91,26 @@ def parse_logbook(path):
         return {}
     txt = open(path, errors="ignore").read()
     out = {}
-    # verdict table:  | N | <claim> | **verified** | <evidence> |
-    row = re.compile(r"^\|\s*(\d+)\s*\|(.*?)\|\s*\*{0,2}(verified|inconclusive|falsified|toy)\*{0,2}\s*\|", re.I | re.M)
+    # Any verdict table row: | N | ... |  — find the claim index, then the highest-priority
+    # verdict word ANYWHERE in that row (handles 3/5/6-col tables, verdict in any column).
+    row = re.compile(r"^\|\s*(\d+)\s*\|(.*)\|\s*$", re.I | re.M)
     for m in row.finditer(txt):
         idx = int(m.group(1)) - 1
-        verdict = m.group(3).lower()
-        note = m.group(2).strip()[:60]
-        out[idx] = dict(verdict=verdict, mutation=False, boundary=False, note=note)
+        cells = m.group(2)
+        low = cells.lower()
+        if "verified" in low:
+            verdict = "verified"
+        elif "falsified" in low:
+            verdict = "falsified"
+        elif "toy" in low:
+            verdict = "toy"
+        elif "inconclusive" in low:
+            verdict = "inconclusive"
+        else:
+            continue  # no verdict word in this row -> skip (don't overwrite)
+        out[idx] = dict(verdict=verdict, mutation=("mutation" in low),
+                        boundary=("mutation" in low) or ("inconclusive" in low),
+                        note=cells.strip()[:60])
     # per-claim sections: '## Claim N —' with 'Mutation tests' and 'Verdict: verified'
     sec = re.compile(r"##\s*Claim\s*(\d+)\s*—(.*?)(?=\n##\s*Claim\s*\d+\s*—|\n##\s*Evidence boundary|\Z)", re.S | re.I)
     for m in sec.finditer(txt):
