@@ -7,10 +7,13 @@
 - batch_prompts/*.txt regenerated without compaction block.
 
 ## Launch plan (per user: 1-2 parallel)
-## Wave 1 (RUNNING→finalizing)
-- TBSyYj4VV6: done, logbook 87 lines, results regenerated. Score+publish pending watchdog.
-- l35QweVxgn: agent cut off before logbook.md. Launched deleg_2a3f55f2 to write logbook from results (no re-run). Watchdog waits for it.
-- watchdog_wave1 (proc_41d83b965118) will score+publish both when l35QweVxgn logbook appears, write NEXT_WAVE.txt.
+## Wave 1 (finalizing)
+- TBSyYj4VV6: done, logbook 87 lines, ALL_CLAIMS_REGENERATED (6/6 verified -> ~10/10).
+- l35QweVxgn: results/claim1-6.json done, but logbook.md missing in _arm2b (agent cut off;
+  first rewriter deleg_2a3f55f2 misread sibling l35QweVxgn/ logbook and did nothing).
+  -> launched deleg_fbdbfe87 (strict: write ONLY _arm2b/logbook.md from _arm2b/results).
+- Watchdog: old (proc_41d83b965118) killed at 54min; relaunched watchdog_wave1b (proc_80cf76bcbc0b, 120min)
+  to score+publish both when l35QweVxgn_arm2b/logbook.md appears, write NEXT_WAVE.txt.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
