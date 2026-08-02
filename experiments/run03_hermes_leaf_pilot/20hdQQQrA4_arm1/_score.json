@@ -3,50 +3,52 @@
   "title": "CAffNet: Hard Constraint-Affine Neural Networks",
   "area": null,
   "n_anchored": 5,
-  "n_claim_files": 12,
+  "n_claim_files": 21,
   "source": "ARTIFACTS (results/claim*.json) — not self-report",
-  "check_reproducibility_pass": null,
-  "check_detail": "no check_reproducibility.py",
+  "check_reproducibility_pass": false,
+  "check_detail": "istinct feasible outputs  (got: [[1.5, 2.220446049250313e-16], [-3.5, 0.0], [6.5, 0.0]])\nTraceback (most recent call last):\n  File \"/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/20hdQQQrA4_arm1/check_reproducibility.py\", line 82, in <module>\n    all(c4[k][\"n_seeds\"] == 5 and c4[k][\"epochs\"] == 50000\n  File \"/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/20hdQQQrA4_arm1/check_reproducibility.py\", line 82, in <genexpr>\n    all(c4[k][\"n_seeds\"] == 5 and c4[k][\"epochs\"] == 50000\n        ~~~~~^^^^^^^^^^^\nKeyError: 'n_seeds'\n",
   "execution_success": true,
   "claim_coverage": 1.0,
-  "full_evidence_rate": 0.2,
-  "inconclusive_rate": 0.2,
+  "full_evidence_rate": 0.6,
+  "inconclusive_rate": 0.4,
   "toy_rate": 0.0,
   "not_attempted_rate": 0.0,
-  "n_mutation_tests": 1,
+  "n_mutation_tests": 4,
   "has_evidence_boundary": true,
-  "n_with_evidence_boundary": 1,
+  "n_with_evidence_boundary": 5,
   "wall_time_min": null,
   "human_interventions": null,
   "per_claim_verdict": {
     "claim1": "verified",
     "claim2": "verified",
     "claim3": "verified",
-    "claim4": "falsified",
+    "claim4": "inconclusive",
     "claim5": "inconclusive"
   },
   "per_claim_mutation": {
     "claim1": true,
-    "claim2": false,
-    "claim3": false,
-    "claim4": false,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
     "claim5": false
   },
   "per_claim_boundary": {
     "claim1": true,
-    "claim2": false,
-    "claim3": false,
-    "claim4": false,
-    "claim5": false
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true
   },
   "per_claim_note": {
-    "claim1": "explicit verdict/VERDICT_CAP field",
-    "claim2": "explicit verdict/VERDICT_CAP field",
-    "claim3": "explicit verdict/VERDICT_CAP field",
-    "claim4": "explicit verdict/VERDICT_CAP field",
-    "claim5": "explicit verdict/VERDICT_CAP field"
+    "claim1": "Thm 3.5: ‖P*−f_t‖_p < (3+3√n_out)K",
+    "claim2": "Eq. 8 trainable null-space w_φ",
+    "claim3": "No full-row-rank; cardinality ≤ min(m,n_out)",
+    "claim4": "73.33% MSE reduction + zero violations (§4.1, Table 2)",
+    "claim5": "CAffNet avoids obstacles, HardNet/soft fail (§4.3, Table 4)"
   },
-  "warnings": [],
+  "warnings": [
+    "check_reproducibility.py FAILED — red run must not score green"
+  ],
   "_meta_crosscheck": {
     "execution_success": null,
     "claim_coverage_meta": null,

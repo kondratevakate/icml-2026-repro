@@ -36,16 +36,19 @@ from common import ar1_cov
 
 P = 50
 LAM = 1e-2
-NS = [125, 250, 500, 1000, 2000, 4000, 8000]
-REPS = 400
+NS = [125, 250, 500, 1000, 2000, 4000]
+REPS = 250
+_CHOL = None
 DELTAS = [0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
 
 
 def gen_fig1(n, p, rng):
     """Figure 1 DGP: beta is 0.25-sparse, important features in blocks of 5,
     noise level ||chi beta|| / 2."""
-    Sigma = ar1_cov(p, 0.6)
-    chi = rng.multivariate_normal(np.zeros(p), Sigma, size=n)
+    global _CHOL
+    if _CHOL is None:
+        _CHOL = np.linalg.cholesky(ar1_cov(p, 0.6))
+    chi = rng.standard_normal((n, p)) @ _CHOL.T
     n_imp = int(round(0.25 * p))
     n_blocks = n_imp // 5
     starts = rng.choice(np.arange(0, p - 5, 5), size=n_blocks, replace=False)
@@ -128,7 +131,7 @@ if __name__ == "__main__":
         "T1_rate_in_n_NULL_feature": {
             "loglog_slope": s_null, "R2": r2_null, "predicted_slope": -0.5,
             "quantile_0.9_by_n": q_null},
-        "T2_rate_in_delta_NULL_feature": {str(n): delta_fit(null_res, n) for n in [500, 2000, 8000]},
+        "T2_rate_in_delta_NULL_feature": {str(n): delta_fit(null_res, n) for n in [500, 2000, 4000]},
         "MUTATION_non_null_feature": {
             "loglog_slope": s_mut, "R2": r2_mut,
             "prediction": "slope ~ 0 (plateau), because Thm 4.1 requires j in H_0",

@@ -1,0 +1,83 @@
+{
+  "claim": 4,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "command": "python claim4_worker.py <kind> <seed> 50000 ; python claim4_aggregate.py",
+  "nn_soft": {
+    "runs": [
+      {
+        "seed": 0,
+        "mse": 0.0009004464270774134,
+        "viol_max": 0.13961482048034668,
+        "viol_mean": 0.0005027320981025696,
+        "viol_pct": 6.25,
+        "kind": "nn_soft",
+        "epochs": 50000,
+        "seconds": 1090.3
+      },
+      {
+        "seed": 1,
+        "mse": 0.0005501352377801183,
+        "viol_max": 0.10537540912628174,
+        "viol_mean": 0.0004891406744718552,
+        "viol_pct": 6.25,
+        "kind": "nn_soft",
+        "epochs": 50000,
+        "seconds": 1057.0
+      },
+      {
+        "seed": 2,
+        "mse": 0.0006400819663258201,
+        "viol_max": 0.05494081974029541,
+        "viol_mean": 0.0003026039918187906,
+        "viol_pct": 6.375,
+        "kind": "nn_soft",
+        "epochs": 50000,
+        "seconds": 1051.2
+      },
+      {
+        "seed": 3,
+        "mse": 0.001138788223183141,
+        "viol_max": 0.20367276668548584,
+        "viol_mean": 0.0010919563472270965,
+        "viol_pct": 6.25,
+        "kind": "nn_soft",
+        "epochs": 50000,
+        "seconds": 1028.4
+      },
+      {
+        "seed": 4,
+        "mse": 0.005411470476598087,
+        "viol_max": 0.33357458114624006,
+        "viol_mean": 0.0018233810383102018,
+        "viol_pct": 6.937500000000001,
+        "kind": "nn_soft",
+        "epochs": 50000,
+        "seconds": 1075.5
+      }
+    ],
+    "n_seeds": 5,
+    "epochs": 50000,
+    "mse_mean": 0.001728184466192916,
+    "mse_std": 0.0018531541253711343,
+    "viol_max": 0.33357458114624006,
+    "viol_mean": 0.0008419628299861027,
+    "viol_pct_mean": 6.4125
+  },
+  "caffnet_tf": {
+    "runs": [
+      {
+        "seed": 0,
+        "mse": 0.0005702643689758901,
+        "viol_max": 0.0,
+        "viol_mean": 0.0,
+        "viol_pct": 0.0,
+        "kind": "caffnet_tf",
+        "epochs": 50000,
+        "seconds": 1539.8
+  

@@ -1,26 +1,42 @@
 {
-  "orid": "20hdQQQrA4",
   "arm": "arm1",
-  "arm_description": "Hermes leaf (control, NO skills) — isolated delegate_task, baseline for architecture comparison",
-  "agent": "Hermes Agent (subagent, leaf role)",
+  "agent": "Hermes leaf (control, no skills)",
   "model": "tencent/hy3:free via localhost:8319/v1",
-  "method_notes": {
-    "self_contamination_avoided": true,
-    "skills_used": false,
-    "external_framework": false,
-    "control_run": true
+  "orid": "20hdQQQrA4",
+  "paper": "CAffNet: Hard Constraint-Affine Neural Networks (arXiv 2605.24437)",
+  "isolation": {
+    "skills_loaded": [],
+    "other_arm_material_read": false,
+    "other_reproduction_logbooks_read": false,
+    "tools_used": ["read_file", "write_file", "patch", "search_files", "terminal", "process"]
   },
-  "env": "numpy 2.5.1 + scipy (brainiac_brainage_py311 venv); torch 2.13.0+cpu for claim4",
-  "run_id": "deleg_4a64664d",
-  "generated": "2026-08-02",
-  "n_claims_attempted": 5,
-  "n_claim_files": 6,
+  "environment": {
+    "python": "3.12 (../20hdQQQrA4/.venv)",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "sympy": "1.14.0",
+    "torch": "2.13.0+cpu",
+    "device": "CPU only (8 cores, WSL2)"
+  },
+  "timing": {
+    "start_utc": "2026-08-02T16:16:23Z",
+    "logbook_written_utc": "2026-08-02T17:52:00Z",
+    "elapsed_hours": 1.6,
+    "budget_soft_hours": 4,
+    "budget_hard_hours": 8
+  },
   "verdicts": {
     "claim1": "verified",
-    "claim1b": "verified",
     "claim2": "verified",
     "claim3": "verified",
-    "claim4": "falsified",
+    "claim4": "inconclusive",
     "claim5": "inconclusive"
-  }
+  },
+  "artifacts": [
+    "plan.md", "notes_paper.md", "logbook.md", "check_reproducibility.py",
+    "caffnet_core.py",
+    "verify_claim1.py", "verify_claim1b.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "claim4_worker.py", "claim4_aggregate.py", "verify_claim5.py",
+    "results/"
+  ]
 }

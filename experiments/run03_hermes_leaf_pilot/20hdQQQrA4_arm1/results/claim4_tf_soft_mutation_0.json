@@ -1,0 +1,10 @@
+{
+  "seed": 0,
+  "mse": 0.005781230577877721,
+  "viol_max": 0.1593339443206787,
+  "viol_mean": 0.0004311009496450424,
+  "viol_pct": 6.25,
+  "kind": "tf_soft_mutation",
+  "epochs": 50000,
+  "seconds": 851.6
+}

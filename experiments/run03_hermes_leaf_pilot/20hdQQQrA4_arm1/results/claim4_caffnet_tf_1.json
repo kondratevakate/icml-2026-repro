@@ -1,0 +1,10 @@
+{
+  "seed": 1,
+  "mse": 0.0011974720581798262,
+  "viol_max": 0.0,
+  "viol_mean": 0.0,
+  "viol_pct": 0.0,
+  "kind": "caffnet_tf",
+  "epochs": 50000,
+  "seconds": 1005.8
+}

@@ -1,0 +1,12 @@
+{
+  "claim": 4,
+  "source": "Theorem 4.3 (double robustness), Section 4.4, arXiv:2601.23124v2",
+  "verdict": "inconclusive",
+  "command": "n/a -- not executed",
+  "reason": [
+    "Testing the compound rate O_P(a_n b_n) requires independently tunable error injection into BOTH the predictive model m_hat (rate a_n) and the conditional sampler nu_hat/rho_hat (rate b_n), plus a two-dimensional rate fit to separate the product a_n*b_n from the additive alternative a_n + b_n. A single-axis experiment cannot distinguish those and would be a fake verification.",
+    "Within the ~60 minute budget this could not be done to the standard applied to claims 1-3, and the task instruction explicitly prefers two claims done properly over six done shallowly.",
+    "The paper itself frames this result as supporting a CONJECTURE of control (Section 4.5: 'the estimated statistic should preserve the sign of the theoretical quantity with high probability'; Section 1: 'conjecturing the control'), so an ambiguous partial number here would be especially easy to over-read."
+  ],
+  "what_would_be_needed": "A grid over (a_n, b_n) with a_n, b_n set independently (e.g. by corrupting m_hat with noise of size n^{-alpha} and the sampler with noise of size n^{-beta}), verifying that log(loss difference) ~ -(alpha+beta) log n rather than -min(alpha,beta) log n."
+}

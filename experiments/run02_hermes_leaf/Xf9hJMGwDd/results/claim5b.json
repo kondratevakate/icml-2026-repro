@@ -1,0 +1,75 @@
+{
+  "claim": "5 (harder regime, unsaturated)",
+  "source": "Figures 4 and 5, Section 5.1",
+  "command": "./.venv/bin/python verify_claim5b.py",
+  "VERDICT_CAP": "toy -- ridge black box, not the paper's NN/GB/RF",
+  "config": {
+    "alpha": 0.05,
+    "n_seeds": 250,
+    "K_HRT": 100,
+    "nu,rho": "ORACLE closed form (isolates the split effect from imputer error)"
+  },
+  "results": {
+    "n=60,p=12,noise=6.0": {
+      "SKO-1": {
+        "type_I_error": 0.042222222222222223,
+        "type_I_mcse": 0.00441993240549398,
+        "power": 0.12533333333333332,
+        "power_mcse": 0.012122046031920517
+      },
+      "SKO-5": {
+        "type_I_error": 0.04488888888888889,
+        "type_I_mcse": 0.0045367307530782474,
+        "power": 0.33066666666666666,
+        "power_mcse": 0.01696972467530206
+      },
+      "HRT": {
+        "type_I_error": 0.05955555555555555,
+        "type_I_mcse": 0.005446503012183909,
+        "power": 0.14533333333333331,
+        "power_mcse": 0.011736060289173327
+      }
+    },
+    "n=80,p=12,noise=4.0": {
+      "SKO-1": {
+        "type_I_error": 0.044,
+        "type_I_mcse": 0.004484177946051188,
+        "power": 0.25599999999999995,
+        "power_mcse": 0.0159189056016912
+      },
+      "SKO-5": {
+        "type_I_error": 0.04533333333333334,
+        "type_I_mcse": 0.004408387068215526,
+        "power": 0.7253333333333333,
+        "power_mcse": 0.016773312135651683
+      },
+      "HRT": {
+        "type_I_error": 0.04844444444444446,
+        "type_I_mcse": 0.004817170933490853,
+        "power": 0.3733333333333333,
+        "power_mcse": 0.01602220681151979
+      }
+    },
+    "n=120,p=12,noise=4.0": {
+      "SKO-1": {
+        "type_I_error": 0.04177777777777778,
+        "type_I_mcse": 0.004231708641280889,
+        "power": 0.29466666666666663,
+        "power_mcse": 0.01564244936773721
+      },
+      "SKO-5": {
+        "type_I_error": 0.03822222222222222,
+        "type_I_mcse": 0.004179101445154076,
+        "power": 0.8453333333333333,
+        "power_mcse": 0.013867692269764606
+      },
+      "HRT": {
+        "type_I_error": 0.04755555555555556,
+        "type_I_mcse": 0.004644476342261543,
+        "power": 0.5266666666666666,
+        "power_mcse": 0.015254871717294484
+      }
+    }
+  },
+  "wall_seconds": 69.48
+}

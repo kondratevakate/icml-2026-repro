@@ -1,7 +1,1 @@
-Traceback (most recent call last):
-  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/20hdQQQrA4_arm1/claim4_worker.py", line 3, in <module>
-    import verify_claim4 as V
-  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/20hdQQQrA4_arm1/verify_claim4.py", line 20, in <module>
-    EPOCHS = int(sys.argv[1]) if len(sys.argv) > 1 else 50000
-             ^^^^^^^^^^^^^^^^
-ValueError: invalid literal for int() with base 10: 'tf_soft_mutation'
+{"seed": 2, "mse": 0.0008666169986989067, "viol_max": 0.09239542484283447, "viol_mean": 0.0003360477109674265, "viol_pct": 6.375, "kind": "tf_soft_mutation", "epochs": 50000, "seconds": 508.4}
