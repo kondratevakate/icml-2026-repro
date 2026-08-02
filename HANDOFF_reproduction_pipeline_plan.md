@@ -88,11 +88,11 @@ Space), then batch in background (night window) only after the pipeline is verif
 - Variant B naming locked: arm1=Hermes-leaf, arm2=Hermes+skills, arm3=Sakana, arm4=ARC.
 
 **TODO (blocked/in-progress):**
-- [ ] Obtain HF token (user) → unblock Space sync.
-- [ ] Build compaction wrapper for arm2 leaf loop; verify it does not lose precision.
-- [ ] Build the per-paper pipeline script (run → score → compare → publish).
-- [ ] Test pipeline on 1 paper (20hdQQQrA4).
-- [ ] Roll out to master/codex/* branches + remaining batches (background, night).
+- [ ] Obtain HF token (user) → unblock Space sync. [RESOLVED: token at /home/kate/.cache/huggingface/token]
+- [ ] Build compaction wrapper for arm2 leaf loop; verify it does not lose precision. [IN PROGRESS: deleg_f26563e7 runs arm2+compaction on CAffNet 20hdQQQrA4_arm2b; compare_runs.py ready]
+- [ ] Build the per-paper pipeline script (run → score → compare → publish). [DONE: run_arm2.py + local_to_trackio.py + publish_local.py + space_map guard]
+- [ ] Test pipeline on 1 paper (20hdQQQrA4). [DONE: arm2 published to Space, got 9/10 challenge judge]
+- [ ] Roll out to master/codex/* branches + remaining batches (background, night). [PENDING: wait for compaction test result]
 
 ---
 
