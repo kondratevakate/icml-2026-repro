@@ -1,16 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Reproduction: FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
-  "emoji": "\ud83c\udfaf",
-  "space_id": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators",
-  "paper": {
-    "arxiv_id": "2602.01941"
-  },
-  "tags": [
-    "icml2026-repro",
-    "paper-1KRpajnd6u"
-  ],
-  "updated_at": "2026-08-02T04:00:00+00:00",
+  "emoji": "🎯",
+  "space_id": null,
+  "paper": null,
+  "tags": [],
+  "updated_at": "2026-08-02T08:37:57+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
@@ -24,37 +19,37 @@
       },
       {
         "slug": "claim-1-proposition-1-discrete-conservation",
-        "title": "Claim 1 \u2014 Proposition 1 (discrete conservation)",
+        "title": "Claim 1 — Proposition 1 (discrete conservation)",
         "file": "pages/claim-1-proposition-1-discrete-conservation/page.md",
         "children": []
       },
       {
         "slug": "claim-2-propositions-2-and-3-l-head-u-head-bound-guarantees",
-        "title": "Claim 2 \u2014 Propositions 2 and 3 (L-head / U-head bound guarantees)",
+        "title": "Claim 2 — Propositions 2 and 3 (L-head / U-head bound guarantees)",
         "file": "pages/claim-2-propositions-2-and-3-l-head-u-head-bound-guarantees/page.md",
         "children": []
       },
       {
         "slug": "claim-3-table-3-shallow-water-inconclusive",
-        "title": "Claim 3 \u2014 Table 3 (shallow water) \u2014 inconclusive",
+        "title": "Claim 3 — Table 3 (shallow water) — inconclusive",
         "file": "pages/claim-3-table-3-shallow-water-inconclusive/page.md",
         "children": []
       },
       {
         "slug": "claim-4-table-4-traffic-lwr-inconclusive",
-        "title": "Claim 4 \u2014 Table 4 (traffic LWR) \u2014 inconclusive",
+        "title": "Claim 4 — Table 4 (traffic LWR) — inconclusive",
         "file": "pages/claim-4-table-4-traffic-lwr-inconclusive/page.md",
         "children": []
       },
       {
         "slug": "claim-5-table-5-spinodal-decomposition-17-3-speedup-inconclusive",
-        "title": "Claim 5 \u2014 Table 5 (spinodal decomposition, 17.3\u00d7 speedup) \u2014 inconclusive",
+        "title": "Claim 5 — Table 5 (spinodal decomposition, 17.3× speedup) — inconclusive",
         "file": "pages/claim-5-table-5-spinodal-decomposition-17-3-speedup-inconclusive/page.md",
         "children": []
       },
       {
         "slug": "claim-6-d-head-dcl-not-architecture-enforces-the-dual-bound",
-        "title": "Claim 6 \u2014 D-head: DCL, not architecture, enforces the dual bound",
+        "title": "Claim 6 — D-head: DCL, not architecture, enforces the dual bound",
         "file": "pages/claim-6-d-head-dcl-not-architecture-enforces-the-dual-bound/page.md",
         "children": []
       },
@@ -66,6 +61,15 @@
       }
     ]
   },
-  "agent_view_tokens": 0,
-  "revision": "0"
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 4697,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "c24f6651248cc0eea943"
 }
