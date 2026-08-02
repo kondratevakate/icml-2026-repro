@@ -1,0 +1,30 @@
+{
+  "claim": 4,
+  "source": "Corollary 5.3",
+  "seed": 20260802,
+  "eps": 0.35,
+  "degree_bound_r": 6,
+  "eps_net_size_bofop_vs_sample_count": {
+    "10": 4,
+    "20": 5,
+    "40": 5
+  },
+  "eps_net_size_clipped_dense": {
+    "10": 1,
+    "20": 1,
+    "40": 1
+  },
+  "eps_net_size_UNBOUNDED_degree_MUTATION": {
+    "10": 10,
+    "20": 20,
+    "40": 40
+  },
+  "min_movers_distance_dense_extreme_to_bofop": 0.12444444444444491,
+  "checks": {
+    "bofop_net_saturates": true,
+    "proper_subset": true,
+    "mutation_net_diverges": true
+  },
+  "verdict": "verified",
+  "note": "Total boundedness (equivalently, for this closed set, compactness) is checked numerically: with the bofop degree bound the greedy eps-net over sampled DIDMs saturates, while dropping the bound makes the net grow without saturating. A dense-graph DIDM concentrated above the bound sits at strictly positive mover's distance from every bofop DIDM, confirming the inclusion is proper. Finite-sample surrogate for a topological statement -- it is evidence, not a proof."
+}

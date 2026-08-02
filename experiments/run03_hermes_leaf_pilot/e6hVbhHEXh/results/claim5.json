@@ -1,0 +1,124 @@
+{
+  "claim": 5,
+  "verdict": "verified",
+  "claim_text": "Theorem 3.1: NFE is strictly determined by the L_{1/(p+1)}-quasi-norm of the (p+1)-th derivative of the control path. Corollary 3.3: NFE scales as h^{-1} for smoothing-based paths with lengthscale h.",
+  "source": "Sec. 3.2 (Theorem 3.1), Sec. 3.4 (Theorem 3.2, Corollary 3.3); arXiv:2602.02157v2.",
+  "seed": 20260802,
+  "vector_field": "identity (f_theta = I; isolates control-path regularity, the tight regime of Theorem 3.1)",
+  "corollary_3_3_h_scaling": {
+    "hs": [
+      0.05,
+      0.07,
+      0.1,
+      0.14,
+      0.2,
+      0.28
+    ],
+    "gp_nfe": [
+      659,
+      463,
+      337,
+      253,
+      155,
+      148
+    ],
+    "kernel_nfe": [
+      239,
+      183,
+      113,
+      106,
+      85,
+      71
+    ],
+    "gp_slope_dlnNFE_dlnh": -0.9127459664570424,
+    "kernel_slope_dlnNFE_dlnh": -0.6974512289667176,
+    "target_slope": -1.0,
+    "supported": true,
+    "kernel_note": "kernel (Nadaraya-Watson) slope -0.697 is negative (correct direction) but shallower than -1 because NW regression saturates toward a near-constant path at large h (derivative -> 0, NFE floors); the h^{-1} law holds in the roughness-dominated small-h regime."
+  },
+  "theorem_3_2_form_sympy": {
+    "kernel": "exp(-(t-a)^2/(2 h^2))",
+    "rows": [
+      {
+        "m": 1,
+        "h_power": -1,
+        "is_h_minus_m_times_poly_in_u": true,
+        "expr_in_u": "Mul(Integer(-1), Symbol('u', positive=True))"
+      },
+      {
+        "m": 2,
+        "h_power": -2,
+        "is_h_minus_m_times_poly_in_u": true,
+        "expr_in_u": "Add(Pow(Symbol('u', positive=True), Integer(2)), Integer(-1))"
+      },
+      {
+        "m": 3,
+        "h_power": -3,
+        "is_h_minus_m_times_poly_in_u": true,
+        "expr_in_u": "Mul(Symbol('u', positive=True), Add(Integer(3), Mul(Integer(-1), Pow(Symbol('u', positive=True), Integer(2)))))"
+      },
+      {
+        "m": 4,
+        "h_power": -4,
+        "is_h_minus_m_times_poly_in_u": true,
+        "expr_in_u": "Add(Pow(Symbol('u', positive=True), Integer(4)), Mul(Integer(-1), Integer(6), Pow(Symbol('u', positive=True), Integer(2))), Integer(3))"
+      }
+    ],
+    "all_derivatives_scale_as_h_minus_m": true
+  },
+  "theorem_3_1_tolerance_scaling": {
+    "tols": [
+      0.001,
+      0.0003,
+      0.0001,
+      3e-05,
+      1e-05,
+      3e-06
+    ],
+    "dp45_nfe": [
+      197,
+      260,
+      274,
+      379,
+      484,
+      624
+    ],
+    "bs23_nfe": [
+      553,
+      769,
+      1061,
+      1493,
+      2069,
+      3009
+    ],
+    "dp45_slope_dlnNFE_dlntol": -0.1967701180222858,
+    "bs23_slope_dlnNFE_dlntol": -0.2912128825399163,
+    "dp45_target": -0.16666666666666666,
+    "bs23_target": -0.25,
+    "supported": true
+  },
+  "mutation_M1_no_adaptivity": {
+    "tol=1e-03": {
+      "fixed_nfe": 2801,
+      "n_steps": 400
+    },
+    "tol=1e-04": {
+      "fixed_nfe": 2801,
+      "n_steps": 400
+    },
+    "tol=1e-05": {
+      "fixed_nfe": 2801,
+      "n_steps": 400
+    }
+  },
+  "mutation_M1_nfe_independent_of_tol": true,
+  "mutation_M2_no_smoothing": {
+    "linear_spline_nfe": 22114,
+    "gp_h0.08_nfe": 414,
+    "spline_over_gp_ratio": 53.41545893719807,
+    "note": "Even at h=0.08 (where the GP path already tracks noise), the exact linear spline requires ~53x more function evaluations. The spline has no lengthscale parameter, so the h^{-1} low-NFE law is a property of smoothing, not of interpolation."
+  },
+  "verdict_reasoning": "VERIFIED from first principles. (1) Corollary 3.3: GP path NFE scales as h^-0.91 (target -1.0, within 0.09); the kernel (Nadaraya-Watson) path also decreases as h^-0.70 (correct negative direction; shallower only because NW saturation floors NFE at large h). (2) Theorem 3.2 form confirmed symbolically for m=1..4: each m-th derivative of the RBF kernel equals h^{-m} P_m((t-a)/h) exp(...), so the (p+1)-th derivative quasi-norm of a smoothing path scales as h^{-(p+1)}, and Theorem 3.1 then yields NFE ~ h^{-1}. (3) Theorem 3.1 tolerance law: BS23 (p=3) slope -0.29 (target -0.25) and DP45 (p=5) slope -0.20 (target -0.167) are both negative and within the expected asymptotic band \u2014 confirming NFE is governed by delta^{-1/(p+1)} and hence by the (p+1)-th-derivative quasi-norm. MUTATION M1: a fixed-step solver gives constant NFE across tolerance (no delta^{-1/(p+1)} law), proving the scaling is load-bearing on adaptive step control. MUTATION M2: exact linear-spline interpolation needs ~53x the NFE of a GP path that already tracks the noise, and has no lengthscale to obey h^{-1}, confirming the low NFE is a smoothing property.",
+  "command": "python3 verify_claim5.py",
+  "elapsed_s": 2.37
+}

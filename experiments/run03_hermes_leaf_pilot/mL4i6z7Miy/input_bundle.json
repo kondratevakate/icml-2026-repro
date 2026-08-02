@@ -1,0 +1,15 @@
+{
+ "orid": "mL4i6z7Miy",
+ "title": "Momentum Further Constrains Sharpness at the Edge of Stochastic Stability",
+ "openreview": "https://openreview.net/forum?id=mL4i6z7Miy",
+ "arxiv": "2604.14108",
+ "area": "Theory",
+ "anchored_claims": [
+  "SGD with momentum (SGDM) exhibits an Edge of Stochastic Stability regime whose batch-size-dependent behavior cannot be explained by a single stability threshold, unlike vanilla SGD (Section 3).",
+  "In the noise-dominated (small-batch) regime, SGDM's mean-square stability condition reduces to a spectral-radius condition rho(I - eta_eff K + eta_eff^2 G) < 1 with effective learning rate eta_eff = eta/(1-beta) (Theorem 4.1).",
+  "Batch Sharpness converges to a plateau of approximately 2(1-beta)/eta at small batch sizes, indicating momentum drives SGD toward flatter regions than vanilla SGD in this regime (Section 4).",
+  "Batch Sharpness converges to a plateau of approximately 2(1+beta)/eta for SGDM at large batch sizes, consistent with full-batch gradient descent dynamics and sharper minima (Section 4).",
+  "Figure 3 empirically shows batch-size-dependent Batch Sharpness plateaus for MLP and CNN architectures on CIFAR-10, with SGD with Nesterov momentum (SGDN) reaching the deterministic plateau at smaller batch sizes than SGDM (Figure 3).",
+  "Figure 6 shows intervention experiments in which increasing learning rate or momentum, or decreasing batch size, triggers sharp loss 'catapults' once Batch Sharpness exceeds its operating plateau (Figure 6)."
+ ]
+}

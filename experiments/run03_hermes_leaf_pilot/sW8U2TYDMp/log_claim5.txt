@@ -1,0 +1,24 @@
+{
+  "claim": "Theorem 21: manifest-then-suppress ('Waluigi shattering') gives strictly greater first-order misalignment suppression than pure Luigi reinforcement",
+  "source": "arXiv:2509.06701v2 Sec.5.1 Theorem 21; App. J Lemma 71, Prop. 72, Cor. 74, Thm 75",
+  "eps": 0.02,
+  "outcome_space": 8,
+  "baseline_subspace_dim": 3,
+  "trials": 1932,
+  "max_rel_err_closed_form_vs_brute_force": 0.025638393310332762,
+  "min_gap_when_corr_nonzero": 4.609156892959598e-11,
+  "median_gap": 0.000474144416580224,
+  "strict_inequality_holds_under_Cor74_hypothesis": true,
+  "mutation": {
+    "a_w_inside_baseline_span": {
+      "max_abs_gap": 0.0
+    },
+    "b_u_orthogonal_to_gA": {
+      "max_abs_gap": 1.734723475976807e-18
+    },
+    "property_breaks": true
+  },
+  "caveat": "Strictness requires <g_A, u>_P != 0 and u != 0 (stated in Cor. 74). The main-text wording of Theorem 21 omits the <g_A,u> != 0 condition; under the mutation with u orthogonal to g_A the gap is exactly 0, so the literal main-text statement is false without that hypothesis.",
+  "verdict": "verified (conditional on the Cor. 74 hypothesis)",
+  "seed": 20260802
+}

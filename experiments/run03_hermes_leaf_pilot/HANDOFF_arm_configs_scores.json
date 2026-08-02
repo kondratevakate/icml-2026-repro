@@ -1,0 +1,870 @@
+{
+  "generated": "2026-08-02",
+  "judge": "score_run.py v2 (artifact-grounded)",
+  "arms": {
+    "20hdQQQrA4": {
+      "1": {
+        "config": "Sakana v2 (AI-Scientist-v2); model=hy3:free via localhost:8319/v1; torch 2.13+cpu; run_id=20hdQQQrA4-second; ts=2026-08-02T12:00Z",
+        "score": {
+          "orid": "20hdQQQrA4",
+          "title": "CAffNet: Hard Constraint-Affine Neural Networks",
+          "area": "Deep Learning",
+          "n_anchored": 5,
+          "n_claim_files": 5,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": true,
+          "check_detail": "passed",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.2,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 1,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "verified",
+            "claim5": "verified"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_note": {
+            "claim1": "no resolvable verdict in artifact",
+            "claim2": "no resolvable verdict in artifact",
+            "claim3": "no resolvable verdict in artifact",
+            "claim4": "no resolvable verdict in artifact",
+            "claim5": "no resolvable verdict in artifact"
+          },
+          "warnings": [],
+          "_meta_crosscheck": {
+            "execution_success": null,
+            "claim_coverage_meta": null,
+            "per_claim_verdict_meta": null
+          },
+          "tokens": {
+            "tokens_before": 14604705,
+            "tokens_after": 40115430,
+            "tokens_used": 25510725,
+            "requests_used": 292,
+            "note": "delta from before/after snapshots"
+          }
+        }
+      },
+      "2": {
+        "config": "Hermes Agent (subagent, leaf) + K-Dense skill set (paper-claim-reproduction); model=hy3:free via nous; numpy/scipy, CPU 8vCPU, no torch; run_id=20hdQQQrA4-arm2-rerun; ts=2026-08-02T13:20Z; self-contamination avoided",
+        "score": {
+          "orid": "20hdQQQrA4",
+          "title": "CAffNet: Hard Constraint-Affine Neural Networks",
+          "area": null,
+          "n_anchored": 5,
+          "n_claim_files": 5,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": true,
+          "check_detail": "passed",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.0,
+          "inconclusive_rate": 0.2,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 0,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "verified",
+            "claim5": "inconclusive"
+          },
+          "per_claim_mutation": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_boundary": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": true
+          },
+          "per_claim_note": {
+            "claim1": "Theorem 3.5 (UAT + error bound `(3+3√n_out)K`)",
+            "claim2": "Section 3, trainable null-space term `w_phi`",
+            "claim3": "Section 3, no full-row-rank + cardinality `min(m,n_out)`",
+            "claim4": "no resolvable verdict in artifact",
+            "claim5": "no resolvable verdict in artifact"
+          },
+          "warnings": [],
+          "_meta_crosscheck": {
+            "execution_success": null,
+            "claim_coverage_meta": null,
+            "per_claim_verdict_meta": null
+          },
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      },
+      "3": {
+        "config": "Sakana v2 (copy of arm1); model=hy3:free via localhost:8319/v1; torch 2.13+cpu",
+        "score": {
+          "orid": "20hdQQQrA4",
+          "title": "CAffNet: Hard Constraint-Affine Neural Networks",
+          "area": "Deep Learning",
+          "n_anchored": 5,
+          "n_claim_files": 5,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": true,
+          "check_detail": "passed",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.2,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 1,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "verified",
+            "claim5": "verified"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_note": {
+            "claim1": "no resolvable verdict in artifact",
+            "claim2": "no resolvable verdict in artifact",
+            "claim3": "no resolvable verdict in artifact",
+            "claim4": "no resolvable verdict in artifact",
+            "claim5": "no resolvable verdict in artifact"
+          },
+          "warnings": [],
+          "_meta_crosscheck": {
+            "execution_success": null,
+            "claim_coverage_meta": null,
+            "per_claim_verdict_meta": null
+          },
+          "tokens": {
+            "tokens_before": 14604705,
+            "tokens_after": 40115430,
+            "tokens_used": 25510725,
+            "requests_used": 292,
+            "note": "delta from before/after snapshots"
+          }
+        }
+      },
+      "4": {
+        "config": "ARC (AutoResearchClaw) lightweight, single LLM call, no tree-search execution; model=hy3:free via localhost:8319/v1; verify_scripts_extracted=3, claims_verified_text=5",
+        "score": {
+          "orid": null,
+          "title": null,
+          "area": null,
+          "n_anchored": 0,
+          "n_claim_files": 3,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": false,
+          "claim_coverage": null,
+          "full_evidence_rate": null,
+          "inconclusive_rate": null,
+          "toy_rate": null,
+          "not_attempted_rate": null,
+          "n_mutation_tests": 0,
+          "has_evidence_boundary": false,
+          "n_with_evidence_boundary": 0,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {},
+          "per_claim_mutation": {},
+          "per_claim_boundary": {},
+          "per_claim_note": {
+            "claim1": "no resolvable verdict in artifact",
+            "claim2": "no resolvable verdict in artifact",
+            "claim3": "no resolvable verdict in artifact"
+          },
+          "warnings": [
+            "no claim artifact shows a real executed numeric experiment"
+          ],
+          "_meta_crosscheck": {
+            "execution_success": null,
+            "claim_coverage_meta": null,
+            "per_claim_verdict_meta": null
+          },
+          "finished_utc": "2026-08-02T12:54:00Z",
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "sW8U2TYDMp": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "sW8U2TYDMp",
+          "title": "Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 6,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.167,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 1,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "verified",
+            "claim5": "verified",
+            "claim6": "verified"
+          },
+          "per_claim_mutation": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "Agents = distributions, epistemic utility `U(o) = log P(o)` ",
+            "claim2": "Thm 10: strict unanimity impossible under **linear** pooling",
+            "claim3": "Thm 9: strict unanimity achievable under log pooling for \\|O",
+            "claim4": "Thm 19: manifesting Luigi under a stability budget forces we",
+            "claim5": "no resolvable verdict in artifact",
+            "claim6": "Thm 14: parental compositional benefit need not pass to chil"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "NinueNAODD": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "NinueNAODD",
+          "title": "Efficient Bayesian Inference from Noisy Pairwise Comparisons",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 6,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.0,
+          "inconclusive_rate": 0.667,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 3,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 3,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "inconclusive",
+            "claim3": "inconclusive",
+            "claim4": "falsified",
+            "claim5": "inconclusive",
+            "claim6": "inconclusive"
+          },
+          "per_claim_mutation": {
+            "claim1": false,
+            "claim2": true,
+            "claim3": true,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": false,
+            "claim2": true,
+            "claim3": true,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "Closed-form EM ⇒ monotone likelihood + stationary point (vs.",
+            "claim2": "explicit verdict/VERDICT_CAP field",
+            "claim3": "explicit verdict/VERDICT_CAP field",
+            "claim4": "explicit verdict/VERDICT_CAP field",
+            "claim5": "99% Type I error ≈1% (BBQ, Crowd-BT), ≈0.1% (Bayes-BT) | App",
+            "claim6": "explicit verdict/VERDICT_CAP field"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "arc2pWtZLN": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "arc2pWtZLN",
+          "title": "Collapsed Effective Operators for Higher-order Structures",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 6,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": true,
+          "check_detail": "passed",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.167,
+          "inconclusive_rate": 0.333,
+          "toy_rate": 0.167,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 1,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "inconclusive",
+            "claim5": "inconclusive",
+            "claim6": "toy"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": false
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": false
+          },
+          "per_claim_note": {
+            "claim1": "**verified**",
+            "claim2": "**verified**",
+            "claim3": "**verified**",
+            "claim4": "**verified**  ← fixed",
+            "claim5": "**verified**  ← fixed",
+            "claim6": "**toy**"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "9uENnRAcSl": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "9uENnRAcSl",
+          "title": "Understanding Behavior Cloning with Action Quantization",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 6,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": true,
+          "check_detail": "passed",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.833,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.167,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 6,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 6,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "verified",
+            "claim4": "verified",
+            "claim5": "verified",
+            "claim6": "toy"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": true,
+            "claim4": true,
+            "claim5": true,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": true,
+            "claim4": true,
+            "claim5": true,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "Thm 2 (Sec 3.2) + lower bounds Thm 8–9 (Sec 5)",
+            "claim2": "Thm 3 + Def 3 (P-IISS) + Def 4 (RTVC) (Sec 3.1–3.2)",
+            "claim3": "Thm 6 (Sec 4.1 + appendix)",
+            "claim4": "Thm 7 (Sec 4.2)",
+            "claim5": "Thm 8–9 (Sec 5 + appendix)",
+            "claim6": "Sec 4.1 + Prop 3.2 (empirical)"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "wpKA7G7Cqu": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "wpKA7G7Cqu",
+          "title": "Explaining Concept Shift with Interpretable Feature Attribution",
+          "area": null,
+          "n_anchored": 5,
+          "n_claim_files": 1,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 0.2,
+          "full_evidence_rate": 0.2,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.8,
+          "n_mutation_tests": 1,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 1,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "not_attempted",
+            "claim3": "not_attempted",
+            "claim4": "not_attempted",
+            "claim5": "not_attempted"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false
+          },
+          "per_claim_note": {
+            "claim1": "explicit verdict/VERDICT_CAP field"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "mL4i6z7Miy": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "mL4i6z7Miy",
+          "title": "Momentum Further Constrains Sharpness at the Edge of Stochastic Stability",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 6,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 1.0,
+          "full_evidence_rate": 0.5,
+          "inconclusive_rate": 0.333,
+          "toy_rate": 0.167,
+          "not_attempted_rate": 0.0,
+          "n_mutation_tests": 6,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 6,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "verified",
+            "claim2": "verified",
+            "claim3": "inconclusive",
+            "claim4": "verified",
+            "claim5": "toy",
+            "claim6": "inconclusive"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": true,
+            "claim4": true,
+            "claim5": true,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": true,
+            "claim4": true,
+            "claim5": true,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "explicit verdict/VERDICT_CAP field",
+            "claim2": "explicit verdict/VERDICT_CAP field",
+            "claim3": "explicit verdict/VERDICT_CAP field",
+            "claim4": "explicit verdict/VERDICT_CAP field",
+            "claim5": "explicit verdict/VERDICT_CAP field",
+            "claim6": "explicit verdict/VERDICT_CAP field"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "69IOkVkTQX": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "69IOkVkTQX",
+          "title": "Bregman meets Lévy: Stochastic Mirror Descent with Heavy-Tailed Noise in Continuous and Discrete Time",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 3,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 0.5,
+          "full_evidence_rate": 0.0,
+          "inconclusive_rate": 0.5,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 0.5,
+          "n_mutation_tests": 3,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 3,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "inconclusive",
+            "claim2": "inconclusive",
+            "claim3": "not_attempted",
+            "claim4": "not_attempted",
+            "claim5": "not_attempted",
+            "claim6": "inconclusive"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": true,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "no resolvable verdict in artifact",
+            "claim2": "no resolvable verdict in artifact",
+            "claim6": "no resolvable verdict in artifact"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "e6hVbhHEXh": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "e6hVbhHEXh",
+          "title": "Efficient Neural Controlled Differential Equations via Attentive Kernel Smoothing",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 2,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 0.333,
+          "full_evidence_rate": 0.167,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.167,
+          "not_attempted_rate": 0.667,
+          "n_mutation_tests": 2,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 2,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "toy",
+            "claim2": "not_attempted",
+            "claim3": "not_attempted",
+            "claim4": "not_attempted",
+            "claim5": "verified",
+            "claim6": "not_attempted"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": true,
+            "claim6": false
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": true,
+            "claim6": false
+          },
+          "per_claim_note": {
+            "claim1": "explicit verdict/VERDICT_CAP field",
+            "claim5": "explicit verdict/VERDICT_CAP field"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "JOyxs9ElI7": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "JOyxs9ElI7",
+          "title": "Context-free Recognition with Transformers",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 0,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": false,
+          "claim_coverage": 0.0,
+          "full_evidence_rate": 0.0,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.0,
+          "not_attempted_rate": 1.0,
+          "n_mutation_tests": 0,
+          "has_evidence_boundary": false,
+          "n_with_evidence_boundary": 0,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "not_attempted",
+            "claim2": "not_attempted",
+            "claim3": "not_attempted",
+            "claim4": "not_attempted",
+            "claim5": "not_attempted",
+            "claim6": "not_attempted"
+          },
+          "per_claim_mutation": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": false
+          },
+          "per_claim_boundary": {
+            "claim1": false,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": false
+          },
+          "per_claim_note": {},
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)",
+            "no claim artifact shows a real executed numeric experiment"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    },
+    "418BWmKIzX": {
+      "arm1_leaf": {
+        "config": "Hermes leaf (delegate_task role=leaf); model=hy3:free via nous (hermes-router, cascades OFF, Gemini excluded); numpy/scipy/sympy CPU-only; per-agent venv; SLA 8h/4h/2h",
+        "score": {
+          "orid": "418BWmKIzX",
+          "title": "Efficiently Learning Drifting Halfspaces with Massart Noise",
+          "area": null,
+          "n_anchored": 6,
+          "n_claim_files": 2,
+          "source": "ARTIFACTS (results/claim*.json) — not self-report",
+          "check_reproducibility_pass": null,
+          "check_detail": "no check_reproducibility.py",
+          "execution_success": true,
+          "claim_coverage": 0.333,
+          "full_evidence_rate": 0.0,
+          "inconclusive_rate": 0.0,
+          "toy_rate": 0.333,
+          "not_attempted_rate": 0.667,
+          "n_mutation_tests": 2,
+          "has_evidence_boundary": true,
+          "n_with_evidence_boundary": 2,
+          "wall_time_min": null,
+          "human_interventions": null,
+          "per_claim_verdict": {
+            "claim1": "toy",
+            "claim2": "not_attempted",
+            "claim3": "not_attempted",
+            "claim4": "not_attempted",
+            "claim5": "not_attempted",
+            "claim6": "toy"
+          },
+          "per_claim_mutation": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_boundary": {
+            "claim1": true,
+            "claim2": false,
+            "claim3": false,
+            "claim4": false,
+            "claim5": false,
+            "claim6": true
+          },
+          "per_claim_note": {
+            "claim1": "explicit verdict/VERDICT_CAP field",
+            "claim6": "explicit verdict/VERDICT_CAP field"
+          },
+          "warnings": [
+            "no _run_meta.json (OK for v2: metrics come from artifacts)"
+          ],
+          "tokens": {
+            "tokens_total_live": 95136143,
+            "note": "live snapshot only (no before/after)"
+          }
+        }
+      }
+    }
+  }
+}

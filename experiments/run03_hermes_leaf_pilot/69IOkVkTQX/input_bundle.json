@@ -1,0 +1,15 @@
+{
+ "orid": "69IOkVkTQX",
+ "title": "Bregman meets Lévy: Stochastic Mirror Descent with Heavy-Tailed Noise in Continuous and Discrete Time",
+ "openreview": "https://openreview.net/forum?id=69IOkVkTQX",
+ "arxiv": "2606.03769",
+ "area": "Theory",
+ "anchored_claims": [
+  "Under the Lévy Mirror Flow model with centered Lévy noise having finite p-th moments (1<p≤2), time-averaged orbits achieve ε-optimality within Õ(ε^(-p/(p-1))) time for convex objectives (Theorem 1).",
+  "For strongly convex objectives, the process converges geometrically to an uncertainty ball whose radius scales as O(ησ²_tame + η^(p-1)σ^p_heavy), despite jump discontinuities of arbitrary magnitude (Theorem 4).",
+  "The first-passage (hitting) time to within δ of the optimum for strongly convex objectives is Õ(δ^(-2p/(p-1))) (Theorem 3).",
+  "The discrete-time Stochastic Dual Averaging analogue achieves an O(T^(-(p-1)/p)) ergodic convergence rate on convex functions, matching the continuous-time rate (Theorem 5).",
+  "For strongly convex functions, the discrete-time method requires Ω((σ^p/ε)^(1/(p-1)) log(1/ε)) iterations to reach ε-accuracy (Corollary 1).",
+  "A novel 'weak Itô formula' for Lipschitz-smooth convex functions under Lévy integrators is proved to enable the analysis despite discontinuous sample paths and potentially infinite noise variance when p<2 (Section 2)."
+ ]
+}

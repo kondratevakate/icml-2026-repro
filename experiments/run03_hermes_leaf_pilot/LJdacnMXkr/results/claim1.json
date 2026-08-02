@@ -1,0 +1,105 @@
+{
+  "claim": 1,
+  "source": "Theorem 4.1",
+  "seed": 20260802,
+  "verdict": "verified",
+  "summary": "Symmetric Sinkhorn scaling of a symmetric positive kernel yields P with M P symmetric (self-adjoint in <.,.>_m), P1=1, P>0.",
+  "cases": [
+    {
+      "kernel": "gaussian",
+      "n": 80,
+      "dim": 2,
+      "eps": 0.4,
+      "iters": 41,
+      "inner_product_gap": 1.7945958492819967e-16,
+      "self_adjoint_residual": 1.3877787807814457e-17,
+      "mass_error": 5.633271626948044e-13,
+      "min_entry": 1.7268566616281956e-06,
+      "lam_min": 4.562655339520303e-15,
+      "lam_max": 0.9999999999999998
+    },
+    {
+      "kernel": "gaussian",
+      "n": 150,
+      "dim": 3,
+      "eps": 0.5,
+      "iters": 41,
+      "inner_product_gap": 1.7259649124519935e-15,
+      "self_adjoint_residual": 2.7755575615628914e-17,
+      "mass_error": 6.87894186057747e-13,
+      "min_entry": 5.148949165340128e-06,
+      "lam_min": 1.3761069569280136e-09,
+      "lam_max": 0.9999999999999991
+    },
+    {
+      "kernel": "gaussian",
+      "n": 200,
+      "dim": 2,
+      "eps": 0.25,
+      "iters": 41,
+      "inner_product_gap": 1.074652721187312e-15,
+      "self_adjoint_residual": 2.7755575615628914e-17,
+      "mass_error": 6.354916592954396e-13,
+      "min_entry": 3.0963333589155486e-14,
+      "lam_min": -6.675976076909307e-17,
+      "lam_max": 0.9999999999999996
+    },
+    {
+      "kernel": "exponential",
+      "n": 80,
+      "dim": 2,
+      "eps": 0.4,
+      "iters": 41,
+      "inner_product_gap": 2.408788817241083e-16,
+      "self_adjoint_residual": 1.3877787807814457e-17,
+      "mass_error": 6.248335182590381e-13,
+      "min_entry": 0.001991140225248968,
+      "lam_min": 0.0006544780840757994,
+      "lam_max": 1.0000000000000002
+    },
+    {
+      "kernel": "exponential",
+      "n": 150,
+      "dim": 3,
+      "eps": 0.5,
+      "iters": 41,
+      "inner_product_gap": 2.203858003399673e-16,
+      "self_adjoint_residual": 6.938893903907228e-18,
+      "mass_error": 6.925571227611726e-13,
+      "min_entry": 0.0011948784025300793,
+      "lam_min": 0.0011817226646408778,
+      "lam_max": 0.9999999999999993
+    },
+    {
+      "kernel": "exponential",
+      "n": 200,
+      "dim": 2,
+      "eps": 0.25,
+      "iters": 41,
+      "inner_product_gap": 3.736930881745514e-16,
+      "self_adjoint_residual": 2.0816681711721685e-17,
+      "mass_error": 5.966338534335591e-13,
+      "min_entry": 0.00021529010881561953,
+      "lam_min": 0.0004450483380532062,
+      "lam_max": 1.0
+    }
+  ],
+  "max_self_adjoint_residual": 2.7755575615628914e-17,
+  "max_mass_error": 6.925571227611726e-13,
+  "min_entry": 3.0963333589155486e-14,
+  "mutation_row_normalized": {
+    "self_adjoint_residual": 0.04581697530685143,
+    "mass_error": 3.3306690738754696e-16,
+    "min_entry": 2.168727672927394e-06,
+    "lam_min": -0.0234982130757111,
+    "lam_max": 1.034976495299266
+  },
+  "mutation_asymmetric_kernel": {
+    "self_adjoint_residual": 0.03639520394203222,
+    "mass_error": 8.255618411112664e-13,
+    "min_entry": 2.0690859119793717e-06,
+    "lam_min": -0.022523048536579743,
+    "lam_max": 1.0001213065356347
+  },
+  "mutation_note": "Row normalization gives self-adjointness residual ~1e-1 (broken); asymmetric kernel also breaks M P symmetry."
+}

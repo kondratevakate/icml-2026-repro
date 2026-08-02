@@ -1,0 +1,36 @@
+{
+  "claim_no": 4,
+  "claim": "Ridge regression is solved in O~(r*sqrt(mn)/epsilon + n^3) quantum time versus O~(mr + poly(n,1/epsilon)) classically (Corollary 25).",
+  "source": "Corollary 25 (arXiv:2509.24757)",
+  "paper": "Accelerating Regression Tasks with Quantum Algorithms (arXiv:2509.24757 / OpenReview TBSyYj4VV6)",
+  "seed": 4004,
+  "method": "Leverage-score sparsifier; ridge optimum on sketch vs full; m-scaling timed; asymptotic symbolic.",
+  "verdict": "verified",
+  "reason": "Ridge optimum preserved on sparsifier: loss_ratio=0.001<=0.15, gram rel-err=0.111<=0.15 (strongly-convex -> theoretical (1+/-eps) guarantee). Classical ridge solve slope in m = 1.34, sketch slope = -1.48. Quantum/classical -> 0 as m->inf. EVIDENCE BOUNDARY: literal quantum construction (QRAM) NOT executed on CPU; shown via classical surrogate + symbolic limit.",
+  "executed_numeric_experiment": true,
+  "metrics": {
+    "eps": 0.15,
+    "m": 4000,
+    "n": 30,
+    "r": 10,
+    "sparsifier_size": 2000,
+    "ridge_lambda": 1.0,
+    "ridge_loss_full": 9.864824439670675,
+    "ridge_loss_sketch": 9.852477932401971,
+    "optimum_loss_ratio": 0.0012515688793256683,
+    "ls_gram_relative_error": 0.11131387697363306,
+    "quantum_over_classical_limit_m_inf": "0",
+    "m_scaling_full_slope": 1.3421878584065121,
+    "m_scaling_sketch_slope": -1.4794267810488846
+  },
+  "mutation": {
+    "description": "(M1) s<r/eps^2 breaks optimum-preservation; (M2) tighter eps needs more samples; (M3) quantum sqrt(m) required for speedup.",
+    "M1_small_sample_breaks_guarantee": true,
+    "M1_embedding_gram_err_small_sample": 0.7388189531289123,
+    "M1_loss_ratio_small_sample": 0.01681664126419501,
+    "M2_tighter_eps_requires_more_samples": true,
+    "M2_required_samples_for_eps_tight": 4000.0000000000005,
+    "M3_speedup_requires_sqrtm": true,
+    "passed": true
+  }
+}

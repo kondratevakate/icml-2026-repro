@@ -1,0 +1,56 @@
+{
+  "claim": 1,
+  "statement": "SGDM exhibits an Edge of Stochastic Stability regime with a batch-size-dependent stability threshold, unlike vanilla SGD's single threshold (2/eta).",
+  "source": "Section 3 (paper mL4i6z7Miy); MSS via the curvature-sampling second-moment operator (Appendix D / Eq. 25).",
+  "eta": 0.1,
+  "beta": 0.9,
+  "sigma": 6.0,
+  "seed": 11,
+  "theoretical_thresholds": {
+    "2_over_eta": 20.0,
+    "small_batch_plateau": 1.9999999999999996,
+    "large_batch_plateau": 37.99999999999999
+  },
+  "batches": [
+    2,
+    4,
+    8,
+    16,
+    64,
+    256,
+    1024,
+    4096
+  ],
+  "sgd_critical_curvature_vs_batch": {
+    "2": 19.049410779936977,
+    "4": 19.540153952205888,
+    "8": 19.774200695903364,
+    "16": 19.894999015231093,
+    "64": 19.985597754726893,
+    "256": 19.993147649684875,
+    "1024": 20.000697544642858,
+    "4096": 20.000697544642858
+  },
+  "sgdm_critical_curvature_vs_batch": {
+    "2": 23.424574908088232,
+    "4": 32.64677159926471,
+    "8": 35.54593126313026,
+    "16": 36.836963300945385,
+    "64": 37.72030101102942,
+    "256": 37.93169806985294,
+    "1024": 37.98454733455881,
+    "4096": 37.99964712447478
+  },
+  "sgdm_beta05_critical_curvature_vs_batch": {
+    "2": 27.99603630514706,
+    "4": 29.075671284138657,
+    "8": 29.645688353466387,
+    "16": 29.79668625262605,
+    "64": 29.943909204306724,
+    "256": 29.989208574054626,
+    "1024": 29.996758469012608,
+    "4096": 30.0005334164916
+  },
+  "mutation_test": "Changing beta from 0.9 to 0.5 shifts the whole SGDM curve (range now 2.0045) while vanilla SGD (beta=0) stays pinned at 2/eta = 20 -- momentum, not a single stability threshold, drives the batch-size dependence.",
+  "verdict": "verified"
+}

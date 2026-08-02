@@ -1,0 +1,93 @@
+{
+  "claim": 4,
+  "source": "Proposition 3.10, Algorithm 1, Section 3.4 (arXiv:2606.23517)",
+  "statement": "S_eps = A - X(C+eps I)^{-1} X^T bounds the collapse error and is computable implicitly (Algorithm 1).",
+  "setup": {
+    "complex": "wheel/disk simplicial complex (n0=5,n1=8,n2=4), C SINGULAR (ridge_eps=0)",
+    "betas": {
+      "1": 1.0,
+      "2": 1.0
+    },
+    "gammas": {
+      "0": 1.0,
+      "1": 1.0
+    },
+    "seed": 261026
+  },
+  "diagnostics": {
+    "min_eig_C": 4.995954606354303e-16,
+    "lambda_min_plus_C": 0.37668004338105676,
+    "spectral_norm_X": 2.2360679774997902,
+    "rank_C": 11,
+    "n_C": 12
+  },
+  "checks": {
+    "algorithm1_implicit_vs_explicit_max_err": 1.216045469593665e-10,
+    "implicit_matches_explicit": true,
+    "error_bound_holds_for_all_eps": true,
+    "converges_to_S_dag_as_eps_to_0": true,
+    "bounds_table": [
+      {
+        "eps": 0.01,
+        "L2_error_Seps_minus_Sdag": 0.010403042044277642,
+        "bound_rhs": 0.34327773336929446,
+        "bound_holds": true
+      },
+      {
+        "eps": 0.001,
+        "L2_error_Seps_minus_Sdag": 0.0010615422190706244,
+        "bound_rhs": 0.035145793683640354,
+        "bound_holds": true
+      },
+      {
+        "eps": 0.0001,
+        "L2_error_Seps_minus_Sdag": 0.00010637207649124597,
+        "bound_rhs": 0.0035229745089429888,
+        "bound_holds": true
+      },
+      {
+        "eps": 1e-05,
+        "L2_error_Seps_minus_Sdag": 1.0639384255977058e-05,
+        "bound_rhs": 0.0003523816229374351,
+        "bound_holds": true
+      },
+      {
+        "eps": 1e-06,
+        "L2_error_Seps_minus_Sdag": 1.0640676763949685e-06,
+        "bound_rhs": 3.523900423539737e-05,
+        "bound_holds": true
+      }
+    ],
+    "convergence": [
+      {
+        "eps": 0.01,
+        "L2_error": 0.010403042044277642
+      },
+      {
+        "eps": 0.001,
+        "L2_error": 0.0010615422190706244
+      },
+      {
+        "eps": 0.0001,
+        "L2_error": 0.00010637207649124597
+      },
+      {
+        "eps": 1e-05,
+        "L2_error": 1.0639384255977058e-05
+      },
+      {
+        "eps": 1e-06,
+        "L2_error": 1.0640676763949685e-06
+      }
+    ]
+  },
+  "mutation_test": {
+    "description": "Apply the naive unregularized formula S_naive = A - X C^{-1} X^T on the singular C.",
+    "naive_unregularized_L2_error_vs_Sdag": 22.318785979157923,
+    "reference_scale": 0.01,
+    "breaks": true,
+    "note": "np.linalg.inv does not raise on a numerically-singular C but returns a garbage inverse that amplifies the null-space direction, so S_naive is far from the correct pseudoinverse collapse S^dagger. Only the Tikhonov-regularized (C+eps I) path (Algorithm 1) is well-posed and converges to S^dagger as eps->0, which is exactly why Sec. 3.4 regularizes."
+  },
+  "verdict": "verified",
+  "notes": "On the natural singular higher-order block (rank 11 of 12), Algorithm 1 reproduces the explicit S_eps x to <1e-9 without forming C^{-1}; the error bound ||S_eps-S^dagger||_2 <= eps||X||_2^2/(lambda_+(lambda_++eps)) holds across the eps sweep (errors shrink ~10x per decade of eps); and S_eps -> S^dagger as eps -> 0. The naive unregularized formula is far from S^dagger, confirming the role of Tikhonov regularization / pseudoinverse (Sec. 3.4)."
+}

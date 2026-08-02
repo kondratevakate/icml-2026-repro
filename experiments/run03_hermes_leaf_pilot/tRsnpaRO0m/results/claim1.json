@@ -1,0 +1,29 @@
+{
+  "claim": 1,
+  "source": "Definition 3.1",
+  "seed": 20260802,
+  "n": 400,
+  "dense_graphon": {
+    "selfadjoint_err": 2.168404344971009e-18,
+    "positivity_violation": 0.0,
+    "op_norm_inf_to_1": 0.5
+  },
+  "sparse_graph": {
+    "selfadjoint_err": 1.1102230246251565e-16,
+    "positivity_violation": 0.0,
+    "op_norm_inf_to_1": 5.96
+  },
+  "mutation_antisymmetric": {
+    "selfadjoint_err": 0.014009814517773101,
+    "positivity_violation": 0.2678976929674279,
+    "op_norm_inf_to_1": 0.14867673299862655
+  },
+  "mutation_signed_kernel": {
+    "selfadjoint_err": 3.469446951953614e-18,
+    "positivity_violation": 0.27510510443711456,
+    "op_norm_inf_to_1": 0.5
+  },
+  "tolerance": 1e-09,
+  "verdict": "verified",
+  "note": "Both a dense graphon kernel and a sparse bounded-degree graph, mapped to operators on the same probability space, are self-adjoint and positivity-preserving with finite L^inf->L^1 norm; mutations break exactly the property they target. This is a definitional/structural check, not an empirical result of the paper."
+}

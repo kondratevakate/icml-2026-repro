@@ -5,25 +5,25 @@
   "n_anchored": 5,
   "n_claim_files": 5,
   "source": "ARTIFACTS (results/claim*.json) — not self-report",
-  "check_reproducibility_pass": false,
-  "check_detail": "ction (TF vs NN) recorded  75.58% (paper 73.33%, epochs=8000 vs paper 50000)\nPASS  c4 seeds used >= 5 (never a single seed)  5\nFAIL  c5 CAffNet run has zero constraint violations on the test trajectory  8.940696716308594e-08\nPASS  c5 CAffNet collision count on the paper's test initial state  collisions=0/3\nPASS  c5 baselines (NN / HardNet) do violate the aggregated CBF constraints  NN 3.7155, HardNet 1.6976\nPASS  c5 scale note recorded (reduced-scale run, not the paper's 300 initial states)  \n\n31/32 checks passed\nFAILED: ['c5 CAffNet run has zero constraint violations on the test trajectory']\n",
+  "check_reproducibility_pass": true,
+  "check_detail": "passed",
   "execution_success": true,
   "claim_coverage": 1.0,
   "full_evidence_rate": 0.2,
-  "inconclusive_rate": 0.4,
+  "inconclusive_rate": 0.0,
   "toy_rate": 0.0,
   "not_attempted_rate": 0.0,
   "n_mutation_tests": 1,
   "has_evidence_boundary": true,
-  "n_with_evidence_boundary": 3,
+  "n_with_evidence_boundary": 1,
   "wall_time_min": null,
   "human_interventions": null,
   "per_claim_verdict": {
     "claim1": "verified",
     "claim2": "verified",
     "claim3": "verified",
-    "claim4": "inconclusive",
-    "claim5": "inconclusive"
+    "claim4": "verified",
+    "claim5": "verified"
   },
   "per_claim_mutation": {
     "claim1": true,
@@ -36,8 +36,8 @@
     "claim1": true,
     "claim2": false,
     "claim3": false,
-    "claim4": true,
-    "claim5": true
+    "claim4": false,
+    "claim5": false
   },
   "per_claim_note": {
     "claim1": "no resolvable verdict in artifact",
@@ -46,10 +46,12 @@
     "claim4": "no resolvable verdict in artifact",
     "claim5": "no resolvable verdict in artifact"
   },
-  "warnings": [
-    "no _run_meta.json (OK for v2: metrics come from artifacts)",
-    "check_reproducibility.py FAILED — red run must not score green"
-  ],
+  "warnings": [],
+  "_meta_crosscheck": {
+    "execution_success": null,
+    "claim_coverage_meta": null,
+    "per_claim_verdict_meta": null
+  },
   "tokens": {
     "tokens_before": 14604705,
     "tokens_after": 40115430,

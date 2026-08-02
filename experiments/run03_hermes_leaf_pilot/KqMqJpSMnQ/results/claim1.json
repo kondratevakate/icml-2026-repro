@@ -1,0 +1,109 @@
+{
+  "claim": 1,
+  "statement": "Theorem 1 bicriteria (1+kappa,1+1/kappa) LP-rounding approximation",
+  "source": "Sec.4.1, proof Appendix C (Eqs.6 and coverage bound)",
+  "verdict": "verified",
+  "seed": 20260207,
+  "instance": {
+    "n": 30,
+    "m": 80,
+    "W": 1.0,
+    "eps": 0.1,
+    "r_benchmark": 30
+  },
+  "kappa_sweep": [
+    {
+      "kappa": 0.5,
+      "rho": 0.3333333333333333,
+      "lp_obj": 24.999999999999986,
+      "r_benchmark": 30,
+      "K_size": 30,
+      "K_size_bound": 90.0,
+      "size_ok": true,
+      "cov_loss": -6.661338147750939e-16,
+      "cov_loss_bound": 0.15000000000000002,
+      "cov_ok": true,
+      "W": 1.0
+    },
+    {
+      "kappa": 1.0,
+      "rho": 0.5,
+      "lp_obj": 24.999999999999986,
+      "r_benchmark": 30,
+      "K_size": 30,
+      "K_size_bound": 60.0,
+      "size_ok": true,
+      "cov_loss": -6.661338147750939e-16,
+      "cov_loss_bound": 0.2,
+      "cov_ok": true,
+      "W": 1.0
+    },
+    {
+      "kappa": 2.0,
+      "rho": 0.6666666666666666,
+      "lp_obj": 24.999999999999986,
+      "r_benchmark": 30,
+      "K_size": 30,
+      "K_size_bound": 45.0,
+      "size_ok": true,
+      "cov_loss": -6.661338147750939e-16,
+      "cov_loss_bound": 0.30000000000000004,
+      "cov_ok": true,
+      "W": 1.0
+    },
+    {
+      "kappa": 4.0,
+      "rho": 0.8,
+      "lp_obj": 24.999999999999986,
+      "r_benchmark": 30,
+      "K_size": 10,
+      "K_size_bound": 37.5,
+      "size_ok": true,
+      "cov_loss": 0.3999999999999996,
+      "cov_loss_bound": 0.5,
+      "cov_ok": true,
+      "W": 1.0
+    }
+  ],
+  "mutation_threshold": {
+    "description": "Round at rho != kappa/(1+kappa). Correct threshold satisfies both bounds; perturbed thresholds must break at least one bound.",
+    "results": {
+      "correct_rho_0.5": {
+        "rho": 0.5,
+        "K_size": 30,
+        "size_bound": 60.0,
+        "size_ok": true,
+        "cov_loss": -6.661338147750939e-16,
+        "cov_loss_bound": 0.2,
+        "cov_ok": true
+      },
+      "too_aggressive_0.95": {
+        "rho": 0.95,
+        "K_size": 10,
+        "size_bound": 60.0,
+        "size_ok": true,
+        "cov_loss": 0.3999999999999996,
+        "cov_loss_bound": 0.2,
+        "cov_ok": false
+      },
+      "too_lax_0.10": {
+        "rho": 0.1,
+        "K_size": 30,
+        "size_bound": 60.0,
+        "size_ok": true,
+        "cov_loss": -6.661338147750939e-16,
+        "cov_loss_bound": 0.2,
+        "cov_ok": true
+      }
+    },
+    "correct_holds": true,
+    "perturbed_breaks": true
+  },
+  "mutation_robustness": {
+    "description": "Different random instance (seed+1); bounds should still hold.",
+    "size_ok": true,
+    "cov_ok": true,
+    "K_size": 30,
+    "cov_loss": -6.661338147750939e-16
+  }
+}

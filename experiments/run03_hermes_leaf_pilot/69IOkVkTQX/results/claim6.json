@@ -1,0 +1,39 @@
+{
+  "claim": 6,
+  "claim_text": "A novel 'weak Ito formula' for Lipschitz-smooth convex functions under Levy integrators is proved to enable the analysis despite discontinuous sample paths and potentially infinite noise variance when p<2 (Section 2).",
+  "source": "Section 2 (weak Ito formula for convex L-smooth functions under Levy integrators).",
+  "seed": 12345,
+  "p": 1.5,
+  "sigma_tame": 1.0,
+  "sigma_heavy": 1.0,
+  "T": 5.0,
+  "dt": 0.01,
+  "n_seeds": 20000,
+  "x0": 0.0,
+  "ito_formula": {
+    "LHS": 13.558412351092826,
+    "RHS_continuous": 2.5,
+    "RHS_jump": 11.262434460081096,
+    "RHS_total": 13.762434460081096,
+    "rel_error": 0.015047640070617097,
+    "verified": true
+  },
+  "lsmooth_jump_bound": {
+    "L": 1.0,
+    "mean_jump_correction": 11.262434460081096,
+    "bound_ratio": 1.0,
+    "holds": true
+  },
+  "mutation_M1_nonsmooth": {
+    "LHS_abs": 3.021177930277431,
+    "smooth_formula_prediction": 0.0,
+    "smooth_formula_fails": true
+  },
+  "mutation_M2_nonlsmooth": {
+    "E_psi4": 919951.0338520664,
+    "psi4_EX_plus_LhalfVar": 13.573515336513823,
+    "convex_smooth_bound_holds": false,
+    "note": "x^4 is not globally L-smooth; bound is violated showing L-smooth premise is needed"
+  },
+  "elapsed_s": 4.663833141326904
+}

@@ -1,0 +1,63 @@
+{
+  "claim": 2,
+  "source": "Theorem 4.2",
+  "seed": 20260802,
+  "verdict": "verified",
+  "setting": "1D bounded domain [0,1], fixed bandwidth, refining uniform sampling",
+  "results": {
+    "gaussian": {
+      "eps": 0.08,
+      "N": [
+        100,
+        200,
+        400,
+        800,
+        1600
+      ],
+      "sup_errors": [
+        0.020905374974121926,
+        0.0052074123454807775,
+        0.0012970972265890501,
+        0.00032040141959738255,
+        7.628260683711918e-05
+      ],
+      "empirical_rate": 2.021922232350539,
+      "ref_sup_norm": 1.7337487421136695,
+      "rel_error_finest": 4.3998651583228014e-05,
+      "mutation_eps_eq_4_over_N": [
+        0.6976940879330983,
+        0.6235580832218784,
+        0.6235054610930018,
+        0.6235650622256421
+      ]
+    },
+    "exponential": {
+      "eps": 0.08,
+      "N": [
+        100,
+        200,
+        400,
+        800,
+        1600
+      ],
+      "sup_errors": [
+        0.011138417353125263,
+        0.002809260227772725,
+        0.0007019590155952216,
+        0.00017353103723571905,
+        4.1323225115519335e-05
+      ],
+      "empirical_rate": 2.0165676014489318,
+      "ref_sup_norm": 10.10604072736332,
+      "rel_error_finest": 4.088962852052608e-06,
+      "mutation_eps_eq_4_over_N": [
+        4.0642013616826524,
+        9.255627426005999,
+        10.738082200474508,
+        10.76169560839102
+      ]
+    }
+  },
+  "mutation_note": "With eps = 4/N the sup error to the fixed continuum operator does not decay (bandwidth collapses with the sampling scale), confirming the theorem's resolution/bandwidth separation is needed.",
+  "caveat": "Verified in 1D with uniform sampling and smooth test function; the paper's general-domain / random-sampling statement is only partially covered."
+}

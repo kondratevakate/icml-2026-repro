@@ -1,0 +1,39 @@
+{
+  "claim": 3,
+  "source": "Theorem 4.1",
+  "seed": 20260802,
+  "setup": {
+    "n": 120,
+    "max_degree_r": 4,
+    "depth_D": 3,
+    "a": 0.6,
+    "b": 0.5,
+    "d_M": "||f1-f2||_2 + ||A1-A2||_{2->2} (exact SVD)"
+  },
+  "empirical_lipschitz_ratio": {
+    "max": 5.163887054366817,
+    "p99": 4.216454126502365,
+    "mean": 2.4878967899905158,
+    "n": 300
+  },
+  "C_theory": 22.756,
+  "ratio_max_vs_signal_scale_tanh": {
+    "1": 4.210524667763496,
+    "4": 2.518188364183586,
+    "16": 1.447929872415394,
+    "64": 0.5608280716071721
+  },
+  "ratio_max_vs_signal_scale_cubic_MUTATION": {
+    "1": 1.3239425361803227e-09,
+    "4": 1640886.8158251573,
+    "16": 6.112107888882498e+21,
+    "64": 5.3446030402877544e+38
+  },
+  "checks": {
+    "empirical_max_below_C_theory": true,
+    "tanh_ratio_bounded_across_scales": true,
+    "cubic_mutation_diverges": true
+  },
+  "verdict": "verified",
+  "note": "Empirical Lipschitz ratio of the MPNN w.r.t. d_M is finite, stable across signal scales, and below the constant implied by the layerwise argument (a + b*r)^D. The non-Lipschitz-activation mutation makes the ratio grow by orders of magnitude with signal scale, so the bound is not vacuous. This reproduces the mechanism of Thm 4.1 on a finite bofop model; the paper's constant C'_{D,r} is not stated numerically so only the structural inequality (not its sharp constant) is checked."
+}

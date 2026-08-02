@@ -1,0 +1,310 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% declare final option, which creates camera-ready copy
+\newif\if@linenumbers%\@linenumberstrue
+\DeclareOption{linenumbers}{
+  \@linenumberstrue
+}
+
+\ProcessOptions\relax
+
+
+% fonts
+% \renewcommand{\rmdefault}{ptm}
+% \renewcommand{\sfdefault}{phv}
+
+\if@linenumbers
+
+    \RequirePackage{lineno}
+    \linenumbers
+
+    % fix incompatibilities between lineno and amsmath, if required, by
+    % transparently wrapping linenomath environments around amsmath
+    % environments
+    \AtBeginDocument{%
+      \@ifpackageloaded{amsmath}{%
+        \newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+          \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+          \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+          \renewenvironment{#1}%
+                           {\linenomath\csname old#1\endcsname}%
+                           {\csname oldend#1\endcsname\endlinenomath}%
+        }%
+        \newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+          \patchAmsMathEnvironmentForLineno{#1}%
+          \patchAmsMathEnvironmentForLineno{#1*}%
+        }%
+        \patchBothAmsMathEnvironmentsForLineno{equation}%
+        \patchBothAmsMathEnvironmentsForLineno{align}%
+        \patchBothAmsMathEnvironmentsForLineno{flalign}%
+        \patchBothAmsMathEnvironmentsForLineno{alignat}%
+        \patchBothAmsMathEnvironmentsForLineno{gather}%
+        \patchBothAmsMathEnvironmentsForLineno{multline}%
+      }{}
+    }
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[outline]{contour}
+
+\usepackage{ulem}
+\normalem % use classical emph
+
+\newcommand \myul[4]{%
+  \begingroup%
+  \renewcommand \ULdepth {#1}%
+  \renewcommand \ULthickness {#2}%
+  \contourlength{#3}%
+  \uline{\phantom{#4}}\llap{\contour{white}{#4}}%
+  \endgroup%
+}
+
+\newcommand \myulline[4]{%
+  \begingroup%
+  \renewcommand \ULdepth {#1}%
+  \renewcommand \ULthickness {#2}%
+  \contourlength{#3}%
+  \noindent\rlap{\uline{\hspace{\textwidth}}}\contour{white}{#4}%
+  \endgroup%
+}
+
+\newcommand{\txieul}[1]{\myul{2pt}{0.5pt}{1pt}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% packages
+
+\usepackage{graphicx}
+
+\usepackage{amsmath}
+% \numberwithin{equation}{section} % eq number within sec number
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[svgnames]{xcolor}
+% \usepackage[dvipsnames]{xcolor}
+% color ref https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/xcolor/xcolor.pdf
+% \definecolor{darkblue}{HTML}{000080}
+
+\definecolor{Klein}{HTML}{002FA7}
+\colorlet{txblue}{RoyalBlue!70!NavyBlue}
+
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+            linkcolor=txblue,  
+            allcolors=txblue,
+            urlcolor=txblue,
+            % citecolor=SeaGreen,
+            breaklinks=true,
+            % linktocpage=true,
+            linktoc=all
+}
+
+\usepackage{dsfont}
+
+\usepackage{mathrsfs}
+
+\usepackage{mathtools}
+% \mathtoolsset{showonlyrefs,showmanualtags}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+\usepackage{nicefrac}
+\usepackage[shortlabels]{enumitem}
+
+
+% \usepackage{natbib}
+% \setcitestyle{number, open={[},close={]}}
+
+\usepackage{natbib}
+\setcitestyle{authoryear} % authoryear, numbers, super
+\setcitestyle{round} % square, round
+\setcitestyle{semicolon} % semicolon, comma
+
+% used for the true refer of sub-figures
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
+\usepackage{pifont}
+\usepackage{xspace}
+\usepackage{wrapfig}
+\usepackage{adjustbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% algorithms
+
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+% \usepackage[noend]{algpseudocode}
+
+% \usepackage[ruled,algonl]{algorithm2e}
+% %[linesnumbered,boxed]
+% %[lined,algonl,boxed]
+% %[ruled,vlined]
+% %[vlined,algonl,boxed]
+% %[ruled,vlined,algonl]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% define an arbitrary Unicode symbols (using \QED as an example)
+% all Unicode symbols available here http://mirrors.ibiblio.org/CTAN/fonts/stix/doc/stix.pdf
+% "stix.sty" see here https://cforall.uwaterloo.ca/trac/browser/doc/papers/general/AMA/AMA-stix/Stix-fonts/stix.sty?rev=49eb6a2332de13d116c1e1d70994bf6e76fd66c7#L1304
+
+\makeatletter
+\DeclareFontEncoding{LS1}{}{}
+\makeatother
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+
+\DeclareSymbolFont{operatorsstix}{LS1}{stix}{m}{n}
+
+\DeclareMathSymbol{\QED}{\mathord}{operatorsstix}{"D1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set theorems
+
+\usepackage{amsthm}
+
+% >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+% IMPORTANT: load thmtools/thm-restate BEFORE \newtheorem
+% so that \begin{restatable} ... \MainProp* can reuse numbers.
+\usepackage{thmtools}
+\usepackage{thm-restate}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nameinlink,capitalize]{cleveref}
+
+\Crefformat{equation}{#2Eq.\;(#1)#3}
+
+\Crefformat{figure}{#2Figure #1#3}
+\Crefformat{assumption}{#2Assumption #1#3}
+\Crefname{assumption}{Assumption}{Assumptions}
+
+\crefname{appendix}{Appendix}{Appendices}
+\Crefname{appendix}{Appendix}{Appendices}
+
+% Fix hyperref in section titles.
+\usepackage{crossreftools}
+\pdfstringdefDisableCommands{%
+    \let\Cref\crtCref
+    \let\cref\crtcref
+}
+\newcommand{\creftitle}[1]{\crtcref{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+% \theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{claim}{Claim} % Claim 1, Claim 2, ...
+
+
+\Crefformat{figure}{#2Figure #1#3}
+\Crefformat{assumption}{#2Assumption #1#3}
+\Crefname{assumption}{Assumption}{Assumptions}
+
+%%% fix multi-algorithm cross-referencing %%%
+%% older version %%
+% \makeatletter
+% \newcounter{HALG@line}
+% \renewcommand{\theHALG@line}{\thealgorithm.\arabic{ALG@line}}
+% \makeatother
+%% better version %%
+\makeatletter
+\@addtoreset{ALG@line}{algorithm}
+\makeatother
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % restating theorems
+
+% \makeatletter
+% \newtheorem*{rep@theorem}{\rep@title}
+% \newcommand{\newreptheorem}[2]{%
+% \newenvironment{rep#1}[1]{%
+%  \def\rep@title{#2 \ref{##1}}%
+%  \begin{rep@theorem}}%
+%  {\end{rep@theorem}}}
+% \makeatother
+
+% % \newtheorem{theorem}{Theorem}
+% \newreptheorem{theorem}{Theorem}
+% % \newtheorem{lemma}{Lemma}
+% \newreptheorem{lemma}{Lemma}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% some macros
+
+\def\Var{\mathrm{Var}}
+
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\thres}{\mathrm{thres}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\Eop}{\mathop{\mathbb E}}
+\newcommand{\Ebb}{{\mathbb E}}
+\newcommand{\E}{{\mathbb E}}
+% \newcommand{\Pr}{\textnormal{Pr}}
+\newcommand{\what}{\widehat w}
+\newcommand{\Qhat}{\widehat Q}
+\newcommand{\vhat}{\widehat v}
+
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Bcal}{\mathcal B}
+\newcommand{\Ccal}{\mathcal C}
+\newcommand{\Dcal}{\mathcal D}
+\newcommand{\Ecal}{\mathcal E}
+\newcommand{\Fcal}{\mathcal F}
+\newcommand{\Gcal}{\mathcal G}
+\newcommand{\Hcal}{\mathcal H}
+\newcommand{\Ical}{\mathcal I}
+\newcommand{\Jcal}{\mathcal J}
+\newcommand{\Kcal}{\mathcal K}
+\newcommand{\Lcal}{\mathcal L}
+\newcommand{\Mcal}{\mathcal M}
+\newcommand{\Ncal}{\mathcal N}
+\newcommand{\Ocal}{\mathcal O}
+\newcommand{\Pcal}{\mathcal P}
+\newcommand{\Qcal}{\mathcal Q}
+\newcommand{\Rcal}{\mathcal R}
+\newcommand{\Scal}{\mathcal S}
+\newcommand{\Tcal}{\mathcal T}
+\newcommand{\Ucal}{\mathcal U}
+\newcommand{\Vcal}{\mathcal V}
+\newcommand{\Wcal}{\mathcal W}
+\newcommand{\Xcal}{\mathcal X}
+\newcommand{\Ycal}{\mathcal Y}
+\newcommand{\Zcal}{\mathcal Z}
+
+\newcommand{\RR}{\mathbb R}
+
+\newcommand{\T}{\mathsf{T}}
+
+% more about bb 1 here: https://tex.stackexchange.com/questions/26637/how-do-you-get-mathbb1-to-work-characteristic-function-of-a-set
+\newcommand{\1}{\mathds 1}
+
+
+% table
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+% http://willbenton.com/wb-images/pifont.pdf
+
+\newcommand{\algocmt}[1]{{\color{SeaGreen}\Comment{\textit{#1}}}}
+\newcommand{\pfname}[2]{\bf\em Proof of {#1}~{#2}}
+\newcommand{\cpfname}[1]{\bf\em Proof of \cref{#1}}
+\newcommand{\Eqref}[1]{\texorpdfstring{\hyperref[#1]{(\ref*{#1})}}{(\ref*{#1})}}

@@ -1,0 +1,1954 @@
+arXiv:2606.11149v1 \[cs.LG\] 09 Jun 2026
+
+# Efficiently Learning Drifting Halfspaces with Massart Noise
+
+Mingchen Ma
+
+University of Wisconsin-Madison
+
+mingchen@cs.wisc.eduSupported by NSF Award CCF-2144298 (CAREER).Guyang Cao
+
+University of Wisconsin-Madison
+
+gcao8@wisc.eduSupported by NSF CAREER Award CCF-2440563.Jelena Diakonikolas
+
+University of Wisconsin-Madison
+
+Jelena@cs.wisc.eduSupported in part by the Air Force Office of Scientific Research under award number FA9550-24-1-0076, NSF CAREER Award CCF-2440563, and NSF MFAI Award DMS-2502282.Ilias Diakonikolas
+
+University of Wisconsin-Madison
+
+ilias@cs.wisc.eduSupported by NSF Medium Award CCF-2107079,
+ONR Award number N00014-25-1-2268, and an H.I. Romnes Faculty Fellowship.
+
+###### Abstract
+
+We study the problem of learning a drifting concept in the
+presence of Massart noise. In this framework,
+an online learner has access to a history
+of independent samples whose labels are noisy versions
+of a target concept that may change from round to round.
+The goal is to output, in each round, a hypothesis with
+small prediction error.
+We study the complexity of this learning
+problem for the fundamental class of margin-separable
+linear classifiers (halfspaces).
+On the positive side, we give a
+computationally efficient learner achieving error
+η+O~​(Δ1/3/γ)\eta+\tilde{O}(\Delta^{1/3}/\gamma),
+where η\eta upper bounds the Massart noise rate,
+Δ\Delta is the drift rate, and γ\gamma is the margin.
+Interestingly, in the realizable setting,
+an adaptation of our techniques
+yields an efficient learner with an improved error
+rate over prior work.
+On the lower-bound side, we provide formal evidence of an
+information-computation tradeoff, strongly suggesting that
+our algorithm’s performance is essentially optimal.
+Specifically,
+while the information-theoretically optimal error
+scales with Δ1/2\Delta^{1/2}, we prove
+that Δ1/3\Delta^{1/3}-scaling is unavoidable for
+low-degree polynomial tests,
+even in the special case of random classification noise.
+
+## 1 Introduction
+
+Statistical learning theory \[ [Vap98](https://arxiv.org/html/2606.11149v1#bib.bibx41 "")\] typically
+focuses on settings in which the training set consists of i.i.d. samples
+from a fixed unknown distribution, and the performance
+of the trained model is evaluated on the same distribution.
+This modeling assumption does not capture
+a range of machine learning applications,
+where the training data is drawn from a non-stationary distribution
+that drifts over time, and the deployed model needs to perform well
+given data drawn from a different distribution.
+Examples include financial prediction, analysis of consumer preferences,
+weather forecast, and more recently language models.
+Specifically, in language model training \[ [ADMR23](https://arxiv.org/html/2606.11149v1#bib.bibx2 "")\],
+the models are trained over static snapshots of text
+collected from websites that are frequently changing.
+When the models are deployed, they need to work with timely news,
+facts, or programming APIs.
+To address such settings, we require learning models and associated
+algorithms that succeed in the presence of distribution drift.
+
+A prototypical statistical model to formalize such non-static
+settings is that of binary classification with a drift \[ [HLO91](https://arxiv.org/html/2606.11149v1#bib.bibx28 ""), [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 ""), [Bar92](https://arxiv.org/html/2606.11149v1#bib.bibx5 "")\].
+For concreteness, we formally define this model below.
+
+###### Definition 1.1(Learning under Distribution Drift).
+
+Let 𝒞\mathcal{C} be a hypothesis class of {±1}\{\pm 1\}-valued functions over
+some domain XX. For t=1,2,…,t=1,2,\dots, let D(t)D^{(t)}
+be a distribution over X×{±1}X\times\{\pm 1\} such that
+dT​V​(D(t),D(t+1))≤Δd\_{\mathrm{T}V}(D^{(t)},D^{(t+1)})\leq\Delta, where dT​Vd\_{\mathrm{T}V} is the total variation distance
+and Δ∈(0,1)\Delta\in(0,1) is the drift rate.
+The error of a hypothesis h:X→{±1}h:X\to\{\pm 1\}
+with respect to D(t)D^{(t)} is
+err(t)​(h):=𝐏𝐫(x(t),y(t))∼D(t)\[h​(x(t))≠y(t)\]\mathrm{err}^{(t)}(h):=\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}\[h(x^{(t)})\neq y^{(t)}\].
+A learning algorithm 𝒜\mathcal{A} is given
+a sequence of examples {(x(t),y(t))}\{(x^{(t)},y^{(t)})\},
+for t=1,2,…t=1,2,\dots, where (x(t),y(t))∼D(t)(x^{(t)},y^{(t)})\sim D^{(t)},
+and works in an online fashion. Specifically,
+given {(x(i),y(i))}i=1t−1\{(x^{(i)},y^{(i)})\}\_{i=1}^{t-1}, 𝒜\mathcal{A} outputs a hypothesis
+h^(t):X→{±1}\hat{h}^{(t)}:X\to\{\pm 1\} and
+then receives an example (x(t),y(t))(x^{(t)},y^{(t)}) drawn from D(t)D^{(t)}.
+The goal of the learner is to minimize err(t)​(h^(t))\mathrm{err}^{(t)}(\hat{h}^{(t)}),
+as compared to optt:=minh∈𝒞⁡err(t)​(h)\mathrm{opt}\_{t}:=\min\_{h\in\mathcal{C}}\mathrm{err}^{(t)}(h).
+
+This model has been extensively studied over the past decades
+(see Section [1.2](https://arxiv.org/html/2606.11149v1#S1.SS2 "1.2 Related Work ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+Much of the early work focused on determining the optimal error rate for general hypothesis classes.
+Specifically, for any class 𝒞\mathcal{C} of VC-dimension
+dd, \[ [HLO91](https://arxiv.org/html/2606.11149v1#bib.bibx28 ""), [Bar92](https://arxiv.org/html/2606.11149v1#bib.bibx5 ""), [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 ""), [BL97](https://arxiv.org/html/2606.11149v1#bib.bibx7 ""), [Lon99](https://arxiv.org/html/2606.11149v1#bib.bibx34 "")\] establish
+the optimal error rate of Θ​((d​Δ)1/2)\Theta((d\Delta)^{1/2}) for the realizable case
+(i.e., when the labels in each round are consistent with a function in 𝒞\mathcal{C})
+and the excess error rate of Θ​((d​Δ)1/3)\Theta((d\Delta)^{1/3})
+in the agnostic setting.
+A key idea underlying these works is the following:
+When dT​V​(D(t),D(t+1))d\_{\mathrm{T}V}(D^{(t)},D^{(t+1)}) is small,
+by carefully selecting a number of past samples that
+balance the estimation error and the error due to the distribution drift,
+empirical risk minimization (ERM) over the selected sample gives a
+hypothesis with statistically optimal error.
+
+Unfortunately, the aforementioned statistically optimal
+approach leads to an exponential time algorithm
+in general—even in the realizable setting,
+where each x(t)x^{(t)} is labeled
+according to a hypothesis h(t)∈𝒞h^{(t)}\in\mathcal{C}.
+More broadly, despite extensive investigation,
+the computational complexity of learning with distribution drift
+remains poorly understood, even for basic hypothesis classes.
+Of course, if the non-drift version of the problem (corresponding to Δ=0\Delta=0)
+is computationally intractable, the hardness is inherited in the drift setting.
+Hence, it is natural to focus on concept classes and models of label noise
+for which algorithmic results are known in the non-drift setting.
+
+Here we study the complexity of drift learning
+for the class of linear classifiers or halfspaces.
+A halfspace is any function of the form hw​(x)=sign​(w⋅x)h\_{w}(x)=\mathrm{sign}(w\cdot x), where
+ww is a weight vector and sign​(t)\mathrm{sign}(t) is equal to 11 for t≥0t\geq 0 and −1-1 otherwise.
+Let ℋ:={hw​(x)=sign​(w⋅x)∣w∈𝕊d−1}\mathcal{H}:=\{h\_{w}(x)=\mathrm{sign}(w\cdot x)\mid w\in\mathbb{S}^{d-1}\} denote the class of halfspaces
+on ℝd\mathbb{R}^{d}, where 𝕊d−1\mathbb{S}^{d-1} is the unit ball.
+
+Prior algorithmic results for drifting halfspaces
+are restricted to the realizable setting and
+either achieve highly suboptimal error rates \[ [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 "")\]
+or require very strong distributional assumptions \[ [CMEDV10](https://arxiv.org/html/2606.11149v1#bib.bibx12 ""), [HKY15](https://arxiv.org/html/2606.11149v1#bib.bibx26 "")\].
+Departing from this setup,
+we aim to develop _efficient_ 111Henceforth, “efficient” refers to polynomial-time algorithms in parameters describing the problem (d,1/γ,1/Δd,1/\gamma,1/\Delta).  algorithms
+under minimal distributional assumptions
+and in the presence of label noise.
+More specifically, our only assumption on the distribution of examples
+will be the existence of margin γ>0\gamma>0 with respect to the target halfspace.
+Regarding the noise model, we assume that the labels in each
+round are corrupted by Massart noise \[ [MN06](https://arxiv.org/html/2606.11149v1#bib.bibx36 "")\],
+one of the classical semi-random noise models in the literature for
+which efficient learners
+are known in the non-drift setting \[ [DGT19](https://arxiv.org/html/2606.11149v1#bib.bibx15 "")\]222In the agnostic model,
+known hardness results rule out
+efficient algorithms even with a margin assumption \[ [Dan16](https://arxiv.org/html/2606.11149v1#bib.bibx13 "")\]..
+
+In the Massart model, the label of example xx can be flipped
+with probability η​(x)≤η<1/2\eta(x)\leq\eta<1/2, independently across
+examples. The noise function η​(x)\eta(x) is assumed to be bounded and
+is _unknown_ to the learner. The special case of Massart noise
+where η​(x)=η\eta(x)=\eta for all xx
+is known as Random Classification Noise (RCN) \[ [AL88](https://arxiv.org/html/2606.11149v1#bib.bibx3 "")\].
+
+In the drift setting, we allow a different source of Massart
+noise in each round. Specifically, let hw(t)​(x)h^{(t)}\_{w}(x) be the target function (halfspace)
+and let ηt​(x):𝕊d−1→\[0,η\]\eta\_{t}(x):\mathbb{S}^{d-1}\to\[0,\eta\]. For t≥1t\geq 1, we say that
+a distribution D(t)D^{(t)} is realized by (hw(t),ηt​(x))(h^{(t)}\_{w},\eta\_{t}(x))
+if for every xx,
+ηt​(x)=𝐏𝐫(x,y)∼D(t)\[hw(t)​(x)≠y∣x\].\eta\_{t}(x)=\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(t)}}\[h^{(t)}\_{w}(x)\neq y\mid x\].
+Under [Definition˜1.1](https://arxiv.org/html/2606.11149v1#S1.Thmdefinition1 "Definition 1.1 (Learning under Distribution Drift). ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we will restrict every D(t)D^{(t)}
+to be realized by some unknown (hw(t),ηt​(x))(h^{(t)}\_{w},\eta\_{t}(x)). (The case of RCN
+corresponds to ηt​(x)≡ηt≤η\eta\_{t}(x)\equiv\eta\_{t}\leq\eta.)
+
+### 1.1 Our Results
+
+Our work provides the first results for drifting concept classes under Massart noise, in terms of both statistical and computational complexity.
+For statistical complexity, in [Section˜2](https://arxiv.org/html/2606.11149v1#S2 "2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we show that for a general hypothesis class with VC dimension dd, the statistically optimal excess error with Massart noise—achieved by an ERM—is Θ~​(d​Δ)\tilde{\Theta}(\sqrt{d\Delta})
+(and Θ~​(Δ/γ)\tilde{\Theta}(\sqrt{\Delta}/\gamma) for γ\gamma-margin halfspaces)—as opposed to Θ​((d​Δ)1/3)\Theta((d\Delta)^{1/3}), which applies to adversarial label noise.333The
+“tilde” notation hides logarithmic factors in the argument.
+
+We then characterize the error that can be achieved by _efficient_ learning algorithms for learning γ\gamma-margin drifting halfspaces with Massart noise.
+Our main algorithmic result is the following:
+
+###### Theorem 1.1(Main Algorithmic Result).
+
+Consider the problem of learning drifting γ\gamma-margin halfspaces
+with η\eta-Massart noise. There is an algorithm 𝒜\mathcal{A} that runs in poly​(d,1/γ,1/Δ)\mathrm{poly}(d,1/\gamma,1/\Delta) time and outputs a hypothesis h^(T)\hat{h}^{(T)} such that
+for any time step T=Ω~​(Δ−2/3)T=\tilde{\Omega}(\Delta^{-2/3}), with
+probability at least 9/109/10,
+err(T)​(h^(T))≤η+O~​(Δ1/3/γ)\mathrm{err}^{(T)}(\hat{h}^{(T)})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma).
+
+To the best of our knowledge, this is the first non-trivial error guarantee
+achieved by an efficient learning algorithm in the presence of label noise.
+We note that, for the special case of RCN, an adaptation of our algorithm
+gives an error of optt+O~​(Δ1/3/γ)\mathrm{opt}\_{t}+\tilde{O}(\Delta^{1/3}/\gamma).
+As another important implication, we obtain an efficient algorithm with an even smaller error O~​(Δ​γ−3/2)\tilde{O}(\sqrt{\Delta}\gamma^{-3/2})
+for the realizable setting—improving
+upon the O~​(Δ​γ−2)\tilde{O}(\sqrt{\Delta}\gamma^{-2}) error achieved
+by the algorithm in \[ [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 "")\].
+
+Interestingly, the error achieved by our noise-tolerant drift algorithm
+scales with Δ1/3\Delta^{1/3},
+which is qualitatively worse than the statistically optimal error
+(that scales with Δ1/2\Delta^{1/2}).
+We complement our upper bound by providing formal evidence that
+the scaling with Δ1/3\Delta^{1/3} is unavoidable for efficient learning algorithms,
+even in the special case of RCN. Specifically,
+we establish a lower bound against the class of
+low-degree polynomial tests \[ [Hop18](https://arxiv.org/html/2606.11149v1#bib.bibx29 ""), [KWB19](https://arxiv.org/html/2606.11149v1#bib.bibx33 ""), [Wei25](https://arxiv.org/html/2606.11149v1#bib.bibx42 "")\]—one of the most well-studied computational models
+in the context of statistical-computational tradeoffs that captures a broad class of learning algorithms.
+Specifically, we show:
+
+###### Theorem 1.2(Informal Implication of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Consider the problem of learning drifting γ\gamma-margin halfspaces with (1/3)(1/3)-RCN. For T≥γ−1/6​Δ−2/3T\geq\gamma^{-1/6}\Delta^{-2/3}, there is a family of instances such that
+under the low-degree hardness conjecture, there is no polynomial time algorithm that achieves error optT+Δ1/3​γ−1/6\mathrm{opt}\_{T}+\Delta^{1/3}\gamma^{-1/6} error for every instance in the family.
+
+An intuitive interpretation of Theorem [1.2](https://arxiv.org/html/2606.11149v1#S1.Thmtheorem2 "Theorem 1.2 (Informal Implication of Theorem˜4.1). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is that efficient algorithms
+for our problem require excess error Ω​(Δ1/3)\Omega(\Delta^{1/3}), matching the guarantee
+of our algorithm. Taken together, these results illustrate the following
+phenomenon for bounded label noise (Massart, RCN) settings
+in terms of scaling with drift Δ\Delta: while information-theoretic rates place
+these label noise models in the same category as the realizable setting—scaling
+with Δ1/2\Delta^{1/2}—computationally efficient algorithms need to pay the higher
+Δ1/3\Delta^{1/3} price—the information-theoretic limit of the agnostic setting.
+
+### 1.2 Related Work
+
+##### Learning with Distribution Drift
+
+As already discussed, the early line of work on learning drifting concepts focused on establishing optimal excess error bounds
+for a general hypothesis class with VC-dimension dd,
+under the classical assumption that the TV-distance between consecutive distributions is upper bounded by Δ\Delta\[ [HLO91](https://arxiv.org/html/2606.11149v1#bib.bibx28 ""), [Bar92](https://arxiv.org/html/2606.11149v1#bib.bibx5 ""), [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 ""), [BL97](https://arxiv.org/html/2606.11149v1#bib.bibx7 ""), [Lon99](https://arxiv.org/html/2606.11149v1#bib.bibx34 "")\].
+In recent years, variants of this problem have been studied \[ [HY19](https://arxiv.org/html/2606.11149v1#bib.bibx30 ""), [HHW24](https://arxiv.org/html/2606.11149v1#bib.bibx25 ""), [MU23](https://arxiv.org/html/2606.11149v1#bib.bibx37 ""), [BTN+25](https://arxiv.org/html/2606.11149v1#bib.bibx9 "")\] to develop methods that do not depend on the prior knowledge of Δ\Delta.
+Importantly, all algorithms in these works
+rely on ERM
+and are thus not computationally efficient in general.
+
+The aforementioned progress notwithstanding,
+the computational complexity of learning with drift is poorly understood.
+Early work \[ [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 "")\]
+gives an LP-based efficient algorithm for realizable halfspaces
+on ℝd\mathbb{R}^{d} with error O~​(d​Δ)\tilde{O}(d\sqrt{\Delta})
+(a bound that is suboptimal by a d\sqrt{d} factor).
+More recent works focused on developing efficient learners
+under different error metrics \[ [MMM12](https://arxiv.org/html/2606.11149v1#bib.bibx35 "")\]
+or under strong assumptions on the marginal distribution—namely that each
+Dx(t)D^{(t)}\_{x} is the a uniform distribution over the unit sphere.
+Specifically, \[ [CMEDV10](https://arxiv.org/html/2606.11149v1#bib.bibx12 "")\] gave an efficient algorithm
+with error O​((d​Δ)1/4)O((d\Delta)^{1/4}) that was later improved to O​(d​Δ)O(\sqrt{d\Delta})
+by \[ [HKY15](https://arxiv.org/html/2606.11149v1#bib.bibx26 "")\]. To the best of our knowledge, no efficient algorithms under the distribution drift settings were known to tolerate label noise.
+
+##### Halfspace Learning with Label Noise
+
+Designing efficient learners for halfspaces in the presence of label noise
+has been a central problem in learning theory that has seen substantial progress in the past decades. In the non-drift version of the problem, when the marginal distribution is sufficiently structured (e.g., uniform over the unit sphere or Gaussian),
+efficient agnostic learners that can tolerate adversarial label noise are known \[ [ABL17](https://arxiv.org/html/2606.11149v1#bib.bibx1 ""), [DKS18](https://arxiv.org/html/2606.11149v1#bib.bibx19 ""), [DKTZ22](https://arxiv.org/html/2606.11149v1#bib.bibx20 ""), [DKM24](https://arxiv.org/html/2606.11149v1#bib.bibx17 "")\]. For more general distributions (e.g., in the presence of margin),
+known hardness results \[ [Dan16](https://arxiv.org/html/2606.11149v1#bib.bibx13 "")\] rule out polynomial-time agnostic learners.
+In the presence of Massart noise, recent work \[ [DGT19](https://arxiv.org/html/2606.11149v1#bib.bibx15 ""), [CKMY20](https://arxiv.org/html/2606.11149v1#bib.bibx10 ""), [DZ24](https://arxiv.org/html/2606.11149v1#bib.bibx24 ""), [CKST24](https://arxiv.org/html/2606.11149v1#bib.bibx11 ""), [KMT24](https://arxiv.org/html/2606.11149v1#bib.bibx32 "")\] has developed efficient learners achieving error η+ϵ\eta+\epsilon,
+a guarantee shown to be optimal for efficient algorithms \[ [DK22](https://arxiv.org/html/2606.11149v1#bib.bibx16 ""), [NT22](https://arxiv.org/html/2606.11149v1#bib.bibx38 ""), [DKMR22](https://arxiv.org/html/2606.11149v1#bib.bibx18 "")\].
+
+##### Low-Degree Polynomial Hardness
+
+Proving lower bounds against restricted algorithmic families such as SQ algorithms \[ [Kea98](https://arxiv.org/html/2606.11149v1#bib.bibx31 "")\] or low-degree polynomial estimators \[ [Hop18](https://arxiv.org/html/2606.11149v1#bib.bibx29 ""), [BBH+21](https://arxiv.org/html/2606.11149v1#bib.bibx6 "")\]
+is a popular method of studying the computational complexity of learning problems.
+Low-degree polynomial estimators (defined in [Section˜4](https://arxiv.org/html/2606.11149v1#S4 "4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"))
+provide a natural computational model for our online learning setting.
+For recent progress on low-degree polynomial hardness, we refer the reader to \[ [Wei25](https://arxiv.org/html/2606.11149v1#bib.bibx42 "")\].
+
+### 1.3 Notation
+
+For a halfspace hw​(x)=sign​(w⋅x)h\_{w}(x)=\mathrm{sign}(w\cdot x) and x∈𝕊d−1x\in\mathbb{S}^{d-1}, we define err(i)​(w,x):=𝐏𝐫(x,y)∼D(i)\[hw​(x)≠y∣x\]\mathrm{err}^{(i)}(w,x):=\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(i)}}\[h\_{w}(x)\neq y\mid x\].
+For γ∈(0,1)\gamma\in(0,1), an example x∈𝕊d−1x\in\mathbb{S}^{d-1} is said to have γ\gamma-margin with respect to a halfspace hw​(x)h\_{w}(x) if \|w⋅x\|≥γ\left\|w\cdot x\right\|\geq\gamma. A distribution DD is said to have γ\gamma-margin with respect to hw​(x)h\_{w}(x) if 𝐏𝐫x∼Dx\[\|w⋅x\|<γ\]=0\operatorname\*{\mathbf{Pr}}\_{x\sim D\_{x}}\[\left\|w\cdot x\right\|<\gamma\]=0.
+For a,b∈ℝa,b\in\mathbb{R}, we denote by ϕ​(a,b)=sign​(a)​sign​(b)∈{±1}\phi(a,b)=\mathrm{sign}(a)\mathrm{sign}(b)\in\{\pm 1\}. We use Oδ​(⋅)O\_{\delta}(\cdot) notation to hide a log⁡(1/δ)\log(1/\delta) factor and use O~​(⋅)\tilde{O}(\cdot) to hide the polylogarithmic factors in the argument inside the big-Oh.
+
+## 2 Information-Theoretic Baselines under Massart Noise
+
+The literature on learning drifting concepts with label noise
+predominantly focuses on the agnostic setting (adversarial label noise), where for every hypothesis class with VC dimension dd, the
+optimal excess error is Θ​((d​Δ)1/3)\Theta\left((d\Delta)^{1/3}\right)\[ [Lon99](https://arxiv.org/html/2606.11149v1#bib.bibx34 "")\].
+However, agnostic learning is known to be computationally hard for natural hypothesis and
+distribution classes, even without distribution shift
+(i.e., for Δ=0\Delta=0). Since our focus in this work
+is on computationally efficient algorithms, we consider structured
+label noise, for which we establish different excess error baselines.
+
+We first show that in the presence of Massart noise, a smaller excess error rate of O~​(d​Δ)\tilde{O}(\sqrt{d\Delta}) can be obtained (see [Section˜B.1](https://arxiv.org/html/2606.11149v1#A2.SS1 "B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") for the proof). This result, summarized in the following theorem, establishes an _information theoretic_ upper bound; however,
+the algorithm itself is not polynomial-time.
+We highlight that the stated upper bound
+applies to any Boolean concept class
+(not just halfspaces) and the general case of Massart noise.
+
+###### Theorem 2.1(Information-Theoretic Upper Bound).
+
+Consider the problem of learning drifting binary concepts. Let ℋ:X→{±1}\mathcal{H}:X\to\{\pm 1\} be a hypothesis class with VC dimension dd. Suppose that for every i>0i>0, D(i)D^{(i)} is realized by ((h∗)(i),ηi​(x))((h^{\*})^{(i)},\eta\_{i}(x)) for some (h∗)(i)∈ℋ(h^{\*})^{(i)}\in\mathcal{H} and ηi\eta\_{i} that satisfies the η\eta-Massart noise condition. There is an algorithm 𝒜\mathcal{A} such that for every t=Ω~(d/((1−2η)Δ)t=\tilde{\Omega}(d/((1-2\eta)\Delta), 𝒜\mathcal{A} outputs a hypothesis h^(t)\hat{h}^{(t)} such that with probability at least 9/109/10 the error of h^(t)\hat{h}^{(t)} is at most optt+O~​((d​Δ/(1−2​η))1/2)\mathrm{opt}\_{t}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}).
+
+On the lower bound side, we specialize to halfspaces with η\eta-RCN (the
+more specialized the class, the stronger the lower bound).
+We give a matching Ω​((d​Δ)1/2)\Omega((d\Delta)^{1/2})
+bound on the excess
+error, as summarized in [Theorem˜2.2](https://arxiv.org/html/2606.11149v1#S2.Thmtheorem2 "Theorem 2.2 (Information-Theoretic Lower Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+(see [Section˜B.2](https://arxiv.org/html/2606.11149v1#A2.SS2 "B.2 Proof of Theorem˜2.2 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") for the proof).
+Combined with [Theorem˜2.1](https://arxiv.org/html/2606.11149v1#S2.Thmtheorem1 "Theorem 2.1 (Information-Theoretic Upper Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), this establishes the
+information-theoretic baseline of Θ~​((d​Δ)1/2)\tilde{\Theta}((d\Delta)^{1/2}) for the excess
+error under both the Massart noise
+and RCN, provided 1/2−η1/2-\eta can be treated as a
+positive constant (the primary case for which these noise models
+are studied).
+
+###### Theorem 2.2(Information-Theoretic Lower Bound).
+
+For every T>0T>0 and Δ∈(0,1)\Delta\in(0,1), there is a family of instances of learning halfspaces with η\eta-RCN such that provided (1−2​η)3>d​Δ(1-2\eta)^{3}>d\Delta, there is no learning algorithm 𝒜\mathcal{A} that can achieve error err(T)​(𝒜)≤optT+o​(d​Δ/(1−2​η))\mathrm{err}^{(T)}(\mathcal{A})\leq\mathrm{opt}\_{T}+o(\sqrt{d\Delta/(1-2\eta)}), with probability 1/21/2 for every instance in the family.
+
+## 3 Efficiently Learning Drifted Halfspaces with Massart Noise
+
+In this section, we establish [Theorem˜1.1](https://arxiv.org/html/2606.11149v1#S1.Thmtheorem1 "Theorem 1.1 (Main Algorithmic Result). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Our main learning algorithm, [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), works in epochs, where the iith epoch corresponds to time steps t∈{(i−1)W+1,…,iWt\in\{(i-1)W+1,\dots,iW}.
+In epoch ii, [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") maintains a hypothesis h^(i)\hat{h}^{(i)} for prediction and collects a set of examples S(i)S^{(i)} observed during this epoch. At the end of the epoch, [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") updates the hypothesis h(i)h^{(i)} using the collected dataset S(i)S^{(i)} through a subroutine in [Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Algorithm 1DriftedMassart (Learning Drifting Halfspaces with Massart Noise)
+
+1:Input: noise level η∈(0,1/2),\eta\in(0,1/2), margin parameter γ∈(0,1),\gamma\in(0,1), drift rate Δ>0\Delta>0
+
+2:Output: A hypothesis hh for each round tt.
+
+3:Let W=2​⌊Δ−2/3​log⁡((Δ)−1)⌋,i=1W=2\lfloor\Delta^{-2/3}\log((\Delta)^{-1})\rfloor,i=1, h^0​(x)≡1\hat{h}^{0}(x)\equiv 1
+
+4:fort=1,2,…t=1,2,\dotsdo
+
+5:  Output hypothesis h^(i−1)\hat{h}^{(i-1)} and receive (x(t),y(t))(x^{(t)},y^{(t)})
+
+6:S(i)←S(i)∪{(x(t),y(t))}S^{(i)}\leftarrow S^{(i)}\cup\{(x^{(t)},y^{(t)})\}
+
+7:ift=i​Wt=iWthen
+
+8:h^(i)←DriftPerceptron​(η,γ,S(i),γ/W)\hat{h}^{(i)}\leftarrow\textsc{DriftPerceptron}(\eta,\gamma,S^{(i)},\gamma/\sqrt{W}), S(i)←∅S^{(i)}\leftarrow\emptyset, i←i+1i\leftarrow i+1
+
+[Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") equally partitions S(i)S^{(i)} into sets S1(i)S\_{1}^{(i)} and S2(i)S\_{2}^{(i)}. Set S1(i)S\_{1}^{(i)}, consisting of the first half of the examples, is used to update the parameter vector w(i)w^{(i)}, while the second half of the examples in S2(i)S\_{2}^{(i)} are used to select a good hypothesis halfspace hw(i)h\_{w^{(i)}} from the trajectory of updates.
+
+Algorithm 2DriftPerceptron (Subroutine for Learning a Single Halfspace over a Dataset)
+
+1:Input: noise level η∈(0,1/2)\eta\in(0,1/2), margin parameter γ∈(0,1)\gamma\in(0,1), step size μ>0\mu>0, a dataset S={(x(i),y(i))}i=12​mS=\{(x^{(i)},y^{(i)})\}\_{i=1}^{2m} of 2​m2m labeled examples
+
+2:Output:h^=sign​(w^⋅x):ℝd→{±1}\hat{h}=\mathrm{sign}(\hat{w}\cdot x):\mathbb{R}^{d}\to\{\pm 1\}
+
+3:w(0)=e1w^{(0)}=e\_{1}
+
+4:Split S=S1∪S2S=S\_{1}\cup S\_{2}, where S1={(x(i),y(i))}i=1m,S2=S∖S1S\_{1}=\{(x^{(i)},y^{(i)})\}\_{i=1}^{m},S\_{2}=S\setminus S\_{1}
+
+5:fori=1,2,…,mi=1,2,\dots,mdo
+
+6:g​(w(i);x,y)←((1−2​η)​sign​(w(i)⋅x)−y)​x/max⁡{\|w(i)⋅x\|,γ}g(w^{(i)};x,y)\leftarrow((1-2\eta)\mathrm{sign}(w^{(i)}\cdot x)-y)x/\max\{\left\|w^{(i)}\cdot x\right\|,\gamma\}
+
+7:w(i+1)←proj𝔹​(1)​(w(i)−μ​gt​(w(i),x,y))w^{(i+1)}\leftarrow\mathrm{proj}\_{\mathbb{B}(1)}(w^{(i)}-\mu g\_{t}(w^{(i)},x,y)), h^i+1​(x)=sign​(w(i+1)⋅x)\hat{h}\_{i+1}(x)=\mathrm{sign}(w^{(i+1)}\cdot x)
+
+8:Return h^=argminh^ierr^​(h^i)\hat{h}=\operatorname\*{argmin}\_{\hat{h}\_{i}}\hat{\mathrm{err}}(\hat{h}\_{i}), where err^​(h^i)=1\|S2\|​∑(x,y)∈S2𝟙​{h^i​(x)≠y}\hat{\mathrm{err}}(\hat{h}\_{i})=\frac{1}{\|S\_{2}\|}\sum\_{(x,y)\in S\_{2}}\mathds{1}\{\hat{h}\_{i}(x)\neq y\}.
+
+In each round, we feed [Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") an example (x,y)(x,y) and
+generate a “gradient” vector g​(w(i);x,y)g(w^{(i)};x,y) based on the current vector w(i)∈𝕊d−1w^{(i)}\in\mathbb{S}^{d-1} and the example (x,y)(x,y). With such a gradient vector, we modify w(i)w^{(i)} by running a single step projected gradient descent with a carefully chosen step size. By standard regret analysis, we get the following fact, the proof of which is deferred to [Section˜C.1](https://arxiv.org/html/2606.11149v1#A3.SS1 "C.1 Proof of ˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+###### Fact 3.1(Progress Measure Measurement).
+
+Let t>0t>0 be any time step and let
+S={(x(i),y(i))}i=1mS=\{(x^{(i)},y^{(i)})\}\_{i=1}^{m} be such that (x(i),y(i))∼D(t+i)(x^{(i)},y^{(i)})\sim D^{(t+i)}. For T∈\[m\]T\in\[m\] and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1}, [Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") satisfies
+
+|     |     |     |
+| --- | --- | --- |
+|  | 1T​∑i=1T𝐄(x,y)∼D(t+i)\[g​(w(i);x,y)⋅(w(i)−w∗)\]≤R​(T,μ,γ),\displaystyle\frac{1}{T}\sum\_{i=1}^{T}\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\[g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*})\]\leq R(T,\mu,\gamma), |  |
+
+where R​(T,μ,γ)=1/(2​T​μ)+2​μ/γ2−∑i=1Tξi/TR(T,\mu,\gamma)=1/(2T\mu)+2\mu/\gamma^{2}-\sum\_{i=1}^{T}\xi\_{i}/T, ξi:=(g​(w(i);x,y)−𝐄(x,y)∼D(t+i)g​(w(i);x,y))⋅(w(i)−w∗)\xi\_{i}:=\left(g(w^{(i)};x,y)-\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\right)\cdot(w^{(i)}-w^{\*}).
+
+Here, the term 1/(2​T​μ)+2​μ/γ21/(2T\mu)+2\mu/\gamma^{2} can be interpreted as “optimization error” and the term ∑i=1Tξi/T\sum\_{i=1}^{T}\xi\_{i}/T as “concentration error”.
+We remark that the proof of [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") only relies on the boundedness of the gradient used in each round. To make use of [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to analyze the performance of the halfspace hw(i)h\_{w^{(i)}} in the update trajectory, we need to choose a suitable gradient g​(w;x,y)g(w;x,y) that can relate the expected regret term 𝐄(x,y)∼D(t+i)\[g​(w(i);x,y)⋅(w(i)−w∗)\]\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\[g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*})\] to the quantity of interest—the prediction error.
+
+Our choice of the gradient vector is
+inspired by \[ [DKTZ25](https://arxiv.org/html/2606.11149v1#bib.bibx21 "")\], which considers an online learning problem where labels are generated according to a _fixed_ halfspace with Massart noise.
+The choice of g​(w(i);x,y)g(w^{(i)};x,y) can be seen as the gradient of the leaky ReLU function ℓη​(w;x,y)=((1−2​η)​\|y​w⋅x\|+y​w⋅x)\ell\_{\eta}(w;x,y)=((1-2\eta)\left\|yw\cdot x\right\|+yw\cdot x) weighted by max{\|w(i)⋅x\|,γ}−1\max\{\left\|w^{(i)}\cdot x\right\|,\gamma\}^{-1}, where the chosen weight is used to balance penalizations for misclassified examples with different margins.
+
+Although the choice of gradient is similar, the analysis from prior work does not apply to the setting where the distribution drifts. The main difficulty is that under drifting distribution over the labeled examples, there is no single ground truth halfspace hw∗h\_{w^{\*}} that can realize all distributions D(i)D^{(i)}, i≥0i\geq 0. Denote by (w∗)(i)(w^{\*})^{(i)} the parameter vector of the halfspace that realizes D(i)D^{(i)}. When the marginal distribution is a uniform distribution over the unit sphere, then prior work \[ [CMEDV10](https://arxiv.org/html/2606.11149v1#bib.bibx12 ""), [HKY15](https://arxiv.org/html/2606.11149v1#bib.bibx26 "")\] shows that if dT​V​(D(i),D(i+1))d\_{\mathrm{T}V}(D^{(i)},D^{(i+1)}) is small, then ‖(w∗)(i)−(w∗)(i+1)‖\left\\|(w^{\*})^{(i)}-(w^{\*})^{(i+1)}\right\\| is also small, which makes it possible to treat (w∗)(i)(w^{\*})^{(i)} as approximately unchanged.
+However, when such a distributional assumption is removed, dT​V​(D(i),D(i+1))d\_{\mathrm{T}V}(D^{(i)},D^{(i+1)}) may be small, but the geometric distance between (w∗)(i)(w^{\*})^{(i)} and (w∗)(i+1)(w^{\*})^{(i+1)} can still be quite large. We bypass the difficulty of analyzing the change of ‖(w∗)(i)−(w∗)(i+1)‖\left\\|(w^{\*})^{(i)}-(w^{\*})^{(i+1)}\right\\| by showing that despite ‖(w∗)(i)−(w∗)(i+1)‖\left\\|(w^{\*})^{(i)}-(w^{\*})^{(i+1)}\right\\| being potentially large, the prediction error in each round can always be controlled by the expected regret term plus a drift-controlled error term. This technical approach is summarized in our main technical lemma, stated below.
+
+###### Lemma 3.1(Regret to Error).
+
+Let i,m∈ℕi,m\in\mathbb{N} and let w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1} be a vector that realizes D(i+m)D^{(i+m)}. There exists a function Fi​(w∗,w,x):𝕊d−1×𝕊d−1×𝕊d−1→ℝF\_{i}(w^{\*},w,x):\mathbb{S}^{d-1}\times\mathbb{S}^{d-1}\times\mathbb{S}^{d-1}\to\mathbb{R} such that
+for any x∈𝕊d−1x\in\mathbb{S}^{d-1} and for any w∈𝕊d−1w\in\mathbb{S}^{d-1},
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣x\[g​(w;x,y)⋅(w−w∗)\]≥2​(err(i)​(w,x)−η)−Fi.\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}\[g(w;x,y)\cdot(w-w^{\*})\]\;\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-F\_{i}. |  |
+
+Additionally, \|Fi\|≤1/γ\left\|F\_{i}\right\|\leq 1/\gamma, and for every w∈𝕊d−1w\in\mathbb{S}^{d-1}, 𝐄x∼Dx(i)Fi​(w∗,w,x)=O​(Δ​m/γ)\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}F\_{i}(w^{\*},w,x)=O(\Delta m/\gamma).
+
+We give an overview of the proof of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), deferring the full details of the proof to [Section˜C.2](https://arxiv.org/html/2606.11149v1#A3.SS2 "C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+The proof of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is divided into two cases based on whether \|w⋅x\|>γ\|w\cdot x\|>\gamma. For each case CC, we construct a bounded function Fi(C)​(w∗,w,x)F^{(C)}\_{i}(w^{\*},w,x) such that
+𝐄y∼D(i)∣x\[g​(w;x,y)⋅(w−w∗)\]≥2​(err(i)​(w,x)−η)−Fi(C)​(w∗,w,x)\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}\[g(w;x,y)\cdot(w-w^{\*})\]\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-F^{(C)}\_{i}(w^{\*},w,x)
+holds deterministically for every x∈𝕊d−1∩Cx\in\mathbb{S}^{d-1}\cap C and 𝐄x∼Dx(i)\[Fi(C)​(w∗,w,x)​𝟙​{C}\]=O​(Δ​m/γ)\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\[F^{(C)}\_{i}(w^{\*},w,x)\mathds{1}\{C\}\]=O(\Delta m/\gamma). Given this construction, the desired function FiF\_{i} can be taken as the summation of Fi(C)​(w∗,w,x)​𝟙​{C}F^{(C)}\_{i}(w^{\*},w,x)\mathds{1}\{C\}.
+
+The central technical part of the proof is to show that the expectation of the constructed function FiF\_{i}, which we call “drift error”, is essentially controlled by the amount of distribution drift m​Δm\Delta. Our construction of FiF\_{i} enables us to relate the expectation to the change of the disagreement region {x∣(w∗⋅x)​((w∗)(i)⋅x)<0}\{x\mid(w^{\*}\cdot x)((w^{\*})^{(i)}\cdot x)<0\} as well as the change of the noise rate ηi​(x)−ηi+m​(x)\eta\_{i}(x)-\eta\_{i+m}(x). We establish the following two claims in order to bound the expectation of Fi(C)F^{(C)}\_{i}, whose proofs are deferred to [Section˜C.2.3](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS3 "C.2.3 Proof of ˜3.1 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Section˜C.2.4](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS4 "C.2.4 Proof of ˜3.2 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+###### Claim 3.1.
+
+For i,m∈Ni,\,m\in N, let D(i),D(i+m)D^{(i)},\,D^{(i+m)} be realized by ((w∗)(i),ηi​(x))((w^{\*})^{(i)},\,\eta\_{i}(x)) and (w∗,ηm+i​(x))(w^{\*},\,\eta\_{m+i}(x)). Then 𝐏𝐫x∼Dx(i)\[ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1\]=O​(Δ​m1−2​η)\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{x}}\[\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1\]=O\big(\frac{\Delta m}{1-2\eta}\big).
+
+###### Claim 3.2.
+
+For i,m∈Ni,\,m\in N, let D(i),D(i+m)D^{(i)},\,D^{(i+m)} be realized by ((w∗)(i),ηi​(x))((w^{\*})^{(i)},\eta\_{i}(x)) and (w∗,ηm+i​(x))(w^{\*},\eta\_{m+i}(x)). Let ℰ:={x:ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,ηi​(x)≥ηm+i​(x)}\mathcal{E}:=\{x:\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\,\eta\_{i}(x)\geq\eta\_{m+i}(x)\}. Then 𝐄x∼Dx(i)\[(ηi(x)−ηm+i(x)𝟙{ℰ}\]=O(Δm)\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\[(\eta\_{i}(x)-\eta\_{m+i}(x)\mathds{1}\{\mathcal{E}\}\]=O(\Delta m).
+
+[Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") shows that the excess error of a hypothesis in each round can be bounded by its “average regret” plus a contribution due to the drift error. Thus, to prove [Theorem˜1.1](https://arxiv.org/html/2606.11149v1#S1.Thmtheorem1 "Theorem 1.1 (Main Algorithmic Result). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we only need to show that the “average regret” can be bounded by O​(Δ1/3/γ)O(\Delta^{1/3}/\gamma), while controlling the drift error contribution.
+By [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we know that we need to control the optimization error 1/(2​T​μ)+2​μ/γ21/(2T\mu)+2\mu/\gamma^{2}, the drift error O​(T​Δ/γ)O(T\Delta/\gamma), and the concentration error ∑i=1Tξi\sum\_{i=1}^{T}\xi\_{i}. The first two errors are minimized by carefully choosing the epoch length WW as well as the update step size μ\mu, while the concentration term is controlled by the following lemma.
+
+###### Lemma 3.2.
+
+For t,i>0t,i>0 and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1},
+define ξi:=(g​(w(i);x,y)−𝐄(x,y)∼D(t+i)g​(w(i);x,y))⋅(w(i)−w∗)\xi\_{i}:=\left(g(w^{(i)};x,y)-\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\right)\cdot(w^{(i)}-w^{\*}), (x,y)∼D(t+i)(x,y)\sim D^{(t+i)}. For every T>0T>0, with probability at least 1−δ/21-\delta/2, it holds ∑i=1Tξi≤γ−1​T​log⁡(1/δ).\sum\_{i=1}^{T}\xi\_{i}\leq\gamma^{-1}\sqrt{T}\log(1/\delta).
+
+###### Proof of [Theorem˜1.1](https://arxiv.org/html/2606.11149v1\#S1.Thmtheorem1 "Theorem 1.1 (Main Algorithmic Result). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+To prove the correctness of [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we show that for t=ℓ​Wt=\ell W, with probability 1−δ1-\delta, err(t)​(h(ℓ))≤η+O~​(Δ1/3/γ)\mathrm{err}^{(t)}(h^{(\ell)})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma). Suppose this is correct, then for t′=ℓ​W+jt^{\prime}=\ell W+j, 1≤j≤W1\leq j\leq W, we have with probability at least 1−δ1-\delta,
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | err(t′)​(h(ℓ))\displaystyle\mathrm{err}^{(t^{\prime})}(h^{(\ell)}) | ≤𝐏𝐫(x,y)∼D(i​W)\[h(ℓ)​(x)≠y\]+j​Δ\displaystyle\leq\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(iW)}}\[h^{(\ell)}(x)\neq y\]+j\Delta |  |
+|  |  | ≤η+O~​(Δ1/3/γ).\displaystyle\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma). |  |
+
+To bound above the error of err(t)​(h(ℓ))\mathrm{err}^{(t)}(h^{(\ell)}) for t=ℓ​Wt=\ell W, we apply [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") with t=ℓ​Wt=\ell W and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1}, the vector that realizes D(t+T)D^{(t+T)} with T=W/2T=W/2 and apply [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") with i=t+ji=t+j
+and m=T−jm=T-j for each j∈\[T\]j\in\[T\].
+We have with probability at least 0.950.95
+
+|     |     |     |
+| --- | --- | --- |
+|  | 1T​∑j=1T(err(t+j)​(w(j))−η)\displaystyle\frac{1}{T}\sum\_{j=1}^{T}\left(\mathrm{err}^{(t+j)}(w^{(j)})-\eta\right) |  |
+|  | ≤1T​∑j=1T𝐄(x,y)∼D(t+j)\[g​(w(j);x,y)⋅(w(j)−w∗)\]+O​(T​Δ/γ)\displaystyle\leq\frac{1}{T}\sum\_{j=1}^{T}\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+j)}}\[g(w^{(j)};x,y)\cdot(w^{(j)}-w^{\*})\]+O(T\Delta/\gamma) |  |
+|  | ≤12​T​μ+μ2​γ2−1T​∑j=1Tξj+O​(T​Δ/γ)\displaystyle\leq\frac{1}{2T\mu}+\frac{\mu}{2\gamma^{2}}-\frac{1}{T}\sum\_{j=1}^{T}\xi\_{j}+O(T\Delta/\gamma) |  |
+|  | ≤1/(T​γ)+O​(T​Δ/γ)−1T​∑j=1Tξj\displaystyle\leq 1/(\sqrt{T}\gamma)+O(T\Delta/\gamma)-\frac{1}{T}\sum\_{j=1}^{T}\xi\_{j} |  |
+|  | ≤1/(T​γ)+O​(T​Δ/γ)+O​(1/(T​γ))=O~​(Δ1/3/γ).\displaystyle\leq 1/(\sqrt{T}\gamma)+O(T\Delta/\gamma)+O(1/(\sqrt{T}\gamma))=\tilde{O}(\Delta^{1/3}/\gamma). |  |
+
+Here, the third inequality follows from the choice μ=γ/T\mu=\gamma/\sqrt{T}, the forth inequality follows from [Lemma˜3.2](https://arxiv.org/html/2606.11149v1#S3.Thmlemma2 "Lemma 3.2. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and the last inequality follows from the choice of T=Θ~​(Δ−2/3)T=\tilde{\Theta}(\Delta^{-2/3}).
+This implies that with probability 0.950.95 there is at least one j∈\[T\]j\in\[T\] such that , err(t+j)​(w(j))≤η+O~​(Δ1/3/γ)\mathrm{err}^{(t+j)}(w^{(j)})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma), as minj∈\[T\]⁡(err(t+j)​(w(j))−η)≤1T​∑j=1T(err(t+j)​(w(j))−η)\min\_{j\in\[T\]}\left(\mathrm{err}^{(t+j)}(w^{(j)})-\eta\right)\leq\frac{1}{T}\sum\_{j=1}^{T}\left(\mathrm{err}^{(t+j)}(w^{(j)})-\eta\right).
+
+We next argue that we are able to select a good hypothesis by looking at the empirical error.
+For each j∈\[T\]j\in\[T\], consider the halfspace h^j=hw(j)\hat{h}\_{j}=h\_{w^{(j)}}. By the assumption on the drift rate, we have \|err((ℓ+1)​W)​(h^j)−err(t+t′)​(h^j)\|≤Δ​W=Δ1/3\big\|{\mathrm{err}^{((\ell+1)W)}(\hat{h}\_{j})-\mathrm{err}^{(t+t^{\prime})}(\hat{h}\_{j})}\big\|\leq\Delta W=\Delta^{1/3} for every t′∈\[W/2\]t^{\prime}\in\[W/2\], which implies that
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|err((ℓ+1)​W)​(h^j)−2W​∑ℓ=1W/2err(t+t′+W/2)​(h^j)\|≤Δ​W.\displaystyle\Big\|\mathrm{err}^{((\ell+1)W)}(\hat{h}\_{j})-\frac{2}{W}\sum\_{\ell=1}^{W/2}\mathrm{err}^{(t+t^{\prime}+W/2)}(\hat{h}\_{j})\Big\|\leq\Delta W. |  |
+
+Recall the definition of err^​(h^j)\hat{\mathrm{err}}(\hat{h}\_{j}) from [Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") as the empirical error of h^j\hat{h}\_{j} over an independent set S2(i)S\_{2}^{(i)}. By Hoeffding’s inequality,
+we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫\[err^​(h^j)−2W​∑ℓ=1W/2err(t+ℓ+W/2)​(h^j)>Δ1/3\]≤0.05W.\displaystyle\operatorname\*{\mathbf{Pr}}\Big\[\hat{\mathrm{err}}(\hat{h}\_{j})-\frac{2}{W}\sum\_{\ell=1}^{W/2}\mathrm{err}^{(t+\ell+W/2)}(\hat{h}\_{j})>\Delta^{1/3}\Big\]\leq\frac{0.05}{W}. |  |
+
+Thus, by the union bound, with probability at least 0.950.95,
+we have \|err^​(h^j)−err((ℓ+1)​W)​(h^j)\|≤Δ1/3\big\|{\hat{\mathrm{err}}(\hat{h}\_{j})-\mathrm{err}^{((\ell+1)W)}(\hat{h}\_{j})}\big\|\leq\Delta^{1/3} for j∈\[T\]j\in\[T\].
+Since with probability 0.950.95, there is some j∗∈\[T\]j^{\*}\in\[T\] such that err(t+j∗)​(w(j∗))≤η+O~​(Δ1/3/γ)\mathrm{err}^{(t+j^{\*})}(w^{(j^{\*})})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma), we know that err((ℓ+1)​W)​(w(j∗))≤η+O~​(Δ1/3/γ)\mathrm{err}^{((\ell+1)W)}(w^{(j^{\*})})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma). This implies that the selected hypothesis that minimizes err^​(hj)\hat{\mathrm{err}}(h\_{j}) must have err((ℓ+1)​W)​(h^)≤η+O~​(Δ1/3/γ)\mathrm{err}^{((\ell+1)W)}(\hat{h})\leq\eta+\tilde{O}(\Delta^{1/3}/\gamma), with probability 0.90.9.
+∎
+
+##### Efficiently Learning Drifting Halfspaces with RCN
+
+Under the Massart noise condition, even without distribution drift, it is computationally hard \[ [NT22](https://arxiv.org/html/2606.11149v1#bib.bibx38 "")\] to output a hypothesis with error less than η−o​(1)\eta-o(1). For the special case of RCN, although optt\mathrm{opt}\_{t} can change over time due to the distribution drift, we show that within each epoch, there is some η∗\eta^{\*} such that for every time step tt within the epoch, optt≤η∗+O​(Δ​W)\mathrm{opt}\_{t}\leq\eta^{\*}+O(\Delta W). Thus, by repeatedly running [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") with different choices of η\eta, we are able to get error optt+O~​(Δ1/3/γ)\mathrm{opt}\_{t}+\tilde{O}(\Delta^{1/3}/\gamma). Specifically, we show (see [Section˜C.4](https://arxiv.org/html/2606.11149v1#A3.SS4 "C.4 Omitted Details for Learning Drifting Halfspace under RCN ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") for the proof).
+
+###### Theorem 3.1(Efficient Drift Learning with RCN).
+
+Consider the problem of learning drifting halfspaces with η\eta-RCN. There is an algorithm 𝒜\mathcal{A} such that for any time step T=Ω~​(Δ−2/3)T=\tilde{\Omega}(\Delta^{-2/3}), 𝒜\mathcal{A} runs in poly​(d,1/γ,Δ)\mathrm{poly}(d,1/\gamma,\Delta) time and outputs a hypothesis h^(T)\hat{h}^{(T)} such that with probability at least 9/109/10, err(T)​(h^(T))≤optT+O~​(Δ1/3/γ)\mathrm{err}^{(T)}(\hat{h}^{(T)})\leq\mathrm{opt}\_{T}+\tilde{O}(\Delta^{1/3}/\gamma).
+
+##### Efficiently Learning Realizable Drifting Halfspaces
+
+Another application of our algorithmic framework is an efficient algorithm for drifting halfspaces in the realizable setting with an improved error guarantee. When the marginal distribution is uniform over the unit sphere in ℝd\mathbb{R}^{d}, \[ [HKY15](https://arxiv.org/html/2606.11149v1#bib.bibx26 "")\] shows that it is possible to efficiently achieve an error of d​Δ\sqrt{d\Delta}. However, when the strong distributional assumption is removed, the only known efficient learning algorithm with a provable error guarantee d​Δd\sqrt{\Delta} is designed by \[ [HL94](https://arxiv.org/html/2606.11149v1#bib.bibx27 "")\]. Such an algorithm uses a simple observation that if the epoch length is W=O​(Δ−1/2)W=O(\Delta^{-1/2}), then in the realizable setting, with constant probability, all observed examples within the epoch are consistent with a single halfspace and thus empirical risk minimization can be efficiently implemented. In the case of learning a γ\gamma-margin halfspace, such a trick only gives an error of O​(Δ​γ−2)O(\sqrt{\Delta}\gamma^{-2}) through a standard generalization analysis, because the sample size used to update the hypothesis is too small to achieve a good generalization error. To overcome such a difficulty, we increase the length of an epoch to (γ​Δ)−1/2(\gamma\Delta)^{-1/2}. Although within such a larger epoch, empirical risk minimization is no longer efficiently implementable, because the labels are no longer consistent with a single halfspace
+, our algorithm uses a carefully designed projected gradient descent to get a better generalization error O~​(Δ​γ−3/2)\tilde{O}(\sqrt{\Delta}\gamma^{-3/2}).
+
+###### Theorem 3.2(Efficient Drift Learning in Realizable Case).
+
+Consider the problem of learning drifting halfspaces. There is an algorithm 𝒜\mathcal{A} such that for any time step T=Ω~​((γ​Δ)−1/2)T=\tilde{\Omega}((\gamma\Delta)^{-1/2}), 𝒜\mathcal{A} runs in poly​(d,1/γ,Δ)\mathrm{poly}(d,1/\gamma,\Delta) time and outputs a hypothesis h^(T)\hat{h}^{(T)} such that with probability at least 9/109/10, err(T)​(h^(T))=O~​(Δ​γ−3/2)\mathrm{err}^{(T)}(\hat{h}^{(T)})=\tilde{O}(\sqrt{\Delta}\gamma^{-3/2}).
+
+Compared to our Massart [Algorithm˜1](https://arxiv.org/html/2606.11149v1#alg1 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"),
+there are differences in the design and analysis of the learner in the realizable setting. Without label noise, we do not weight the gradient by max{\|w(i)⋅x\|,γ}−1\max\{\left\|w^{(i)}\cdot x\right\|,\gamma\}^{-1} and use g​(w,x,y)←(sign​(w⋅x)−y)​xg(w,x,y)\leftarrow(\mathrm{sign}(w\cdot x)-y)x instead. Such a choice has the property that 𝐄(x,y)∼D(i)‖g​(w;x,y)‖2=err(i)​(hw)\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}\left\\|g(w;x,y)\right\\|^{2}=\mathrm{err}^{(i)}(h\_{w}). This allows for
+a tighter regret bound as well as better control of drift error, and results in a better error guarantee of order Δ1/2\Delta^{1/2} instead of Δ1/3\Delta^{1/3}. See [Section˜C.5](https://arxiv.org/html/2606.11149v1#A3.SS5 "C.5 Proof of Theorem˜3.2 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") for the formal details.
+
+## 4 Low-Degree Polynomial Hardness
+
+In this section, we establish our information-computation tradeoff
+for learning drifting halfspaces with RCN, thereby establishing
+[Theorem˜1.2](https://arxiv.org/html/2606.11149v1#S1.Thmtheorem2 "Theorem 1.2 (Informal Implication of Theorem˜4.1). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+To establish the hardness result, we first introduce the following testing problem, which we will show later can be solved by a learning algorithm with a small excess error.
+
+###### Definition 4.1(Trajectory Testing Problem).
+
+A trajectory testing problem ℬ​(D0,𝒟)\mathcal{B}(D^{0},\mathcal{D}) is defined by a distribution D(0)D^{(0)} and a family of distributions 𝒟\mathcal{D} over Z=(ℝd×{±1})TZ=(\mathbb{R}^{d}\times\{\pm 1\})^{T}. An algorithm is given a sample z=(z1,…,zT)∼D,zi=(xi,yi),i∈\[T\],z=(z\_{1},\dots,z\_{T})\sim D,z\_{i}=(x\_{i},y\_{i}),i\in\[T\], and is asked to distinguish whether D=D(0)D=D^{(0)} or if DD is a distribution drawn uniformly from 𝒟\mathcal{D}. In particular, this is the following hypothesis testing problem:
+
+1. 1.
+
+
+Null hypothesisH0H\_{0}: All labeled examples zi,z\_{i},i∈\[T\],i\in\[T\], are drawn from the same distribution: Di(0)=Dj(0),D^{(0)}\_{i}=D\_{j}^{(0)},∀i,j∈\[T\].\forall i,j\in\[T\]. Furthermore, for each i∈\[T\]i\in\[T\], yiy\_{i} is independent of xix\_{i} and such that 𝐏𝐫Di(0)(yi=1)=η∈(0,1/2)\operatorname\*{\mathbf{Pr}}\_{D^{(0)}\_{i}}(y\_{i}=1)=\eta\in(0,1/2).
+
+2. 2.
+
+
+Alternative hypothesisH1H\_{1}: Labeled examples satisfy zi∼Diz\_{i}\sim D\_{i}, where D∈𝒟D\in\mathcal{D} and each distribution DiD\_{i} corresponds to an instance of learning γ\gamma-margin halfspaces under RCN with noise rate ηi≤η∈(0,1)\eta\_{i}\leq\eta\in(0,1). Furthermore, for every i∈\[T\]i\in\[T\], dT​V​(Di,Di+1)≤Δ.d\_{\mathrm{T}V}(D\_{i},D\_{i+1})\leq\Delta.
+
+
+To establish our computational hardness result, we need to formally define
+the computational model. We restrict the learning algorithms to the family of low-degree polynomial estimators, one of the most commonly used algorithmic families in statistics and machine learning literature \[ [Wei25](https://arxiv.org/html/2606.11149v1#bib.bibx42 "")\].
+
+More formally,
+Let z=(z1,…,zm)∈ℝd×mz=(z\_{1},\dots,z\_{m})\in\mathbb{R}^{d\times m} be an input sample. A degree kk polynomial algorithm 𝒜\mathcal{A} specifies a function f​(z)=(f1​(z),…,fd​(z)):ℝd×m→ℝdf(z)=(f\_{1}(z),\dots,f\_{d}(z)):\mathbb{R}^{d\times m}\to\mathbb{R}^{d} such that for i∈\[d\]i\in\[d\], fi​(z)f\_{i}(z) is a polynomial over zz with degree at most kk. We say ff has a samplewise degree (ℓ,k)(\ell,k) if ff can be written as a linear combination of monomials such that each monomial has a degree ℓ\ell at each ziz\_{i} and has non-zero degree for at most kk examples.
+
+###### Definition 4.2(Low-Degree Polynomial Test under Concept Drift).
+
+Under [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), let p:ℝ(d+1)×T→ℝp:\mathbb{R}^{(d+1)\times T}\to\mathbb{R} be a polynomial over ZZ. A low degree polynomial test using pp with threshold tt is an algorithm such that given a sample zz, it returns H0H\_{0} if p​(z)>tp(z)>t. Furthermore, we say the polynomial pp is an ϵ\epsilon-distinguisher for [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") if
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|𝐄z∼D(0)p​(z)−𝐄D∼𝒟𝐄z∼D⁡p​(z)\|≥ϵ​𝐕𝐚𝐫z∼D(0)​p​(z).\displaystyle\big\|{\operatorname\*{\mathbf{E}}\_{z\sim D^{(0)}}p(z)-\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}\operatorname\*{\mathbf{E}}\_{z\sim D}p(z)}\big\|\geq\epsilon\sqrt{\mathbf{Var}\_{z\sim D^{(0)}}p(z)}. |  |
+
+Intuitively, at a given time step TT, an algorithm is given the history of observed examples and is allowed to compute any polynomial function over the trajectory of the examples. If a polynomial pp is not an ϵ\epsilon-distinguisher for the testing problem, then for a trajectory zz sampled under H0H\_{0} or H1H\_{1}, the result of p​(z)p(z) will have difference about ϵ\epsilon with constant probability and thus is not reliable to distinguish the two cases. In particular, evaluating a _general_ degree kk polynomial over ℝ(d+1)×T\mathbb{R}^{(d+1)\times T} requires time (d​T)k(dT)^{k}, which implies that if we can rule out super-constant degree polynomials as 11-distinguishers, we can provide evidence of the computational hardness of the problem.
+
+##### Hardness Construction
+
+We remark that without any restrictions on the parameters of the problem,
+in the trajectory testing problem defined in [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"),
+the TV distance between H0H\_{0} and H1H\_{1} could be arbitrarily small,
+in which case the problem would be hard to solve even information-theoretically.
+Here we construct D(0)D^{(0)} and 𝒟\mathcal{D} such that any algorithm that has a good error guarantee under the drift model can be used to solve the testing problem. Specifically, we consider examples supported over {±1}d\{\pm 1\}^{d}, for γ=Θ​(1/d)\gamma=\Theta(1/d) and force the marginal distribution to be the uniform distribution over the hypercube.
+
+###### Definition 4.3(Hard Instance).
+
+Let T∈ℕ+T\in\mathbb{N}^{+} be any sufficiently large number, let Δ∈(0,1)\Delta\in(0,1), γ<log−1⁡(1/Δ)\gamma<\log^{-1}(1/\Delta), and let d=Θ​(1/γ)d=\Theta(1/\gamma) be an odd number. We construct an instance of trajectory testing as follows.
+
+1. 1.
+
+
+Null hypothesisH0:H\_{0}: For each i∈\[T\]i\in\[T\], Dx(0)D^{(0)}\_{x} is the uniform distribution over {±1}d\{\pm 1\}^{d} and 𝐏𝐫Di(0)\[y​(x)=1\]=1−η\operatorname\*{\mathbf{Pr}}\_{D^{(0)}\_{i}}\[y(x)=1\]=1-\eta.
+
+2. 2.
+
+
+Alternative hypothesisH1:H\_{1}: Let SS be a set of 2dc2^{d^{c}} vectors in {±1}d\{\pm 1\}^{d} such that for every v,u∈Sv,u\in S and v≠uv\neq u, \|v⋅u\|≤d1/2+c\left\|v\cdot u\right\|\leq d^{1/2+c}, c∈(0,1/2)c\in(0,1/2).
+For every v∈Sv\in S, we define the distribution D(v)D^{(v)} as follows. For i≤T−mi\leq T-m, (Di(v))x(D^{(v)}\_{i})\_{x} is the uniform distribution over {±1}d\{\pm 1\}^{d} and 𝐏𝐫Di(v)\[y​(x)=1\]=1−η\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}\[y(x)=1\]=1-\eta. For i=T−m+ji=T-m+j, j∈\[m\]j\in\[m\], we define the ground truth halfspace to be hi(v)=sign​(v⋅x+ti),h^{(v)}\_{i}=\mathrm{sign}(v\cdot x+t\_{i}), where 𝐏𝐫Di(v)\[hi(v)​(x)=−1\]=Δ​j\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}\[h^{(v)}\_{i}(x)=-1\]=\Delta j and 𝐏𝐫Di(v)\[hi(v)​(x)≠y​(x)∣x\]=(η−Δ​j)/(1−2​Δ​j)<η\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}\[h^{(v)}\_{i}(x)\neq y(x)\mid x\]=(\eta-\Delta j)/(1-2\Delta j)<\eta. Here, m=γ−1/6​Δ−2/3m=\gamma^{-1/6}\Delta^{-2/3}.
+
+
+We remark that in the construction of the hard instance, we consider halfspaces with thresholds instead of homogeneous halfspaces. This is for the purpose of simplifying the notation. Since the threshold \|t\|=O​(d)\left\|t\right\|=O(d), we are able to add O​(d)O(d) artificial dimensions to represent (w,t)∈ℝd+1(w,t)\in\mathbb{R}^{d+1} as a single vector w¯∈ℝ2​d\bar{w}\in\mathbb{R}^{2d} such that ‖w¯‖∞<1\left\\|\bar{w}\right\\|\_{\infty}<1. This will make the halfspaces homogeneous and keep the margin γ=Θ​(1/d)\gamma=\Theta(1/d).
+
+In [Section˜D.1](https://arxiv.org/html/2606.11149v1#A4.SS1 "D.1 Proof of Lemma˜D.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we show that
+for a reasonable η\eta (e.g., η=1/3\eta=1/3) the hard instance from [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is a valid instance of the trajectory testing problem.
+In [Section˜D.5](https://arxiv.org/html/2606.11149v1#A4.SS5 "D.5 From Testing to Learning ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we show that any learner
+that achieves error opti+Δ1/3​γ−1/6\mathrm{opt}\_{i}+\Delta^{1/3}\gamma^{-1/6}
+can be used efficiently to solve the testing problem.
+Thus, a low-degree polynomial hardness of the trajectory testing problem of
+[Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") can be used to give a low-degree polynomial hardness
+to an algorithm with an excess error o​(Δ1/3)o(\Delta^{1/3}).
+Thus, our main hardness result is as follows.
+
+###### Theorem 4.1.
+
+Let c∈(0,1/2)c\in(0,1/2) be a constant. For η=1/3\eta=1/3 and Δ>2−1/γc\Delta>2^{-1/\gamma^{c}}, there is no polynomial p​(z)p(z) with degree less than O​(γ−c/4)O(\gamma^{-c/4}) that is a 11-distinguisher for the trajectory testing problem defined in [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), with instance constructed by [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Intuitively, the hard instance constructed in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") requires us to distinguish two cases with RCN under a uniform distribution over the hypercube in ℝd\mathbb{R}^{d}. In the first case, the ground truth label is always +1+1. In the second case, the ground truth label remains +1+1 until time step T−mT-m. But from time step T−m+1T-m+1, the distribution starts drifting along a random direction vv. That is to say, we fix the direction of the normal vector of the target halfspace to be vv, but gradually increase the fraction of examples with ground truth label −1-1 from 0 to Θ​(Δ​m)\Theta(\Delta m). Such a construction implies that no matter how large TT is, the only examples that play a role are the last mm ones. However, due to the presence of RCN, the variance of the distributions of the labels is too large to be distinguished by a low-degree polynomial over the last mm samples.
+
+We make use of linear algebraic tools to formalize this intuition.
+Let D(0),DD^{(0)},D be distributions over ℝd\mathbb{R}^{d}. We denote by D¯:=D​(x)/D(0)​(x):ℝd→ℝ\bar{D}:=D(x)/D^{(0)}(x):\mathbb{R}^{d}\to\mathbb{R}
+the relative density function between DD and D(0)D^{(0)}. Let f,g:ℝd→ℝf,g:\mathbb{R}^{d}\to\mathbb{R} be two functions. We define the inner product between f,gf,g with respect to D(0)D^{(0)} as ⟨f,g⟩D(0)=𝐄x∼D(0)f​(x)​g​(x)\langle f,g\rangle\_{D^{(0)}}=\operatorname\*{\mathbf{E}}\_{x\sim D^{(0)}}f(x)g(x) and define ‖f‖D(0)2=⟨f,f⟩D(0)\left\\|f\right\\|^{2}\_{D^{(0)}}=\langle f,f\rangle\_{D^{(0)}}. For a function f:ℝd×m→ℝf:\mathbb{R}^{d\times m}\to\mathbb{R}, we denote by f≤kf^{\leq k} the projection of ff onto the subspace of polynomials with degree at most kk with respect to D(0)D^{(0)} and denote by f≤(ℓ,k)f^{\leq(\ell,k)} the projection of ff onto the subspace of polynomials with sample degree at most (ℓ,k)(\ell,k) with respect to the inner product ⟨⋅,⋅⟩D(0)\langle\cdot,\cdot\rangle\_{D^{(0)}}.
+
+###### Fact 4.1(One-sample version of Fact 2.1 and Fact 2.2 in \[ [BBH+21](https://arxiv.org/html/2606.11149v1\#bib.bibx6 "")\]).
+
+Let 𝒞ℓ,k\mathcal{C}\_{\ell,k} be the linear subspace of polynomials over z=(z1,…,zT)z=(z\_{1},\dots,z\_{T}) with degree at most ℓ\ell in each ziz\_{i} and with each monomial having a nonzero degree in at most kk of the ziz\_{i}s. Then
+
+|     |     |     |
+| --- | --- | --- |
+|  | maxp∈𝒞ℓ,k​𝐄D(0)p2​(z)≤1⁡(𝐄z∼D(0)p​(z)−𝐄D∼𝒟𝐄z∼D⁡p​(z))\displaystyle\max\_{p\in\mathcal{C}\_{\ell,k}\operatorname\*{\mathbf{E}}\_{D^{(0)}}p^{2}(z)\leq 1}\left(\operatorname\*{\mathbf{E}}\_{z\sim D^{(0)}}p(z)-\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}\operatorname\*{\mathbf{E}}\_{z\sim D}p(z)\right) |  |
+|  | =‖𝐄D∼𝒟(D¯≤ℓ,k)−1‖D(0).\displaystyle\;=\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\ell,k})-1\right\\|\_{D^{(0)}}. |  |
+
+Notice that if ‖𝐄D∼𝒟(D¯≤ℓ,k)−1‖D(0)≤α\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\ell,k})-1\right\\|\_{D^{(0)}}\leq\alpha, then there is no polynomial p​(z)p(z) in 𝒞ℓ,k\mathcal{C}\_{\ell,k} that can distinguish D(0)D^{(0)} from 𝒟\mathcal{D} with an advantage α\alpha. Notice that 𝒞∞,k\mathcal{C}\_{\infty,k} contains the family of polynomials of degree kk. Thus, to prove [Theorem˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), our goal is to show
+
+|     |     |     |
+| --- | --- | --- |
+|  | ‖𝐄D∼𝒟(D¯≤∞,k)−1‖D(0)2\displaystyle\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\infty,k})-1\right\\|\_{D^{(0)}}^{2} |  |
+|  | =𝐄D(u),D(v)∼𝒟\[⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)\]−1≤1.\displaystyle=\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\[\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}\]-1\leq 1. |  |
+
+To do this, we first show that for every u,v∈{±1}du,v\in\{\pm 1\}^{d}, ⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)−1\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1 only depends on the last mm time steps in the trajectory.
+
+###### Lemma 4.1.
+
+Under the construction of [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we have for every ℓ,k\ell,k,
+
+|     |     |     |
+| --- | --- | --- |
+|  | ⟨(D(u)¯≤ℓ,k),(D(v)¯≤ℓ,k)⟩D(0)−1\displaystyle\langle(\bar{D^{(u)}}^{\leq\ell,k}),(\bar{D^{(v)}}^{\leq\ell,k})\rangle\_{D^{(0)}}-1 |  |
+|  | =∑A⊆\[m\],A≠∅,\|A\|≤k∏j∈\[A\]Ij​(u,v),\displaystyle\;=\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\prod\_{j\in\[A\]}I\_{j}(u,v), |  |
+
+Ij(u,v)=⟨(DT−m+j(u)¯)≤ℓ(zi)),(DT−m+j(v)¯)≤ℓ(zi)⟩Di(0)−1I\_{j}(u,v)=\langle(\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})),(\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1.
+
+We defer the proof of [Lemma˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜D.2](https://arxiv.org/html/2606.11149v1#A4.SS2 "D.2 Proof of Lemma˜4.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"). With [Lemma˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), it suffices to bound Ij(u,v)=⟨(DT−m+j(u)¯)≤ℓ(zi)),(DT−m+j(v)¯)≤ℓ(zi)⟩Di(0)−1I\_{j}(u,v)=\langle(\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})),(\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1.
+
+###### Lemma 4.2.
+
+Let c∈(0,1/2)c\in(0,1/2) be a constant. For i=T−m+j,j∈\[m\]i=T-m+j,j\in\[m\] and v,u∈{±1}dv,u\in\{\pm 1\}^{d} such that \|v⋅u\|≤d1−c\left\|v\cdot u\right\|\leq d^{1-c},
+
+|     |     |     |
+| --- | --- | --- |
+|  | ⟨DT−m+j(u)¯​(zi),DT−m+j(v)¯​(zi)⟩Di(0)−1≤O~​(d−(1/2−c)​(Δ​j)2)\displaystyle\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i}),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\leq\tilde{O}(d^{-(1/2-c)}(\Delta j)^{2}) |  |
+|  | ⟨DT−m+j(u)¯​(zi),DT−m+j(u)¯​(zi)⟩Di(0)−1≤O​(Δ​j).\displaystyle\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i}),\bar{D^{(u)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\leq O(\Delta j). |  |
+
+We defer the proof of [Lemma˜4.2](https://arxiv.org/html/2606.11149v1#S4.Thmlemma2 "Lemma 4.2. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜D.3](https://arxiv.org/html/2606.11149v1#A4.SS3 "D.3 Proof of Lemma˜4.2 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"). The proof of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") now follows from [Lemma˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Lemma˜4.2](https://arxiv.org/html/2606.11149v1#S4.Thmlemma2 "Lemma 4.2. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"). In particular, for any A⊆\[m\]A\subseteq\[m\] with \|A\|≤γ−c/4\|A\|\leq\gamma^{-c/4}, the choice of m=γ−1/6​Δ−2/3m=\gamma^{-1/6}\Delta^{-2/3} enables us to show
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄D(u),D(v)∼𝒟​∏j∈\[A\]Ij​(u,v)≤(1/(100​m))\|A\|,\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}I\_{j}(u,v)\leq(1/(100m))^{\|A\|}, |  |
+
+which implies for k=γ−c/4k=\gamma^{-c/4}, c∈(0,1/2)c\in(0,1/2),
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | ‖𝐄D∼𝒟(D¯≤∞,k)−1‖D(0)2\displaystyle\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\infty,k})-1\right\\|\_{D^{(0)}}^{2} |  |
+|  | =\displaystyle= | 𝐄D(u),D(v)∼𝒟⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)−1\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],A≠∅,\|A\|≤k𝐄D(u),D(v)∼𝒟​∏j∈\[A\]Ij​(u,v)\displaystyle\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}I\_{j}(u,v) |  |
+|  | ≤\displaystyle\leq | ∑ℓ=1k(mℓ)​(1/(100​m))ℓ≤1.\displaystyle\sum\_{\ell=1}^{k}\binom{m}{\ell}(1/(100m))^{\ell}\leq 1. |  |
+
+Due to the space limitations, we defer the full proof of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜D.4](https://arxiv.org/html/2606.11149v1#A4.SS4 "D.4 Proof of Theorem˜4.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+## 5 Conclusion
+
+This paper provides information-theoretic rates and the first polynomial-time algorithms for
+learning drifting halfspaces with structured classes of noise, such as the semi-random Massart
+noise and its special case of random classification noise,
+including the noiseless (realizable) model. Additionally, we prove lower bounds applying to
+polynomial-time algorithms within the broad class of low-degree polynomial tests, providing
+strong evidence of an information-computation tradeoff for this problem.
+
+A number of interesting questions for future work remain.
+For a concrete example, while polynomial-time algorithms with nontrivially bounded error
+are out of reach for general distributional families of covariates and adversarial labels,
+learning halfspaces under structured covariate distributions
+(e.g., logconcave distributions)
+and arbitrary labels is possible with polynomial-time algorithms for the settings with no
+distribution drift. Are such results possible in the drifting concept model? More broadly, it
+would be interesting to explore the computational aspects of learning with drift for other
+natural hypothesis classes, such as intersections of halfspaces and neural networks.
+
+## References
+
+- \[ABL17\]
+Pranjal Awasthi, Maria Florina Balcan, and Philip M Long.
+
+The power of localization for efficiently learning linear separators with noise.
+
+Journal of the ACM (JACM), 63(6):1–27, 2017.
+
+- \[ADMR23\]
+Shushan Arakelyan, Rocktim Das, Yi Mao, and Xiang Ren.
+
+Exploring distributional shifts in large language models for code analysis.
+
+In Proceedings of the 2023 conference on empirical methods in natural language processing, pages 16298–16314, 2023.
+
+- \[AL88\]
+Dana Angluin and Philip Laird.
+
+Learning from noisy examples.
+
+Machine Learning, 2(4):343–370, 1988.
+
+- \[AV23\]
+Gabriel Arpino and Ramji Venkataramanan.
+
+Statistical-computational tradeoffs in mixed sparse linear regression.
+
+In The Thirty Sixth Annual Conference on Learning Theory, pages 921–986. PMLR, 2023.
+
+- \[Bar92\]
+Peter L Bartlett.
+
+Learning with a slowly changing distribution.
+
+In Proceedings of the fifth annual workshop on Computational learning theory, pages 243–252, 1992.
+
+- \[BBH+21\]
+Matthew S Brennan, Guy Bresler, Sam Hopkins, Jerry Li, and Tselil Schramm.
+
+Statistical query algorithms and low degree tests are almost equivalent.
+
+In Conference on Learning Theory, pages 774–774, 2021.
+
+- \[BL97\]
+R. D. Barve and P. M. Long.
+
+On the complexity of learning from drifting distributions.
+
+Information and Computation, 138(2):101–123, 1997.
+
+- \[BM02\]
+Peter L Bartlett and Shahar Mendelson.
+
+Rademacher and gaussian complexities: Risk bounds and structural results.
+
+Journal of machine learning research, 3(Nov):463–482, 2002.
+
+- \[BTN+25\]
+Dheeraj Baby, Yifei Tang, Hieu Duy Nguyen, Yu-Xiang Wang, and Rohit Pyati.
+
+Adaptive estimation and learning under temporal distribution shift.
+
+In Proceedings of the 42nd International Conference on Machine Learning, Proceedings of Machine Learning Research, pages 2176–2202, 2025.
+
+- \[CKMY20\]
+Sitan Chen, Frederic Koehler, Ankur Moitra, and Morris Yau.
+
+Classification under misspecification: Halfspaces, generalized linear models, and evolvability.
+
+In Advances in Neural Information Processing Systems (NeurIPS), pages 8391–8403, 2020.
+
+- \[CKST24\]
+Gautam Chandrasekaran, Vasilis Kontonis, Konstantinos Stavropoulos, and Kevin Tian.
+
+Learning noisy halfspaces with a margin: Massart is no harder than random.
+
+Advances in Neural Information Processing Systems, pages 45386–45408, 2024.
+
+- \[CMEDV10\]
+Koby Crammer, Yishay Mansour, Eyal Even-Dar, and Jennifer Wortman Vaughan.
+
+Regret minimization with concept drift.
+
+In COLT, pages 168–180, 2010.
+
+- \[Dan16\]
+A. Daniely.
+
+Complexity theoretic limitations on learning halfspaces.
+
+In Proceedings of the 48th Annual Symposium on Theory of Computing, STOC 2016, pages 105–117, 2016.
+
+- \[DDK+23\]
+Ilias Diakonikolas, Jelena Diakonikolas, Daniel M. Kane, Puqian Wang, and Nikos Zarifis.
+
+Information–computation tradeoffs for learning margin halfspaces with random classification noise.
+
+In Conference on Learning Theory (COLT), Proceedings of Machine Learning Research, pages 2211–2239, 2023.
+
+- \[DGT19\]
+Ilias Diakonikolas, Themis Gouleakis, and Christos Tzamos.
+
+Distribution-independent pac learning of halfspaces with massart noise.
+
+Advances in Neural Information Processing Systems, 2019.
+
+- \[DK22\]
+Ilias Diakonikolas and Daniel Kane.
+
+Near-optimal Statistical Query hardness of learning halfspaces with Massart noise.
+
+In Conference on Learning Theory, pages 4258–4282, 2022.
+
+- \[DKM24\]
+Ilias Diakonikolas, Daniel Kane, and Mingchen Ma.
+
+Active learning of general halfspaces: Label queries vs membership queries.
+
+Advances in Neural Information Processing Systems, 37:49180–49213, 2024.
+
+- \[DKMR22\]
+Ilias Diakonikolas, Daniel Kane, Pasin Manurangsi, and Lisheng Ren.
+
+Cryptographic hardness of learning halfspaces with Massart noise.
+
+In Advances in Neural Information Processing Systems (NeurIPS), 2022.
+
+- \[DKS18\]
+Ilias Diakonikolas, Daniel M Kane, and Alistair Stewart.
+
+Learning geometric concepts with nasty noise.
+
+In Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing, pages 1061–1073, 2018.
+
+- \[DKTZ22\]
+Ilias Diakonikolas, Vasilis Kontonis, Christos Tzamos, and Nikos Zarifis.
+
+Learning general halfspaces with adversarial label noise via online gradient descent.
+
+In International Conference on Machine Learning, pages 5118–5141. PMLR, 2022.
+
+- \[DKTZ25\]
+Ilias Diakonikolas, Vasilis Kontonis, Christos Tzamos, and Nikos Zarifis.
+
+Online linear classification with Massart noise.
+
+In International Conference on Machine Learning (ICML), volume 267 of Proceedings of Machine Learning Research, pages 13679–13692, 2025.
+
+- \[DKWB21\]
+Yunzi Ding, Dmitriy Kunisky, Alexander S Wein, and Afonso S Bandeira.
+
+The average-case time complexity of certifying the restricted isometry property.
+
+IEEE Transactions on Information Theory, 67(11):7355–7361, 2021.
+
+- \[DKWB24\]
+Yunzi Ding, Dmitriy Kunisky, Alexander S Wein, and Afonso S Bandeira.
+
+Subexponential-time algorithms for sparse pca.
+
+Foundations of Computational Mathematics, 24(3):865–914, 2024.
+
+- \[DZ24\]
+Ilias Diakonikolas and Nikos Zarifis.
+
+A near-optimal algorithm for learning margin halfspaces with Massart noise.
+
+Advances in Neural Information Processing Systems, pages 88605–88626, 2024.
+
+- \[HHW24\]
+Elise Han, Chengpiao Huang, and Kaizheng Wang.
+
+Model assessment and selection under temporal distribution shift.
+
+In Proceedings of the 41st International Conference on Machine Learning (ICML), Proceedings of Machine Learning Research, pages 17374–17392, 2024.
+
+- \[HKY15\]
+Steve Hanneke, Varun Kanade, and Liu Yang.
+
+Learning with a drifting target concept.
+
+In International Conference on Algorithmic Learning Theory, pages 149–164, 2015.
+
+- \[HL94\]
+David P Helmbold and Philip M Long.
+
+Tracking drifting concepts by minimizing disagreements.
+
+Machine learning, 14(1):27–45, 1994.
+
+- \[HLO91\]
+David PP Helmbold, Philip MM Long, and Manfred Opper.
+
+Tracking drifting concepts using random examples.
+
+Morgan Kaufmann Santa Cruz, California, 1991.
+
+- \[Hop18\]
+Samuel B. Hopkins.
+
+Statistical inference and the sum of squares method.
+
+PhD thesis, Cornell University, 2018.
+
+- \[HY19\]
+Steve Hanneke and Liu Yang.
+
+Statistical learning under nonstationary mixing processes.
+
+In Proceedings of the 22nd International Conference on Artificial Intelligence and Statistics (AISTATS), Proceedings of Machine Learning Research, pages 1678–1686, 2019.
+
+- \[Kea98\]
+M. J. Kearns.
+
+Efficient noise-tolerant learning from statistical queries.
+
+Journal of the ACM, 45(6):983–1006, 1998.
+
+- \[KMT24\]
+Vasilis Kontonis, Mingchen Ma, and Christos Tzamos.
+
+Active classification with few queries under misspecification.
+
+In The Thirty-eighth Annual Conference on Neural Information Processing Systems, 2024.
+
+- \[KWB19\]
+Dimitry Kunisky, Alexander S. Wein, and Afonso S. Bandeira.
+
+Notes on computational hardness of hypothesis testing: Predictions using the low-degree likelihood ratio.
+
+CoRR, abs/1907.11636, 2019.
+
+- \[Lon99\]
+Philip M. Long.
+
+The complexity of learning according to two models of a drifting environment.
+
+Machine Learning, 37(3):337–354, 1999.
+
+- \[MMM12\]
+Mehryar Mohri and Andres Muñoz Medina.
+
+New analysis and algorithm for learning with drifting distributions.
+
+In Proceedings of the 23rd International Conference on Algorithmic Learning Theory (ALT 2012), pages 124–138, 2012.
+
+- \[MN06\]
+Pascal Massart and Elodie Nedelec.
+
+Risk bounds for statistical learning.
+
+Ann. Statist., 34(5):2326–2366, October 2006.
+
+- \[MU23\]
+Alessio Mazzetto and Eli Upfal.
+
+An adaptive algorithm for learning with unknown distribution drift.
+
+Advances in Neural Information Processing Systems, pages 10068–10087, 2023.
+
+- \[NT22\]
+Rajai Nasser and Stefan Tiegel.
+
+Optimal sq lower bounds for learning halfspaces with massart noise.
+
+In Conference on Learning Theory, pages 1047–1074. PMLR, 2022.
+
+- \[Tal96\]
+Michel Talagrand.
+
+New concentration inequalities in product spaces.
+
+Inventiones mathematicae, (3):505–563, 1996.
+
+- \[Tsy03\]
+Alexandre B Tsybakov.
+
+Introduction à l’estimation non paramétrique, volume 41.
+
+Springer Science & Business Media, 2003.
+
+- \[Vap98\]
+Vladimir Vapnik.
+
+Statistical Learning Theory.
+
+Wiley-Interscience, New York, 1998.
+
+- \[Wei25\]
+Alexander S Wein.
+
+Computational complexity of statistics: New insights from low-degree polynomials.
+
+arXiv preprint arXiv:2506.10748, 2025.
+
+
+## Appendix
+
+The structure of this appendix is the following: In [Appendix˜A](https://arxiv.org/html/2606.11149v1#A1 "Appendix A Useful Concentration Inequalities ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we record some standard concentration inequalities.
+In [Appendix˜B](https://arxiv.org/html/2606.11149v1#A2 "Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we provide the omitted proofs from [Section˜2](https://arxiv.org/html/2606.11149v1#S2 "2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), establishing information-theoretic baselines for learning under Massart noise. In [Appendix˜C](https://arxiv.org/html/2606.11149v1#A3 "Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we provide omitted details from [Section˜3](https://arxiv.org/html/2606.11149v1#S3 "3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), providing efficient learning algorithms under distribution drift. In [Appendix˜D](https://arxiv.org/html/2606.11149v1#A4 "Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we give the proofs omitted from [Section˜4](https://arxiv.org/html/2606.11149v1#S4 "4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+## Appendix A Useful Concentration Inequalities
+
+Our technical sections will make use of the following concentration inequalities.
+
+###### Fact A.1(Hoeffding’s Inequality).
+
+Let X1,…,XnX\_{1},\dots,X\_{n} be nn independent random variables such that Xi∈\[ai,bi\]X\_{i}\in\[a\_{i},b\_{i}\]. Let Sn=∑i=1nXiS\_{n}=\sum\_{i=1}^{n}X\_{i}. Then for t>0t>0, 𝐏𝐫\[\|Sn−𝐄Sn\|>t\]≤exp⁡(−2​t2/∑i=1n(ai−bi)2)\operatorname\*{\mathbf{Pr}}\left\[\left\|S\_{n}-\operatorname\*{\mathbf{E}}S\_{n}\right\|>t\right\]\leq\exp(-2t^{2}/\sum\_{i=1}^{n}(a\_{i}-b\_{i})^{2}).
+
+###### Fact A.2(Bernstein’s Inequality).
+
+Let X1,…,XnX\_{1},\dots,X\_{n} be independent random variables such that 𝐄Xi=0\operatorname\*{\mathbf{E}}X\_{i}=0 and \|Xi\|≤M\left\|X\_{i}\right\|\leq M. Let σ2:=∑i=1n𝐄\[Xi2\]\sigma^{2}:=\sum\_{i=1}^{n}\operatorname\*{\mathbf{E}}\[X\_{i}^{2}\].
+Then for any t>0t>0, 𝐏𝐫(∑i=1nXi≥t)≤exp⁡(−t22​σ2+23​M​t).\operatorname\*{\mathbf{Pr}}\!\left(\sum\_{i=1}^{n}X\_{i}\geq t\right)\leq\exp\!\left(-\frac{t^{2}}{2\sigma^{2}+\frac{2}{3}Mt}\right).
+
+###### Fact A.3(Talagrand’s Concentration Inequality).
+
+Let X1,…,XnX\_{1},\dots,X\_{n} be independent random variables taking values in a measurable space 𝒳\mathcal{X}.
+Let ℱ\mathcal{F} be a countable class of measurable functions
+f:𝒳→\[−b,b\]f:\mathcal{X}\to\[-b,b\] such that 𝔼​\[f​(Xi)\]=0,for all ​f∈ℱ,i∈\[n\].\mathbb{E}\[f(X\_{i})\]=0,\text{for all }f\in\mathcal{F},\ i\in\[n\].
+Define Z:=supf∈ℱ∑i=1nf​(Xi),Z:=\sup\_{f\in\mathcal{F}}\sum\_{i=1}^{n}f(X\_{i}), and σ2:=supf∈ℱ∑i=1n𝔼​\[f​(Xi)2\]\sigma^{2}:=\sup\_{f\in\mathcal{F}}\sum\_{i=1}^{n}\mathbb{E}\[f(X\_{i})^{2}\], then for all t>0t>0, 𝐏𝐫(Z≥𝔼​\[Z\]+t)≤exp⁡(−t22​σ2+2​b​t).\operatorname\*{\mathbf{Pr}}\!\left(Z\geq\mathbb{E}\[Z\]+t\right)\leq\exp\!\left(-\frac{t^{2}}{2\sigma^{2}+2b\,t}\right).
+
+###### Fact A.4(Dudley’s Inequality).
+
+Let (ℱ,ρ)(\mathcal{F},\rho) be a metric space and let
+{Xf:f∈ℱ}\{X\_{f}:f\in\mathcal{F}\} be a centered stochastic process
+(i.e., 𝐄Xf=0\operatorname\*{\mathbf{E}}X\_{f}=0 for all ff).
+Assume the process has sub-Gaussian increments with respect to ρ\rho, then
+𝐄\[supf∈ℱXf\]≤∫0diam⁡(ℱ,ρ)log⁡𝒩​(ϵ,ℱ,ρ)​𝑑ϵ,\operatorname\*{\mathbf{E}}\!\left\[\sup\_{f\in\mathcal{F}}X\_{f}\right\]\;\leq\;\int\_{0}^{\operatorname{diam}(\mathcal{F},\rho)}\sqrt{\log\mathcal{N}(\epsilon,\mathcal{F},\rho)}\,d\epsilon,
+where 𝒩​(ϵ,ℱ,ρ)\mathcal{N}(\epsilon,\mathcal{F},\rho) is the covering number.
+
+## Appendix B Omitted Proofs from [Section˜2](https://arxiv.org/html/2606.11149v1\#S2 "2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+### B.1 Proof of [Theorem˜2.1](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem1 "Theorem 2.1 (Information-Theoretic Upper Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+For convenience, we restate the theorem below.
+
+###### Theorem B.1(Restatement of [Theorem˜2.1](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem1 "Theorem 2.1 (Information-Theoretic Upper Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Consider the problem of learning under drifting concepts. Let H:X→{±1}H:X\to\{\pm 1\} be a hypothesis class with VC dimension dd. There is an algorithm 𝒜\mathcal{A} such that if for every i>0i>0, D(i)D^{(i)} is realized by ((h∗)(i),ηi​(x))((h^{\*})^{(i)},\eta\_{i}(x)) for (h∗)(i)(h^{\*})^{(i)} and ηi\eta\_{i} satisfies the η\eta-Massart noise condition, then for every t>Ω​(d/((1−2​η)​Δ))t>\Omega(d/((1-2\eta)\Delta)), 𝒜\mathcal{A} outputs a hypothesis h^(t)\hat{h}^{(t)} with error at most optt+O~​((d​Δ/(1−2​η))1/2)\mathrm{opt}\_{t}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}).
+
+The algorithm we will analyze, [Algorithm˜3](https://arxiv.org/html/2606.11149v1#alg3 "In B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), works in epochs, where the i+1i+1th epoch corresponds to time steps t∈{iW+1,…,(i+1)Wt\in\{iW+1,\dots,(i+1)W}. In epoch ii, [Algorithm˜3](https://arxiv.org/html/2606.11149v1#alg3 "In B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") maintains a hypothesis h^(i)\hat{h}^{(i)} for prediction and collects a set of examples S(i)S^{(i)} observed during this epoch. At the end of the epoch, [Algorithm˜3](https://arxiv.org/html/2606.11149v1#alg3 "In B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") updates the hypothesis h(i)h^{(i)} using the collected dataset S(i)S^{(i)} by running a empirical risk minimization over S(i)S^{(i)}.
+
+Algorithm 3DriftedERM(Learning Drifting Concept with Bounded Noise)
+
+1:Input:ℋ:\mathcal{H}: hypothesis class, Δ>0\Delta>0 drift rate, η\eta: noise rate
+
+2:Output: For each time step t≥1t\geq 1, a hypothesis h:X→{±1}h:X\to\{\pm 1\}
+
+3:Let W=Θ~​(d​Δ−1​(1−2​η)−1),i=1W=\tilde{\Theta}(\sqrt{d\Delta^{-1}(1-2\eta)^{-1}}),i=1, h^(0)​(x)≡1\hat{h}^{(0)}(x)\equiv 1
+
+4:fort=1,2,…t=1,2,\dotsdo
+
+5:  Output hypothesis h^(i−1)\hat{h}^{(i-1)} and receive (x(t),y(t))(x^{(t)},y^{(t)}).
+
+6:S(i)←S(i)∪{(x(t),y(t))}S^{(i)}\leftarrow S^{(i)}\cup\{(x^{(t)},y^{(t)})\}
+
+7:ift=i​Wt=iWthen
+
+8:h^(i)←argminh∈ℋerr^​(h):=W−1​∑(x,y)∈S(i)𝟙​{h​(x)≠y}\hat{h}^{(i)}\leftarrow\operatorname\*{argmin}\_{h\in\mathcal{H}}\hat{\mathrm{err}}(h):=W^{-1}\sum\_{(x,y)\in S^{(i)}}\mathds{1}\{h(x)\neq y\}, S(i)←∅S^{(i)}\leftarrow\emptyset
+
+9:i←i+1i\leftarrow i+1
+
+###### Proof of [Theorem˜2.1](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem1 "Theorem 2.1 (Information-Theoretic Upper Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Consider the hypotheses constructed by [Algorithm˜3](https://arxiv.org/html/2606.11149v1#alg3 "In B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+The main part of the proof is to argue that for T=i​WT=iW, err(T)​(h^(i))≤optT+O~​((d​Δ/(1−2​η))1/2)\mathrm{err}^{(T)}(\hat{h}^{(i)})\leq\mathrm{opt}\_{T}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}).
+Suppose this is correct, then for t′=i​W+jt^{\prime}=iW+j, 1≤j≤W1\leq j\leq W, we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | err(t′)​(h^(i))\displaystyle\mathrm{err}^{(t^{\prime})}(\hat{h}^{(i)}) | =𝐏𝐫(x,y)∼D(t′)(h^(i)​(x)≠y)\displaystyle=\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(t^{\prime})}}(\hat{h}^{(i)}(x)\neq y) |  |
+|  |  | ≤𝐏𝐫(x,y)∼D(i​W)(h^(i)​(x)≠y)+j​Δ\displaystyle\leq\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(iW)}}(\hat{h}^{(i)}(x)\neq y)+j\Delta |  |
+|  |  | ≤opti​W+O~​((d​Δ/(1−2​η))1/2)+j​Δ\displaystyle\leq\mathrm{opt}\_{iW}+\tilde{O}((d\Delta/(1-2\eta))^{1/2})+j\Delta |  |
+|  |  | ≤optt′+O~​((d​Δ/(1−2​η))1/2)+2​j​Δ\displaystyle\leq\mathrm{opt}\_{t^{\prime}}+\tilde{O}((d\Delta/(1-2\eta))^{1/2})+2j\Delta |  |
+|  |  | =optt′+O~​((d​Δ/(1−2​η))1/2),\displaystyle=\mathrm{opt}\_{t^{\prime}}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}), |  |
+
+where the first inequality comes from the drifting model assumption, the second inequality comes from assuming that for T=i​WT=iW (to be argued in the rest of the proof), err(T)​(h^(i))≤optT+O~​((d​Δ/(1−2​η))1/2)\mathrm{err}^{(T)}(\hat{h}^{(i)})\leq\mathrm{opt}\_{T}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}), and the third inequality again uses the bounded drift assumption.
+
+In the rest of the proof, we argue that err(T)​(h^(i))≤optT+O~​((d​Δ/(1−2​η))1/2)\mathrm{err}^{(T)}(\hat{h}^{(i)})\leq\mathrm{opt}\_{T}+\tilde{O}((d\Delta/(1-2\eta))^{1/2}) for T=i​W.T=iW.
+
+For i≥1i\geq 1,
+let T=i​WT=iW and let h(T)h^{(T)} be the hypothesis that realizes D(T)D^{(T)}.
+For each tj=(i−1)​W+jt\_{j}=(i-1)W+j and h∈ℋh\in\mathcal{H},
+define diffj​(h):=𝟙​{h​(x(tj))≠y(tj)}−𝟙​{h(T)​(x(tj))≠y(tj)}\mathrm{diff}\_{j}(h):=\mathds{1}\{h(x^{(t\_{j})})\neq y^{(t\_{j})}\}-\mathds{1}\{h^{(T)}(x^{(t\_{j})})\neq y^{(t\_{j})}\}.
+This gives
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 1W​∑j=1Wdiffj​(h)=err^​(h)−err^​(h(T)),\displaystyle\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)=\hat{\mathrm{err}}(h)-\hat{\mathrm{err}}(h^{(T)}), |  | (1) |
+
+and thus W−1​∑j=1Wdiffj​(h^(i))≤0W^{-1}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(\hat{h}^{(i)})\leq 0 (by the definition of h^(i)\hat{h}^{(i)} in [Algorithm˜3](https://arxiv.org/html/2606.11149v1#alg3 "In B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Take expectations for each time step tt on both sides of ( [1](https://arxiv.org/html/2606.11149v1#A2.E1 "Equation 1 ‣ Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we get
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄\[1W​∑j=1Wdiffj​(h)\]\displaystyle\operatorname\*{\mathbf{E}}\bigg\[\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)\bigg\] |  |
+|  | =\displaystyle=\; | 𝐄\[err^​(h)\]−𝐄\[err^​(h(T))\]\displaystyle\operatorname\*{\mathbf{E}}\[\hat{\mathrm{err}}(h)\]-\operatorname\*{\mathbf{E}}\[\hat{\mathrm{err}}(h^{(T)})\] |  |
+|  | =\displaystyle=\; | 1W​∑t=(i−1)​W+1T𝐏𝐫(x(t),y(t))∼D(t)(h​(x(t))≠y(t))−1W​∑t=(i−1)​W+1T𝐏𝐫(x(t),y(t))∼D(t)(h(T)​(x(t))≠y(t)).\displaystyle\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}(h(x^{(t)})\neq y^{(t)})-\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}(h^{(T)}(x^{(t)})\neq y^{(t)}). |  |
+
+By the drifting assumption and triangle inequality, we have dTV​(D(t),D(T))≤W​Δd\_{\mathrm{TV}}\!\big(D^{(t)},D^{(T)}\big)\leq W\Delta for any t=(i−1)​W+j,j∈\[W\]t=(i-1)W+j,\,j\in\[W\].
+This implies that
+for any h∈ℋh\in\mathcal{H}, we have
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  |  | \|1W​∑t=(i−1)​W+1T𝐏𝐫(x(t),y(t))∼D(t)(h​(x(t))≠y(t))−𝐏𝐫(x(T),y(T))∼D(T)(h​(x(T))≠y(T))\|\displaystyle\bigg\|\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}(h(x^{(t)})\neq y^{(t)})-\operatorname\*{\mathbf{Pr}}\_{(x^{(T)},y^{(T)})\sim D^{(T)}}(h(x^{(T)})\neq y^{(T)})\bigg\| |  |
+|  | ≤\displaystyle\leq\; | 1W​∑t=(i−1)​W+1T\|𝐏𝐫(x(t),y(t))∼D(t)(h​(x(t))≠y(t))−𝐏𝐫(x(T),y(T))∼D(T)(h​(x(T))≠y(T))\|\displaystyle\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\bigg\|\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}(h(x^{(t)})\neq y^{(t)})-\operatorname\*{\mathbf{Pr}}\_{(x^{(T)},y^{(T)})\sim D^{(T)}}(h(x^{(T)})\neq y^{(T)})\bigg\| |  |
+|  | ≤\displaystyle\leq\; | W​Δ.\displaystyle W\Delta. |  | (2) |
+
+Apply ( [B.1](https://arxiv.org/html/2606.11149v1#A2.Ex34 "Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")) to hh and h(T)h^{(T)}, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|err(T)​(h)−err(T)​(h(T))−𝐄\[1W​∑j=1Wdiffj​(h)\]\|≤2​W​Δ.\displaystyle\bigg\|\mathrm{err}^{(T)}(h)-\mathrm{err}^{(T)}(h^{(T)})-\operatorname\*{\mathbf{E}}\bigg\[\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)\bigg\]\bigg\|\leq 2W\Delta. |  |
+
+By ( [1](https://arxiv.org/html/2606.11149v1#A2.E1 "Equation 1 ‣ Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we have 1W​∑j=1Wdiffj​(h^(i))≤0\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(\hat{h}^{(i)})\leq 0, which means
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  |  | err(T)​(h^(i))−err(T)​(h(T))\displaystyle\mathrm{err}^{(T)}(\hat{h}^{(i)})-\mathrm{err}^{(T)}(h^{(T)}) |  |
+|  | ≤\displaystyle\leq\; | 2​W​Δ+𝐄\[1W​∑t=(i−1)​W+1Tdiffj​(h^(i))\]−1W​∑t=(i−1)​W+1Tdiffj​(h^(i))\displaystyle 2W\Delta+\operatorname\*{\mathbf{E}}\bigg\[\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\mathrm{diff}\_{j}(\hat{h}^{(i)})\bigg\]-\frac{1}{W}\sum\_{t=(i-1)W+1}^{T}\mathrm{diff}\_{j}(\hat{h}^{(i)}) |  |
+|  | ≤\displaystyle\leq\; | 2​W​Δ+\|1W​∑j=1Wdiffj​(h^(i))−𝐄\[1W​∑j=1Wdiffj​(h^(i))\]\|.\displaystyle 2W\Delta+\bigg\|\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(\hat{h}^{(i)})-\operatorname\*{\mathbf{E}}\bigg\[\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(\hat{h}^{(i)})\bigg\]\bigg\|. |  | (3) |
+
+To get the desired error rate, we will next show that with high probability, for every h∈ℋh\in\mathcal{H}, 1W​∑j=1Wdiffj​(h)\frac{1}{W}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h) is close to its expectation. Denote by σj2​(h)=𝐄\[diffj2​(h)\]=𝐏𝐫(x(t),y(t))∼D(t)\[h​(x(t))≠h(T)​(x(t))\]\sigma^{2}\_{j}(h)=\operatorname\*{\mathbf{E}}\[\mathrm{diff}^{2}\_{j}(h)\]=\operatorname\*{\mathbf{Pr}}\_{(x^{(t)},y^{(t)})\sim D^{(t)}}\[h(x^{(t)})\neq h^{(T)}(x^{(t)})\] and V​(h):=W−1​∑j=1Wσj2​(h)V(h):=W^{-1}\sum\_{j=1}^{W}\sigma^{2}\_{j}(h). We first develop a V​(h)V(h)-dependence bound for all h∈Hh\in H.
+
+For r∈(0,1)r\in(0,1), we denote by H​(r):={h∈ℋ∣V​(h)≤r}H(r):=\{h\in\mathcal{H}\mid V(h)\leq r\}. Notice that for every h∈H​(r)h\in H(r), we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | W−1∑j=1W𝐄(diffj(h)−𝐄diffj(h))2≤r.W^{-1}\sum\_{j=1}^{W}\operatorname\*{\mathbf{E}}(\mathrm{diff}\_{j}(h)-\operatorname\*{\mathbf{E}}\mathrm{diff}\_{j}(h))^{2}\leq r. |  |
+
+Define random variable Z​(r):=suph∈H​(r)\|W−1​∑j=1Wdiffj​(h)−W−1​𝐄\[∑j=1Wdiffj​(h)\]\|Z(r):=\sup\_{h\in H(r)}\left\|W^{-1}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)-W^{-1}\operatorname\*{\mathbf{E}}\bigg\[\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)\bigg\]\right\|. By Talagrand’s inequality \[ [Tal96](https://arxiv.org/html/2606.11149v1#bib.bibx39 "")\], for any δr∈(0,1),\delta\_{r}\in(0,1), we have with probability 1−δr1-\delta\_{r}
+
+|     |     |     |
+| --- | --- | --- |
+|  | Z​(r)≤𝐄Z​(r)+2​r​log⁡(1/δr)W+3​log⁡(1/δr)W.\displaystyle Z(r)\leq\operatorname\*{\mathbf{E}}Z(r)+\sqrt{\frac{2r\log(1/\delta\_{r})}{W}}+\frac{3\log(1/\delta\_{r})}{W}. |  |
+
+It remains to upper bound 𝐄Z​(r)\operatorname\*{\mathbf{E}}Z(r). By Theorem 8 in \[ [BM02](https://arxiv.org/html/2606.11149v1#bib.bibx8 "")\], we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄Z​(r)≤2​𝐄x,y𝐄s​suph∈V​(r)W−1​∑j=1Wsj​diffj​(h),\displaystyle\operatorname\*{\mathbf{E}}Z(r)\leq 2\operatorname\*{\mathbf{E}}\_{x,y}\operatorname\*{\mathbf{E}}\_{s}\sup\_{h\in V(r)}W^{-1}\sum\_{j=1}^{W}s\_{j}\mathrm{diff}\_{j}(h), |  |
+
+where s∈{±1}Ws\in\{\pm 1\}^{W} is an independent Rademacher vector. To upper bound the Rademacher complexity 𝐄x,y𝐄s​suph∈V​(r)W−1​∑j=1Wsj​diffj​(h)\operatorname\*{\mathbf{E}}\_{x,y}\operatorname\*{\mathbf{E}}\_{s}\sup\_{h\in V(r)}W^{-1}\sum\_{j=1}^{W}s\_{j}\mathrm{diff}\_{j}(h), we define a metric between hypotheses in V​(r)V(r). For h,h′∈H​(r)h,h^{\prime}\in H(r), we define θ2​(h,h′):=𝐄W−1​∑j=1W(diffj​(h)−diffj​(h′))2\theta^{2}(h,h^{\prime}):=\operatorname\*{\mathbf{E}}W^{-1}\sum\_{j=1}^{W}\left(\mathrm{diff}\_{j}(h)-\mathrm{diff}\_{j}(h^{\prime})\right)^{2}. Notice that θ2​(h,h′)≤2​r\theta^{2}(h,h^{\prime})\leq 2r by the definition of H​(r)H(r).
+For every hh, we define Xh:=W−1​∑j=1Wsj​diffj​(h)X\_{h}:=W^{-1}\sum\_{j=1}^{W}s\_{j}\mathrm{diff}\_{j}(h). Notice that Xh−Xh′X\_{h}-X\_{h^{\prime}} has sub-Gaussian increment with respect to θ​(h,h′)/W\theta(h,h^{\prime})/\sqrt{W}. By Dudley’s inequality,we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄​suph∈H​(r)Xh≤1W​∫02​rlog⁡𝒩​(ϵ,H​(r),θ)​𝑑ϵ=O​(d​r​log⁡r−1W),\displaystyle\operatorname\*{\mathbf{E}}\sup\_{h\in H(r)}X\_{h}\leq\frac{1}{\sqrt{W}}\int\_{0}^{\sqrt{2r}}\log\mathcal{N}(\epsilon,H(r),\theta)d\epsilon=O\left(\sqrt{\frac{dr\log r^{-1}}{W}}\right), |  | (4) |
+
+where 𝒩​(ϵ,H​(r),θ)\mathcal{N}(\epsilon,H(r),\theta) is the covering number under metric θ\theta and the last equality follows the VC dimension of HH.
+This gives with probability 1−δr1-\delta\_{r},
+
+|     |     |     |
+| --- | --- | --- |
+|  | suph∈H​(r)\|W−1​∑j=1Wdiffj​(h)−W−1​𝐄\[∑j=1Wdiffj​(h)\]\|≤O​(d​r​log⁡r−1+2​r​log⁡(1/δr)W+3​log⁡(1/δr)W).\displaystyle\sup\_{h\in H(r)}\left\|W^{-1}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)-W^{-1}\operatorname\*{\mathbf{E}}\bigg\[\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)\bigg\]\right\|\leq O\left(\sqrt{\frac{dr\log r^{-1}+2r\log(1/\delta\_{r})}{W}}+\frac{3\log(1/\delta\_{r})}{W}\right). |  |
+
+By choosing rk=2−k,k=1,2,…r\_{k}=2^{-k},k=1,2,\dots, δrk=δ/2k+1\delta\_{r\_{k}}=\delta/2^{k+1}, and union bound, we have with probability 1−δ1-\delta for every h∈Hh\in H,
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | W−1​∑j=1Wdiffj​(h)−W−1​𝐄\[∑j=1Wdiffj​(h)\]=O​(dV(h)logV(h)−1+2V(h)log(1/(δ)W+3log(1/(V(h)δ)W).\displaystyle W^{-1}\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)-W^{-1}\operatorname\*{\mathbf{E}}\bigg\[\sum\_{j=1}^{W}\mathrm{diff}\_{j}(h)\bigg\]=O\left(\sqrt{\frac{dV(h)\log V(h)^{-1}+2V(h)\log(1/(\delta)}{W}}+\frac{3\log(1/(V(h)\delta)}{W}\right). |  | (5) |
+
+It remains to analyze V​(h)V(h).We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | err(t)​(h)−err(t)​(h(T))\displaystyle\mathrm{err}^{(t)}(h)-\mathrm{err}^{(t)}(h^{(T)}) | ≥err(t)​(h)−err(t)​(h(t))−2​Δ​W\displaystyle\geq\mathrm{err}^{(t)}(h)-\mathrm{err}^{(t)}(h^{(t)})-2\Delta W |  |
+|  |  | =𝐄(x,y)∼D(t)𝟙​{h​(x)≠h(t)​(x)}​(𝟙​{h​(x)≠y}−𝟙​{h(t)​(x)≠y})−2​Δ​W\displaystyle=\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t)}}\mathds{1}\{h(x)\neq h^{(t)}(x)\}\left(\mathds{1}\{h(x)\neq y\}-\mathds{1}\{h^{(t)}(x)\neq y\}\right)-2\Delta W |  |
+|  |  | ≥(1−2​η)​𝐄(x,y)∼D(t)𝟙​{h​(x)≠h(t)​(x)}−2​Δ​W\displaystyle\geq(1-2\eta)\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t)}}\mathds{1}\{h(x)\neq h^{(t)}(x)\}-2\Delta W |  |
+|  |  | ≥(1−2​η)​𝐄(x,y)∼D(t)𝟙​{h​(x)≠h(T)​(x)}−3​Δ​W.\displaystyle\geq(1-2\eta)\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t)}}\mathds{1}\{h(x)\neq h^{(T)}(x)\}-3\Delta W. |  |
+
+This implies that
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄D(t)\[diffj​(h)\]≥(1−2​η)​σj2​(h)−3​W​Δ,\operatorname\*{\mathbf{E}}\_{D^{(t)}}\[\mathrm{diff}\_{j}(h)\]\geq(1-2\eta)\sigma\_{j}^{2}(h)-3W\Delta, |  |
+
+which implies that
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  | V​(h)\displaystyle V(h) | ≤(1−2​η)−1​W−1​∑j=1W𝐄D(t)diffj​(h)+3​(1−2​η)−1​W​Δ\displaystyle\leq(1-2\eta)^{-1}W^{-1}\sum\_{j=1}^{W}\operatorname\*{\mathbf{E}}\_{D^{(t)}}\mathrm{diff}\_{j}(h)+3(1-2\eta)^{-1}W\Delta |  |
+|  |  | ≤(1−2​η)−1​(err(T)​(h)−err(T)​(hT))+5​(1−2​η)−1​W​Δ.\displaystyle\leq(1-2\eta)^{-1}\left(\mathrm{err}^{(T)}(h)-\mathrm{err}^{(T)}(h^{T})\right)+5(1-2\eta)^{-1}W\Delta. |  | (6) |
+
+By ( [B.1](https://arxiv.org/html/2606.11149v1#A2.Ex37 "Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), ( [5](https://arxiv.org/html/2606.11149v1#A2.E5 "Equation 5 ‣ Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")) and ( [B.1](https://arxiv.org/html/2606.11149v1#A2.Ex48 "Proof of Theorem˜2.1. ‣ B.1 Proof of Theorem˜2.1 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we get with probability at least 1−δ1-\delta,
+
+|     |     |     |
+| --- | --- | --- |
+|  | err(T)​(h^(i))−err(T)​(hT)≤O~​(d​W−1​(1−2​η)−1+Δ​W)=O~​(d​Δ/(1−2​η)).\displaystyle\mathrm{err}^{(T)}(\hat{h}^{(i)})-\mathrm{err}^{(T)}(h^{T})\leq\tilde{O}(dW^{-1}(1-2\eta)^{-1}+\Delta W)=\tilde{O}(\sqrt{d\Delta/(1-2\eta)}). |  |
+
+∎
+
+### B.2 Proof of [Theorem˜2.2](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem2 "Theorem 2.2 (Information-Theoretic Lower Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+For convenience, we restate the theorem below.
+
+###### Theorem B.2(Restatement of [Theorem˜2.2](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem2 "Theorem 2.2 (Information-Theoretic Lower Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+For every T>0T>0 and Δ∈(0,1)\Delta\in(0,1), there is a family of instances of learning halfspaces with η\eta-RCN such that provided (1−2​η)3>d​Δ(1-2\eta)^{3}>d\Delta, there is no learning algorithm 𝒜\mathcal{A} that can achieve error err(T)​(𝒜)≤optT+o​(d​Δ/(1−2​η))\mathrm{err}^{(T)}(\mathcal{A})\leq\mathrm{opt}\_{T}+o(\sqrt{d\Delta/(1-2\eta)}), with probability 1/21/2 for every instance in the family.
+
+Our proof relies on the following simple fact, stated as the following lemma, which is a direct application of \[ [Tsy03](https://arxiv.org/html/2606.11149v1#bib.bibx40 ""), Theorem 2.2\].
+
+###### Lemma B.1.
+
+Let S=(S1,…,Sd)S=(S\_{1},\dots,S\_{d}) be a random vector drawn uniformly from {±1}\{\pm 1\}. Consider dd coins, such that coin ii has probability pi=1/2+Si​ϵp\_{i}=1/2+S\_{i}\epsilon of landing on head when flipped. Let 𝒜\mathcal{A} be any algorithm that adaptively flips each coin, observes the outcomes and outputs some S^∈{±1}d\hat{S}\in\{\pm 1\}^{d} under the constraints that the number of flips for each coin is at most 1/(100​ϵ2)1/(100\epsilon^{2}) must satisfy 𝐏𝐫(‖S^−S‖1≥d/4)≥1/2\operatorname\*{\mathbf{Pr}}(\\|{\hat{S}-S}\\|\_{1}\geq d/4)\geq 1/2.
+
+###### Proof of [Theorem˜2.2](https://arxiv.org/html/2606.11149v1\#S2.Thmtheorem2 "Theorem 2.2 (Information-Theoretic Lower Bound). ‣ 2 Information-Theoretic Baselines under Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+We construct the following family of sequences of distributions such that each distribution in the sequence corresponds to an instance of learning halfspaces in ℝd\mathbb{R}^{d} with η\eta-RCN. To do this, we first define the marginal distribution DxD\_{x} of the examples as follows. We first sample ii uniformly from \[d\]\[d\] and then sample g∈(0,1)g\in(0,1) uniformly and return x=g​eix=ge\_{i}, where eie\_{i} is the iith standard basis vector.
+We next define the family of halfspaces ht(z)h^{(z)}\_{t} for each tt.
+For z∈{0,1}dz\in\{0,1\}^{d}, we define ht(z)​(x):=sign​((∑i=1dzi​ei⋅x)−(1−Δ​t​d−1​(1−2​η)−1))h^{(z)}\_{t}(x):=\mathrm{sign}((\sum\_{i=1}^{d}z\_{i}e\_{i}\cdot x)-(1-\Delta td^{-1}(1-2\eta)^{-1})).
+That is to say ht(z)​(g​ei)=1h^{(z)}\_{t}(ge\_{i})=1 if and only if zi=1z\_{i}=1 and g≥1−Δ​t​d−1​(1−2​η)−1g\geq 1-\Delta td^{-1}(1-2\eta)^{-1}.
+
+Now we construct the sequence of distributions to learn. Let m=d/(Δ​(1−2​η))/20m=\sqrt{d/(\Delta(1-2\eta))}/20.
+For every T>0T>0, we first draw zz from {0,1}d\{0,1\}^{d} uniformly at random and construct distributions D(i)D^{(i)} for i=1,2,…,i=1,2,\dots, based on zz.
+If i≤T−mi\leq T-m, let h0(z)h^{(z)}\_{0} be the halfspace that realizes D(i)D^{(i)}
+with marginal distribution DxD\_{x}. If i=T−m+ti=T-m+t, where t∈\[m\]t\in\[m\], we let ht(z)h^{(z)}\_{t} be the halfspace that realizes D(i)D^{(i)} with marginal distribution DxD\_{x}.
+We notice that for each tt and zz,
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫x∼Dx(ht(z)​(x)≠ht+1(z)​(x))≤Δ​(1−2​η)−1.\displaystyle\operatorname\*{\mathbf{Pr}}\_{x\sim D\_{x}}(h^{(z)}\_{t}(x)\neq h^{(z)}\_{t+1}(x))\leq\Delta(1-2\eta)^{-1}. |  |
+
+This implies that for every event A⊆ℝd×{±1}A\subseteq\mathbb{R}^{d}\times\{\pm 1\}, we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | \|𝐏𝐫x∼D(i)(A)−𝐏𝐫x∼D(i+1)(A)\|\displaystyle\left\|\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}}(A)-\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i+1)}}(A)\right\| | =\|𝐏𝐫(x,y)∼D(i)(A,ht(z)​(x)≠ht+1(z)​(x))−𝐏𝐫(x,y)∼D(i+1)(A,ht(z)​(x)≠ht+1(z)​(x))\|\displaystyle=\left\|\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(i)}}(A,h^{(z)}\_{t}(x)\neq h^{(z)}\_{t+1}(x))-\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(i+1)}}(A,h^{(z)}\_{t}(x)\neq h^{(z)}\_{t+1}(x))\right\| |  |
+|  |  | ≤(1−2​η)​Δ​(1−2​η)−1=Δ,\displaystyle\leq(1-2\eta)\Delta(1-2\eta)^{-1}=\Delta, |  |
+
+which implies that dT​V​(D(i),D(i+1))≤Δd\_{\mathrm{T}V}(D^{(i)},D^{(i+1)})\leq\Delta.
+
+For i∈\[d\]i\in\[d\] and j=T−m+tj=T-m+t, we define Xj(i)=𝟙​{x(j)=g​ei,g>(1−Δ​t​d−1​(1−2​η)−1)}X^{(i)}\_{j}=\mathds{1}\{x^{(j)}=ge\_{i},g>(1-\Delta td^{-1}(1-2\eta)^{-1})\}. We have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄​∑t=1m∑i=1dXt(i)≤d​m2​Δ​d−1​(1−2​η)−1≤d/(400​(1−2​η)2),\displaystyle\operatorname\*{\mathbf{E}}\sum\_{t=1}^{m}\sum\_{i=1}^{d}X^{(i)}\_{t}\leq dm^{2}\Delta d^{-1}(1-2\eta)^{-1}\leq d/(400(1-2\eta)^{2}), |  |
+
+where cc is a sufficiently small constant. By Markov’s inequality, this implies that with probability at least 1/21/2, there must be at least d/2d/2 indices ii such that ∑t=1mXt(i)≤1/(100​(1−2​η)2)\sum\_{t=1}^{m}X\_{t}^{(i)}\leq 1/(100(1-2\eta)^{2}). Given this happens, we know from [Lemma˜B.1](https://arxiv.org/html/2606.11149v1#A2.Thmlemma1 "Lemma B.1. ‣ B.2 Proof of Theorem˜2.2 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") that any algorithm 𝒜′\mathcal{A}^{\prime} fails to predict ziz\_{i} for d/8d/8 of the indices with probability at least 1/21/2.
+
+We now show that any algorithm 𝒜\mathcal{A} that outputs a hypothesis hh with error err(T)​(h)≤η+d​Δ/(1−2​η)/100\mathrm{err}^{(T)}(h)\leq\eta+\sqrt{d\Delta/(1-2\eta)}/100, gives an algorithm that correctly predicts ziz\_{i}. Since
+
+|     |     |     |
+| --- | --- | --- |
+|  | err(T)​(h)=η+𝐏𝐫x∼Dx(h​(x)≠hm(z)​(x))​(1−2​η),\displaystyle\mathrm{err}^{(T)}(h)=\eta+\operatorname\*{\mathbf{Pr}}\_{x\sim D\_{x}}(h(x)\neq h^{(z)}\_{m}(x))(1-2\eta), |  |
+
+we know that 𝐏𝐫x∼Dx(h​(x)≠hm(z)​(x))≤(1−2​η)−1​d​Δ/(1−2​η)/100\operatorname\*{\mathbf{Pr}}\_{x\sim D\_{x}}(h(x)\neq h^{(z)}\_{m}(x))\leq(1-2\eta)^{-1}\sqrt{d\Delta/(1-2\eta)}/100. This implies that for those d/2d/2 indices ii such that ∑t=1mXt(i)≤1/(100​(1−2​η)2)\sum\_{t=1}^{m}X\_{t}^{(i)}\leq 1/(100(1-2\eta)^{2}), there must be at least 3​d/83d/8 of the indices ii such that
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫x∼Dx(h​(x)=hm(z)​(x)​∣x=g​ei,g>​1−(1−2​η)−1​d​Δ/(1−2​η))>1/2.\displaystyle\operatorname\*{\mathbf{Pr}}\_{x\sim D\_{x}}(h(x)=h^{(z)}\_{m}(x)\mid x=ge\_{i},g>1-(1-2\eta)^{-1}\sqrt{d\Delta/(1-2\eta)})>1/2. |  |
+
+f
+Now we define 𝒜′\mathcal{A}^{\prime} by predicting ziz\_{i} as the majority of hm(z)​(x)h^{(z)}\_{m}(x) given gei,g>1−(1−2η)−1d​Δ/(1−2​η))ge\_{i},g>1-(1-2\eta)^{-1}\sqrt{d\Delta/(1-2\eta)}). This implies that 𝒜′\mathcal{A}^{\prime} must succeed in predicting 3​d/83d/8 of the ziz\_{i}s, yielding a contradiction.
+∎
+
+### B.3 Statistical Excess Error for Learning Drifting γ\gamma-Margin Halfspaces
+
+###### Theorem B.3.
+
+For every T>0T>0 and Δ∈(0,1)\Delta\in(0,1), there is a family of instances of learning γ\gamma-margin halfspaces with η\eta-RCN such that provided (1−2​η)2>d​Δ(1-2\eta)^{2}>d\Delta, there is no learning algorithm 𝒜\mathcal{A} that can achieve error err(T)​(𝒜)≤optT+o​(Δ/γ)\mathrm{err}^{(T)}(\mathcal{A})\leq\mathrm{opt}\_{T}+o(\sqrt{\Delta}/\gamma), with probability 1/21/2 for every instance in the family.
+
+###### Proof of [Theorem˜B.3](https://arxiv.org/html/2606.11149v1\#A2.Thmtheorem3 "Theorem B.3. ‣ B.3 Statistical Excess Error for Learning Drifting 𝛾-Margin Halfspaces ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+For γ∈(0,1)\gamma\in(0,1) small enough, we choose d=Θ​(1/γ2)d=\Theta(1/\gamma^{2}).
+Define x(0)=ed+1−∑i=1deix^{(0)}=e\_{d+1}-\sum\_{i=1}^{d}e\_{i} and x(i)=ei−(ed+1/2)∈ℝd+1x^{(i)}=e\_{i}-(e\_{d+1}/2)\in\mathbb{R}^{d+1}. For z∈{0,1}dz\in\{0,1\}^{d}, we define halfspace h(z)​(x)=sign​(w(z)⋅x),w(z)=(−ed+1+∑i=1dzi​ei)h^{(z)}(x)=\mathrm{sign}(w^{(z)}\cdot x),w^{(z)}=(-e\_{d+1}+\sum\_{i=1}^{d}z\_{i}e\_{i}). We first show that any halfspace h(z)​(x)h^{(z)}(x) has γ\gamma-margin with any
+marginal distribution over X={x(i)}i=0dX=\{x^{(i)}\}\_{i=0}^{d}.
+For x(0)x^{(0)}, we have (−ed+1+∑i=1dzi​ei)⋅x(0)=−‖z‖1−1(-e\_{d+1}+\sum\_{i=1}^{d}z\_{i}e\_{i})\cdot x^{(0)}=-\left\\|z\right\\|\_{1}-1, which implies
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|w(z)⋅x(0)\|‖w(z)‖2​‖x(0)‖2=‖z‖1+1‖w(z)‖2​‖x(0)‖2≥‖z‖1+1d=Ω​(γ).\displaystyle\frac{\left\|w^{(z)}\cdot x^{(0)}\right\|}{\left\\|w^{(z)}\right\\|\_{2}\left\\|x^{(0)}\right\\|\_{2}}=\frac{\left\\|z\right\\|\_{1}+1}{\left\\|w^{(z)}\right\\|\_{2}\left\\|x^{(0)}\right\\|\_{2}}\geq\sqrt{\frac{\left\\|z\right\\|\_{1}+1}{d}}=\Omega(\gamma). |  |
+
+For x(i)x^{(i)}, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|w(z)⋅x(i)\|‖w(z)‖2​‖x(0)‖2≥1/2‖w(z)‖2​‖x(0)‖2≥1/2d+1=Ω​(1/γ).\displaystyle\frac{\left\|w^{(z)}\cdot x^{(i)}\right\|}{\left\\|w^{(z)}\right\\|\_{2}\left\\|x^{(0)}\right\\|\_{2}}\geq\frac{1/2}{\left\\|w^{(z)}\right\\|\_{2}\left\\|x^{(0)}\right\\|\_{2}}\geq\frac{1/2}{\sqrt{d+1}}=\Omega(1/\gamma). |  |
+
+We next design the family of sequences of drifted distributions D(1),…,D(T)D^{(1)},\dots,D^{(T)}. For any z∈{0,1}dz\in\{0,1\}^{d}, we fix the target halfspace to be h(z)h^{(z)}. Choose m=d/Δ​(1−2​η)−1m=\sqrt{d/\Delta}(1-2\eta)^{-1}. For t≤T−mt\leq T-m, we define the marginal distribution (Dt)x(D\_{t})\_{x} to be the Dirac function at point x(0)x^{(0)}. For t=T−m+jt=T-m+j, j∈\[m\]j\in\[m\], choose (D(t))x=(1−pt)​δ​(x(0))+∑i=1d(pt/d)​δ​(x(i))(D^{(t)})\_{x}=(1-p\_{t})\delta(x^{(0)})+\sum\_{i=1}^{d}(p\_{t}/d)\delta(x^{(i)}), where pt=Δ​jp\_{t}=\Delta j.
+We notice that dT​V​(Dt,Dt+1)≤Δd\_{\mathrm{T}V}(D\_{t},D\_{t+1})\leq\Delta.
+
+Let z∼{0,1}dz\sim\{0,1\}^{d} be chosen uniformly at random, we will show that no algorithm in expectation can achieve O​(d​Δ)O(\sqrt{d\Delta}) error. By the choice of zz, we know that h(z)​(x(i))=1h^{(z)}(x^{(i)})=1 with probability 1/21/2 for every i∈\[d\]i\in\[d\]. By the design of DtD\_{t}, we know that Dx(t)​(x(i))≤Dx(T)​(x(i))=Δ/d​(1−2​η)−1D^{(t)}\_{x}(x^{(i)})\leq D^{(T)}\_{x}(x^{(i)})=\sqrt{\Delta/d}(1-2\eta)^{-1}.
+Let Xt(i)=𝟙​{xt=x(i)}X^{(i)}\_{t}=\mathds{1}\{x\_{t}=x^{(i)}\}, xt∼Dx(t)x\_{t}\sim D^{(t)}\_{x}
+This implies
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄​∑t=1T∑i=1dXt(i)=𝐄​∑t=T−mT∑i=1dXt(i)≤d​m​Δ/d​(1−2​η)−1≤c​d/(1−2​η)2\displaystyle\operatorname\*{\mathbf{E}}\sum\_{t=1}^{T}\sum\_{i=1}^{d}X^{(i)}\_{t}=\operatorname\*{\mathbf{E}}\sum\_{t=T-m}^{T}\sum\_{i=1}^{d}X^{(i)}\_{t}\leq dm\sqrt{\Delta/d}(1-2\eta)^{-1}\leq cd/(1-2\eta)^{2} |  |
+
+for some c<1/100c<1/100.
+This implies that there must be d/2d/2, i∈\[d\]i\in\[d\] such that ∑t=1TXt(i)≤c/(1−2​η)2\sum\_{t=1}^{T}X^{(i)}\_{t}\leq c/(1-2\eta)^{2}. Since the distribution of the label of x(i)x^{(i)} is independent of the marginal distribution, by [Lemma˜B.1](https://arxiv.org/html/2606.11149v1#A2.Thmlemma1 "Lemma B.1. ‣ B.2 Proof of Theorem˜2.2 ‣ Appendix B Omitted Proofs from Section˜2 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"),
+we know that for these x(i)x^{(i)}, we cannot tell if the ground truth label is +1+1 or −1-1, which implies that the prediction error is at least Ω​(d​Δ)\Omega(\sqrt{d\Delta}).
+∎
+
+## Appendix C Omitted Proofs from [Section˜3](https://arxiv.org/html/2606.11149v1\#S3 "3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+### C.1 Proof of [˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+We restate the fact below.
+
+###### Fact C.1(Restatement of [˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Let t>0t>0 be any time step and let
+S={(x(i),y(i))}i=1mS=\{(x^{(i)},y^{(i)})\}\_{i=1}^{m} be such that (x(i),y(i))∼D(t+i)(x^{(i)},y^{(i)})\sim D^{(t+i)}. For T∈\[m\]T\in\[m\] and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1}, [Algorithm˜2](https://arxiv.org/html/2606.11149v1#alg2 "In 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") satisfies
+
+|     |     |     |
+| --- | --- | --- |
+|  | 1T​∑i=1T𝐄(x,y)∼D(t+i)g​(w(i);x,y)⋅(w(i)−w∗)≤R​(T,μ,γ),\displaystyle\frac{1}{T}\sum\_{i=1}^{T}\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*})\leq R(T,\mu,\gamma), |  |
+
+where R​(T,μ,γ)=1/(2​T​μ)+2​μ/γ2−∑i=1Tξi/TR(T,\mu,\gamma)=1/(2T\mu)+2\mu/\gamma^{2}-\sum\_{i=1}^{T}\xi\_{i}/T, ξi:=(g​(w(i);x,y)−𝐄(x,y)∼D(t+i)g​(w(i);x,y))⋅(w(i)−w∗)\xi\_{i}:=\left(g(w^{(i)};x,y)-\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\right)\cdot(w^{(i)}-w^{\*}).
+
+###### Proof of [˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmfact1 "Fact 3.1 (Progress Measure Measurement). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+By the nonexpansivity of the projection operator, we have
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  | ‖w(i+1)−w∗‖2\displaystyle\left\\|w^{(i+1)}-w^{\*}\right\\|^{2} | ≤‖w(i)−w∗−μ​g​(w(i);x,y)‖2\displaystyle\leq\left\\|w^{(i)}-w^{\*}-\mu g(w^{(i)};x,y)\right\\|^{2} |  |
+|  |  | ≤‖w(i)−w∗‖2+μ2​‖g​(w(i);x,y)‖2−2​μ​g​(w(i);x,y)⋅(w(i)−w∗)\displaystyle\leq\left\\|w^{(i)}-w^{\*}\right\\|^{2}+\mu^{2}\left\\|g(w^{(i)};x,y)\right\\|^{2}-2\mu g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*}) |  |
+|  |  | =‖w(i)−w∗‖2+μ2​‖g​(w(i);x,y)‖2−2​μ​(g​(w(i);x,y)−𝐄(x,y)∼D(t)g​(w(i);x,y))⋅(w(i)−w∗)\displaystyle=\left\\|w^{(i)}-w^{\*}\right\\|^{2}+\mu^{2}\left\\|g(w^{(i)};x,y)\right\\|^{2}-2\mu\left(g(w^{(i)};x,y)-\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t)}}g(w^{(i)};x,y)\right)\cdot(w^{(i)}-w^{\*}) |  |
+|  |  | −2​μ​𝐄(x,y)∼D(t+i)g​(w(i);x,y)⋅(w(i)−w∗)\displaystyle-2\mu\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*}) |  |
+|  |  | =‖w(i)−w∗‖2+μ2​‖g​(w(i);x,y)‖2−2​μ​ξt−2​μ​𝐄(x,y)∼D(t+i)g​(w(i);x,y)⋅(w(i)−w∗).\displaystyle=\left\\|w^{(i)}-w^{\*}\right\\|^{2}+\mu^{2}\left\\|g(w^{(i)};x,y)\right\\|^{2}-2\mu\xi\_{t}-2\mu\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*}). |  | (7) |
+
+Rearranging and taking the average of ( [C.1](https://arxiv.org/html/2606.11149v1#A3.Ex60 "Proof of ˜3.1. ‣ C.1 Proof of ˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")) over \[T\]\[T\], we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 1T​∑i=1T𝐄(x,y)∼D(t+i)g​(w(i);x,y)⋅(w(i)−w∗)\displaystyle\frac{1}{T}\sum\_{i=1}^{T}\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*}) | ≤‖w(0)−w∗‖22​T​μ+μ2​T​∑i=1T‖g​(w(i);x,y)‖2−1T​∑i=1Tξi\displaystyle\leq\frac{\left\\|w^{(0)}-w^{\*}\right\\|^{2}}{2T\mu}+\frac{\mu}{2T}\sum\_{i=1}^{T}\left\\|g(w^{(i)};x,y)\right\\|^{2}-\frac{1}{T}\sum\_{i=1}^{T}\xi\_{i} |  |
+|  |  | ≤12​T​μ+2​μγ2−1T​∑i=1Tξi,\displaystyle\leq\frac{1}{2T\mu}+\frac{2\mu}{\gamma^{2}}-\frac{1}{T}\sum\_{i=1}^{T}\xi\_{i}, |  |
+
+where we used the fact that ‖gi​(w(i);x,y)‖2≤4/γ2\left\\|g\_{i}(w^{(i)};x,y)\right\\|^{2}\leq 4/\gamma^{2}.
+∎
+
+### C.2 Omitted Proofs for [Lemma˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+We restate the lemma below.
+
+###### Lemma C.1(Restatement of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Let i,m∈ℕi,m\in\mathbb{N} and let w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1} be a vector that realizes D(i+m)D^{(i+m)}. There exists a function Fi:𝕊d−1×𝕊d−1×𝕊d−1→ℝF\_{i}:\mathbb{S}^{d-1}\times\mathbb{S}^{d-1}\times\mathbb{S}^{d-1}\to\mathbb{R} such that
+for any x∈𝕊d−1x\in\mathbb{S}^{d-1} and for any w∈𝕊d−1w\in\mathbb{S}^{d-1},
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−Fi​(w∗,w,x).\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\;\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-F\_{i}(w^{\*},w,x). |  |
+
+Additionally, \|Fi\|≤1/γ\left\|F\_{i}\right\|\leq 1/\gamma, and for every w∈𝕊d−1w\in\mathbb{S}^{d-1}, 𝐄x∼Dx(i)Fi​(w∗,w,x)≤O​(Δ​m/γ)\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}F\_{i}(w^{\*},w,x)\leq O(\Delta m/\gamma).
+
+###### Proof of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+The proof of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is divided into two cases based on \|w⋅x\|\left\|w\cdot x\right\|.
+
+##### Case 1: Large Margin
+
+In the first case, \|w⋅x\|≥γ\left\|w\cdot x\right\|\geq\gamma and we establish the following claim.
+
+###### Claim C.1.
+
+Let i,m∈ℕi,m\in\mathbb{N} and let (w∗)(i)∈𝕊d−1(w^{\*})^{(i)}\in\mathbb{S}^{d-1} be a vector that realizes D(i)D^{(i)}. Denote by fi​(x,w∗,x)=((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​(w∗⋅x,(w∗)(i)⋅x))​\|w∗⋅x\|/\|w⋅x\|f\_{i}(x,w^{\*},x)=\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\|. Then, for every x∈𝕊d−1x\in\mathbb{S}^{d-1} such that \|w⋅x\|≥γ\left\|w\cdot x\right\|\geq\gamma, 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−fi​(w∗,w,x)\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-f\_{i}(w^{\*},w,x).
+
+We defer the proof of [˜C.1](https://arxiv.org/html/2606.11149v1#A3.Thmclaim1 "Claim C.1. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜C.2.1](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS1 "C.2.1 Proof of ˜C.1 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+Since \|w⋅x\|≥γ\left\|w\cdot x\right\|\geq\gamma, we know that \|fi​(w∗,w,x)\|≤1/γ\left\|f\_{i}(w^{\*},w,x)\right\|\leq 1/\gamma. We next upper bound the expectation of fi​(w∗,w,x)f\_{i}(w^{\*},w,x). Formally, we have the following claim, whose proof is deferred to [Section˜C.2.2](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS2 "C.2.2 Proof of ˜C.2 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+###### Claim C.2.
+
+For every w∈𝕊d−1w\in\mathbb{S}^{d-1}, it holds 𝐄(x,y)∼D(i)fi​(w∗,w,x)​𝟙​{\|w⋅x\|≥γ}=O​(m​Δ/γ).\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}f\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\}=O(m\Delta/\gamma).
+
+To prove [˜C.2](https://arxiv.org/html/2606.11149v1#A3.Thmclaim2 "Claim C.2. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we establish the following two claims that will be used frequently. We defer the proofs of [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmclaim1 "Claim 3.1. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [˜3.2](https://arxiv.org/html/2606.11149v1#S3.Thmclaim2 "Claim 3.2. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜C.2.3](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS3 "C.2.3 Proof of ˜3.1 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Section˜C.2.4](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS4 "C.2.4 Proof of ˜3.2 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+##### Case 2: Small Margin
+
+We next consider the case where \|w⋅x\|<γ\left\|w\cdot x\right\|<\gamma.
+We will discuss two cases. In the first case, we have sign​(w⋅x)=sign​((w∗)(i)⋅x)\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x), which implies that err(i)​(w,x)−η=ηi​(x)−η≤0\mathrm{err}^{(i)}(w,x)-\eta=\eta\_{i}(x)-\eta\leq 0.
+In this case, we establish the following claim.
+
+###### Claim C.3.
+
+Let i,m∈ℕi,m\in\mathbb{N} and let (w∗)(i)∈𝕊d−1(w^{\*})^{(i)}\in\mathbb{S}^{d-1} be a vector that realizes D(i)D^{(i)}. Denote by Gi​(w∗,w,x)=((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​((w∗)(i)⋅x,w∗⋅x))​\|w∗⋅x\|/γG\_{i}(w^{\*},w,x)=\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi((w^{\*})^{(i)}\cdot x,w^{\*}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\gamma, then for every x∈𝕊d−1x\in\mathbb{S}^{d-1} such that \|w⋅x\|<γ\left\|w\cdot x\right\|<\gamma and sign​(w⋅x)=sign​((w∗)(i)⋅x)\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x), we have 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−Gi​(w∗,w,x)\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-G\_{i}(w^{\*},w,x).
+
+Notice that \|Gi​(w∗,w,x)\|≤1/γ\left\|G\_{i}(w^{\*},w,x)\right\|\leq 1/\gamma always holds. We next upper bound the expectation of Gi​(w∗,w,x)G\_{i}(w^{\*},w,x) with the following claim.
+
+###### Claim C.4.
+
+For every w∈𝕊d−1w\in\mathbb{S}^{d-1}, it holds 𝐄(x,y)∼D(i)Gi​(w∗,w,x)​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)=sign​((w∗)(i)⋅x)}=O​(m​Δ/γ).\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}G\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x)\}=O(m\Delta/\gamma).
+
+We defer the proof of [˜C.3](https://arxiv.org/html/2606.11149v1#A3.Thmclaim3 "Claim C.3. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [˜C.4](https://arxiv.org/html/2606.11149v1#A3.Thmclaim4 "Claim C.4. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜C.2.5](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS5 "C.2.5 Proof of ˜C.3 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Section˜C.2.6](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS6 "C.2.6 Proof of ˜C.4 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Next, we consider the case, where sign​(w⋅x)≠sign​((w∗)(i)⋅x)\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x), which implies that err(i)​(w,x)−η=1−ηi​(x)−η≥0\mathrm{err}^{(i)}(w,x)-\eta=1-\eta\_{i}(x)-\eta\geq 0. We give the following claim in this case.
+
+###### Claim C.5.
+
+Let i,m∈ℕi,m\in\mathbb{N} and let (w∗)(i)∈𝕊d−1(w^{\*})^{(i)}\in\mathbb{S}^{d-1} be a vector that realizes D(i)D^{(i)} and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1} be a vector that realizes D(i+m)D^{(i+m)} . Denote by
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | Vi​(w∗,x)\displaystyle V\_{i}(w^{\*},x) | =(1−η−ηi​(x))​𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,\|w∗⋅x\|<γ}​(γ−\|w∗⋅x\|)/γ,\displaystyle=(1-\eta-\eta\_{i}(x))\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\left\|w^{\*}\cdot x\right\|<\gamma\}(\gamma-\left\|w^{\*}\cdot x\right\|)/\gamma, |  |
+|  | Ui​(w∗,x)\displaystyle U\_{i}(w^{\*},x) | =(1−η−ηi​(x))​𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1}​(\|w∗⋅x\|+γ)/γ.\displaystyle=(1-\eta-\eta\_{i}(x))\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1\}(\left\|w^{\*}\cdot x\right\|+\gamma)/\gamma. |  |
+
+Then for every x∈𝕊d−1x\in\mathbb{S}^{d-1} such that \|w⋅x\|<γ\left\|w\cdot x\right\|<\gamma and sign​(w⋅x)≠sign​((w∗)(i)⋅x)\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x), we have 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−Vi​(w∗,x)−Ui​(w∗,x)\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-V\_{i}(w^{\*},x)-U\_{i}(w^{\*},x).
+
+Since \|Vi\|,\|Ui\|=O​(1/γ)\left\|V\_{i}\right\|,\left\|U\_{i}\right\|=O(1/\gamma) always hold, we thus upper bound the expectation of ViV\_{i} and UiU\_{i}. We make the following claim.
+
+###### Claim C.6.
+
+Let i,m∈ℕi,m\in\mathbb{N} and let (w∗)(i)∈𝕊d−1(w^{\*})^{(i)}\in\mathbb{S}^{d-1} be a vector that realizes D(i)D^{(i)} and w∗∈𝕊d−1w^{\*}\in\mathbb{S}^{d-1} be a vector that realizes D(i+m)D^{(i+m)}. Then
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄(x,y)∼D(i)Vi​(w∗,x)​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)≠sign​((w∗)(i)⋅x)}=O​(m​Δ)\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}V\_{i}(w^{\*},x)\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x)\}=O(m\Delta) |  |
+|  | 𝐄(x,y)∼D(i)Ui​(w∗,x)​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)≠sign​((w∗)(i)⋅x)}=O​(m​Δ)\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}U\_{i}(w^{\*},x)\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x)\}=O(m\Delta) |  |
+
+We defer the proof of [˜C.5](https://arxiv.org/html/2606.11149v1#A3.Thmclaim5 "Claim C.5. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [˜C.6](https://arxiv.org/html/2606.11149v1#A3.Thmclaim6 "Claim C.6. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to [Section˜C.2.7](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS7 "C.2.7 Proof of ˜C.5 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [Section˜C.2.8](https://arxiv.org/html/2606.11149v1#A3.SS2.SSS8 "C.2.8 Proof of ˜C.6 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and conclude the proof of [Lemma˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmlemma1 "Lemma 3.1 (Regret to Error). ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") using the claims we have established so far. Define
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | Fi​(w∗,w,x)\displaystyle F\_{i}(w^{\*},w,x) | :=fi​(w∗,w,x)​𝟙​{\|w⋅x\|≥γ}+Gi​(w∗,w,x)​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)=sign​((w∗)(i)⋅x)}\displaystyle:=f\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\}+G\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x)\} |  |
+|  |  | +(Ui​(w∗,x)+Vi​(w∗,x))​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)≠sign​((w∗)(i)⋅x)}.\displaystyle+(U\_{i}(w^{\*},x)+V\_{i}(w^{\*},x))\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x)\}. |  |
+
+By [˜C.1](https://arxiv.org/html/2606.11149v1#A3.Thmclaim1 "Claim C.1. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), [˜C.3](https://arxiv.org/html/2606.11149v1#A3.Thmclaim3 "Claim C.3. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), and [˜C.5](https://arxiv.org/html/2606.11149v1#A3.Thmclaim5 "Claim C.5. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we know that for every w∈𝕊d−1w\in\mathbb{S}^{d-1} and for every x∈𝕊d−1x\in\mathbb{S}^{d-1}, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−Fi​(w∗,w,x).\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-F\_{i}(w^{\*},w,x). |  |
+
+Since \|fi\|,\|Gi\|,\|Ui\|,\|Vi\|=O​(1/γ)\left\|f\_{i}\right\|,\left\|G\_{i}\right\|,\left\|U\_{i}\right\|,\left\|V\_{i}\right\|=O(1/\gamma), we know that \|Fi\|=O​(1/γ)\left\|F\_{i}\right\|=O(1/\gamma). Furthermore, by [˜C.2](https://arxiv.org/html/2606.11149v1#A3.Thmclaim2 "Claim C.2. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), [˜C.4](https://arxiv.org/html/2606.11149v1#A3.Thmclaim4 "Claim C.4. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), and [˜C.6](https://arxiv.org/html/2606.11149v1#A3.Thmclaim6 "Claim C.6. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄x∼Dx(i)Fi​(w∗,w,x)\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}F\_{i}(w^{\*},w,x) | =𝐄x∼Dx(i)fi​(w∗,w,x)​𝟙​{\|w⋅x\|≥γ}\displaystyle=\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}f\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\} |  |
+|  |  | +𝐄x∼Dx(i)Gi​(w∗,w,x)​𝟙​{\|w⋅x\|<γ,sign​(w⋅x)=sign​((w∗)(i)⋅x)}\displaystyle+\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}G\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x)\} |  |
+|  |  | +𝐄x∼Dx(i)(Ui​(w∗,x)+Vi​(w∗,x))⁡𝟙​{\|w⋅x\|<γ,sign​(w⋅x)≠sign​((w∗)(i)⋅x)}\displaystyle+\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}(U\_{i}(w^{\*},x)+V\_{i}(w^{\*},x))\mathds{1}\{\left\|w\cdot x\right\|<\gamma,\mathrm{sign}(w\cdot x)\neq\mathrm{sign}((w^{\*})^{(i)}\cdot x)\} |  |
+|  |  | =O​(m​Δ/γ).\displaystyle=O(m\Delta/\gamma). |  |
+
+∎
+
+#### C.2.1 Proof of [˜C.1](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim1 "Claim C.1. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜C.1](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim1 "Claim C.1. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+We start by bounding 𝐄y∼D(i)∣xg​(w;x,y)⋅w\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w.
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅w=\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w= | (((1−2​η)​sign​(w⋅x)−𝐄y​(x))​x/max⁡{\|w⋅x\|,γ})⋅w\displaystyle\left(((1-2\eta)\mathrm{sign}(w\cdot x)-\operatorname\*{\mathbf{E}}y(x))x/\max\{\left\|w\cdot x\right\|,\gamma\}\right)\cdot w |  |
+|  | =\displaystyle= | sign​(w⋅x)​((1−2​η)​sign​(w⋅x)−(1−2​ηi​(x))​sign​((w∗)(i)⋅x))\displaystyle\mathrm{sign}(w\cdot x)\left((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right) |  |
+|  | =\displaystyle= | (1−2​η)−(1−2​ηi​(x))​sign​((w∗)(i)⋅x)​sign​(w⋅x)\displaystyle(1-2\eta)-(1-2\eta\_{i}(x))\mathrm{sign}\left((w^{\*})^{(i)}\cdot x\right)\mathrm{sign}(w\cdot x) |  |
+|  | =\displaystyle= | (1−2​η)−(1−2​ηi​(x))​ϕ​((w∗)(i)⋅x,w⋅x).\displaystyle(1-2\eta)-(1-2\eta\_{i}(x))\phi\left((w^{\*})^{(i)}\cdot x,w\cdot x\right). |  |
+
+We consider two cases. If sign​((w∗)(i)⋅x)=sign​(w⋅x)\mathrm{sign}\left((w^{\*})^{(i)}\cdot x\right)=\mathrm{sign}(w\cdot x), which implies ϕ​((w∗)(i)⋅x,w⋅x)=1\phi\left((w^{\*})^{(i)}\cdot x,w\cdot x\right)=1,
+then we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅w=2​(ηi​(x)−η)=2​(err(i)​(w,x)−η).\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w=2(\eta\_{i}(x)-\eta)=2(\mathrm{err}^{(i)}(w,x)-\eta). |  |
+
+If sign​((w∗)(i)⋅x)≠sign​(w⋅x)\mathrm{sign}\left((w^{\*})^{(i)}\cdot x\right)\neq\mathrm{sign}(w\cdot x), which implies ϕ​((w∗)(i)⋅x,w⋅x)=−1\phi\left((w^{\*})^{(i)}\cdot x,w\cdot x\right)=-1
+then we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅w=2​(1−ηi​(x)−η)=2​(err(i)​(w,x)−η).\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w=2(1-\eta\_{i}(x)-\eta)=2(\mathrm{err}^{(i)}(w,x)-\eta). |  |
+
+Thus, it always holds that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅w=2​(err(i)​(w,x)−η).\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w=2(\mathrm{err}^{(i)}(w,x)-\eta). |  | (8) |
+
+It remains to analyze the term with respect to w∗w^{\*}. We have
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅w∗=\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot w^{\*}= | (((1−2​η)​sign​(w⋅x)−𝐄y​(x))​x/\|w⋅x\|)⋅w∗\displaystyle\left(((1-2\eta)\mathrm{sign}(w\cdot x)-\operatorname\*{\mathbf{E}}y(x))x/\left\|w\cdot x\right\|\right)\cdot w^{\*} |  |
+|  | =\displaystyle= | sign​(w∗⋅x)​((1−2​η)​sign​(w⋅x)−(1−2​ηi​(x))​sign​((w∗)(i)⋅x))​\|w∗⋅x\|/\|w⋅x\|\displaystyle\mathrm{sign}(w^{\*}\cdot x)\left((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\| |  |
+|  | =\displaystyle= | ((1−2​η)​ϕ​(w⋅x,w∗⋅x)−(1−2​ηm+i​(x)))​\|w∗⋅x\|/\|w⋅x\|\displaystyle\left((1-2\eta)\phi(w\cdot x,w^{\*}\cdot x)-(1-2\eta\_{m+i}(x))\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\| |  |
+|  | +\displaystyle+ | ((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​(w∗⋅x,(w∗)(i)⋅x))​\|w∗⋅x\|/\|w⋅x\|\displaystyle\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\| |  |
+|  |  | ≤((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​(w∗⋅x,(w∗)(i)⋅x))​\|w∗⋅x\|/\|w⋅x\|.\displaystyle\leq\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\|. |  | (9) |
+
+Here, the inequality holds because (1−2​η)​ϕ​(w⋅x,w∗⋅x)≤(1−2​η)≤(1−2​ηi​(x))(1-2\eta)\phi(w\cdot x,w^{\*}\cdot x)\leq(1-2\eta)\leq(1-2\eta\_{i}(x)). Combine ( [8](https://arxiv.org/html/2606.11149v1#A3.E8 "Equation 8 ‣ Proof of ˜C.1. ‣ C.2.1 Proof of ˜C.1 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")) and ( [C.2.1](https://arxiv.org/html/2606.11149v1#A3.Ex84 "Proof of ˜C.1. ‣ C.2.1 Proof of ˜C.1 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we have 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−fi​(w∗,w,x)\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-f\_{i}(w^{\*},w,x) since \|w⋅x\|≥γ\left\|w\cdot x\right\|\geq\gamma.
+∎
+
+#### C.2.2 Proof of [˜C.2](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim2 "Claim C.2. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜C.2](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim2 "Claim C.2. ‣ Case 1: Large Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+By taking the expectation over x∼Dx(i)x\sim D^{(i)}\_{x}, we have
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+|  |  | 𝐄x∼D(i)xfi​(w∗,w,x)​𝟙​{\|w⋅x\|≥γ}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)\_{x}}}f\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\} |  |
+|  | =\displaystyle= | 𝐄x∼Dx(i)((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​(w∗⋅x,(w∗)(i)⋅x))⁡\|w∗⋅x\|/\|w⋅x\|​𝟙​{\|w⋅x\|≥γ}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\|\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\} |  |
+|  | =\displaystyle= | 𝐄x∼Dx(i)((1−2​ηm+i​(x))+(1−2​ηi​(x)))⁡\|w∗⋅x\|/\|w⋅x\|​𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1,\|w⋅x\|≥γ}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left((1-2\eta\_{m+i}(x))+(1-2\eta\_{i}(x))\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\|\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1,\left\|w\cdot x\right\|\geq\gamma\} |  |
+|  | +\displaystyle+ | 𝐄x∼Dx(i)(2​ηi​(x)−2​ηm+i​(x))⁡\|w∗⋅x\|/\|w⋅x\|​𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,\|w⋅x\|≥γ}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left(2\eta\_{i}(x)-2\eta\_{m+i}(x)\right)\left\|w^{\*}\cdot x\right\|/\left\|w\cdot x\right\|\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\left\|w\cdot x\right\|\geq\gamma\} |  |
+|  | ≤\displaystyle\leq | 2​𝐏𝐫x∼Dz(i)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)​(1−2​η)/γ\displaystyle\;2\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{z}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1)(1-2\eta)/\gamma |  |
+|  | +\displaystyle+ | 2​𝐄x∼Dx(i)(ηi​(x)−ηm+i​(x))⁡𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,ηi​(x)≥ηm+i​(x)}/γ\displaystyle\;2\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left(\eta\_{i}(x)-\eta\_{m+i}(x)\right)\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\eta\_{i}(x)\geq\eta\_{m+i}(x)\}/\gamma |  | (10) |
+
+By [˜3.1](https://arxiv.org/html/2606.11149v1#S3.Thmclaim1 "Claim 3.1. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and [˜3.2](https://arxiv.org/html/2606.11149v1#S3.Thmclaim2 "Claim 3.2. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we know that 𝐏𝐫x∼Dx(i)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)≤O​(Δ​m/(1−2​η))\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{x}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1)\leq O(\Delta m/(1-2\eta)) and 𝐄x∼Dx(i)(ηi​(x)−ηm+i​(x))⁡𝟙​{ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,ηi​(x)≥ηm+i​(x)}≤O​(Δ​m)\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left(\eta\_{i}(x)-\eta\_{m+i}(x)\right)\mathds{1}\{\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\eta\_{i}(x)\geq\eta\_{m+i}(x)\}\leq O(\Delta m). Thus, by( [C.2.2](https://arxiv.org/html/2606.11149v1#A3.Ex88 "Proof of ˜C.2. ‣ C.2.2 Proof of ˜C.2 ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄(x,y)∼D(i)fi​(w∗,w,x)​𝟙​{\|w⋅x\|≥γ}≤O​(m​Δ/γ).\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(i)}}f\_{i}(w^{\*},w,x)\mathds{1}\{\left\|w\cdot x\right\|\geq\gamma\}\leq O(m\Delta/\gamma). |  |
+
+∎
+
+#### C.2.3 Proof of [˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmclaim1 "Claim 3.1. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜3.1](https://arxiv.org/html/2606.11149v1\#S3.Thmclaim1 "Claim 3.1. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Suppose that
+𝐏𝐫x∼Dx(i)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)≥(1+η)​Δ​m/(1−2​η)\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{x}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1)\geq(1+\eta)\Delta m/(1-2\eta), then
+we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | (𝐏𝐫(x,y)∼D(i)−𝐏𝐫(x,y)∼D(m+i))​(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1,sign​(w∗⋅x)≠y)\displaystyle\left(\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(i)}}-\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(m+i)}}\right)\left(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1,\mathrm{sign}(w^{\*}\cdot x)\neq y\right) |  |
+|  | ≥(1−η)​𝐏𝐫x∼Dx(i)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)−η​𝐏𝐫x∼Dx(m+1)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)\displaystyle\geq(1-\eta)\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{x}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1)-\eta\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(m+1)}\_{x}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1) |  |
+|  | >(1−η)​(1+η)​Δ​m/(1−2​η)−η​(1+η)​Δ​m/(1−2​η)−η​Δ​m=Δ​m,\displaystyle>(1-\eta)(1+\eta)\Delta m/(1-2\eta)-\eta(1+\eta)\Delta m/(1-2\eta)-\eta\Delta m=\Delta m, |  |
+
+which contradicts with the fact that dT​V​(D(i),D(j))≤m​Δd\_{\mathrm{T}V}(D^{(i)},D^{(j)})\leq m\Delta. This implies 𝐏𝐫x∼Dx(i)(ϕ​(w∗⋅x,(w∗)(i)⋅x)=−1)≤O​(Δ​m/(1−2​η))\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}\_{x}}(\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=-1)\leq O(\Delta m/(1-2\eta)).
+∎
+
+#### C.2.4 Proof of [˜3.2](https://arxiv.org/html/2606.11149v1\#S3.Thmclaim2 "Claim 3.2. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜3.2](https://arxiv.org/html/2606.11149v1\#S3.Thmclaim2 "Claim 3.2. ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+For convenience, we denote by AA the set of xx such that ϕ​(w∗⋅x,(w∗)(i)⋅x)=1,ηi​(x)≥ηm+i​(x)\phi(w^{\*}\cdot x,(w^{\*})^{(i)}\cdot x)=1,\eta\_{i}(x)\geq\eta\_{m+i}(x).
+We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄x∼Dx(i)((ηi(x)−ηm+i(x))𝟙{A}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\left((\eta\_{i}(x)-\eta\_{m+i}(x)\right)\mathds{1}\{A\} |  |
+|  | =\displaystyle= | 𝐄x∼Dx(i)ηi​(x)​𝟙​{A}−𝐄x∼Dx(m+i)ηm+i​(x)​𝟙​{A}+𝐄x∼Dx(m+i)ηm+i​(x)​𝟙​{A}−𝐄x∼Di(i)ηm+i​(x)​𝟙​{A}\displaystyle\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{x}}\eta\_{i}(x)\mathds{1}\{A\}-\operatorname\*{\mathbf{E}}\_{x\sim D^{(m+i)}\_{x}}\eta\_{m+i}(x)\mathds{1}\{A\}+\operatorname\*{\mathbf{E}}\_{x\sim D^{(m+i)}\_{x}}\eta\_{m+i}(x)\mathds{1}\{A\}-\operatorname\*{\mathbf{E}}\_{x\sim D^{(i)}\_{i}}\eta\_{m+i}(x)\mathds{1}\{A\} |  |
+|  | =\displaystyle= | 𝐏𝐫x∼D(i)(x∈A,sign​(w∗⋅x)≠y)−𝐏𝐫x∼D(i+m)(x∈A,sign​(w∗⋅x)≠y)+∫xηm+i​(x)​𝟙​{A}​(D(m+i)​(x)−D(i)​(x))\displaystyle\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i)}}\left(x\in A,\mathrm{sign}(w^{\*}\cdot x)\neq y\right)-\operatorname\*{\mathbf{Pr}}\_{x\sim D^{(i+m)}}\left(x\in A,\mathrm{sign}(w^{\*}\cdot x)\neq y\right)+\int\_{x}\eta\_{m+i}(x)\mathds{1}\{A\}(D^{(m+i)}(x)-D^{(i)}(x)) |  |
+|  | ≤\displaystyle\leq | m​Δ+m​Δ≤2​m​Δ.\displaystyle\;m\Delta+m\Delta\leq 2m\Delta. |  |
+
+∎
+
+#### C.2.5 Proof of [˜C.3](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim3 "Claim C.3. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜C.3](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim3 "Claim C.3. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*}) |  |
+|  | =\displaystyle= | (((1−2​η)​sign​(w⋅x)−𝐄y​(x))​x/max⁡{\|w⋅x\|,γ})⋅(w−w∗)\displaystyle\left(((1-2\eta)\mathrm{sign}(w\cdot x)-\operatorname\*{\mathbf{E}}y(x))x/\max\{\left\|w\cdot x\right\|,\gamma\}\right)\cdot(w-w^{\*}) |  |
+|  | =\displaystyle= | (((1−2η)sign(w⋅x)−(1−2ηi(x))sign((w∗)(i)⋅x))(w−w∗)⋅x/γ\displaystyle\left(((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)(w-w^{\*})\cdot x/\gamma |  |
+|  | =\displaystyle= | 2(ηi(x)−η)\|w⋅x\|/γ−(((1−2η)sign(w⋅x)−(1−2ηi(x))sign((w∗)(i)⋅x))w∗⋅x/γ\displaystyle\;2(\eta\_{i}(x)-\eta)\left\|w\cdot x\right\|/\gamma-\left(((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)w^{\*}\cdot x/\gamma |  |
+|  | ≥\displaystyle\geq | 2(err(i)(w,x)−η)−(((1−2η)sign(w⋅x)−(1−2ηi(x))sign((w∗)(i)⋅x))w∗⋅x/γ.\displaystyle\;2(\mathrm{err}^{(i)}(w,x)-\eta)-\left(((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)w^{\*}\cdot x/\gamma. |  |
+
+We notice that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | (((1−2η)sign(w⋅x)−(1−2ηi(x))sign((w∗)(i)⋅x))w∗⋅x/γ\displaystyle\left(((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)w^{\*}\cdot x/\gamma |  |
+|  | =\displaystyle= | sign​(w∗⋅x)​((1−2​η)​sign​(w⋅x)−(1−2​ηi​(x))​sign​((w∗)(i)⋅x))​\|w∗⋅x\|/γ\displaystyle\;\mathrm{sign}(w^{\*}\cdot x)\left((1-2\eta)\mathrm{sign}(w\cdot x)-(1-2\eta\_{i}(x))\mathrm{sign}((w^{\*})^{(i)}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\gamma |  |
+|  | =\displaystyle= | ((1−2​η)​ϕ​(w⋅x,w∗⋅x)−(1−2​ηm+i​(x)))​\|w∗⋅x\|/γ\displaystyle\left((1-2\eta)\phi(w\cdot x,w^{\*}\cdot x)-(1-2\eta\_{m+i}(x))\right)\left\|w^{\*}\cdot x\right\|/\gamma |  |
+|  | +\displaystyle+ | ((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​((w∗)(i)⋅x,w∗⋅x))​\|w∗⋅x\|/γ\displaystyle\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi((w^{\*})^{(i)}\cdot x,w^{\*}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\gamma |  |
+|  | ≤\displaystyle\leq | ((1−2​ηm+i​(x))−(1−2​ηi​(x))​ϕ​((w∗)(i)⋅x,w∗⋅x))​\|w∗⋅x\|/γ,\displaystyle\left((1-2\eta\_{m+i}(x))-(1-2\eta\_{i}(x))\phi((w^{\*})^{(i)}\cdot x,w^{\*}\cdot x)\right)\left\|w^{\*}\cdot x\right\|/\gamma, |  |
+
+where the inequality follows ((1−2​η)​ϕ​(w⋅x,w∗⋅x)−(1−2​ηm+i​(x)))​\|w∗⋅x\|/γ≤0\left((1-2\eta)\phi(w\cdot x,w^{\*}\cdot x)-(1-2\eta\_{m+i}(x))\right)\left\|w^{\*}\cdot x\right\|/\gamma\leq 0.
+This implies that when \|w⋅x\|<γ\left\|w\cdot x\right\|<\gamma and sign​(w⋅x)=sign​((w∗)(i)⋅x)\mathrm{sign}(w\cdot x)=\mathrm{sign}((w^{\*})^{(i)}\cdot x), we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄y∼D(i)∣xg​(w;x,y)⋅(w−w∗)≥2​(err(i)​(w,x)−η)−Gi​(w∗,w,x).\displaystyle\operatorname\*{\mathbf{E}}\_{y\sim D^{(i)}\mid x}g(w;x,y)\cdot(w-w^{\*})\geq 2(\mathrm{err}^{(i)}(w,x)-\eta)-G\_{i}(w^{\*},w,x). |  |
+
+∎
+
+#### C.2.6 Proof of [˜C.4](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim4 "Claim C.4. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Proof of [˜C.4](https://arxiv.org/html/2606.11149v1\#A3.Thmclaim4 "Claim C.4. ‣ Case 2: Small Margin ‣ C.2 Omitted Proofs for Lemma˜3.1 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+
+[... middle omitted — see footer ...]
+
+
+10:h(i)←min⁡err^​(hj(i))h^{(i)}\leftarrow\min\hat{\mathrm{err}}(h^{(i)}\_{j}), S(i)←∅S^{(i)}\leftarrow\emptyset
+
+11:i←i+1i\leftarrow i+1
+
+### C.5 Proof of [Theorem˜3.2](https://arxiv.org/html/2606.11149v1\#S3.Thmtheorem2 "Theorem 3.2 (Efficient Drift Learning in Realizable Case). ‣ Efficiently Learning Realizable Drifting Halfspaces ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+We restate the theorem below.
+
+###### Theorem C.2(Restatement of [Theorem˜3.2](https://arxiv.org/html/2606.11149v1\#S3.Thmtheorem2 "Theorem 3.2 (Efficient Drift Learning in Realizable Case). ‣ Efficiently Learning Realizable Drifting Halfspaces ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Consider the problem of learning drifting halfspaces. There is an algorithm 𝒜\mathcal{A} such that for any time step T=Ω~​((γ​Δ)−1/2)T=\tilde{\Omega}((\gamma\Delta)^{-1/2}), 𝒜\mathcal{A} runs in poly​(d,1/γ,Δ)\mathrm{poly}(d,1/\gamma,\Delta) time and outputs a hypothesis h^(T)\hat{h}^{(T)} such that with probability at least 9/109/10, err(T)​(h^(T))=O~​(Δ​γ−3/2)\mathrm{err}^{(T)}(\hat{h}^{(T)})=\tilde{O}(\sqrt{\Delta}\gamma^{-3/2}).
+
+Algorithm 5DriftedHalfspace (Learning Drifting Realizable Halfspaces)
+
+1:Input:γ∈(0,1):\gamma\in(0,1): margin parameter, Δ>0\Delta>0 drift rate
+
+2:Output: Predicted label y^(t)∈{±1}\hat{y}^{(t)}\in\{\pm 1\} for x(t)x^{(t)}, t≥1t\geq 1
+
+3:Let W=Θ~​((γ​Δ)−1/2),i=1W=\tilde{\Theta}((\gamma\Delta)^{-1/2}),i=1, h^0​(x)≡1\hat{h}^{0}(x)\equiv 1
+
+4:fort=1,2,…t=1,2,\dotsdo
+
+5:  Output hypothesis h(i−1)h^{(i-1)} and receive (x(t),y(t))(x^{(t)},y^{(t)})
+
+6:S(i)←S(i)∪{(x(t),y(t))}S^{(i)}\leftarrow S^{(i)}\cup\{(x^{(t)},y^{(t)})\}
+
+7:ift=i​Wt=iWthen
+
+8:h(i)←RealizablePerceptron​(γ,S(i),γ)h^{(i)}\leftarrow\textsc{RealizablePerceptron}(\gamma,S^{(i)},\gamma), S(i)←∅S^{(i)}\leftarrow\emptyset
+
+9:i←i+1i\leftarrow i+1
+
+Algorithm 6RealizablePerceptron (Subrountine for Learning a Single Halfspace over a Dataset)
+
+1:Input:γ∈(0,1):\gamma\in(0,1): margin parameter,
+S={(x(i),y(i))}i=1mS=\{(x^{(i)},y^{(i)})\}\_{i=1}^{m} a dataset of 2​m2m labeled examples,μ>0\mu>0 step size,
+
+2:Output:h^=sign​(w^⋅x):ℝd→{±1}\hat{h}=\mathrm{sign}(\hat{w}\cdot x):\mathbb{R}^{d}\to\{\pm 1\}
+
+3:w(0)=e1w^{(0)}=e\_{1}
+
+4:Split S=S1∪S2S=S\_{1}\cup S\_{2}, where S1={(x(i),y(i))}i=1m/2,S2=S∖S1S\_{1}=\{(x^{(i)},y^{(i)})\}\_{i=1}^{m/2},S\_{2}=S\setminus S\_{1}
+
+5:fori=1,2,…,mi=1,2,\dots,mdo
+
+6:g​(w(i),x,y)←(sign​(w(i)⋅x)−y)​xg(w^{(i)},x,y)\leftarrow(\mathrm{sign}(w^{(i)}\cdot x)-y)x
+
+7:w(i+1)=proj𝔹​(1)​(w(i)−μ​gt​(w(i),x,y))w^{(i+1)}=\mathrm{proj}\_{\mathbb{B}(1)}(w^{(i)}-\mu g\_{t}(w^{(i)},x,y)), h^i+1​(x)=sign​(w(i+1)⋅x)\hat{h}\_{i+1}(x)=\mathrm{sign}(w^{(i+1)}\cdot x)
+
+8:Return h^=argminh^ierr^​(h^i)\hat{h}=\operatorname\*{argmin}\_{\hat{h}\_{i}}\hat{\mathrm{err}}(\hat{h}\_{i}), where err^​(h^i)=1\|S2\|​∑(x,y)∈S2𝟙​{h^i​(x)≠y}\hat{\mathrm{err}}(\hat{h}\_{i})=\frac{1}{\|S\_{2}\|}\sum\_{(x,y)\in S\_{2}}\mathds{1}\{\hat{h}\_{i}(x)\neq y\}.
+
+###### Proof of [Theorem˜3.2](https://arxiv.org/html/2606.11149v1\#S3.Thmtheorem2 "Theorem 3.2 (Efficient Drift Learning in Realizable Case). ‣ Efficiently Learning Realizable Drifting Halfspaces ‣ 3 Efficiently Learning Drifted Halfspaces with Massart Noise ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+We will show that for t=i​Wt=iW, err(t)​(h(i))≤O~​(Δ1/2/γ3/2)\mathrm{err}^{(t)}(h^{(i)})\leq\tilde{O}(\Delta^{1/2}/\gamma^{3/2}).
+Suppose this is correct, then for t=i​W+jt=iW+j, j≤Wj\leq W, we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | err(t)​(h(i))\displaystyle\mathrm{err}^{(t)}(h^{(i)}) | =𝐏𝐫(x,y)∼D(t)(h(i)​(x)≠y)≤𝐏𝐫(x,y)∼D(i​W)(h(i)​(x)≠y)+j​Δ\displaystyle=\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(t)}}(h^{(i)}(x)\neq y)\leq\operatorname\*{\mathbf{Pr}}\_{(x,y)\sim D^{(iW)}}(h^{(i)}(x)\neq y)+j\Delta |  |
+|  |  | ≤O~​(Δ1/2/γ3/2)+Δ1/2/γ=O~​(Δ1/2/γ3/2).\displaystyle\leq\tilde{O}(\Delta^{1/2}/\gamma^{3/2})+\Delta^{1/2}/\gamma=\tilde{O}(\Delta^{1/2}/\gamma^{3/2}). |  |
+
+To do this, we will analyze [Algorithm˜6](https://arxiv.org/html/2606.11149v1#alg6 "In C.5 Proof of Theorem˜3.2 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") with t=i​Wt=iW. Let w(i)w^{(i)} be the vector in the iith round of update in [Algorithm˜6](https://arxiv.org/html/2606.11149v1#alg6 "In C.5 Proof of Theorem˜3.2 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") and let w∗w^{\*} be the unit vector that realizes D(t+T)D^{(t+T)}, where T=W/2T=W/2.
+By the contraction of the projection operator, we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | ‖w(i+1)−w∗‖2\displaystyle\left\\|w^{(i+1)}-w^{\*}\right\\|^{2} | ≤‖w(i)−w∗−μ​g​(w(i);x,y)‖2\displaystyle\leq\left\\|w^{(i)}-w^{\*}-\mu g(w^{(i)};x,y)\right\\|^{2} |  |
+|  |  | ≤‖w(i)−w∗‖2+μ2​‖g​(w(i);x,y)‖2−2​μ​g​(w(i);x,y)⋅(w(i)−w∗)\displaystyle\leq\left\\|w^{(i)}-w^{\*}\right\\|^{2}+\mu^{2}\left\\|g(w^{(i)};x,y)\right\\|^{2}-2\mu g(w^{(i)};x,y)\cdot(w^{(i)}-w^{\*}) |  |
+|  |  | =‖w(i)−w∗‖2+μ2​𝟙​{hw(i)​(x)≠y}+2​μ​𝟙​{hw(i)​(x)≠y}​y​x⋅(w(i)−w∗)\displaystyle=\left\\|w^{(i)}-w^{\*}\right\\|^{2}+\mu^{2}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}+2\mu\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}yx\cdot(w^{(i)}-w^{\*}) |  |
+
+Rearrange the inequality we obtain that
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝟙​{hw(i)​(x)≠y}​(2​μ​y​x⋅(w∗−w(i))−μ2)≤‖w(i)−w∗‖2−‖w(i+1)−w∗‖2,\displaystyle\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\left(2\mu yx\cdot(w^{\*}-w^{(i)})-\mu^{2}\right)\leq\left\\|w^{(i)}-w^{\*}\right\\|^{2}-\left\\|w^{(i+1)}-w^{\*}\right\\|^{2}, |  |
+
+which implies
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝟙​{hw(i)​(x)≠y}​(2​μ​y​x⋅w∗−μ2)≤‖w(i)−w∗‖2−‖w(i+1)−w∗‖2\displaystyle\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right)\leq\left\\|w^{(i)}-w^{\*}\right\\|^{2}-\left\\|w^{(i+1)}-w^{\*}\right\\|^{2} |  |
+
+Denote by Ii:=𝟙​{hw(i)​(x)≠y}​(2​μ​y​x⋅w∗−μ2)I\_{i}:=\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right) for i∈\[T\]i\in\[T\].
+We notice that for every w(i)∈𝕊d−1w^{(i)}\in\mathbb{S}^{d-1},
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄(x,y)∼D(t+i)Ii\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i} | =𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗≥γ}​(2​μ​y​x⋅w∗−μ2)\displaystyle=\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}\geq\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right) |  |
+|  |  | +𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​(2​μ​y​x⋅w∗−μ2)\displaystyle+\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right) |  |
+|  |  | ≥𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗≥γ}​μ​(2​γ−μ)\displaystyle\geq\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}\geq\gamma\}\mu(2\gamma-\mu) |  |
+|  |  | +𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​(2​μ​y​x⋅w∗−μ2)\displaystyle+\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right) |  |
+|  |  | =𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​μ​(2​γ−μ)\displaystyle=\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mu(2\gamma-\mu) |  |
+|  |  | −𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​μ​(2​γ−μ)\displaystyle-\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\mu(2\gamma-\mu) |  |
+|  |  | +𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​(2​μ​y​x⋅w∗−μ2)\displaystyle+\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right) |  |
+
+We upper bound the three terms separately. For the first term, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​μ​(2​γ−μ)≥μ​γ​err(t+i)​(w(i)),\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mu(2\gamma-\mu)\geq\mu\gamma\mathrm{err}^{(t+i)}(w^{(i)}), |  |
+
+when μ≤γ\mu\leq\gamma.
+For the second term, according to the drift rate assumption, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​μ​(2​γ−μ)≤2​Δ​W​μ​γ\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\mu(2\gamma-\mu)\leq 2\Delta W\mu\gamma |  |
+
+For the third term, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​(2​μ​y​x⋅w∗−μ2)≥−Δ​W​μ.\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right)\geq-\Delta W\mu. |  |
+
+This implies 𝐄(x,y)∼D(t+i)Ii≥μ​γ​err(t+i)​(w(i))−2​Δ​W​μ\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}\geq\mu\gamma\mathrm{err}^{(t+i)}(w^{(i)})-2\Delta W\mu.
+
+By taking a summation for i∈\[T\]i\in\[T\], we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 1T​∑i=1Terr(t+i)​(w(i))≤4μ​γ​T+1μ​γ​T​∑i=1T(𝐄(x,y)∼D(t+i)Ii−Ii)+2​Δ​Tγ≤2​Δ1/2​γ−2/3+1μ​γ​T​∑i=1T(𝐄(x,y)∼D(t+i)Ii−Ii).\displaystyle\frac{1}{T}\sum\_{i=1}^{T}\mathrm{err}^{(t+i)}(w^{(i)})\leq\frac{4}{\mu\gamma T}+\frac{1}{\mu\gamma T}\sum\_{i=1}^{T}(\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}-I\_{i})+2\frac{\Delta T}{\gamma}\leq 2\Delta^{1/2}\gamma^{-2/3}+\frac{1}{\mu\gamma T}\sum\_{i=1}^{T}(\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}-I\_{i}). |  | (13) |
+
+Here, the second inequality follows the choice of μ=γ\mu=\gamma and T=(γ​Δ)−1/2T=(\gamma\Delta)^{-1/2}. It remains to analyze the term 1μ​γ​T​∑i=1T(𝐄(x,y)∼D(t+i)Ii−Ii)\frac{1}{\mu\gamma T}\sum\_{i=1}^{T}(\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}-I\_{i}). To do this, we upper bound the variance of 𝐄(x,y)∼D(t+i)Ii−Ii\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}-I\_{i}, which is at most
+We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐄(x,y)∼D(t+i)Ii2\displaystyle\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I^{2}\_{i} | =𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗≥γ}​(2​μ​y​x⋅w∗−μ2)2\displaystyle=\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}\geq\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right)^{2} |  |
+|  |  | +𝐄(x,y)∼D(t+i)𝟙​{hw(i)​(x)≠y}​𝟙​{y​x⋅w∗<γ}​(2​μ​y​x⋅w∗−μ2)2\displaystyle+\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}\mathds{1}\{h\_{w^{(i)}}(x)\neq y\}\mathds{1}\{yx\cdot w^{\*}<\gamma\}\left(2\mu yx\cdot w^{\*}-\mu^{2}\right)^{2} |  |
+|  |  | ≤μ2​err(t+i)​(w(i)).\displaystyle\leq\mu^{2}\mathrm{err}^{(t+i)}(w^{(i)}). |  |
+
+Thus, by Bernstein’s inequality, we have with probability at least 1−δ1-\delta,
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | ∑i=1T𝐄(x,y)∼D(t+i)Ii−Ii≤O​(log⁡(1/δ)+∑i=1Tμ2​err(t+i)​(w(i))).\displaystyle\sum\_{i=1}^{T}\operatorname\*{\mathbf{E}}\_{(x,y)\sim D^{(t+i)}}I\_{i}-I\_{i}\leq O\left(\log(1/\delta)+\sqrt{\sum\_{i=1}^{T}\mu^{2}\mathrm{err}^{(t+i)}(w^{(i)})}\right). |  | (14) |
+
+Combining ( [13](https://arxiv.org/html/2606.11149v1#A3.E13 "Equation 13 ‣ Proof of Theorem˜3.2. ‣ C.5 Proof of Theorem˜3.2 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")) and ( [14](https://arxiv.org/html/2606.11149v1#A3.E14 "Equation 14 ‣ Proof of Theorem˜3.2. ‣ C.5 Proof of Theorem˜3.2 ‣ Appendix C Omitted Proofs from Section˜3 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")), we have with probability at least 1−δ1-\delta,
+1T​∑i=1Terr(t+i)​(w(i))≤O~​(Δ1/2​γ−2/3)\frac{1}{T}\sum\_{i=1}^{T}\mathrm{err}^{(t+i)}(w^{(i)})\leq\tilde{O}(\Delta^{1/2}\gamma^{-2/3}).
+It remains to show that we are able to select a good hypothesis by looking at the empirical error.
+
+For each j∈\[T\]j\in\[T\], we consider the halfspace h^j=hw(j)\hat{h}\_{j}=h\_{w^{(j)}}. By the assumption on the drift rate, we have \|err((i+1)​W)​(h^j)−err(t+ℓ)​(h^j)\|≤Δ​W=Δ1/2​γ−1/2\left\|\mathrm{err}^{((i+1)W)}(\hat{h}\_{j})-\mathrm{err}^{(t+\ell)}(\hat{h}\_{j})\right\|\leq\Delta W=\Delta^{1/2}\gamma^{-1/2} for every ℓ∈\[W\]\ell\in\[W\], which implies that
+
+|     |     |     |
+| --- | --- | --- |
+|  | \|err((i+1)​W)​(h^j)−2W​∑ℓ=1W/2err(t+ℓ+W/2)​(h^j)\|≤Δ​W.\displaystyle\left\|\mathrm{err}^{((i+1)W)}(\hat{h}\_{j})-\frac{2}{W}\sum\_{\ell=1}^{W/2}\mathrm{err}^{(t+\ell+W/2)}(\hat{h}\_{j})\right\|\leq\Delta W. |  |
+
+By Hoeffding’s inequality, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫(err^​(h^j)−2W​∑ℓ=1W/2err(t+ℓ+W/2)​(h^j)>err((i+1)​W)​(h^j))≤δ.\displaystyle\operatorname\*{\mathbf{Pr}}\left(\hat{\mathrm{err}}(\hat{h}\_{j})-\frac{2}{W}\sum\_{\ell=1}^{W/2}\mathrm{err}^{(t+\ell+W/2)}(\hat{h}\_{j})>\mathrm{err}^{((i+1)W)}(\hat{h}\_{j})\right)\leq\delta. |  |
+
+Thus, with probability at least 1−δ1-\delta, we have \|err^​(h^j)−err((i+1)​W)​(h^j)\|≤err((i+1)​W)​(h^j)\left\|\hat{\mathrm{err}}(\hat{h}\_{j})-\mathrm{err}^{((i+1)W)}(\hat{h}\_{j})\right\|\leq\mathrm{err}^{((i+1)W)}(\hat{h}\_{j}).
+Since there is some j∗∈\[T\]j^{\*}\in\[T\] such that err(t+j∗)​(w(j∗))≤O~​(Δ1/2​γ−3/2)\mathrm{err}^{(t+j^{\*})}(w^{(j^{\*})})\leq\tilde{O}(\Delta^{1/2}\gamma^{-3/2}), we know that err((i+1)​W)​(w(j∗))≤O~​(Δ1/2​γ−3/2)\mathrm{err}^{((i+1)W)}(w^{(j^{\*})})\leq\tilde{O}(\Delta^{1/2}\gamma^{-3/2}). This implies the selected hypothesis that minimizes err^​(hj)\hat{\mathrm{err}}(h\_{j}) must have err((i+1)​W)​(h^)≤O~​(Δ1/2​γ−3/2)\mathrm{err}^{((i+1)W)}(\hat{h})\leq\tilde{O}(\Delta^{1/2}\gamma^{-3/2}).
+∎
+
+## Appendix D Omitted Proofs from [Section˜4](https://arxiv.org/html/2606.11149v1\#S4 "4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+### D.1 Proof of [Lemma˜D.1](https://arxiv.org/html/2606.11149v1\#A4.Thmlemma1 "Lemma D.1. ‣ D.1 Proof of Lemma˜D.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Lemma D.1.
+
+The instance constructed in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is a valid instance of the trajectory testing problem defined in [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") with η=1/3\eta=1/3.
+
+###### Proof of [Lemma˜D.1](https://arxiv.org/html/2606.11149v1\#A4.Thmlemma1 "Lemma D.1. ‣ D.1 Proof of Lemma˜D.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+To show the construction in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") is a valid instance, we will need to show that for each vv and i∈\[T\]i\in\[T\], the defined halfspaces hi(v)h^{(v)}\_{i} has margin γ\gamma and for every i∈\[T\]i\in\[T\], dT​V​(Di(v),Di+1(v))≤Δd\_{\mathrm{T}V}(D^{(v)}\_{i},D^{(v)}\_{i+1})\leq\Delta.
+
+We start with analyzing the margin. Let hi(v)=sign​(v⋅x+ti),h^{(v)}\_{i}=\mathrm{sign}(v\cdot x+t\_{i}), since v∈{±1}d​zv\in\{\pm 1\}^{d}z, x∈{±1}x\in\{\pm 1\} and dd is odd, we have \|v⋅x\|≥1\left\|v\cdot x\right\|\geq 1. Since (Di(v))x(D^{(v)}\_{i})\_{x} is the uniform distribution over {±1}d\{\pm 1\}^{d}, we know that for any choice of tit\_{i}, there is an integer ti′t\_{i}^{\prime} such that for every x∈{±1}dx\in\{\pm 1\}^{d}, \|v⋅x+ti′\|≥1\left\|v\cdot x+t\_{i}^{\prime}\right\|\geq 1, and
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫Di(v)(sign​(v⋅x+ti)=−1)=𝐏𝐫Di(v)(sign​(v⋅x+ti′)=−1)\displaystyle\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}\left(\mathrm{sign}(v\cdot x+t\_{i})=-1\right)=\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}\left(\mathrm{sign}(v\cdot x+t\_{i}^{\prime})=-1\right) |  |
+
+This implies that by setting ti=ti′t\_{i}=t\_{i}^{\prime}, halfspace sign​(v⋅x+ti′)\mathrm{sign}(v\cdot x+t\_{i}^{\prime}) has a margin Ω​(1/d)=Ω​(γ)\Omega(1/d)=\Omega(\gamma).
+
+It remains to show that for every i≥T−mi\geq T-m, we have dT​V​(Di(v),Di+1(v))≤Δd\_{\mathrm{T}V}(D^{(v)}\_{i},D^{(v)}\_{i+1})\leq\Delta. Let A⊆{±1}d×{±1}A\subseteq\{\pm 1\}^{d}\times\{\pm 1\} be any event. We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐏𝐫Di(v)(A)\displaystyle\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A) | =𝐏𝐫Di(v)(A,hi(v)​(x)≠hi(v)​(x))+𝐏𝐫Di(v)(A,hi(v)​(x)=hi(v)​(x))\displaystyle=\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A,h^{(v)}\_{i}(x)\neq h^{(v)}\_{i}(x))+\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)) |  |
+|  |  | =𝐏𝐫Di(v)(A,hi(v)​(x)≠hi(v)​(x))+𝐏𝐫Di(v)(A,hi(v)​(x)=hi(v)​(x)=y​(x))+𝐏𝐫Di(v)(A,hi(v)​(x)=hi(v)​(x)≠y​(x)).\displaystyle=\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A,h^{(v)}\_{i}(x)\neq h^{(v)}\_{i}(x))+\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)=y(x))+\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)\neq y(x)). |  |
+
+This implies that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | \|𝐏𝐫Di(v)(A)−𝐏𝐫Di+1(v)(A)\|\displaystyle\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(A)-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(A)\right\| | ≤\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(A,hi(v)​(x)≠hi(v)​(x))\|+\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(A,hi(v)​(x)=hi(v)​(x)=y​(x))\|\displaystyle\leq\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(A,h^{(v)}\_{i}(x)\neq h^{(v)}\_{i}(x))\right\|+\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)=y(x))\right\| |  |
+|  |  | +\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(A,hi(v)​(x)=hi(v)​(x)≠y​(x))\|\displaystyle+\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)\neq y(x))\right\| |  |
+|  |  | ≤\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(hi(v)​(x)≠hi(v)​(x))\|+\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(hi(v)​(x)=hi(v)​(x)=y​(x))\|\displaystyle\leq\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(h^{(v)}\_{i}(x)\neq h^{(v)}\_{i}(x))\right\|+\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)=y(x))\right\| |  |
+|  |  | +\|𝐏𝐫Di(v)−𝐏𝐫Di+1(v)(A,hi(v)​(x)=hi(v)​(x)≠y​(x))\|\displaystyle+\left\|\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i+1}}(A,h^{(v)}\_{i}(x)=h^{(v)}\_{i}(x)\neq y(x))\right\| |  |
+|  |  | ≤Δ+2​((η−Δ​(j+1))/(1−2​Δ​(j+1))−(η−Δ​j)/(1−2​Δ​j))\displaystyle\leq\Delta+2((\eta-\Delta(j+1))/(1-2\Delta(j+1))-(\eta-\Delta j)/(1-2\Delta j)) |  |
+|  |  | ≤4​Δ.\displaystyle\leq 4\Delta. |  |
+
+To conclude the proof of [Lemma˜D.1](https://arxiv.org/html/2606.11149v1#A4.Thmlemma1 "Lemma D.1. ‣ D.1 Proof of Lemma˜D.1 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), it remains to show that we can actually make
+𝐏𝐫Di(v)(hi(v)​(x)=−1)=Δ​j\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)=\Delta j by showing that changing the threshold tt will not make 𝐏𝐫Di(v)(hi(v)​(x)=−1)\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1) dramatically change. Since v∈{±1}dv\in\{\pm 1\}^{d} and x∈{±1}dx\in\{\pm 1\}^{d}, we know that v​cot⁡x∈\[−d,d\]v\cot x\in\[-d,d\] is an integer. Since (Di(v))x(D^{(v)}\_{i})\_{x} is a uniform distribution over {±1}\{\pm 1\}, we know that for every integer cc,
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫(Di(v))x(v⋅x=c)≤(dd/2)/2d≤2−O​(d).\displaystyle\operatorname\*{\mathbf{Pr}}\_{(D^{(v)}\_{i})\_{x}}(v\cdot x=c)\leq\binom{d}{d/2}/2^{d}\leq 2^{-O(d)}. |  |
+
+This implies that as long as γ<O​(log−1⁡(1/Δ))\gamma<O(\log^{-1}(1/\Delta)), we can make 𝐏𝐫(Di(v))x(v⋅x=c)≤Δ/100\operatorname\*{\mathbf{Pr}}\_{(D^{(v)}\_{i})\_{x}}(v\cdot x=c)\leq\Delta/100. This implies that we are able to choose hi(v)h^{(v)}\_{i} such that 𝐏𝐫Di(v)(hi(v)​(x)=−1)=Δ​j\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)=\Delta j.
+∎
+
+### D.2 Proof of [Lemma˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+###### Lemma D.2(Restatement of [Lemma˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Under the construction of [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | ⟨(D(u)¯≤ℓ,k),(D(v)¯≤ℓ,k)⟩D(0)−1=∑A⊆\[m\],A≠∅,\|A\|≤k∏j∈\[A\]⟨(DT−m+j(u)¯)≤ℓ(zi)),(DT−m+j(v)¯)≤ℓ(zi)⟩Di(0)−1\displaystyle\langle(\bar{D^{(u)}}^{\leq\ell,k}),(\bar{D^{(v)}}^{\leq\ell,k})\rangle\_{D^{(0)}}-1=\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\prod\_{j\in\[A\]}\langle(\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})),(\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1 |  |
+
+###### Proof of [Lemma˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Since Di(u)D^{(u)}\_{i}
+According to the construction of D(0)D^{(0)} and 𝒟\mathcal{D}, for every u∈{±1}du\in\{\pm 1\}^{d},
+we have D(u)¯=∏i=1TDi(u)¯​(zi)=∏i=T−m+1TDi(u)¯​(zi)\bar{D^{(u)}}=\prod\_{i=1}^{T}\bar{D^{(u)}\_{i}}(z\_{i})=\prod\_{i=T-m+1}^{T}\bar{D^{(u)}\_{i}}(z\_{i}).
+This implies that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | D(u)¯≤ℓ,k​(z)\displaystyle\bar{D^{(u)}}^{\leq\ell,k}(z) | =(∏i=T−m+1TDi(u)¯​(zi))≤ℓ,k=(∏j=1mDT−m+j(u)¯​(zi))≤ℓ,k\displaystyle=\left(\prod\_{i=T-m+1}^{T}\bar{D^{(u)}\_{i}}(z\_{i})\right)^{\leq\ell,k}=\left(\prod\_{j=1}^{m}\bar{D^{(u)}\_{T-m+j}}(z\_{i})\right)^{\leq\ell,k} |  |
+|  |  | =(∏j=1m1+(DT−m+j(u)¯)≤ℓ​(zi)−1+(DT−m+j(u)¯)>ℓ​(zi))≤ℓ,k\displaystyle=\left(\prod\_{j=1}^{m}1+(\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1+(\bar{D^{(u)}\_{T-m+j}})^{>\ell}(z\_{i})\right)^{\leq\ell,k} |  |
+|  |  | =∑A⊆\[m\],B⊆\[m\]∖A(∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1)​∏j∈\[m\]∖(A∪B)(DT−m+j(u)¯)>ℓ​(zi))≤ℓ,k\displaystyle=\sum\_{A\subseteq\[m\],B\subseteq\[m\]\setminus A}\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\prod\_{j\in\[m\]\setminus(A\cup B)}(\bar{D^{(u)}\_{T-m+j}})^{>\ell}(z\_{i})\right)^{\leq\ell,k} |  |
+|  |  | =∑A⊆\[m\](∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1))≤ℓ,k\displaystyle=\sum\_{A\subseteq\[m\]}\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k} |  |
+|  |  | =∑A⊆\[m\],\|A\|≤k(∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1))≤ℓ,k\displaystyle=\sum\_{A\subseteq\[m\],\|A\|\leq k}\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k} |  |
+
+Here, the second last equation follows (∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1)​∏j∈\[m\]∖(A∪B)(DT−m+j(u)¯)>ℓ​(zi))≤ℓ,k=0\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\prod\_{j\in\[m\]\setminus(A\cup B)}(\bar{D^{(u)}\_{T-m+j}})^{>\ell}(z\_{i})\right)^{\leq\ell,k}=0, when \[m\]∖(A∪B)≠∅\[m\]\setminus(A\cup B)\neq\emptyset. In the last equation, we use the fact that (∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1))≤ℓ,k=0\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k}=0, when \|A\|>k\|A\|>k. Furthermore, let A,B⊆\[m\]A,B\subseteq\[m\] and A≠BA\neq B, by independence, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | ⟨(∏j∈\[A\]((DT−m+j(u)¯)≤ℓ,k​(zi)−1))≤ℓ,(∏j∈\[B\]((DT−m+j(v)¯)≤ℓ​(zi)−1))≤ℓ,k⟩D(0)=0\displaystyle\langle\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell,k}(z\_{i})-1)\right)^{\leq\ell},\left(\prod\_{j\in\[B\]}((\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k}\rangle\_{D^{(0)}}=0 |  |
+
+This implies
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | ⟨(D(u)¯≤ℓ,k),(D(v)¯≤ℓ,k)⟩D(0)−1\displaystyle\langle(\bar{D^{(u)}}^{\leq\ell,k}),(\bar{D^{(v)}}^{\leq\ell,k})\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ⟨∑A⊆\[m\],\|A\|≤k(∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1))≤ℓ,k,∑A⊆\[m\](∏j∈\[A\]((DT−m+j(v)¯)≤ℓ​(zi)−1))≤ℓ,k⟩D(0)−1\displaystyle\langle\sum\_{A\subseteq\[m\],\|A\|\leq k}\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k},\sum\_{A\subseteq\[m\]}\left(\prod\_{j\in\[A\]}((\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k}\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],\|A\|≤k⟨(∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1))≤ℓ,k,(∏j∈\[A\]((DT−m+j(v)¯)≤ℓ​(zi)−1))≤ℓ,k⟩D(0)−1\displaystyle\sum\_{A\subseteq\[m\],\|A\|\leq k}\langle\left(\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k},\left(\prod\_{j\in\[A\]}((\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\right)^{\leq\ell,k}\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],\|A\|≤k⟨∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1),∏j∈\[A\]((DT−m+j(v)¯)≤ℓ​(zi)−1)⟩D(0)−1\displaystyle\sum\_{A\subseteq\[m\],\|A\|\leq k}\langle\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1),\prod\_{j\in\[A\]}((\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],A≠∅,\|A\|≤k∏j∈\[A\]⟨((DT−m+j(u)¯)≤ℓ​(zi)−1),((DT−m+j(v)¯)≤ℓ​(zi)−1)⟩Di(0)\displaystyle\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\prod\_{j\in\[A\]}\langle((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1),((\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\rangle\_{D\_{i}^{(0)}} |  |
+|  | =\displaystyle= | ∑A⊆\[m\],A≠∅,\|A\|≤k∏j∈\[A\]⟨(DT−m+j(u)¯)≤ℓ(zi)),(DT−m+j(v)¯)≤ℓ(zi)⟩Di(0)−1.\displaystyle\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\prod\_{j\in\[A\]}\langle(\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})),(\bar{D^{(v)}\_{T-m+j}})^{\leq\ell}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1. |  |
+
+Here, the third equation follows the fact that ∏j∈\[A\]((DT−m+j(u)¯)≤ℓ​(zi)−1)∈𝒞ℓ,k\prod\_{j\in\[A\]}((\bar{D^{(u)}\_{T-m+j}})^{\leq\ell}(z\_{i})-1)\in\mathcal{C}\_{\ell,k} and the last equation follows the independence of each ziz\_{i}.
+∎
+
+With [Lemma˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), it remains to bound the pairwise correlation.
+
+### D.3 Proof of [Lemma˜4.2](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma2 "Lemma 4.2. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+We restate the lemma below.
+
+###### Lemma D.3(Restatement of [Lemma˜4.2](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma2 "Lemma 4.2. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Let c∈(0,1/2)c\in(0,1/2) be a constant. For i=T−m+j,j∈\[m\]i=T-m+j,j\in\[m\] and v,u∈{±1}dv,u\in\{\pm 1\}^{d} such that \|v⋅u\|≤d1−c\left\|v\cdot u\right\|\leq d^{1-c}, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | ⟨DT−m+j(u)¯​(zi),DT−m+j(v)¯​(zi)⟩Di(0)−1≤O~​(d−(1/2−c)​(Δ​j)2).\displaystyle\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i}),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\leq\tilde{O}(d^{-(1/2-c)}(\Delta j)^{2}). |  |
+
+###### Proof of [Lemma˜4.2](https://arxiv.org/html/2606.11149v1\#S4.Thmlemma2 "Lemma 4.2. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+Recall that in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), for every i=T−m+j,j∈\[m\]i=T-m+j,j\in\[m\] and for every u∈{±1}du\in\{\pm 1\}^{d}, D(u)D^{{}^{(u)}} is realized by halfspaces hi(u)=sign​(v⋅x+ti)h^{(u)}\_{i}=\mathrm{sign}(v\cdot x+t\_{i}) with RCN ηi=(η−Δ​j)/(1−2​Δ​j)\eta\_{i}=(\eta-\Delta j)/(1-2\Delta j). In particular, 𝐏𝐫Di(v)(hi(v)​(x)=−1)=Δ​j\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)=\Delta j.
+This implies that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | 𝐏𝐫Di(v)(y​(x)=−1)\displaystyle\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(y(x)=-1) | =(1−ηi)​𝐏𝐫Di(v)(hi(v)​(x)=−1)+ηi​𝐏𝐫Di(v)(hi(v)​(x)=+1)\displaystyle=(1-\eta\_{i})\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)+\eta\_{i}\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=+1) |  |
+|  |  | =ηi+(1−2​ηi)​𝐏𝐫Di(v)(hi(v)​(x)=−1)\displaystyle=\eta\_{i}+(1-2\eta\_{i})\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1) |  |
+|  |  | =η−Δ​j1−2​Δ​j+(1−2​η−Δ​j1−2​Δ​j)​Δ​j=η.\displaystyle=\frac{\eta-\Delta j}{1-2\Delta j}+(1-2\frac{\eta-\Delta j}{1-2\Delta j})\Delta j=\eta. |  |
+
+Since Di(0)D^{(0)}\_{i} is a product distribution over {±1}d×{±1}\{\pm 1\}^{d}\times\{\pm 1\} and (Di(0))x(D^{(0)}\_{i})\_{x} is the uniform distribution over {±1}d\{\pm 1\}^{d}, we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | ⟨Di(u)¯​(zi),Di(v)¯​(zi)⟩Di(0)−1\displaystyle\langle\bar{D^{(u)}\_{i}}(z\_{i}),\bar{D^{(v)}\_{i}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑y∈{±1}∑x∈{±1}dDi(u)​(x,y)​Di(v)​(x,y)/Di(0)​(x,y)−1\displaystyle\sum\_{y\in\{\pm 1\}}\sum\_{x\in\{\pm 1\}^{d}}D^{(u)}\_{i}(x,y)D^{(v)}\_{i}(x,y)/D^{(0)}\_{i}(x,y)-1 |  |
+|  | =\displaystyle= | η​(∑x∈{±1}dDi(u)​(x)∣y=−1​Di(v)​(x)∣y=−1Di(0)(x)∣y=−1)−1)+(1−η)​(∑x∈{±1}dDi(u)​(x)∣y=1​Di(v)​(x)∣y=1Di(0)(x)∣y=1)−1)\displaystyle\eta(\sum\_{x\in\{\pm 1\}^{d}}\frac{D^{(u)}\_{i}(x)\mid\_{y=-1}D^{(v)}\_{i}(x)\mid\_{y=-1}}{D^{(0)}\_{i}(x)\mid\_{y=-1})}-1)+(1-\eta)(\sum\_{x\in\{\pm 1\}^{d}}\frac{D^{(u)}\_{i}(x)\mid\_{y=1}D^{(v)}\_{i}(x)\mid\_{y=1}}{D^{(0)}\_{i}(x)\mid\_{y=1})}-1) |  |
+|  | =\displaystyle= | η​(∑x∈{±1}dDi(u)​(x)∣y=−1​Di(v)​(x)∣y=−1Di(0)​(x)−1)+(1−η)​(∑x∈{±1}dDi(u)​(x)∣y=1​Di(v)​(x)∣y=1Di(0)​(x)−1)\displaystyle\eta(\sum\_{x\in\{\pm 1\}^{d}}\frac{D^{(u)}\_{i}(x)\mid\_{y=-1}D^{(v)}\_{i}(x)\mid\_{y=-1}}{D^{(0)}\_{i}(x)}-1)+(1-\eta)(\sum\_{x\in\{\pm 1\}^{d}}\frac{D^{(u)}\_{i}(x)\mid\_{y=1}D^{(v)}\_{i}(x)\mid\_{y=1}}{D^{(0)}\_{i}(x)}-1) |  |
+
+Notice that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | Di(v)​(x)∣y=−1\displaystyle D^{(v)}\_{i}(x)\mid\_{y=-1} | =(𝟙​{hi(v)​(x)=1}​ηi​Di(0)​(x)+𝟙​{hi(v)​(x)=−1}​(1−ηi)​Di(0)​(x))/η\displaystyle=\left(\mathds{1}\{h^{(v)}\_{i}(x)=1\}\eta\_{i}D^{(0)}\_{i}(x)+\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-\eta\_{i})D^{(0)}\_{i}(x)\right)/\eta |  |
+|  |  | =(ηi+𝟙​{hi(v)​(x)=−1}​(1−2​ηi))​Di(0)​(x)/η\displaystyle=\left(\eta\_{i}+\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i})\right)D^{(0)}\_{i}(x)/\eta |  |
+|  | Di(v)​(x)∣y=1\displaystyle D^{(v)}\_{i}(x)\mid\_{y=1} | =(𝟙​{hi(v)​(x)=−1}​ηi​Di(0)​(x)+𝟙​{hi(v)​(x)=1}​(1−ηi)​Di(0)​(x))/(1−η)\displaystyle=\left(\mathds{1}\{h^{(v)}\_{i}(x)=-1\}\eta\_{i}D^{(0)}\_{i}(x)+\mathds{1}\{h^{(v)}\_{i}(x)=1\}(1-\eta\_{i})D^{(0)}\_{i}(x)\right)/(1-\eta) |  |
+|  |  | =(1−ηi−𝟙​{hi(v)​(x)=−1}​(1−2​ηi))​Di(0)​(x)/(1−η).\displaystyle=\left(1-\eta\_{i}-\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i})\right)D^{(0)}\_{i}(x)/(1-\eta). |  |
+
+This implies that
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | ⟨Di(u)¯​(x)∣y=−1,Di(v)¯​(x)∣y=−1⟩Di(0)−1\displaystyle\langle\bar{D^{(u)}\_{i}}(x)\mid\_{y=-1},\bar{D^{(v)}\_{i}}(x)\mid\_{y=-1}\rangle\_{D\_{i}^{(0)}}-1 |  |
+|  | =\displaystyle= | ⟨ηi+𝟙​{hi(v)​(x)=−1}​(1−2​ηi),ηi+𝟙​{hi(v)​(x)=−1}​(1−2​ηi)⟩Di(0)/η2−1\displaystyle\langle\eta\_{i}+\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i}),\eta\_{i}+\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i})\rangle\_{D\_{i}^{(0)}}/\eta^{2}-1 |  |
+|  | =\displaystyle= | (ηi2+2​ηi​(1−2​ηi)​𝐏𝐫Di(v)(hi(v)​(x)=−1)+(1−2​ηi)2​𝐄Di(0)(𝟙​{hi(v)​(x)=−1}​𝟙​{hi(u)​(x)=−1}))/η2−1\displaystyle(\eta\_{i}^{2}+2\eta\_{i}(1-2\eta\_{i})\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)+(1-2\eta\_{i})^{2}\operatorname\*{\mathbf{E}}\_{D^{(0)}\_{i}}(\mathds{1}\{h^{(v)}\_{i}(x)=-1\}\mathds{1}\{h^{(u)}\_{i}(x)=-1\}))/\eta^{2}-1 |  |
+|  | =\displaystyle= | (1−2​ηiη)2​𝐄Di(0)((𝟙​{hi(v)​(x)=−1}−Δ​j)​(𝟙​{hi(u)​(x)=−1}−Δ​j))\displaystyle\left(\frac{1-2\eta\_{i}}{\eta}\right)^{2}\operatorname\*{\mathbf{E}}\_{D\_{i}^{(0)}}\left((\mathds{1}\{h^{(v)}\_{i}(x)=-1\}-\Delta j)(\mathds{1}\{h^{(u)}\_{i}(x)=-1\}-\Delta j)\right) |  |
+
+and
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | ⟨Di(u)¯​(x)∣y=1,Di(v)¯​(x)∣y=1⟩Di(0)−1\displaystyle\langle\bar{D^{(u)}\_{i}}(x)\mid\_{y=1},\bar{D^{(v)}\_{i}}(x)\mid\_{y=1}\rangle\_{D\_{i}^{(0)}}-1 |  |
+|  | =\displaystyle= | ⟨1−ηi−𝟙​{hi(v)​(x)=−1}​(1−2​ηi),1−ηi−𝟙​{hi(v)​(x)=−1}​(1−2​ηi)⟩Di(0)/(1−η)2−1\displaystyle\langle 1-\eta\_{i}-\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i}),1-\eta\_{i}-\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(1-2\eta\_{i})\rangle\_{D\_{i}^{(0)}}/(1-\eta)^{2}-1 |  |
+|  | =\displaystyle= | ((1−ηi)2−2(1−ηi)(1−2ηi)𝐏𝐫Di(v)(hi(v)(x)=−1)+(1−2ηi)2\displaystyle((1-\eta\_{i})^{2}-2(1-\eta\_{i})(1-2\eta\_{i})\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{i}}(h^{(v)}\_{i}(x)=-1)+(1-2\eta\_{i})^{2} |  |
+|  |  | 𝐄Di(0)(𝟙{hi(v)(x)=−1}𝟙{hi(u)(x)=−1}))/(1−η)2−1\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(0)}\_{i}}(\mathds{1}\{h^{(v)}\_{i}(x)=-1\}\mathds{1}\{h^{(u)}\_{i}(x)=-1\}))/(1-\eta)^{2}-1 |  |
+|  | =\displaystyle= | (1−2​ηi1−η)2​𝐄Di(0)((𝟙​{hi(v)​(x)=−1}−Δ​j)​(𝟙​{hi(u)​(x)=−1}−Δ​j)).\displaystyle\left(\frac{1-2\eta\_{i}}{1-\eta}\right)^{2}\operatorname\*{\mathbf{E}}\_{D\_{i}^{(0)}}\left((\mathds{1}\{h^{(v)}\_{i}(x)=-1\}-\Delta j)(\mathds{1}\{h^{(u)}\_{i}(x)=-1\}-\Delta j)\right). |  |
+
+This gives
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | ⟨Di(u)¯​(zi),Di(v)¯​(zi)⟩Di(0)−1\displaystyle\langle\bar{D^{(u)}\_{i}}(z\_{i}),\bar{D^{(v)}\_{i}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1 | =(1−2​ηi)2​𝐄Di(0)((𝟙​{hi(v)​(x)=−1}−Δ​j)​(𝟙​{hi(u)​(x)=−1}−Δ​j))⁡(1η+11−η)\displaystyle=(1-2\eta\_{i})^{2}\operatorname\*{\mathbf{E}}\_{D\_{i}^{(0)}}\left((\mathds{1}\{h^{(v)}\_{i}(x)=-1\}-\Delta j)(\mathds{1}\{h^{(u)}\_{i}(x)=-1\}-\Delta j)\right)(\frac{1}{\eta}+\frac{1}{1-\eta}) |  |
+|  |  | ≤O(𝐄Di(0)((𝟙{hi(v)(x)=−1}(𝟙{hi(u)(x)=−1}−(Δj)2))).\displaystyle\leq O\left(\operatorname\*{\mathbf{E}}\_{D\_{i}^{(0)}}\left((\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(\mathds{1}\{h^{(u)}\_{i}(x)=-1\}-(\Delta j)^{2})\right)\right). |  |
+
+###### Fact D.1(Lemma 3.5 in \[ [DDK+23](https://arxiv.org/html/2606.11149v1\#bib.bibx14 "")\]).
+
+For v,u∈{±1}dv,u\in\{\pm 1\}^{d} such that \|v⋅u\|≤d1−c\left\|v\cdot u\right\|\leq d^{1-c} and halfspace fv​(x),fu​(x)f\_{v}(x),f\_{u}(x) satisfies 𝐏𝐫x∼{±1}d(fv​(x)=1)=𝐏𝐫x∼{±1}d(fv​(x)=1)=ϵ\operatorname\*{\mathbf{Pr}}\_{x\sim\{\pm 1\}^{d}}(f\_{v}(x)=1)=\operatorname\*{\mathbf{Pr}}\_{x\sim\{\pm 1\}^{d}}(f\_{v}(x)=1)=\epsilon, ϵ∈(0,1)\epsilon\in(0,1) small enough, there is some absolute constant C>0C>0 such that 𝐄x∼{±1}d𝟙​{fv​(x)=1}​𝟙​{fu​(x)=1}≤C​log2⁡(d/ϵ)​ϵ2​\|v⋅u\|/d+ϵ2\operatorname\*{\mathbf{E}}\_{x\sim\{\pm 1\}^{d}}\mathds{1}\{f\_{v}(x)=1\}\mathds{1}\{f\_{u}(x)=1\}\leq C\log^{2}(d/\epsilon)\epsilon^{2}\left\|v\cdot u\right\|/d+\epsilon^{2}.
+
+Applying [˜D.1](https://arxiv.org/html/2606.11149v1#A4.Thmfact1 "Fact D.1 (Lemma 3.5 in [DDK+23]). ‣ Proof of Lemma˜4.2. ‣ D.3 Proof of Lemma˜4.2 ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") to −hi(v),−hi(u)-h^{(v)}\_{i},-h^{(u)}\_{i} with ϵ=Δ​j\epsilon=\Delta j, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄Di(0)((𝟙{hi(v)(x)=−1}(𝟙{hi(u)(x)=−1}−(Δj)2))≤O~(d−(1/2−c)(Δj)2).\displaystyle\operatorname\*{\mathbf{E}}\_{D\_{i}^{(0)}}\left((\mathds{1}\{h^{(v)}\_{i}(x)=-1\}(\mathds{1}\{h^{(u)}\_{i}(x)=-1\}-(\Delta j)^{2})\right)\leq\tilde{O}(d^{-(1/2-c)}(\Delta j)^{2})\;. |  |
+
+∎
+
+### D.4 Proof of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")
+
+We restate the theorem below.
+
+###### Theorem D.1(Restatement of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise")).
+
+Let c∈(0,1/2)c\in(0,1/2) be a constant. For η=1/3\eta=1/3 and Δ>2−1/γc\Delta>2^{-1/\gamma^{c}}, there is no polynomial p​(z)p(z) with degree less than O​(γ−c/4)O(\gamma^{-c/4}) that is a 11-distinguisher for the trajectory testing problem defined in [Definition˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition1 "Definition 4.1 (Trajectory Testing Problem). ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), with instance constructed by [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+###### Proof of [Theorem˜4.1](https://arxiv.org/html/2606.11149v1\#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+By [˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmfact1 "Fact 4.1 (One-sample version of Fact 2.1 and Fact 2.2 in [BBH+21]). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), to show there is no polynomial with degree k=O​(dc/4)k=O(d^{c/4}) that is a O​(1)O(1)-distinguisher for D(0)D^{(0)} and DD,
+it suffices to upper bound ‖𝐄D∼𝒟(D¯≤∞,k)−1‖D(0)\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\infty,k})-1\right\\|\_{D^{(0)}} for D(0)D^{(0)} and 𝒟\mathcal{D} constructed in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"). We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  | ‖𝐄D∼𝒟(D¯≤∞,k)−1‖D(0)2\displaystyle\left\\|\operatorname\*{\mathbf{E}}\_{D\sim\mathcal{D}}(\bar{D}^{\leq\infty,k})-1\right\\|\_{D^{(0)}}^{2} | =⟨𝐄D(u)∼𝒟(D(u)¯≤∞,k)−1,𝐄D(v)∼𝒟(D(v)¯≤∞,k)−1⟩D(0)\displaystyle=\langle\operatorname\*{\mathbf{E}}\_{D^{(u)}\sim\mathcal{D}}(\bar{D^{(u)}}^{\leq\infty,k})-1,\operatorname\*{\mathbf{E}}\_{D^{(v)}\sim\mathcal{D}}(\bar{D^{(v)}}^{\leq\infty,k})-1\rangle\_{D^{(0)}} |  |
+|  |  | =⟨𝐄D(u)∼𝒟(D(u)¯≤∞,k),𝐄D(v)∼𝒟(D(v)¯≤∞,k)⟩D(0)−1\displaystyle=\langle\operatorname\*{\mathbf{E}}\_{D^{(u)}\sim\mathcal{D}}(\bar{D^{(u)}}^{\leq\infty,k}),\operatorname\*{\mathbf{E}}\_{D^{(v)}\sim\mathcal{D}}(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1 |  |
+|  |  | =𝐄D(u),D(v)∼𝒟⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)−1,\displaystyle=\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1, |  |
+
+where in the second equality, we use the fact that ⟨D(u)¯≤∞,k,1⟩D(0)=1\langle\bar{D^{(u)}}^{\leq\infty,k},1\rangle\_{D^{(0)}}=1. By [Lemma˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmlemma1 "Lemma 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄D(u),D(v)∼𝒟⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)−1\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],A≠∅,\|A\|≤k𝐄D(u),D(v)∼𝒟∏j∈\[A\](⟨DT−m+j(u)¯(zi)),DT−m+j(v)¯(zi)⟩Di(0)−1).\displaystyle\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}\left(\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i})),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\right). |  |
+
+Thus, to conclude the proof, it remain to upper bound
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐄D(u),D(v)∼𝒟∏j∈\[A\](⟨DT−m+j(u)¯(zi)),DT−m+j(v)¯(zi)⟩Di(0)−1).\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}\left(\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i})),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\right). |  |
+
+We have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄D(u),D(v)∼𝒟∏j∈\[A\](⟨DT−m+j(u)¯(zi)),DT−m+j(v)¯(zi)⟩Di(0)−1)\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}\left(\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i})),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\right) |  |
+|  | =\displaystyle= | 1\|S\|​∏j∈\[A\](Δ​j)+(1−1\|S\|)​∏j∈\[A\](d−(1/2−c)​(Δ​j)2)\displaystyle\frac{1}{\|S\|}\prod\_{j\in\[A\]}(\Delta j)+(1-\frac{1}{\|S\|})\prod\_{j\in\[A\]}(d^{-(1/2-c)}(\Delta j)^{2}) |  |
+|  | ≤\displaystyle\leq | 2−Ω​(dc)​(Δ​m)\|A\|+(d−(1/2−c)​(Δ​m)2)\|A\|\displaystyle 2^{-\Omega(d^{c})}(\Delta m)^{\|A\|}+(d^{-(1/2-c)}(\Delta m)^{2})^{\|A\|} |  |
+|  | ≤\displaystyle\leq | 2−Ω​(dc)​(d1/6​Δ1/3)\|A\|+(d−(1/2−c)​\|A\|)​(d1/6​Δ1/3)2​\|A\|\displaystyle 2^{-\Omega(d^{c})}(d^{1/6}\Delta^{1/3})^{\|A\|}+(d^{-(1/2-c)\|A\|})(d^{1/6}\Delta^{1/3})^{2\|A\|} |  |
+
+Here, the inequality follows the choice of m=d1/6​Δ−2/3m=d^{1/6}\Delta^{-2/3}. When \|A\|≤O​(dc/4)\|A\|\leq O(d^{c/4}), we have
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 2−Ω​(dc)​(d1/6​Δ1/3)\|A\|+(d−(1/2−c)​\|A\|)​(d1/6​Δ1/3)2​\|A\|\displaystyle 2^{-\Omega(d^{c})}(d^{1/6}\Delta^{1/3})^{\|A\|}+(d^{-(1/2-c)\|A\|})(d^{1/6}\Delta^{1/3})^{2\|A\|} |  |
+|  | =\displaystyle= | 2−Ω​(dc)​(d1/6​Δ1/3)\|A\|+(d−1/6+c​Δ2/3)\|A\|≤(d−1/6​Δ2/3)\|A\|=(1/100​m)\|A\|.\displaystyle 2^{-\Omega(d^{c})}(d^{1/6}\Delta^{1/3})^{\|A\|}+(d^{-1/6+c}\Delta^{2/3})^{\|A\|}\leq(d^{-1/6}\Delta^{2/3})^{\|A\|}=(1/100m)^{\|A\|}. |  |
+
+This implies that by the choice of k=dc/4k=d^{c/4},
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+|  |  | 𝐄D(u),D(v)∼𝒟⟨(D(u)¯≤∞,k),(D(v)¯≤∞,k)⟩D(0)−1\displaystyle\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\langle(\bar{D^{(u)}}^{\leq\infty,k}),(\bar{D^{(v)}}^{\leq\infty,k})\rangle\_{D^{(0)}}-1 |  |
+|  | =\displaystyle= | ∑A⊆\[m\],A≠∅,\|A\|≤k𝐄D(u),D(v)∼𝒟∏j∈\[A\](⟨DT−m+j(u)¯(zi)),DT−m+j(v)¯(zi)⟩Di(0)−1)≤∑ℓ=1k(mℓ)(1/(100m))ℓ≤1.\displaystyle\sum\_{A\subseteq\[m\],A\neq\emptyset,\|A\|\leq k}\operatorname\*{\mathbf{E}}\_{D^{(u)},D^{(v)}\sim\mathcal{D}}\prod\_{j\in\[A\]}\left(\langle\bar{D^{(u)}\_{T-m+j}}(z\_{i})),\bar{D^{(v)}\_{T-m+j}}(z\_{i})\rangle\_{D\_{i}^{(0)}}-1\right)\leq\sum\_{\ell=1}^{k}\binom{m}{\ell}(1/(100m))^{\ell}\leq 1. |  |
+
+∎
+
+### D.5 From Testing to Learning
+
+###### Lemma D.4.
+
+Let 𝒜\mathcal{A} be any algorithm such that for any instance of learning γ\gamma-margin halfspaces under η\eta-RCN it achieves error opti+Δ1/3​γ−1/6\mathrm{opt}\_{i}+\Delta^{1/3}\gamma^{-1/6} for i≥Ti\geq T. Then 𝒜\mathcal{A} can be used to efficiently solve the instance of trajectory testing problem defined in [Definition˜4.3](https://arxiv.org/html/2606.11149v1#S4.Thmdefinition3 "Definition 4.3 (Hard Instance). ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+###### Proof of [Lemma˜D.4](https://arxiv.org/html/2606.11149v1\#A4.Thmlemma4 "Lemma D.4. ‣ D.5 From Testing to Learning ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise").
+
+We notice that by the choice of m=d1/6​Δ−2/3m=d^{1/6}\Delta^{-2/3} and the design of Di(v)D^{(v)}\_{i}, we have 𝐏𝐫DT(v)(hT(v)​(x)=−1)=Δ​m=d1/6​Δ1/3\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(h^{(v)}\_{T}(x)=-1)=\Delta m=d^{1/6}\Delta^{1/3}. Now, let h^T\hat{h}\_{T} be the hypothesis output by 𝒜\mathcal{A} in the TT-th round under H1H\_{1}. We have
+
+|     |     |     |
+| --- | --- | --- |
+|  | errT​(h^T)=optT+(1−2​o​p​tT)​𝐏𝐫DT(v)(hT(v)​(x)≠h^T)≤optT+d1/6​Δ1/3/100.\displaystyle\mathrm{err}\_{T}(\hat{h}\_{T})=\mathrm{opt}\_{T}+(1-2\mathrm{opt}\_{T})\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(h^{(v)}\_{T}(x)\neq\hat{h}\_{T})\leq\mathrm{opt}\_{T}+d^{1/6}\Delta^{1/3}/100. |  |
+
+This implies 𝐏𝐫DT(v)(hT(v)​(x)≠h^T)≤d1/6​Δ1/3/20\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(h^{(v)}\_{T}(x)\neq\hat{h}\_{T})\leq d^{1/6}\Delta^{1/3}/20 and
+
+|     |     |     |
+| --- | --- | --- |
+|  | 𝐏𝐫DT(v)(h^T≠1)≥𝐏𝐫DT(v)(hT(v)​(x)≠1)−𝐏𝐫DT(v)(hT(v)​(x)≠h^T)≥19​d1/6​Δ1/3/20.\displaystyle\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(\hat{h}\_{T}\neq 1)\geq\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(h^{(v)}\_{T}(x)\neq 1)-\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(h^{(v)}\_{T}(x)\neq\hat{h}\_{T})\geq 19d^{1/6}\Delta^{1/3}/20. |  |
+
+Similarly, under H0H\_{0}, we have
+
+|     |     |     |
+| --- | --- | --- |
+|  | errT​(h^T)=η+(1−2​η)​𝐏𝐫DT(0)(h^T≠1)≤η+d1/6​Δ1/3/100,\displaystyle\mathrm{err}\_{T}(\hat{h}\_{T})=\eta+(1-2\eta)\operatorname\*{\mathbf{Pr}}\_{D^{(0)}\_{T}}(\hat{h}\_{T}\neq 1)\leq\eta+d^{1/6}\Delta^{1/3}/100, |  |
+
+which implies that 𝐏𝐫DT(v)(h^T≠1)≤3​d1/6​Δ1/3/100\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(\hat{h}\_{T}\neq 1)\leq 3d^{1/6}\Delta^{1/3}/100. This implies by running 𝒜\mathcal{A} over z=(z1,z2,…,zT)∼Dz=(z\_{1},z\_{2},\dots,z\_{T})\sim D and checking the probability of 𝐏𝐫DT(v)(h^T≠1)\operatorname\*{\mathbf{Pr}}\_{D^{(v)}\_{T}}(\hat{h}\_{T}\neq 1), we are able to distinguish H0H\_{0} and H1H\_{1}.
+
+∎
+
+To conclude [Theorem˜1.2](https://arxiv.org/html/2606.11149v1#S1.Thmtheorem2 "Theorem 1.2 (Informal Implication of Theorem˜4.1). ‣ 1.1 Our Results ‣ 1 Introduction ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we make use of the
+low-degree polynomial hardness conjecture. Roughly speaking, the low-degree polynomial hardness conjecture says that for a natural high-dimensional statistical testing problem of size nn, if there is no polynomial of degree O​(log⁡n)O(\log n) that can solve the testing problem, then there is no polynomial-time algorithm that can solve it either.
+Originally stated in \[ [Hop18](https://arxiv.org/html/2606.11149v1#bib.bibx29 "")\], variants of the conjecture have been used to give evidence of hardness for many problems, such as \[ [DKWB21](https://arxiv.org/html/2606.11149v1#bib.bibx22 ""), [AV23](https://arxiv.org/html/2606.11149v1#bib.bibx4 ""), [DKWB24](https://arxiv.org/html/2606.11149v1#bib.bibx23 "")\]. We summarize the conjecture informally below.
+
+###### Conjecture D.1.
+
+Let 𝒫n\mathcal{P}\_{n} and 𝒬n\mathcal{Q}\_{n} be two sequences of natural distributions of size nn, if there is some ϵ>0\epsilon>0 such that there is no (log⁡n)1+ϵ(\log n)^{1+\epsilon}-degree polynomial as n→∞n\to\infty, which can distinguish 𝒫n\mathcal{P}\_{n} and 𝒬n\mathcal{Q}\_{n}, then there is no polynomial time algorithm that can distinguish 𝒫n\mathcal{P}\_{n} and 𝒬n\mathcal{Q}\_{n} with probability 1−o​(1)1-o(1).
+
+By [Theorem˜4.1](https://arxiv.org/html/2606.11149v1#S4.Thmtheorem1 "Theorem 4.1. ‣ Hardness Construction ‣ 4 Low-Degree Polynomial Hardness ‣ Efficiently Learning Drifting Halfspaces with Massart Noise"), we know that there is no polynomial of degree less than O​(γ−1/8)O(\gamma^{-1/8}) that can solve the trajectory testing problem and thus there is no polynomial time algorithm that can distinguish the trajectory testing problem. Thus, [Lemma˜D.4](https://arxiv.org/html/2606.11149v1#A4.Thmlemma4 "Lemma D.4. ‣ D.5 From Testing to Learning ‣ Appendix D Omitted Proofs from Section˜4 ‣ Efficiently Learning Drifting Halfspaces with Massart Noise") implies that there is no polynomial-time algorithm that can solve the learning problem with error optT+Δ1/3​γ−1/6\mathrm{opt}\_{T}+\Delta^{1/3}\gamma^{-1/6}.
+
+──────── [TRUNCATED] ────────
+Showing 149,807 chars (head) + 49,844 chars (tail) of 219,056 total clean characters.
+Full text saved to: /home/kate/.hermes/cache/web/arxiv.org-0d30505d4c.md
+To read the omitted middle: read_file path="/home/kate/.hermes/cache/web/arxiv.org-0d30505d4c.md" offset=1528 limit=200  (the file is the complete page; raise/lower offset to page through it).
+─────────────────────────────

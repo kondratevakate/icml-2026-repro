@@ -1,0 +1,17 @@
+{
+  "claim": 4,
+  "statement": "At large batch sizes SGDM's Batch Sharpness plateaus at approximately 2(1+beta)/eta (heavy-ball / full-batch limit), sharper than vanilla SGD's 2/eta.",
+  "source": "Section 4 (paper mL4i6z7Miy); heavy-ball MSS boundary in the deterministic limit.",
+  "eta": 0.1,
+  "beta": 0.9,
+  "seed": 11,
+  "theoretical_thresholds": {
+    "2_over_eta": 20.0,
+    "large_batch_plateau_2_1_plus_beta_over_eta": 37.99999999999999
+  },
+  "deterministic_sgdm_critical_curvature": 37.99964712447478,
+  "large_batch_sgdm_critical_curvature": 37.99964712447478,
+  "deterministic_sgd_critical_curvature": 20.000697544642858,
+  "mutation_test": "Increasing beta from 0.9 to 0.95 raises the deterministic SGDM boundary from 38.00 to 39.00 (shift 1.00), matching the 2(1+beta)/eta prediction (expected shift 1.00) -- the plateau value is beta-driven, not fixed.",
+  "verdict": "verified"
+}

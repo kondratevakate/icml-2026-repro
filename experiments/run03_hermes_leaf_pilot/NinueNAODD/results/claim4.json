@@ -1,0 +1,62 @@
+{
+  "claim": 4,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Table 1 (+ Sec. 4.1 text)",
+  "A_table1_audit": {
+    "bbq_kendall_rank_per_dataset": {
+      "HUMAINE": 1,
+      "MT-Bench": 2,
+      "WD": 2,
+      "HiFiC": 1,
+      "ConHa": 1,
+      "IHQ-all": 1,
+      "IHQ-scr": 3,
+      "IHQ-unscr": 1
+    },
+    "n_first": 5,
+    "n_second": 2,
+    "n_third": 1,
+    "claim_first_on_5": true,
+    "claim_second_on_remaining_3": false,
+    "datasets_where_bbq_is_third": [
+      "IHQ-scr"
+    ],
+    "bbq_top1_on_MTBench_WD_HiFiC": {
+      "MT-Bench": 100.0,
+      "WD": 100.0,
+      "HiFiC": 100.0
+    },
+    "claim_100pct_top1_on_those_three": true
+  },
+  "A_mutation": {
+    "description": "subtract 0.01 from BBQ's HUMAINE Kendall tau in Table 1",
+    "n_first_after": 4,
+    "breaks_property": true
+  },
+  "B_empirical_IHQ_only": {
+    "protocol": "200 rater-bootstraps per split, tau vs BBQ full-data ranking on IHQ-all; Crowd-BT is our reimplementation",
+    "mean_kendall_tau": {
+      "IHQ-all": {
+        "BBQ": 0.9319841269841269,
+        "Bayes-BT": 0.9281746031746032,
+        "Crowd-BT": 0.9300529100529101,
+        "best": "BBQ"
+      },
+      "IHQ-scr": {
+        "BBQ": 0.9097619047619047,
+        "Bayes-BT": 0.9092857142857143,
+        "Crowd-BT": 0.9135449735449735,
+        "best": "Crowd-BT"
+      },
+      "IHQ-unscr": {
+        "BBQ": 0.8704497354497355,
+        "Bayes-BT": 0.8663492063492063,
+        "Crowd-BT": 0.8758201058201058,
+        "best": "Crowd-BT"
+      }
+    },
+    "caveat": "reference ranking is BBQ's own full-data fit, which favours BBQ; treat as a consistency check, not as evidence for the claim"
+  },
+  "verdict": "falsified",
+  "notes": "Sub-claim '100% top-1 on MT-Bench, WD, HiFiC' is CONFIRMED by Table 1 (but not independently reproduced -- those datasets are not available here). Sub-claim 'first on 5 of 8' is CONFIRMED by Table 1. Sub-claim 'second on the remaining three' is FALSE against the paper's own Table 1: BBQ is second on 2 datasets and THIRD on ['IHQ-scr'] (BBQ 0.9204 < Bayes-BT 0.9211 < Crowd-BT 0.9238 on IHQ-screened). The conjunctive claim is therefore false as stated. Independent dataset-level reproduction was not possible for 5 of 8 datasets."
+}

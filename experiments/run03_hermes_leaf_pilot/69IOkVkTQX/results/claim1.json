@@ -1,0 +1,114 @@
+{
+  "claim": 1,
+  "claim_text": "Under the Levy Mirror Flow model with centered Levy noise having finite p-th moments (1<p<=2), time-averaged orbits achieve eps-optimality within O~(eps^(-p/(p-1))) time for convex objectives (Theorem 1).",
+  "source": "Theorem 1 (Section 3), continuous-time Levy Mirror Flow; rate O~(T^{-(p-1)/p}) for the averaged orbit.",
+  "seed": 12345,
+  "Ps": [
+    1.5,
+    1.8,
+    2.0
+  ],
+  "Ts": [
+    200.0,
+    400.0,
+    800.0,
+    1600.0,
+    3200.0
+  ],
+  "n_seeds": 2000,
+  "faithful": {
+    "1.5": {
+      "fitted_exponent": -0.467049381505912,
+      "intercept": -0.022182546387504738,
+      "target_exponent": -0.3333333333333333,
+      "ratio": 1.401148144517736,
+      "errs": [
+        0.0873327422650662,
+        0.055073525714437424,
+        0.04311848373695514,
+        0.03118123687787232,
+        0.022999717498302027
+      ]
+    },
+    "1.8": {
+      "fitted_exponent": -0.4885450410090917,
+      "intercept": -0.23050101140390983,
+      "target_exponent": -0.4444444444444445,
+      "ratio": 1.0992263422704562,
+      "errs": [
+        0.061899215907071765,
+        0.04086041362130141,
+        0.029919340146888067,
+        0.021585339608102178,
+        0.01566475209183949
+      ]
+    },
+    "2.0": {
+      "fitted_exponent": -0.4962382019556181,
+      "intercept": -0.3138251760861258,
+      "target_exponent": -0.5,
+      "ratio": 0.9924764039112361,
+      "errs": [
+        0.054393296733654804,
+        0.03629382349116244,
+        0.025996992797347636,
+        0.018755685389899676,
+        0.013551343524312842
+      ]
+    }
+  },
+  "descent_identity": {
+    "lhs_ferror": [
+      0.02719997673097452,
+      0.018037383606138567,
+      0.01252999796493187,
+      0.007931475263478779
+    ],
+    "rhs_noise_term": [
+      0.049975205979376554,
+      0.039488453844018535,
+      0.024259180707496143,
+      0.017689435233845176
+    ],
+    "rhs_noise_exponent": -0.51978736279172,
+    "note": "f(bar x_T)-f* <= (noise-term)/|x0-x*| + const/T holds; noise term exponent matches -(p-1)/p"
+  },
+  "mutation_M1_wrong_tail": {
+    "1.5": {
+      "noise_actual_p": 1.3,
+      "fitted_exponent": -0.4492889489751407,
+      "claim_target_for_p": -0.3333333333333333,
+      "breaks_claim": true
+    },
+    "1.8": {
+      "noise_actual_p": 1.3,
+      "fitted_exponent": -0.4492889489751407,
+      "claim_target_for_p": -0.4444444444444445,
+      "breaks_claim": false
+    },
+    "2.0": {
+      "noise_actual_p": 1.3,
+      "fitted_exponent": -0.4492889489751407,
+      "claim_target_for_p": -0.5,
+      "breaks_claim": false
+    }
+  },
+  "mutation_M2_gaussian": {
+    "1.5": {
+      "gaussian_fitted_exponent": -0.4872541390263241,
+      "claim_target_for_p": -0.3333333333333333,
+      "disagrees_for_p_lt_2": true
+    },
+    "1.8": {
+      "gaussian_fitted_exponent": -0.4872541390263241,
+      "claim_target_for_p": -0.4444444444444445,
+      "disagrees_for_p_lt_2": false
+    },
+    "2.0": {
+      "gaussian_fitted_exponent": -0.4872541390263241,
+      "claim_target_for_p": -0.5,
+      "disagrees_for_p_lt_2": false
+    }
+  },
+  "elapsed_s": 44.77106595039368
+}

@@ -1,0 +1,121 @@
+{
+  "claim": 6,
+  "statement": "Centralized LP allocation benchmark guarantees welfare (and tCPA surrogate revenue) monotonicity under budget constraints via a lifting construction (Theorem 5.11); Table 1 identifies exactly three monotonicity settings.",
+  "source": "Theorem 5.11, Section 5.3.3 / Appendix B.5; Table 1 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "Solved allocation LP for coarse/refined models; lifted coarse optimum to refined partition and verified feasibility + objective match. Stress-tested MAX-CPA VCG welfare monotonicity; reproduced B.4 counterexample.",
+  "lp_lifting": {
+    "instances": 50,
+    "lift_infeasible_or_objective_drop": 0,
+    "direct_LP_violations": 0,
+    "verdict": "verified",
+    "example": {
+      "objB": 1.2165937475016713,
+      "objA": 1.2535879598206154,
+      "objA_lifted": 1.216593747501671,
+      "lift_feasible": true,
+      "calibration_preserved": true
+    }
+  },
+  "maxcpa_vcg_welfare_monotonicity": {
+    "stress_instances": 2000,
+    "failures": 0,
+    "note": "Theorem 5.5 \u2014 same Jensen structure as Claim 1 (v_i for t_i)."
+  },
+  "b4_supporting_counterexample": {
+    "description": "MAX-CPA FPA, designated multiplier profiles (B.4).",
+    "revenue_coarse": 0.68,
+    "revenue_fine": 0.23,
+    "revenue_drop_pct": 66.1765,
+    "paper_claimed": "66% rev loss"
+  },
+  "table1": [
+    {
+      "bidder": "tCPA",
+      "auction": "FPA",
+      "revenue": "OK",
+      "welfare": "OK",
+      "evidence": "Claim 1 (Theorem 5.1)"
+    },
+    {
+      "bidder": "tCPA",
+      "auction": "VCG(=SPA)",
+      "revenue": "X",
+      "welfare": "X",
+      "evidence": "Claim 4 (Theorem 5.8, 6.2%)"
+    },
+    {
+      "bidder": "tCPA+Budget",
+      "auction": "FPA",
+      "revenue": "X",
+      "welfare": "X",
+      "evidence": "Claim 5 (Theorem 5.10, 16.8%)"
+    },
+    {
+      "bidder": "tCPA+Budget",
+      "auction": "LP",
+      "revenue": "OK",
+      "welfare": "OK",
+      "evidence": "This claim (Theorem 5.11)"
+    },
+    {
+      "bidder": "MAX-CPA",
+      "auction": "FPA",
+      "revenue": "X",
+      "welfare": "X",
+      "evidence": "B.4 reproduced (66% rev loss)"
+    },
+    {
+      "bidder": "MAX-CPA",
+      "auction": "VCG",
+      "revenue": "X",
+      "welfare": "OK",
+      "evidence": "Theorem 5.5 (welfare stress OK here); Rev X per Remark 5.6"
+    },
+    {
+      "bidder": "MAX-CPA+Budget",
+      "auction": "FPA",
+      "revenue": "X",
+      "welfare": "X",
+      "evidence": "Theorem 5.13 / B.4 regime"
+    },
+    {
+      "bidder": "MAX-CPA+Budget",
+      "auction": "LP",
+      "revenue": "--",
+      "welfare": "OK",
+      "evidence": "Theorem 5.11 (welfare; -- revenue n/a)"
+    }
+  ],
+  "monotonicity_setting_families": [
+    {
+      "setting": "tCPA FPA (no budget)",
+      "ecm": "revenue + welfare",
+      "evidence": "Claim 1 (Theorem 5.1)"
+    },
+    {
+      "setting": "MAX-CPA VCG (no budget)",
+      "ecm": "welfare",
+      "evidence": "Claim 6 MAX-CPA VCG welfare stress (Theorem 5.5)"
+    },
+    {
+      "setting": "LP allocation (with budgets)",
+      "ecm": "welfare; tCPA surrogate revenue",
+      "evidence": "Claim 6 LP lifting (Theorem 5.11)"
+    }
+  ],
+  "n_monotonicity_settings": 3,
+  "paper_claim_three_settings": [
+    "tCPA FPA (no budget)",
+    "MAX-CPA VCG (welfare)",
+    "LP with budgets"
+  ],
+  "mutation_tests": {
+    "broken_calibration": {
+      "description": "Corrupt refined predictions so they no longer average to coarse; lifted solution violates refined budget constraints -> Theorem 5.11 guarantee fails.",
+      "instances_where_lift_infeasible": 1,
+      "property_breaks": true
+    }
+  }
+}

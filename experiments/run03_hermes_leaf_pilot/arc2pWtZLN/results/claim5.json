@@ -1,0 +1,26 @@
+{
+  "claim": 5,
+  "statement": "Graded Laplacian L* >= 0 iff gamma_k <= beta_{k+1}*sigma_min^+(B_{k+1}) (Proposition 3.1 / Theorem 3.2, Sec 3.1).",
+  "verdict": "inconclusive",
+  "holds": false,
+  "source": "Proposition 3.1, Theorem 3.2, Section 3.1 (arXiv:2606.23517)",
+  "seed": 261127,
+  "numerics": {
+    "sigma_min_plus_B1": 0.7891749780796665,
+    "sigma_min_plus_B2": 0.0,
+    "analytic_threshold_sympy": "beta*sigma",
+    "numeric_threshold_gamma0": 0.8549395595863053,
+    "numeric_threshold_gamma1": null,
+    "PSD_at_both_bounds": true,
+    "PSD_below_bounds": true,
+    "indefinite_above_bound": true
+  },
+  "mutation_test": {
+    "description": "Set gamma_0 = 1.5*beta_1*sigma_min^+(B_1) (above bound).",
+    "gamma0_bound": 0.7891749780796665,
+    "gamma0_used": 1.1837624671194997,
+    "Lstar_PSD_above_bound": false,
+    "property_breaks": true,
+    "note": "PSD condition is sharp: crossing above the bound yields a negative eigenvalue."
+  }
+}

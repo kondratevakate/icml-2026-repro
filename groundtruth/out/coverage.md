@@ -2,27 +2,29 @@
 
 {
  "population": 703,
- "kate_covered": 39,
- "reproduced_any_points": 211,
- "reproduced_full_points": 31,
- "reproduced_any_not_in_kate": 176,
- "reproduced_full_not_in_kate": 27,
- "gap_full_cpu_only": 18,
- "gap_any_cpu_only": 76,
- "never_attempted": 458
+ "kate_covered": 40,
+ "reproduced_any_points": 227,
+ "reproduced_full_points": 35,
+ "reproduced_any_not_in_kate": 191,
+ "reproduced_full_not_in_kate": 30,
+ "gap_full_cpu_only": 20,
+ "gap_any_cpu_only": 82,
+ "never_attempted": 444
 }
 
 | orid | best | claims | GPU | data | title |
 |---|---|---|---|---|---|
 | `Bd0NNopzpC` | 12/12 | 6 | no | open_or_public_signal | Time series saliency maps: Explaining models across multiple domains |
-| `Ir6N7U5Kea` | 12/12 | 6 | no | open_or_public_signal | Causal Matrix Completion under Multiple Treatments via Mixed Synthetic |
+| `y3qyP3ycQi` | 12/12 | 6 | no | open_or_public_signal | Federated Causal Inference on Multi-Site Observational Data via Propen |
 | `xM56OFSUaN` | 12/12 | 6 | no | open_or_public_signal | Rank-Learner: Orthogonal Ranking of Treatment Effects |
+| `piWlEHb4Db` | 12/12 | 6 | no | simulation_or_synthetic | Non-Euclidean Gradient Descent Operates at the Edge of Stability |
 | `hXO2OP0T4w` | 12/12 | 6 | no | simulation_or_synthetic | Anytime Detection of Strategic Deviations in Multi-Agent Systems |
 | `ugjBMARbyt` | 12/12 | 6 | no | theory_or_no_external_data | Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal |
 | `DsV89lJ58l` | 12/12 | 6 | no | open_or_public_signal | Linear Regression with Unknown Truncation Beyond Gaussian Features |
 | `4CwO8At8Hw` | 12/12 | 6 | no | open_or_public_signal | The Catastrophic Failure of *the* k-Means Algorithm in High Dimensions |
 | `HDoWJi2jlj` | 10/10 | 5 | no | simulation_or_synthetic | Conformal C2ST: Turning weak classifiers into strong two-sample tests |
 | `FXWnvznHMW` | 10/10 | 5 | no | simulation_or_synthetic | Design-Based Anytime-Valid Inference for Randomized Experiments with D |
+| `mZd4u9d7pQ` | 10/10 | 5 | no | open_or_public_signal | Once-for-All: Scalable Simultaneous Forecasting via Equilibrium State  |
 | `UflglraWRa` | 10/10 | 5 | no | theory_or_no_external_data | The (Marginal) Value of a Search Ad: An Online Causal Framework for Re |
 | `ziqS4yXFQX` | 10/10 | 5 | no | open_or_public_signal | Estimating Continuous Treatment Effects with Two-Stage Kernel Ridge Re |
 | `XEbD5cYpgV` | 10/10 | 5 | no | open_or_public_signal | Estimation of Treatment Effects Under Nonstationarity via the Truncate |
@@ -33,6 +35,7 @@
 | `DfZS0M8leJ` | 4/4 | 0 | no | theory_or_no_external_data | Generalized Linear Bandits with Memory |
 | `F8R6Z6ty2E` | 4/4 | 0 | no | theory_or_no_external_data | Learning to Rank from Incomplete Rankings |
 | `XrRqY9QOSa` | 12/12 | 6 | yes | open_or_public_signal | Alignment between Brains and AI: Evidence for Convergent Evolution acr |
+| `WArbqRUsAe` | 12/12 | 6 | yes | simulation_or_synthetic | FormulaCode: Evaluating Agentic Optimization on Large Codebases |
 | `Xg12D1Y4H1` | 12/12 | 6 | yes | simulation_or_synthetic | Scalable Bayesian Inference for Nonlinear Conservation Laws |
 | `uZerXmyozE` | 10/10 | 5 | yes | open_or_public_signal | GENEB: Why Genomic Models Are Hard to Compare |
 | `HigEPnWgLQ` | 10/10 | 5 | yes | theory_or_no_external_data | Adaptive Multi-Round Allocation with Stochastic Arrivals |

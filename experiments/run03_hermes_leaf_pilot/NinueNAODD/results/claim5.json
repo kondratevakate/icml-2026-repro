@@ -1,0 +1,115 @@
+{
+  "claim": 5,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Appendix F + Fig. 4 (task cites App. G Fig. 6)",
+  "protocol": {
+    "trials": 1000,
+    "comparisons_per_rater": 50,
+    "rater_counts": [
+      5,
+      20,
+      50
+    ],
+    "confidence": 0.99,
+    "note": "paper used 10,000 trials; 1,000 here for CPU budget"
+  },
+  "type_I_error": {
+    "5": {
+      "bbq": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.001,
+        "difference": 0.017
+      },
+      "bayes": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.0,
+        "difference": 0.013
+      },
+      "crowdbt": {
+        "nonoverlap_3.29": 0.002,
+        "nonoverlap_2.576": 0.014,
+        "difference": 0.014
+      }
+    },
+    "20": {
+      "bbq": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.0,
+        "difference": 0.01
+      },
+      "bayes": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.0,
+        "difference": 0.007
+      },
+      "crowdbt": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.007,
+        "difference": 0.007
+      }
+    },
+    "50": {
+      "bbq": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.0,
+        "difference": 0.021
+      },
+      "bayes": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.0,
+        "difference": 0.014
+      },
+      "crowdbt": {
+        "nonoverlap_3.29": 0.0,
+        "nonoverlap_2.576": 0.013,
+        "difference": 0.013
+      }
+    }
+  },
+  "mean_type_I_error": {
+    "bbq": {
+      "nonoverlap_3.29": 0.0,
+      "nonoverlap_2.576": 0.0003333333333333333,
+      "difference": 0.016
+    },
+    "bayes": {
+      "nonoverlap_3.29": 0.0,
+      "nonoverlap_2.576": 0.0,
+      "difference": 0.011333333333333334
+    },
+    "crowdbt": {
+      "nonoverlap_3.29": 0.0006666666666666666,
+      "nonoverlap_2.576": 0.011333333333333334,
+      "difference": 0.011333333333333334
+    }
+  },
+  "mutation": {
+    "description": "true win probability 0.60 instead of 0.50 (H0 false), 20 raters, 300 trials",
+    "rejection_rates": {
+      "bbq": {
+        "nonoverlap_3.29": 0.9766666666666667,
+        "nonoverlap_2.576": 0.9966666666666667,
+        "difference": 1.0
+      },
+      "bayes": {
+        "nonoverlap_3.29": 0.9666666666666667,
+        "nonoverlap_2.576": 0.9966666666666667,
+        "difference": 1.0
+      },
+      "crowdbt": {
+        "nonoverlap_3.29": 0.9966666666666667,
+        "nonoverlap_2.576": 1.0,
+        "difference": 1.0
+      }
+    },
+    "breaks_property": true
+  },
+  "assessment": {
+    "paper's literal Appendix-F rule gives ~1% for BBQ and Crowd-BT": false,
+    "standard 99% test on the Elo difference gives ~1%": true,
+    "Bayes-BT strictly more conservative than BBQ": true,
+    "Bayes-BT is ~0.1% (an order of magnitude below nominal)": false
+  },
+  "verdict": "inconclusive",
+  "notes": "Key finding: the constant 3.29 printed in Appendix F is the two-sided 99.9% constant (sqrt(2)*erfcinv(0.001)=3.290), not the 99% one (2.576). With the paper's literal recipe the Type I error we measure is ~0.1%, an order of magnitude below the claimed ~1%. Using the standard 99% test on the Elo difference reproduces the claimed calibration. The Bayes-BT 'overly conservative' ordering does reproduce qualitatively. Credible intervals for BBQ/Bayes-BT are our conditional-Gamma construction; the paper does not fully specify theirs. Verdict downgraded to inconclusive: under the difference rule Bayes-BT's Type I error is 1.13%, i.e. NOT the ~0.1% the claim asserts; under the paper's literal non-overlap+3.29 rule every model sits at ~0.0-0.1%, so no single rule reproduces the claimed 1%/1%/0.1% pattern simultaneously."
+}

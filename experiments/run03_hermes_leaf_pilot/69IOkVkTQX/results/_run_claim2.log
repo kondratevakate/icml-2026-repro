@@ -1,0 +1,7 @@
+CLAIM 2 -- Theorem 4 (strongly convex uncertainty ball)
+  HEAVY p=1.5: eta-exp=0.659 (target 0.500); sigma-exp=1.500 (target 1.500)
+  HEAVY p=2.0: eta-exp=1.036 (target 1.000); sigma-exp=2.000 (target 2.000)
+  TAME: eta-exp=1.024 (target 1.0); sigma-exp=2.000 (target 2.0)
+  ADDITIVITY relative gap=0.123 (both=0.1685, sum=0.1500)
+  M1 pure-tame heavy-term-absent=[True, False]
+  elapsed 126.4s

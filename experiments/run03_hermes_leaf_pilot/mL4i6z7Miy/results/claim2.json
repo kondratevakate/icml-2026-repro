@@ -1,0 +1,50 @@
+{
+  "claim": 2,
+  "statement": "In the noise-dominated (small-batch) regime, SGDM's mean-square stability condition reduces to rho(I - eta_eff K + eta_eff^2 G) < 1 with eta_eff = eta/(1-beta) (Theorem 4.1).",
+  "source": "Theorem 4.1 (paper mL4i6z7Miy), Eq. 11 / Appendix D.",
+  "verification_regime": {
+    "eta": 0.02,
+    "beta": 0.9,
+    "eta_eff": 0.20000000000000004,
+    "note": "small-eta asymptotic regime where the reduction is exact"
+  },
+  "nominal_regime_plateaus": {
+    "eta": 0.1,
+    "small_batch_2_1_minus_beta_over_eta": 1.9999999999999996,
+    "large_batch_2_1_plus_beta_over_eta": 37.99999999999999
+  },
+  "momentum_averaging": {
+    "sgdm_update_over_sgd_eta_eff_update": 0.9999999999999992,
+    "std": 1.1102230246251565e-16,
+    "converges_to_1": true
+  },
+  "mutation_beta0": {
+    "sgd_update_over_sgd_eta_eff_update": 0.09999999999999998,
+    "expected": 0.09999999999999998,
+    "breaks_equivalence": true
+  },
+  "reduced_operator_boundary": [
+    {
+      "sigma2": 1.0,
+      "b": 4,
+      "boundary_a": 9.974937185533097
+    },
+    {
+      "sigma2": 0.25,
+      "b": 4,
+      "boundary_a": 9.993746088859544
+    },
+    {
+      "sigma2": 0.01,
+      "b": 4,
+      "boundary_a": 9.999749993749685
+    },
+    {
+      "sigma2": 0.0001,
+      "b": 4,
+      "boundary_a": 9.999997499999374
+    }
+  ],
+  "mutation_test": "With beta=0 (plain SGD) the update/-eta_eff-g ratio is 0.10, not 1 -- momentum (the v buffer) is what produces the eta_eff = eta/(1-beta) rescaling, so the factor is load-bearing.",
+  "verdict": "verified"
+}

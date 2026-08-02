@@ -1,0 +1,56 @@
+{
+  "claim": 2,
+  "statement": "The forgetting bound holds under the regime n=O~(d^2 K), m=O~(d^8 K^4), eta*T=O(d^2) on a d-dim XOR-cluster dataset with K tasks (Theorem 1).",
+  "source": "Theorem 2.1 regime conditions (n=O~(d^2 K), m=O~(d^8 K^4), eta*T=O(d^2)), arXiv:2510.05573v2.",
+  "seed": 20261004,
+  "note_on_vanishing": "Under the regime every term vanishes as d->inf (poly-logarithmically): term1 ~ 1/sqrt(log d) (via the polylog hidden in n=O~(d^2 K)), term2 ~ 1/log d, term3 ~ 1/log^2 d. Hence F_tr = o_d(1) as claimed.",
+  "term1_by_d": {
+    "16": 0.5201012595319114,
+    "32": 0.4651927085986457,
+    "64": 0.42466090014400953,
+    "128": 0.39315959694082836
+  },
+  "term2_by_d": {
+    "16": 0.6247052776618358,
+    "32": 0.4997642221294687,
+    "64": 0.4164701851078906,
+    "128": 0.3569744443781919
+  },
+  "term3_by_d": {
+    "16": 0.13008556131285048,
+    "32": 0.08325475924022432,
+    "64": 0.05781580502793356,
+    "128": 0.04247691797970629
+  },
+  "B1_by_d": {
+    "16": 1.2748920985065977,
+    "32": 1.0482116899683387,
+    "64": 0.8989468902798337,
+    "128": 0.7926109592987266
+  },
+  "doubling_ratios": {
+    "term1": 0.8451542547285165,
+    "term2": 0.7142857142857143,
+    "term3": 0.5102040816326531
+  },
+  "all_terms_vanish": true,
+  "mutation_test": {
+    "description": "Break ONE factor: (a) width m=d^2 (below d^8 K^4), (b) sample size n=d (below d^2 K).",
+    "regime_B1": 0.8989468902798337,
+    "break_m_B1": 4194304.8411310855,
+    "break_m_term3": 4194304.0,
+    "break_n_B1": 14.330692450686842,
+    "break_n_term1": 13.856406460551018,
+    "ratio_break_m": 4665798.265151613,
+    "ratio_break_n": 15.941645280318877,
+    "property_breaks": true,
+    "note": "With correct m but n=d, term1 stays order-1 and grows; with correct n but m=d^2, term3 grows as d^3. Neither factor alone drives the bound to zero -- confirming 'joint control'."
+  },
+  "empirical_fluctuation_by_d": {
+    "16": 3.410632821818748e-07,
+    "32": 1.7352943060102343e-08,
+    "64": 2.1069328829309833e-09,
+    "128": 8.983466520504458e-11
+  },
+  "verdict": "verified"
+}

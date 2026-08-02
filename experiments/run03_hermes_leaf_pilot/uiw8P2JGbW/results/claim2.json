@@ -1,0 +1,31 @@
+{
+  "claim": 2,
+  "statement": "FPA revenue monotonicity proof uses convexity of f(p)=max_i(t_i p_i) + Jensen over a mean-preserving spread induced by refinement (Theorem 5.1, Section 5).",
+  "source": "Theorem 5.1 proof, Section 5.2.1 / Appendix A.2 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "(a) random Jensen checks on f; (b) per-cluster verification of mean-preserving spread (calibration) and the Jensen inequality sum_j lambda_j f(p_sub_j) >= f(p_coarse).",
+  "convexity_f": {
+    "random_jensen_trials": 5000,
+    "violations_of_convexity": 0,
+    "nonconvex_min_jensen_violations_(expected>0)": 2720
+  },
+  "mean_preserving_spread": {
+    "instances": 2000,
+    "mps_calibration_failures": 0,
+    "jensen_inequality_failures": 0,
+    "min_jensen_margin": -1.7763568394002505e-15
+  },
+  "mutation_tests": {
+    "nonconvex_f": {
+      "description": "Replace f by non-convex min; Jensen must fail.",
+      "jensen_failures_observed": 1942,
+      "property_breaks": true
+    },
+    "broken_mps": {
+      "description": "Break calibration so sub predictions don't average to coarse; Jensen inequality must fail.",
+      "jensen_failures_observed": 1635,
+      "property_breaks": true
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "claim": 2,
+  "source": "Proposition 3.5, Section 3.2 (arXiv:2606.23517)",
+  "statement": "Collapsed operator is spectrally bounded 0 <= S <= A (PSD).",
+  "setup": {
+    "complex": "wheel/disk simplicial complex (n0=5,n1=8,n2=4)",
+    "betas": {
+      "1": 1.0,
+      "2": 1.0
+    },
+    "gammas": {
+      "0": 1.0,
+      "1": 1.0
+    },
+    "ridge_eps_on_C": 1e-06,
+    "seed": 260824
+  },
+  "checks": {
+    "n_random_PSD_instances": 40,
+    "n_failures_of_0leSleA": 0,
+    "min_eig_S_over_random": 0.2654758215788517,
+    "min_eig_A_minus_S_over_random": -2.842835160116112e-15,
+    "graded_Lstar_PSD": true,
+    "graded_S_PSD": true,
+    "graded_A_minus_S_PSD": true,
+    "graded_min_eig_S": -1.38249411918423e-11,
+    "graded_min_eig_A_minus_S": 1.382449710263245e-11
+  },
+  "mutation_test": {
+    "description": "Set gamma_0 = 1.5 * beta_1*sigma_min^+(B_1) (above the Thm 3.2 bound) so L* is no longer PSD.",
+    "gamma0_bound": 1.7320508075688772,
+    "gamma0_used": 2.598076211353316,
+    "mutated_Lstar_PSD": false,
+    "mutated_S_PSD": false,
+    "mutated_A_minus_S_PSD": true,
+    "property_breaks": true,
+    "note": "Once L* is indefinite the Schur complement is no longer guaranteed PSD, so 0 <= S <= A can fail -- confirming the bound is conditional on the PSD setup of Prop 3.5."
+  },
+  "verdict": "verified",
+  "notes": "Over 40 random PSD block matrices the Schur complement S is PSD and A-S is PSD (0<=S<=A) with zero failures. On the concrete graded Laplacian (C made PD via 1e-6 Tikhonov ridge, Sec. 3.4) the bound holds to ~1e-9. Violating the Thm 3.2 PSD condition breaks the bound."
+}

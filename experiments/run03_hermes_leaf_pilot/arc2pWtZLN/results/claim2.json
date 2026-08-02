@@ -1,0 +1,26 @@
+{
+  "claim": 2,
+  "statement": "Collapsed operator is spectrally bounded 0 <= S <= A (Proposition 3.5, Sec 3.2).",
+  "verdict": "verified",
+  "holds": true,
+  "source": "Proposition 3.5, Section 3.2 (arXiv:2606.23517)",
+  "seed": 260824,
+  "numerics": {
+    "n_random_instances": 40,
+    "n_failures_of_0leSleA": 0,
+    "min_eig_S": 0.1662622595990091,
+    "min_eig_A_minus_S": 0.0005476355760261252,
+    "graded_Lstar_PSD": true,
+    "graded_S_eps_PSD": true
+  },
+  "mutation_test": {
+    "description": "Break Thm 3.2 PSD assumption: gamma_0 = 1.5*beta_1*sigma_min^+(B_1).",
+    "gamma0_bound": 0.8550937432070919,
+    "gamma0_used": 1.2826406148106377,
+    "mutated_Lstar_PSD": false,
+    "mutated_S_eps_PSD": false,
+    "mutated_A_minus_S_eps_PSD": true,
+    "property_breaks": true,
+    "note": "Once L* is indefinite the Schur complement is not guaranteed PSD; 0<=S<=A can fail."
+  }
+}

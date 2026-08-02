@@ -1,0 +1,60 @@
+{
+  "orid": "tRsnpaRO0m",
+  "title": "A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.167,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 1,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 1,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "verified",
+    "claim5": "verified",
+    "claim6": "verified"
+  },
+  "per_claim_mutation": {
+    "claim1": true,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_note": {
+    "claim1": "Definition 3.1 (graphops)",
+    "claim2": "Definition 3.1 (bofops)",
+    "claim3": "Theorem 4.1",
+    "claim4": "Corollary 5.3",
+    "claim5": "Section 6.1",
+    "claim6": "explicit verdict/VERDICT_CAP field"
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)"
+  ],
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

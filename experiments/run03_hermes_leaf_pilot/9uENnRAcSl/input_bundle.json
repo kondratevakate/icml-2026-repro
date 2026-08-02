@@ -1,0 +1,15 @@
+{
+ "orid": "9uENnRAcSl",
+ "title": "Understanding Behavior Cloning with Action Quantization",
+ "openreview": "https://openreview.net/forum?id=9uENnRAcSl",
+ "arxiv": "2603.20538",
+ "area": "Theory",
+ "anchored_claims": [
+  "Behavior cloning with quantized actions and log-loss is proven to achieve sample complexity matching known lower bounds, up to the quantization error term (Theorem 2, Section 3.2).",
+  "Under Probabilistic Incremental Input-to-State Stability (P-IISS) of the dynamics and Relaxed Total Variation Continuity (RTVC) of the expert policy, the regret bound has only polynomial (not exponential) dependence on the horizon H with respect to quantization error epsilon_q (Theorem 3, Definition 3, Definition 4, Section 3.1-3.2).",
+  "Theorem 6 shows that without a smoothness assumption on the quantizer, non-smooth quantizers can incur regret of order H*Omega(1) even though their in-distribution one-step error is only O(epsilon_q) (Theorem 6, Section 4.1).",
+  "Theorem 7 proves that model-based data augmentation improves the horizon dependence to H*[sqrt(log|Pi|/n) + epsilon_q] without requiring the policy smoothness (RTVC) assumption (Theorem 7, Section 4.2).",
+  "Information-theoretic lower bounds (Theorems 8-9) establish that regret must scale at least as H*(1/n + epsilon_q) for deterministic experts and H*(sqrt(1/n) + epsilon_q) for stochastic experts, matching the achievable upper bounds (Section 5, Theorems 8-9).",
+  "Empirically, binning quantizers are shown to preserve policy smoothness better than learned quantizers, while deterministic experts more often violate the RTVC requirement needed for the sharp regret bound (Section 4.1)."
+ ]
+}

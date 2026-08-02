@@ -1,0 +1,19 @@
+{
+  "claim": "Agents are distributions; epistemic utility U(o)=log P(o) (Sec. 2, Def. 7)",
+  "source": "arXiv:2509.06701v2 Sec.2 (log score), Def.7, Prop.32 (welfare-gap identity)",
+  "n_trials": 4000,
+  "outcome_space": 5,
+  "n_agents": 3,
+  "log_score_strictly_proper": true,
+  "max_err_softmax_of_logP_recovers_P": 3.3306690738754696e-16,
+  "max_err_softmax_of_weighted_logP_equals_log_pool": 0.0,
+  "max_err_welfare_gap_identity": 1.7763568394002505e-15,
+  "mutation": {
+    "description": "replace log score by linear score W_i = P_i",
+    "max_err_softmax_recovery": 0.4891106271155588,
+    "max_err_identity": 3.7922556062429447,
+    "broken": true
+  },
+  "verdict": "verified",
+  "seed": 20260802
+}

@@ -1,0 +1,41 @@
+{
+  "claim": 1,
+  "source": "Definition 3.3, Section 3.2 (arXiv:2606.23517)",
+  "statement": "S := A - X C^{-1} X^T is the Schur complement of L^* marginalizing higher-order cells onto vertices.",
+  "setup": {
+    "complex": "wheel/disk simplicial complex, n0=5 vertices, n1=8 edges, n2=4 faces",
+    "betas": {
+      "1": 1.0,
+      "2": 1.0
+    },
+    "gammas": {
+      "0": 1.0,
+      "1": 1.0
+    },
+    "ridge_eps_on_C": 1e-06,
+    "seed": 12345
+  },
+  "checks": {
+    "formula_vs_schur_max_abs_diff": 9.646816678809955e-11,
+    "energy_identity_max_abs_err": 1.2998535581232318e-10,
+    "gradient_at_minimizer_max_norm": 1.3229834214604202e-15,
+    "num_vectors_of_A_with_XTv_eq0_checked": 1,
+    "unaffected_eigenvector_residuals": [
+      {
+        "k": 0,
+        "lambda_A": -1.8616293402662354e-15,
+        "residual": 2.076999502877818e-15
+      }
+    ]
+  },
+  "mutation": {
+    "description": "Scramble the coupling block by cyclic column shift X->roll(X,3); recompute S_wrong = A - X_wrong C^{-1} X_wrong^T.",
+    "energy_identity_breaks_max_abs_err": 256222.0532353948,
+    "mutated_S_PSD": false,
+    "mutated_A_minus_S_PSD": true,
+    "breaks": true,
+    "note": "With the wrong coupling the formula no longer returns the Schur complement that minimizes the full energy; the 0<=S<=A ordering also breaks. (A pure sign flip is degenerate and intentionally avoided.)"
+  },
+  "verdict": "verified",
+  "notes": "S matches the Schur complement of L^* and reproduces the eliminated-energy u^T S u = min_z Q(u,z); the minimizer z*=-C^{-1} X^T u is a true minimum (gradient ~0, C>0). A tiny ridge (1e-6) makes C strictly PD as required by Def. 3.3; without it C is singular (see claim 4)."
+}

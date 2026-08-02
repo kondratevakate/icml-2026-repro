@@ -1,0 +1,101 @@
+{
+  "claim": 5,
+  "source": "Section 5 (experiments on point clouds, voxel grids, GMMs)",
+  "seed": 20260802,
+  "verdict": "toy",
+  "modalities": [
+    {
+      "modality": "point_cloud",
+      "n": 600,
+      "self_adjoint_residual": 1.3877787807814457e-17,
+      "mass_error": 6.650235917504688e-14,
+      "min_entry": 1.2617203799929742e-21,
+      "lam_min": 7.516548150665749e-15,
+      "lam_max": 0.9999999999999998,
+      "const_preservation_err": 6.616929226765933e-14,
+      "smooth_gain": 0.8483958943121848,
+      "noise_gain": 0.20032794730215625,
+      "dirichlet_energy_path": [
+        718.6927994205244,
+        64.43477541357493,
+        38.097851941313834,
+        25.64951633214963,
+        18.762266612156903,
+        14.594079671428306
+      ],
+      "energy_monotone": true,
+      "corr_Pf_smooth": 0.9674903315673766
+    },
+    {
+      "modality": "sparse_voxel_jaw_surrogate",
+      "n": 600,
+      "self_adjoint_residual": 2.7755575615628914e-17,
+      "mass_error": 6.628031457012185e-14,
+      "min_entry": 2.767496974265735e-162,
+      "lam_min": 2.3834741298302056e-05,
+      "lam_max": 0.9999999999999989,
+      "const_preservation_err": 6.616929226765933e-14,
+      "smooth_gain": 0.9849000016905591,
+      "noise_gain": 0.23021346397754558,
+      "dirichlet_energy_path": [
+        542.6695163469044,
+        17.07327786276379,
+        9.323663444424753,
+        7.389696168699238,
+        6.477559048558301,
+        5.904240676774203
+      ],
+      "energy_monotone": true,
+      "corr_Pf_smooth": 0.9722663612852279
+    },
+    {
+      "modality": "gmm_covariance_aware",
+      "n": 600,
+      "self_adjoint_residual": 1.3877787807814457e-17,
+      "mass_error": 5.695444116327053e-14,
+      "min_entry": 5.373283775971995e-16,
+      "lam_min": -0.14604995002482682,
+      "lam_max": 0.9999999999999999,
+      "const_preservation_err": 5.706546346573305e-14,
+      "smooth_gain": 0.3094579034322922,
+      "noise_gain": 0.07466646610849745,
+      "dirichlet_energy_path": [
+        1060.576313306099,
+        30.119953746101423,
+        11.042001389457903,
+        6.031495126717832,
+        3.637474707056403,
+        2.26854778482077
+      ],
+      "energy_monotone": true,
+      "corr_Pf_smooth": 0.7289829247340625
+    }
+  ],
+  "spectral_damping_failures": [
+    "gmm_covariance_aware"
+  ],
+  "mutation_scrambled_geometry": {
+    "modality": "point_cloud_SCRAMBLED",
+    "n": 600,
+    "self_adjoint_residual": 2.7755575615628914e-17,
+    "mass_error": 6.616929226765933e-14,
+    "min_entry": 2.595647760278361e-41,
+    "lam_min": 4.87245468351886e-07,
+    "lam_max": 0.9999999999999984,
+    "const_preservation_err": 6.616929226765933e-14,
+    "smooth_gain": 0.08948022868725942,
+    "noise_gain": 0.21410761851288737,
+    "dirichlet_energy_path": [
+      1150.949864646706,
+      22.277017785926446,
+      4.874417891358238,
+      1.736759995403114,
+      0.7633552968815625,
+      0.37478838553715366
+    ],
+    "energy_monotone": true,
+    "corr_Pf_smooth": 0.3080666204457565
+  },
+  "mutation_note": "Scrambling geometry drops smooth-signal gain from 0.848 to 0.089 and corr(Pf,smooth) from 0.967 to 0.308: the low-pass behaviour is geometric, not generic.",
+  "caveat": "Mechanism reproduces on all three data types (mass conservation, monotone Dirichlet-energy decay, low-pass behaviour). Two honest limitations: (a) the paper's jaw-bone voxel data is not public so we used a synthetic mandible-arch surrogate; (b) the covariance-aware GMM kernel k=exp(-0.5 d^T (Si+Sj)^{-1} d /eps^2) is NOT positive definite, so its Sinkhorn operator has lam_min<0 and violates the spectral-damping property of Claim 4 -> verdict 'toy'."
+}

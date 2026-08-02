@@ -1,0 +1,22 @@
+{
+  "claim": 4,
+  "statement": "Regularized S_eps = A - X(C+eps I)^{-1} X^T with Tikhonov error bound and implicit (CG) application (Proposition 3.10, Algorithm 1, Sec 3.4).",
+  "verdict": "inconclusive",
+  "holds": false,
+  "source": "Proposition 3.10, Algorithm 1, Section 3.4 (arXiv:2606.23517)",
+  "seed": 261026,
+  "numerics": {
+    "nonsingular_C_bound_holds": true,
+    "max_measured_minus_bound": -2.0178570588025097e-05,
+    "convergence_monotone_to_0": true,
+    "singular_C_error_bounded": true,
+    "singular_C_max_err": 0.019249618362860085,
+    "implicit_vs_explicit_max_err": 5.438240953673691e-14
+  },
+  "mutation_test": {
+    "description": "Use eps = -0.5 (anti-regularisation).",
+    "negative_eps_blows_up_or_singular": false,
+    "property_breaks": false,
+    "note": "Negative eps -> (C+eps I) indefinite/singular; Tikhonov stabilisation lost."
+  }
+}

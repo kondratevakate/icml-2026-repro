@@ -1,0 +1,508 @@
+{
+  "claim": 3,
+  "source": "Section 4/5 (empirical convergence of symmetric Sinkhorn)",
+  "seed": 20260802,
+  "tolerance": "max_i |rowsum_i - 1| < 1e-3 (0.1%)",
+  "verdict": "verified",
+  "n_configs": 48,
+  "iters_min": 7,
+  "iters_median": 8.0,
+  "iters_p90": 9.0,
+  "iters_max": 9,
+  "frac_within_5_to_10": 1.0,
+  "frac_within_5": 0.0,
+  "max_err_after_10_iters": 0.0003605692903069224,
+  "runs": [
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.003919586548179588,
+      "err_at_10": 9.059538836575509e-05
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.01135107285748349,
+      "err_at_10": 0.0002621187528115687
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.006995587007492032,
+      "err_at_10": 0.00013179504097915462
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.0102193941798715,
+      "err_at_10": 0.0002608499186298463
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.010315745510659724,
+      "err_at_10": 0.0002787174665642711
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.006954807308573452,
+      "err_at_10": 0.00017949981420462002
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.00881466577941703,
+      "err_at_10": 0.00015044685308951422
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.015134225086074315,
+      "err_at_10": 0.0002723945879230527
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.01034893748129806,
+      "err_at_10": 0.00016891293800402885
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.009520392730142047,
+      "err_at_10": 0.0002670846907057989
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.013637779060291177,
+      "err_at_10": 0.00029784131647248024
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.008387865469737354,
+      "err_at_10": 0.00020797810855233134
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.003577303985353275,
+      "err_at_10": 7.900326774845645e-05
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.00958932904363563,
+      "err_at_10": 0.00019745104639445898
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.0038672201297792475,
+      "err_at_10": 0.00010363821707848331
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.00780385624737201,
+      "err_at_10": 0.00022012207086219426
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.012192405948761253,
+      "err_at_10": 0.00027896548618455697
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.00825030730456755,
+      "err_at_10": 0.0002692894666236345
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.0051045976410608596,
+      "err_at_10": 0.00012004246770347393
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.014232130527058628,
+      "err_at_10": 0.0003605692903069224
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.007351747274830234,
+      "err_at_10": 0.0001427825266612226
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.014136475561238648,
+      "err_at_10": 0.00032779652605130494
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.012927631780232374,
+      "err_at_10": 0.0002895865939753772
+    },
+    {
+      "kernel": "gaussian",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.006756400658431638,
+      "err_at_10": 0.00016622397085641616
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.0040147286840687135,
+      "err_at_10": 4.976929209432601e-05
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.006218360975928761,
+      "err_at_10": 0.00015569459912623262
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.007977140168766939,
+      "err_at_10": 0.00014945018344880712
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.009695174053027,
+      "err_at_10": 0.00021600170562130483
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.0070403793583933005,
+      "err_at_10": 0.00015285472881954032
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.005487494584240249,
+      "err_at_10": 0.00014729746271091582
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.007390576243837765,
+      "err_at_10": 0.00013050467479236438
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.015366490255124154,
+      "err_at_10": 0.0002950287980328925
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.009780884612192398,
+      "err_at_10": 0.0001785682243663489
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.009305636172036502,
+      "err_at_10": 0.00020961187864365627
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.007391979665981707,
+      "err_at_10": 0.00019794061397604423
+    },
+    {
+      "kernel": "exponential",
+      "dim": 2,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.005084447947462878,
+      "err_at_10": 0.00013186993269620473
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.00246204777475334,
+      "err_at_10": 3.280834353325268e-05
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.007565818553408432,
+      "err_at_10": 0.0001236162360498394
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.006254539074608045,
+      "err_at_10": 8.484654442031392e-05
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.003956700830816562,
+      "err_at_10": 0.00010227024714692945
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.009569349039878716,
+      "err_at_10": 0.00023386988183227153
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 100,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.004057208028217407,
+      "err_at_10": 0.00010896475767219194
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 7,
+      "err_at_5": 0.00515334885320351,
+      "err_at_10": 7.985120390152645e-05
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.15,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.011140472519659883,
+      "err_at_10": 0.00021470552934577114
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.01019274102051071,
+      "err_at_10": 0.00020195535065370418
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.3,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.008825815810064475,
+      "err_at_10": 0.00024740373840781427
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "uniform",
+      "iters_to_0p1pct": 9,
+      "err_at_5": 0.010541520149262795,
+      "err_at_10": 0.0002915053700844883
+    },
+    {
+      "kernel": "exponential",
+      "dim": 3,
+      "n": 300,
+      "eps": 0.6,
+      "sampling": "clustered",
+      "iters_to_0p1pct": 8,
+      "err_at_5": 0.005824036280912992,
+      "err_at_10": 0.0001671025617627775
+    }
+  ],
+  "mutation_extreme_mass_chain": {
+    "iters": 14,
+    "err_at_10": 0.011064400467248225,
+    "n": 400,
+    "kernel": "gaussian",
+    "eps": 0.45,
+    "geometry": "long thin chain, length 200",
+    "mass_ratio": "~1e-6 (log-uniform over exp(-14..0))"
+  },
+  "mutation_note": "Extreme mass imbalance on an elongated chain domain needs 14 iterations (error still ~1.1% after 10), outside the claimed 5-10 range: the claim is a regime statement for well-conditioned kernels, not a bound.",
+  "caveat": "Claim holds for well-connected kernels at reasonable bandwidths; it is an empirical regime statement, not a bound."
+}

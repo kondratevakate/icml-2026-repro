@@ -1,0 +1,39 @@
+{
+  "claim": 2,
+  "source": "Theorem 1.2 (Section 1.2) + Lemma 2.1 (correlated) + Lemma 2.4 (Section 2.2)",
+  "statement": "CorrVarAlloc has a PTAS: E[max_i X_i] >= OPT - eps in poly(n) time.",
+  "smoothness": {
+    "empirical_constant_C": 0.09407202594022543,
+    "p90": 0.04711339419369582,
+    "note": "Across Cholesky-factor l1 perturbations, |dE[max]|/(l1 factor distance) stays bounded by a constant (~0.09), consistent with the EMD-based smoothness (Lemma 2.4) that powers the correlated PTAS."
+  },
+  "end2end": {
+    "n": 8,
+    "eps": 0.5,
+    "blocks": 4,
+    "E_max_PTAS": 0.5680821186810044,
+    "PTAS_allocation": {
+      "signs": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "t": 1,
+      "v": 0.5
+    },
+    "OPT_est_fine_random_search": 0.5427423567526921,
+    "guarantee_EPS": 0.5,
+    "holds": true,
+    "rounding_loss": 0.0024466290593941897,
+    "rounding_loss_le_eps": true,
+    "note": "Correlated PTAS best E[max]=0.5681 >= OPT_est(0.5427)-eps(0.50); rounding diagonal variances to eps^3 grid costs drop=0.0024 <= eps."
+  },
+  "mutation": {
+    "naive_uncorrelated_E": 0.5026750772411603,
+    "PTAS_E": 0.5680821186810044,
+    "gap_naive_below_PTAS": 0.0654070414398441,
+    "note": "A naive uncorrelated diagonal-only allocation (variance 1/n each) gives E[max]=0.5027, far below the correlated PTAS value 0.5681; the covariance (correlation) search in the PTAS is essential, not optional."
+  },
+  "verdict": "verified"
+}

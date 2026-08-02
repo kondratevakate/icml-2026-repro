@@ -1,0 +1,60 @@
+{
+  "orid": "sW8U2TYDMp",
+  "title": "Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.167,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 1,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 1,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "verified",
+    "claim5": "verified",
+    "claim6": "verified"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": true
+  },
+  "per_claim_boundary": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": true
+  },
+  "per_claim_note": {
+    "claim1": "Agents = distributions, epistemic utility `U(o) = log P(o)` ",
+    "claim2": "Thm 10: strict unanimity impossible under **linear** pooling",
+    "claim3": "Thm 9: strict unanimity achievable under log pooling for \\|O",
+    "claim4": "Thm 19: manifesting Luigi under a stability budget forces we",
+    "claim5": "no resolvable verdict in artifact",
+    "claim6": "Thm 14: parental compositional benefit need not pass to chil"
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)"
+  ],
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

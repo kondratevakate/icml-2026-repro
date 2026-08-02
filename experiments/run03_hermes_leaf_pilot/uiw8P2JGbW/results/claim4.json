@@ -1,0 +1,52 @@
+{
+  "claim": 4,
+  "statement": "VCG/SPA for tCPA bidders is non-monotone in both revenue and welfare; constructed counterexample shows a simultaneous ~6.2% decrease (Theorem 5.8).",
+  "source": "Theorem 5.8, Section 5.3.1 / Appendix B.1 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "Reconstructed the paper's explicit B.1 four-impression instance; ran SPA (VCG) per impression with the published canonical CPA-binding equilibrium multipliers.",
+  "instance": {
+    "bidders": "A (t=10), B (t=1)",
+    "coarse_partition": "{{0,1},{2,3}}",
+    "fine_partition": "singletons",
+    "refinement_MA_ge_MB": true
+  },
+  "coarse_model": {
+    "revenue": 3.23,
+    "welfare": 3.23,
+    "cpa": [
+      10.0001,
+      1.0
+    ],
+    "multipliers": [
+      36.5,
+      6.579
+    ]
+  },
+  "fine_model": {
+    "revenue": 3.0297,
+    "welfare": 3.03,
+    "cpa": [
+      10.0,
+      0.9997
+    ],
+    "multipliers": [
+      14.71,
+      25.0
+    ]
+  },
+  "non_monotonicity": {
+    "revenue_drop_pct": 6.2018,
+    "welfare_drop_pct": 6.192,
+    "paper_claimed": "6.2% both"
+  },
+  "mutation_tests": {
+    "auction_format_FPA": {
+      "description": "Same instance under FPA (mu=1 uniform bidding). By Theorem 5.1 revenue must be monotone; the VCG 6.2% drop must vanish, confirming it is driven by VCG's second-price payment, not by model refinement.",
+      "fpa_revenue_coarse": 3.23,
+      "fpa_revenue_fine": 3.3,
+      "fpa_revenue_increases": true,
+      "fpa_revenue_change_pct": -2.1672
+    }
+  }
+}

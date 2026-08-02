@@ -1,0 +1,59 @@
+{
+  "claim": 6,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Sec. 4.3 / Fig. 2 (Eq. 2, Eq. 12)",
+  "paper_values": {
+    "unscreened": 0.724,
+    "screened": 0.551,
+    "n_raters_paper": {
+      "unscreened": 62,
+      "screened": 50
+    }
+  },
+  "splits": {
+    "unscreened": {
+      "n_raters": 59,
+      "n_raters_paper": 62,
+      "pearson_r": 0.8550472543643242,
+      "p_value": 6.768781664692528e-18,
+      "slope": 0.5187399724774772,
+      "intercept": 0.500029909826662,
+      "paper_r": 0.724,
+      "abs_diff_from_paper": 0.13104725436432418,
+      "q_min": 0.6015588848972294,
+      "q_max": 0.9515151300326304,
+      "q_mean": 0.9020650448263396,
+      "agreement_min": 0.3125,
+      "agreement_max": 0.96875
+    },
+    "screened": {
+      "n_raters": 48,
+      "n_raters_paper": 50,
+      "pearson_r": 0.7554303322136768,
+      "p_value": 5.464114566192456e-10,
+      "slope": 0.47660299959849367,
+      "intercept": 0.5321367887007382,
+      "paper_r": 0.551,
+      "abs_diff_from_paper": 0.2044303322136768,
+      "q_min": 0.7307259950283316,
+      "q_max": 0.9646234845478385,
+      "q_mean": 0.9252722056872562,
+      "agreement_min": 0.625,
+      "agreement_max": 0.9375
+    }
+  },
+  "mutation": {
+    "description": "permute q_r across raters (1,000 permutations), unscreened split",
+    "mean_abs_pearson_r": 0.10630140033082632,
+    "max_abs_pearson_r": 0.4927765061183208,
+    "permutation_p_value": 0.0,
+    "breaks_property": true
+  },
+  "assessment": {
+    "positive correlation on both splits": true,
+    "unscreened r within 0.10 of 0.724": false,
+    "correlation stronger on unscreened than screened (as in Fig. 2)": true
+  },
+  "verdict": "inconclusive",
+  "notes": "Fit on the public HF release, which contains fewer raters/comparisons than the paper reports (Appendix D Table 6), so an exact match to r=0.724 is not expected. The paper does not fully specify its 'agreement with the final ranking' statistic; we use the fraction of a rater's comparisons consistent with the BBQ ranking on the same split."
+}

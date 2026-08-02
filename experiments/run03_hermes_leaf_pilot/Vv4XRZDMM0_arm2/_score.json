@@ -46,7 +46,7 @@
     "claim1": "explicit verdict/VERDICT_CAP field",
     "claim2": "explicit verdict/VERDICT_CAP field",
     "claim3": "explicit verdict/VERDICT_CAP field",
-    "claim4": "explicit verdict/VERDICT_CAP field"
+    "claim4": "self-report 'verified' overridden: measured -0.71% << paper 34.39% (tol 10%)"
   },
   "warnings": [
     "no _run_meta.json (OK for v2: metrics come from artifacts)"

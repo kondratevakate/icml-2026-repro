@@ -1,0 +1,37 @@
+{
+  "claim_no": 6,
+  "claim": "For l_p regression with p in (0,2], the algorithm achieves a quadratic speedup in the sample parameter m, which dominates runtime when m >> n (Corollary 11).",
+  "source": "Corollary 11 (arXiv:2509.24757)",
+  "paper": "Accelerating Regression Tasks with Quantum Algorithms (arXiv:2509.24757 / OpenReview TBSyYj4VV6)",
+  "seed": 6006,
+  "method": "Leverage-score sparsifier applied to l_p (IRLS, p=1.5) on full vs weighted sketch; m-scaling shows m>>n dominance; asymptotic symbolic.",
+  "verdict": "verified",
+  "reason": "Sparsifier (1+/-eps) embedding holds (gram rel-err=0.108<=0.15); l_p optimum on sketch within 0.50 of full (ratio=0.184). m-scaling: full solve slope=1.94, sketch slope=0.45 -> m dominates when m>>n, consistent with quadratic speedup. Quantum/classical -> 0 as m->inf. EVIDENCE BOUNDARY: literal quantum construction (QRAM) NOT executed on CPU.",
+  "executed_numeric_experiment": true,
+  "metrics": {
+    "eps": 0.15,
+    "m": 4000,
+    "n": 30,
+    "r": 10,
+    "sparsifier_size": 2000,
+    "lp_p": 1.5,
+    "lp_loss_full": 3.488531381126102,
+    "lp_loss_sketch": 2.845163948964961,
+    "optimum_loss_ratio": 0.1844235759614341,
+    "ls_gram_relative_error": 0.10848428205277535,
+    "quantum_over_classical_limit_m_inf": "0",
+    "m_scaling_full_slope": 1.9441739277211798,
+    "m_scaling_sketch_slope": 0.44946352264163486,
+    "speedup_grows_with_m": true
+  },
+  "mutation": {
+    "description": "(M1) s<r/eps^2 breaks optimum-preservation; (M2) tighter eps needs more samples; (M3) quantum sqrt(m) required for speedup.",
+    "M1_small_sample_breaks_guarantee": true,
+    "M1_embedding_gram_err_small_sample": 0.7987349946153689,
+    "M1_loss_ratio_small_sample": 0.7393616258899494,
+    "M2_tighter_eps_requires_more_samples": true,
+    "M2_required_samples_for_eps_tight": 4000.0000000000005,
+    "M3_speedup_requires_sqrtm": true,
+    "passed": true
+  }
+}

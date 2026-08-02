@@ -1,0 +1,1710 @@
+%%%%%%%% ICML 2026 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2026} with \usepackage[nohyperref]{icml2026} above.
+\usepackage{hyperref}
+
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+%\usepackage{icml2026}
+%\usepackage[preprint]{icml2026}
+\usepackage{custom}
+
+% For preprint, use
+
+
+% If accepted, instead use the following line for the camera-ready submission:
+\usepackage[accepted]{icml2026}
+
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{mathtools}
+%\usepackage{amsthm}
+
+\input{macros}
+
+
+% if you use cleveref..
+%\usepackage[capitalize,noabbrev]{cleveref}
+
+\let\realaddcontentsline\addcontentsline
+\usepackage{etoc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}[section]
+%%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{assumption}[theorem]{Assumption}
+%\theoremstyle{remark}
+%\newtheorem{remark}[theorem]{Remark}
+
+% Todonotes is useful during development; simply uncomment the next line
+%    and comment out the line below the next line to turn off comments
+%\usepackage[disable,textsize=tiny]{todonotes}
+%\usepackage[textsize=tiny]{todonotes}
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Context-free Recognition with Transformers}
+
+\begin{document}
+
+\etocdepthtag.toc{mainmatter}
+
+\twocolumn[
+\icmltitle{Context-free Recognition with Transformers}
+
+% It is OKAY to include author information, even for blind submissions: the
+% style file will automatically remove it for you unless you've provided
+% the [accepted] option to the icml2026 package.
+
+% List of affiliations: The first argument should be a (short) identifier you
+% will use later to specify author affiliations Academic affiliations
+% should list Department, University, City, Region, Country Industry
+% affiliations should list Company, City, Region, Country
+
+% You can specify symbols, otherwise they are numbered in order. Ideally, you
+% should not use this facility. Affiliations will be numbered in order of
+% appearance and this is the preferred way.
+\icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+    \icmlauthor{Selim Jerad}{ethz}
+    \icmlauthor{Anej Svete}{ethz}
+    \icmlauthor{Sophie Hao}{bu}
+    \icmlauthor{Ryan Cotterell}{ethz}
+    \icmlauthor{William Merrill}{nyu}
+\end{icmlauthorlist}
+
+\icmlaffiliation{ethz}{ETH Zürich}
+\icmlaffiliation{bu}{Boston University}
+\icmlaffiliation{nyu}{Allen Institute for AI}
+
+\icmlcorrespondingauthor{Selim Jerad}{selimjerad@gmail.com}
+\icmlcorrespondingauthor{William Merrill}{willm@allenai.org}
+
+% You may provide any keywords that you find helpful for describing your
+% paper; these are used to populate the "keywords" metadata in the PDF but
+% will not be shown in the document
+%\icmlkeywords{Machine Learning, ICML}
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column listing the
+% affiliations and the copyright notice. The command takes one argument, which
+% is text to display at the start of the footnote. The \icmlEqualContribution
+% command is standard text for equal contribution. Remove it (just {}) if you
+% do not need this facility.
+
+% Use ONE of the following lines. DO NOT remove the command.
+% If you have no special notice, KEEP empty braces:
+\printAffiliationsAndNotice{}  % no special notice (required even if empty)
+% Or, if applicable, use the standard equal contribution text:
+% \printAffiliationsAndNotice{\icmlEqualContribution}
+\begin{abstract}
+    Transformers excel empirically on tasks that process well-formed inputs according to some grammar, such as natural language and code. However, it remains unclear how they can process grammatical syntax. In fact, under standard complexity conjectures, standard transformers cannot recognize context-free languages ($\cfl$s), a canonical formalism to describe syntax, or even regular languages, a subclass of $\cfl$s. Past work has shown that $\bigo(\log(\idxn))$ \textit{looping layers} (w.r.t. input length $\idxn$) allow transformers to recognize regular languages, but the question of context-free recognition with looped transformers remained open. In this work, we show that looped transformers with $\bigo(\log(\idxn))$ looping layers and $\bigo(\idxn^6)$ padding symbols can recognize all $\cfl$s. However, training and inference with $\bigo(\idxn^6)$ padding symbols is potentially impractical. Fortunately, we show that, for natural subclasses such as unambiguous $\cfl$s, the recognition problem on transformers becomes more tractable, requiring $\bigo(\idxn^3)$ padding.
+    Empirically, looped and padded transformers perform better than fixed-depth transformers in recognizing $\cfl$s.
+    Overall, our results shed light on the intricacy of $\cfl$ recognition by transformers: while general recognition may require an intractable amount of padding, natural constraints such as unambiguity yield efficient recognition algorithms.
+\end{abstract}
+\section{Introduction}
+Transformers are proficient at many natural language \citep{qin2024largelanguagemodelsmeet} and coding \citep{jiang2024surveylargelanguagemodels} tasks, both of which involve processing hierarchical structures.
+In formal language theory, this hierarchical structure is captured by context-free languages ($\cfl$s), a canonical formal model for the kind of syntax that natural language and code rely on.
+Empirical work supports this view: analysis of internal representations---syntactic probing---has shown that transformers learn to encode syntactic features relevant for \emph{parsing}, the task of extracting the syntactic structure of a sentence \citep{hewitt-manning-2019-structural, arps2022probingconstituencystructureneural, zhao-etal-2023-transformers}. 
+However, the literature lacks a precise theory of how transformers can implement $\cfl$ recognition.
+Our paper fills this gap. 
+
+More precisely, the problem we study is the following: Given a CFG $\grammar$, can a string $\str$ be generated by $\grammar$? 
+Several foundational \emph{serial} parsing algorithms \citep{earley-parsing, cocke, kasami1965AnER, younger} solve this problem efficiently---in $\bigo(|\str|^3)$ time.
+However, \emph{parallel} parsing algorithms can run even faster given sufficient processors ~\citep{ruzzo-treesize, rytter-parallelunambiguous, lange-parallel}.
+Indeed, one might suspect \textit{prima facie} that transformers' highly parallel, fixed-depth structure \citep{merrill-sabharwal-2023-parallelism} enables them to efficiently parse strings.
+We therefore focus on implementing parallel parsing algorithms in transformers.
+To that end, we first note that even regular languages, a strict subset of $\cfl$s, cannot be recognized by fixed-depth transformers under the standard complexity conjecture $\tc{0} \subsetneq \nc{1}$.\footnote{Regular language recognition is complete for $\nc{1}$ \citep{barrington_monoids} while fixed-depth transformers fall in $\tc{0}$ \citep{merrill-etal-2022-saturated, chiang2025transformersuniformtc0}.} 
+\emph{Looping} layers help: $\log(\idxn)$ looping layers (where $\idxn$ is the input length) allow transformers to recognize regular languages \citep{merrill-2025littledepthgoeslong}.
+Thus, our analysis will require looping to some extent.
+However, the question of whether logarithmic looping is sufficient for $\cfl$ recognition is still open.
+In this work, we answer it in the affirmative, showing that looping---along with additional \emph{padding} symbols \citep{merrill2025exactexpressivepowertransformers}---is sufficient to implement certain parallel CFG parsing algorithms.\looseness=-1
+
+Our first result shows via a direct construction that general $\cfl$ recognition can be expressed by looping layers $\bigo(\log(\idxn))$ times and with $\bigo(\idxn^6)$ padding symbols.
+We then ask whether simpler classes of $\cfl$s can be recognized by transformers with fewer resources.
+Again, we find that the answer is affirmative.
+In particular, we identify \emph{unambiguity} and \emph{linearity} as two natural properties that make $\cfl$ recognition easier. 
+Unambiguous $\cfl$s, characterized by strings having at most one possible parse, allow for recognition with reduced padding but more looping. 
+This aligns with transformers' struggles to parse ambiguous grammars in practice \citep{khalighinejad-etal-2023-approximating}. 
+Furthermore, imposing linearity (where each grammar rule has at most one non-terminal on its right-hand side) reduces the amount of looping and padding required for recognizing unambiguous $\cfl$s. 
+Our main results are summarized in \cref{tab:mainresults}.
+
+We also empirically verify that looped and padded transformers can better process $\cfl$s than fixed-depth ones. 
+We evaluate fixed-depth and dynamically scaling transformers as recognizers of formal languages \citep{butoi2025trainingneuralnetworksrecognizers}, and find that the latter often outperforms the former on $\cfl$s of various complexity (\cref{fig:resultsexp}); the largest gains (from 4 to 8 points of accuracy) occur on harder $\cfl$s such as $\dyck{2}$, Palindrome and $\bfvp$.
+
+\begin{table*}[t]
+    \footnotesize
+    \centering
+    \renewcommand{\arraystretch}{1.15} 
+    \begin{tabular}{
+        >{\centering\arraybackslash}p{4.0cm} 
+        >{\centering\arraybackslash}p{3.5cm} 
+        >{\centering\arraybackslash}p{3.5cm} 
+        >{\centering\arraybackslash}p{2.5cm} 
+        }
+        \toprule 
+        \textbf{Language class} & \textbf{Padding symbols required} & \textbf{Looping layers required} & \textbf{Reference} \\
+        \midrule
+        General $\cfl$s & $\bigo(\idxn^6)$ & $\bigo(\log(\idxn))$ & \cref{thm:cfl2ahat}\\
+        Unambiguous $\cfl$s & $\bigo(\idxn^3)$ & $\bigo(\log^2(\idxn))$ & \cref{thm:ucfl2ahat} \\
+        Unambiguous linear $\cfl$s & $\bigo(\idxn^2)$ & $\bigo(\log(\idxn))$ & \cref{thm:ulcfl2ahat} \\
+        \bottomrule
+    \end{tabular}
+    \caption{The computational resources required by transformers to recognize different classes of context-free languages ($\cfl$s).}
+    \label{tab:mainresults}
+\end{table*}
+
+\section{Preliminaries}
+An \defn{alphabet} $\alphabet$ is a finite, non-empty set of \defn{symbols}. 
+A \defn{string} $\str = \strSym_1 \cdots \strSym_N$ with $\strSym_n \in \alphabet$ is a finite sequence of symbols.
+We write $|\str| = |\strSym_1 \cdots \strSym_N| = N$ for the length of $\str$.
+For integers $\idxi, \idxj$ with $\idxi \leq \idxj$, we use the standard interval notation $[\idxi, \idxj] \defeq \set{\idxi, \idxi+1, \ldots, \idxj}$, $(\idxi, \idxj] \defeq \set{\idxi+1, \ldots, \idxj}$, $[\idxi, \idxj) \defeq \set{\idxi, \ldots, \idxj-1}$, and $(\idxi, \idxj) \defeq \set{\idxi+1, \ldots, \idxj-1}$.
+For any interval $I \subseteq \set{1, \ldots, N}$, we write $\str_I$ for the substring of $\str$ at positions in $I$. Explicitly, the four shapes expand to
+$\str_{[\idxi, \idxj]} \defeq \strSym_\idxi \strSym_{\idxi+1} \cdots \strSym_\idxj$,
+$\str_{(\idxi, \idxj]} \defeq \strSym_{\idxi+1} \strSym_{\idxi+2} \cdots \strSym_\idxj$,
+$\str_{[\idxi, \idxj)} \defeq \strSym_\idxi \strSym_{\idxi+1} \cdots \strSym_{\idxj-1}$, and
+$\str_{(\idxi, \idxj)} \defeq \strSym_{\idxi+1} \strSym_{\idxi+2} \cdots \strSym_{\idxj-1}$.
+Half-open intervals are convenient as we get $\str_{(\idxi, \idxj]}\,\str_{(\idxj, \idxk]} = \str_{(\idxi, \idxk]}$.
+The empty string, denoted $\varepsilon$, is the unique string of length 0.
+The set of all strings over an alphabet $\alphabet$---including the empty string---is given by its \defn{closure}, denoted $\kleene{\alphabet}$.
+A \defn{formal language} $\lang$ over $\alphabet$ is a subset of $\kleene{\alphabet}$.
+A \defn{language recognizer} is a function $\func$ with the signature $\kleene{\alphabet} \to \set{0,1}$. 
+$\func$ \defn{accepts} a string $\str$ iff $\func(\str) = 1$.
+$\func$ \defn{recognizes} a language $\lang \subseteq \kleene{\alphabet}$ when $\func(\str) = 1$ iff $\str \in \lang$.
+
+\subsection{Context-free Grammars}
+
+\begin{definition}\label{def:cfg}
+    A \defn{context-free grammar} (CFG) $\grammar$ is a tuple $\cfgtuple$ where:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item $\nonterm$ is a finite, nonempty set of \defn{nonterminals};
+        \item $\alphabet$ is a finite alphabet of \defn{terminals}, disjoint from $\nonterm$;
+        \item $\rules \subseteq \nonterm \times \kleene{(\nonterm \cup \alphabet)}$ is a finite set of \defn{productions} of the form $\production{\NTA}{\cfgstr}$, where $\NTA \in \nonterm$ and $\cfgstr \in \kleene{(\nonterm \cup \alphabet)}$;
+        \item $\start \in \nonterm$ is a distinguished \defn{start symbol}.
+    \end{itemize}
+    We denote terminal and nonterminal symbols by lowercase and uppercase symbols, respectively.
+\end{definition}
+A string of non-terminals and terminals $\cfgstr \in \kleene{(\nonterm \cup \alphabet)}$ is a \defn{sentential form}.
+A CFG generates strings by repeatedly applying rules to sentential forms derived from the start symbol until it produces a sequence of terminal symbols, i.e., a \defn{string}. 
+For sentential forms $\cfgstr, \cfgstrbeta \in \kleene{(\nonterm \cup \alphabet)}$, we write $\cfgstr \cfgrel \cfgstrbeta$ if there exist sentential forms $\cfgstr_1, \cfgstr_2$, a non-terminal $\NTA \in \nonterm$, and a rule $\production{\NTA}{\cfgstrgamma} \in \rules$ such that $\cfgstr = \cfgstr_1 \, \NTA \, \cfgstr_2$ and $\cfgstrbeta = \cfgstr_1 \, \cfgstrgamma \, \cfgstr_2$. The derivation relation $\derives$ is the reflexive, transitive closure of $\cfgrel$.
+We say a non-terminal $\NT{A}$ \defn{derives} a string $\str \in \kleene{\alphabet}$ if $\NT{A} \derives \str$, i.e. $\str$ is the derivation's \defn{yield}.
+The \defn{language of a CFG} $\grammar$ is the set $\lang(\grammar) \defeq \{\str \in \kleene{\alphabet} \mid \start \derives \str\}$.
+A formal language is \defn{context-free} if it is the language of some $\grammar$.
+
+It is common practice to consider CFGs in a normal form.
+A CFG $\grammar$ is in \defn{Chomsky normal form (CNF)} if any $\arule \in \rules$ is either of the form $\production{\NTA}{\NTB \NTC}$, $\production{\NTA}{\syma}$ or $\production{\start}{\eps}$.
+Every $\cfl$ can be described by a CFG in CNF.
+
+\subsection{Transformers}\label{subsec:transformersprelim}
+We consider \citeposs{merrill2025exactexpressivepowertransformers} idealization of the transformer architecture~\citep{merrill-2025littledepthgoeslong}.
+\begin{restatable}[Averaging hard-attention transformer]{definition}{ahatdef}\label{def:ahat}
+    An \defn{averaging hard-attention transformer} ($\ahat$) $\tf$ of width $\hiddDim$ and depth $\nLayers$ is a tuple $\tf = (\embedFunc, (\tflayer^{(\layerIdx)})_{\layerIdx=1}^{\nLayers}, \funcc)$ where:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item $\embedFunc \colon \kleene{\alphabet} \to \kleene{(\Q^\hiddDim)}$ is a position-wise \defn{input embedding} that maps each input symbol to a vector in $\Q^\hiddDim$;
+        \item each \defn{layer} $\tflayer^{(\layerIdx)} \colon \kleene{(\Q^\hiddDim)} \to \kleene{(\Q^\hiddDim)}$ is a \emph{length-preserving} map that composes a layer-normalization, an attention sublayer whose attention weights are computed by the averaging hard-attention projection $\hardmaxAvg$, and a position-wise feedforward network;
+        \item $\funcc \colon \Q^\hiddDim \to \set{0,1}$ is a \defn{classification function}.
+    \end{itemize}
+    The transformer first computes the length-preserving mapping $\tflayer^{(\nLayers)} \circ \cdots \circ \tflayer^{(1)} \circ \embedFunc(\str)$. 
+    Let $\vx_{\eos}^{\nLayers} \in \Q^\hiddDim$ be the final contextual representation of $\eos$ after the $\nLayers$ transformer layers.
+    We say the transformer accepts $\str$ iff $\tf(\str)\defeq\funcc(\vx_{\eos}^{\nLayers})=1$.
+\end{restatable}
+We refer to \cref{app:extendedbackground} for the formal definitions of each component of the transformer.
+
+Average hard-attention returns a uniform average of the values of symbols that maximize the attention score.\footnote{In practice, the training dynamics of standard transformers may push some attention heads toward approximating average-hard attention~\citep{merrill-etal-2021-effects}, though this behavior is not universal.}
+The transformers use \emph{multi}-pre-norm, where the layer normalization is applied before the residual connection on either the entire hidden state or on distinct subsets thereof \citep{merrill2024expressivepowertransformerschain}.
+We assume logarithmic-precision arithmetic, where computations are performed with $\bigo(\log(\idxn))$ bits for an input of size $\idxn$. 
+Coupling $\ahat$s and log-precision unlocks useful gadgets such as storing string indices, counting symbol occurrences across the string and performing equality checks across positions \citep{merrill2024expressivepowertransformerschain}.
+We assume that the input string is augmented with both the \underline{b}eginning-\underline{o}f-\underline{s}equence ($\bos$) and \underline{e}nd-\underline{o}f-\underline{s}equence ($\eos$) symbols.
+
+As defined in \cref{def:ahat}, transformers have a \emph{fixed} size, while general $\cfl$ recognition requires \emph{dynamically-scaling} resources on classical models of parallel computation \citep{venkateswaran-logcfl}.
+We therefore also consider an extension of the transformer architecture where its size can \emph{dynamically} increase.
+Concretely, we can first dynamically scale the number of layers\footnote{To guarantee the transformer width is constant while the number of layers grows with input length, we recall transformer layers can reset intermediate values in looping layers \citep{merrill-2025littledepthgoeslong}.}  \citep{merrill-2025littledepthgoeslong}.
+\begin{definition}\label{def:looping}
+    A $d(\idxn)$-\defn{looped} transformer $\tf$ is a tuple $\tf = (\embedFunc, (\tflayer^{(\layerIdx)})_{\layerIdx=1}^{\nLayers}, \funcc, \layerIdx_1, \layerIdx_2)$ where:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item $(\embedFunc,(\tflayer^{(\layerIdx)})_{\layerIdx=1}^{\nLayers}, \funcc)$ is an $\ahat$ as defined in \cref{def:ahat};
+        \item $\layerIdx_1, \layerIdx_2 \in (1,\nLayers]$ define a \emph{partition} of the layers into $A \defeq (\tflayer^{(\layerIdx)})_{\layerIdx=1}^{\layerIdx_1-1}$, $B \defeq (\tflayer^{(\layerIdx)})_{\layerIdx=\layerIdx_1}^{\layerIdx_2-1}$ and $C \defeq (\tflayer^{(\layerIdx)})_{\layerIdx=\layerIdx_2}^{\nLayers}$;
+        \item Upon a forward pass, $B$ is repeated $\bigo(d(\idxn))$ times for an input string of length $\idxn$.
+    \end{itemize}
+    The transformer now computes the length-preserving mapping $C \circ (B)^{\bigo(d(\idxn))} \circ A \circ \embedFunc(\str)$, and accepts $\str$ via $\funcc$. 
+\end{definition}
+
+The amount of computation performed by self attention is definitionally quadratic in the string length. 
+One can dynamically increase this by adding \emph{padding space}  \citep{merrill2025exactexpressivepowertransformers}.
+\begin{definition}\label{def:padding}
+    A (looped) transformer is \defn{$w(\idxn)$-padded} if $\bigo(w(\idxn))$ padding symbols are appended to the end of the input string $\str$, i.e. the input string is $\str \ \underbrace{\paddingtoken \cdots \paddingtoken}_{\bigo(w(\idxn))}$, where $\paddingtoken$ is a distinguished padding symbol.
+\end{definition}
+
+Scaling number of layers and padding symbols in transformers is analogous to scaling time and space Boolean circuits \citep{merrill2025exactexpressivepowertransformers}, a classical parallel model of computation. 
+Allowing for different looping and padding budgets results in different classes of transformers.
+We adopt naming conventions of these models from \citet{merrill2025exactexpressivepowertransformers}.
+We denote by $\ahat^d_k$ the class of languages recognized by $\log^d(\idxn)$-looped, $\idxn^k$-padded averaging hard-attention transformers with strict causal masking.
+We similarly denote by $\uahat$ average hard-attention transformers with no masking and $\mahat$ transformers that use both masked and unmasked attention heads.
+Conveniently, $\ahat$s can simulate $\mahat$s:
+\begin{lemma}[\text{\citealp[][Prop. 1]{merrill2025exactexpressivepowertransformers}}]\label{unmask2mask}
+    For $\idxd \geq 1$, $\uahat^\idxd_\idxk \subseteq \mahat^\idxd_\idxk \subseteq \ahat^\idxd_{1 + \max(\idxk, 1)}$.
+\end{lemma}
+
+
+\section{Parallel Recognition of $\cfl$s}\label{sec:generalcfl}
+
+We now present an algorithm for parallel $\cfl$ recognition, which synthesizes ideas from previous work on algorithms for parallel $\cfl$ recognition \citep{ruzzo-treesize, rossmanith-observationsparallelrec, lange-unambiguous}. 
+We show in \cref{subsec:cfl-ahat-impl} how to implement this algorithm on $\ahat$s.\looseness=-1
+
+\subsection{Items and Parse Trees}\label{subsec:itemsandtrees}
+Many parsing algorithms---including those we consider here---manipulate \defn{items}, defined as follows.
+Given a grammar $\grammar = \cfgtuple$ and a string $\str \in \kleene{\alphabet}$ of length $\idxn$, an \defn{item} is a tuple of one of four shapes:
+\begin{equation*}
+    (\idxi, \NTA, \idxj], \quad [\idxi, \NTA, \idxj], \quad [\idxi, \NTA, \idxj), \quad \text{or} \quad (\idxi, \NTA, \idxj),
+\end{equation*}
+with $\NTA \in \nonterm$ and indices $\idxi, \idxj \in \set{0, 1, \ldots, \idxn}$.
+An item is \defn{realizable} if its non-terminal derives the substring determined by the bracket shape; e.g., $(\idxi, \NTA, \idxj] = \top \iff \NTA \derives \str_{(\idxi, \idxj]}$, and analogously for $[\idxi, \NTA, \idxj]$, $[\idxi, \NTA, \idxj)$, $(\idxi, \NTA, \idxj)$.
+We write $\items$ for the set of all items associated with string $\str$ and a grammar $\grammar$, i.e., all tuples of the four shapes above with non-terminals from $\nonterm$ and indices in $\set{0, 1, \ldots, \idxn}$.
+We suppress dependence on $\str$ and $\grammar$ for notational simplicity.
+
+Realizable items can be combined according to the rules of $\grammar$ to produce new items. 
+In particular, if $\production{\NTA}{\NTB \NTC} \in \rules$, then for any indices $\idxi < \idxk < \idxj$,
+\begin{equation*}
+    \dfrac{(\idxi, \NTB, \idxk] \quad (\idxk, \NTC, \idxj]}{(\idxi, \NTA, \idxj]}\,,
+\end{equation*}
+i.e., \emph{adjacent} realizable items combine via the rule into a realizable item over their union. 
+Conversely, a realizable $(\idxi, \NTA, \idxj]$ guarantees that \emph{some} rule $\production{\NTA}{\NTB \NTC}$ and split index $\idxk$ witness it, but the split is not known a priori---establishing realizability requires considering \emph{all} candidate splits.
+
+\begin{figure}
+    \begin{algorithm}[H]
+    \algrenewcommand\algorithmicfunction{\textbf{def}}\footnotesize
+        \algrenewcommand\algorithmicindent{1.0em}
+        \caption{Evaluating the realizability of an item}
+        \label{alg1}
+        \begin{algorithmic}[1]
+            \Function{\recAlgo}{$(\idxi, \NT{A}, \idxj]$}
+            \If{$\idxj = \idxi + 1$}
+            \State \Return $\production{\NT{A}}{\sym_\idxj} \in \rules$
+            \Else
+            \State \textbf{guess} $a \in \{\textsc{split}, \textsc{gap}\}$
+            \If{$a = \textsc{split}$}
+            \State \textbf{guess} $\production{\NT{A}}{\NT{B}\NT{C}} \in \rules$
+            \State \textbf{guess} $\idxk \in (\idxi, \idxj)$
+            \State \Return $\recAlgo\bigl((\idxi, \NT{B}, \idxk]\bigr) \wedge \recAlgo\bigl((\idxk, \NT{C}, \idxj]\bigr)$
+            \Else
+            \State \textbf{guess} $\NT{Y} \in \nonterm$
+            \State \textbf{guess} $(\idxk, \idxl] \subsetneq (\idxi, \idxj]$
+            \State \Return $\recAlgo\bigl((\idxi, \NT{A}, \idxj] / (\idxk, \NT{Y}, \idxl]\bigr) \wedge \recAlgo\bigl((\idxk, \NT{Y}, \idxl]\bigr)$
+            \EndIf
+            \EndIf
+            \EndFunction
+        \end{algorithmic}
+    \end{algorithm}
+\end{figure}
+
+
+We additionally use \defn{slashed items} to record that some non-terminal already derives an inner substring of the input:
+the slashed item $(\idxi, \NTA, \idxj] / (p, \NTB, q]$ with $(p,q] \subsetneq (\idxi,\idxj]$ records that $\NTB \derives \str_{(p, q]}$, and asks whether $\NTA$ derives the sentential form obtained by replacing $\str_{(p, q]}$ inside $\str_{(\idxi, \idxj]}$ with the non-terminal $\NTB$. We write $(\idxi, \NTA, \idxj] / (p, \NTB, q] = \top$, and call the slashed item \defn{realizable} when this is the case; equivalently $\NTA \derives \str_{(\idxi, p]} \, \NTB \, \str_{(q, \idxj]}$.
+The same semantics extend to the other three bracket shapes, i.e., a slashed item of any of the forms $[\idxi, \NTA, \idxj] / (p, \NTB, q]$, $[\idxi, \NTA, \idxj) / (p, \NTB, q]$, or $(\idxi, \NTA, \idxj) / (p, \NTB, q]$ means that $\NTA$ derives the outer yield with $\str_{(p, q]}$ excised and replaced by $\NTB$ where the outer yield is whichever (half-)open interval the outer brackets pick out. The inner item can likewise take any of the four shapes.
+Analogously to $\items$, we denote by $\slasheditems$ the set of all slashed items associated with string $\str$ and a grammar $\grammar$.
+
+
+A \defn{parse tree} for $\str$ under a CFG $\grammar$ in CNF is a finite tree of items, built inductively from two deduction rules:
+\begin{align*}
+    \textsc{(leaf)}:\quad
+    & \dfrac{}{(\idxi - 1, \NTA, \idxi]},
+    &&  \production{\NTA}{\sym_\idxi} \in \rules; \\[0.7em]
+    \textsc{(combine)}:\quad
+    & \dfrac{%
+    \tikz[baseline=(b.base)]{%
+    \node[inner sep=1pt] (b) {$(\idxi, \NTB, \idxk]$};%
+    \draw ([yshift=6mm]b.north west) -- ([yshift=6mm]b.north east) -- ([yshift=1mm]b.north) -- cycle;%
+    }%
+    \quad
+    \tikz[baseline=(c.base)]{%
+    \node[inner sep=1pt] (c) {$(\idxk, \NTC, \idxj]$};%
+    \draw ([yshift=6mm]c.north west) -- ([yshift=6mm]c.north east) -- ([yshift=1mm]c.north) -- cycle;%
+    }%
+    }{(\idxi, \NTA, \idxj]},
+    &&  \production{\NTA}{\NTB\,\NTC} \in \rules.
+\end{align*}
+The \textsc{leaf} rule has no premises: whenever the grammar contains the unit production $\production{\NTA}{\sym_\idxi}$ for the input terminal $\sym_\idxi$ at position $\idxi$, it introduces the length-1 item $(\idxi{-}1, \NTA, \idxi]$. The \textsc{combine} rule splices two adjacent realizable items into a longer one whenever the grammar contains the binary production $\production{\NTA}{\NTB\,\NTC}$; the split index $\idxk$ is shared between the two premises so that the conclusion covers the union $(\idxi, \idxj]$ exactly, matching the calculus introduced above. 
+\begin{figure}[H]
+    \begin{algorithm}[H]        \algrenewcommand\algorithmicfunction{\textbf{def}}\footnotesize
+    \algrenewcommand\algorithmicindent{1.0em}
+        \caption{Evaluating the realizability of a slashed item}
+        \label{alg2}
+        \begin{algorithmic}[1]
+            \Function{\recAlgo}{$(\idxi, \NT{X}, \idxj] / (p, \NT{Y}, q]$}
+            \If{$p = \idxi \wedge q = \idxj - 1$}
+            \State \textbf{guess} $\NT{Z} \in \nonterm$
+            \State \Return $(\NT{X} \to \NT{Y}\,\NT{Z}) \in \rules \,\wedge\, (\NT{Z} \to \sym_\idxj) \in \rules$
+            \ElsIf{$p = \idxi + 1 \wedge q = \idxj$}
+            \State \textbf{guess} $\NT{Z} \in \nonterm$
+            \State \Return $(\NT{X} \to \NT{Z}\,\NT{Y}) \in \rules \,\wedge\, (\NT{Z} \to \sym_{\idxi+1}) \in \rules$
+            \Else
+            \State \textbf{guess} $a \in \{\textsc{split}, \textsc{gap}\}$
+            \If{$a = \textsc{split}$}
+            \State \textbf{guess} $(\NT{X} \to \NT{A}\,\NT{B}) \in \rules$
+            \State \textbf{guess} $\idxk \in (\idxi, \idxj) / (p,q]$
+            \State \Return $(\recAlgo\bigl((\idxi, \NT{A}, \idxk] / (p, \NT{Y}, q]\bigr) \wedge \recAlgo\bigl((\idxk, \NT{B}, \idxj]\bigr))$
+            \Statex \hspace*{2.85em} $\lor\; (\recAlgo\bigl((\idxi, \NT{A}, \idxk]) \wedge \recAlgo\bigl((\idxk, \NT{B}, \idxj]/ (p, \NT{Y}, q]\bigr))$
+            \Else
+            \State \textbf{guess} $\NT{Z} \in \nonterm$
+            \State \textbf{guess} $\idxk,\idxl$ \text{ with }$(p,q]\subsetneq(\idxk,\idxl]\subsetneq(\idxi,\idxj]$ 
+            \State \Return $\recAlgo\bigl((\idxi, \NT{X}, \idxj] / (\idxk, \NT{Z}, \idxl]\bigr) \wedge \recAlgo\bigl((\idxk, \NT{Z}, \idxl] / (p, \NT{Y}, q]\bigr)$
+            \EndIf
+            \EndIf
+            \EndFunction
+        \end{algorithmic}
+    \end{algorithm}
+\end{figure}
+
+Naturally, $\str \in \lang(\grammar)$ iff $(0, \start, \idxn]$ is realizable.
+A parse tree witnesses $\str \in \lang(\grammar)$ iff its root is the item $(0, \start, \idxn]$, and an item $(\idxi, \NTA, \idxj]$ is realizable iff it is the root of some sub-derivation built from these rules.
+
+Because $\grammar$ is in CNF, any derivation $\NTX \derives \str_{(\idxi, \idxj]}$ with $\idxj > \idxi + 1$ must begin with a binary rule, so any realizable item $(\idxi, \NTX, \idxj]$ with $\idxj > \idxi + 1$ decomposes in one of two ways: 
+\begin{enumerate*}[label=\textit{(\alph*)}]
+    \item We can split at the root: there is a rule $\production{\NTX}{\NTY\NTZ}$ and a split index $\idxk \in (\idxi, \idxj)$ such that the items $(\idxi, \NTY, \idxk]$ and $(\idxk, \NTZ, \idxj]$ are both realizable.
+    This yields $\bigo(|\rules|\,\idxn)$ choices per item. 
+    \item We can split at any internal parse-tree node: there is an item $(p, \NTY, q]$ such that both the slashed item $(\idxi, \NTX, \idxj]/(p, \NTY, q]$ and the inner item $(p, \NTY, q]$ are realizable. Thus, there are $\bigo(|\nonterm|\,\idxn^2)$ choices per item. 
+\end{enumerate*}
+The base case $\idxj = \idxi + 1$ asks whether $\production{\NTX}{\sym_\idxj}$ is a rule. Slashed items decompose symmetrically, with the additional choice of which sub-derivation (left or right) brackets the assumed inner derivation, yielding $\bigo(|\rules|\,\idxn)$ root-split choices and $\bigo(|\nonterm|\,\idxn^2)$ internal-split choices per slashed item.
+
+\subsection{Parallel Parsing}\label{subsec:generalcflalgo}
+The recursive characterization above couples items and slashed items: an item $(\idxi, \NTA, \idxj]$ decomposes either as a root-split into two adjacent items, or as an internal-split into a slashed item and an inner item; a slashed item decomposes symmetrically into smaller slashed items and inner items. 
+Recognizing realizability is thus naturally expressed as a pair of mutually recursive procedures---\cref{alg1} recurses on items, dispatching to \cref{alg2} on the slashed item produced by an internal-split; \cref{alg2} recurses on slashed items, dispatching back to \cref{alg1} on the inner item it spawns. 
+Each procedure returns $\true$ iff at least one decomposition is realizable; as a Boolean formula this is a disjunction $\bigvee$, ranging over candidate splits, productions, and (in \cref{alg2})
+the choice of which child of the split inherits the inner excision.
+
+Read as a Boolean formula, the body of \cref{alg1,alg2} is a tree of $\land$s and $\lor$s over the predicate ``the item is realizable.'' The conjunctions are written explicitly: each return statement combines its recursive calls with $\wedge$ and succeeds iff every branch succeeds. The disjunctions are written compactly as \textbf{guess} statements (rather than as $\bigvee_{a \in S}$).
+In other words, guess says pick one disjunct, and the procedure returns $\true$ iff \emph{some} choice does. 
+The two operators together are exactly the alternation of \citet{chandra-alternation}---each \textbf{guess} is an existential ($\vee$) branch, each $\wedge$ a universal branch---so the parallel runtime is the alternating depth \citep{ruzzo-treesize, ruzzo-unif}, which equals the depth of the recursion tree: logarithmic in $\idxn$ (cf. \cref{lem:centroidvertex}).
+By the idea just described, \cref{alg1,alg2} correctly recognize membership in an arbitrary $\cfl$\footnote{All of \cref{subsec:generalcflalgo}'s proofs figure in \cref{app:proofsparsing}.}:
+\begin{restatable}[Correctness]{lemma}{cflalgocorrectness}\label{lem:cfl_algo_correctness}
+    Given a CFG $\grammar$ in CNF and $\str \in \kleene{\alphabet}$ of length $\idxn$, $\recAlgo((0, \start, \idxn]) = \true$ iff $\str \in \lang(\grammar)$.
+\end{restatable}
+
+We now analyze the resources required to compute $\recAlgo((0, \start, \idxn])$ via \cref{alg1} and \cref{alg2}, i.e., to test the membership of the input string $\str$ in $\grammar$. 
+$\recAlgo$'s recursion is based on the balanced decomposition of a tree into subtrees of roughly equal size, which intuitively leads to a $\log(\idxn)$-time procedure. 
+Formally, we have the following fact about decomposing trees.
+\begin{lemma}[\citealt{jordan1869}]\label{lem:centroidvertex}
+    Let $(V, E)$ be a tree with $\idxn \defeq |V| > 1$ nodes.
+    Then, there exists a \defn{centroid node} $v \in V$ whose removal partitions $(V,E)$ into components, each of size at most $\lceil \idxn/2 \rceil$.
+\end{lemma}
+
+\paragraph{Time complexity.} 
+\cref{lem:centroidvertex} allows \cref{alg1} to run in a logarithmic number of recursive steps.
+\begin{restatable}[Parallel Runtime]{lemma}{solvelognsteps}\label{lem:solvelognsteps}
+    Let $\str \in \kleene{\alphabet}$ be a string of length $\idxn$ and let $\grammar$ be a context-free grammar.
+    $\recAlgo((0, \start, \idxn])$ terminates in at most $2\lceil \log_{2}(2\idxn) \rceil + \bigo(1)$ recursive steps when $\str\in\lang(\grammar)$.
+\end{restatable}
+
+\textbf{Space complexity.}
+The bottleneck resides in computing the realizability of slashed items of the form $(\idxi, \NT{X}, \idxj] / (\idxk, \NT{Y}, \idxl]$, of which there are $\bigo( \idxn^4)$.
+Guessing an item $(p, \NT{Z}, q]$ that could decompose a slashed item requires $\bigo(\idxn^2)$ space, leading to a total space complexity of $\bigo(\idxn^6)$.
+
+\subsection{Implementing the Algorithm on $\ahat$s}\label{subsec:cfl-ahat-impl}
+Looped and padded transformers are expressively equivalent to classical models of parallel recognition \citep{merrill2025exactexpressivepowertransformers,anonymous2026revisiting}.
+Combining these results with the time and space upper bounds established in \cref{subsec:generalcflalgo}, we can show (see \cref{app:proofcfl2ahat} for the proof):
+\begin{restatable}{theorem}{cfltoahat}\label{thm:cfl2ahat} 
+    $\cfl \subseteq \mahat^{1}_{6} \subseteq \ahat^{1}_{7}$.
+\end{restatable}
+
+
+\section{Parallel Recognition of Unambiguous $\cfl$s}\label{sec:subclasses}
+
+\cref{thm:cfl2ahat} shows that $\log(\idxn)$-deep  $\mahat$s with $\bigo(\idxn^6)$ padding can recognize all $\cfl$s.
+Intuitively, the padding in \cref{thm:cfl2ahat} handles ambiguity in a general $\cfl$ by storing all the ways in which we can decompose an item. 
+Thus, guessing how to decompose an item requires a substantial amount of space, and one might expect that \emph{unambiguous} grammars would require less space for recognition.
+Accordingly, we next study \defn{unambiguous} $\cfl$s ($\ucfl$s), which admit at most one derivation for any string.
+
+Unambiguity is a natural and exploitable property.
+For example, programming language parsers such as \textsc{LR} parsers rely on deterministic (therefore unambiguous) $\cfl$s to process inputs in linear time.
+Moreover, transformers struggle to parse ambiguous grammars  \citep{khalighinejad-etal-2023-approximating} and struggle to process syntactically ambiguous natural language sentences \citep{liu2023wereafraidlanguagemodels}. 
+In this section, we show that $\ucfl$s can be recognized by transformers with less padding than arbitrary $\cfl$s if slightly more depth overhead is allowed:
+\begin{restatable}{theorem}{ucfltoahat}\label{thm:ucfl2ahat}
+    $\ucfl \subseteq \mahat^{2}_{3} \subseteq \ahat^2_4$.
+\end{restatable}
+We do so by first formalizing \citeposs{chytil-unambiguous} unambiguous $\cfl$ recognition algorithm with a smaller space complexity in $\log^2(\idxn)$-time. 
+We then translate this algorithm into $\ahat$s with a tractable amount of padding.
+
+\subsection{Parsing Unambiguous $\cfl$s}\label{subsec:unambiguousalgo}
+Our goal is again to decide whether $\str \in \lang(\grammar)$ by computing the realizability of $(0, \start, \idxn]$.
+In contrast to \cref{alg1,alg2}, which start from the goal item $(0, \start, \idxn]$ and recurse downward, here we instead work bottom-up and \emph{in parallel across all items}: at every iteration $t$, the algorithm computes realizability for \emph{every} item $\itm$ simultaneously, regardless of whether that item happens to lie on a derivation of $(0, \start, \idxn]$.
+Concretely, the algorithm maintains a growing set $\items_0 \subseteq \items_1 \subseteq \cdots$ of items already certified as realizable, and at each iteration extends it by one ``CKY-style'' combination step composed with a reachability closure.
+Unambiguity specifically lets us evaluate this closure in $\bigo(\log \idxn)$ parallel depth (\cref{fact:upprop}).
+\begin{figure*}[ht]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.82,
+        every node/.style={transform shape},
+        leaftok/.style={draw=ETHGreen!60, fill=ETHGreen!20, minimum width=9mm, minimum height=7mm, font=\footnotesize, rounded corners=1pt},
+        optok/.style={draw=ETHBlue!70, fill=ETHBlue!15, minimum width=9mm, minimum height=7mm, font=\footnotesize, rounded corners=1pt},
+        roottok/.style={draw=ETHBronze!80, fill=ETHBronze!20, minimum width=9mm, minimum height=7mm, font=\footnotesize, rounded corners=1pt, thick},
+        rsslot/.style={draw=none, minimum width=4.4mm, minimum height=3.6mm, font=\tiny, inner sep=0pt, outer sep=0pt},
+        rsval/.style={rsslot, fill=ETHGreen!18},
+        rstyp/.style={rsslot, fill=ETHBlue!18},
+        rsptr/.style={rsslot, fill=ETHPurple!15},
+        rsempty/.style={rsslot, fill=ETHGray!10, text=ETHGray!70},
+        vecframe/.style={draw=ETHGray!60, line width=0.5pt, rounded corners=0.8pt, inner sep=0pt},
+        ptrarrow/.style={->, >=stealth, semithick, ETHPurple!70, shorten >=1pt, shorten <=1pt},
+        poslabel/.style={font=\tiny\itshape, text=ETHGray},
+        grouplabel/.style={font=\footnotesize\itshape},
+        iterbox/.style={draw=ETHGray!50, fill=white, minimum width=4.4mm, minimum height=3.6mm, font=\tiny, inner sep=0pt},
+        iterval/.style={iterbox, fill=ETHGreen!18},
+        iterempty/.style={iterbox, fill=ETHGray!10, text=ETHGray!60},
+        ]
+        
+        % ============================================================
+        % POSTFIX token row at y=0
+        % psi = ((T v F) ^ (T v T)) ^ (F v T)
+        % postfix:  T F v T T v ^ F T v ^
+        % positions: 1 2 3 4 5 6 7 8 9 10 11
+        % subtree roots (operator positions): 3, 6, 7, 10, 11
+        %   pos 3 (v):  args = 1, 2
+        %   pos 6 (v):  args = 4, 5
+        %   pos 7 (^):  args = 3, 6
+        %   pos 10 (v): args = 8, 9
+        %   pos 11 (^): args = 7, 10  (root)
+        % ============================================================
+        \node[leaftok] (t1)  at (0,    0) {$\TRUE$};
+        \node[leaftok] (t2)  at (1.2,  0) {$\FALSE$};
+        \node[optok]   (t3)  at (2.4,  0) {$\lor$};
+        \node[leaftok] (t4)  at (3.6,  0) {$\TRUE$};
+        \node[leaftok] (t5)  at (4.8,  0) {$\TRUE$};
+        \node[optok]   (t6)  at (6.0,  0) {$\lor$};
+        \node[optok]   (t7)  at (7.2,  0) {$\land$};
+        \node[leaftok] (t8)  at (8.4,  0) {$\FALSE$};
+        \node[leaftok] (t9)  at (9.6,  0) {$\TRUE$};
+        \node[optok]   (t10) at (10.8, 0) {$\lor$};
+        \node[roottok] (t11) at (12.0, 0) {$\land$};
+        
+        % position indices just below the token row
+        \foreach \n/\i in {t1/1, t2/2, t3/3, t4/4, t5/5, t6/6, t7/7, t8/8, t9/9, t10/10, t11/11}
+        \node[poslabel] at (\n.south) [below=1pt] {$\i$};
+        
+        % ============================================================
+        % Residual-stream vector above each token (4 stacked slots).
+        % Every position has the same vector layout; leaves have only
+        % $\fval$ set, operators have type/argL/argR set (filled at input
+        % by the C-RASP preprocessing of \cref{corr:bfvp}) and $\fval$
+        % filled iteratively.
+        % ============================================================
+        \def\rsy{2.6}
+        \def\dy{0.36}
+        
+        % --- Leaf positions: only $\fval$ is set ---
+        \foreach \n/\v in {t1/$\TRUE$, t2/$\FALSE$, t4/$\TRUE$, t5/$\TRUE$, t8/$\FALSE$, t9/$\TRUE$}{
+        \node[rsval]   (\n-val) at (\n |- 0,\rsy)         {\v};
+        \node[rsempty] (\n-typ) at (\n |- 0,\rsy-\dy)     {$-$};
+        \node[rsempty] (\n-pL)  at (\n |- 0,\rsy-2*\dy)   {$-$};
+        \node[rsempty] (\n-pR)  at (\n |- 0,\rsy-3*\dy)   {$-$};
+        \node[vecframe, fit=(\n-val)(\n-pR)] (\n-vec) {};
+        \node[font=\scriptsize, text=ETHGray, anchor=east] at (\n-vec.west) {$[$};
+        \node[font=\scriptsize, text=ETHGray, anchor=west] at (\n-vec.east) {$]$};
+        }
+        
+        % --- Operator positions: type/pointers set at input; $\fval$ filled iteratively ---
+        \foreach \n/\v/\t/\pl/\pr in {%
+        t3/$\TRUE$/$\lor$/$1$/$2$,
+        t6/$\TRUE$/$\lor$/$4$/$5$,
+        t7/$\TRUE$/$\land$/$3$/$6$,
+        t10/$\TRUE$/$\lor$/$8$/$9$,
+        t11/$\TRUE$/$\land$/$7$/$10$%
+        }{
+        \node[rsval] (\n-val) at (\n |- 0,\rsy)         {\v};
+        \node[rstyp] (\n-typ) at (\n |- 0,\rsy-\dy)     {\t};
+        \node[rsptr] (\n-pL)  at (\n |- 0,\rsy-2*\dy)   {\pl};
+        \node[rsptr] (\n-pR)  at (\n |- 0,\rsy-3*\dy)   {\pr};
+        \node[vecframe, fit=(\n-val)(\n-pR)] (\n-vec) {};
+        \node[font=\scriptsize, text=ETHGray, anchor=east] at (\n-vec.west) {$[$};
+        \node[font=\scriptsize, text=ETHGray, anchor=west] at (\n-vec.east) {$]$};
+        }
+        
+        % Slot-name legend on the far left
+        \node[font=\tiny, text=ETHGray, anchor=east] at ($(t1-vec.west) + (-0.30, 0.36)$) {$\fval$};
+        \node[font=\tiny, text=ETHGray, anchor=east] at ($(t1-vec.west) + (-0.30, 0)$)    {$\ftype$};
+        \node[font=\tiny, text=ETHGray, anchor=east] at ($(t1-vec.west) + (-0.30,-0.36)$) {$\fargL$};
+        \node[font=\tiny, text=ETHGray, anchor=east] at ($(t1-vec.west) + (-0.30,-0.72)$) {$\fargR$};
+        
+        \node[font=\footnotesize\itshape, text=ETHGray, anchor=south]
+        at ($(t1-vec.north west) !0.5! (t11-vec.north east) + (0,0.18)$)
+        {residual stream at each position (vector of slots)};
+        
+        % ============================================================
+        % Pointer arrows from PTR slots down to the target token
+        % ============================================================
+        \draw[ptrarrow] (t3-pL.south)  to[out=-135, in=90] (t1.north);
+        \draw[ptrarrow] (t3-pR.south)  to[out=-90, in=90] (t2.north);
+        
+        \draw[ptrarrow] (t6-pL.south)  to[out=-135, in=90] (t4.north);
+        \draw[ptrarrow] (t6-pR.south)  to[out=-90, in=90] (t5.north);
+        
+        \draw[ptrarrow] (t7-pL.south)  to[out=-135, in=90] (t3.north);
+        \draw[ptrarrow] (t7-pR.south)  to[out=-90, in=90] (t6.north);
+        
+        \draw[ptrarrow] (t10-pL.south) to[out=-135, in=90] (t8.north);
+        \draw[ptrarrow] (t10-pR.south) to[out=-90, in=90] (t9.north);
+        
+        \draw[ptrarrow] (t11-pL.south) to[out=-135, in=90] (t7.north);
+        \draw[ptrarrow] (t11-pR.south) to[out=-90, in=90] (t10.north);
+        
+        % ============================================================
+        % BELOW the token row: a single brace labeling the whole input
+        % as a postfix string (no padding/input split anymore)
+        % ============================================================
+        \draw[decoration={brace,amplitude=4pt,mirror,raise=10pt}, decorate, ETHGray!70]
+        (t1.south west) -- (t11.south east)
+        node[midway, below=14pt, grouplabel, text=ETHGray!80!black]
+        {postfix input string for $\psi \defeq ((\TRUE\!\lor\!\FALSE)\land(\TRUE\!\lor\!\TRUE))\land(\FALSE\!\lor\!\TRUE)$};
+        
+        % ============================================================
+        % ITERATION PANEL on the right: operator positions' $\fval$
+        % filled across iterations 0, 1, ..., O(log n).
+        % Rows = operator positions (t3, t6, t7, t10, t11)
+        % Fill times follow tree depth from the leaves:
+        %   t3, t6, t10 (depth 1) -> filled at iter 1
+        %   t7          (depth 2) -> filled at iter 2
+        %   t11 (root,  depth 3) -> filled at iter 3 = O(log n)
+        % ============================================================
+        \begin{scope}[shift={(15.5, -1.5)}]
+            \node[font=\tiny\itshape, text=ETHGray] at (0,    3.5) {iter 0};
+            \node[font=\tiny\itshape, text=ETHGray] at (0.55, 3.5) {1};
+            \node[font=\tiny\itshape, text=ETHGray] at (1.10, 3.5) {2};
+            \node[font=\tiny\itshape, text=ETHGray] at (1.65, 3.5) {$\cdots$};
+            \node[font=\tiny\itshape, text=ETHGray] at (2.30, 3.5) {$\log \idxn$};
+            
+            \foreach \i/\rowy/\fillstart/\label in {%
+            0/3.10/1/pos.\,3,
+            1/2.74/1/pos.\,6,
+            2/2.38/2/pos.\,7,
+            3/2.02/1/pos.\,10,
+            4/1.66/3/pos.\,11%
+            }{
+            \node[font=\tiny, text=ETHGray, anchor=east] at (-0.20, \rowy) {\label};
+            \foreach \col/\cx in {0/0, 1/0.55, 2/1.10, 3/1.65, 4/2.30}{
+            \pgfmathtruncatemacro{\filled}{ifthenelse(\col >= \fillstart, 1, 0)}
+            \ifnum\filled=1
+            \node[iterval] at (\cx, \rowy) {$\TRUE$};
+            \else
+            \node[iterempty] at (\cx, \rowy) {$?$};
+            \fi
+            }
+            }
+            
+            \node[font=\footnotesize\itshape, text=ETHGray, anchor=south]
+            at (0.5, 3.7) {$\fval$ of each operator position across iterations};
+            
+            \draw[->, >=stealth, thick, ETHGreen!70]
+            (-1, 1.6) .. controls (-1.45, 2) and (-1.45, 2.5) .. (-1, 3.0);
+            \node[font=\tiny\itshape, text=ETHGreen!70!black, anchor=east]
+            at (-1.3, 2.3) {\shortstack[r]{loop\\$\bigo(\log\idxn)$\\times}};
+            
+            \draw[decoration={brace,amplitude=3pt,mirror,raise=3pt}, decorate, ETHGreen!70]
+            (0, 1.35) -- (2.30, 1.35)
+            node[midway, below=8pt, font=\tiny\itshape, text=ETHGreen!70!black]
+            {root's value known after $\bigo(\log \idxn)$ iterations};
+        \end{scope}
+        
+    \end{tikzpicture}%
+    \caption{
+    \textbf{Postfix encoding of a variable-free Boolean formula $\psi$ used by \cref{lem:reach}.}
+    The example formula is $\psi \defeq ((\TRUE\!\lor\!\FALSE)\land(\TRUE\!\lor\!\TRUE))\land(\FALSE\!\lor\!\TRUE)$, whose postfix serialization is $\TRUE\,\FALSE\,\lor\,\TRUE\,\TRUE\,\lor\,\land\,\FALSE\,\TRUE\,\lor\,\land$. No padding symbols are appended: every position of the input is either a \textcolor{ETHGreen}{leaf value} ($\TRUE/\FALSE$) or a \textcolor{ETHBlue}{binary operator} ($\land$/$\lor$). At each position the residual stream carries the slots $[\fval,\,\ftype,\,\fargL,\,\fargR]$: at leaf positions only $\fval$ is set (to the input value); at operator positions $\ftype$ encodes the connective and $\fargL,\fargR$ are pointers to the two operand positions (\textcolor{ETHPurple}{purple} arrows)---determined directly from postfix structure by the \textsc{C-RASP} preprocessing of \cref{corr:bfvp}. The right panel shows that $\fval$ at each operator position is filled \emph{iteratively}: at every loop iteration, operator positions whose two operands' values are already known pebble up their own value, so after $\bigo(\log \idxn)$ iterations the \textcolor{ETHBronze}{root}'s value is known.
+    }
+    \label{fig:lemreach}
+\end{figure*}
+
+First, we define the initial set of items
+\begin{equation}
+    \items_0 \defeq \{(\idxi-1, \NTA, \idxi] \mid \production{\NTA}{\sym_\idxi} \in \rules\},
+\end{equation}
+i.e., length-$1$ items witnessed by the unit productions of $\grammar$. 
+These are the base-case items certifiable as realizable directly from the input.
+Then, we define the relation
+\begin{equation}
+    \bigl((\idxi, \NTB, \idxk],\, (\idxk, \NTC, \idxj],\, (\idxi, \NTA, \idxj]\bigr) \in \sR \iff \production{\NTA}{\NTB \NTC} \in \rules.
+\end{equation}
+$\sR$ encodes a single \textsc{combine} step of the parse-tree calculus (\cref{subsec:itemsandtrees}): if $\NTB$ derives $\str_{(\idxi, \idxk]}$ and $\NTC$ derives the adjacent right span $\str_{(\idxk, \idxj]}$ and the grammar contains $\production{\NTA}{\NTB\NTC}$, then $\NTA$ derives the union $\str_{(\idxi, \idxj]}$.
+In other words, $\sR(\itm_1, \itm_2, \itm_3)$ holds iff items $\itm_1$ and $\itm_2$ are the two CKY antecedents that justify $\itm_3$.
+Given $\sR$, the algorithm maintains a growing set of \defn{marked} items, where ``$\itm$ marked at step $t$'' is the algorithm's running certificate that $\itm$ is realizable, established by iteration $t$.
+The base items $\items_0$ are marked at step $0$.
+The marking sets will satisfy $\items_0 \subseteq \items_1 \subseteq \cdots \subseteq \items_* \subseteq \items$, and we will see below that the fixpoint $\items_*$ contains exactly the realizable items, so testing $(0, \start, \idxn] \in \items_*$ decides membership in $\lang(\grammar)$.
+We extend $\sI_t$ inductively; assuming the marked set $\items_{t-1}$ at iteration $t-1$ is available, we build $\items_t$ in two steps:
+\begin{enumerate*}[label=(\textit{\arabic*})]
+    \item Package every CKY combination that uses a witness from $\items_{t-1}$ into a directed graph and
+    \item Chain arbitrarily many such combinations together within the same iteration, so that $\items_t$ contains items realizable by a derivation that bottoms out in $\items_{t-1}$ via any chain of new combinations.
+\end{enumerate*}
+
+Concretely, we construct a graph $(\items, \edges_t)$ whose edges record one-step implications between items, conditional on $\items_{t-1}$:
+\begin{align}\label{eq:depgraph}
+    \edges_t \defeq \bigl\{\itm_3 \to \itm_1 \mid \; & \itm_3 \notin \items_{t-1} \text{ and } (\sR(\itm_1, \itm_2, \itm_3) \text{ or } \\ & \sR(\itm_2, \itm_1, \itm_3)) \text{ for some } \itm_2 \in \items_{t-1}\bigr\}. \notag
+\end{align}
+Intuitively, the edge $\itm_3 \to \itm_1$ encodes that \emph{if $\itm_1$ is realizable, then so is $\itm_3$}, where the witness $\itm_2$ is drawn from the items already marked at step $t-1$.
+We write $\depgraph(\sI) \defeq (\items, \edges(\sI))$ for the dependency graph obtained by setting $\items_{t-1} = \sI$ in \cref{eq:depgraph}, so that $\depgraph(\items_{t-1}) = (\items, \edges_t)$ and, in particular, $\depgraph(\items_0)$ is the \emph{initial} dependency graph $(\items, \edges_1)$.
+Writing $\reachable_t(\itm)$ for the set of items reachable from $\itm$ in $(\items, \edges_t)$ ($|\reachable_t(\itm)| \le |\items| = \bigo(\idxn^2)$), we mark $\itm$ at step $t$ exactly when it reaches some item already marked at step $t-1$:
+\begin{equation}\label{eq:marked-set}
+    \itm \in \items_t \iff \reachable_t(\itm) \cap \items_{t-1} \neq \emptyset.
+\end{equation}
+In particular, $\items_{t-1} \subseteq \items_t$.
+The algorithm we implement on transformers in \cref{subsec:unambiguousahat} stages this as an outer loop over $t$: at each $t$ it 
+\begin{enumerate*}[label=\textit{(\roman*)}]
+    \item computes the new edge set $\edges_t$ from the previously marked set $\items_{t-1}$ by a single CKY-style probe of $\sR$, and
+    \item evaluates the reachability test of \cref{eq:marked-set} for every item in parallel to obtain $\items_t$.
+\end{enumerate*}
+The outer loop terminates once $\items_t = \items_{t-1}$, at which point no new combinations are possible and we recover $\items_*$ as the set of all \emph{realizable} items.
+\citet{chytil-unambiguous} show that at most $\bigo(\log \idxn)$ iterations are required until the procedure reaches a fixed point. 
+To bound the total runtime of the procedure, it remains to bound the complexity of each reachability problem.
+\citet{chytil-unambiguous} again show that in the case of an unambiguous CFG, each graph reachability problem takes at most $\bigo(\log \idxn)$ time.
+The basis is the following fact.
+\begin{fact}[\citet{chytil-unambiguous}]\label{fact:upprop}
+    Let $\grammar$ be an unambiguous CFG and $t \ge 1$. 
+    For any pair of items $\itm, \itm' \in \items$ in the graph $(\items, \edges_t)$, there is at most one directed path from $\itm$ to $\itm'$.
+\end{fact}
+Thus, $\reachable_t(\itm)$ is a \emph{tree} rooted at $\itm$ for every item $\itm \in \items$.
+The marking condition \cref{eq:marked-set} can then be expressed recursively along this tree: $\itm \in \items_t$ holds iff some node of $\reachable_t(\itm)$ lies in $\items_{t-1}$, which we can unfold edge by edge as
+\begin{equation}\label{eq:reach-recurrence}
+    \ind{\itm \in \items_t} \defeq \ind{\itm \in \items_{t-1}} \;\lor\; \bigvee_{\itm \to \itm' \in \edges_t} \ind{\itm' \in \items_t},
+\end{equation}
+The recursion terminates at the leaves of $\reachable_t(\itm)$---items with no outgoing edge in $\edges_t$---since by \cref{eq:depgraph} any item with an outgoing edge lies outside $\items_{t-1}$, so the two disjuncts in \cref{eq:reach-recurrence} are mutually exclusive. Unrolled along the tree $\reachable_t(\itm)$, this collapses to the flat Boolean disjunction
+\begin{equation}\label{eq:reach-unrolled}
+    \ind{\itm \in \items_t} \iff \bigvee_{\itm' \in \reachable_t(\itm)} \ind{\itm' \in \items_{t-1}}.
+\end{equation}
+Each internal node of $\reachable_t(\itm)$ is an $\lor$ gate and each leaf is the indicator $\ind{\itm' \in \items_{t-1}}$, so the formula is evaluable in $\bigo(\log \idxn)$ parallel depth \citep{rytter-2pda}.
+Putting the pieces together, one outer iteration of the recognition algorithm consists of
+\begin{enumerate*}[label=\textit{(\arabic*)}]
+    \item building the dependency graph $\edges_t$ from $\items_{t-1}$ by a single grammar-rule lookup per candidate triple, and 
+    \item evaluating, in parallel for every item $\itm$, the Boolean formula \cref{eq:reach-unrolled} over the tree $\reachable_t(\itm)$.
+\end{enumerate*}
+This is the recipe we follow in \cref{subsec:unambiguousahat}: each step is implemented by a fixed transformer block, the inner reachability tree by \cref{lem:reach}, and the outer loop by $\bigo(\log \idxn)$ loop iterations---yielding the $\log^2$-depth recognizer of \cref{thm:ucfl2ahat}.
+
+\subsection{Unambiguous $\cfl$s on Transformers}\label{subsec:unambiguousahat}
+This section outlines the proof of \cref{thm:ucfl2ahat} in two steps:\footnote{See \cref{app:ucflproofs} for the full proofs.}
+\begin{enumerate*}[label=\textit{(\arabic*)}]
+    \item in \Cref{lem:reach}, we first show how transformers can compute the value of variable-free Boolean formulas in $\bigo(\log(\idxn))$ parallel depth---this gives us the parallel evaluator we need for the reachability formula \cref{eq:reach-unrolled}---and then
+    \item we show how to implement the unambiguous $\cfl$ recognition algorithm on transformers by using the first step as a subroutine to evaluate \cref{eq:reach-unrolled} at every item in parallel.
+\end{enumerate*}
+
+
+\begin{restatable}{lemma}{reach}\label{lem:reach}
+    For any variable-free postfix Boolean formula $\psi$ on $\idxn$ inputs, there exists a $\bigo(\log(\idxn))$-looped unpadded transformer that computes $\psi$'s value.
+\end{restatable}
+\begin{proof}[Proof intuition.]
+    We feed $\psi$ in postfix form, so every position of the input is either a leaf value ($\TRUE/\FALSE$) or a binary operator ($\land/\lor$) and no padding is appended.
+    A fixed-depth \textsc{C-RASP} preprocessing pass (\cref{lem:postfixencode}) populates the residual stream at each operator position with the connective and with pointers $\fargL,\fargR$ to its two operand positions, which can be read off directly from the postfix structure.
+    This puts the nodes of $\psi$'s binary expression tree in bijection with the input positions, so each node owns its own residual stream and no padding is needed to host intermediate values.
+    On top of this representation the transformer runs \citeposs{rytter-2pda} parallel pebble game: at each loop iteration, every operator position whose two operands' values are already known reads them via $\fargL,\fargR$ and pebbles up its own value $\fval$.
+    Since the expression tree has depth $\bigo(\log(\idxn))$ in the balanced case and Rytter's pebble game halves the unresolved depth at every iteration in general, after $\bigo(\log(\idxn))$ iterations every operator position---in particular the root---has its value filled in, and the transformer reads off $\psi$'s value from the root position.
+    \Cref{fig:lemreach} illustrates the postfix encoding and the iterative filling of $\fval$ on the example $\psi \defeq ((\TRUE\!\lor\!\FALSE)\land(\TRUE\!\lor\!\TRUE))\land(\FALSE\!\lor\!\TRUE)$.
+\end{proof}
+
+\Cref{lem:reach} already yields a result of independent interest.
+We denote by \defn{$\bfvp$} the set of variable-free Boolean formulas that evaluate to $\true$---the \emph{Boolean formula value problem} of \citet{buss-bfvp}, the canonical $\nc{1}$-complete language.
+$\bfvp$ is an unambiguous $\cfl$ whose recognition \emph{requires} $\bigo(\log(\idxn))$-time on classical models of parallel computation: any shallower parallel model (in particular $\tc{0}$, and hence fixed-depth transformers) cannot recognize $\bfvp$ unless $\tc{0} = \nc{1}$.
+Applying \cref{lem:reach} to the indicator of acceptance gives the following.
+\begin{restatable}{corollary}{bfvpcorr}\label{corr:bfvp}
+$\bfvp \in \ahat^1_0$.
+\end{restatable}
+Precisely, \cref{lem:postfixencode} shows how to correctly encode the arguments of each operator in an input Boolean formula in postfix notation.
+\cref{lem:pebble} then shows how to correctly evaluate a formula whose binary expression tree is properly encoded in a transformer---a gadget we leverage to show how transformers can recognize $\ucfl$s with $\bigo(\log^2(\idxn))$ looping layers and $\bigo(\idxn^3)$ padding.
+\ucfltoahat*
+\begin{proof}[Proof intuition]
+    The construction implements the recognition procedure of \cref{subsec:unambiguousalgo} as an $\mahat$, maintaining the marked set $\items_t$ across $\bigo(\log \idxn)$ outer iterations.
+    Each item $(\idxi, \NT{A}, \idxj]$ is assigned a padding symbol that stores a three-valued realizability bit in $\set{\true,\false,\bot}$ (which can be represented in a transformer by three distinct integers) tracking whether $(\idxi, \NT{A}, \idxj] \in \items_t$; there are $\bigo(\idxn^2)$ such item-paddings.
+    For every candidate edge in \cref{eq:depgraph}---of which there are $\bigo(\idxn^3)$, summed over the right-witness pairs $(\idxi, \NT{A}, \idxj], (\idxi, \NT{B}, \idxk]$ and their left-witness counterparts---we allocate one edge-padding symbol.
+    
+    Before the outer loop, a constant-depth block initializes the item-paddings for the length-$1$ items $(\idxi-1, \NT{A}, \idxi]$ to $\true$ or $\false$ according to whether $\production{\NT{A}}{\sym_\idxi} \in \rules$, realizing $\items_0$; all other item-paddings start at $\bot$.
+    
+    Each outer iteration $t$ then runs four constant-depth blocks that implement \cref{eq:depgraph,eq:marked-set}.
+    \emph{(1) Build $\edges_t$.}
+    Each edge-padding for a pair $(\idxi, \NT{A}, \idxj], (\idxi, \NT{B}, \idxk]$ enumerates the $\bigo(|\nonterm|)$ candidate witnesses $(\idxk, \NT{C}, \idxj]$ with $\production{\NT{A}}{\NT{B}\NT{C}} \in \rules$ via a feedforward network, attends to their item-paddings to read off realizability, and flips its edge bit on when some witness lies in $\items_{t-1}$; the left-witness family is constructed symmetrically.
+    \emph{(2) Binarize.}
+    By unambiguity (\cref{fact:upprop}), the reachable subgraph $\reachable_t(\itm)$ from each item is an arborescence, so reachability on $(\items, \edges_t)$ can be reduced to evaluating a Boolean formula on a binary tree \citep{chytil-unambiguous}.
+    We apply a constant-depth graph transform $\gtransform$ that replaces every fan-out of size $M \ge 3$ at an item $\itm$ by a right-deep chain of $M - 2$ fresh intermediary padding symbols indexed by $(\itm, i)$, yielding a binary graph with the same reachability structure; the $(\itm, i)$ encoding and the resulting $\fargL, \fargR$ pointers are then computed and added to the residual stream.
+    \emph{(3) Evaluate reachability.}
+    Treating every internal node of the binarized graph as an $\lor$-gate and every leaf as $\TRUE$ iff the underlying item is in $\items_{t-1}$, a single parallel pebble-game pass (\cref{lem:pebble}) evaluates the formula $\bigvee_{\itm' \in \reachable_t(\itm)} \ind{\itm' \in \items_{t-1}}$ at every item $\itm$ simultaneously in $\bigo(\log \idxn)$ layers.
+    \emph{(4) Write back.}
+    Each item-padding reads its own root value and updates its realizability bit, implementing \cref{eq:marked-set}.
+    
+    After $\bigo(\log \idxn)$ outer iterations $\items_t$ reaches its fixpoint $\items_*$ \citep{chytil-unambiguous}, and $\ind{\str \in \lang(\grammar)}$ can be read off the item-padding for $(0, \start, \idxn]$.
+    The total depth is $\bigo(\log \idxn) \cdot \bigo(\log \idxn) = \bigo(\log^2(\idxn))$, and the padding budget is $\bigo(\idxn^3)$, dominated by the per-edge and binarization-intermediary symbols.\looseness=-1
+\end{proof}
+
+\begin{table*}[t]
+    \small
+    \centering
+    \begin{tabular}{lccc}
+        \toprule
+        Language & Fixed-depth transformer & $\bigo(\log(\idxn))$ looping & $\bigo(\log(\idxn))$ looping and $\bigo(\idxn)$ padding \\
+        \midrule
+        Balanced Counting        & 90 & \textbf{94} & 93 \\
+        $\dyck{1}$               & 85 & \textbf{86} & \textbf{86} \\
+        $\dyck{2}$               & 83 & 84 & \textbf{87} \\
+        Palindrome               & 68 & 67  & \textbf{72} \\
+        $\bfvp$ (infix)          & 80 & 78 & \textbf{81} \\
+        $\bfvp$ (postfix)        & 67 & \textbf{75} & \textbf{75} \\
+        \bottomrule
+    \end{tabular}
+    \caption{
+    Maximum accuracy (out of 100) across 5 random seeds of different transformer variants
+    (fixed-depth, $\log(\idxn)$ looped and unpadded, $\log(\idxn)$ looped and
+    $\bigo(\idxn)$ padded) across a range of context-free languages.
+    The highest score per row are highlighted.
+    }
+    \label{fig:resultsexp}
+\end{table*}
+
+\subsection{Parsing Linear Unambiguous $\cfl$s}\label{subsec:linearalgo}
+Finally, we show how \emph{linearity} further reduces the resources needed to recognize unambiguous $\cfl$s.
+A \defn{linear} $\cfl$ is one recognized by a CFG where each rule is of the form $\production{\NTA}{\syma \NTB}$, $\production{\NTA}{\NTB \syma}$, or $\production{\NTA}{\syma}$.
+While restricted, linear $\cfl$s capture a wide range of features of context-freeness.
+For example, \emph{balanced counting} can be modeled by the linear $\cfl$ $\{\syma^\idxn \symb^\idxn \mid \idxn \geq 0\}$, and \emph{symmetry} can be modeled by the linear $\cfl$ $\{\str \reverseFun{\str} \mid \str \in \kleene{\alphabet}\}$.
+
+We consider unambiguous linear\footnote{A $\cfl$ can be induced by both a non-linear unambiguous grammar and by a different linear, ambiguous grammar. We consider grammars that are \emph{simultaneously} linear and unambiguous.} $\cfl$s ($\ulcfl$s).
+Linearity simplifies the dependency graphs $(\items, \edges_t)$ of \cref{eq:depgraph}: solving an item $\itm = (\idxi, \NTA, \idxj] \in \items$ via a rule $\production{\NTA}{\syma \NTB}$ reduces to the single sub-item $(\idxi+1, \NTB, \idxj]$ (or symmetrically $(\idxi, \NTB, \idxj-1]$), so each item has only a \emph{constant} number of outgoing edges in $\edges_t$ proportional to $|\rules|$. 
+Moreover, because each binary combination $\sR(\itm_1, \itm_2, \itm_3)$ in a linear grammar pairs one non-terminal sub-item with a length-$1$ terminal sibling, every witness $\itm_2$ required by \cref{eq:depgraph} already lies in $\items_0$. Hence every edge that ever appears in any $\edges_t$ is already present in $\edges_1$, and reachability to $\items_0$ in $(\items, \edges_1)$ certifies realizability directly:
+\begin{proposition}\label{prop:ucflimprovement}
+    If $\lang \in \ulcfl$, then the growing set of items $\items_1,\ldots,\items_*$ satisfy $\items_1 = \items_*$.
+\end{proposition}
+Therefore, a single reachability pass suffices and no outer iteration is needed.
+
+\subsection{Linear Unambiguous $\cfl$s on Transformers}\label{subsec:linearahat}
+Combining \cref{prop:ucflimprovement} with \cref{thm:ucfl2ahat} reduces both the time and space complexities:
+\begin{restatable}{theorem}{ulcfltoahat}\label{thm:ulcfl2ahat}
+    $\ulcfl \subseteq \mahat^{1}_{2} \subseteq \ahat^1_3$.
+\end{restatable}
+See \cref{app:ucflproofs} for full proofs.
+
+\section{Experiments}\label{sec:experiments}
+We conduct experiments to elicit the impact of looping and padding when recognizing $\cfl$s, and provide more details on our experimental setup in \cref{app:expsetup}.
+We train transformer classifiers on CFLs of varying degrees of complexity.
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+    \item \textbf{Balanced Counting}: the language of strings with some number of $\syma$s followed by the same number of $\symb$s, defined as $\lang = \{\syma^\idxn \symb^\idxn \mid \idxn \geq 0\}$ with $\alphabet = \set{\syma, \symb}$. 
+    This $\cfl$ is linear and deterministic. Log-precision transformers succeed theoretically \citep{yang2024countingliketransformerscompiling} and empirically \citep{bhattamishra2020abilitylimitationstransformersrecognize} on this $\cfl$.
+    \item \textbf{Dyck}: the language of nested strings of parentheses of $k$ types, which we denote by $\dyck{\idxk}$. 
+    We consider $\dyck{1}$ and $\dyck{2}$. 
+    This $\cfl$ is non-linear and deterministic. Fixed-depth transformers with log-precision can recognize $\dyck{\idxk}$ for any $\idxk$ \citep{hayakawa2024theoreticalanalysishierarchicallanguage}.
+    Transformers empirically succeed on $\dyck{1}$ \citep{bhattamishra2020abilitylimitationstransformersrecognize} but struggle on $\mathrm{Dyck}$  languages with more than 1 bracket type \citep{ebrahimi-etal-2020-self}.
+    \item \textbf{Palindrome}: the language $\lang = \set{\str \reverseFun{\str} \mid \str \in \kleene{\alphabet}}$ for some alphabet $\alphabet$. 
+    We focus on a binary alphabet.
+    This $\cfl$ is linear unambiguous and non-deterministic. Fixed-depth transformers with hard attention and unbounded precision can recognize this language \citep{hao-etal-2022-formal}. Empirically, transformers struggle to recognize Palindrome \citep{butoi2025trainingneuralnetworksrecognizers}.
+    \item \textbf{Boolean formula value problem} ($\bfvp$): the set of variable-free Boolean formulas that evaluate to $\TRUE$. 
+    We consider formulas in both the standard \emph{infix} notation (e.g., $1 \lor 0$ is in infix notation) and \emph{postfix} notation (e.g., $1$ $0$ $\lor$ is in postfix notation). 
+    Parallel algorithms for $\bfvp$ typically rely on postfix notation \citep{buss-bfvp, buss-optimalparallel}.
+    We have proven (\cref{corr:bfvp}) that $\log$-depth and no padding suffice to recognize this language in postfix notation with causally-masked transformers.
+\end{itemize}
+These languages vary in complexity, allowing us to test transformers' ability to learn CFL recognition constructions when they are extended with looping and padding.
+In particular, Balanced Counting and $\dyck{1}$ are in \defn{C-RASP} --- a class that describes what languages transformers should generalize on \citep{yang2024countingliketransformerscompiling, huang2025a}.
+On the other hand, $\dyck{2}$, Palindrome and $\bfvp$ are not in C-RASP.
+Importantly, $\bfvp$ requires growing depth (i.e., $\log$-depth), assuming $\tc{0} \neq \nc{1}$.
+\cref{corr:bfvp} predicts that $\bfvp$ in postfix notation should be expressible with logarithmic looping and no padding.
+Our results are presented in \cref{fig:resultsexp}.
+
+\textbf{Results.}
+For Balanced Counting---a C-RASP language on which fixed-depth transformers already achieve 90\% accuracy,
+we find that logarithmic looping increases performance by 4\%.
+On the other hand, the performance gap between fixed- and looped-transformers on the C-RASP language $\dyck{1}$ is negligible.
+Interestingly, there is a larger performance discrepancy between looped, padded transformers and fixed-depth ones on $\dyck{2}$---a language outside of C-RASP \citep{hu-circuitschomskyprepretrainingformal}.
+For Palindrome, looping and padding together outperform both the vanilla and looping-only baseline by 4\%. 
+For the infix variant of $\bfvp$, looped transformers slightly underperform the fixed-depth baseline, and looped, padded transformers slightly overperform.
+However, we notice the largest accuracy gains in our experiments on \emph{postfix} $\bfvp$: looped transformers (with or without padding) outperform fixed-depth ones by 8\%. 
+This result agrees with \cref{corr:bfvp}, which states that looped transformers without padding can express postfix $\bfvp$.
+Overall, we find that looping and padding offer moderate performance gains over fixed-depth transformers on a range of $\cfl$s, with the largest gains on the theoretically motivated postfix $\bfvp$ language.
+
+
+\section{Discussion}
+\paragraph{Transformers and parallel parsing.}
+Our work provides a theoretical framework for understanding how transformers can internally process syntax by formulating parsing as a \emph{parallel} procedure implementable by looped- and padded-transformers (\cref{sec:generalcfl}, \cref{sec:subclasses}).
+Interestingly, transformers \emph{in practice} seem to implement some form of parallel parsing. 
+\citet{schulz2025unravelingsyntaxlanguagemodels} show that transformers parse by learning sub-grammars---grammars that generate \emph{substrings} of the original grammar---in parallel.
+\citet{allen-zhu2025physics} show via probing that transformers simulate a dynamic program that manipulates items of the form $[\idxi, \NT{X}, \idxj]$ and that they implement \emph{memory reads} across positions to combine the solutions of items.
+While they state that such an algorithm can be naively implemented in polynomial time, our constructions leverage transformers' inherent parallelism to show it can be implemented exponentially faster (i.e., in logarithmic time).
+Finally, \citet{zhao-etal-2023-transformers} show with probing that transformers encode the syntactic information relevant for the \emph{Inside-outside algorithm}, which computes string probabilities under \emph{probabilistic} CFGs.
+Interestingly, the Inside-outside algorithm can also be formulated as the computation of the weights of items and slashed items. 
+Altogether, while several interpretability results hint at which syntactic information may be used by transformers for parsing, \cref{thm:cfl2ahat} unifies these results by providing an exact construction of how looped transformers can exactly implement parallel parsing.
+
+\paragraph{Learnability.}
+Expressivity alone does not capture transformers' empirical capabilities.
+A function that is expressible may not be easily learnable \citep{hahn-rofin-2024-sensitive}, and the gap between expressivity and learnability has been documented empirically for both recognition \citep{butoi2025trainingneuralnetworksrecognizers} and probabilistic modeling of formal languages \citep{borenstein-etal-2024-languages}.
+Although our work provides a framework for understanding how transformers can express a $\cfl$, better understanding the ability of a transformer to \emph{learn} a $\cfl$ through training dynamics \citep{huang2025how}, loss landscape analysis \citep{hahn-rofin-2024-sensitive}, or scaling laws \citep{merrill2026olmohybridtheorypractice} could provide more complete understanding of how transformers process syntax. 
+
+\section{Conclusion}
+While it was known that logarithmic-depth transformers could recognize regular languages via parallel simulation of automata \citep{liu2023transformerslearnshortcutsautomata, li2025how}, our results generalize this to show that logarithmic depth suffices for recognizing $\cfl$s as well in the presence of padding symbols.
+This means that transformers can recognize an arbitrary $\cfl$ with exponentially faster sequential runtime compared to serial parsing algorithms such as CKY.
+However, such a parallel procedure requires a large space overhead of padding symbols.
+Fortunately, we show that grammar properties such as unambiguity can reduce the amount of space required for recognition. 
+We also show that unpadded transformers with logarithmic looping can evaluate any Boolean formula. 
+Empirically, we found that looping and padding provide modest benefits to transformers on certain $\cfl$ recognition tasks, leaving open a more extensive empirical study across $\cfl$s and padding budgets to future work.
+
+\section*{Impact Statement}
+This paper presents work whose goal is to advance the field of machine learning. There are many potential societal consequences of our work, none of which we feel must be specifically highlighted here.
+
+
+\section*{Acknowledgments}
+We thank attendees of the Formal Languages and Neural Networks (FLaNN) seminar for insightful discussions about this work.
+Anej Svete is supported by an ETH AI Center Doctoral Fellowship.
+William Merrill was supported by a Two Sigma PhD fellowship, an NSF Graduate Research Fellowship, and the Allen Institute for AI.
+We used generative AI to
+improve our writing.
+Every modification introduced by generative AI
+was carefully reviewed by the authors, who take
+full responsibility for it.
+
+\bibliography{custom}
+\bibliographystyle{icml2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\onecolumn
+
+%\let\addcontentsline\realaddcontentsline   % <-- restore BEFORE any \section
+%\etocdepthtag.toc{appendix}
+%\etocsettagdepth{mainmatter}{none}
+%\etocsettagdepth{appendix}{subsection}
+%\etocsettocstyle{\section*{Contents of the Appendix}}{}
+%\tableofcontents
+
+\newpage
+
+\section{Transformer Models: Details}\label{app:extendedbackground}
+We restate our definition of a transformer, and formalize each of its components.
+\ahatdef*
+\textbf{Marker positions.}
+We recall that the input string is augmented with both the \underline{b}eginning-\underline{o}f-\underline{s}equence ($\bos$) and \underline{e}nd-\underline{o}f-\underline{s}equence ($\eos$) symbols.
+We leverage these positions as \emph{marker} positions.
+$\bos$ can be leveraged as an anchor position 
+that every other position can always attend to, which for instance is useful to compute position encodings \citep{merrill2024expressivepowertransformerschain}.
+On the other hand, because $\eos$ can attend to any string position throughout the forward pass regardless of the masking used, it is common to use $\eos$'s final representation to classify a string.
+
+\textbf{Embedding layer.}
+The \defn{input embedding} $\embedFunc \colon \kleene{\alphabet} \to \kleene{\mleft(\Q^\hiddDim\mright)}$ applies an injective position-wise embedding function to each symbol in the input string $\str$, and is therefore a length-preserving function.
+For example $\embedFunc$ could be a non-parametrized function such as a one-hot embedding, or could apply a linear mapping $\alphabet \to \Q^\hiddDim$ via a weight matrix $\mW\in\Q^{|\alphabet|\times\hiddDim}$ to every symbol.
+We use the latter in our implementation of the transformer in \cref{sec:experiments}.
+
+\textbf{Transformer layers.}
+$\tflayer^{(\layerIdx)}$ for $\layerIdx \in (0,\nLayers]$ denotes a \defn{transformer layer}---a mapping $ \tflayer^{(\layerIdx)} \colon \kleene{\mleft(\Q^\hiddDim\mright)} \to \kleene{\mleft(\Q^\hiddDim\mright)}$ that updates the symbol representations. 
+The components of a transformer layer are the \defn{layer normalization} $\layerNorm$, the \defn{attention layer} $\attnfunc^{(\layerIdx)}$ and the \defn{feedforward network} $\ffn^{(\layerIdx)}$. Concretely:
+\begin{equation}
+    \tflayer^{(\layerIdx)} \defeq \ffn^{(\layerIdx)} \circ \attnfunc^{(\layerIdx)} \circ \layerNorm^{(\layerIdx)}
+\end{equation}
+We recall layer-normalization maps a vector $\vx \in \Q^\idxn$ of some dimension $\idxn$ to $\frac{\vx'}{\norm{\vx'}}$ where $\vx' \defeq \vx - \frac{\sum_{\evx_\idxi \in \vx} \evx_\idxi}{\idxn}$. 
+We assume \defn{multi-pre-norm} \citep{merrill2024expressivepowertransformerschain}. 
+In standard pre-norm, we apply a layer-normalization to the entire hidden state of each symbol.
+With multi-pre-norm, we allow each sublayer to take $k$ different projections of its input, apply layer-norm to each and concatenate. 
+Crucially, multi-pre-norm allows us to partition the hidden state and normalize disjoint subsets thereof, which we will rely on in our proofs.
+
+$\ffn^{(\layerIdx)} \colon \kleene{\mleft(\Q^\hiddDim\mright)} \to \kleene{\mleft(\Q^\hiddDim\mright)}$ is a position-wise function that applies the same feedforward network to every symbol of the sequence. It is parametrized by weight matrices of the form $\mW \in \Q^{\idxm \times \hiddDim}$ and $\mU \in \Q^{\hiddDim \times \idxm}$. A feedforward network $\ffn^{(\layerIdx)}$ can nest functions of the form $\mU\ReLU(\mW\vz)$ where $\vz \in \Q^\hiddDim$ is an intermediate value.
+
+The \defn{attention mechanism} is defined by the function $\attnfunc^{(\layerIdx)} \colon \kleene{\mleft(\Q^\hiddDim\mright)} \to \kleene{\mleft(\Q^\hiddDim\mright)}$. We denote by $\vk_{\idxi}^{(\layerIdx)}$, $\vq_{\idxi}^{(\layerIdx)}$, $\vv_{\idxi}^{(\layerIdx)}$ the key, query and value vectors, respectively, for symbol $\idxi$ at layer $\layerIdx$. 
+$\attnfunc^{(\layerIdx)}$ is defined as follows: 
+\begin{subequations}
+    \begin{align}
+        \attnfunc^{(\layerIdx)}((\evx_1, \cdots, \evx_{\strlen})) & \defeq (\evy_1, \cdots, \evy_{\strlen}) \\
+        \evy_\idxi & \defeq \evx_\idxi + \sum_{\idxi' \in \maskFun{\idxi}} \evs_{\idxi'} \vv_{\idxi'}^{(\layerIdx)} \\ 
+        \evs & = \proj(\set{\scorefunc(\vk_{\idxi'}^{(\layerIdx)}, \vq_{\idxi}^{(\layerIdx)})})
+    \end{align}
+\end{subequations}
+$\maskFun{\idxi}$ is a set that defines the \defn{masking} used by the transformer. 
+For instance, $\maskFun{\idxi} = \set{\idxi' \mid \idxi' < \idxi}$ refers to strict causal masking and $\maskFun{\idxi} = (0,\idxn]$ refers to no masking. 
+$\scorefunc$ is a scoring function that maps two vectors of the same size to a scalar. 
+Typically, the dot-product score is used with $\scorefunc(\evx_1, \evx_2) \defeq \langle \evx_1, \evx_2 \rangle$. 
+
+Throughout layers, the hidden state $\evy_\idxi$ of a symbol at position $\idxi$ continuously evolves as it cumulatively adds up the outputs of the attention mechanism. We call this cumulative sum $\evy_\idxi$ over layers the \defn{residual stream} at $\idxi$.
+
+$\proj$ is a projection function that normalizes the scores into weights for the symbol values.
+Following previous work, we assume an \defn{averaging hard attention} transformer ($\ahat$), which concentrates the attention weights on the symbols that maximize the attention score \citep{merrill-etal-2022-saturated, strobl2023averagehardattentiontransformersconstantdepth}.
+Formally, we have $\proj = \hardmaxAvg$:
+\begin{definition}  \label{def:hard-attention}
+    \defn{Averaging hard attention} is computed with the $\hardmaxAvg$ projection function:
+    \begin{equation}
+        \hardmaxAvg\left(\vx\right)_\idxd \defeq \begin{cases}
+            \frac{1}{m} &\ifcondition \idxd\in \argmax\left(\vx\right) \\
+            0 &\otherwisecondition
+        \end{cases}
+    \end{equation}
+    for $\idxd \in (0,\hiddDim]$, where $\vx \in \Q^\hiddDim$ and $m \defeq |\argmax\left(\vx\right)|$ is the cardinality of the argmax set.
+\end{definition}
+
+\textbf{Language recognition.}
+The transformer layers are vector-valued functions by definition.
+To treat a transformer as a language recognizer of signature $\kleene{\alphabet} \to \set{0,1}$, we use the final representations computed by a transformer for binary classification of strings. 
+We denote by $\vx_{\eos}^{\nLayers}$ the hidden state of $\eos$ after passing it through the $\nLayers$ transformer layers. 
+Typically, string recognition is based on $\vx_{\eos}^{\nLayers}$ as $\eos$ is the only symbol that can attend to every other position, regardless of the masking used.
+This allows us to define a transformer's language based on a linear classifier $\funcc$.
+\begin{equation}
+    \tf(\str)=\funcc(\vx_{\eos}^{\nLayers}) \defeq \ind{\sigmoid(\vtheta^\top \vx_{\eos}^{\nLayers}) > 0.5}
+\end{equation}
+Where $\sigmoid$ is the sigmoid activation function.
+
+\textbf{Precision.}
+Following previous work \citep{merrill2025exactexpressivepowertransformers, merrill2024expressivepowertransformerschain, merrill-logic}, we assume $\log$-precision transformers, i.e., we allow the transformer to manipulate values that can be represented with $\bigo(\log(\idxn))$ bits for an input of length $\idxn$. It is a minimally extended idealization that enables the transformer to store indices and perform sums over an unbounded number of symbols, two crucial capabilities for our constructions.
+
+\paragraph{Layer-norm hash.}
+We will often use the \defn{layer-norm hash} building block \citep{merrill2024expressivepowertransformerschain}. 
+It is particularly useful for equality checks between values across different symbols, especially with a potentially unbounded number of queries and keys.
+\begin{definition}[\citealp{merrill2024expressivepowertransformerschain}]\label{def:layernormhash}
+    Given a scalar $\evz \in \mathbb{R}$, its \defn{layer-norm hash} is $\phi(\evz) \defeq \langle \evz, 1, -\evz, -1 \rangle / \sqrt{\evz^2+1}$.
+\end{definition}
+Layer-norm hash is scale invariant, and $\phi(q) \cdot \phi(k) = 1$ iff $q = k$. In other words, the inner product of scalars $q$ and $k$, even if computed at different positions $i$ and $j$, respectively, allows us to check for the equality of $q$ and $k$. Layer-norm hash therefore allows us to perform equality checks over elements of residual streams at different positions.
+
+\section{Proofs}\label{app:constructionsproofs}
+\subsection{Parallel Parsing}\label{app:proofsparsing}
+\cflalgocorrectness*
+\begin{proof}
+    We prove the stronger claim
+    \begin{equation*}
+        (\star)\quad \recAlgo(\itm) = \TRUE \;\Longleftrightarrow\; \itm \text{ is realizable, for every } \itm \in \items \cup \slasheditems,
+    \end{equation*}
+    where $\items$ and $\slasheditems$ are the set of possible items and slashed items (respectively) given $\str$ and $\grammar$. The theorem is the special case $\itm = (0, \start, \idxn]$, since $(0, \start, \idxn]$ is realizable iff $\start \derives \str$, iff $\str \in \lang(\grammar)$.
+    
+    \textbf{Induction measure.} For $\itm \in \items \cup \slasheditems$, define
+    \begin{equation*}
+        \inductionmeasure(\itm) \defeq \begin{cases}
+            \idxj - \idxi & \text{if } \itm = (\idxi, A, \idxj], \\
+            (\idxj - \idxi) - (q - p) & \text{if } \itm = (\idxi, X, \idxj] / (p, Y, q].
+        \end{cases}
+    \end{equation*}
+    Equivalently, $\inductionmeasure(\itm)$ counts the input positions $\itm$'s outer non-terminal must derive (for a slashed item, the inner placeholder is excluded). By the validity constraints on (slashed) items, $\inductionmeasure(\itm) \ge 1$. We prove $(\star)$ by strong induction on $\inductionmeasure$, treating items and slashed items in parallel at each value of $\inductionmeasure$.
+    
+    \textbf{Base case ($\inductionmeasure(\itm) = 1$).}
+    
+    \emph{Item.} For $\itm = (\idxi, A, \idxj]$ with $\idxj = \idxi + 1$, the substring $\str_{(\idxi, \idxj]} = \strSym_\idxj$ has length one, and $\recAlgo$ returns the indicator $\ind{\production{A}{\strSym_\idxj} \in \rules}$. On the realizability side, the only way to obtain $A \derives \strSym_\idxj$ in CNF is via a single application of the unit rule $\production{A}{\strSym_\idxj}$, so realizability is equivalent to $\production{A}{\strSym_\idxj} \in \rules$. Algorithm and realizability agree.
+    
+    \emph{Slashed item.} For $\itm = (\idxi, X, \idxj] / (p, Y, q]$ with $(\idxj - \idxi) - (q - p) = 1$, exactly one position of $(\idxi, \idxj]$ lies outside $(p, q]$. 
+    Either $p = \idxi$ and $q = \idxj - 1$ (the outer position is $\idxj$) or $p = \idxi + 1$ and $q = \idxj$ (the outer position is $\idxi + 1$). 
+    For $p = \idxi$ and $q = \idxj - 1$, $\recAlgo$ returns:
+    \begin{equation}\label{eq:slasheditem1}
+        \bigvee_{\NT{Z} \in \nonterm} \production{X}{YZ} \in \rules \land \production{Z}{\strSym_\idxj} \in \rules
+    \end{equation}
+    In the symmetric case where $p = \idxi + 1$ and $q = \idxj$, $\recAlgo$ returns:
+    \begin{equation}\label{eq:slasheditem2}
+        \bigvee_{\NT{Z} \in \nonterm}\production{X}{ZY} \in \rules \land \production{Z}{\strSym_{\idxi+1}} \in \rules
+    \end{equation}
+    Realizability requires $X \derives \str_{(\idxi, p]} Y \str_{(q, \idxj]}$. 
+    In the right-end case ($p = \idxi$, $q = \idxj{-}1$) this reduces to $X \derives Y \strSym_\idxj$, achievable in CNF only via $\production{X}{YZ}$ followed by $\production{Z}{\strSym_\idxj}$ for some $Z$ --- exactly \cref{eq:slasheditem1}. The left-end case yields \cref{eq:slasheditem2}.
+    
+    \textbf{Inductive step ($\inductionmeasure(\itm) = m \ge 2$).} Assume $(\star)$ holds for every $\itm'$ with $\inductionmeasure(\itm') < m$.
+    
+    \emph{Case 1: item $\itm = (\idxi, A, \idxj]$ with $\inductionmeasure(\itm) = m$.}
+    
+    \textbf{Forward ($\Rightarrow$).} Suppose $\recAlgo(\itm) = \TRUE$. The algorithm succeeded along one of two branches, \textsc{split} or \textsc{gap}.
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item \textsc{split.} Some rule $\production{A}{BC}$ and split $\idxk \in (\idxi, \idxj)$ satisfy $\recAlgo((\idxi, B, \idxk]) = \recAlgo((\idxk, C, \idxj]) = \TRUE$. 
+        The sub-items $(\idxi, B, \idxk]$ and $(\idxk, C, \idxj]$ have as induction measure $\inductionmeasure((\idxi, B, \idxk])=\idxk - \idxi$ and $\inductionmeasure((\idxk, C, \idxj])=\idxj - \idxk$ respectively, both in $[1, m{-}1]$. 
+        By the induction hypothesis, $B \derives \str_{(\idxi, \idxk]}$ and $C \derives \str_{(\idxk, \idxj]}$. By the calculus of §3, $A \derives BC \derives \str_{(\idxi, \idxk]} \str_{(\idxk, \idxj]} = \str_{(\idxi, \idxj]}$.
+        \item \textsc{gap.} Some inner item $(\idxk, Y, \idxl]$ with $(\idxk,\idxl] \subsetneq (\idxi,\idxj]$ satisfies $\recAlgo((\idxi, A, \idxj] / (\idxk, Y, \idxl]) \land \recAlgo((\idxk, Y, \idxl]) = \TRUE$. 
+        The sub-item has $\inductionmeasure((\idxk, Y, \idxl]) = \idxl - \idxk$, and the sub-slashed item has $\inductionmeasure((\idxi, A, \idxj] / (\idxk, Y, \idxl]) = m - (\idxl - \idxk)$; strict containment of $(\idxk, \idxl]$ in $(\idxi, \idxj]$ forces both into $[1, m{-}1]$. 
+        By the induction hypothesis, $Y \derives \str_{(\idxk, \idxl]}$ and $A \derives \str_{(\idxi, \idxk]} Y \str_{(\idxl, \idxj]}$; substituting yields $A \derives \str_{(\idxi, \idxj]}$.
+    \end{itemize}
+    
+    \textbf{Reverse ($\Leftarrow$).} Suppose $\itm$ is realizable, witnessed by a parse tree $T$. Since $m \ge 2$, the root necessarily applies some rule $\production{A}{BC}$, splitting the yield at a unique $\idxk \in (\idxi, \idxj)$ into $B \derives \str_{(\idxi, \idxk]}$ and $C \derives \str_{(\idxk, \idxj]}$. The two sub-items are realizable with $\inductionmeasure < m$; by the induction hypothesis, $\recAlgo$ returns $\TRUE$ on each, and the \textsc{split} rule of $\recAlgo(\itm)$ with $\production{A}{BC}$ and the split $\idxk$ therefore returns $\TRUE$.
+    
+    \emph{Case 2: slashed item $\itm = (\idxi, X, \idxj] / (p, Y, q]$ with $\inductionmeasure(\itm) = m$.}
+    
+    \textbf{Forward ($\Rightarrow$).} Suppose $\recAlgo(\itm) = \TRUE$. The algorithm succeeded along one of two branches, \textsc{split} or \textsc{gap}.
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item \textsc{split.} Some rule $\production{X}{AB}$ and split $\idxk \in (\idxi, \idxj)/(p, q]$, with the inner $(p, q]$ on (WLOG) the $A$-side ($q < \idxk$), satisfy $\recAlgo((\idxi, A, \idxk] / (p, Y, q]) \land \recAlgo((\idxk, B, \idxj]) = \TRUE$. 
+        The sub-slashed item has $\inductionmeasure((\idxi, A, \idxk] / (p, Y, q]) = (\idxk - \idxi) - (q - p) < m$ (since $\idxk < \idxj$). 
+        The sub-item $(\idxk, B, \idxj]$ has $\inductionmeasure((\idxk, B, \idxj]) = \idxj - \idxk$; an equality $\idxj - \idxk = m$ would force $\idxk = q$ and $p = \idxi$, but then $A$ would derive $\str_{(\idxi, p]} = \varepsilon$, ruled out by CNF (which permits $\varepsilon$ only via $\production{\start}{\eps}$ and never on the right-hand side of a binary rule).
+        Hence the sub-item's induction measure $\inductionmeasure$ is also $< m$. By the induction hypothesis, $A \derives \str_{(\idxi, p]} Y \str_{(q, \idxk]}$ and $B \derives \str_{(\idxk, \idxj]}$, so via $\production{X}{AB}$, $X \derives \str_{(\idxi, p]} Y \str_{(q, \idxj]}$. The symmetric case (inner on $B$'s side) is analogous.
+        \item \textsc{gap.} Some item $(\idxk, Z, \idxl]$ with $(p, q] \subsetneq (\idxk, \idxl] \subsetneq (\idxi, \idxj]$ satisfies $\recAlgo((\idxi, X, \idxj] / (\idxk, Z, \idxl]) \land \recAlgo((\idxk, Z, \idxl] / (p, Y, q]) = \TRUE$. 
+        The first sub-slashed has $\inductionmeasure((\idxi, X, \idxj] / (\idxk, Z, \idxl]) = m - ((\idxl - \idxk) - (q - p)) < m$ (since $\idxl - \idxk > q - p$); the second has $\inductionmeasure((\idxk, Z,\idxl] / (p, Y, q]) = (\idxl - \idxk) - (q - p) < m$ (since $(\idxk, \idxl] \subsetneq (\idxi, \idxj]$ and the inner $(p, q]$ is strictly inside). 
+        By the induction hypothesis, $X \derives \str_{(\idxi, \idxk]} Z \str_{(\idxl, \idxj]}$ and $Z \derives \str_{(\idxk, p]} Y \str_{(q, \idxl]}$. Substituting the second into the first gives $X \derives \str_{(\idxi, p]} Y \str_{(q, \idxj]}$.
+    \end{itemize}
+    
+    \textbf{Reverse ($\Leftarrow$).} Suppose $\itm$ is realizable, with parse tree $T_X$ rooted at $X$ and a distinguished leaf labeled $Y$ at yield $(p, q]$. The root of $T_X$ applies some rule $\production{X}{AB}$. The $Y$-leaf lies in $A$'s subtree or $B$'s subtree; WLOG in $A$'s, and let $\idxk$ be the boundary between $A$'s and $B$'s yields. Then $(\idxi, A, \idxk] / (p, Y, q]$ is realizable (with $\inductionmeasure = (\idxk - \idxi) - (q - p) < m$) and $(\idxk, B, \idxj]$ is realizable (with $\inductionmeasure = \idxj - \idxk < m$ by the CNF argument above). By the induction hypothesis, $\recAlgo$ returns $\TRUE$ on both, so the \textsc{split} rule of $\recAlgo(\itm)$ with $\production{X}{AB}$ and split $\idxk$ returns $\TRUE$.
+    
+    \textbf{Conclusion.} By strong induction, $(\star)$ holds for every $\itm \in \items \cup \slasheditems$. Specializing to $\itm = (0, \start, \idxn]$ gives $\recAlgo(0, \start, \idxn] = \TRUE \iff \str \in \lang(\grammar)$.
+\end{proof}
+
+\solvelognsteps*
+\begin{proof}
+    With $\str \in \lang(\grammar)$, let $T$ with root $(0, \start, \idxn]$ be a parse tree witnessing $\str$'s membership; $T$ has $M \defeq 2\idxn - 1$ items.
+    $\recAlgo((0,\start,\idxn])$ runs in parallel time equal to the depth of its recursion tree; thus, it suffices to exhibit, for each subproblem, a balanced decomposition the \emph{guess} branches of $\recAlgo$ can choose; the depth of $\recAlgo$'s recursion is then bounded by the depth of this balanced decomposition.
+    
+    By \cref{lem:centroidvertex}, $T$ has a centroid node $\itm$ whose removal partitions $T$ into components, each of size at most $\ceil{M/2}$. Since $T$ is binary, $\itm$ has at most three neighbors (a parent and two children), so removing $\itm$ yields at most three components: the \emph{parent-side} component $P$ (empty when $\itm$ is the root) and the two child subtrees $L, R$ (the subtrees rooted at $\itm$'s left and right children).
+    In the context of a parse tree, the centroid node is either the root or an internal node.
+    We consider both cases.
+    
+    \textbf{(i) Centroid node is root.}
+    The root node is associated with the item $(0, \start, \idxn]$.
+    Because removing the root of the binary tree $T$ yields exactly the two children's subtrees, we can use the \textsc{split} branch to halve the tree. 
+    Concretely, $\recAlgo$ breaks down $(0, \start, \idxn]$ via the \textsc{split} rule by producing two recursive calls on items $(0, \NT{X}, \idxk]$ and $(\idxk, \NT{Y}, \idxn]$ for a rule $\production{\start}{\NT{X} \NT{Y}} \in \rules$ and an index $\idxk \in (0,\idxn)$.
+    Then, the parse trees associated with $(0, \NT{X}, \idxk]$ and $(\idxk, \NT{Y}, \idxn]$ have at most $M/2$ nodes by \cref{lem:centroidvertex}.
+    This case advances by exactly one recursion level.
+    
+    \textbf{(ii) Centroid node is an internal node of $T$.}
+    Every internal node of $T$ corresponds to some item $(\idxi, \NT{X}, \idxj]$.
+    \cref{lem:centroidvertex} is a statement about an unrooted tree, so removing the centroid yields one component per neighbor of $\itm$; in our binary tree $T$ the internal node $\itm$ has at most three neighbors (its parent and its two children), so removal yields up to three components, each of size $\le \ceil{M/2}$.
+    Once we view $T$ as rooted at $(0, \start, \idxn]$, these acquire labels---the parent-side component $P$ and the two child subtrees $L, R$---but every recursive call of $\recAlgo$ is on a rooted item, so the algorithm can only manipulate two-piece decompositions, not three. 
+    We must therefore fuse Jordan's three pieces into two cuts the algorithm can perform. The \textsc{gap} rule realizes the fusion $P \;\mathrm{vs.}\; \{\itm\} \cup L \cup R$ by cutting the edge above $\itm$, but the inner side can be up to $M - 1$ nodes (if $|P| = 1$). 
+    The \textsc{split} rule realizes the fusion $L \;\mathrm{vs.}\; R$ by removing $\itm$, but only upon recursing on $\itm$ itself. 
+    We therefore charge \emph{two} recursion levels: a \textsc{gap} cut to isolate $\{\itm\} \cup L \cup R$ (creating $P$ and the item at $\itm$ with $|P| + 1 \le \ceil{M/2} + 1$), then a \textsc{split} cut at $\itm$ to break $\itm$'s subtree into $L$ and $R$ (both with $|L|, |R| \le \ceil{M/2}$). 
+    After these two levels, the remaining subproblems are exactly Jordan's three pieces $P, L, R$, each of size at most $\ceil{M/2} + 1$.
+    
+    \begin{itemize}
+        \item \emph{Level 1 (\textsc{gap} on $\itm$).} $\recAlgo$ dispatches via the \textsc{gap} rule with inner item $(\idxi, \NT{X}, \idxj]$ corresponding to the centroid node $\itm$, producing recursive calls on
+        \begin{enumerate*}[label=\textit{(\alph*)}]
+            \item the outer slashed item $(0, \start, \idxn]/(\idxi, \NT{X}, \idxj]$, whose associated tree is $P$ with $\itm$'s subtree replaced by a placeholder leaf, of size $|P| + 1 \le \ceil{M/2} + 1$; and
+            \item the inner item $(\idxi, \NT{X}, \idxj]$, whose associated tree is $\{\itm\} \cup L \cup R$ of size $|L| + |R| + 1$.
+        \end{enumerate*}
+        The outer call is already balanced by \cref{lem:centroidvertex}, but the inner call may still be nearly all of $T$ (when $|P|$ is small), so we charge a second level to it.
+        \item \emph{Level 2 (\textsc{split} on $\itm$).} Let $\production{\NT{X}}{\NT{Y}\NT{Z}}$ be the production at $\itm$ in the parse tree, and let $\idxk$ be the split index between $\itm$'s left and right children. $\recAlgo$ dispatches via the \textsc{split} rule on $(\idxi, \NT{X}, \idxj]$, producing recursive calls on $(\idxi, \NT{Y}, \idxk]$ and $(\idxk, \NT{Z}, \idxj]$, whose associated trees are exactly $L$ and $R$, both of size at most $\ceil{M/2}$ by \cref{lem:centroidvertex}.
+    \end{itemize}
+    After these two levels, every remaining subproblem has associated tree of size at most $\ceil{M/2} + 1$.
+    
+    We now iterate the above on each subproblem. Each recursive call is on either an item or a slashed item, so we must argue the centroid bound for both kinds:
+    \begin{itemize}
+        \item \emph{Item subproblem.} The recursive call is on an item $(\idxi', \NT{X}', \idxj']$, whose parse tree is a subtree of $T$. The case analysis above (cases (i)--(ii)) applies verbatim.
+        \item \emph{Slashed-item subproblem.} The recursive call is on a slashed item $(\idxi', \NT{X}', \idxj']/(p, \NT{Y}, q]$. Associate to it the parse tree of $\NT{X}'$ over $\str_{(\idxi', \idxj']}$ with a subtree yielding $\str_{(p, q]}$ replaced by a placeholder leaf; call this $T'$. The internal nodes of $T'$ are again items, and $T'$ is binary, so \cref{lem:centroidvertex} applies to $T'$. The case split mirrors (i)--(ii) with the slashed-item rules of \cref{alg2}: if the centroid is the root of $T'$, $\recAlgo$ takes the slashed-item \textsc{split} branch and advances one level; if the centroid is an internal node of $T'$, $\recAlgo$ takes the slashed-item \textsc{gap} branch (peeling off the centroid's subtree as an inner slashed item) followed by a slashed-item \textsc{split} on the resulting subproblem, again advancing two levels and leaving every surviving subproblem of associated tree size at most $\lceil |T'|/2 \rceil + 1$.
+    \end{itemize}
+    A \emph{recursion level} is one step of $\recAlgo$'s call tree: every dispatch through the \textsc{split} or \textsc{gap} branch adds exactly one level (its recursive calls live one level deeper), and the parallel depth of $\recAlgo$ equals the depth of this call tree. With this counting, we call one application of either case~(i) or case~(ii) a \emph{centroid round}: case~(i) is a single \textsc{split} dispatch and so consumes one recursion level, while case~(ii) is a \textsc{gap} dispatch \emph{followed by} a \textsc{split} dispatch on the inner item it produced, and therefore consumes two.
+    Define the \emph{shape size} $s(\itm)$ of a subproblem as the number of items in its associated tree (treating a placeholder leaf as one node). 
+    Inductively, every centroid round shrinks the shape size by a factor of two up to an additive constant: a subproblem of shape size $m$ produces subproblems of shape size at most $\ceil{m/2} + 1$. \cref{lem:centroidvertex} bounds the surviving pieces $L, R$ by $\ceil{m/2}$ directly, and the parent-side piece $P$ by $\ceil{m/2}$ as well; the only loss is the placeholder leaf adjoined to $P$, contributing one extra node to that piece.
+    Starting from $s((0,\start,\idxn]) = M = 2\idxn - 1$, the recurrence $s_{r+1} \le \ceil{s_r/2} + 1$ unrolls (geometric series) to $s_r \le M/2^r + \bigo(1)$ for every $r \ge 0$. The base case $s(\itm) = 1$ (a length-1 item or a slashed item whose outer tree is just a placeholder leaf) is handled in $\recAlgo$'s leaf branches without further recursion, so it suffices to pick the smallest $r$ for which every surviving subproblem has constant shape size, which happens at $r = \ceil{\log_{2} M} + \bigo(1)$.
+    Since each round costs at most two recursion levels, $\recAlgo$'s recursion has depth at most $2\ceil{\log_2 M} + \bigo(1) \le 2\ceil{\log_{2}(2\idxn)} + \bigo(1)$, matching the bound in the theorem statement.
+\end{proof}
+
+\subsection{Encoding (Slashed) Items in Padding Symbols}
+Our constructions associate padding symbols with distinct objects. 
+For example, when computing the realizability of items in \cref{alg1} and \cref{alg2} on $\ahats$, we associate each padding symbol with an item. 
+To enable this, we introduce a novel theoretical gadget implementable by $\ahats$ that enables a padding symbol at some position $\idxi$ to compute the encoding of its associated items from the unique position $\idxi$:
+\begin{lemma}[Converting a padding-symbol position into an encoding of structured data]\label{lem:pos2enc}
+    Fix a string length $\idxn$, and let
+\[
+    \aset \;\defeq\; \aset^{(1)} \times \aset^{(2)} \times \cdots \times \aset^{(m)}
+\]
+    be a Cartesian product of $m$ finite sets, where each factor $\aset^{(j)}$ is either (i) a fixed finite alphabet (e.g.\ $\nonterm$) of size $\bigo(1)$ in $\idxn$, or (ii) the index set $(0,\idxn]$.
+    The set $\aset$ has size $\asetsize=|\aset^{(1)}|\times\ldots|\aset^{(m)}|$, and we fix any enumeration of its elements
+\[
+    \aset \;=\; \set{\asetelem_1, \asetelem_2, \ldots, \asetelem_{\asetsize}},
+    \qquad
+    \asetelem_\idxi \;=\; \mleft(\asetelem^{(1)}_\idxi,\, \asetelem^{(2)}_\idxi,\, \ldots,\, \asetelem^{(m)}_\idxi\mright) \in \aset
+\]
+    that arises from interpreting the $\log \asetsize = \bigo(\log \idxn)$ bits of $\idxi\in\set{0,1,\ldots,|\aset|-1}$ as the concatenation of $m$ field-encodings, one per factor $\aset^{(j)}$.
+    Then there exists an $\ahat$ transformer $\tf$ of constant depth, operating on an input padded with $\asetsize$ padding symbols, such that at the residual stream of the $\idxi$-th padding symbol, $\tf$ stores the layer-norm hashes
+\[
+    \phi\mleft(\asetelem^{(1)}_\idxi\mright),\;
+    \phi\mleft(\asetelem^{(2)}_\idxi\mright),\;
+    \ldots,\;
+    \phi\mleft(\asetelem^{(m)}_\idxi\mright).
+\]
+\end{lemma}
+\begin{proof}
+    The argument has three steps: (1) make $\phi(\idxi)$ and $\phi(\idxn)$ available at each padding symbol; (2) extract the bits of $\idxi$ corresponding to each factor $\aset^{(j)}$; and (3) store the layer-norm hash of each extracted value.
+    
+    \paragraph{Step 1: making $\phi(\idxi)$ and $\phi(\idxn)$ available.}
+    At the $\idxi$-th padding symbol, the value $\phi(\idxi)$ can be added to the residual stream by uniform attention over the strict left context, which counts positions; analogously, $\phi(\idxn)$ is obtained by uniform attention restricted to the string symbols, which counts $\idxn = |\str|$.
+    Both are obtained with one causally masked attention layer~\citep{merrill2024expressivepowertransformerschain}.
+    
+    \paragraph{Step 2: extracting per-factor bit ranges.}
+    Since $\asetsize$ is a product of $m$ factors, each of size $\bigo(1)$ or $\idxn$, we can write
+\[
+    \asetsize \;=\; \prod_{j=1}^{m} M_j,
+    \qquad
+    M_j \;\in\; \set{\bigo(1),\, \idxn}.
+\]
+    Reading $\idxi \in \set{0, 1, \ldots, \asetsize-1}$ in mixed radix $(M_1, M_2, \ldots, M_m)$ yields, for each $j \in \set{1, \ldots, m}$, a coordinate
+\[
+    \asetelem^{(j)}_\idxi \;\defeq\; \mleft\lfloor \idxi \,\big/\, \textstyle\prod_{k<j} M_k \mright\rfloor \,\bmod\, M_j \;\in\; \aset^{(j)}.
+\]
+    By \citealp[][Lem. 1]{merrill-2025littledepthgoeslong}, with a constant number of attention layers and given $\phi(\idxi)$ and $\phi(\idxn)$ in the residual stream, integer division and modulo by either $\idxn$ or a constant divisor can be realized at the level of layer-norm hashes.
+    Iterating this $m$ times (once per factor) computes $\phi\mleft(\asetelem^{(j)}_\idxi\mright)$ in the stream for each $j$.
+    
+    \paragraph{Step 3: depth and width.}
+    The number of layers required at Step 2 is constant in $\idxn$ because $m$ is constant (it depends only on $\aset$, not on $\idxn$), and each extraction uses a constant number of applications of~\citealp[][Lem. 1]{merrill-2025littledepthgoeslong}.
+    The residual stream stores one hash per factor, so width is $\bigo(m) = \bigo(1)$.
+    
+    \paragraph{Bijection with padding positions.}
+    The mixed-radix decomposition above is a bijection between $\set{0, 1, \ldots, \asetsize-1}$ and $\aset$.
+    Hence each of the $\asetsize$ padding symbols stores the hashes of a distinct element $\asetelem_\idxi \in \aset$, and every element of $\aset$ is realized exactly once.
+\end{proof}
+
+\paragraph{Examples.}
+Two illustrations of how the schema $\aset$ is instantiated in the constructions:
+\begin{itemize}
+    \item For items of the form $(p, \NT{X}, q]$, take $m = 3$ with $\aset^{(1)} = (0,\idxn]$, $\aset^{(2)} = \nonterm$, $\aset^{(3)} = (0,\idxn]$, so $\asetsize = |\nonterm| \cdot \idxn^2$. The padding-symbol-to-item map then reads off, from $\idxi$, the two positions $p, q$ and the non-terminal $\NT{X}$.
+    \item For slashed-item decompositions $(\itm, \decomp) \in \itmdec$, the schema is the Cartesian product of the item factors and the decomposition factors. The total size matches the $\bigo(\idxn^6)$ bound on padding-symbol allocation in \cref{app:proofcfl2ahat}.
+\end{itemize}
+
+\subsection{General $\cfl$ Recognition on Transformers}\label{app:proofcfl2ahat}
+\cfltoahat*
+\begin{proof}
+    We give a $\mahat$ construction $\tf$ that simulates $\recAlgo$ (\cref{alg1,alg2}) on every (slashed) item of $\str$ in parallel and reads off the bit $\ind{\str \in \lang(\grammar)}$ at $\eos$.
+    The construction fixes a padding-symbol allocation, a residual-stream layout, a partition of layers into a constant-depth preamble $A$, a constant-depth looped block $B$ (looped $\bigo(\log \idxn)$ times), and a constant-depth tail $C$ in the sense of \cref{def:looping}, and---for each sublayer in $A$, $B$, $C$---an explicit choice of attention head (query, key, value, mask) and feedforward map.
+    
+    \textbf{Padding allocation.}
+    Recall $\items$ and $\slasheditems$ are the items and slashed items associated with $\str$ and $\grammar$.
+    The decomposition modes \textsc{split} and \textsc{gap} of \cref{alg1,alg2} are indexed by
+    \begin{align*}
+        \itmsplit & \defeq \set{(\arule, \idxk) \mid \arule \in \rules,\ \idxk \in (0,\idxn)}, \\
+        \itmgap   & \defeq \set{(p, \NT{Z}, q) \mid \NT{Z} \in \nonterm,\ p, q \in (0,\idxn)},
+    \end{align*}
+    and
+    \begin{equation*}
+        \itmdec \defeq \set{(\itm, \decomp) \mid \itm \in \items \cup \slasheditems,\ \decomp \in \itmsplit \cup \itmgap}.
+    \end{equation*}
+    We append $\paddingcount \defeq 3\max(|\items|,|\slasheditems|,|\itmdec|) = \bigo(\idxn^6)$ padding symbols, giving an input of length $\idxn + \bigo(\idxn^6)$.
+    
+    \textbf{Residual-stream layout.}
+    Every position---string or padding---carries the same partitioned residual stream $\vx \in \Q^{\hiddDim}$ with $\hiddDim = \bigo(1)$.
+    The named slots are:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item $\vx.\ftokenkind \in \set{\textsc{str}, \textsc{item}, \textsc{slash}, \textsc{dec}}$: a constant-width one-hot identifying which family the position belongs to (string symbol, item, slashed item, or decomposition).
+        \item $\vx.\fpos \in \Q^4$: layer-norm hash $\phi(\idxi)$ of the position index, written in preamble $A$ via \cref{lem:pos2enc}.
+        \item $\vx.\fpaddinglen \in \Q^4$: layer-norm hash $\phi(\idxn)$ of the string length, written in $A$ via \cref{lem:pos2enc}..
+        \item For string positions: $\vx.\fsymbol \in \Q^{|\alphabet|}$, the one-hot $\onehot{\sym_\idxi}$ of the input symbol.
+        \item For item positions associated with $\itm = (\idxi, \NT{X}, \idxj]$ (or one of the four bracket shapes): coordinate slots $\vx.\fileft \defeq \phi(\idxi)$, $\vx.\firight \defeq \phi(\idxj)$, $\vx.\fNT \in \Q^{|\nonterm|}$, $\vx.\fshape \in \Q^4$ (which of the four bracket shapes), and a key slot $\vx.\fkeyself \defeq \phi(\itm)$ that hashes the full item tuple.
+        Slashed-item positions add two more coordinate slots $\vx.\fileftin, \vx.\firightin$ and a nonterminal slot $\vx.\fNTin$ for the inner item, plus shape slots; all written in $A$.
+        \item For decomposition positions $(\itm, \decomp) \in \itmdec$: a key slot $\vx.\fkeyself \defeq \phi(\itm, \decomp)$, the inherited slots of $\itm$, slots encoding $\decomp$ (the rule and split index for \textsc{split}; the inner item for \textsc{gap}), and two ``child key'' slots $\vx.\fkeychildone \defeq \phi(\itm_1), \vx.\fkeychildtwo \defeq \phi(\itm_2)$, where $\itm_1, \itm_2 \in \items \cup \slasheditems$ are the two sub-items produced by applying $\decomp$ to $\itm$. The child keys are also computed in $A$.
+        \item $\vx.\fv \in \set{\true, \false, \bot} \subseteq \Q^3$: the three-valued realizability bit for the associated (slashed) item (at item / slashed-item positions) or the per-decomposition conjunction (at decomposition positions). Initialized to $\bot$ at all padding positions in $A$.
+        \item Scratch slots $\vx.\fvone, \vx.\fvtwo, \vx.\fvdec \in \Q^3$ used inside the loop body to stage reads; zeroed at the end of each iteration.
+    \end{itemize}
+    All hashes live in $\Q^4$, all one-hots are constant-dimensional, and the slots above sum to $\bigo(1)$ width, satisfying the $\mahat$ definition.
+    When we say a feedforward network ``reads $\fkeyself$ and writes $\fkeychildone$,'' we mean the underlying linear projections target the corresponding sub-block of $\vx$ using multi-pre-norm.
+    
+    \textbf{Preamble $A$ (constant depth, runs once).}
+    Block $A$ assembles every slot above and computes the base cases of $\recAlgo$.
+    Its sublayers, in order, are:
+    \begin{enumerate}[noitemsep,topsep=0pt,leftmargin=18pt,parsep=0pt]
+        \item \emph{Position hashes.} A first sublayer makes the position hashes $\fpos \defeq \phi(\idxi)$ and $\fpaddinglen \defeq \phi(\idxn)$ available at every position: one causally-masked attention head uniformly attends to all positions to count $\idxi$ (and hence write $\phi(\idxi)$), and a second head uniformly attends to string positions only to count $\idxn = |\str|$ (and write $\phi(\idxn)$), by the layer-norm-hash construction of \citet[Lem.~1]{merrill-2025littledepthgoeslong} (cf.\ \cref{def:layernormhash}).
+
+        \item \emph{Position-dependent tagging.} 
+        We interleave the three padding families by position residue rather than laying them out in contiguous blocks. 
+        We assign the family of each padding position by residue mod 3 among padding positions:
+        \begin{equation*}
+            \ftokenkind \gets \begin{cases} \textsc{str} & \text{if input symbol $\neq \paddingtoken$,} \\ \textsc{item} & \text{if $(\idxi-\idxn)\mod3=0$,} \\ \textsc{slash} & \text{if $(\idxi-\idxn)\mod3=1$,} \\ \textsc{dec} & \text{if $(\idxi-\idxn)\mod3=2$.} \end{cases}
+        \end{equation*}
+        Both $\phi(\idxi)$ and $\phi(\idxn)$ are already in the residual stream from step 1, so $\phi((\idxi-\idxn)\mod3)$ follows by one $\log$-precision subtraction and a further application of \citet[Lem.~1]{merrill-2025littledepthgoeslong}  (modulo by the constant 3). A position-wise MLP then reads $\phi((\idxi-\idxn)\mod3)$ together with the sign of $\idxi-\idxn$ (a single layer-norm-hash comparison against 0) and writes $\ftokenkind$ via the four-entry lookup above. The whole step uses constant depth and constant width.
+        By our choice of $\paddingcount$, each residue class modulo 3 contains at least $\max(|\items|,|\slasheditems|,|\itmdec|)=|\itmdec|$ positions, so every family has room for its full schema.
+        \item \emph{Schema decoding.} \cref{lem:pos2enc} is applied to each residue class separately, corresponding to the schemata $\items$, $\slasheditems$, $\itmdec$.
+        Constant-depth attention blocks populate the per-family coordinate, nonterminal, and decomposition slots at each padding position, together with $\fkeyself \defeq \phi(\itm)$ or $\phi(\itm, \decomp)$.
+        \item \emph{Child keys (for decompositions).} A position-wise MLP at every $(\itm, \decomp) \in \itmdec$ reads its already-populated $\itm$ and $\decomp$ slots and writes the two child keys $\fkeychildone \defeq \phi(\itm_1), \fkeychildtwo \defeq \phi(\itm_2)$, where $\itm_1, \itm_2$ are read off $\decomp$ as in \cref{alg1,alg2}: for \textsc{split} with $\decomp = (\production{\NT{A}}{\NT{B}\NT{C}}, \idxk)$ and $\itm = (\idxi, \NT{X}, \idxj]$, we set $\itm_1 = (\idxi, \NT{B}, \idxk]$, $\itm_2 = (\idxk, \NT{C}, \idxj]$ if $\NT{X} = \NT{A}$ and $(\itm_1, \itm_2) = (\itm, \itm)$ otherwise (a guard that will make $\fv = \bot$ permanently for this decomposition); for \textsc{gap} with $\decomp = (p, \NT{Y}, q)$, we set $\itm_1 = \itm / (p, \NT{Y}, q]$ and $\itm_2 = (p, \NT{Y}, q]$. Both are finite mappings over the constant-size sets $\set{\textsc{split}, \textsc{gap}} \times \rules \times \nonterm \times \set{\text{shapes}}$ combined with the linear arithmetic on position hashes provided by \cref{lem:pos2enc}, hence implementable by a constant-depth feedforward network \citep{yang2025transformercookbook}.
+        \item \emph{Initial-$\fv$ writing (base cases).} 
+        A position-wise MLP can first evaluate which (slashed) item positions correspond to base cases by comparing the item indices. The MLP then writes $\fv$ at every padding position as follows:
+        \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+            \item At an item position $\itm = (\idxi - 1, \NT{X}, \idxi]$ (a length-$1$ item), the position first attends with a causally-masked head, gated by the layer-norm-hash equality $\phi(\idxi) \cdot \fpos = 1$, to the unique string position holding $\sym_\idxi$ and reads $\onehot{\sym_\idxi}$ into a scratch slot \citep{merrill2024expressivepowertransformerschain}. An MLP then writes $\fv \gets \ind{\production{\NT{X}}{\sym_\idxi} \in \rules}$ via the finite map $\nonterm \times \alphabet \to \set{\true, \false}$ implementable by a feedforward network \citep{yang2025transformercookbook}.
+            \item At a slashed-item base case $\itm = (\idxi, \NT{X}, \idxj] / (\idxi, \NT{Y}, \idxj - 1]$ (or its symmetric variant), the same idea applies: read $\sym_\idxj$ and write $\fv \gets \ind{\exists \NT{Z}.\ \production{\NT{X}}{\NT{Y}\NT{Z}} \in \rules \land \production{\NT{Z}}{\sym_\idxj} \in \rules}$, a finite map implementable by a feedforward network \citep{yang2025transformercookbook}.
+            \item All other item, slashed-item, and decomposition positions get $\fv \gets \bot$.
+        \end{itemize}
+    \end{enumerate}
+    Each step uses $\bigo(1)$ attention and feedforward sublayers, so $A$ has constant total depth.
+        \textbf{Loop body $B$ (constant depth, looped $\bigo(\log \idxn)$ times).}
+        One iteration of $B$ updates $\fv$ at every padding position by one round of three-valued $\recAlgo$, fusing the ``decomposition resolution'' and ``item aggregation'' phases of the algorithm.
+        It consists of three sub-blocks; every attention head below is unmasked and uses the dot-product score with the $\hardmaxAvg$ projection of \cref{def:hard-attention}, gated by layer-norm-hash equality (\cref{def:layernormhash}).
+        
+        \emph{Sub-block $B_{\textsc{read}}$ (read children's $\fv$).}
+        At each decomposition position $(\itm, \decomp)$:
+        \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+            \item Head $H^1_{\textsc{read}}$: query $\vq \defeq \fkeychildone$, key $\vk_u \defeq \vx_u.\fkeyself$, value $\vv_u \defeq \vx_u.\fv$. The score peaks at $u = \itm_1$, so $\hardmaxAvg$ writes $\fv$ of the first child into the scratch slot $\fvone$.
+            \item Head $H^2_{\textsc{read}}$: identical with query $\fkeychildtwo$, writing the second child's $\fv$ into $\fvtwo$.
+        \end{itemize}
+        
+        \emph{Sub-block $B_{\textsc{conj}}$ (three-valued conjunction at decomposition positions).}
+        We first devise in \cref{fig:truthtable} a natural\footnote{Intuitively, a $\lor_3$ commits to $\true$ as soon as any disjunct is T (regardless of unknowns $\bot$ elsewhere).
+        Similarly, $\land_3$ commits to $\false$ as soon as any conjunct is $\false$.
+        The result otherwise stays $\bot$.} truth table that extends standard Boolean logic with the unknown truth value $\bot$.
+        \begin{table}[H]
+            \centering
+            \[
+            \begin{array}{c|c|c|c}
+                P & Q & P \land_3 Q & P \lor_3 Q \\
+                \hline
+                \true & \bot & \bot & \true \\
+                \bot & \true & \bot & \true \\
+                \false & \bot & \false & \bot \\
+                \bot & \false & \false & \bot \\
+                \bot & \bot & \bot & \bot \\
+            \end{array}
+            \]
+            \caption{Truth table for a three-valued logic \\ that handles propositions with unknown truth value.}
+            \label{fig:truthtable}
+        \end{table}
+        
+        A position-wise MLP $F_{\textsc{conj}}$ at every $(\itm, \decomp)$ writes
+        \begin{equation*}
+            \fvdec \gets \fvone \wedge_3 \fvtwo
+        \end{equation*}
+        using the truth table in \cref{fig:truthtable}. The map $\set{\true, \false, \bot}^2 \to \set{\true, \false, \bot}$ has $9$ entries, so a constant-width two-layer $\ReLU$ network suffices \citep{yang2025transformercookbook}.
+        Monotonicity is built into the table: $\fvdec$ never moves away from $\set{\true, \false}$ once written.
+        
+        
+        \emph{Sub-block $B_{\textsc{disj}}$ (three-valued disjunction over decompositions, written back to item positions).}
+        At each item or slashed-item position $\itm$, we want
+        \begin{equation*}
+            \fv \gets \bigvee\nolimits_3 \set{\fvdec_{(\itm, \decomp)} \mid \decomp \in \itmsplit \cup \itmgap},
+        \end{equation*}
+        the three-valued disjunction, defined by the same table: $\true$ if any disjunct is $\true$, $\false$ if all are $\false$, $\bot$ otherwise. Two unmasked attention heads keyed on $\itm$'s identity realize this:
+        \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+            \item Head $H^\true_{\textsc{disj}}$: query $\vq \defeq \fkeyself$ at $\itm$, key $\vk_u \defeq \vx_u.\fkeyself|_{\itm}$ (i.e., the embedded $\itm$-component of the decomposition's $\fkeyself$, extracted by a fixed linear projection) at every decomposition $u = (\itm', \decomp)$, value $\vv_u \defeq \ind{\vx_u.\fvdec = \true}$. The score is maximized exactly at decompositions of $\itm$, and $\hardmaxAvg$'s output is nonzero iff at least one such decomposition has $\fvdec = \true$. A subsequent MLP writes this bit into a scratch slot $a^\true$.
+            \item Head $H^\bot_{\textsc{disj}}$: identical, but with value $\vv_u \defeq \ind{\vx_u.\fvdec = \bot}$; result written into $a^\bot$.
+        \end{itemize}
+        A final MLP $F_{\textsc{disj}}$ then writes
+        \begin{equation*}
+            \fv \gets \begin{cases} \true & \text{if } \fv = \true \text{ or } a^\true = 1, \\ \false & \text{if } \fv \neq \true \text{ and } a^\true = 0 \text{ and } a^\bot = 0, \\ \fv & \text{otherwise (kept at $\bot$ or its already-decided value).} \end{cases}
+        \end{equation*}
+        The first clause enforces monotonicity: once $\fv \in \set{\true, \false}$ it never changes.
+        The scratch slots $\fvone, \fvtwo, \fvdec, a^\true, a^\bot$ are zeroed by a final position-wise linear map, so $B$ is length-preserving.
+        
+        \textbf{Tail $C$ (constant depth, runs once).}
+        A single unmasked attention head at $\eos$:
+        query $\vq \defeq \phi((0, \start, \idxn])$ ($0 and \start$ are constant, $\idxn$ is computable via attention), key $\vk_u \defeq \vx_u.\fkeyself$, value $\vv_u \defeq \vx_u.\fv$.
+        The head concentrates on the unique padding position whose key matches, copying $v_{(0, \start, \idxn]}$ into the $\eos$ residual stream.
+        The linear classifier $\funcc$ accepts iff this slot equals the $\true$ encoding.
+        
+        \textbf{Looping schedule.}
+        Setting $\layerIdx_1, \layerIdx_2$ in \cref{def:looping} to bracket $A$, $B$, $C$ and looping $B$ for $T \defeq 2 \lceil \log_2(2\idxn) \rceil + \bigo(1)$ iterations (\cref{lem:solvelognsteps}), the transformer computes
+        \begin{equation*}
+            C \circ B^{\bigo(\log \idxn)} \circ A \circ \embedFunc\mleft(\str\,\underbrace{\paddingtoken \cdots \paddingtoken}_{\bigo(\idxn^6)}\mright).
+        \end{equation*}
+        
+        \textbf{Correctness invariant.}
+        For $\itm \in \items \cup \slasheditems$ define the depth-$\tau$ truncation $\recAlgo^{(\tau)}(\itm)$ inductively: $\recAlgo^{(0)}(\itm)$ is $\recAlgo(\itm)$ if $\itm$ is a base case and $\bot$ otherwise; $\recAlgo^{(\tau)}(\itm)$ evaluates the body of \cref{alg1,alg2} on $\itm$ with each recursive call replaced by $\recAlgo^{(\tau - 1)}$ of the child item, with all $\land$ and $\lor$ interpreted via \cref{fig:truthtable}.
+        Monotonic stabilization holds: $\recAlgo^{(\tau)}(\itm) \in \set{\true, \false} \Rightarrow \recAlgo^{(\tau+1)}(\itm) = \recAlgo^{(\tau)}(\itm)$.
+        
+        We prove by induction on $\tau$ that
+        \begin{equation*}
+            P(\tau): \quad \text{after $\tau$ iterations of $B$, every item/slashed-item position carries } \fv = \recAlgo^{(\tau)}(\itm).
+        \end{equation*}
+        
+        \emph{Base case $\tau = 0$.} Step (v) of $A$ writes $\fv = \recAlgo^{(0)}(\itm)$ at base-case items and slashed items and $\fv = \bot$ everywhere else, exactly matching $\recAlgo^{(0)}$.
+        
+        \emph{Inductive step.} Assume $P(\tau)$.
+        At iteration $\tau + 1$, sub-block $B_{\textsc{read}}$ at every $(\itm, \decomp)$ reads its two children's $\fv$ values, which by $P(\tau)$ are $\recAlgo^{(\tau)}(\itm_1)$ and $\recAlgo^{(\tau)}(\itm_2)$.
+        Sub-block $B_{\textsc{conj}}$ writes $\fvdec_{(\itm, \decomp)} = \recAlgo^{(\tau)}(\itm_1) \wedge_3 \recAlgo^{(\tau)}(\itm_2)$ at every decomposition.
+        Sub-block $B_{\textsc{disj}}$ then aggregates these per-decomposition conjunctions at every item position via the three-valued $\bigvee_3$, with the monotonicity guard preserving any already-decided $\fv$.
+        By the definition of $\recAlgo^{(\tau+1)}$ as the depth-$\tau$ unrolling of \cref{alg1,alg2} under three-valued logic,
+        \begin{equation*}
+            \fv \gets \bigvee\nolimits_3\set{\recAlgo^{(\tau)}(\itm_1) \wedge_3 \recAlgo^{(\tau)}(\itm_2) \mid \decomp} = \recAlgo^{(\tau+1)}(\itm),
+        \end{equation*}
+        so $P(\tau + 1)$ holds.
+        By \cref{lem:cfl_algo_correctness,lem:solvelognsteps}, $\str\in\lang(\grammar)$ implies that $\recAlgo^{(T)}((0, \start, \idxn])=\recAlgo((0, \start, \idxn])=\true$ for depth $T = \bigo(\log \idxn)$.
+        Hence after the $\bigo(\log \idxn)$ looped iterations the padding position for $(0, \start, \idxn]$ stores $\true$ iff $\str \in \lang(\grammar)$ (and otherwise stores $\false$ or $\bot$), which $C$ copies to $\eos$ and $\funcc$ reads off.
+    
+    \textbf{Resource accounting.}
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt]
+        \item \emph{Padding:} $|\items| = \bigo(\idxn^2)$ item symbols, $|\slasheditems| = \bigo(\idxn^4)$ slashed-item symbols, $|\itmdec| = \bigo(\idxn^6)$ decomposition symbols, leading to $\paddingcount=\bigo(\idxn^6)$.
+        \item \emph{Depth:} $A$ is $\bigo(1)$ sublayers, $B$ is $\bigo(1)$ sublayers, $C$ is one sublayer, and $B$ is looped $\bigo(\log \idxn)$ times, giving $\bigo(\log \idxn)$ total depth.
+        \item \emph{Heads:} causally-masked for padding-to-string reads (position hashes, base-case symbol look-up); unmasked for inter-padding attention (child reads in $B_{\textsc{read}}$, disjunction in $B_{\textsc{disj}}$, accept head in $C$). This places $\tf$ in $\mahat^1_6$.
+    \end{itemize}
+    Applying \cref{unmask2mask} yields $\cfl \subseteq \mahat^1_6 \subseteq \ahat^1_7$.
+\end{proof}
+
+\subsection{Unambiguous $\cfl$ Recognition on Transformers}\label{app:ucflproofs}
+We first define two pieces of notation.
+A variable-free Boolean formula $\psi$ in \defn{postfix notation} is a string over the alphabet $\set{\true, \false, \neg, \land, \lor}$, defined recursively: $\TRUE$ and $\FALSE$ are postfix formulas, and if $\alpha, \beta$ are postfix formulas then so are $\alpha\neg$, $\alpha\beta\land$, and $\alpha\beta\lor$.
+The \defn{binary expression tree} of $\psi$, denoted $\graph_\psi = (\vertices_\psi, \edges_\psi)$, is defined in lockstep with postfix: an atomic formula $\sym \in \set{\true, \false}$ has the single-node tree whose only vertex is a leaf labeled $\sym$; a unary compound $\alpha\neg$ has the tree whose root is a fresh internal node labeled $\neg$ with $\graph_\alpha$ as its only subtree; and a binary compound $\alpha\beta\circ$ with $\circ \in \set{\land, \lor}$ has the tree whose root is a fresh internal node labeled $\circ$ with left subtree $\graph_\alpha$ and right subtree $\graph_\beta$.
+The $\idxn$ inputs of $\psi$ are the leaves of $\graph_\psi$; the internal nodes are labeled by connectives.
+Both $|\vertices_\psi|$ and the input length are $\bigo(\idxn)$.
+Postfix order is a bijection between the symbols of $\psi$ and the nodes of $\graph_\psi$: the $\idxk$-th symbol of $\psi$ corresponds to the $\idxk$-th node visited by a post-order traversal of $\graph_\psi$.
+
+We prove \cref{lem:reach} (and as a byproduct, \cref{thm:ucfl2ahat}) in two stages, corresponding to the two lemmas below.
+First, \cref{lem:postfixencode} shows that a fixed-depth transformer can \emph{preprocess} a postfix input: it validates well-formedness and, at every operator position, populates pointers $\fargL, \fargR$ to that operator's operand positions in the input string.
+This turns the flat token sequence into a residual-stream encoding of the binary expression tree $\graph_\psi$, with each node $v \in \vertices_\psi$ sitting at its postfix-order position and storing its children's positions as pointers.
+Second, \cref{lem:pebble} shows that, given any binary tree presented in this slotted form---type, $\fargL$, $\fargR$ at internal nodes; leaf value at leaves---an $\bigo(\log \idxn)$-looped transformer evaluates the formula by simulating \citeposs{rytter-2pda} parallel pebble game on the tree.
+Composing the two yields \cref{lem:reach}: the preprocessing of \cref{lem:postfixencode} produces exactly the input \cref{lem:pebble} requires, and the root of $\graph_\psi$---which by postfix order is the last input position---then carries the value of $\psi$ after $\bigo(\log \idxn)$ looped layers.
+
+\begin{restatable}{lemma}{postfixencode}\label{lem:postfixencode}
+    Let $\psi$ be a string over $\set{\true, \false, \neg, \land, \lor}$ of length $\idxn$. There exists a fixed-depth transformer in $\ahat^0_0$ that
+    \begin{enumerate*}[label=\textit{(\roman*)}]
+        \item decides whether $\psi$ is a well-formed postfix formula, and
+        \item if so, populates the residual stream at every operator position $v \in \vertices_\psi$ with pointers $\fargL, \fargR$ to its operand positions ($\fargL$ only for the unary case $\neg$).
+    \end{enumerate*}
+\end{restatable}
+\begin{proof}\label{app:proofpostfixencode}
+    We write a \defn{\textsc{C-RASP}} program \citep{yang2024countingliketransformerscompiling} that decides well-formedness and computes a binary predicate \textsc{argument}$(\idxk, \idxi)$ which holds iff position $\idxk$ holds an operand of the operator at position $\idxi$.
+    \textsc{C-RASP} is a programming language equivalent to \defn{temporal counting logic} \citep{yang2024countingliketransformerscompiling}, which is a lower bound on the expressive power of fixed-depth $\ahats$ \citep{barcelo2024logical}; thus, $\textsc{C-RASP} \subseteq \ahat^{0}_{0}$.
+    
+    A \textsc{C-RASP} program consists of a finite sequence of \textsc{C-RASP} operations $\craspprog_1, \craspprog_2, \ldots, \craspprog_l$.
+    To signal acceptance, the last operation $\craspprog_l$ is evaluated at the last string position.
+    Atomic $\textsc{C-RASP}$ operations are $\atom_\syma(\idxi)$, where $\atom_\syma(\idxi) = \TRUE$ iff $\sym_\idxi = \syma$.
+    Inductive $\textsc{C-RASP}$ operations include the standard Boolean connectives and counting operations (e.g., counting the number of past positions such that a formula is satisfied and comparing integers).
+    
+    We first write a \textsc{C-RASP} program that determines if an input formula is well-formed.
+    A formula in postfix notation is well-formed if operators never try to consume more operands than are available and the formula ends with all operands being consumed.
+    We can express the aforementioned procedure with the following \textsc{C-RASP} program.
+    \begin{subequations}
+        \begin{align}
+            \text{\textsc{depth}}(\idxi) & = \# \idxj \leq \idxi [\atom_{\TRUE}(\idxj) \lor \atom_{\FALSE}(\idxj)] - \# \idxj \leq \idxi [\atom_{\lor}(\idxj) \lor \atom_{\land}(\idxj)] \\
+            \text{\textsc{well-formed}}(\idxi) & = [\# \idxj \leq \idxi [\text{\textsc{depth}}(\idxj) < 1] = 0] \land [\text{\textsc{depth}}(\idxi) = 1]
+        \end{align}
+    \end{subequations}
+    To determine if a formula is well-formed, \textsc{well-formed} is evaluated at the last position of the input string.
+    
+    We now devise a binary predicate \textsc{argument}$(\idxk,\idxi)$ such that \textsc{argument}$(\idxk,\idxi) = \TRUE$ iff there is an operator at position $\idxi$ and an input argument at position $\idxk$.
+    \begin{subequations}
+        \begin{align}
+            \text{\textsc{binary-op}}(\idxi) & = [\atom_{\land}(\idxi) \lor \atom_{\lor}(\idxi)] \\
+            \text{\textsc{unary-op}}(\idxi) & = \atom_{\neg}(\idxi)\\
+            \text{\textsc{depth}}(\idxi) & = \# \idxj \leq \idxi [\atom_{\TRUE}(\idxj) \lor \atom_{\FALSE}(\idxj)] - \# \idxj \leq \idxi [\atom_{\lor}(\idxj) \lor \atom_{\land}(\idxj)] \\
+            \text{\textsc{dindex}}(\idxi) & = \# \idxj \leq \idxi [\text{\textsc{depth}}(\idxj) = \text{\textsc{depth}}(\idxi)] \\
+            \text{\textsc{previous}}(\idxk, \idxi) & = [\idxk = [[\# \idxj \leq \idxi \, \TRUE] - 1]] = [\idxk = \idxi - 1] \\
+            \text{\textsc{argument}}(\idxk, \idxi) & = [\text{\textsc{unary-op}}(\idxi) \land \text{\textsc{previous}}(\idxk, \idxi)] \\ & \lor [\text{\textsc{binary-op}}(\idxi) \land [\text{\textsc{previous}}(\idxk, \idxi) \\ & \lor [\text{\textsc{depth}}(\idxk) = \text{\textsc{depth}}(\idxi) \land [\text{\textsc{dindex}}(\idxk) = \text{\textsc{dindex}}(\idxi)-1]]]
+        \end{align}
+    \end{subequations}
+    Since $\textsc{C-RASP} \subseteq \ahat^0_0$, this places the construction in $\ahat^0_0$ with $\bigo(1)$ depth. Each operator position then uses one attention layer with \textsc{argument} as its score to copy the contents of its two operand positions, populating $\fargL, \fargR$ (for the unary case $\neg$, only one operand exists, so only $\fargL$ is populated).
+\end{proof}
+
+\begin{restatable}{lemma}{pebble}\label{lem:pebble}
+    Let $\graph = (\vertices, \edges)$ be a binary tree on $\bigo(\idxn)$ nodes whose internal nodes are labeled by $\land$ or $\lor$ and whose leaves are labeled by $\TRUE$ or $\FALSE$. Suppose each node $v \in \vertices$ is assigned a distinct string position whose residual stream stores: a slot $v.\fval \in \set{\true,\false,\bot}$ initialized to the leaf value at leaves and to $\bot$ at internal nodes; $v.\ftype$ holding the connective at internal nodes; and pointers $v.\fargL, v.\fargR$ to $v$'s two children at internal nodes.
+    Then there exists a $\bigo(\log(\idxn))$-looped transformer that, in $\bigo(\log(\idxn))$ steps, fills $v.\fval$ at every internal node $v$ with the value of the subformula rooted at $v$.
+\end{restatable}
+\begin{proof}\label{app:proofpebble}
+    We give an explicit $\mahat$ construction that simulates \citeposs{rytter-2pda} parallel pebble game on $\graph$.
+    The construction fixes a residual-stream layout, a partition of layers into a constant-depth preamble $A$, a constant-depth looped block $B$, and a constant-depth tail $C$ (cf. \cref{def:looping}), and---for each sublayer in $A$ and $B$---an explicit choice of attention head (query, key, value, mask) and feedforward map.
+    
+    \textbf{Residual-stream layout.}
+    Let $V \defeq |\vertices| = \bigo(\idxn)$.
+    At every position $v \in \vertices$ the residual stream $\vx_v \in \Q^{\hiddDim}$ is partitioned into the following named slots (each a fixed-width sub-block that distinct projections can read and write independently with multi-pre-norm):
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt,partopsep=0pt]
+        \item $\vx_v.\ftokenkind \in \set{\textsc{leaf}, \textsc{op}}\subseteq \Q^2$: a two-bit indicator of whether $v$ is a leaf or an internal (operator) node.
+        \item $\vx_v.\ftype \in \set{\land, \lor}\subseteq \Q^2$: two-bit one-hot for the connective; defined at internal nodes, zero at leaves.
+        \item $\vx_v.\fval \in \set{\true, \false, \bot}\subseteq \Q^3$: three-bit one-hot for the current value; initialized to the input value at leaves and to $\bot$ at internal nodes.
+        \item $\vx_v.\fpos \in \Q^4$: the layer-norm hash $\phi(v)$ of $v$'s integer position, made available by \cref{lem:pos2enc}; serves as the key for all equality-based attention.
+        \item $\vx_v.\fargL, \vx_v.\fargR \in \Q^4$: the layer-norm hashes $\phi(v_1), \phi(v_2)$ of $v$'s two children's positions, given by the hypothesis (and produced by \cref{lem:postfixencode}); zero at leaves.
+        \item $\vx_v.\fdep \in \Q^4$: the layer-norm hash of $v.\fdep$'s position; initialized to $\phi(v)$ (so $v.\fdep = v$).
+        \item $\vx_v.\fprop \in \Q^4$: one-hot over the four possible propagators $\set{\textsc{id}, \neg, \mathbf{T}, \mathbf{F}}$ (identity, negation, constant-true, constant-false); initialized to $\textsc{id}$.
+        \item $\vx_v.\fvalL, \vx_v.\fvalR, \vx_v.\fdepval, \vx_v.\fdepdep, \vx_v.\fdepprop \in \Q^3$ or $\Q^4$: scratch slots used to stage reads from neighbors within a single block; overwritten on each loop iteration.
+    \end{itemize}
+    The total width is constant, so $\hiddDim = \bigo(1)$.
+    
+    \textbf{Preamble $A$ (constant depth).}
+    Block $A$ runs once before the loop and sets up the layout above.
+    Two sublayers suffice:
+    \begin{enumerate}[noitemsep,topsep=0pt,leftmargin=18pt,parsep=0pt]
+        \item One unmasked attention head followed by an MLP produces $\vx_v.\fpos \defeq \phi(v)$ at every position (cf. \cref{lem:pos2enc}).
+        \item A position-wise MLP reads the input token at $v$ and writes (i) $\ftokenkind$, (ii) $\ftype$ (zero at leaves), (iii) $\fval$ (the leaf value at leaves; $\bot$ at internal nodes), (iv) $\fdep \gets \fpos$, (v) $\fprop \gets \textsc{id}$.
+    \end{enumerate}
+    The hypothesis already supplies $\fargL, \fargR$.
+    
+    \textbf{Loop body $B$ (constant depth, repeated $\bigo(\log \idxn)$ times).}
+    Each iteration of $B$ consists of three sub-blocks $B_{\activateStep}$, $B_{\squareStep}$, $B_{\pebbleStep}$, each a constant number of attention and MLP sublayers.
+    
+    \emph{Sub-block $B_{\activateStep}$.}
+    Two attention heads in parallel:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+        \item Head $H^L_{\activateStep}$: query $\vq_v \defeq \vx_v.\fargL$; key $\vk_u \defeq \vx_u.\fpos$; value $\vv_u \defeq \vx_u.\fval$. By \cref{def:layernormhash}, the score $\langle \vq_v, \vk_u \rangle$ is maximized exactly at $u = v_1$, so $\hardmaxAvg$ concentrates on $u = v_1$ and the head writes $v_1.\fval$ into $\vx_v.\fvalL$.
+        \item Head $H^R_{\activateStep}$: identical but with query $\vx_v.\fargR$, writing $v_2.\fval$ into $\vx_v.\fvalR$.
+    \end{itemize}
+    A position-wise MLP $F_{\activateStep}$ then reads $(\ftype, \fvalL, \fvalR, \fargL, \fargR)$ at $v$ and updates $(\fdep, \fprop)$ as follows.
+    Of the $2 \times 3 \times 3 = 18$ joint values of $(\ftype, \fvalL, \fvalR)$, the cases split into:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+        \item \emph{Exactly one of $\fvalL, \fvalR$ is in $\set{\true, \false}$.} Write $\fdep \gets \fargR$ (resp.\ $\fargL$) and set $\fprop$ from $(\ftype, \fvalL)$ (resp.\ $(\ftype, \fvalR)$) according to \cref{tab:activate}.
+        \item \emph{Both $\fvalL, \fvalR$ are still $\bot$.} Leave $\fdep$ and $\fprop$ unchanged.
+        \item \emph{Both are known.} Set $\fprop$ to the constant $\ftype(\fvalL, \fvalR)$ and $\fdep \gets \fpos$, so the upcoming \pebbleStep will write $\fval$ directly.
+    \end{itemize}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}ccl@{}}
+            \toprule
+            $v$'s connective & known operand value & propagator $v.\fprop$ \\
+            \midrule
+            $\lor$  & $\TRUE$  & $v.\fprop \equiv \TRUE$ (constant) \\
+            $\lor$  & $\FALSE$ & $v.\fprop(x) = x$ (identity) \\
+            $\land$ & $\TRUE$  & $v.\fprop(x) = x$ (identity) \\
+            $\land$ & $\FALSE$ & $v.\fprop \equiv \FALSE$ (constant) \\
+            \bottomrule
+        \end{tabular}
+        \caption{Defining $v$'s propagator from $v$'s connective and the known operand value, used in sub-block $B_{\activateStep}$.}
+        \label{tab:activate}
+    \end{table}
+    All 18 cases are a function of a constant number of bits, so $F_{\activateStep}$ is implemented by an $\bigo(1)$-width two-layer $\ReLU$ network that realizes a truth table \citep{yang2025transformercookbook}.
+    
+    \emph{Sub-block $B_{\squareStep}$.}
+    Two attention heads in parallel:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt,parsep=0pt]
+        \item Head $H^{1}_{\squareStep}$: query $\vx_v.\fdep$, key $\vx_u.\fpos$, value $\vx_u.\fdep$. Concentrates on $u = v.\fdep$ and writes $v.\fdep.\fdep$ into $\vx_v.\fdepdep$.
+        \item Head $H^{2}_{\squareStep}$: same query/key, value $\vx_u.\fprop$. Concentrates on $u = v.\fdep$ and writes $v.\fdep.\fprop$ into $\vx_v.\fdepprop$.
+    \end{itemize}
+    A position-wise feedforward network $F_{\squareStep}$ then sets $\fdep \gets \fdepdep$ and $\fprop \gets \fprop \circ \fdepprop$, where composition is the explicit $4 \times 4$ lookup table over $\set{\textsc{id}, \neg, \mathbf{T}, \mathbf{F}}$; again a constant-size $\ReLU$ network suffices.
+    
+    \emph{Sub-block $B_{\pebbleStep}$.}
+    One attention head: query $\vx_v.\fdep$, key $\vx_u.\fpos$, value $\vx_u.\fval$; writes $v.\fdep.\fval$ into $\vx_v.\fdepval$.
+    A position-wise feedforward network $F_{\pebbleStep}$ then sets
+    \begin{equation*}
+        \fval \gets \begin{cases} \fprop(\fdepval) & \text{if } \fdepval \neq \bot, \\ \fval & \text{otherwise,} \end{cases}
+    \end{equation*}
+    realized again as a constant-size truth-table $\ReLU$ network over $(\fprop, \fdepval, \fval) \in \set{\textsc{id}, \neg, \mathbf{T}, \mathbf{F}} \times \set{\true,\false,\bot} \times \set{\true,\false,\bot}$.
+    
+    Scratch slots ($\fvalL, \fvalR, \fdepval, \fdepdep, \fdepprop$) are zeroed at the end of each iteration by an additional position-wise linear map, so block $B$ is length-preserving and self-contained.
+    
+    \textbf{Tail $C$ (constant depth).}
+    Every internal node carries its subformula's value in its $\fval$ slot.
+    To read the truth value of the entire formula, the tail $C$ implements a single position-wise linear read-out: at the root $r$ of $\graph$ (the last input position), the classifier $\funcc$ inspects $\vx_r.\fval$ and outputs $\ind{\vx_r.\fval = \true}$.
+    
+    \textbf{Looping schedule.}
+    Setting $\layerIdx_1, \layerIdx_2$ in \cref{def:looping} to bracket $A$, $B$, $C$ and choosing the loop count of $B$ to be $\lceil \log_2(V) \rceil + 1 = \bigo(\log \idxn)$, the transformer computes
+    \begin{equation*}
+        C \circ B^{\bigo(\log \idxn)} \circ A \circ \embedFunc(\graph).
+    \end{equation*}
+    
+    \textbf{Correctness invariant.}
+    Let $t \ge 0$ index loop iterations of $B$.
+    Write $\fdep^{(t)}_v, \fprop^{(t)}_v, \fval^{(t)}_v$ for the contents of those slots at the end of iteration $t$ (with $t = 0$ being the state after $A$).
+    By induction on $t$, the construction maintains \citeposs{rytter-2pda} invariant
+    \begin{equation*}
+        (\dagger)\quad\text{for every internal node $v$ whose subtree has depth at most $2^t$, } \fval^{(t)}_v \text{ equals the subformula's value.}
+    \end{equation*}
+    The base case $t = 0$ is immediate as the depth-$1$ subtrees are exactly the leaves, whose $\fval$ is set by $A$.
+    For the inductive step, $B_{\activateStep}$ at iteration $t+1$ refreshes $\fdep, \fprop$ at every still-unresolved internal node from its children's $\fval^{(t)}$ values, $B_{\squareStep}$ composes the dependency pointer and propagator with those at $\fdep$, doubling the reach, and $B_{\pebbleStep}$ writes $\fval^{(t+1)}$ whenever a value has become known.
+    By the analysis of \citet{rytter-2pda}, the reach of $\fdep$ doubles per iteration, hence $(\dagger)$ holds at $t+1$.
+    
+    Since $\graph$ has depth at most $V - 1 = \bigo(\idxn)$, after $T \defeq \lceil \log_2 V \rceil + 1$ iterations $(\dagger)$ covers every internal node, and in particular $\fval^{(T)}_r$ at the root carries $\graph$'s value.
+    The total depth is $\bigo(\log \idxn)$, placing the construction in $\mahat^1_0$.
+\end{proof}
+
+\reach*
+\begin{proof}\label{app:proofreach}
+    Any boolean formula can be written in postfix notation; we assume the transformer receives the formula in this convention. 
+    The result immediately follows by composing \cref{lem:postfixencode} with \cref{lem:pebble}. 
+    Concretely, the postfix input fixes a binary expression tree $\graph_\psi = (\vertices_\psi, \edges_\psi)$ on $\bigo(\idxn)$ nodes, with postfix order giving a bijection between the input symbols and $\vertices_\psi$. \Cref{lem:postfixencode} populates each operator position's slots $\ftype, \fargL, \fargR$ in $\bigo(1)$ layers; leaf positions hold their input value in $\fval$ from the start. \Cref{lem:pebble} then fills $\fval$ at every internal node of $\graph_\psi$ in $\bigo(\log(\idxn))$ further looped layers, with the root's value appearing at the last position of the input string (which, by postfix order, is the root of $\graph_\psi$).
+\end{proof}
+
+\bfvpcorr*
+\begin{proof}\label{app:proofbfvp}
+    Immediate from \cref{lem:reach}: the well-formedness check provided by \cref{lem:postfixencode} (invoked internally by \cref{lem:reach}, see \cref{app:proofpostfixencode}) rejects ill-formed inputs, and on well-formed inputs the pebble game pebbles up $\psi$'s value in $\bigo(\log(\idxn))$ steps, which the transformer accepts iff this value is $\TRUE$.
+    Importantly, the construction does not require unmasked layers: C-RASP programs can be implemented on causally-masked layers \citep{yang2024countingliketransformerscompiling}, while postfix notation ensures the operands of an operator always belong in its strict left context.   
+\end{proof}
+
+\ucfltoahat*
+\begin{proof}\label{app:proofucfl2ahat}
+    \textbf{Roadmap.} The proof implements the recognition algorithm of \cref{subsec:unambiguousalgo} on an $\mahat$. Each \emph{outer} iteration $t = 1, \ldots, \bigo(\log \idxn)$ updates the marked set $\items_{t-1} \to \items_t$ by realizing \cref{eq:depgraph,eq:marked-set} as transformer layers. Concretely, one outer iteration runs four blocks:
+    \begin{enumerate}[label=\textit{(\arabic*)},topsep=0pt,noitemsep]
+        \item Build the dependency-graph edges $\edges_t$ from the current marked set $\items_{t-1}$, per \cref{eq:depgraph}; $\bigo(1)$ layers.
+        \item Binarize the resulting graph via the graph transform $\gtransform$; $\bigo(1)$ layers.
+        \item Evaluate, for every item $\itm$ in parallel, the Boolean disjunction $\bigvee_{\itm' \in \reachable_t(\itm)} \ind{\itm' \in \items_{t-1}}$ of \cref{eq:reach-unrolled} by running the pebble game of \cref{lem:pebble} on the binarized graph; $\bigo(\log \idxn)$ layers.
+        \item Write the resulting bit into each item's realizability slot, implementing \cref{eq:marked-set}; $\bigo(1)$ layers.
+    \end{enumerate}
+    By \citet{chytil-unambiguous}, $\bigo(\log \idxn)$ outer iterations suffice for $\items_t$ to reach the fixpoint $\items_*$ of \cref{subsec:unambiguousalgo}, so, together with \cref{lem:pebble}, the total depth is $\bigo(\log \idxn) \cdot \bigo(\log \idxn) = \bigo(\log^2(\idxn))$. The padding cost is $\bigo(\idxn^3)$, dominated by the per-edge and per-binarization-intermediary symbols described below. After the loop a final \textsc{accept} block reads the realizability bit of $(0, \start, \idxn]$ which equals $\ind{\str \in \lang(\grammar)}$.
+    
+    Each item $(\idxi, \NT{A}, \idxj]$ is associated with a padding symbol; there are $\bigo(|\nonterm|\,\idxn^2) = \bigo(\idxn^2)$ such item-paddings. \cref{eq:depgraph} adds two symmetric families of edges. For the \emph{right-witness} disjunct $\sR(\itm_1, \itm_2, \itm_3)$, the still-unknown sibling shares the parent's left endpoint, so we allocate one padding symbol per pair $(\idxi, \NT{A}, \idxj], (\idxi, \NT{B}, \idxk]$ with $\idxk \in \set{\idxi+1, \ldots, \idxj-1}$ and $\NT{B} \in \nonterm$; for the \emph{left-witness} disjunct $\sR(\itm_2, \itm_1, \itm_3)$ the still-unknown sibling shares the parent's right endpoint, so we additionally allocate one padding symbol per pair $(\idxi, \NT{A}, \idxj], (\idxk, \NT{C}, \idxj]$ with $\idxk \in \set{\idxi+1, \ldots, \idxj-1}$ and $\NT{C} \in \nonterm$. Each family contributes $\bigo(|\nonterm|\,\idxn) = \bigo(\idxn)$ edge-paddings per item, hence $\bigo(\idxn^3)$ edge-paddings in total. Combining the two, the construction uses $\bigo(\idxn^3)$ padding symbols.
+    We leverage \cref{lem:pos2enc} to enable padding symbols to add to their residual stream the encodings of their associated items from $\phi(\idxi)$, the layer-norm hash of their position $\idxi$.
+    
+    Each item-padding allocates space to store an element in $\set{\true,\false,\bot}$ to denote that the associated item is either realizable ($\true$), non-realizable ($\false$) or not known yet to be realizable ($\bot$). 
+    This slot is what tracks membership in $\items_t$ across the outer iterations of \cref{subsec:unambiguousalgo}: after block (4) of outer iteration $t$ it holds $\ind{\itm \in \items_t}$ for the associated item $\itm$. Initially (before block (1) of $t=1$) every padding symbol stores $\bot$.
+    
+    \textbf{Initial items.}
+    This block establishes $\items_0$ from \cref{subsec:unambiguousalgo} (the length-$1$ items witnessed by unit productions). It runs once, before the outer loop starts.
+    An item-padding can check whether its associated item is of the form $(\idxi-1,\NT{A},\idxi]$ (a length-$1$ item, cf.\ \cref{eq:depgraph}'s initial set $\items_0$) via a feedforward network that checks that the right index is one greater than the left.
+    For all such padding symbols, another feedforward network flags whether $\production{\NT{A}}{\sym_\idxi} \in \rules$ to signal the realizability of that item.
+    We can perform this procedure exactly as in the base case of \cref{app:proofcfl2ahat}.
+    At the end of this block, each padding symbol whose associated item is in $\items_0$ stores $\true$.
+    
+    \textbf{Creating the dependency graph.}
+    This block implements step (1) of the roadmap, i.e. \cref{eq:depgraph}.
+    At the start of the outer iteration $t$, the block constructs the edge set $\edges_t$ from the realizability bits $\set{\ind{\itm \in \items_{t-1}}}_\itm$ left in the item-paddings by the previous iteration (or by the initial-items block when $t=1$).
+    We instantiate \cref{eq:depgraph}'s right-witness disjunct $\sR(\itm_1, \itm_2, \itm_3)$ by identifying $\itm_3 \defeq (\idxi, \NT{A}, \idxj]$ with the parent we are trying to certify, $\itm_1 \defeq (\idxi, \NT{B}, \idxk]$ with the still-unknown left sibling (which will be the edge target), and $\itm_2 \defeq (\idxk, \NT{C}, \idxj]$ with the right witness (which must already lie in $\items_{t-1}$); the combination $\sR(\itm_1, \itm_2, \itm_3)$ then corresponds to a grammar rule $\production{\NT{A}}{\NT{B} \NT{C}} \in \rules$.
+    Accordingly, we allocate one padding symbol per edge $\itm_3 \to \itm_1$ with $\itm_3 = (\idxi, \NT{A}, \idxj]$ and $\itm_1 = (\idxi, \NT{B}, \idxk]$; its job is to install the directed edge $\itm_3 \to \itm_1$ in $\edges_t$ exactly when some witness $\itm_2 = (\idxk, \NT{C}, \idxj]$ certifies the combination.
+    Since the endpoints $\idxi, \idxj$ and the split point $\idxk$ are fixed by $\itm_3 \to \itm_1$, the set of candidate witnesses $\set{(\idxk, \NT{C}, \idxj] \mid \production{\NT{A}}{\NT{B} \NT{C}} \in \rules}$ has size $\bigo(|\nonterm|)$ (one per nonterminal $\NT{C}$ for which the rule exists) and can be enumerated by a feedforward network from $\itm_3$ and $\itm_1$ alone.
+    The padding symbol then performs two checks in parallel: 
+    \begin{enumerate*}[label=\textit{(\roman*)}]
+        \item an attention layer that retrieves the realizability bit $\ind{(\idxk, \NT{C}, \idxj] \in \items_{t-1}}$ from each candidate witness's item-padding, and
+        \item a feedforward network that gates each candidate by $\ind{\production{\NT{A}}{\NT{B} \NT{C}} \in \rules}$.
+    \end{enumerate*}
+    If some candidate satisfies both, the padding symbol signals the edge $\itm_3 \to \itm_1$ in the dependency graph.
+    Under this convention, the out-neighbors of $\itm_3$ in $(\items, \edges_t)$ are exactly the items $\itm_1$ whose realizability would license $\itm_3$, so reachability from $\itm_3$ in this graph reproduces $\reachable_t(\itm_3)$ of \cref{eq:marked-set}.
+    The left-witness disjunct $\sR(\itm_2, \itm_1, \itm_3)$ of \cref{eq:depgraph} is implemented symmetrically.
+    Both edge families are constructed in parallel in the same constant-depth block.
+    
+    \textbf{Binarization.}
+    This block implements step (2) of the roadmap: given the edge set $\edges_t$ from the previous block, it produces a binary graph $\gtransform(\items, \edges_t)$ whose reachability structure agrees with $(\items, \edges_t)$, so that the unrolled formula $\bigvee_{v' \in \reachable_t(v)} \ind{\itm' \in \items_{t-1}}$ of \cref{eq:reach-unrolled} can be evaluated by the pebble game of \cref{lem:pebble}.
+    To efficiently perform reachability queries on a dependency graph, we require it to be \emph{binary} \citep{rytter-2pda}.
+    To this extent, we define the \emph{graph transform} $\gtransform \colon \graph \to \graph'$ which binarizes a given directed graph $\graph$ by adding more edges and nodes.
+    Denoting $\graph = (\vertices, \edges)$ and $\graph' = (\vertices', \edges') \defeq \gtransform(\graph)$, our graph transform satisfies $\vertices \subset \vertices'$ as it simply adds more nodes to the original graph. 
+    We now describe $\gtransform$. 
+    
+    Fix a node $\itm \in \vertices$ with $M$ out-neighbors $\itm_1, \itm_2, \ldots, \itm_M \in \vertices$ in $\graph$. If $M \le 2$, then $\itm$ already has fan-out at most $2$ and $\gtransform$ leaves it untouched. Otherwise, $\gtransform$ introduces $M - 2$ fresh \emph{intermediary} nodes $h_1, h_2, \ldots, h_{M - 2}$ and replaces the $M$-fold fan-out from $\itm$ by a right-deep chain of binary fan-outs: $\itm$ gets out-edges to $\itm_1$ and $h_1$; for $1 \le i \le M - 3$, each $h_i$ gets out-edges to $\itm_{i+1}$ and $h_{i+1}$; and the last intermediary $h_{M - 2}$ gets out-edges to $\itm_{M - 1}$ and $\itm_M$. Every node in this gadget has out-degree at most $2$, so $\graph'$ is binary. Reachability is preserved: the original edge $\itm \to \itm_m$ in $\graph$ corresponds in $\graph'$ to the directed path $\itm \to h_1 \to h_2 \to \cdots \to h_{m-1} \to \itm_m$ (for $m \ge 2$), while the edge $\itm \to \itm_1$ is preserved verbatim; so any path $\itm \to \itm_m \to \cdots$ in $\graph$ lifts to a path $\itm \to \cdots \to \itm_m \to \cdots$ in $\graph'$. \cref{fig:binarization} illustrates the gadget for $M = 5$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            scale=0.9,
+            every node/.style={transform shape},
+            orignode/.style={draw=ETHGreen!70, fill=ETHGreen!15, circle, inner sep=1.5pt, minimum size=7mm, font=\footnotesize},
+            rootnode/.style={draw=ETHBronze!80, fill=ETHBronze!20, circle, inner sep=1.5pt, minimum size=7mm, font=\footnotesize, thick},
+            hnode/.style={draw=ETHPurple!70, fill=ETHPurple!15, circle, inner sep=1.5pt, minimum size=7mm, font=\footnotesize},
+            origedge/.style={->, >=stealth, semithick, ETHGreen!70!black},
+            newedge/.style={->, >=stealth, semithick, ETHPurple!70!black},
+            panellabel/.style={font=\footnotesize\itshape, text=ETHGray}
+            ]
+            \begin{scope}[shift={(0,0)}]
+                \node[panellabel, anchor=south] at (1.6, 2.2) {$\graph$: $\itm$ has fan-out $M = 5$};
+                \node[rootnode] (v) at (1.6, 1.4) {$\itm$};
+                \foreach \i/\x in {1/-0.4, 2/0.6, 3/1.6, 4/2.6, 5/3.6}{
+                \node[orignode] (v\i) at (\x, -0.2) {$\itm_\i$};
+                \draw[origedge] (v) -- (v\i);
+                }
+            \end{scope}
+            \draw[->, >=stealth, very thick, ETHGray] (4.4, 0.6) -- node[above, font=\scriptsize\itshape, text=ETHGray] {$\gtransform$} (5.4, 0.6);
+            \begin{scope}[shift={(7.0, 0)}]
+                \node[panellabel, anchor=south] at (2.0, 2.2) {$\graph'$: right-deep chain of $M - 2 = 3$ intermediaries};
+                \node[rootnode] (vp)  at (0, 1.8) {$\itm$};
+                \node[orignode] (v1p) at (-0.7, 1.0) {$\itm_1$};
+                \node[hnode]    (h1)  at (0.9, 1.0) {$h_1$};
+                \node[orignode] (v2p) at (0.2, 0.2) {$\itm_2$};
+                \node[hnode]    (h2)  at (1.8, 0.2) {$h_2$};
+                \node[orignode] (v3p) at (1.1, -0.6) {$\itm_3$};
+                \node[hnode]    (h3)  at (2.7, -0.6) {$h_3$};
+                \node[orignode] (v4p) at (2.0, -1.4) {$\itm_4$};
+                \node[orignode] (v5p) at (3.4, -1.4) {$\itm_5$};
+                \draw[origedge] (vp)  -- (v1p);
+                \draw[newedge]  (vp)  -- (h1);
+                \draw[origedge] (h1)  -- (v2p);
+                \draw[newedge]  (h1)  -- (h2);
+                \draw[origedge] (h2)  -- (v3p);
+                \draw[newedge]  (h2)  -- (h3);
+                \draw[origedge] (h3)  -- (v4p);
+                \draw[origedge] (h3)  -- (v5p);
+            \end{scope}
+        \end{tikzpicture}
+        \caption{The binarization gadget $\gtransform$ at a node $\itm$ with $M = 5$ out-neighbors $\itm_1, \ldots, \itm_5$. Left: the original star fan-out in $\graph$. Right: $\gtransform$ inserts $M - 2 = 3$ \textcolor{ETHPurple!80!black}{intermediary nodes} $h_1, h_2, h_3$ to form a right-deep chain of binary fan-outs. Every node in the gadget has out-degree at most $2$; the original edge $\itm \to \itm_m$ becomes the path $\itm \to h_1 \to \cdots \to h_{m-1} \to \itm_m$, preserving reachability.}
+        \label{fig:binarization}
+    \end{figure}
+    The transformer construction relies on two ingredients already in place: (i) the per-edge padding symbols allocated in block (1), one per candidate directed edge $\itm_3 \to \itm_1$, each carrying the bit $\ind{\itm_3 \to \itm_1 \in \edges_t}$ in its residual stream; and (ii) \cref{lem:pos2enc}, which lets a padding symbol compute and look up layer-norm hashes of structured keys at constant depth.
+    
+    We identify each intermediary $h_i(\itm)$ by the pair $(\itm, i)$ consisting of its parent item and its index in the chain, with $1 \le i \le N_\text{max}$ for $N_\text{max} \defeq \bigo(\idxn)$ the maximum possible fan-out (the number of edge-paddings allocated per item in block (1)).
+    By \cref{lem:pos2enc} applied to the schema $\aset = \items \times \set{1, \ldots, N_\text{max}}$, a constant-depth $\ahat$ block writes, at the $(\itm, i)$-th intermediary padding symbol, the layer-norm hashes $\phi(\itm), \phi(i)$ into its residual stream.
+    There are $|\items| \cdot N_\text{max} = \bigo(\idxn^2) \cdot \bigo(\idxn) = \bigo(\idxn^3)$ such padding symbols.
+    Positions $(\itm, i)$ with $i > \mathrm{out\text{-}deg}_{\edges_t}(\itm) - 2$ (i.e., corresponding to possible neighbors that $\itm$ does \emph{not} have) are ignored at iteration $t$: their residual stream carries no edges and they play no role in the pebble game.
+    
+    To populate $\itm.\fargL, \itm.\fargR$ at every internal node of the binarized graph $\gtransform(\items, \edges_t)$, we first need to enumerate the active out-neighbors of each item $\itm$ in $\edges_t$.
+    Recall from block (1) that each candidate out-edge $\itm \to \itm'$ corresponds to a unique edge-padding symbol that, after block (1), stores a bit indicating whether the edge is currently active.
+    A constant-depth attention block, using the $(\itm, i)$-indexing of \cref{lem:pos2enc}, computes prefix sums of these active-edge bits along the out-edges of each $\itm$ and assigns each active out-edge a dense rank $r \in \set{1, \ldots, \mathrm{out\text{-}deg}_{\edges_t}(\itm)}$; we write $\itm_r$ for the rank-$r$ active out-neighbor of $\itm$.
+    
+    The pointers $\fargL, \fargR$ at each node of the binarized graph are then defined by the following table, populated in $\bigo(1)$ further layers by one attention head per pointer with an equality check on a $(\itm, \cdot)$ key:
+    \begin{equation*}
+        \begin{array}{l@{\;}c@{\;}l@{\;\;}l}
+            \itm \text{ with out-degree } M \ge 3 \text{:}    & \fargL & = \itm_1, & \fargR = h_1(\itm), \\
+            h_i(\itm) \text{ with } 1 \le i \le M - 3 \text{:} & \fargL & = \itm_{i+1}, & \fargR = h_{i+1}(\itm), \\
+            h_{M-2}(\itm) \text{:}                            & \fargL & = \itm_{M-1}, & \fargR = \itm_M, \\
+            \itm \text{ with out-degree } M = 2 \text{:}      & \fargL & = \itm_1, & \fargR = \itm_2, \\
+            \itm \text{ with out-degree } M = 1 \text{:}      & \fargL & = \itm_1, & \fargR = \itm_1, \\
+            \itm \text{ with out-degree } M = 0 \text{:}      & \multicolumn{3}{l}{\itm \text{ is a leaf, no pointers needed.}}
+        \end{array}
+    \end{equation*}
+    Concretely, each row is realized by one attention head whose query is the residual stream of the node on the left and whose key matches the $(\itm, \cdot)$-encoding (via \cref{lem:pos2enc}) of the target on the right.
+    The duplicate $\fargR = \itm_1$ in the $M = 1$ row evaluates $\lor$ with one operand twice, which is idempotent.
+    
+    Each row of the table is filled in $\bigo(1)$ transformer layers, so the entire binarization block runs in $\bigo(1)$ depth, as required.
+    
+    \textbf{Solving reachability queries.}
+    This block implements steps (3)--(4) of the roadmap. The goal is to evaluate the unrolled marking formula \cref{eq:reach-unrolled} at every item $\itm \in \items$ in parallel and write the result $\ind{\itm \in \items_t}$ into $\itm$'s item-padding slot, thereby implementing \cref{eq:marked-set}.
+    Because the given grammar is unambiguous, for each item $\itm$, the reachable subgraph $\reachable_t(\itm)$ from $\itm$ in $(\items, \edges_t)$ (cf.\ \cref{eq:depgraph}--\cref{eq:marked-set}) becomes an arborescence rooted at $\itm$ (\cref{fact:upprop}).
+    Reachability queries over binary trees now reduce to evaluating the Boolean formula associated with the binary tree.
+    To invoke \cref{lem:pebble} we first populate the residual stream of every node of the binarized dependency graph with the slots that the lemma's hypothesis requires.
+    Original items $\itm$ that are currently realizable (i.e., $\itm \in \items_{t-1}$) and that appear as \emph{leaves} of some $\reachable_t(\itm)$ receive $\fval \defeq \TRUE$; original items that appear as leaves of some $\reachable_t(\itm)$ but are not currently realizable receive $\fval \defeq \FALSE$.
+    Every \emph{internal} node of the binarized graph---both original items that have at least one out-neighbor in $(\items, \edges_t)$ and the intermediary padding symbols introduced by $\gtransform$---gets $\itm.\ftype \defeq \lor$ together with pointers $\itm.\fargL, \itm.\fargR$ to its two children in the binarized tree.
+    These pointers are exactly the address lookups computed in the binarization step just above (and via \cref{lem:pos2enc} for the original items at the root of each tree).
+    
+    \cref{lem:pebble}, as stated, evaluates one expression tree rooted at one node, but its proof (\cref{app:proofpebble}) in fact runs the parallel pebble game over every internal node of the input graph simultaneously: at each iteration, the \activateStep, \squareStep, and \pebbleStep operations are applied in parallel at all internal nodes, regardless of which root each node ultimately serves.
+    We exploit this directly: all items' binarized reachable subgraphs $\set{\reachable_t(\itm)}_{\itm \in \items}$ share the same set of $\bigo(\idxn^3)$ padding symbols, and each item $\itm$ is simultaneously the root of its own tree $\reachable_t(\itm)$ and an internal node or leaf of the trees rooted at the items that can reach it.
+    A single pebble-game pass on this global graph therefore pebbles up $\itm.\fval$ at every root $\itm$ in $\bigo(\log \idxn)$ steps in parallel, and we read off $\ind{\itm \in \items_t}$ from $\itm.\fval$ at $\itm$'s own item-padding slot.
+    
+    The above construction is consistent because the typing of each node is a property of the \emph{graph} $\gtransform(\items, \edges_t)$, not a per-root property of the trees $\set{\reachable_t(\itm)}_{\itm \in \items}$.
+    The items in $\items_{t-1}$ are precisely the original items that are graph-leaves in $\gtransform(\items, \edges_t)$ and start the pass with $\fval = \true$; the items outside $\items_{t-1}$ with no outgoing edge in $\edges_t$ are graph-leaves with $\fval = \false$; and every other node---original items with at least one out-edge in $\edges_t$, and all intermediary padding symbols introduced by $\gtransform$---is graph-internal, with $\fval = \bot$ and $\ftype = \lor$ at the start of the pass.
+    This typing matches the hypothesis of \cref{lem:pebble} unambiguously, so a single pebble-game pass on $\gtransform(\items, \edges_t)$ fills $\fval$ at every graph-internal node $\itm$ in parallel with the value of the formula rooted at $\itm$, namely $\bigvee_{\itm' \in \reachable_t(\itm)} \ind{\itm' \in \items_{t-1}} = \ind{\itm \in \items_t}$ by \cref{eq:reach-unrolled}.
+    
+    \textbf{Recognition step.}
+    This block runs after the $\bigo(\log \idxn)$ outer iterations of blocks (1)--(4) have completed. By \citet{chytil-unambiguous}, the marked set has then reached its fixpoint, $\items_t = \items_*$, and $\str \in \lang(\grammar) \iff (0, \start, \idxn] \in \items_* \iff$ the item-padding for $(0, \start, \idxn]$ stores $\true$.
+    The $\eos$ symbol can attend to the item-padding associated with $(0, \start, \idxn]$ and check whether it is realizable, i.e., stores $\true$ in its residual stream.
+    
+    \textbf{Depth and padding accounting.} Summing the costs of the four per-iteration blocks and the surrounding initial-items and recognition blocks gives the class $\mahat^2_3$ claimed by the theorem:
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=15pt]
+        \item \emph{Padding:} $\bigo(\idxn^2)$ for item symbols, $\bigo(\idxn^3)$ for right-witness edge symbols, $\bigo(\idxn^3)$ for left-witness edge symbols, and $\bigo(\idxn^3)$ for binarization intermediaries, summing to $\bigo(\idxn^3)$.
+        \item \emph{Depth per outer iteration} (one pass through blocks (1)--(4)): $\bigo(1)$ for edge construction (\cref{eq:depgraph}) + $\bigo(1)$ for binarization ($\gtransform$) + $\bigo(\log \idxn)$ for the pebble game of \cref{lem:pebble} + $\bigo(1)$ for writing the bits of \cref{eq:marked-set} = $\bigo(\log \idxn)$.
+        \item \emph{Outer iterations:} $\bigo(\log \idxn)$ by \citet{chytil-unambiguous}, after which $\items_t = \items_*$.
+        \item \emph{Total depth:} $\bigo(\log \idxn) \cdot \bigo(\log \idxn) = \bigo(\log^2(\idxn))$, with constant-depth initial-items and recognition blocks contributing only an additive $\bigo(1)$.
+        \item \emph{Heads:} causally-masked for padding-to-string attention (positional encodings, layer-norm hash of \cref{lem:pos2enc}), unmasked for inter-padding-symbol attention (equality checks during edge construction, $\fargL,\fargR$ lookups in the pebble game, accept head). This places the construction in $\mahat^2_3$. Applying \cref{unmask2mask} yields $\mahat^2_3 \subseteq \ahat^2_4$, matching the theorem statement.
+    \end{itemize}
+\end{proof}
+
+\ulcfltoahat*
+\begin{proof}
+    Fix the input $\str$ and an iteration index $t$.
+    By linearity, the only rules that combine a non-terminal with the marked set $\items_{t-1}$ via $\sR$ are of the form $\production{\NT{A}}{\syma \NT{B}}$ or $\production{\NT{A}}{\NT{B} \syma}$, and the terminal sibling is necessarily of length $1$.
+    Hence the edges of $(\items, \edges_t)$ take one of two shapes: an edge $(\idxi, \NT{A}, \idxj] \to (\idxi+1, \NT{B}, \idxj]$ whenever $\production{\NT{A}}{\sym_{\idxi+1} \NT{B}} \in \rules$ (using the witness $(\idxi, \NT{A}', \idxi+1] \in \items_0$ with $\production{\NT{A}'}{\sym_{\idxi+1}} \in \rules$), or symmetrically an edge $(\idxi, \NT{A}, \idxj] \to (\idxi, \NT{B}, \idxj-1]$ whenever $\production{\NT{A}}{\NT{B} \sym_{\idxj}} \in \rules$.
+    Each item therefore has at most $2 |\nonterm| = \bigo(1)$ outgoing edges in $\edges_t$, one per applicable production.
+    Since $|\items| = \bigo(\idxn^2)$, and the $\bigo(1)$ out-degree gives $|\edges_t| = \bigo(\idxn^2)$, allocating one padding symbol per item and one per edge results in $\bigo(\idxn^2)$ padding symbols.
+    
+    \textbf{One reachability pass suffices.}
+    We claim that $\items_1 = \items_*$, so that the outer loop of \cref{subsec:unambiguousalgo} collapses to a single iteration.
+    $\items_1 \subseteq \items_*$ holds by definition.
+    For $\items_* \subseteq \items_1$, suppose some item $\itm_3 = (\idxi, \NT{A}, \idxj] \in \items_*$ is added at outer iteration $t \ge 1$ by an application of $\sR$.
+    By linearity, the rule responsible is either $\production{\NT{A}}{\syma \NT{B}}$ or $\production{\NT{A}}{\NT{B} \syma}$.
+    In the first case, $\syma = \sym_{\idxi+1}$ and the witness is $(\idxi, \NT{A}', \idxi+1] \in \items_0 \subseteq \items_{t-1}$ for some $\NT{A}'$ with $\production{\NT{A}'}{\sym_{\idxi+1}} \in \rules$, while the non-terminal child is $(\idxi+1, \NT{B}, \idxj]$; the symmetric case is analogous with $\syma = \sym_{\idxj}$ and witness $(\idxj-1, \NT{A}', \idxj] \in \items_0$.
+    Either way, the witness lies in $\items_0$, so the same combination triggers an edge from $\itm_3$ to $(\idxi+1, \NT{B}, \idxj]$ (respectively $(\idxi, \NT{B}, \idxj-1]$) \emph{already in $\edges_1$} by \cref{eq:depgraph}.
+    Conversely, every edge in $\edges_1$ corresponds to a CKY combination by construction of $\sR$, so reachability in $(\items, \edges_1)$ is sound.
+    Iterating this along any derivation of $\itm_3$ shows that $\itm_3$ reaches $\items_0$ in $(\items, \edges_1)$, hence $\itm_3 \in \items_1$ by \cref{eq:marked-set}.
+    
+    \textbf{Transformer construction.}
+    The $\mahat$ construction of \cref{thm:ucfl2ahat} applies directly; we can reuse its initial items, edge-construction, binarization, and pebble-game blocks.
+    However, the outer loop collapses from $\log\idxn$ iterations to a single one.
+    This results in  $\bigo(\idxn^2)$ padding and $\bigo(\log \idxn)$ looping, and applying \cref{unmask2mask} yields $\mahat^1_2 \subseteq \ahat^1_{1 + \max(2,1)} = \ahat^1_3$.
+\end{proof}
+
+\section{Experimental Setup}\label{app:expsetup}
+\paragraph{Data.} We used \citeposs{butoi-languageclasses} \emph{length-constrained} sampling algorithm for $\cfl$s to generate datasets.
+To sample strings from a given grammar $\grammar$, we consider the \emph{probabilistic} version of $\grammar$ which induces a probability distribution over $\lang(\grammar)$, which enables length-constrained sampling.
+Importantly, their procedure first samples a desired string length $\idxn$, and then performs sampling over the distribution of all strings of length $\idxn$. 
+Negative strings are either sampled at random from $\kleene{\alphabet}$ or are perturbations from positive strings by applying random edits to them, the number of which is randomly sampled from a geometric distribution that favors small values \citep{butoi2025trainingneuralnetworksrecognizers}.
+
+We therefore follow this procedure to sample positive and negative strings from handpicked context-free grammars except for $\bfvp$.
+For $\bfvp$, the negative strings are Boolean formulas that evaluate to $\FALSE$, enabling us to examine whether a transformer can correctly evaluate formulas rather than checking if an input is well-formed. 
+We argue that the ability to process hierarchically nested structures such as nested subformulas in $\bfvp$ is already captured by the grammar $\dyck{\idxk}$.
+
+The training set consists of 1 million samples with string length at most 50. 
+The test set has 2000 samples with string lengths at most 500. 
+Testing the model on strings longer than those seen in training enabled the evaluation of its ability to \emph{generalize} out-of-distribution.
+
+\paragraph{Models and Training Procedure.}
+We trained causally masked looped transformers with no positional embeddings. 
+We used the \textsc{PyTorch} implementation of a transformer encoder layer with pre-norm.
+Following our definition of the transformer in \cref{subsec:transformersprelim}, we instantiated our models with an initial block of 2 transformer layers, a looping block (which is repeated $\log(\idxn)$ times or once at inference) of 2 transformer layers and a final block of 2 transformer layers. 
+A binary classifier (2 layer feedforward network) was then applied to the final contextual representation of $\eos$.
+Our transformers have 1.2 million parameter budget. 
+We used the \textsc{AdamW} optimizer \citep{loshchilov2019decoupledweightdecayregularization} and binary cross-entropy loss, considering runs across 5 different seeds.
+The batch size was set to 64 and the learning rate to 0.0001.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2021 and by Csaba Szepesvari, Gang Niu and Sivan Sabato in 2022.
+% Modified again in 2023 and 2024 by Sivan Sabato and Jonathan Scarlett.
+% Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.

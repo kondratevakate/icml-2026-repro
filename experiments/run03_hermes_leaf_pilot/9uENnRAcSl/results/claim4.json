@@ -1,0 +1,33 @@
+{
+  "claim": 4,
+  "theorem": "Theorem 7 (thm:model_agumented_upper_bound), Section 4.2",
+  "statement": "model-based data augmentation improves the horizon dependence to H*[sqrt(log|Pi|/n)+eps_q] without requiring the RTVC assumption.",
+  "verdict": "verified",
+  "source": "arXiv:2603.20538, Section 4.2, Theorem 7",
+  "seed": 20260324,
+  "parameters": {
+    "n": 500,
+    "logPi": 5.545177444479562,
+    "logM": 4.1588830833596715,
+    "eps_q": 0.01,
+    "k": 4.0,
+    "C": 1.0
+  },
+  "horizon_dependence_slopes": {
+    "model_augmented_bound": 1.0,
+    "naive_BC_with_RTVC": 1.0,
+    "naive_BC_without_RTVC": 1.996332668604161,
+    "expected": "model-augmented = 1 (linear H*eps_q); naive without RTVC = 2 (quadratic)"
+  },
+  "quantization_term_model_aug_at_H100": 14.93130326124533,
+  "quantization_term_naive_noRTVC_at_H100": 10011.109035488897,
+  "improvement_ratio_at_H100": 670.477912097134,
+  "rtvc_not_required": "The model-augmented bound formula contains no RTVC modulus kappa; it holds under P-EIISS alone. The naive bound needs RTVC to avoid the H^2 term, confirming Theorem 7 removes the smoothness requirement.",
+  "mutation_test": {
+    "name": "alter algorithm from model-augmented to naive log-loss BC (RTVC still unavailable)",
+    "before": "model-augmented, no RTVC -> horizon dependence slope 1.00 (linear H*eps_q)",
+    "after": "naive BC, no RTVC -> horizon dependence slope 2.00 (quadratic H^2)",
+    "passed": true
+  },
+  "notes": "Verified = the bound formulas confirm the model-augmented method attains a LINEAR H*eps_q quantization horizon-dependence without any RTVC assumption, whereas naive log-loss BC degrades to H^2 once RTVC is unavailable. The mutation (dropping the augmentation while RTVC is absent) restores the H^2 behaviour, breaking the claim -> the improvement is genuinely attributable to the augmentation."
+}

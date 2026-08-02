@@ -1,0 +1,15 @@
+{
+ "orid": "sW8U2TYDMp",
+ "title": "Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+ "openreview": "https://openreview.net/forum?id=sW8U2TYDMp",
+ "arxiv": "2509.06701",
+ "area": "Social Aspects",
+ "anchored_claims": [
+  "Agents are formalized as probability distributions with epistemic utility of an outcome o defined as the logarithmic score U(o) = log P(o) (Section 2).",
+  "Theorem 10 proves that strict unanimity (every agent strictly benefiting) is impossible under linear pooling for outcome spaces of any size, because linear pooling behaves as a random dictatorship (Section 3.1, Theorem 10).",
+  "Theorem 9 shows strict unanimity is achievable under logarithmic pooling once the outcome space has at least three outcomes, contrasting with the impossibility results for two outcomes (Theorem 8) and linear pooling (Theorem 10) (Section 3.1, Theorems 8-10).",
+  "Theorem 19 formalizes the 'Waluigi effect,' proving that manifesting a benevolent persona in a language model necessarily strengthens the weight of an antagonistic counterpart component under compositional stability constraints (Section 5, Theorem 19).",
+  "Theorem 21 proves that a 'manifest-then-suppress' strategy ('Waluigi shattering') achieves strictly greater suppression of misalignment than directly reinforcing pure benevolence (Section 5.1, Theorem 21).",
+  "Theorem 14 shows that a compositional benefit enjoyed by a parent agent does not necessarily propagate to its child subagents under recursive decomposition (Section 4.1, Theorem 14)."
+ ]
+}

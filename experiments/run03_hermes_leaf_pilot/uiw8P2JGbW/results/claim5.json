@@ -1,0 +1,55 @@
+{
+  "claim": 5,
+  "statement": "Budget constraints break FPA revenue monotonicity for tCPA bidders; counterexample shows a 16.8% revenue loss under refinement (Theorem 5.10).",
+  "source": "Theorem 5.10, Section 5.3.2 / Appendix B.2 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "Reconstructed the paper's explicit B.2 four-auction instance; derived the budget-binding alpha1 from each allocation, verified self-consistency, and ran FPA.",
+  "derived_budget_alpha1": {
+    "coarse": 2.8565,
+    "fine": 1.9528,
+    "matches_published": true
+  },
+  "coarse_model": {
+    "revenue": 5.5268,
+    "alpha": [
+      2.856502242152466,
+      1.662
+    ],
+    "adv1_spend": 3.185,
+    "adv1_budget_binds": true,
+    "winners": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "fine_model": {
+    "revenue": 4.5977,
+    "alpha": [
+      1.9527896995708152,
+      1.662
+    ],
+    "adv1_spend": 3.185,
+    "adv1_budget_binds": true,
+    "winners": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "non_monotonicity": {
+    "revenue_drop_pct": 16.8102,
+    "paper_claimed": "16.8%",
+    "refinement_MA_ge_MB": true
+  },
+  "mutation_tests": {
+    "remove_budget": {
+      "description": "Set B1=inf (no budget). Reverts to Theorem 5.1; with optimal alpha_i=t_i, revenue must be monotone (16.8% drop vanishes).",
+      "revenue_drop_pct_no_budget": -8.1946,
+      "monotone_again": true
+    }
+  }
+}

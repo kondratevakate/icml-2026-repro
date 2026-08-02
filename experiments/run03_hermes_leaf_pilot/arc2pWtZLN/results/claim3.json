@@ -1,0 +1,21 @@
+{
+  "claim": 3,
+  "statement": "Eigenvalue compression lambda_k(S) <= lambda_k(A) for every k (Corollary 3.6, Sec 3.2).",
+  "verdict": "verified",
+  "holds": true,
+  "source": "Corollary 3.6, Section 3.2 (arXiv:2606.23517)",
+  "seed": 260925,
+  "numerics": {
+    "n_random_instances": 40,
+    "n_eigenvalue_violations": 0,
+    "min_gap": 1.6867422749125136,
+    "max_gap": 8.015847160539826,
+    "graded_all_compressed": true
+  },
+  "mutation_test": {
+    "description": "Use S_mut = A + X C^{-1} X^T (wrong sign, breaking S <= A).",
+    "n_eigenvalue_violations_mutated": 12,
+    "property_breaks": true,
+    "note": "Wrong sign -> S_mut >= A, so lambda_k(S_mut) >= lambda_k(A): compression reverses."
+  }
+}

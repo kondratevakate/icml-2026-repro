@@ -1,0 +1,43 @@
+{
+  "claim": 3,
+  "statement": "mu=1 uniform bidding is conversion-, revenue- and welfare-maximizing for tCPA in FPA (Theorem 5.2); welfare monotonicity follows as Corollary 5.3 when v_i=t_i.",
+  "source": "Theorem 5.2 and Corollary 5.3, Section 5.2.1 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "Revenue(Rev=mu*base) monotonicity in mu; welfare computed as sum_C w_C max_i t_i p_i,C; welfare-monotonicity stress test over refined model pairs.",
+  "feasibility_and_revenue": {
+    "mu_grid": [
+      0.3,
+      0.5,
+      0.7,
+      0.9,
+      1.0
+    ],
+    "mean_revenue_by_mu": {
+      "0.3": 0.6478167036613278,
+      "0.5": 1.079694506102213,
+      "0.7": 1.5115723085430979,
+      "0.9": 1.9434501109839835,
+      "1.0": 2.159389012204426
+    },
+    "revenue_monotone_increasing_in_mu": true,
+    "note": "CPA per won cluster = mu*t_i, so mu<=1 feasible; mu=1 binds the CPA constraint and maximizes revenue."
+  },
+  "welfare_monotonicity_corollary": {
+    "instances": 2000,
+    "failures (Welfare_A < Welfare_B)": 0,
+    "min_margin": -4.440892098500626e-16
+  },
+  "mutation_tests": {
+    "mu_below_one": {
+      "description": "mu=0.5 yields strictly lower revenue than mu=1.",
+      "instances_rev_drop": 1000,
+      "property_shift": true
+    },
+    "value_not_equal_target": {
+      "description": "Set v_i != t_i; Welfare != Revenue, so the Corollary-5.3 premise (Welfare==Revenue) breaks.",
+      "instances_where_welfare_ne_revenue": 1000,
+      "property_breaks": true
+    }
+  }
+}

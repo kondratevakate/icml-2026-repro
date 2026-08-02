@@ -1,0 +1,58 @@
+{
+  "orid": "KqMqJpSMnQ",
+  "title": "Compact Conformal Subgraphs",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 4,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 0.667,
+  "full_evidence_rate": 0.667,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.333,
+  "n_mutation_tests": 4,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 4,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "falsified",
+    "claim5": "not_attempted",
+    "claim6": "not_attempted"
+  },
+  "per_claim_mutation": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_note": {
+    "claim1": "explicit verdict/VERDICT_CAP field",
+    "claim2": "explicit verdict/VERDICT_CAP field",
+    "claim3": "explicit verdict/VERDICT_CAP field",
+    "claim4": "explicit verdict/VERDICT_CAP field"
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)"
+  ],
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

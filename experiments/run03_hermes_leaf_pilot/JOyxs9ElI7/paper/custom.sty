@@ -1,0 +1,421 @@
+
+% Mark sections of captions for referring to divisions of figures
+%\newcommand{\figleft}{{\em (Left)}}
+%\newcommand{\figcenter}{{\em (Center)}}
+%\newcommand{\figright}{{\em (Right)}}
+%\newcommand{\figtop}{{\em (Top)}}
+%\newcommand{\figbottom}{{\em (Bottom)}}
+%\newcommand{\captiona}{{\em (a)}}
+%\newcommand{\captionb}{{\em (b)}}
+%\newcommand{\captionc}{{\em (c)}}
+%\newcommand{\captiond}{{\em (d)}}
+
+% Figure reference, lower-case.
+\def\figref#1{figure~\ref{#1}}
+% Figure reference, capital. For start of sentence
+\def\Figref#1{Figure~\ref{#1}}
+\def\twofigref#1#2{figures \ref{#1} and \ref{#2}}
+\def\quadfigref#1#2#3#4{figures \ref{#1}, \ref{#2}, \ref{#3} and \ref{#4}}
+% Section reference, lower-case.
+\def\secref#1{section~\ref{#1}}
+% Section reference, capital.
+\def\Secref#1{Section~\ref{#1}}
+% Reference to two sections.
+\def\twosecrefs#1#2{sections \ref{#1} and \ref{#2}}
+% Reference to three sections.
+\def\secrefs#1#2#3{sections \ref{#1}, \ref{#2} and \ref{#3}}
+% Reference to an equation, lower-case.
+\def\eqref#1{equation~\ref{#1}}
+% Reference to an equation, upper case
+\def\Eqref#1{Equation~\ref{#1}}
+% A raw reference to an equation---avoid using if possible
+\def\plaineqref#1{\ref{#1}}
+% Reference to a chapter, lower-case.
+\def\chapref#1{chapter~\ref{#1}}
+% Reference to an equation, upper case.
+\def\Chapref#1{Chapter~\ref{#1}}
+% Reference to a range of chapters
+\def\rangechapref#1#2{chapters\ref{#1}--\ref{#2}}
+% Reference to an algorithm, lower-case.
+\def\algref#1{algorithm~\ref{#1}}
+% Reference to an algorithm, upper case.
+\def\Algref#1{Algorithm~\ref{#1}}
+\def\twoalgref#1#2{algorithms \ref{#1} and \ref{#2}}
+\def\Twoalgref#1#2{Algorithms \ref{#1} and \ref{#2}}
+% Reference to a part, lower case
+\def\partref#1{part~\ref{#1}}
+% Reference to a part, upper case
+\def\Partref#1{Part~\ref{#1}}
+\def\twopartref#1#2{parts \ref{#1} and \ref{#2}}
+
+% \usepackage{amsmath,amsfonts,bm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGE IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out.
+% However, it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+
+
+\usepackage{natbib}
+\newcommand*{\nameadjunct}{\relax}
+\makeatletter
+\renewcommand*{\NAT@nmfmt}[1]{\NAT@up #1\nameadjunct}
+\makeatother
+\newcommand*{\citeposs}[2][]{%
+  \begingroup
+  \renewcommand*{\nameadjunct}{'s}%
+  \citet[#1]{#2}%
+  \endgroup
+}
+\usepackage{xfrac}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{blkarray}
+\usepackage{nicefrac}
+\usepackage{xspace}
+\usepackage[makeroom]{cancel}
+\usepackage{natbib}
+\usepackage{stmaryrd}
+\usepackage{datetime}
+\usepackage{mleftright}
+
+\usepackage{graphicx}
+\usepackage{nicefrac}
+\usepackage{adjustbox}
+\usepackage{relsize}
+\usepackage{stmaryrd}
+
+\usepackage{url}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{blindtext}
+
+\usepackage{pdfpages}
+
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{scalerel}
+
+\usepackage{thmtools} 
+\usepackage{thm-restate}
+
+\usepackage{array} 
+\usepackage[inline]{enumitem}
+\usepackage{xparse}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{makecell}
+
+% \usepackage{mathabx}
+
+% tikz packages
+\usepackage{tikz}
+\usetikzlibrary{automata, fit, positioning, matrix, arrows.meta, decorations.pathmorphing, decorations.pathreplacing, calc, shapes, shapes.multipart, chains,shadows.blur}
+
+% plotting packages
+\usepackage{tikz-qtree}
+
+\usepackage{tikz-dependency}
+
+%tikz FSA settings
+\tikzset{
+transition/.style={-{Latex[length=1.8mm, width=1.4mm]}}, 
+every state/.style={thick, fill=gray!10},
+every loop/.append style=-{Latex[length=1.8mm, width=1.4mm]},
+initial text=$ $,
+line width=0.7pt,
+node distance=10mm,
+minimum size=4mm,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUSTOM
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{colortbl}
+% \usepackage[dvipsnames]{xcolor}
+
+% ETH colors
+\definecolor{ETHBlue}{RGB}{33,92,175}	% blue 
+\definecolor{ETHGreen}{RGB}{98,115,19}		% green
+\definecolor{ETHPurpleDark}{RGB}{140,10,89}	% purple
+\definecolor{ETHPurple}{RGB}{163,7,116}	% purple
+\definecolor{ETHGray}{RGB}{111,111,111}	% gray
+\definecolor{ETHRed}{RGB}{183,53,45}	% red
+\definecolor{ETHPetrol}{RGB}{0,120,148}	% green/blue 
+\definecolor{ETHBronze}{RGB}{142,103,19}	% bronze
+
+% Color used by \mymacro{...} so author can visually verify which symbols come from macros vs. raw LaTeX. Disable by switching the active \mymacro line in macros.tex.
+\colorlet{MacroColor}{ETHBlue}
+
+% ETH color aliases 
+\colorlet{ETHdarkblue}{ETHBlue!80!black}
+\colorlet{ETHdarkgreen}{ETHGreen!80!black}
+\colorlet{ETHpink}{ETHPurple}
+\colorlet{ETHgray}{ETHGray}
+\colorlet{ETHred}{ETHRed}
+\colorlet{ETHgreenblue}{ETHPetrol}
+\colorlet{ETHbrown}{ETHBronze}
+
+% Define the colors
+\definecolor{TextBlack}{RGB}{51,51,51}
+\definecolor{BackgroundWhite}{RGB}{255,255,255}
+
+% Blues
+\definecolor{AccentBlue}{RGB}{0,122,204}
+\definecolor{LightBlue}{RGB}{173,216,230}
+\definecolor{DarkBlue}{RGB}{0,51,102}
+
+% Greens
+\definecolor{AccentGreen}{RGB}{70,160,73}
+\definecolor{LightGreen}{RGB}{144,238,144}
+\definecolor{DarkGreen}{RGB}{0,100,0}
+
+% Reds
+\definecolor{AccentRed}{RGB}{255,0,0}
+\definecolor{LightRed}{RGB}{255,99,71}
+\definecolor{DarkRed}{RGB}{139,0,0}
+
+% Oranges
+\definecolor{AccentOrange}{RGB}{255,165,0}
+\definecolor{LightOrange}{RGB}{255,204,153}
+\definecolor{DarkOrange}{RGB}{255,140,0}
+
+% Neutral Colors
+\definecolor{NeutralLightGray}{RGB}{204,204,204}
+\definecolor{NeutralMediumGray}{RGB}{102,102,102}
+
+% Yellow for notes/highlights
+\definecolor{NoteYellow}{RGB}{255,255,0}
+
+% Diverse Colors
+\definecolor{DiversePurple}{RGB}{128,0,128}
+\definecolor{DiverseTeal}{RGB}{0,128,128}
+\definecolor{DiverseOlive}{RGB}{128,128,0}
+\definecolor{DiverseCyan}{RGB}{0,128,192}
+\definecolor{DiverseMagenta}{RGB}{192,0,128}
+
+% \colorlet{MacroColor}{black}
+\colorlet{MacroColor}{ETHPetrol}
+\colorlet{MACROCOLOR}{MacroColor}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{comment}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out.
+% However, it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+
+% Custom environments
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{aquestion}{Question}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{principle}{Principle}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{construction}{Construction}[section]
+
+
+% Restatable
+\declaretheorem[name=Lemma,numberwithin=section]{lemma}
+\declaretheorem[name=Theorem,numberwithin=section]{theorem}
+
+%% Cleveref settings
+\usepackage{cleveref}
+\crefname{section}{\S}{\S\S}
+\crefname{table}{Tab.}{Tabs.}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{algorithm}{Alg.}{Algs.}
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{example}{Example}{Examples}
+\crefname{fact}{Fact}{Facts}
+\crefname{appendix}{App.}{Apps.}
+\crefname{theorem}{Thm.}{Thms.}
+\crefname{aquestion}{Question}{Questions}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{lemma}{Lem.}{Lemmata}
+\crefname{proposition}{Prop.}{Props.}
+\crefname{chapter}{Ch.}{Chapters}
+\crefname{line}{line}{lines}
+\crefname{principle}{Principle}{Principles}
+\crefname{definition}{Def.}{Defs.}
+\crefname{corollary}{Cor.}{Cors.}
+\crefname{construction}{Construction}{Construction}
+\crefname{Exercise}{Exercise}{Exercises}
+\crefformat{section}{\S#2#1#3} 
+
+\setlength {\marginparwidth }{1.5cm}
+\usepackage[disable,textsize=scriptsize,colorinlistoftodos,obeyFinal]{todonotes}
+\definecolor{mintgreen}{RGB}{152, 255, 152}
+\makeatletter
+\newcommand*\iftodonotes{\if@todonotes@disabled\expandafter\@secondoftwo\else\expandafter\@firstoftwo\fi}  %
+\makeatother
+\newcommand{\noindentaftertodo}{\iftodonotes{\noindent}{}}
+\newcommand{\fixme}[2][]{\todo[color=yellow,size=\scriptsize,caption={},#1]{#2}}
+% \renewcommand{\note}[4][]{\todo[author=#2,color=#3,size=\scriptsize,caption={},#1]{#4}} % default note settings, used by macros below.
+\newcommand{\note}[4][]{\todo[author=#2,color=#3,size=\scriptsize,caption={},#1]{#4}} % default note settings, used by macros below.
+
+
+\newcommand{\ryan}[2][]{\note[#1]{ryan}{violet!40}{#2}}
+\newcommand{\anej}[2][]{\note[#1]{\textbf{Anej}}{AccentGreen!50!LightGreen!40}{#2}}
+\newcommand{\selim}[2][]{\note[#1]{\textbf{Selim}}{pink}{#2}}
+\newcommand{\will}[2][]{\note[#1]{\textbf{Will}}{purple!40}{#2}}
+\newcommand{\andreas}[2][]{\note[#1]{Andreas}{violet!40}{#2}}
+
+\newcommand{\Ryan}[2][]{\ryan[inline,#1]{#2}\noindentaftertodo}
+\newcommand{\Anej}[2][]{\anej[inline,#1]{#2}\noindentaftertodo}
+\newcommand{\Selim}[2][]{\selim[inline,#1]{#2}\noindentaftertodo}
+\newcommand{\Will}[2][]{\will[inline,#1]{#2}\noindentaftertodo}
+\newcommand{\Andreas}[2][]{\andreas[inline,#1]{#2}\noindentaftertodo}
+
+
+% Claude scaffolding — added by latex-editing conventions.
+\providecolor{ClaudeTeal}{RGB}{0,131,143}
+\providecolor{ClaudeSlate}{RGB}{117,117,117}
+\providecolor{ClaudeAmber}{RGB}{255,224,102}
+\providecolor{ClaudeSky}{RGB}{173,216,255}
+\providecolor{ClaudeCoral}{RGB}{255,160,130}
+\providecolor{ClaudeSage}{RGB}{178,235,195}
+\providecolor{ClaudePeriwinkle}{RGB}{190,175,235}
+\providecolor{ClaudeMini}{RGB}{150,30,160}
+
+\newcommand{\claudechange}[1]{\textcolor{ClaudeTeal}{#1}}
+\newcommand{\claudeold}[1]{\textcolor{ClaudeSlate}{#1}}
+\newcommand{\claudeminichange}[1]{\textcolor{ClaudeMini}{\textbf{#1}}}
+\newenvironment{claudechangeblock}%
+  {\begingroup\color{ClaudeTeal}}%
+  {\endgroup}
+\newenvironment{claudeoldblock}%
+  {\begingroup\color{ClaudeSlate}}%
+  {\endgroup}
+\newcommand{\claudeunclear}[1]{\note{Claude}{ClaudeAmber}{\textbf{Unclear:} #1}}
+\newcommand{\claudeciteneeded}[1]{\note{Claude}{ClaudeSky}{\textbf{Cite:} #1}}
+\newcommand{\claudewrong}[1]{\note{Claude}{ClaudeCoral}{\textbf{Wrong?} #1}}
+\newcommand{\claudeimprove}[1]{\note{Claude}{ClaudeSage}{\textbf{Improve:} #1}}
+\newcommand{\claudemissing}[1]{\note{Claude}{ClaudePeriwinkle}{\textbf{Missing:} #1}}
+
+\newcommand{\Claudeunclear}[1]{\todo[inline,color=ClaudeAmber,size=\small]{\textbf{Unclear:} #1}}
+\newcommand{\Claudeciteneeded}[1]{\todo[inline,color=ClaudeSky,size=\small]{\textbf{Cite:} #1}}
+\newcommand{\Claudewrong}[1]{\todo[inline,color=ClaudeCoral,size=\small]{\textbf{Wrong?} #1}}
+\newcommand{\Claudeimprove}[1]{\todo[inline,color=ClaudeSage,size=\small]{\textbf{Improve:} #1}}
+\newcommand{\Claudemissing}[1]{\todo[inline,color=ClaudePeriwinkle,size=\small]{\textbf{Missing:} #1}}
+
+\newcommand{\response}[1]{\vspace{3pt}\hrule\vspace{3pt}\textbf{#1:}}    % insert \response{myname} within someone else's todonote
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGORITHM SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}  % do not also use algorithmic
+\renewcommand\algorithmicdo{:}
+\renewcommand\algorithmicthen{:}
+\newcommand{\rightcomment}[1]{{\color{gray} \(\triangleright\){\footnotesize\textit{#1}}}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill \rightcomment{#1}}  % redefines \Comment
+\algnewcommand{\LinesComment}[1]{\State {\color{black!50!green}\rightcomment{\parbox[t]{.95\linewidth-\leftmargin-\widthof{\(\triangleright\) }}{#1}}}}
+\algnewcommand{\LineComment}[1]{\State {\color{black!50!green}\smaller \(\triangleright\) \parbox[t]{\linewidth-\leftmargin-\widthof{\(\triangleright\) }}{\it #1}\smallskip}} % multi-line comment
+\algnewcommand{\InlineComment}[1]{\hfill {\color{black!50!green}\(\triangleright\) {\scriptsize \it #1}}}
+\renewcommand\algorithmicdo{:}
+\renewcommand\algorithmicthen{:}
+\algrenewcommand\alglinenumber[1]{{\tiny\color{black!50}#1.}\hspace{-2pt}}
+\newcommand{\algorithmicfunc}[1]{\textbf{def} {#1}:}
+\algdef{SE}[FUNC]{Func}{EndFunc}[1]{\algorithmicfunc{#1}}{}
+\makeatletter
+\ifthenelse{\equal{\ALG@noend}{t}}%
+  {\algtext*{EndFunc}}
+  {}%
+\makeatother
+
+
+\usepackage{lipsum}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
+
+\usepackage[most]{tcolorbox}
+\newcounter{testexample}
+\usepackage{xparse}
+\def\exampletext{Example} % If English
+
+\NewDocumentEnvironment{testexample}{ O{} }
+{
+\colorlet{colexam}{red!55!black} % Global example color
+\newtcolorbox[use counter=testexample]{testexamplebox}{%
+    % Example Frame Start
+    empty,% Empty previously set parameters
+    title={\exampletext: #1},% use \thetcbcounter to access the testexample counter text
+    % Attaching a box requires an overlay
+    attach boxed title to top left,
+       % Ensures proper line breaking in longer titles
+       minipage boxed title,
+    % (boxed title style requires an overlay)
+    boxed title style={empty,size=minimal,toprule=0pt,top=4pt,left=3mm,overlay={}},
+    coltitle=colexam,fonttitle=\bfseries,
+    before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=3mm,right=0mm,top=2pt,breakable,pad at break=0mm,
+       before upper=\csname @totalleftmargin\endcsname0pt, % Use instead of parbox=true. This ensures parskip is inherited by box.
+    % Handles box when it exists on one page only
+    overlay unbroken={\draw[colexam,line width=.5pt] ([xshift=-0pt]title.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: first page
+    overlay first={\draw[colexam,line width=.5pt] ([xshift=-0pt]title.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: middle page
+    overlay middle={\draw[colexam,line width=.5pt] ([xshift=-0pt]frame.north west) -- ([xshift=-0pt]frame.south west); },
+    % Handles multipage box: last page
+    overlay last={\draw[colexam,line width=.5pt] ([xshift=-0pt]frame.north west) -- ([xshift=-0pt]frame.south west); },%
+    }
+    \begin{testexamplebox}}
+{\end{testexamplebox}}

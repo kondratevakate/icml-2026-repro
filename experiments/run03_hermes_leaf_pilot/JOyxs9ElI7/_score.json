@@ -1,0 +1,54 @@
+{
+  "orid": "JOyxs9ElI7",
+  "title": "Context-free Recognition with Transformers",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 0,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": false,
+  "claim_coverage": 0.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 1.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": false,
+  "n_with_evidence_boundary": 0,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "not_attempted",
+    "claim2": "not_attempted",
+    "claim3": "not_attempted",
+    "claim4": "not_attempted",
+    "claim5": "not_attempted",
+    "claim6": "not_attempted"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_note": {},
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)",
+    "no claim artifact shows a real executed numeric experiment"
+  ],
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

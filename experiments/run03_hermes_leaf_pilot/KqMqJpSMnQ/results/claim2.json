@@ -1,0 +1,79 @@
+{
+  "claim": 2,
+  "statement": "Theorem 2 monotonicity (nested K_tau) + equality of parametric & LP-rounding algorithms (Lemma 2 / Sec.4.2)",
+  "source": "Sec.4.2, proof Appendix D; Lemma 2 (Gallo-Grigoriadis-Tarjan parametric min-cut)",
+  "verdict": "verified",
+  "seed": 20260207,
+  "instance": {
+    "n": 36,
+    "m": 120,
+    "W": 1.0,
+    "eps": 0.1,
+    "kappa": 1.0
+  },
+  "parametric_sequence": {
+    "num_levels_k": 4,
+    "n": 36,
+    "k_le_n": true,
+    "nested": true,
+    "sizes": [
+      0,
+      6,
+      14,
+      24,
+      36
+    ]
+  },
+  "theorem2_equality": {
+    "K_parametric_size": 24,
+    "K_lp_size": 24,
+    "equal": true
+  },
+  "nesting_across_tau": {
+    "tau_grid": [
+      0.55,
+      0.65,
+      0.75,
+      0.85,
+      0.92
+    ],
+    "sizes": [
+      6,
+      6,
+      14,
+      14,
+      24
+    ],
+    "nested": true
+  },
+  "mutation_optimal_not_monotone": {
+    "description": "Example 1 of paper: 3 disjoint paths (0.3,0.3,0.4). Optimal (unrounded) cover is NOT nested; LP/parametric rounding IS nested.",
+    "K_opt_tau0.6": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "K_opt_tau0.7": [
+      0,
+      1,
+      4,
+      5,
+      6
+    ],
+    "optimal_nested": false,
+    "K_lp_tau0.6": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "K_lp_tau0.7": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "lp_rounding_nested": true
+  }
+}

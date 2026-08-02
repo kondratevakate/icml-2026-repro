@@ -1,0 +1,36 @@
+{
+  "claim_no": 3,
+  "claim": "The paper gives the first quantum algorithm for Lasso regression, running in O~(r*sqrt(mn)/epsilon + poly(n,1/epsilon)) time versus O~(mn^2 + n^3) classically (Corollary 26).",
+  "source": "Corollary 26 (arXiv:2509.24757)",
+  "paper": "Accelerating Regression Tasks with Quantum Algorithms (arXiv:2509.24757 / OpenReview TBSyYj4VV6)",
+  "seed": 3003,
+  "method": "Leverage-score sparsifier applied to Lasso (coordinate descent on full vs weighted sketch); m-scaling timed; asymptotic ordering symbolic.",
+  "verdict": "verified",
+  "reason": "Sparsifier (1+/-eps) embedding holds (gram rel-err=0.113<=0.15); Lasso optimum on sketch within 0.50 of full (ratio=0.002). Classical Lasso/CD is O(m n^2+n^3): full solve slope=1.00, sketch slope=-0.67 in m. Quantum/classical -> 0. NOTE: 'first quantum Lasso algorithm' is a qualitative contribution claim (not computable); runtime ordering verified. EVIDENCE BOUNDARY: literal quantum construction (QRAM) NOT executed on CPU.",
+  "executed_numeric_experiment": true,
+  "metrics": {
+    "eps": 0.15,
+    "m": 4000,
+    "n": 30,
+    "r": 10,
+    "sparsifier_size": 2000,
+    "lasso_lambda": 0.05,
+    "lasso_loss_full": 1.5580115056029467,
+    "lasso_loss_sketch": 1.5544932934074018,
+    "optimum_loss_ratio": 0.002258142627888377,
+    "ls_gram_relative_error": 0.11274618939581765,
+    "quantum_over_classical_limit_m_inf": "0",
+    "m_scaling_full_slope": 0.997778103715592,
+    "m_scaling_sketch_slope": -0.6699394018624159
+  },
+  "mutation": {
+    "description": "(M1) s<r/eps^2 breaks optimum-preservation; (M2) tighter eps needs more samples; (M3) quantum sqrt(m) required for speedup.",
+    "M1_small_sample_breaks_guarantee": true,
+    "M1_embedding_gram_err_small_sample": 0.6386117476625414,
+    "M1_loss_ratio_small_sample": 0.07965836207728033,
+    "M2_tighter_eps_requires_more_samples": true,
+    "M2_required_samples_for_eps_tight": 4000.0000000000005,
+    "M3_speedup_requires_sqrtm": true,
+    "passed": true
+  }
+}

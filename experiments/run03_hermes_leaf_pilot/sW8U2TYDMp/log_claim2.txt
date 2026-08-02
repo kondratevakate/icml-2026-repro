@@ -1,0 +1,27 @@
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/sW8U2TYDMp/common.py:39: RuntimeWarning: divide by zero encountered in log
+  return float((P * np.log(Pi)).sum() - (Pi * np.log(Pi)).sum())
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/sW8U2TYDMp/common.py:39: RuntimeWarning: invalid value encountered in multiply
+  return float((P * np.log(Pi)).sum() - (Pi * np.log(Pi)).sum())
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/sW8U2TYDMp/verify_claim2.py:40: RuntimeWarning: overflow encountered in exp
+  b = np.exp(x[n * K:]); b /= b.sum()
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/sW8U2TYDMp/verify_claim2.py:40: RuntimeWarning: invalid value encountered in divide
+  b = np.exp(x[n * K:]); b /= b.sum()
+{
+  "claim": "Theorem 10: no strictly unanimously beneficial composition under linear pooling",
+  "source": "arXiv:2509.06701v2 Sec.3.1 Theorem 10 (App. E, Theorem 37)",
+  "random_trials": 6000,
+  "max_over_trials_of_beta_weighted_sum_of_deltas": -2.3210408485270114e-07,
+  "max_over_trials_of_min_delta": -3.6069316177167465e-06,
+  "max_jensen_slack_must_be_nonpositive": 0.0,
+  "max_entropy_concavity_slack_must_be_nonpositive": 0.0,
+  "optimised_max_min_delta_linear_pool": 1.6940658945086007e-21,
+  "impossibility_holds": true,
+  "mutation": {
+    "description": "same search with logarithmic pool instead of linear",
+    "strictly_unanimous_configs_found": 9,
+    "best_min_delta_log_pool": 0.05706416287794225,
+    "property_breaks": true
+  },
+  "verdict": "verified",
+  "seed": 20260802
+}

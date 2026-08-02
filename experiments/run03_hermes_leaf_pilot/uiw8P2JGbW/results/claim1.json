@@ -1,0 +1,32 @@
+{
+  "claim": 1,
+  "statement": "FPA revenue monotonicity for tCPA bidders (mu=1, no budget): Rev(M_A) >= Rev(M_B) whenever M_A refines M_B (Theorem 5.1).",
+  "source": "Theorem 5.1, Section 5.2.1, proof Appendix A.2 (arxiv 2605.31036)",
+  "verdict": "verified",
+  "seed": 20260501,
+  "method": "Random stress test over calibrated coarse/refined model pairs; revenue computed as Rev(M)=sum_C w_C*max_i t_i*p_i,C.",
+  "stress_test": {
+    "n_instances": 2000,
+    "failures (Rev_A < Rev_B)": 0,
+    "min_margin_RevA_minus_RevB": -4.440892098500626e-16
+  },
+  "illustrative_example": {
+    "Rev(M_B)": 1.71732385289557,
+    "Rev(M_A)": 1.8167101340249399,
+    "margin": 0.09938628112936976
+  },
+  "mutation_tests": {
+    "non_refinement": {
+      "description": "Construct M_A NOT refining M_B; monotonicity no longer guaranteed -> Rev can decrease.",
+      "trials": 2000,
+      "instances_where_RevA_lt_RevB": 1025,
+      "property_breaks": true
+    },
+    "broken_calibration": {
+      "description": "Replace calibrated predictions with random values; Jensen step invalid -> Rev can decrease.",
+      "trials": 2000,
+      "instances_where_RevA_lt_RevB": 169,
+      "property_breaks": true
+    }
+  }
+}

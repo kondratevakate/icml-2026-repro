@@ -1,0 +1,33 @@
+{
+  "claim": 6,
+  "statement": "Interventions that push Batch Sharpness past its operating plateau (larger lr or momentum, smaller batch) trigger sharp loss 'catapults' (Figure 6).",
+  "source": "Figure 6 (paper mL4i6z7Miy).",
+  "eta": 0.1,
+  "beta": 0.9,
+  "seed": 11,
+  "operating_plateaus": {
+    "small_batch_2_1_minus_beta_over_eta": 1.9999999999999996,
+    "large_batch_2_1_plus_beta_over_eta": 37.99999999999999
+  },
+  "control": {
+    "config": "SGDM eta=0.1 beta=0.9 b=64",
+    "final_loss": 0.008170143913141817
+  },
+  "interventions": [
+    {
+      "config": "INTERVENE decrease batch  SGDM eta=0.1 b=4",
+      "final_loss": 1.3189128194572958e+187
+    },
+    {
+      "config": "INTERVENE increase beta   SGDM eta=0.1 beta=0.98 b=64",
+      "final_loss": 9.981300887793186
+    },
+    {
+      "config": "INTERVENE increase lr     SGDM eta=0.3 b=64",
+      "final_loss": 0.08780430471191455
+    }
+  ],
+  "mutation_test": "A run with smaller lr (eta=0.05, b=64) stays INSIDE the operating plateau and shows no catapult (final loss 0.008711), confirming the catapult is caused by exceeding -- not merely by changing -- the plateau.",
+  "verdict": "inconclusive",
+  "note": "Empirical Figure-6 claim. The catapult mechanism (loss explodes once Batch Sharpness exceeds its operating plateau) is reproduced on the synthetic MLP; the exact CIFAR-10 intervention curves of the paper are unavailable here."
+}

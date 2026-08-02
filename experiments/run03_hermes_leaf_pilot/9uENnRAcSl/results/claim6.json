@@ -1,0 +1,37 @@
+{
+  "claim": 6,
+  "theorem": "Section 4.1 + Proposition 3.2 (empirical phenomenon)",
+  "statement": "Binning quantizers preserve policy smoothness better than learned quantizers; deterministic experts more often violate RTVC.",
+  "verdict": "toy",
+  "source": "arXiv:2603.20538, Section 4.1 (empirical claim; no released dataset/code)",
+  "seed": 20260321,
+  "parameters": {
+    "K": 16,
+    "L": 0.58309518948453,
+    "eps_q_binning": 0.125,
+    "eps_prime": 0.375,
+    "delta0": 0.21437323142813608,
+    "n_train": 6000
+  },
+  "quantizer_avg_error": {
+    "binning": 0.06244476422614393,
+    "learned_on_deterministic": 0.04717640431879473,
+    "learned_on_stochastic": 0.05053251984566442
+  },
+  "rtvc_violation_rates": {
+    "binning_det": 0.14825,
+    "learned_det": 0.21075,
+    "binning_sto": 0.0,
+    "learned_sto": 0.0
+  },
+  "prediction_bin_better_than_learned": true,
+  "prediction_deterministic_worse_than_stochastic": true,
+  "mutation_test": {
+    "name": "increase expert stochasticity (sigma 0.3 -> 2.0)",
+    "learned_det_violation_sigma0.3": 0.21075,
+    "learned_det_violation_sigma2.0": 0.0,
+    "effect": "More stochasticity smooths the quantized-policy distribution, so RTVC violations drop (0.2107 -> 0.0000), confirming the test is sensitive to the determinism/smoothness structure the claim depends on.",
+    "passed": true
+  },
+  "notes": "TOY / synthetic. The paper gives no released experiment for this claim; we reproduce the qualitative phenomenon with a controlled synthetic setup. RTVC violation rates: binning_det=0.1482, learned_det=0.2107 (learned>binning: True); binning_sto=0.0000, learned_sto=0.0000 (det>sto: True). The ordering matches the claim's direction where the synthetic setup resolves it; full verification would require the paper's (unreleased) empirical data."
+}

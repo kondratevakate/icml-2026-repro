@@ -1,0 +1,25 @@
+{
+  "claim": 1,
+  "statement": "Collapsed Effective Operator S := A - X C^{-1} X^T is the Schur complement of the graded Laplacian L* (Def 3.3, Sec 3.2).",
+  "verdict": "verified",
+  "holds": true,
+  "source": "Definition 3.3, Section 3.2 (arXiv:2606.23517)",
+  "seed": 260723,
+  "numerics": {
+    "formula_vs_elimination_residual": 0.0,
+    "formula_vs_block_factorisation_residual": 1.5987211554602254e-14,
+    "formula_vs_definition_residual": 0.0,
+    "vertex_energy_equivalence_max_err": 3.979039320256561e-13,
+    "graded_Lstar_PSD": true,
+    "graded_S_PSD": true,
+    "graded_schur_residual": 1.014299755297543e-12
+  },
+  "mutation_test": {
+    "description": "Use S_mut = A + X C^{-1} X^T (wrong sign).",
+    "residual_mutated_vs_true_schur": 61.4244312990148,
+    "mutated_operator_PSD": true,
+    "mutated_A_minus_S_PSD": false,
+    "property_breaks": true,
+    "note": "Wrong sign -> not the Schur complement; 0<=S<=A (Claim 2) fails."
+  }
+}

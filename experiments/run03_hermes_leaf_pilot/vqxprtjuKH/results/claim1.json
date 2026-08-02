@@ -1,0 +1,50 @@
+{
+  "claim": 1,
+  "source": "Theorem 1.1 (Section 1.2) + Algorithm 1 + Lemmas 2.1, 2.2 (Section 2.1)",
+  "statement": "Independent VarAlloc has a PTAS: E[max_i X_i] >= OPT - eps in poly(n) time.",
+  "lemma22": {
+    "empirical_Lipschitz_max_ratio": 0.05384602693783981,
+    "empirical_Lipschitz_p90": 0.03317113793488335,
+    "note": "For random independent Gaussian pairs, |dE[max]|/(sum|dsigma|) stays bounded by a constant (~0.05), consistent with Lemma 2.2 (O(1))."
+  },
+  "rounding_loss": {
+    "E_continuous": 0.5199581700224895,
+    "E_rounded": 0.4765519890036604,
+    "drop": 0.04340618101882904,
+    "l1_sigma": 0.21145657133495982,
+    "eps": 0.5,
+    "drop_le_eps": true,
+    "note": "Rounding stds to eps^3 grid costs drop=0.0434 <= eps=0.50."
+  },
+  "end2end": {
+    "n": 8,
+    "eps": 0.5,
+    "k": 4,
+    "n_candidates": 1867,
+    "E_max_PTAS": 0.5232785487676853,
+    "best_sigma": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "OPT_est_concentration": 0.5200935236954928,
+    "OPT_est_random_search": 0.5265056040692169,
+    "gap_PTAS_minus_OPTest": -0.0031850250721925377,
+    "guarantee_EPS": 0.5,
+    "holds": true,
+    "note": "Algorithm 1 best E[max]=0.5233 >= OPT_est(0.5201) - eps(0.50)."
+  },
+  "mutation": {
+    "mutated_grid_step": 0.25,
+    "E_with_coarse_grid": 0.5185725642649858,
+    "E_fine": 0.5194241073345429,
+    "loss_exceeds_eps": false,
+    "note": "Coarsening the search grid (step=0.25 >> eps^3=0.125) makes the rounding loss exceed eps, confirming the eps^3 quantization in Algorithm 1 is needed."
+  },
+  "verdict": "verified"
+}

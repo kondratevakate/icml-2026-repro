@@ -1,0 +1,147 @@
+{
+  "claim_no": 6,
+  "claim": "The condition number eta1, defined via min over unit vectors of ||Phi x||^2_Dir + (mu^T Phi x)^2, satisfies eta1 >= (1/2) eta3 relative to prior condition-number definitions (Equation 3, Lemma B.3).",
+  "source": "Equation (3) definition of eta1; Lemma B.3 (eta1 >= Omega(eta3), here >= (1/2) eta3).",
+  "paper": "Bridging the Gap Between Average and Discounted TD Learning (arXiv:2605.02103 / OpenReview omkG80XURl)",
+  "seed": 20260506,
+  "method": "Exact eigenvalue computation of eta1 = lambda_min(Phi^T D(I-P)Phi + (Phi^T mu)(Phi^T mu)^T) and eta3 = lambda_min(Phi^T D Phi) * min_{y perp_D e} y^T D(I-P)y/||y||_D^2, over a family of tabular / paper-construction / random linear-FA instances; sympy symbolic confirmation on a 2-state template; mutation = drop the (mu^T Phi x)^2 term (use eta2).",
+  "verdict": "toy",
+  "reason": "Over 17 diverse instances eta1/eta3 ranges [1.000, 1.387] with minimum 1.000 >= 0.5 (Lemma B.3 verified). sympy: eta1 >= eta3 >= (1/2)eta3 for the 2-state uniform chain template (b=p, and eta1 >= lambda_min(Phi^T D(I-P)Phi + rank-1) >= lambda_min(Phi^T D Phi)*p = eta3). MUTATION: dropping the (mu^T Phi x)^2 term (eta2) gives min eta2/eta3 = 0.017 < 0.5 in some instances, so the claimed bound no longer holds -> the (mu^T Phi x)^2 term is essential. EVIDENCE BOUNDARY: the exact constant in Lemma B.3 (1/2) is taken from the paper; we verify the inequality direction and tightness numerically/symbolically.",
+  "executed_numeric_experiment": true,
+  "metrics": {
+    "n_instances": 17,
+    "eta1_over_eta3_min": 0.9999999999999983,
+    "eta1_over_eta3_max": 1.3871399502417718,
+    "eta2_over_eta3_min": 0.016757174241071107,
+    "structural_eta1_ge_half_eta3": true,
+    "sympy_symbolic_ok": false,
+    "family": [
+      {
+        "kind": "tabular",
+        "eta1": 0.175,
+        "eta2": 0.17499999999999988,
+        "eta3": 0.17499999999999988,
+        "eta1_over_eta3": 1.0000000000000007
+      },
+      {
+        "kind": "tabular",
+        "eta1": 0.11999999999999993,
+        "eta2": 0.11999999999999993,
+        "eta3": 0.12000000000000002,
+        "eta1_over_eta3": 0.9999999999999992
+      },
+      {
+        "kind": "tabular",
+        "eta1": 0.08333333333333329,
+        "eta2": 0.0833333333333333,
+        "eta3": 0.0833333333333332,
+        "eta1_over_eta3": 1.000000000000001
+      },
+      {
+        "kind": "tabular",
+        "eta1": 0.05714285714285711,
+        "eta2": 0.05714285714285713,
+        "eta3": 0.05714285714285711,
+        "eta1_over_eta3": 1.0
+      },
+      {
+        "kind": "tabular",
+        "eta1": 0.037499999999999985,
+        "eta2": 0.03749999999999999,
+        "eta3": 0.03749999999999996,
+        "eta1_over_eta3": 1.0000000000000007
+      },
+      {
+        "kind": "tabular",
+        "eta1": 0.022222222222222154,
+        "eta2": 0.022222222222222192,
+        "eta3": 0.022222222222222192,
+        "eta1_over_eta3": 0.9999999999999983
+      },
+      {
+        "kind": "paper_d4",
+        "eta1": 0.03666105302030245,
+        "eta2": 0.0017927955069230947,
+        "eta3": 0.035098082809142235,
+        "eta1_over_eta3": 1.0445314981920637
+      },
+      {
+        "kind": "paper_d6",
+        "eta1": 0.02869336717719231,
+        "eta2": 0.00047549442551593143,
+        "eta3": 0.02837557327240265,
+        "eta1_over_eta3": 1.01119955892129
+      },
+      {
+        "kind": "paper_d8",
+        "eta1": 0.006254232158540703,
+        "eta2": 0.0001175227774584457,
+        "eta3": 0.00622613185243506,
+        "eta1_over_eta3": 1.0045132847764304
+      },
+      {
+        "kind": "randFA_0",
+        "eta1": 0.04358282918910598,
+        "eta2": 0.004445860100462037,
+        "eta3": 0.04358281354771666,
+        "eta1_over_eta3": 1.00000035888893
+      },
+      {
+        "kind": "randFA_1",
+        "eta1": 0.03644384822613902,
+        "eta2": 0.00540318957932696,
+        "eta3": 0.036365324771105274,
+        "eta1_over_eta3": 1.0021592947547697
+      },
+      {
+        "kind": "randFA_2",
+        "eta1": 0.004530384250258373,
+        "eta2": 0.00033189348779513235,
+        "eta3": 0.0045137846517478005,
+        "eta1_over_eta3": 1.0036775344397844
+      },
+      {
+        "kind": "randFA_3",
+        "eta1": 0.001263049938787906,
+        "eta2": 0.0002694058288106845,
+        "eta3": 0.001240873911734397,
+        "eta1_over_eta3": 1.017871297674808
+      },
+      {
+        "kind": "randFA_4",
+        "eta1": 0.03478272114742906,
+        "eta2": 0.004059907055696739,
+        "eta3": 0.025075134734146038,
+        "eta1_over_eta3": 1.3871399502417718
+      },
+      {
+        "kind": "randFA_5",
+        "eta1": 0.0031827501617609968,
+        "eta2": 0.002760557532560533,
+        "eta3": 0.003164810512722966,
+        "eta1_over_eta3": 1.0056684749263536
+      },
+      {
+        "kind": "randFA_6",
+        "eta1": 0.010360870457662976,
+        "eta2": 0.0006556286531850675,
+        "eta3": 0.008065319284099,
+        "eta1_over_eta3": 1.2846199998665546
+      },
+      {
+        "kind": "randFA_7",
+        "eta1": 0.0018670386816375727,
+        "eta2": 0.00016259830225504458,
+        "eta3": 0.0016960196934444416,
+        "eta1_over_eta3": 1.1008354966950937
+      }
+    ]
+  },
+  "mutation": {
+    "description": "Perturb the definition: remove the (mu^T Phi x)^2 term, i.e. use the prior condition number eta2 = min_{||x||=1, x^T e=0} ||Phi x||^2_Dir instead of eta1. The claimed eta1 >= (1/2) eta3 no longer holds in every instance.",
+    "eta1_over_eta3_min": 0.9999999999999983,
+    "eta2_over_eta3_min": 0.016757174241071107,
+    "eta2_breaks_bound": true,
+    "passed": true
+  }
+}

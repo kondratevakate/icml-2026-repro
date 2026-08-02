@@ -1,0 +1,24 @@
+{
+  "claim": 1,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Sec. 3.3 (Eqs. 11-13), Appendix A",
+  "A_runs": 100,
+  "A_monotonicity_violations": 0,
+  "A_worst_single_step_delta": 0.0036346948280652214,
+  "B_max_abs_grad": 5.6843418859173446e-08,
+  "B_max_rel_grad": 5.898769188827602e-11,
+  "B_fixedpoint_max_rel_change_lambda": 2.409098866308782e-12,
+  "B_fixedpoint_max_change_q": 5.639932965095795e-14,
+  "C_crowdbt_epochs": 40,
+  "C_crowdbt_objective_decreases": 16,
+  "C_crowdbt_worst_step": -2.4028727106909855,
+  "mutation": {
+    "description": "E-step responsibility gamma (Eq. 11) replaced by clip(gamma**0.35*1.4)",
+    "datasets": 10,
+    "runs_with_monotonicity_violation": 10,
+    "worst_step_delta": -17.256899688382646,
+    "breaks_property": true
+  },
+  "verdict": "verified",
+  "notes": "Monotonicity of the log-posterior verified empirically over 100 EM runs on synthetic data drawn from the model of Eq. (2); converged point is a stationary point (numerical gradient ~0 and EM fixed-point residual ~0). Crowd-BT (gradient) is not monotone. This is an empirical check of an analytic guarantee, not a proof; the guarantee itself is the standard EM result (Dempster et al. 1977) and follows because the updates are exact maximizers of Q."
+}

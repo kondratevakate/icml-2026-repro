@@ -1,0 +1,73 @@
+{
+  "claim": "Theorem 14: a compositional benefit of the parent need not propagate to its child subagents under a compatible split",
+  "source": "arXiv:2509.06701v2 Sec.4.1 Theorem 14 (App. G, Theorem 46); Lemma 13",
+  "setup": {
+    "K": 4,
+    "n": 2,
+    "beta": [
+      0.23887759924626872,
+      0.7611224007537313
+    ],
+    "P_agents": [
+      [
+        0.011858678517006364,
+        0.23531406251008619,
+        0.39143185094131555,
+        0.36139540803159187
+      ],
+      [
+        0.006582347350625003,
+        0.006667255464674408,
+        0.15780584997325106,
+        0.8289445472114494
+      ]
+    ],
+    "pool": [
+      0.008426653081805981,
+      0.0173724908079277,
+      0.21805806610437659,
+      0.7561427900058897
+    ],
+    "tilt_direction": [
+      0.855414608411524,
+      0.18044170261758602,
+      -0.14750525037256673,
+      -0.8883510606565432
+    ]
+  },
+  "delta_parent": 0.09139316699308542,
+  "counterexample": {
+    "t": 0.29,
+    "P1_1": [
+      0.016563807935039792,
+      0.2702477205523126,
+      0.408758605832881,
+      0.3044298656797666
+    ],
+    "P1_2": [
+      0.008346152577116545,
+      0.2014223405567657,
+      0.368484588052177,
+      0.4217469188139408
+    ],
+    "delta_parent": 0.09139316699308542,
+    "delta_child1": -0.0023894794961181187,
+    "delta_child2": 0.15600590869050146,
+    "compat_err": 5.551115123125783e-17,
+    "pool_invariance_err": 1.734723475976807e-17
+  },
+  "max_pool_invariance_err_over_scan": 1.1102230246251565e-16,
+  "max_compatibility_err_over_scan": 1.6653345369377348e-16,
+  "counterexample_found": true,
+  "mutation": {
+    "description": "cloning split t=0 (P1,1 = P1,2 = P1), Lemma 48 regime",
+    "pool_invariance_err": 0.0,
+    "delta_children": [
+      0.09139316699308542,
+      0.09139316699308542
+    ],
+    "property_breaks": true
+  },
+  "verdict": "verified",
+  "seed": 20260802
+}

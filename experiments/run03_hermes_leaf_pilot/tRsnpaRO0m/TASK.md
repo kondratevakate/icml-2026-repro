@@ -1,0 +1,27 @@
+# Reproduction task — A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation
+
+OpenReview: https://openreview.net/forum?id=tRsnpaRO0m
+Area: Deep Learning
+Anchored claims (6):
+
+1. Graphops are introduced as self-adjoint, positivity-preserving operators over probability spaces, unifying dense graphons and sparse graphs as a single class of limit objects (Definition 3.1).
+
+2. A restricted subclass called bounded-fiber operators (bofops) is defined via fiber measures nu_x satisfying ess sup_{x in Omega} nu_x(Omega) < infinity, capturing sparse connectivity patterns within the graphop framework (Definition 3.1).
+
+3. Theorem 4.1 establishes that message passing neural networks (MPNNs) are Lipschitz (Holder) continuous with respect to an action metric d_M on bofop-signals: ||H(A_1,f_1) - H(A_2,f_2)||_2 <= C'_{D,r} d_M((A_1,f_1),(A_2,f_2)) (Theorem 4.1).
+
+4. Corollary 5.3 shows the space of bofop-DIDMs (degree-indexed distribution measures) is compact under the DIDM-mover's distance, forming a proper subset of the corresponding dense-graph structure (Corollary 5.3).
+
+5. Section 6.1 uses this compactness and continuity to prove a universal approximation theorem: any continuous function on bofop-DIDMs can be uniformly approximated by MPNNs directly on sparse graphs (Section 6.1).
+
+6. Section 6.2 derives generalization bounds showing generalization error vanishes as sample size grows, exploiting the uniform equicontinuity and compactness established in Theorem 4.1 and Corollary 5.3 (Section 6.2).
+
+## Your job (autonomous)
+Reproduce each anchored claim on CPU with numpy/scipy/sympy (no GPU). For every claim:
+- Write `verify_claim<N>.py` that computes the claim's quantity from first principles.
+- Save numeric result to `results/claim<N>.json`.
+- Run a MUTATION test (perturb the setup; the claimed property must break or shift) for every verified claim.
+- Write verdict: verified / falsified / toy / inconclusive (honest if data/GPU blocks full repro).
+- Record exact source (section/equation/theorem) and a reproducible seed.
+
+Hard budget: 8h total, 4h soft, 2h per claim. Write `logbook.md` when done.

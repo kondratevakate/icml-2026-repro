@@ -1,0 +1,39 @@
+{
+  "claim": 2,
+  "source": "Definition 3.1 (bounded-fiber operators / bofops)",
+  "seed": 20260802,
+  "n_grid": [
+    100,
+    200,
+    400,
+    800
+  ],
+  "ess_sup_fiber_mass": {
+    "regular_d4": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "dense_er_p0.5": [
+      163.0,
+      317.0,
+      632.0,
+      1242.0
+    ],
+    "hub_sqrt_n": [
+      13.0,
+      18.0,
+      24.0,
+      32.0
+    ]
+  },
+  "loglog_growth_exponent_vs_n": {
+    "regular_d4": -2.2471011820493023e-16,
+    "dense_er_p0.5": 0.97846056300059,
+    "hub_sqrt_n": 0.4313718344855565
+  },
+  "mutation": "add a degree-sqrt(n) hub to the 3-regular family",
+  "verdict": "verified",
+  "note": "ess sup_x nu_x(Omega) equals the max degree in this embedding. It is uniformly bounded (=4, slope~0) for the bounded-degree sparse family, so that family is a bofop family; it grows ~n for dense ER and ~sqrt(n) for the hub mutation, which therefore leave the bofop class. Confirms the definition discriminates as claimed."
+}

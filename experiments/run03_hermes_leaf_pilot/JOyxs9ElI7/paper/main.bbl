@@ -1,0 +1,367 @@
+\begin{thebibliography}{55}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Allen-Zhu \& Li(2025)Allen-Zhu and Li]{allen-zhu2025physics}
+Allen-Zhu, Z. and Li, Y.
+\newblock Physics of language models: Part 1, learning hierarchical language structures.
+\newblock \emph{Transactions on Machine Learning Research}, 2025.
+\newblock ISSN 2835-8856.
+\newblock URL \url{https://openreview.net/forum?id=mPQKyzkA1K}.
+
+\bibitem[Anonymous(2026)]{butoi-languageclasses}
+Anonymous.
+\newblock Benchmarking neural networks on formal language classes.
+\newblock 2026.
+
+\bibitem[Arps et~al.(2022)Arps, Samih, Kallmeyer, and Sajjad]{arps2022probingconstituencystructureneural}
+Arps, D., Samih, Y., Kallmeyer, L., and Sajjad, H.
+\newblock Probing for constituency structure in neural language models.
+\newblock In Goldberg, Y., Kozareva, Z., and Zhang, Y. (eds.), \emph{Findings of the Association for Computational Linguistics: EMNLP 2022}, pp.\  6738--6757, Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2022.findings-emnlp.502}.
+\newblock URL \url{https://aclanthology.org/2022.findings-emnlp.502/}.
+
+\bibitem[Barcelo et~al.(2024)Barcelo, Kozachinskiy, Lin, and Podolskii]{barcelo2024logical}
+Barcelo, P., Kozachinskiy, A., Lin, A.~W., and Podolskii, V.
+\newblock Logical languages accepted by transformer encoders with hard attention.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=gbrHZq07mq}.
+
+\bibitem[Barrington \& Th\'{e}rien(1988)Barrington and Th\'{e}rien]{barrington_monoids}
+Barrington, D.~M. and Th\'{e}rien, D.
+\newblock Finite monoids and the fine structure of {NC}1.
+\newblock \emph{J. ACM}, 35\penalty0 (4):\penalty0 941–952, October 1988.
+\newblock ISSN 0004-5411.
+\newblock \doi{10.1145/48014.63138}.
+\newblock URL \url{https://doi.org/10.1145/48014.63138}.
+
+\bibitem[Bhattamishra et~al.(2020)Bhattamishra, Ahuja, and Goyal]{bhattamishra2020abilitylimitationstransformersrecognize}
+Bhattamishra, S., Ahuja, K., and Goyal, N.
+\newblock On the ability and limitations of transformers to recognize formal languages, 2020.
+\newblock URL \url{https://arxiv.org/abs/2009.11264}.
+
+\bibitem[Borenstein et~al.(2024)Borenstein, Svete, Chan, Valvoda, Nowak, Augenstein, Chodroff, and Cotterell]{borenstein-etal-2024-languages}
+Borenstein, N., Svete, A., Chan, R., Valvoda, J., Nowak, F., Augenstein, I., Chodroff, E., and Cotterell, R.
+\newblock What languages are easy to language-model? a perspective from learning probabilistic regular languages.
+\newblock In Ku, L.-W., Martins, A., and Srikumar, V. (eds.), \emph{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  15115--15134, Bangkok, Thailand, August 2024. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.acl-long.807}.
+\newblock URL \url{https://aclanthology.org/2024.acl-long.807/}.
+
+\bibitem[Buss(1987)]{buss-bfvp}
+Buss, S.
+\newblock The {B}oolean formula value problem is in {ALOGTIME}.
+\newblock In \emph{Proceedings of the Nineteenth Annual ACM Symposium on Theory of Computing}, STOC '87, pp.\  123–131, New York, NY, USA, 1987. Association for Computing Machinery.
+\newblock ISBN 0897912217.
+\newblock \doi{10.1145/28395.28409}.
+\newblock URL \url{https://doi.org/10.1145/28395.28409}.
+
+\bibitem[Buss et~al.(1992)Buss, Cook, Gupta, and Ramachandran]{buss-optimalparallel}
+Buss, S., Cook, S., Gupta, A., and Ramachandran, V.
+\newblock An optimal parallel algorithm for formula evaluation.
+\newblock \emph{SIAM Journal on Computing}, 21\penalty0 (4):\penalty0 755--780, 1992.
+\newblock \doi{10.1137/0221046}.
+\newblock URL \url{https://doi.org/10.1137/0221046}.
+
+\bibitem[Butoi et~al.(2025)Butoi, Khalighinejad, Svete, Valvoda, Cotterell, and DuSell]{butoi2025trainingneuralnetworksrecognizers}
+Butoi, A., Khalighinejad, G., Svete, A., Valvoda, J., Cotterell, R., and DuSell, B.
+\newblock Training neural networks as recognizers of formal languages, 2025.
+\newblock URL \url{https://arxiv.org/abs/2411.07107}.
+
+\bibitem[Chandra et~al.(1981)Chandra, Kozen, and Stockmeyer]{chandra-alternation}
+Chandra, A.~K., Kozen, D.~C., and Stockmeyer, L.~J.
+\newblock Alternation.
+\newblock \emph{J. ACM}, 28\penalty0 (1):\penalty0 114–133, January 1981.
+\newblock ISSN 0004-5411.
+\newblock \doi{10.1145/322234.322243}.
+\newblock URL \url{https://doi.org/10.1145/322234.322243}.
+
+\bibitem[Chiang(2025)]{chiang2025transformersuniformtc0}
+Chiang, D.
+\newblock Transformers in uniform tc$^0$, 2025.
+\newblock URL \url{https://arxiv.org/abs/2409.13629}.
+
+\bibitem[Chytil et~al.(1991)Chytil, Crochemore, Monien, and Rytter]{chytil-unambiguous}
+Chytil, M., Crochemore, M., Monien, B., and Rytter, W.
+\newblock On the parallel recognition of unambiguous context-free languages.
+\newblock \emph{Theoretical Computer Science}, 81\penalty0 (2):\penalty0 311--316, 1991.
+\newblock ISSN 0304-3975.
+\newblock \doi{https://doi.org/10.1016/0304-3975(91)90199-C}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/030439759190199C}.
+
+\bibitem[Cocke(1969)]{cocke}
+Cocke, J.
+\newblock \emph{Programming languages and their compilers: Preliminary notes}.
+\newblock New York University, USA, 1969.
+\newblock ISBN B0007F4UOA.
+\newblock URL \url{https://softwarepreservation.computerhistory.org/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf}.
+
+\bibitem[Earley(1970)]{earley-parsing}
+Earley, J.
+\newblock An efficient context-free parsing algorithm.
+\newblock \emph{Commun. ACM}, 13\penalty0 (2):\penalty0 94–102, February 1970.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/362007.362035}.
+\newblock URL \url{https://doi.org/10.1145/362007.362035}.
+
+\bibitem[Ebrahimi et~al.(2020)Ebrahimi, Gelda, and Zhang]{ebrahimi-etal-2020-self}
+Ebrahimi, J., Gelda, D., and Zhang, W.
+\newblock How can self-attention networks recognize {D}yck-n languages?
+\newblock In Cohn, T., He, Y., and Liu, Y. (eds.), \emph{Findings of the Association for Computational Linguistics: EMNLP 2020}, pp.\  4301--4306, Online, November 2020. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2020.findings-emnlp.384}.
+\newblock URL \url{https://aclanthology.org/2020.findings-emnlp.384/}.
+
+\bibitem[Hahn \& Rofin(2024)Hahn and Rofin]{hahn-rofin-2024-sensitive}
+Hahn, M. and Rofin, M.
+\newblock Why are sensitive functions hard for transformers?
+\newblock In Ku, L.-W., Martins, A., and Srikumar, V. (eds.), \emph{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  14973--15008, Bangkok, Thailand, August 2024. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.acl-long.800}.
+\newblock URL \url{https://aclanthology.org/2024.acl-long.800/}.
+
+\bibitem[Hao et~al.(2022)Hao, Angluin, and Frank]{hao-etal-2022-formal}
+Hao, Y., Angluin, D., and Frank, R.
+\newblock Formal language recognition by hard attention transformers: Perspectives from circuit complexity.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 10:\penalty0 800--810, 2022.
+\newblock \doi{10.1162/tacl_a_00490}.
+\newblock URL \url{https://aclanthology.org/2022.tacl-1.46/}.
+
+\bibitem[Hayakawa \& Sato(2024)Hayakawa and Sato]{hayakawa2024theoreticalanalysishierarchicallanguage}
+Hayakawa, D. and Sato, I.
+\newblock Theoretical analysis of hierarchical language recognition and generation by transformers without positional encoding, 2024.
+\newblock URL \url{https://arxiv.org/abs/2410.12413}.
+
+\bibitem[Hewitt \& Manning(2019)Hewitt and Manning]{hewitt-manning-2019-structural}
+Hewitt, J. and Manning, C.~D.
+\newblock {A} structural probe for finding syntax in word representations.
+\newblock In Burstein, J., Doran, C., and Solorio, T. (eds.), \emph{Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)}, pp.\  4129--4138, Minneapolis, Minnesota, June 2019. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/N19-1419}.
+\newblock URL \url{https://aclanthology.org/N19-1419/}.
+
+\bibitem[Hu et~al.(2025)Hu, Petty, Shi, Merrill, and Linzen]{hu-circuitschomskyprepretrainingformal}
+Hu, M.~Y., Petty, J., Shi, C., Merrill, W., and Linzen, T.
+\newblock Between circuits and chomsky: Pre-pretraining on formal languages imparts linguistic biases, 2025.
+\newblock URL \url{https://arxiv.org/abs/2502.19249}.
+
+\bibitem[Huang et~al.(2025{\natexlab{a}})Huang, Liang, and Yang]{huang2025how}
+Huang, R., Liang, Y., and Yang, J.
+\newblock How transformers learn regular language recognition: A theoretical study on training dynamics and implicit bias.
+\newblock In \emph{Forty-second International Conference on Machine Learning}, 2025{\natexlab{a}}.
+\newblock URL \url{https://openreview.net/forum?id=yTAR011mOF}.
+
+\bibitem[Huang et~al.(2025{\natexlab{b}})Huang, Yang, Bhattamishra, Sarrof, Krebs, Zhou, Nakkiran, and Hahn]{huang2025a}
+Huang, X., Yang, A., Bhattamishra, S., Sarrof, Y., Krebs, A., Zhou, H., Nakkiran, P., and Hahn, M.
+\newblock A formal framework for understanding length generalization in transformers.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025{\natexlab{b}}.
+\newblock URL \url{https://openreview.net/forum?id=U49N5V51rU}.
+
+\bibitem[Jiang et~al.(2025)Jiang, Wang, Shen, Kim, and Kim]{jiang2024surveylargelanguagemodels}
+Jiang, J., Wang, F., Shen, J., Kim, S., and Kim, S.
+\newblock A survey on large language models for code generation.
+\newblock \emph{ACM Trans. Softw. Eng. Methodol.}, July 2025.
+\newblock ISSN 1049-331X.
+\newblock \doi{10.1145/3747588}.
+\newblock URL \url{https://doi.org/10.1145/3747588}.
+\newblock Just Accepted.
+
+\bibitem[Jordan(1869)]{jordan1869}
+Jordan, C.
+\newblock Sur les assemblages de lignes.
+\newblock \emph{Journal für die reine und angewandte Mathematik}, 70:\penalty0 185--190, 1869.
+\newblock URL \url{http://eudml.org/doc/148084}.
+
+\bibitem[Kasami(1965)]{kasami1965AnER}
+Kasami, T.
+\newblock An efficient recognition and syntax-analysis algorithm for context-free languages.
+\newblock 1965.
+\newblock URL \url{https://www.ideals.illinois.edu/items/100444}.
+
+\bibitem[Khalighinejad et~al.(2023)Khalighinejad, Liu, and Wiseman]{khalighinejad-etal-2023-approximating}
+Khalighinejad, G., Liu, O., and Wiseman, S.
+\newblock Approximating {CKY} with transformers.
+\newblock In Bouamor, H., Pino, J., and Bali, K. (eds.), \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pp.\  14016--14030, Singapore, December 2023. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.findings-emnlp.934}.
+\newblock URL \url{https://aclanthology.org/2023.findings-emnlp.934/}.
+
+\bibitem[Lange \& Rossmanith(1990)Lange and Rossmanith]{lange-unambiguous}
+Lange, K.-J. and Rossmanith, P.
+\newblock Characterizing unambiguous augmented pushdown automata by circuits.
+\newblock In Rovan, B. (ed.), \emph{Mathematical Foundations of Computer Science 1990}, pp.\  399--406, Berlin, Heidelberg, 1990. Springer Berlin Heidelberg.
+\newblock ISBN 978-3-540-47185-1.
+\newblock URL \url{https://link.springer.com/chapter/10.1007/BFb0029635}.
+
+\bibitem[Lange et~al.(1992)Lange, Rossmanith, and Rytter]{lange-parallel}
+Lange, K.-J., Rossmanith, P., and Rytter, W.
+\newblock Parallel recognition and ranking of context-free languages.
+\newblock In Havel, I.~M. and Koubek, V. (eds.), \emph{Mathematical Foundations of Computer Science 1992}, pp.\  24--36, Berlin, Heidelberg, 1992. Springer Berlin Heidelberg.
+
+\bibitem[Li et~al.(2025)Li, Guo, and Andreas]{li2025how}
+Li, B.~Z., Guo, Z.~C., and Andreas, J.
+\newblock (how) do language models track state?
+\newblock In \emph{Forty-second International Conference on Machine Learning}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=8SXosAVIFH}.
+
+\bibitem[Liu et~al.(2023{\natexlab{a}})Liu, Wu, Michael, Suhr, West, Koller, Swayamdipta, Smith, and Choi]{liu2023wereafraidlanguagemodels}
+Liu, A., Wu, Z., Michael, J., Suhr, A., West, P., Koller, A., Swayamdipta, S., Smith, N., and Choi, Y.
+\newblock We{'}re afraid language models aren{'}t modeling ambiguity.
+\newblock In Bouamor, H., Pino, J., and Bali, K. (eds.), \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pp.\  790--807, Singapore, December 2023{\natexlab{a}}. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.emnlp-main.51}.
+\newblock URL \url{https://aclanthology.org/2023.emnlp-main.51/}.
+
+\bibitem[Liu et~al.(2023{\natexlab{b}})Liu, Ash, Goel, Krishnamurthy, and Zhang]{liu2023transformerslearnshortcutsautomata}
+Liu, B., Ash, J.~T., Goel, S., Krishnamurthy, A., and Zhang, C.
+\newblock Transformers learn shortcuts to automata, 2023{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2210.10749}.
+
+\bibitem[Loshchilov \& Hutter(2019)Loshchilov and Hutter]{loshchilov2019decoupledweightdecayregularization}
+Loshchilov, I. and Hutter, F.
+\newblock Decoupled weight decay regularization.
+\newblock In \emph{7th International Conference on Learning Representations, {ICLR} 2019, New Orleans, LA, USA, May 6-9, 2019}. OpenReview.net, 2019.
+\newblock URL \url{https://openreview.net/forum?id=Bkg6RiCqY7}.
+
+\bibitem[Merrill \& Sabharwal(2023{\natexlab{a}})Merrill and Sabharwal]{merrill-logic}
+Merrill, W. and Sabharwal, A.
+\newblock A logic for expressing log-precision transformers.
+\newblock In \emph{Proceedings of the 37th International Conference on Neural Information Processing Systems}, NIPS '23, Red Hook, NY, USA, 2023{\natexlab{a}}. Curran Associates Inc.
+\newblock URL \url{https://arxiv.org/abs/2210.02671}.
+
+\bibitem[Merrill \& Sabharwal(2023{\natexlab{b}})Merrill and Sabharwal]{merrill-sabharwal-2023-parallelism}
+Merrill, W. and Sabharwal, A.
+\newblock The parallelism tradeoff: Limitations of log-precision transformers.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 11:\penalty0 531--545, 2023{\natexlab{b}}.
+\newblock \doi{10.1162/tacl_a_00562}.
+\newblock URL \url{https://aclanthology.org/2023.tacl-1.31/}.
+
+\bibitem[Merrill \& Sabharwal(2024{\natexlab{a}})Merrill and Sabharwal]{merrill-2025littledepthgoeslong}
+Merrill, W. and Sabharwal, A.
+\newblock A little depth goes a long way: The expressive power of log-depth transformers.
+\newblock In \emph{NeurIPS 2024 Workshop on Mathematics of Modern Machine Learning}, 2024{\natexlab{a}}.
+\newblock URL \url{https://openreview.net/forum?id=njycONK0JG}.
+
+\bibitem[Merrill \& Sabharwal(2024{\natexlab{b}})Merrill and Sabharwal]{merrill2024expressivepowertransformerschain}
+Merrill, W. and Sabharwal, A.
+\newblock The expressive power of transformers with chain of thought.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024{\natexlab{b}}.
+\newblock URL \url{https://openreview.net/forum?id=NjNGlPh8Wh}.
+
+\bibitem[Merrill \& Sabharwal(2025)Merrill and Sabharwal]{merrill2025exactexpressivepowertransformers}
+Merrill, W. and Sabharwal, A.
+\newblock Exact expressive power of transformers with padding.
+\newblock In \emph{The Thirty-ninth Annual Conference on Neural Information Processing Systems}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=O1abxStFcy}.
+
+\bibitem[Merrill et~al.(2021)Merrill, Ramanujan, Goldberg, Schwartz, and Smith]{merrill-etal-2021-effects}
+Merrill, W., Ramanujan, V., Goldberg, Y., Schwartz, R., and Smith, N.~A.
+\newblock Effects of parameter norm growth during transformer training: Inductive bias from gradient descent.
+\newblock In Moens, M.-F., Huang, X., Specia, L., and Yih, S. W.-t. (eds.), \emph{Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing}, pp.\  1766--1781, Online and Punta Cana, Dominican Republic, November 2021. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2021.emnlp-main.133}.
+\newblock URL \url{https://aclanthology.org/2021.emnlp-main.133/}.
+
+\bibitem[Merrill et~al.(2022)Merrill, Sabharwal, and Smith]{merrill-etal-2022-saturated}
+Merrill, W., Sabharwal, A., and Smith, N.~A.
+\newblock Saturated transformers are constant-depth threshold circuits.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 10:\penalty0 843--856, 2022.
+\newblock \doi{10.1162/tacl_a_00493}.
+\newblock URL \url{https://aclanthology.org/2022.tacl-1.49/}.
+
+\bibitem[Merrill et~al.(2026)Merrill, Li, Romero, Svete, Costello, Dasigi, Groeneveld, Heineman, Kuehl, Lambert, Li, Lo, Malik, Matusz, Minixhofer, Morrison, Soldaini, Timbers, Walsh, Smith, Hajishirzi, and Sabharwal]{merrill2026olmohybridtheorypractice}
+Merrill, W., Li, Y., Romero, T., Svete, A., Costello, C., Dasigi, P., Groeneveld, D., Heineman, D., Kuehl, B., Lambert, N., Li, C., Lo, K., Malik, S., Matusz, D., Minixhofer, B., Morrison, J., Soldaini, L., Timbers, F., Walsh, P., Smith, N.~A., Hajishirzi, H., and Sabharwal, A.
+\newblock Olmo hybrid: From theory to practice and back.
+\newblock \emph{arXiv preprint arXiv:2604.03444}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2604.03444}.
+
+\bibitem[Qin et~al.(2024)Qin, Chen, Feng, Wu, Zhang, Li, Li, Che, and Yu]{qin2024largelanguagemodelsmeet}
+Qin, L., Chen, Q., Feng, X., Wu, Y., Zhang, Y., Li, Y., Li, M., Che, W., and Yu, P.~S.
+\newblock Large language models meet nlp: A survey, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.12819}.
+
+\bibitem[Rossmanith \& Rytter(1992)Rossmanith and Rytter]{rossmanith-observationsparallelrec}
+Rossmanith, P. and Rytter, W.
+\newblock Observations on log (n) time parallel recognition of unambiguous cfl's.
+\newblock \emph{Information Processing Letters}, 44\penalty0 (5):\penalty0 267--272, 1992.
+\newblock ISSN 0020-0190.
+\newblock \doi{https://doi.org/10.1016/0020-0190(92)90212-E}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/002001909290212E}.
+
+\bibitem[Ruzzo(1980)]{ruzzo-treesize}
+Ruzzo, W.
+\newblock Tree-size bounded alternation.
+\newblock \emph{Journal of Computer and System Sciences}, 21\penalty0 (2):\penalty0 218--235, 1980.
+\newblock ISSN 0022-0000.
+\newblock \doi{https://doi.org/10.1016/0022-0000(80)90036-7}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/0022000080900367}.
+
+\bibitem[Ruzzo(1981)]{ruzzo-unif}
+Ruzzo, W.~L.
+\newblock On uniform circuit complexity.
+\newblock \emph{Journal of Computer and System Sciences}, 22\penalty0 (3):\penalty0 365--383, 1981.
+\newblock ISSN 0022-0000.
+\newblock \doi{https://doi.org/10.1016/0022-0000(81)90038-6}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/0022000081900386}.
+
+\bibitem[Rytter(1985)]{rytter-2pda}
+Rytter, W.
+\newblock The complexity of two-way pushdown automata and recursive programs.
+\newblock In Apostolico, A. and Galil, Z. (eds.), \emph{Combinatorial Algorithms on Words}, pp.\  341--356, Berlin, Heidelberg, 1985. Springer Berlin Heidelberg.
+\newblock URL \url{https://link.springer.com/chapter/10.1007/978-3-642-82456-2_24}.
+
+\bibitem[Rytter(1987)]{rytter-parallelunambiguous}
+Rytter, W.
+\newblock Parallel time o(log n) recognition of unambiguous context-free languages.
+\newblock \emph{Information and Computation}, 73\penalty0 (1):\penalty0 75--86, 1987.
+\newblock ISSN 0890-5401.
+\newblock \doi{https://doi.org/10.1016/0890-5401(87)90041-1}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/0890540187900411}.
+
+\bibitem[Schulz et~al.(2025)Schulz, Mitropolsky, and Poggio]{schulz2025unravelingsyntaxlanguagemodels}
+Schulz, L.~Y., Mitropolsky, D., and Poggio, T.
+\newblock Unraveling syntax: How language models learn context-free grammars, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.02524}.
+
+\bibitem[Strobl(2023)]{strobl2023averagehardattentiontransformersconstantdepth}
+Strobl, L.
+\newblock Average-hard attention transformers are constant-depth uniform threshold circuits, 2023.
+\newblock URL \url{https://arxiv.org/abs/2308.03212}.
+
+\bibitem[Svete et~al.(2026)Svete, Merrill, Cotterell, and Sabharwal]{anonymous2026revisiting}
+Svete, A., Merrill, W., Cotterell, R., and Sabharwal, A.
+\newblock Revisiting padded transformer expressivity: Which architectural choices matter and which don't.
+\newblock In \emph{Forty-third International Conference on Machine Learning}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=nBuL6HywFX}.
+
+\bibitem[Venkateswaran(1991)]{venkateswaran-logcfl}
+Venkateswaran, H.
+\newblock Properties that characterize logcfl.
+\newblock \emph{Journal of Computer and System Sciences}, 43\penalty0 (2):\penalty0 380--404, 1991.
+\newblock ISSN 0022-0000.
+\newblock \doi{https://doi.org/10.1016/0022-0000(91)90020-6}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/0022000091900206}.
+
+\bibitem[Yang \& Chiang(2024)Yang and Chiang]{yang2024countingliketransformerscompiling}
+Yang, A. and Chiang, D.
+\newblock Counting like transformers: Compiling temporal counting logic into softmax transformers.
+\newblock In \emph{First Conference on Language Modeling}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=FmhPg4UJ9K}.
+
+\bibitem[Yang et~al.(2025)Yang, Watson, Xue, Bhattamishra, Llarena, Merrill, Ferreira, Svete, and Chiang]{yang2025transformercookbook}
+Yang, A., Watson, C., Xue, A., Bhattamishra, S., Llarena, J., Merrill, W., Ferreira, E. D.~S., Svete, A., and Chiang, D.
+\newblock The transformer cookbook, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.00368}.
+
+\bibitem[Younger(1967)]{younger}
+Younger, D.~H.
+\newblock Recognition and parsing of context-free languages in time n3.
+\newblock \emph{Information and Control}, 10\penalty0 (2):\penalty0 189--208, 1967.
+\newblock ISSN 0019-9958.
+\newblock \doi{https://doi.org/10.1016/S0019-9958(67)80007-X}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S001999586780007X}.
+
+\bibitem[Zhao et~al.(2023)Zhao, Panigrahi, Ge, and Arora]{zhao-etal-2023-transformers}
+Zhao, H., Panigrahi, A., Ge, R., and Arora, S.
+\newblock Do transformers parse while predicting the masked word?
+\newblock In Bouamor, H., Pino, J., and Bali, K. (eds.), \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pp.\  16513--16542, Singapore, December 2023. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2023.emnlp-main.1029}.
+\newblock URL \url{https://aclanthology.org/2023.emnlp-main.1029/}.
+
+\end{thebibliography}

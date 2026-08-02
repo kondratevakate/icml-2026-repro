@@ -1,0 +1,516 @@
+## 5. Non-parametric estimation and worst-case regret
+
+We complete the BOT picture by deriving a learning protocol which gives precise control over the worst-case regret
+bounds in Theorem 5.3. Before giving these regret bounds,
+we introducing basis decomposition and the associated regularity condition, and integrate it into EntUCB.
+
+## 5.1. Basis decomposition and regularity conditions
+
+Since, in general, the frequency-domain representation
+∗ <sup>∗</sup> d
+f of the cost function c ∈ L²(R; ̺) is an infinitedimensional object, we must choose a basis in which to
+express and learn it. Classical choices of bases are wavelet
+systems, such as the Haar system, or the Fourier basis if
+supp(µ) × supp(ν) is bounded. Regardless of the choice
+d
+made, for any orthonormal basis (φ<sub>i</sub>) of L²(R; ̺), we
+i∈N
+can write
+
+$$
+c^{*}\ \in\ L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+f^{*}
+$$
+
+$$
+{\mathrm{s u p p}}(\mu)\times{\mathrm{s u p p}}(\nu)
+$$
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+f^{*}=\mathsf{F}c^{*}=\sum_{i=1}^{+\infty}\gamma_{i}^{*}\phi_{i}\,,
+$$
+
+∗ ∗
+for some sequence γ ∈ ℓ₂(R), with ‖γ ‖ =
+<sub>ℓ</sub><sup>2</sup><sup>(R)</sup>
+<sub>∗</sub>
+‖f ‖ <sub>2</sub> <sub>d</sub>. The efficiency with which this basis repre-
+L (R;̺)
+∗
+sents f will determine the convergence rate of the estima-
+∗
+tor for f and thus the worst-case regret. To quantify this
+efficiency, we will take an approximation theory viewpoint
+with Assumption 5.1.
+
+$$
+\gamma^{*}\ \ \in\ \ \ell_{2}(\mathbb{R})
+$$
+
+$$
+\left\| \gamma^ {*} \right\| _ {\ell_ {2} (\mathbb {R})} =
+$$
+
+$$
+\left|f f^{*}\right\|_{L^{2}(\mathbb{R}^{d};\varrho)}
+$$
+
+$$
+f^{*}
+$$
+
+$$
+f^{*}
+$$
+
+**Assumption 5.1.** There is a known orthonormal basis
+d
+(φ<sup>i</sup>) of L²(R; ̺),an<sup>d</sup> ζ : R<sub>+</sub>→ [0, 1], a known monoi∈N
+tonically increasing continuous function satisfying
+∑
+
+$$
+\operatorname*{i n f}_{n\in\mathbb{N}}\frac{\sum_{i=1}^{n}\left|\gamma_{i}^{*}\right|^{2}}{\zeta(n)}\geq\left\|c^{*}\right\|_{L^{2}(\mathbb{R}^{d};\varrho)}^{2}\ .
+$$
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\zeta:\mathbb{R}_{+}\rightarrow[0,1]
+$$
+
+The formulation of Assumption 5.1 is inspired by the work
+of Kolmogorov in his study of approximations by finite subspaces (Kolmogorov, 1991). We recall this formulation, essential notions, and examples in Appendix E.1.
+
+Henceforth, in the chosen orthonormal basis (φ<sub>i</sub>) of
+<sub>i∈N</sub>
+<sub>d</sub>
+L²(R; ̺), let each a<sub>t</sub>admit the representation
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}
+$$
+
+$$
+\alpha_{t}
+$$
+
+$$
+a_{t}=\sum_{i=0}^{\infty}\vartheta_{i}^{(t)}\phi_{i}\thinspace,\quad\operatorname{\mathrm{}{f o r}}\operatorname{\mathrm{}{s o m e}}\quad\ \vartheta^{(t)}\in\ell_{2}(\mathbb{R})\thinspace.
+$$
+
+Since (φ<sub>i</sub>) is an orthonormal basis, we may write
+i∈N
+
+$$
+\langle f^{*}|a_{t}\rangle_{L^{2}(\mathbb{R}^{d};\varrho)}^{}=\langle\gamma^{*}|\vartheta^{(t)}\rangle_{\ell_{2}(\mathbb{R})}^{}=\sum_{n=1}^{+\infty}\gamma_{n}\vartheta_{n}^{(t)}\:.
+$$
+
+∑<sub>n</sub>
+∗ <sup>∗</sup>
+Let f |<sup>n</sup>:= γ<sup>i</sup>φ<sub>i</sub>be the truncation of the basis exi=0
+pansion of f at order n ∈ N. By abuse of notation, and only
+when it is clear from context, we will override notation and
+∗
+denote c |<sub>n</sub>the result of applying the inverse fourier trans-
+∗ ∗ ∗
+form to f |<sub>n</sub>, the basis truncation of f := Fc. A straightforward derivation (see Appendix E.2) yields the approximation bound of Lemma 5.2.
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}
+$$
+
+$$
+f^{*}|_{n}\ {=}\ \sum_{i=0}^{n}\gamma_{i}^{*}\phi_{i}
+$$
+
+$$
+n\in\mathbb{N}.
+$$
+
+$$
+f^{*}:=\mathsf{F}c^{*}
+$$
+
+$$
+f^{*}|_{n},
+$$
+
+$$
+c^{*}|_{n}
+$$
+
+**Lemma 5.2.** Let (φi) be an orthonormal basis of
+i∈N∑
+2 d <sub>2</sub> d ∞
+L (R; ̺), an<sub>d</sub> let f ∈ L (R; ̺) with f := γ<sub>i</sub>φ<sub>i</sub>.
+<sub>i=0</sub>
+d
+Then, for every g ∈ L²(R; ̺), we have
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}
+$$
+
+$$
+f\,\in\,\tilde{\}L^{2}(\mathbb{R}^{d};\varrho)}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+f\,:=\,\sum_{i=0}^{\infty}\gamma_{i}\phi_{i}.
+$$
+
+$$
+g\in L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\left| \langle f - f | _ {n} | g \rangle_ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)} \right| \leq \| g \| _ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)} \sqrt {\sum_ {i = n + 1} ^ {+ \infty} \left| \gamma_ {i} \right| ^ {2}}.
+$$
+
+For our purpose, g = a<sub>t</sub>is bounded by 1 in norm since
+d d
+‖Fπ<sup>t</sup>‖ ≤ π<sub>t</sub>(R ) = 1 = ̺(R), so that the result-
+∞
+∗ ∗
+ing approximation error of f by (f |<sub>n</sub>) is controlled
+n∈N
+∗
+entirely by the decay of the coefficients (γ<sub>i</sub>). Consei∈N
+quently, regret analysis can leverage Lemma 5.2 to move
+the problem to finite-dimensional regression on the coeffi-
+∗
+cients (γ<sub>i</sub>).
+<sub>i∈N</sub>
+
+$$
+g\,=\,a_{t}
+$$
+
+$$
+\big\|\mathsf{F}\pi_{t}\big\|_{\infty}\,\leq\,\pi_{t}(\mathbb{R}^{d})big\,\mathrm=\,1\,=\,\varrho(\mathbb{R}^{d})
+$$
+
+$$
+\left(f^{*}|_{n}\right)_{n\in\mathbb{N}}
+$$
+
+$$
+(\gamma_{i}^{*})_{i\in\mathbb{N}^{*}}
+$$
+
+$$
+\left(\gamma_{i}^{*}\right)_{i\in\mathbb{N}}.
+$$
+
+The error bound of Lemma 5.2 is cumulated at each time
+step in the regret. Thus, to ensure sub-linear regret, it is nect,λ
+essary to increase the order n<sub>t</sub>of the RLS estimate γˆ<sub>tn</sub>
+of γ over time. We detail this estimator, construct its cont
+fidence sets C˜<sub>tn</sub>(δ), and prove technical lemmata in Appendix E. Integrating these elements into EntUCB yields
+Algorithm 2, whose regret bound is given in Theorem 5.3.
+
+$$
+\gamma
+$$
+
+$$
+n_{t}
+$$
+
+$$
+\hat{\boldsymbol{\gamma}}_{t}^{n_{t},\lambda}
+$$
+
+$$
+\tilde{\mathcal{C}}_{t}^{n_{t}}(\delta)
+$$
+
+**Algorithm 2** Basis-truncation EntUCB
+**Require:** Confidence δ, regularisation level λ, entropy penalisation (ε<sup>t</sup>), approximation orders (n<sub>t</sub>)
+<sub>t∈N</sub> t∈N
+1: Set π˜<sub>1</sub>:= µ ⊗ ν
+2: **for** t ∈ N **do**
+3: Play π<sub>t</sub>= ˜π<sub>t</sub>
+4: Receive feedback C<sup>t</sup>
+nt,λ
+5: Compute the RLS estimator γˆ<sub>t</sub>usi<sup>n</sup>g (31)
+˜nt
+6: Construct the confidence set C<sub>t</sub>(δ) using (32)
+and (33)
+nt
+7: **Optimism:** pick (˜π<sub>t+1</sub>, γ˜<sub>t+1</sub>) according to (34)
+8: Receive feedback R<sub>t</sub>
+9: **end for**
+
+$$
+\left(\varepsilon_{t}\right)_{t\in\mathbb{N}}\colon
+$$
+
+$$
+\tilde{\pi}_{1}:=\mu\otimes\bar{\nu}
+$$
+
+$$
+\left(n_{t}\right)_{t\in\mathbb{N}}
+$$
+
+$$
+t\in\mathbb{N}
+$$
+
+$$
+\pi_{t}=\tilde{\pi}_{t}
+$$
+
+$$
+C_{t}
+$$
+
+$$
+\hat{\gamma}_{t}^{n_{t},\lambda}
+$$
+
+$$
+\tilde{\mathcal{C}}_{t}^{n_{t}}(\delta)
+$$
+
+$$
+(\tilde{\pi}_{t+1},\tilde{\gamma}_{t+1}^{n_{t}})
+$$
+
+$$
+R_{t}
+$$
+
+**Theorem 5.3.** Assume Assumptions 3.1, 3.2 and 5.1 and
+−q
+ζ(n) = 1 <sup>−</sup> n for some q > 0. For any δ ∈ (0, 1),
+λ > 0, ε > 0, let A denote Algorithm 2 with (n ˜) =
+<sub>t</sub> <sub>t∈N</sub>
+
+$$
+\zeta(n)\,=\,1-n^{-q}
+$$
+
+$$
+q\,>\,0
+$$
+
+$$
+\delta\,\in\,(0,1)
+$$
+
+$$
+\lambda\,>\,0,\,\varepsilon\,>\,0.
+$$
+
+$$
+\left(n_{t}\right)_{t\in\mathbb{N}}=
+$$
+
+7
+
+---
+
+12
+<sup>q+1</sup><sup>1</sup>
+(⌈t ⌉), Λ<sub>n</sub>= ‖·‖, for all n ∈ N, and (ε<sub>t</sub>) =
+<sup>t∈N</sup> 2 2 t∈N
+<sup>−η</sup>
+(ηt)<sub>t∈N</sub>. For any T ∈ N, the following regret bound
+holds:
+()
+
+$$
+\big(\big\lceil t^{\frac{1}{q+1}}\big\rceil\big)_{t\in\mathbb{N}},\,\Lambda_{n}=\textstyle\ \ {\frac{1}{2}}\,\big\|\cdot\big\|_{2}^{2},
+$$
+
+$$
+n\in\mathbb{N},
+$$
+
+$$
+\left(\varepsilon_{t}\right)_{t\in\mathbb{N}}=
+$$
+
+$$
+(\eta t^{-\eta})_{t\in\mathbb{N}^{\ }}
+$$
+
+$$
+T\,\in\,\mathbb{N}.
+$$
+
+$$
+\begin{array}{l} \mathcal {R} _ {T} (\tilde {\mathcal {A}}) \leq \bar {C} \left(1 + \frac {2 q T ^ {\frac {q + 2}{2 q + 2}}}{q + 1}\right) + \kappa (1 + \sqrt {T} \log (T)) \\ + 2 \bar {C} \sigma T ^ {\frac {q + 2}{2 q + 2}} \left(\sqrt {2 \log \left(\frac {\lambda^ {- 1} + 2 T ^ {q + 2} \bar {C} ^ {2}}{\delta}\right)} + \sqrt {\lambda} \bar {C}\right) \\ \times \sqrt {\log \left(1 + \frac {2 T ^ {q + 2}}{\bar {C} ^ {2}}\right)} + \sigma \sqrt {2 T \log \left(\frac {2}{\delta}\right)}. \\ \end{array}
+$$
+
+Proof. The proof builds on Theorem 4.1 augmented by
+technical lemmata on functional regression with basis truncation. The key step (Lemma E.2) is a diagonalisation argument (over (n,t)) on the confidence sets C˜<sub>tn</sub>(δ) for both coverage and width. Details are deferred to Appendix E.
+
+$$
+(n,t)
+$$
+
+$$
+\tilde{\mathcal{C}}_{t}^{n}(\delta)
+$$
+
+Theorem 5.3 shows that the regret of Algorithm 1 is con-
+∗
+trolled by the regularity of the cost function c. The regret
+√
+bound can vary from O( T) for q → +∞ down to O(T)
+∗
+as q ↓ 0. Note that q = 0 corresponds to c being an indicator function, in which learning the anything is clearly
+impossible. The bound can be instantiated under different
+∗
+assumptions on c (i.e. choices of ζ in Assumption 5.1).
+Corollary 5.4 gives one such example.
+
+$$
+c^{*}
+$$
+
+$$
+\mathcal{O}(\sqrt{T})
+$$
+
+$$
+q\to+\infty
+$$
+
+$$
+\mathcal{O}(T)
+$$
+
+$$
+q\downarrow0
+$$
+
+$$
+q=0
+$$
+
+$$
+c^{*}
+$$
+
+$$
+c^{*}
+$$
+
+$$
+\zeta
+$$
+
+∗
+**Corollary 5.4.** Under Assumptions 3.1 and 3.2, if c satisfies
+∫
+
+$$
+i f{c^{*}}
+$$
+
+$$
+\int \left[ (1 + \| z \|) ^ {m} c ^ {*} (z) \right] ^ {2} \mathrm {d} \varrho (z) < + \infty
+$$
+
+the regret bounds of Theorem 5.3 hold with q = m.
+
+$$
+q=m.
+$$
+
+## 5.2. Finite dimensional (parametric) problems
+
+We will now discuss some examples in which a finite basis of N terms is sufficient to control the approximation
+error. Proposition 5.5 shows that the BOT problem indeed
+√
+reaches the parametric rate (O˜( T)) of finite dimensional
+linear bandits given only knowledge of upper bounds on N
+<sup>∗</sup>
+and ‖c ‖ 2 d, and of the appropriate basis (φi).
+L (R,̺) i∈N
+
+$$
+(\tilde{\mathcal{O}}(\sqrt{T}))
+$$
+
+$$
+N
+$$
+
+$$
+\left(\phi_{i}\right)_{i\in\mathbb{N}}.
+$$
+
+$$
+\left|c c^{*}\right\|_{L^{2}(\mathbb{R}^{d},\varrho)}
+$$
+
+**Proposition 5.5.** Under Assumption 3.1, 3.2, and 5.1, with
+ζ = 1<sup>{·≥N}</sup>for some N ∈ N (i.e. γ<sub>i∗</sub>= 0 for all
+i > N), then under the conditions of Theorem 5.3 with
+(n<sub>t</sub>)<sub>t∈N</sub>≡ N, Λ<sup>n</sup>= ‖·‖<sub>L</sub><sup>2</sup><sup>(R</sup><sup>d</sup><sub>;̺)</sub>/2, and η = 1/2 the
+bounds of Theorem 5.3 become
+
+$$
+\zeta\ =\ \mathbb{1}_{\{\cdot\geq N\}}
+$$
+
+$$
+N\ \in\ \mathbb{N}
+$$
+
+$$
+(i.e.~\gamma_{i}^{*}~=~0~f\!\\!.o..
+$$
+
+$$
+idot>i>
+$$
+
+$$
+\big(n_{t}\big)_{t\in\mathbb{N}}\,\equiv\,N,\,\Lambda_{n}\,=\,\big\|\cdot\big\|_{L^{2}(\mathbb{R}^{d};\varrho)}/2
+$$
+
+$$
+\eta\,=\,1/2
+$$
+
+$$
+\begin{aligned}{\mathcal{R}_{T}(\mathcal{A})}&{{}\leq2\bar{C}\sqrt{N T}\operatorname{l o g}\biggl(\cfrac{1}{\lambda}+\cfrac{T\bar{C}^{2}}{N}\biggl)+\kappa(1+\sqrt{T}\operatorname{l o g}(T))}\\ {}&{{}\quad+\sigma\sqrt{2T\operatorname{l o g}\left(\cfrac{{2}}{\\delta}\right)}}\\ \end{aligned}
+$$
+
+Proof. By the same arguments as in Theorem 5.3.
+
+In Appendix E.3, we further detail several examples of such
+finite-dimensional problems.
+

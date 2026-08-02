@@ -1,0 +1,106 @@
+## 4. Trajectorial regret bounds
+
+In this section, we give a trajectorial (i.e. dependent on
+M<sub>t</sub>) regret analysis of Algorithm 1 for the BOT problem,
+which shows that EntUCB matches the bounds in classical linear bandits despite the infinite-dimensional and non-
+Hilbertian nature of the problem. We also show (deferred
+
+$$
+M_{t})
+$$
+
+to Appendix D.2) that this result generalises to other linear
+functionals beyond the Kantorovich problem, under suitable regularity conditions.
+
+## 4.1. Regret for Bandit Optimal Transport
+
+Let us turn first to the BOT problem and Algorithm 1. In
+Section 3.2, we showed that the confidence sets were valid
+in the frequency domain (see Lemma C.2). However, ensuring a confidence set is valid is not sufficient to ensure
+low regret, we also have to ensure that the size of this confidence set is small enough to control the error of the agent.
+In the frequency domain, we can follow the standard arguments of Abbasi-Yadkori (2012) to bound the size of the
+confidence set in terms of the width β<sub>t</sub>(δ), see Lemma D.1.
+
+$$
+\beta_{t}(\delta)
+$$
+
+Let us now turn to the regret of Algorithm 1 with the proof
+of the trajectorial bound of Theorem 4.1. The first term is
+the trajectorial regret term standard in linear bandits, the
+second the cumulated approximation error due to entropic
+regularisation, and the last term the standard martingale
+concentration term.
+
+∗
+**Theorem 4.1.** Under Assumptions 3.1 and 3.2, if c is α-
+d
+Holder on supp ¨ (µ) × supp(ν) ⊂ R, for some α ∈ (0, 1],
+then for any δ > 0, λ > 0, η ∈ (0, 1), and T ∈ N, the
+−η
+regret of Algorithm 1 with (ε<sub>t</sub>) = (ηt), denoted
+t∈N t∈N
+A, satisfies
+
+$$
+i f\,c^{*}
+$$
+
+$$
+\alpha\in(0,1]
+$$
+
+$$
+{\mathfrak{s}}u p p(\mu)\times s u p p(\nu)\subset\mathbb{R}^{d}
+$$
+
+$$
+T\in\mathbb{N}
+$$
+
+$$
+\delta>0,\,\lambda>0,\,\eta\in(0,1]
+$$
+
+$$
+\big(\varepsilon_{t}\big)_{t\in\mathbb{N}}=\big(\eta t^{-\eta}\big)_{t\in\mathbb{N}},
+$$
+
+$$
+{\mathcal A},
+$$
+
+$$
+\begin{aligned}{\mathcal{R}_{T}(\mathcal{A})\leq}&{{}~2\bar{C}\beta_{T}(\delta)\sqrt{\ T\operatorname{l o g}\operatorname*{d e t}(\operatorname{I d}+\frac{M_{T}(\operatorname{D}\Lambda)^{-1}M_{T}^{*}}{2\lambda\bar{C}}).}}\\ {}&{{}~~~~.+\frac{\kappa\eta}{1-\eta}(T^{1-\eta}\operatorname{l o g}(T)+\frac{\eta}{2^{\eta}}\operatorname{l o g}(6)).}\\ {}&{{}~~~~~~~~~~left~+\sigma\sqrt{2T\operatorname{l o g}(\frac{2}{\delta})}.}\\ \end{aligned}
+$$
+
+with probability at least 1 − δ.
+
+$$
+1-\delta.
+$$
+
+Proof. Core steps were described throughout Section 3, details are deferred to Appendix D.
+
+If η is chosen in (1/2, 1), Theorem 4.1 the trajectorial
+term is dominant and the bound matches (Abbasi-Yadkori,
+2012), showing that the BOT problem follows the same
+fundamental structure as the classical Hilbert space linear
+bandits. Notice that this result required significantly more
+work than Hilbert space linear bandits, due to the need to
+find an approximation regime in which a Hilbertian structure is valid. That this approximation can be made a lower
+order term in the regret is a consequence of inherent regularity of the BOT problem, as shown by Lemma C.3.
+
+$$
+\eta
+$$
+
+In Appendix D.2, we draw on the Kantorovich problem
+to derive a generalisation of this argument to other linear
+
+6 functionals, but the question of the generality of regularity properties akin to Lemma C.3 remains open. Next, in
+Section 5, we turn to the statistical question of estimation
+of the cost functional, which will allow us to show worstcase regret bounds for the BOT problem, and to show that
+the BOT problem is sub-linearly learnable even in infinite
+dimension.
+

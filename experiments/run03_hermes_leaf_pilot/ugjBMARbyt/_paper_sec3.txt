@@ -1,0 +1,629 @@
+## 3. Algorithmic Design
+
+$$
+c^{*}
+$$
+
+Let us now introduce our algorithm for learning the BOT
+problem. The method used to construct our algorithm is
+quite novel, despite being based on the celebrated OFU
+principle. Its three principle ingredients are:
+
+**1)** Representing a subset of the action space in the same
+space as the hypothesis class of cost functions. We do
+this through the Fourier transform of both the measure and
+cost function, which turns (3) into an inner product on
+H := L²(X ; C; ̺), the Hilbert space of square-integrable
+complex-valued functions on X. Note that this transformation is valid only for measures with square-integrable densities, a dense subspace of P (M<sub>µ</sub>× M<sub>ν</sub>). We develop
+this in Section 3.1.
+
+$$
+\mathcal{H}:=L^{2}(\mathcal{X};\mathbb{C};\varrho)
+$$
+
+$$
+\mathcal{P}(\mathcal{M}_{\mu}\times\mathcal{M}_{\nu})
+$$
+
+**2)** In the resulting frequency domain, if all past actions have
+square-integrable densities, we can construct a Regularised
+
+∗
+Least Squares (RLS) estimator of the cost function c at
+each time step t ∈ N. This RLS estimator is then used to
+construct a confidence set C<sub>t</sub>(δ) ⊂ H a la ` Abbasi-Yadkori
+(2012). This construction is presented in Section 3.2.
+
+$$
+c^{*}
+$$
+
+$$
+t\in\mathbb{N}
+$$
+
+$$
+\mathcal{C}_{t}(\delta)\subset\mathcal{H}\;\hat{a}
+$$
+
+**3)** To preserve the coherence of this representation, we regularise the optimism step to optimise a penalised objective
+which acts as a barrier function which blows up as the
+square-integrability of the action’s density vanishes. This
+regularisation is necessary to ensure that the algorithm only
+takes actions with square integrable densities and thus that
+the future confidence sets C<sub>s</sub>for s > t remain valid. This
+last step is the subject of Section 3.3.
+
+$$
+\mathcal{C}_{s}
+$$
+
+$$
+s>t
+$$
+
+## 3.1. Frequency domain representation of actions
+
+The technical issue with Kant.(µ,ν, ·) comes from 〈·|·〉,
+which is not an inner product but the duality pairing between continuous functions vanishing at infinity and finite
+Radon measures, two different classes of objects. To reconcile these two types of objects, we will leverage Fourier
+analysis and represent them both in the frequency domain.
+To ensure the Fourier transform and the Kantorovich problem are well defined, let us assume Assumption 3.1.
+
+$$
+\ \cdot(\mu,\nu,\cdot)
+$$
+
+∗
+**Assumption 3.1.** The true cost function c is continuous
+d
+and belongs to L²(R; ̺).
+
+$$
+c^{*}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+Let F denote the Fourier transform operator that acts on
+<sup>d</sup>
+L²(R; ̺) or on finite Radon measures, using the formulæ
+∫
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\begin{array}{l} F: \phi \in L ^ {2} (\mathbb {R} ^ {d}; \varrho) \mapsto \int \phi (x) e ^ {- 2 \pi i \langle x | \cdot \rangle_ {2}} d \varrho (x) a n d \\ F: \gamma \in \mathcal {M} \left(\mathbb {R} ^ {d}\right) \mapsto \int e ^ {- 2 \pi i \langle x | \cdot \rangle_ {2}} d \gamma (x), \\ \end{array}
+$$
+
+when these are well defined (see Appendix B for detailed
+d
+constructions), wherein 〈·|·〉<sup>2</sup>is induced by ‖·‖ on R.
+<sup>2</sup>
+<sup>d</sup>
+The operator F is an isometry on L²(R; ̺), an<sub>d</sub> thus
+∫
+
+$$
+\langle\cdot|\cdot\rangle_{2}
+$$
+
+$$
+\|\cdot\|_{2}
+$$
+
+$$
+\mathbb{R}^{d}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\langle c ^ {*} | \pi \rangle = \left\langle F c ^ {*} (- \cdot) \mid F \pi \right\rangle_ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)} := \int F c ^ {*} (- z) \overline {{F \pi}} (z) d \varrho (z).
+$$
+
+(4)
+
+This approach relies on formal calculation, and to guarantee that the right-hand sides of (4) are well defined, we need
+d
+to ensure that Fπ is in L²(R; ̺). This turns out to be equivalent to requiring that π have a density dπ/d̺ with respect
+d
+to ̺ which is itself in L²(R; ̺) (see Lemma B.4).
+
+$$
+\ {}
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\ /\mathrm{d}\rho
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+2 d
+Let Π<sub>H</sub>(µ,ν) := {π ∈ Π(µ,ν) : dπ/d̺ ∈ L (R ; ̺)} denote the subset of couplings which have a square-integrable
+density with respect to ̺. We can embed this set into the
+2 d
+Hilbert space F := L (R ; ̺) by defining the embedding
+π ֒→ Fdπ/d̺. In F, it is possible to define regularised
+least squares estimators and confidence sets using the classical theory, which we do in the next section.
+
+$$
+\Pi_{\mathcal{H}}(\mu,\nu):=\{\pi\in\Pi(\mu,\nu):\mathrm{d}\pi/\mathrm{d}\varrho\in L^{2}(\mathbb{R}^{d};\varrho)\}
+$$
+
+$$
+\varrho.cdot
+$$
+
+$$
+\mathcal{F}:=L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+\pi\,\hookrightarrow\,\mathsf{F}\mathrm{d}\pi/\mathrm{d}\varrho.
+$$
+
+$$
+\mathcal{F}
+$$
+
+4
+
+---
+
+## 3.2. Infinite dimensional estimation of the cost function
+
+The parameter space (F) is unchanged under the Fourier
+∗
+transform, as F is an isometry, so that Fc ∈ F, and likewise for FΠ<sub>H</sub>(µ,ν). Consequently, up to reflection about
+0, we can express (4) as the inner product on the Hilbert
+space F. Thus we can use the concentration arguments
+∗ ∗
+of Abbasi-Yadkori (2012) to estimate f := Fc (−·). The
+validity of this methodology relies on the standard Assumption 3.2.
+
+$$
+(\mathcal{F})
+$$
+
+$$
+\mathsf{F}c^{*}\in\mathcal{F}
+$$
+
+$$
+{\sf F{H\Pi}}_{\mathcal{H}}(\mu,\nu)
+$$
+
+$$
+\mathcal{F}
+$$
+
+$$
+f^{*}:=\mathsf{F}c^{*}(-\cdot)
+$$
+
+**Assumption 3.2.** An a priori scale estimate C¯ ≥
+<sup>∗</sup>
+‖c ‖ 2 d is known. The sequence (ξt) is σ²-sub-
+L (R;̺) t∈N
+Gaussian for some σ ∈ (0, +∞).
+
+$$
+\bar{C}\ \geq
+$$
+
+$$
+\left\|c^{*}\right\|_{L^{2}(\mathbb{R}^{d};\varrho)}
+$$
+
+$$
+\left(\xi_{t}\right)_{t\in\mathbb{N}}
+$$
+
+$$
+\sigma^ {2} - \mathrm {s u b}
+$$
+
+$$
+\sigma\in(0,+\infty)
+$$
+
+Suppose a history of action (π<sub>t</sub>)<sub>s≤t</sub>and of observed costs
+(C<sub>t</sub>)<sub>s≤t</sub>is given at time t. To simplify notation, let us
+write a<sub>s</sub>:= Fπ<sub>s</sub>for s ∈ N, as well as a<sub>t</sub>:= (a<sub>s</sub>)<sub>s≤t</sub>
+and C<sub>t</sub>:= (C<sub>s</sub>)<sub>s≤t</sub>, for t ∈ N. Let us begin by defining
+∗
+the Regularised Least Squares (RLS) estimator of f. Let
+L<sub>·</sub>[·] : N × F → R be the (random) functional defined by
+
+$$
+(\pi_{t})_{s\leq t}
+$$
+
+$$
+(C_{t})_{s\leq t}
+$$
+
+$$
+a_{s}\;:=\;\mathsf{F}\pi_{s}
+$$
+
+$$
+s\ \in\ \mathbb{N}.
+$$
+
+$$
+a_{t}\,:=\,(big,a_{s}\big)_{s\leq t}
+$$
+
+$$
+C_{t}:=(C_{s})_{s\leq t}
+$$
+
+$$
+t\in\mathbb{N}
+$$
+
+$$
+f^{*}
+$$
+
+$$
+\mathcal{L}_{\cdot}[\cdot]:\mathbb{N}\times\mathcal{F}\rightarrow
+$$
+
+$$
+(t,f)\mapsto\mathcal{L}_{t}[f]:=\sum_{s=1}^{t}\big\|C_{s}-\langle f|a_{s}\rangle_{L^{2}(\mathbb{R}^{d};\varrho)}\big\|_{2}^{2}\;.
+$$
+
+Consider λ > 0 and a strongly convex and continuously Fr´echet-differentiable regulariser Λ : F → R (e.g.
+<sup>1</sup> 2
+‖·‖ <sup>2</sup> d), whose Fr´echet derivative DΛ satisfies
+2 L <sub>(R</sub><sub>;̺)</sub>
+
+$$
+\lambda~>~0
+$$
+
+$$
+\Lambda:\mathcal{F}\to\mathbb{R}\,(\mathsf{e}.\mathsf{g}
+$$
+
+$$
+\frac {1}{2} \left\| \cdot \right\| _ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)} ^ {2})
+$$
+
+$$
+\frac {1}{M _ {\Lambda}} \| f \| _ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)} \leq \mathrm {D} \Lambda [ f ] \leq M _ {\Lambda} \| f \| _ {L ^ {2} \left(\mathbb {R} ^ {d}; \varrho\right)}
+$$
+
+d
+for any f ∈ L²(R; ̺), for some M<sub>Λ</sub>> 0. Let us recall that the Fr´echet derivative of a strongly convex Fr´echetdifferentiable functional is a (strongly) positive-definite operator denoted DΛ.
+
+$$
+f\,\in\,L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+$$
+M_{\Lambda}>0
+$$
+
+It is clear that L<sub>t</sub>+ λΛ is a strongly convex functional for
+any λ > 0 and t ∈ N. Therefore, we can define the Λ-
+∗
+regularised least-squares (RLS) estimator of f to be
+
+$$
+\mathcal{L}_{t}+\lambda\Lambda
+$$
+
+$$
+\lambda\,>\,0
+$$
+
+$$
+t\,\in\,\mathbb{N}
+$$
+
+$$
+\Lambda-
+$$
+
+$$
+f^{*}
+$$
+
+$$
+\hat{f}_{t}^{\lambda}:=\operatorname*{a r g m i n}_{f\in L^{2}(\mathbb{R}^{d};\varrho)}\mathcal{L}_{t}[f]+\lambda\Lambda[f]\:.
+$$
+
+(5)
+
+As in finite dimension, the RLS estimator can be obtained
+through a closed form expression, (see Proposition C.1).
+Let us define the family of linear a.s. bounded adjoint operators
+
+$$
+M_{t}:f\in L^{2}(\mathbb{R}^{d};\varrho)\mapsto\left(\langle f|a_{t}\rangle_{L^{2}(\mathbb{R}^{d};\varrho)}\right)_{i=1}^{t}\in\mathbb{R}^{t}\thinspace,
+$$
+
+indexed by t ∈ N, and their adjoints
+
+$$
+t\in\mathbb{N}
+$$
+
+$$
+M_{t}^{*}:v\in\mathbb{R}^{t}\mapsto\sum_{s=1}^{t}v_{s}a_{s}\in L^{2}(\mathbb{R}^{d};\varrho)\thinspace.
+$$
+
+$$
+V_{t}\,:=\,M_{t}^{*}M_{t}
+$$
+
+Let V<sub>t</sub>:= M<sub>t∗</sub>M<sub>t</sub>and V<sub>tλ</sub>:= V<sub>t</sub>+ λDΛ denote the covariance and ridge-regularised covariance operators at time
+
+$$
+V_{t}^{\lambda}\,:=\,V_{t}+\lambda\mathrm{D}\Lambda
+$$
+
+t ∈ N. For every δ ∈ (0, 1), define the confidence sets
+{}
+
+$$
+\mathcal{C}_{t}(\delta):=\bigg\{f\in\mathcal{F}:\left\|{f-\hat{f}_{t}^{\lambda}}\right\|_{V_{t}^{\lambda}}\leq\beta_{t}(\delta)\bigg\}\ ,
+$$
+
+$$
+\delta\in(0,1)
+$$
+
+$$
+t\in\mathbb{N}
+$$
+
+(6)
+
+whose widths β<sub>t</sub>(δ) are chosen as
+√
+
+$$
+\beta_{t}(\delta)
+$$
+
+$$
+\beta_{t}(\delta){\mathrel{\mathop:}=}\sigma\sqrt{\log\biggl(\frac{4\operatorname*{d e t}(\mathrm{D}\Lambda+\frac{1}{\lambda}M_{t}M_{t}^{*})}{\delta^{2}}\biggr)}{+}\frac{\sqrt{\lambda}\bar{C}}{\|\mathrm{D}\Lambda\|_{\mathrm{o n}}^{\frac{1}{2}}}.
+$$
+
+. (7)
+
+We show in Lemma C.2 that these sets are valid confidence
+∗
+sets for f uniformly over time, with high probability. I.e.
+<sup>∗</sup>
+f ∈ ∩<sub>t∈N</sub>C<sub>t</sub>(δ) with probability at least 1 − δ. This completes the second ingredient of our algorithm.
+
+$$
+f^{*}
+$$
+
+$$
+f^{*}\in\bigcap_{t\in\mathbb{N}}\mathcal{C}_{t}(\delta)
+$$
+
+## 3.3. Entropy regularised optimism
+
+In a standard application of optimism (e.g. OFUL in
+Abbasi-Yadkori, 2012), one would take actions
+
+$$
+\pi_ {t + 1} ^ {\circ} \in \operatorname* {a r g m i n} _ {\pi \in \Pi (\mu , \nu)} \min _ {c \in F ^ {- 1} C _ {t} (\delta)} \langle c | \pi \rangle
+$$
+
+(8)
+
+$$
+t\,\in\,\mathbb{N}.
+$$
+
+at each time t ∈ N. This does not work with the confidence sets we have constructed for the optimal transport
+problem. Indeed, the minimiser of the right-hand side of (8)
+need not even have a density with respect to ̺, let alone
+2 d
+one in L (R ; ̺). Taking such an action would break the
+frequency-domain RLS fitting method and thus the guarantees of the confidence sets (i.e. Lemmas C.2 and D.1).
+
+$$
+\varrho,
+$$
+
+$$
+L^{2}(\mathbb{R}^{d};\varrho)
+$$
+
+To circumvent this difficulty, we will intentionally limit our
+algorithm to plans which meet the density requirement, and
+thus accept sub-optimal solutions. To this end, we will
+penalise the transport cost by adding an entropic regularisation term, which we introduce next. Optimism with respect to this surrogate problem will incur an additional regret term, focused on later on in this section, when we will
+leverage results by Carlier et al. (2023) to show that it can
+be made a lower-order term.
+
+d
+Given a reference measure ̺ ∈ P (R ), the entropy functional (a.k.a. Kullback-Leibler divergence) is defined by
+∫
+
+$$
+\varrho\,\in\,\mathcal{P}(\mathbb{R}^{d})
+$$
+
+$$
+\pi \in \mathcal {P} (\mathbb {R} ^ {d}) \mapsto \mathcal {H} (\pi | \varrho) := \left\{ \begin{array}{l l} \int \log \frac {\mathrm {d} \pi}{\mathrm {d} \varrho} \mathrm {d} \pi \text {i f} \pi \ll \varrho \\ + \infty \text {i f} \pi \not < \varrho \end{array} \right.
+$$
+
+(9)
+
+where ≪ denotes absolute continuity. This functional is
+d
+strictly convex and lower semi-continuous on P (R), an<sup>d</sup>
+finite if and only if π has a density with respect to ̺. The
+Entropic Optimal Transport (EOT) problem is then
+
+$$
+\ {mathcal P(\mathbb{R}^{d})}
+$$
+
+$$
+\varrho.
+$$
+
+$$
+\operatorname{E n t.}(\mu,\nu,c,\varepsilon):=\operatorname*{i n f}_{\pi\in\Pi(\mu,\nu)}\langle c|\pi\rangle+\varepsilon\mathcal{H}(\pi|\varrho)\,,
+$$
+
+(10)
+
+where ε > 0 is a regularisation parameter. By virtue of
+ε d
+H , the functional Ψ : (c,π) ∈ L²(R; ̺) × Π(µ,ν) →
+
+$$
+\varepsilon\,>\,0
+$$
+
+$$
+\mathcal{H}
+$$
+
+$$
+\mathbf{\Psi}^{\mathring{\varepsilon}}\::\:(c,\pi)\,\mathring{\in\,L^{2}}(\mathbb{R}^{d};\varrho)\,\times\,\mathring{\Pi}(\mu,\nu)\,\to
+$$
+
+5
+
+---
+
+$$
+\langle c | \pi \rangle + \varepsilon \mathcal {H} (\pi | \varrho) \in \mathbb {R}
+$$
+
+〈c|π〉 + εH (π|̺) ∈ R is strictly convex and continuous,
+so that the infimum in (10) is attained. The EOT problem is a well-studied problem in optimal transport (see e.g.
+Peyr´e & Cuturi, 2019; Nutz, 2022).
+
+The regularised optimism step of our algorithm will therefore take the form
+
+$$
+\pi_{t+1}\in\operatornamewithlimits{a r g m i n}_{\pi\in\Pi(\mu,\nu)}\operatorname*{m i n}_{c\in\ {sf F F}^{-1}{\mathcal C}_{t}(\delta)}\Psi^{\varepsilon}(c,\pi)
+$$
+
+(11)
+
+for a sequence of regularisation parameters (ε<sub>t</sub>)<sub>t∈N</sub>, going
+to 0 with t, to be tuned in the regret (see below).
+
+$$
+(\varepsilon_{t})_{t\in\mathbb{N}.}
+$$
+
+Regularising the optimism step by entropy, naturally,
+comes at a cost. There will be a regret term which accumulates the approximation errors over time, and thus we will
+need to change ε over time to avoid constant regret. This
+regret term can be controlled by appealing to results, due
+to Carlier et al. (2023), about the convergence of the EOT
+problem to the Kantorovich problem as ε ↓ 0. This result
+shows that
+
+$$
+\varepsilon\downarrow0
+$$
+
+$$
+\mathbf{E n t.}(\mu,\nu,c^{*},\varepsilon)-\mathbf{K a n t.}(\mu,\nu,c^{*})\leq C\varepsilon\operatorname{l o g}(\varepsilon^{-1})\:,
+$$
+
+∗
+for some C > 0 depending on µ,ν and the regularity of c.
+We detail this result and this constant in Appendix C.2.
+
+$$
+\mu,\nu
+$$
+
+$$
+C>0
+$$
+
+$$
+c^{*}
+$$
+
+## 3.4. Algorithm
+
+Combining these ingredients into an algorithm, we arrive
+at Algorithm 1, which we dub EntUCB referencing its entropic penalisation and optimistic nature.
+
+**Algorithm 1** EntUCB
+**Require:** Confidence δ, regularization level λ, entropy penalisation (ε<sup>t</sup>)
+<sup>t∈N</sup>
+1: Set π˜<sub>1</sub>:= µ ⊗ ν
+2: **for** t ∈ N **do**
+3: Play π<sub>t</sub>= ˜π<sub>t</sub>
+4: Receive feedback C<sub>t</sub>
+5: Compute the RLS estimator fˆ<sub>tλ</sub>using (5) or (18)
+6: Construct the confidence set C<sub>t</sub>(δ) using (6) and (7)
+7: **Optimism:** pick (˜π<sub>t+1</sub>, c˜<sub>t+1</sub>) according to (11)
+8: **end for**
+
+$$
+\delta,
+$$
+
+$$
+\left(\varepsilon_{t}\right)_{t\in\mathbb{N}}
+$$
+
+$$
+\tilde{\pi}_{1}:=\mu\tilde{\otimes\nu}
+$$
+
+$$
+C_{t}
+$$
+
+$$
+\pi_{t}=\tilde{\pi}_{t}
+$$
+
+$$
+\hat{f}_{t}^{\lambda}
+$$
+
+$$
+t\in\mathbb{N}
+$$
+
+$$
+\mathcal{C}_{t}(\delta)
+$$
+
+To illustrate the workings of Algorithm 1, we give some
+example applications in Appendix C.3. Let us now move
+on to the regret analysis in Section 4.
+
+$$
+(\tilde{\pi}_{t+1},\tilde{\mathcal{C}}_{t+1})
+$$
+

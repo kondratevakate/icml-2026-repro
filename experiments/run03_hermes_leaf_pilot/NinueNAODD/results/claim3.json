@@ -1,0 +1,54 @@
+{
+  "claim": 3,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Table 1 (IHQ-unscr., Top-1 accuracy); Sec. 4 protocol",
+  "data": {
+    "dataset": "Mabyduck/CLIC2024-test-human-eval, split=unscreened",
+    "comparisons_public_release": 1921,
+    "raters_public_release": 59,
+    "items": 28,
+    "comparisons_reported_in_paper": 2062,
+    "raters_reported_in_paper": 62,
+    "note": "the public HF release is smaller than the numbers in Appendix D Table 6; exact replication of the paper's sample is therefore impossible"
+  },
+  "protocol": {
+    "bootstrap_resamples": 500,
+    "paper_bootstrap_resamples": 10000,
+    "gt": "top item of the full IHQ-all fit (paper's fallback gt; official CLIC 2024 leaderboard not available)",
+    "gt_top_item_index": 24,
+    "gt_top_item": "reference",
+    "all_three_models_agree_on_top_item": true,
+    "crowd_bt_epochs": 20,
+    "seconds": 1114.5762159030128
+  },
+  "top1_accuracy_percent_ours": {
+    "BBQ": 44.2,
+    "Bayes-BT": 23.2,
+    "Crowd-BT": 71.4
+  },
+  "top1_accuracy_percent_task_spec": {
+    "BBQ": 61.92,
+    "Crowd-BT": 33.15,
+    "Bayes-BT": 24.32
+  },
+  "top1_accuracy_percent_arxiv_v2": {
+    "BBQ": 61.42,
+    "Crowd-BT": 32.44,
+    "Bayes-BT": 23.59
+  },
+  "ordering_BBQ_best": false,
+  "ordering_CrowdBT_above_BayesBT": true,
+  "mutation": {
+    "description": "each pair's winner re-drawn by a fair coin (rater signal destroyed), 100 bootstraps",
+    "top1_accuracy_percent": {
+      "BBQ": 4.0,
+      "Bayes-BT": 4.0,
+      "Crowd-BT": 4.0
+    },
+    "chance_level_percent": 3.5714285714285716,
+    "breaks_property": true
+  },
+  "verdict": "inconclusive",
+  "notes": "NOT reproduced, neither in magnitude nor in ordering: we measure BBQ=44.20%, Crowd-BT=71.40%, Bayes-BT=23.20% -- our Crowd-BT reimplementation is the most stable top-1 identifier, the opposite of the claim. Confounders that make this a NON-refutation: (a) the public IHQ release has 1,921 comparisons / 59 raters vs 2,062 / 62 in Appendix D Table 6; (b) the official CLIC 2024 leaderboard used as gt is not redistributed, so we used the paper's fallback gt (full-data fit; all three models agree the top item is the uncompressed 'reference'); (c) Crowd-BT is our own SGD reimplementation, not the Google implementation the paper benchmarked, and its stability is hyperparameter-dependent (lr=0.02, 20 epochs); (d) 500 bootstraps vs 10,000. Only the Crowd-BT > Bayes-BT ordering reproduces. The task spec quotes 61.92/33.15/24.32 while arXiv v2 Table 1 prints 61.42/32.44/23.59.",
+  "ordering_reproduced": false
+}

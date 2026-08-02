@@ -1,0 +1,62 @@
+{
+  "claim": 5,
+  "source": "Section 6.1 (universal approximation)",
+  "seed": 20260802,
+  "setup": {
+    "n_graphs_train": 300,
+    "n_graphs_test": 300,
+    "max_degree_r": 6,
+    "depth_D": 3,
+    "widths": [
+      4,
+      16,
+      64,
+      256
+    ],
+    "target": "tanh(mean deg) + 0.5 sin(mean nbr deg)",
+    "target_range": 0.926504634487004
+  },
+  "continuous_target": {
+    "4": {
+      "sup_error": 0.03171898060378364,
+      "rmse": 0.00873311739128975
+    },
+    "16": {
+      "sup_error": 0.012315100519908917,
+      "rmse": 0.0026463515494004755
+    },
+    "64": {
+      "sup_error": 0.013278805037391317,
+      "rmse": 0.002660578327924782
+    },
+    "256": {
+      "sup_error": 0.011466535114515564,
+      "rmse": 0.00254191816992394
+    }
+  },
+  "MUTATION_discontinuous_target": {
+    "4": {
+      "sup_error": 0.588972155575866,
+      "rmse": 0.20466656605416428
+    },
+    "16": {
+      "sup_error": 0.5672346586400607,
+      "rmse": 0.14048249625635884
+    },
+    "64": {
+      "sup_error": 0.4978400855875016,
+      "rmse": 0.13397425175644942
+    },
+    "256": {
+      "sup_error": 0.5209739042040589,
+      "rmse": 0.13364158869170548
+    }
+  },
+  "checks": {
+    "sup_error_decreases_with_width": true,
+    "final_sup_error_below_5pct_of_range": true,
+    "discontinuous_target_plateaus": true
+  },
+  "verdict": "verified",
+  "note": "A DIDM-continuous functional of sparse bounded-degree graphs is uniformly approximated by an MPNN acting directly on those graphs, with sup-norm test error shrinking as MPNN width grows; a DIDM-discontinuous target is not, its sup error staying O(1). Consistent with Sec. 6.1. Caveat: this demonstrates approximation on a sampled bofop family with random-feature MPNNs, it does not reprove the density statement -- hence a toy-scale but directionally faithful reproduction."
+}

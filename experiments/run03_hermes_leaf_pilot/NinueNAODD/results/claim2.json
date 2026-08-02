@@ -1,0 +1,52 @@
+{
+  "claim": 2,
+  "seed": 20260802,
+  "source": "arXiv:2510.09333v2 Fig. 3 / Sec. 4.4; dataset shapes App. D Table 6",
+  "timings": {
+    "IHQ-screened": {
+      "n_comparisons": 1920,
+      "raters": 48,
+      "items": 28,
+      "bbq_seconds": 0.0686286080017453,
+      "bbq_iters": 121
+    },
+    "IHQ-unscreened": {
+      "n_comparisons": 1921,
+      "raters": 59,
+      "items": 28,
+      "bbq_seconds": 0.09834802699333522,
+      "bbq_iters": 115
+    },
+    "IHQ-all": {
+      "n_comparisons": 3841,
+      "raters": 107,
+      "items": 28,
+      "bbq_seconds": 0.3933596110000508,
+      "bbq_iters": 200
+    },
+    "HUMAINE-shaped (synthetic)": {
+      "n_comparisons": 104781,
+      "raters": 1977,
+      "items": 27,
+      "bbq_seconds": 1.3813911210017977,
+      "bbq_iters": 25,
+      "crowdbt_ours_seconds_per_epoch": 4.603018054665881,
+      "crowdbt_ours_seconds_60_epochs_est": 276.1810832799529
+    }
+  },
+  "bbq_max_seconds_any_dataset": 1.3813911210017977,
+  "bbq_all_under_10s": true,
+  "mutation": {
+    "description": "subsample HUMAINE-shaped data to 20 raters (~1% of comparisons)",
+    "bbq_seconds_full": 1.3813911210017977,
+    "bbq_seconds_small": 0.029147615990950726,
+    "speedup": 47.39293674757721,
+    "breaks_property": true
+  },
+  "sub_verdicts": {
+    "BBQ converges in seconds": "verified (all datasets tested < 1.38s, plain NumPy)",
+    "Crowd-BT ~15 min on HUMAINE": "inconclusive (HUMAINE comparison data not used; timed against our own Crowd-BT reimplementation, not the Google impl the paper benchmarked)"
+  },
+  "verdict": "inconclusive",
+  "notes": "BBQ half of the claim reproduces cleanly on real IHQ data and on a synthetic dataset with HUMAINE's exact shape. The 15-minute Crowd-BT figure is implementation-specific and could not be checked without the Google Crowd-BT code and the HUMAINE data."
+}

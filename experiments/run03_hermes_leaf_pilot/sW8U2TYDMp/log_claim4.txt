@@ -1,0 +1,350 @@
+{
+  "claim": "Theorem 19: manifesting Luigi under a stability budget forces weight onto an anti-aligned (Waluigi) component",
+  "source": "arXiv:2509.06701v2 Sec.5 Theorem 19 (App. I, Theorem 69); Thm 18 first-order expansion",
+  "setup": {
+    "K": 6,
+    "n": 4,
+    "luigi_index": 0,
+    "waluigi_index": 1,
+    "delta": 0.05,
+    "beta": [
+      0.2626281601154538,
+      0.2733118847934819,
+      0.2869556691382587,
+      0.1771042859528056
+    ],
+    "inner_products_with_vH": [
+      2.1251960808292494,
+      -0.697826888779107,
+      0.635853771623697,
+      0.4446283695013088
+    ],
+    "norm_vH": 1.4578052273295117
+  },
+  "feasible_perturbations_tested": 1419,
+  "master_inequality_violations": 0,
+  "min_slack_master_inequality": 0.0065119575246408105,
+  "corollary_bound_violations": 0,
+  "n_cases_with_eps_plus_r_below_delta_normvH": 0,
+  "waluigi_weight_strictly_increases_in_those_cases": true,
+  "counterexamples_no_upweight_within_budget": 0,
+  "two_anti_aligned_config": {
+    "cases_with_positive_T1": 0,
+    "anti_aligned_positive_mass_always_covers_T1": true,
+    "min_norm_solution": {
+      "min_norm_DeltaL": 0.05486442796514027,
+      "delta_times_normvH": 0.04780364913547221,
+      "T1": -0.008208852205437316,
+      "anti_aligned_positive_mass": 0.02767636997868471,
+      "Dbeta": [
+        0.05,
+        -0.01833272668291726,
+        -0.02797647856304188,
+        -0.008133467918691972,
+        0.017283081490497117,
+        -0.012840408325846013
+      ],
+      "anti_indices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "weights_feasible": true
+    },
+    "note": "With >=2 anti-aligned components and no aligned component down-weighted, every perturbation that stays inside the stability budget (T1>0) must place strictly positive weight on the anti-aligned set."
+  },
+  "constructed_witnesses": {
+    "pool_matches_base_err": 5.551115123125783e-17,
+    "inner_products": [
+      0.6249999999999999,
+      -0.6249999999999998,
+      -0.125,
+      0.125
+    ],
+    "norm_vH": 0.7905694150420948,
+    "anti_indices": [
+      1,
+      2
+    ],
+    "sweep": [
+      {
+        "M_over_delta": 0.5,
+        "eps": 0.03217797739163992,
+        "r": 0.0005157315356765766,
+        "T1": 0.005403353657774883,
+        "lhs": 0.015624999999999995,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.008645365852439815
+      },
+      {
+        "M_over_delta": 0.6,
+        "eps": 0.02915783399565946,
+        "r": 0.0004234186089836782,
+        "T1": 0.007863966432134831,
+        "lhs": 0.018749999999999992,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.012582346291415735
+      },
+      {
+        "M_over_delta": 0.6999999999999998,
+        "eps": 0.026177713964836223,
+        "r": 0.00034126005447684005,
+        "T1": 0.010284910222035159,
+        "lhs": 0.02187499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.01645585635525626
+      },
+      {
+        "M_over_delta": 0.8000000000000002,
+        "eps": 0.02325290295083955,
+        "r": 0.0002692501460716077,
+        "T1": 0.012654105185644346,
+        "lhs": 0.024999999999999994,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.020246568297030962
+      },
+      {
+        "M_over_delta": 0.9,
+        "eps": 0.020407088418136456,
+        "r": 0.0002073829926443223,
+        "T1": 0.014952829395377048,
+        "lhs": 0.028124999999999994,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.023924527032603286
+      },
+      {
+        "M_over_delta": 1.0,
+        "eps": 0.01767835477958045,
+        "r": 0.00015565253842523261,
+        "T1": 0.017150979266747808,
+        "lhs": 0.03124999999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.027441566826796503
+      },
+      {
+        "M_over_delta": 1.1,
+        "eps": 0.015130077924029968,
+        "r": 0.00011405256340364694,
+        "T1": 0.01919845667772424,
+        "lhs": 0.03437499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.030717530684358795
+      },
+      {
+        "M_over_delta": 1.2000000000000002,
+        "eps": 0.012869802597891654,
+        "r": 8.257668374483137e-05,
+        "T1": 0.02101024508791329,
+        "lhs": 0.03749999999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.033616392140661276
+      },
+      {
+        "M_over_delta": 1.3,
+        "eps": 0.01107519741073025,
+        "r": 6.121835221750845e-05,
+        "T1": 0.022445890304620825,
+        "lhs": 0.04062499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.03591342448739333
+      },
+      {
+        "M_over_delta": 1.3999999999999997,
+        "eps": 0.010000124853556152,
+        "r": 4.997085863228776e-05,
+        "T1": 0.023304701711698114,
+        "lhs": 0.04374999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.037287522738716994
+      },
+      {
+        "M_over_delta": 1.5000000000000002,
+        "eps": 0.009882238314682615,
+        "r": 4.882733029211786e-05,
+        "T1": 0.023398803242307677,
+        "lhs": 0.04687499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.037438085187692295
+      },
+      {
+        "M_over_delta": 1.6000000000000003,
+        "eps": 0.01075306182503571,
+        "r": 5.778073245350942e-05,
+        "T1": 0.022703278523213563,
+        "lhs": 0.04999999999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.03632524563714171
+      },
+      {
+        "M_over_delta": 1.7000000000000004,
+        "eps": 0.012406133640535128,
+        "r": 7.682386879774225e-05,
+        "T1": 0.021381355583851385,
+        "lhs": 0.05312499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.034210168934162226
+      },
+      {
+        "M_over_delta": 1.8,
+        "eps": 0.014577764755665582,
+        "r": 0.00010594938191455169,
+        "T1": 0.019641504703607933,
+        "lhs": 0.05624999999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.03142640752577271
+      },
+      {
+        "M_over_delta": 1.9000000000000001,
+        "eps": 0.01707124244016894,
+        "r": 0.00014514975379566338,
+        "T1": 0.017639246894082115,
+        "lhs": 0.05937499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.028222795030531392
+      },
+      {
+        "M_over_delta": 2.0,
+        "eps": 0.01976519157734129,
+        "r": 0.0001944173063390719,
+        "T1": 0.015470543680359813,
+        "lhs": 0.06249999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.02475286988857571
+      },
+      {
+        "M_over_delta": 2.1,
+        "eps": 0.022588064018856907,
+        "r": 0.0002537442018643537,
+        "T1": 0.013191965036440677,
+        "lhs": 0.06562499999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.02110714405830509
+      },
+      {
+        "M_over_delta": 2.2,
+        "eps": 0.025497145097315852,
+        "r": 0.00032312244363889826,
+        "T1": 0.010837286193917012,
+        "lhs": 0.06874999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.017339657910267228
+      },
+      {
+        "M_over_delta": 2.3,
+        "eps": 0.02846609020523247,
+        "r": 0.0004025438764136256,
+        "T1": 0.008427340841008765,
+        "lhs": 0.07187499999999997,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.013483745345614029
+      },
+      {
+        "M_over_delta": 2.4000000000000004,
+        "eps": 0.03147804098389829,
+        "r": 0.0004920001869702991,
+        "T1": 0.005975463252674732,
+        "lhs": 0.07499999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.009560741204279575
+      },
+      {
+        "M_over_delta": 2.5,
+        "eps": 0.03452182066500154,
+        "r": 0.0005914829046782693,
+        "T1": 0.003490496136722733,
+        "lhs": 0.07812499999999997,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.0055847938187563746
+      },
+      {
+        "M_over_delta": 2.6,
+        "eps": 0.0375897775695729,
+        "r": 0.0007009834020624757,
+        "T1": 0.0009784954971375458,
+        "lhs": 0.08124999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": 0.0015655927954200738
+      },
+      {
+        "M_over_delta": 2.7,
+        "eps": 0.04067652220374016,
+        "r": 0.0008204928953808767,
+        "T1": -0.001556270952905104,
+        "lhs": 0.08437499999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": null
+      },
+      {
+        "M_over_delta": 2.8000000000000003,
+        "eps": 0.04377816241741892,
+        "r": 0.0009500024452120015,
+        "T1": -0.004110719131356511,
+        "lhs": 0.08749999999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": null
+      },
+      {
+        "M_over_delta": 2.9000000000000004,
+        "eps": 0.04689182515847961,
+        "r": 0.0010895029570530813,
+        "T1": -0.006682570501239497,
+        "lhs": 0.09062499999999998,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": null
+      },
+      {
+        "M_over_delta": 3.0000000000000004,
+        "eps": 0.05001534848704988,
+        "r": 0.001238985181928057,
+        "T1": -0.009270108587056233,
+        "lhs": 0.09374999999999999,
+        "master_ok": true,
+        "dbeta_W_positive": true,
+        "waluigi_bound": null
+      }
+    ],
+    "cases_in_strict_regime": 22,
+    "bound_satisfied_and_waluigi_strictly_upweighted": true
+  },
+  "mutation": {
+    "a_inflated_budget": {
+      "eps": 0.3644513068323779,
+      "T1": -0.4250392161658499,
+      "bound_vacuous": true
+    },
+    "b_all_components_aligned": {
+      "found": true,
+      "note": "no anti-aligned component exists; the Waluigi conclusion is void, and the hypothesis of the corollary fails"
+    },
+    "property_breaks": true
+  },
+  "verdict": "verified",
+  "seed": 20260802
+}

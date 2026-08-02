@@ -1,0 +1,34 @@
+{
+  "claim_no": 1,
+  "claim": "The quantum algorithm constructs epsilon-approximate GLM sparsifiers in time O~(r*sqrt(mn)/epsilon + poly(n))*log(s_max/s_min), giving a quadratic speedup in sample count m over the classical O~(mr) algorithm (Theorem 10).",
+  "source": "Theorem 10 (arXiv:2509.24757)",
+  "paper": "Accelerating Regression Tasks with Quantum Algorithms (arXiv:2509.24757 / OpenReview TBSyYj4VV6)",
+  "seed": 1001,
+  "method": "Classical leverage-score importance sampling used to build the SAME epsilon-approximate sparsifier object the paper analyses; (1+/-eps) guarantee and optimum-preservation checked numerically; asymptotic ordering checked symbolically with sympy.",
+  "verdict": "verified",
+  "reason": "Sparsifier (1+/-eps) guarantee verified on CPU for LS (gram rel-err=0.118<=0.15) and logistic GLM (max ratio=0.097<=0.15); optimum LS loss preserved within 0.15. Asymptotic quantum/classical cost -> 0 as m->inf (quadratic speedup). EVIDENCE BOUNDARY: the literal quantum construction needs QRAM/quantum hardware and is NOT executed on CPU; it is demonstrated via the classical surrogate sketch + symbolic limit.",
+  "executed_numeric_experiment": true,
+  "metrics": {
+    "eps": 0.15,
+    "m": 4000,
+    "n": 30,
+    "r": 10,
+    "sparsifier_size": 2000,
+    "ls_gram_relative_error": 0.11758144051101102,
+    "logistic_glm_max_approx_ratio": 0.096742748422223,
+    "optimum_loss_relative_error": 0.0609142379151029,
+    "quantum_over_classical_limit_m_inf": "0",
+    "quantum_over_classical_ratio_form": "1/sqrt(m)",
+    "m_scaling_full_slope": 1.5683534334862537,
+    "m_scaling_sketch_slope": 0.1737717321142742
+  },
+  "mutation": {
+    "description": "(M1) reduce sparsifier size below r/eps^2 -> (1+/-eps) guarantee breaks; (M2) tighten eps target -> required sample size grows as 1/eps^2 and exceeds current s; (M3) replacing quantum sqrt(m) by m removes the speedup (ratio->1).",
+    "M1_small_sample_breaks_guarantee": true,
+    "M1_gram_error_small_sample": 0.7225088028736737,
+    "M2_tighter_eps_requires_more_samples": true,
+    "M2_required_samples_for_eps_0.05": 3999.999999999999,
+    "M3_speedup_requires_sqrtm": true,
+    "passed": true
+  }
+}

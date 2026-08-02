@@ -1,0 +1,100 @@
+{
+  "claim": 2,
+  "claim_text": "For strongly convex objectives, the process converges geometrically to an uncertainty ball whose radius scales as O(eta*sigma_tame^2 + eta^(p-1)*sigma_heavy^p), despite jump discontinuities of arbitrary magnitude (Theorem 4).",
+  "source": "Theorem 4 (Section 4), stationary ball radius decomposition.",
+  "seed": 12345,
+  "Ps": [
+    1.5,
+    2.0
+  ],
+  "eta": [
+    0.01,
+    0.03,
+    0.1
+  ],
+  "sigma": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "N": 30000,
+  "n_seeds": 25,
+  "faithful_heavy": {
+    "1.5": {
+      "M_p_vs_eta": [
+        0.03307040512407768,
+        0.06806108367433868,
+        0.15064669752815957
+      ],
+      "eta_exponent": 0.6585424934155214,
+      "eta_target": 0.5,
+      "M_p_vs_sigma": [
+        0.03367148935762009,
+        0.09523735382969532,
+        0.26937191486096074
+      ],
+      "sigma_exponent": 1.4999999999999996,
+      "sigma_target": 1.5
+    },
+    "2.0": {
+      "M_p_vs_eta": [
+        0.004920622580809973,
+        0.01525965035096166,
+        0.05344479740872099
+      ],
+      "eta_exponent": 1.0359682469656006,
+      "eta_target": 1.0,
+      "M_p_vs_sigma": [
+        0.006477952647728014,
+        0.025911810590912056,
+        0.10364724236364822
+      ],
+      "sigma_exponent": 2.0,
+      "sigma_target": 2.0
+    }
+  },
+  "faithful_tame": {
+    "M_2_vs_eta": [
+      0.004957339358156069,
+      0.015093829218772855,
+      0.05231934084967958
+    ],
+    "eta_exponent": 1.0235581557648932,
+    "eta_target": 1.0,
+    "M_2_vs_sigma": [
+      0.0063646931057582574,
+      0.02545877242303303,
+      0.10183508969213212
+    ],
+    "sigma_exponent": 1.9999999999999982,
+    "sigma_target": 2.0
+  },
+  "additivity": {
+    "both": 0.1684924667539348,
+    "heavy_only": 0.09523735382969532,
+    "tame_only": 0.05480708403081814,
+    "sum": 0.15004443786051347,
+    "relative_gap": 0.12295043492762639
+  },
+  "mutation_M1_pure_tame": {
+    "1.5": {
+      "eta_exponent_pure_tame": 0.7662818570677081,
+      "heavy_term_absent": true
+    },
+    "2.0": {
+      "eta_exponent_pure_tame": 1.0235581557648932,
+      "heavy_term_absent": false
+    }
+  },
+  "mutation_M2_finite_moment_premise": {
+    "1.5": {
+      "eta_exponent_finite_moment": 0.6585424934155214,
+      "eta_target": 0.5
+    },
+    "2.0": {
+      "eta_exponent_finite_moment": 1.0359682469656006,
+      "eta_target": 1.0
+    }
+  },
+  "elapsed_s": 126.40627527236938
+}

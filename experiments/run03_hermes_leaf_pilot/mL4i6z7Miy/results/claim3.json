@@ -1,0 +1,40 @@
+{
+  "claim": 3,
+  "statement": "At small batch sizes Batch Sharpness plateaus at approximately 2(1-beta)/eta, i.e. momentum drives SGDM to flatter minima than vanilla SGD in this regime.",
+  "source": "Section 4 (paper mL4i6z7Miy); Theorem 4.1 noise-dominated limit.",
+  "eta": 0.1,
+  "beta": 0.9,
+  "seed": 11,
+  "theoretical_plateau_2_1_minus_beta_over_eta": 1.9999999999999996,
+  "sgd_single_plateau_2_over_eta": 20.0,
+  "analytic_noise_dominated_boundary": [
+    {
+      "sigma2": 1.0,
+      "b": 4,
+      "boundary_a": 0.13397459621556138
+    },
+    {
+      "sigma2": 0.25,
+      "b": 4,
+      "boundary_a": 0.03175416344814574
+    },
+    {
+      "sigma2": 0.01,
+      "b": 4,
+      "boundary_a": 0.0012507822280910517
+    },
+    {
+      "sigma2": 0.0001,
+      "b": 4,
+      "boundary_a": 1.250007812603204e-05
+    }
+  ],
+  "empirical_synthetic_mlp": {
+    "sgdm_batch16_Batch_Sharpness": 6.8036204578938175,
+    "sgdm_batch256_Batch_Sharpness": 16.32194986664557,
+    "sgd_batch16_Batch_Sharpness": 13.634814781902193
+  },
+  "mutation_test": "Vanilla SGD at the same small batch settles at a HIGHER Batch Sharpness (13.63) than SGDM (6.80): momentum -- not a generic SGD effect -- is what flattens the operating point toward 2(1-beta)/eta.",
+  "verdict": "inconclusive",
+  "note": "Operating-plateau claim. Analytic noise-dominated reduction verified exactly; the empirical value is reproduced qualitatively on a synthetic MLP (correct direction and order of magnitude) but the exact 2(1-beta)/eta figure requires the CIFAR-10 MLP/CNN of the paper, which is not available in this CPU-only setup."
+}

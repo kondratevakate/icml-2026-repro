@@ -1,0 +1,51 @@
+{
+  "claim": 3,
+  "theorem": "Theorem 6 (thm:unsmooth_lb_deterministic), Section 4.1",
+  "statement": "Non-smooth quantizers can incur regret H*Omega(1) even though in-distribution one-step error is only O(eps_q).",
+  "verdict": "verified",
+  "source": "arXiv:2603.20538, Section 4.1 + appendix proof of Theorem 6 (deterministic-dynamic part)",
+  "seed": 20260326,
+  "parameters": {
+    "A": 0.2,
+    "B": 0.25,
+    "k": 1.0,
+    "d": 0.6,
+    "lambda": 0.45,
+    "eps_q": 0.05,
+    "condition_k/2_gt_B/(1-lam)": true,
+    "H": 300,
+    "N_trajectories": 4000
+  },
+  "prediction_P1_in_distribution_error": {
+    "nonsmooth": 0.21881710880438351,
+    "binning": 0.04951134238843994,
+    "theory_O_eps_q": 0.22000000000000003,
+    "expected": "O(eps_q) ~ 0.2200 (shrinks with eps_q); binning also O(eps_q)"
+  },
+  "prediction_P2_deployment_regret_per_step": {
+    "nonsmooth": 0.5304529051721684,
+    "expected": "Omega(1) constant, independent of eps_q",
+    "vs_eps_q": {
+      "0.02": 0.6379106990776597,
+      "0.05": 0.5304529051721684,
+      "0.1": 0.48701123445601446,
+      "0.2": 0.7038711569163772
+    },
+    "mean_over_smaller_eps": 0.5517916129019476,
+    "verdict_on_P2": "constant (Omega(1))"
+  },
+  "total_regret_scaling": {
+    "nonsmooth_total_regret_estimate": 159.1358715516505,
+    "interpretation": "regret ~ H * Omega(1) = H * 0.530"
+  },
+  "mutation_test": {
+    "name": "replace non-smooth (learning-based) quantizer by binning (smooth) quantizer",
+    "nonsmooth_deployment_regret_per_step": 0.5304529051721684,
+    "binning_deployment_regret_per_step": 0.034205262609054154,
+    "nonsmooth_indist_error": 0.21881710880438351,
+    "binning_indist_error": 0.04951134238843994,
+    "effect": "Binning removes the trap: deployment regret per step drops from Omega(1) (0.530) to O(eps_q) (0.03421); in-distribution error also O(eps_q). The H*Omega(1) failure disappears -> attributable to NON-SMOOTHNESS.",
+    "passed": true
+  },
+  "notes": "Verified = the paper's exact trap-loop construction reproduces both predictions: IN-DISTRIBUTION one-step error is O(eps_q) (0.2188) while DEPLOYMENT regret is H*Omega(1) (per-step ~0.530, essentially independent of eps_q; see vs_eps_q). The binning-quantizer mutation removes the trap and reduces regret to O(eps_q), confirming the theorem attributes the failure to NON-SMOOTHNESS of the quantizer."
+}
