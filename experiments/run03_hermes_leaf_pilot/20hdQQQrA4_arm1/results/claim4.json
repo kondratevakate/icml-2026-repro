@@ -150,5 +150,8 @@
   "torch": "2.13.0+cpu",
   "seconds": 457.77,
   "verdict": "falsified",
-  "verdict_note": "measured_reduction_pct=-10.08 vs paper claimed +73.33; CAffNet_TF did NOT beat NN on MSE -> claim not reproduced"
+  "verdict_note": "measured_reduction_pct=-10.08 vs paper claimed +73.33; CAffNet_TF did NOT beat NN on MSE -> claim not reproduced",
+  "measured": {
+    "reduction_pct_mean": -10.083172023046782
+  }
 }
