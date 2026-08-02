@@ -2,10 +2,13 @@
   "schema_version": 2,
   "title": "Reproduction: FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
   "emoji": "🎯",
-  "space_id": null,
+  "space_id": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators",
   "paper": null,
-  "tags": [],
-  "updated_at": "2026-08-02T08:37:57+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-1KRpajnd6u"
+  ],
+  "updated_at": "2026-08-02T08:40:58+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
@@ -66,10 +69,10 @@
     "file": "workspace.json",
     "file_count": 0,
     "total_size": 0,
-    "bucket_id": null
+    "bucket_id": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-artifacts"
   },
-  "agent_view_tokens": 4697,
+  "agent_view_tokens": 4677,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "c24f6651248cc0eea943"
+  "revision": "cf3586b1731aee938d71"
 }

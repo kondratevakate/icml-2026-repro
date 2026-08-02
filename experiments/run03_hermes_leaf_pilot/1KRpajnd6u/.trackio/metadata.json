@@ -1,0 +1,18 @@
+{
+  "space_id": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators",
+  "tags": [
+    "icml2026-repro",
+    "paper-1KRpajnd6u"
+  ],
+  "arxiv_id": "2602.01941",
+  "title": "FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "trace_dataset": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-traces",
+  "artifacts_bucket": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-artifacts",
+  "workspace_bucket": "kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

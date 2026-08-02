@@ -1,7 +1,4 @@
 # Reproduction: FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates
-
-[OpenReview paper](https://openreview.net/forum?id=1KRpajnd6u)
-
 ## Pages
 
 | Page |

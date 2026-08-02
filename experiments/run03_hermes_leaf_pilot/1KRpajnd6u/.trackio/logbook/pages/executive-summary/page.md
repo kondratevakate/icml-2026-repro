@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_d046cbbf5500", "created_at": "2026-08-02T04:00:00+00:00", "title": "Executive summary"}
+{"type": "markdown", "id": "cell_d046cbbf5500", "created_at": "2026-08-02T04:00:00+00:00", "title": "Executive summary", "pinned": true, "pinned_at": "2026-08-02T04:00:00+00:00"}
 -->
 Independent from-the-paper numerical audit of FluxNet's update rule and head parameterizations, **numpy + torch, CPU, no GPU**. **Propositions 1-3 verified** (conservation, L/U-head bounds, with mutation tests). Claim 6 verified (DCL enforces dual bound, not the architecture). Claims 3, 4, 5 (trained-model accuracy, GPU speedup) left **inconclusive** with documented reasons — no toy substitute produced. Wall time ~26 min; cost ~$0.
 
