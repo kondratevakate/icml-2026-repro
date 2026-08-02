@@ -1,0 +1,13 @@
+bike: VCP len=20.98+-0.03 cov=0.896 | PT len=20.24+-0.03 cov=0.896 | IS_pt=21.31 | shorter=True
+bio: VCP len=21.46+-0.02 cov=0.908 | PT len=20.66+-0.06 cov=0.903 | IS_pt=22.29 | shorter=True
+concrete: VCP len=10.55+-0.06 cov=0.888 | PT len=10.21+-0.12 cov=0.896 | IS_pt=5.46 | shorter=True
+blog-data: VCP len=43.12+-0.46 cov=0.903 | PT len=42.72+-0.63 cov=0.898 | IS_pt=95.83 | shorter=True
+facebook-1: VCP len=21.98+-0.38 cov=0.895 | PT len=22.67+-0.47 cov=0.899 | IS_pt=26.86 | shorter=False
+facebook-2: VCP len=22.54+-0.43 cov=0.899 | PT len=23.56+-0.68 cov=0.899 | IS_pt=29.20 | shorter=False
+{
+  "n_datasets_attempted": 6,
+  "n_pt_shorter": 4,
+  "all_coverage_within_0.02_of_nominal": true,
+  "min_IS_pt": 5.4612329996777955,
+  "runtime_sec": 1993.1228940486908
+}

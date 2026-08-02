@@ -1,0 +1,137 @@
+{
+  "claim": 3,
+  "claim_text": "Theorem 3 (Section 3.2) proves max-p aggregation with learned conformity scores is asymptotically optimal, converging to the oracle-optimal prediction set up to boundary regions.",
+  "source": "Theorem 3, Section 3.2; proof Appendix B.4",
+  "command": "CLAIM3_REPS=12 .venv/bin/python verify_claim3.py",
+  "config": {
+    "K": 3,
+    "d": 10,
+    "alpha": 0.1,
+    "tau": 2.5,
+    "n_reps": 12,
+    "n_grid": [
+      125,
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "n_test_x": 20,
+    "y_grid_points": 401,
+    "geometry": "regression / Lebesgue (rho(T) = 0)",
+    "eps_n": "n^(-1/2)",
+    "lambda_star": "exact, HiGHS duals of the Thm-2 LP"
+  },
+  "rho_T_measured": 0.14627915981302997,
+  "mean_size_C_star": 4.147428371827565,
+  "sweep": {
+    "converging": {
+      "n_grid": [
+        125,
+        250,
+        500,
+        1000,
+        2000
+      ],
+      "rho_mean": [
+        1.7486972239923506,
+        0.7636205501019505,
+        0.36335229167643424,
+        0.2622096220961401,
+        0.17373529972295423
+      ],
+      "rho_se": [
+        0.7956546695406015,
+        0.26663208253155063,
+        0.04263996203638778,
+        0.05671801420356582,
+        0.01790723128832245
+      ],
+      "loglog_slope": -0.820477070023252,
+      "loglog_slope_tail4": -0.6878543425741384,
+      "shrink_factor_first_to_last": 10.06529603817358,
+      "shrink_factor_tail4": 4.395310287084159
+    },
+    "uniform": {
+      "n_grid": [
+        125,
+        250,
+        500,
+        1000,
+        2000
+      ],
+      "rho_mean": [
+        1.9852188061140303,
+        0.4977271860487969,
+        0.548827140964124,
+        0.40854655298195824,
+        0.3777373062240998
+      ],
+      "rho_se": [
+        0.9197034030393533,
+        0.05435686454400224,
+        0.10348656536771773,
+        0.0411785471587821,
+        0.031084064483981044
+      ],
+      "loglog_slope": -0.5072540403416371,
+      "loglog_slope_tail4": -0.1619767093580218,
+      "shrink_factor_first_to_last": 5.2555539879247775,
+      "shrink_factor_tail4": 1.3176543006147
+    },
+    "single_source": {
+      "n_grid": [
+        125,
+        250,
+        500,
+        1000,
+        2000
+      ],
+      "rho_mean": [
+        22.121922733182085,
+        21.620545529265357,
+        20.56135697647819,
+        23.13903052290728,
+        21.343875890205442
+      ],
+      "rho_se": [
+        2.7068881402050584,
+        2.8647368682630048,
+        2.388659176274596,
+        2.352784601966049,
+        2.9099511276115693
+      ],
+      "loglog_slope": -0.0005383706900718184,
+      "loglog_slope_tail4": 0.01146507107558722,
+      "shrink_factor_first_to_last": 1.0364529313691186,
+      "shrink_factor_tail4": 1.0129624835003317
+    }
+  },
+  "mutation": {
+    "design": "violate the premise: uniform lambda and single-source lambda fed through the identical estimator and n-sweep",
+    "prediction_before_running": "rho_n plateaus instead of decaying",
+    "slopes": {
+      "converging": -0.820477070023252,
+      "uniform": -0.5072540403416371,
+      "single_source": -0.0005383706900718184
+    },
+    "slopes_tail4": {
+      "converging": -0.6878543425741384,
+      "uniform": -0.1619767093580218,
+      "single_source": 0.01146507107558722
+    },
+    "shrink_factors": {
+      "converging": 10.06529603817358,
+      "uniform": 5.2555539879247775,
+      "single_source": 1.0364529313691186
+    }
+  },
+  "residual_attribution": "rho_n cannot reach 0: floors are the y-grid discretisation (dy), the finite number of test x, finite calibration, and MC noise across 12 reps",
+  "VERDICT_CAP": "verified",
+  "wall_seconds": 174.19,
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1"
+  },
+  "verdict": "verified"
+}

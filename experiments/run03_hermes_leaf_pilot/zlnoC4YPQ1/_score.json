@@ -1,0 +1,60 @@
+{
+  "orid": "zlnoC4YPQ1",
+  "title": "Robust Bayesian Optimisation with Unbounded Corruptions",
+  "area": "Probabilistic Methods",
+  "n_anchored": 5,
+  "n_claim_files": 5,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": false,
+  "check_detail": "checks run : 104\nfailures   : 1\n  FAIL: c5 A studentt_ucb mean 438.82\nRESULT     : FAIL\n",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.8,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.2,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 5,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 5,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "verified",
+    "claim5": "toy"
+  },
+  "per_claim_mutation": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true
+  },
+  "per_claim_note": {
+    "claim1": "no resolvable verdict in artifact",
+    "claim2": "no resolvable verdict in artifact",
+    "claim3": "no resolvable verdict in artifact",
+    "claim4": "no resolvable verdict in artifact",
+    "claim5": "no resolvable verdict in artifact"
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)",
+    "check_reproducibility.py FAILED — red run must not score green"
+  ],
+  "tokens": {
+    "tokens_before": 72432533,
+    "tokens_after": 82693870,
+    "tokens_used": 10261337,
+    "requests_used": 115,
+    "note": "delta from before/after snapshots"
+  }
+}

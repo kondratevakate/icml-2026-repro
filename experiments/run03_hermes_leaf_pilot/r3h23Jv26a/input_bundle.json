@@ -1,0 +1,13 @@
+{
+  "orid": "r3h23Jv26a",
+  "title": "Questioning the Coverage-Length Metric in Conformal Prediction: When Shorter Intervals Are Not Better",
+  "openreview": "https://openreview.net/forum?id=r3h23Jv26a",
+  "arxiv": "2601.21455",
+  "anchored_claims": [
+    "The Prejudicial Trick (Algorithm 1) constructs prediction intervals by returning a null (empty or minimal) interval with probability (1-p) and an adjusted conformal interval with probability p, provably preserving valid marginal coverage per Theorem 6 while shrinking average interval length (Section on Prejudicial Trick, Algorithm 1, Theorem 6)",
+    "On synthetic data, PT applied to Vanilla Conformal Prediction (PT-VCP) reduces average interval length from 22.894 to 22.614 at alpha=0.10 while preserving nominal coverage (Table 1)",
+    "On real-world regression benchmarks (including MEPS and BIO), PT-VCP reduces interval length in 9 of 10 datasets while maintaining 90% marginal coverage (Table 2)",
+    "Despite valid marginal coverage, the Prejudicial Trick yields highly unstable predictions: Proposition 2 proves its interval stability metric IS(C_PT) = p(1-p)(E(L))^2 > 0, meaning the same input can receive completely different interval outputs across repeated conformal calibration runs (Definition 1, Proposition 2)",
+    "The proposed Interval Stability metric can flag methods, such as localized conformal prediction, that implicitly exploit PT-like randomness to shrink length, since Proposition 1 shows PT is a special case of localized CP when local scale estimators output extreme values (Definition 1, Proposition 1)"
+  ]
+}

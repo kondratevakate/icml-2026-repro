@@ -1,0 +1,14 @@
+{
+  "orid": "ronJusfDvK",
+  "title": "Amortized Simulation-Based Inference in Generalized Bayes via Neural Posterior Estimation",
+  "openreview": "https://openreview.net/forum?id=ronJusfDvK",
+  "arxiv": "2601.22367",
+  "anchored_claims": [
+    "A single amortized neural posterior estimator conditioned jointly on observation x and temperature β enables single-forward-pass sampling from the tempered power posterior p_β(θ|x) ∝ π(θ)p(x|θ)^β without inference-time MCMC or additional simulator calls (Section on core method).",
+    "Proposition 4.1 shows that minimizing the SNIS-weighted training objective (Route B) is equivalent to minimizing the forward KL divergence between the learned amortized posterior and the true tempered posterior (Proposition 4.1).",
+    "Proposition 4.2 proves that for β ∈ [1/2, 1], the NRE-based self-normalized importance weights have finite variance, guaranteeing stable weighted maximum-likelihood estimation (Proposition 4.2).",
+    "The amortized estimator is evaluated on four SBI benchmarks—Two Moons, Gaussian Mixture, SLCP, and Lorenz-96—achieving posterior approximations competitive with non-amortized MCMC-based power-posterior samplers across a wide range of temperatures (Experiments section).",
+    "Route A (score-assisted tempered synthesis via Langevin dynamics) dominates at small β where SNIS importance weights become high-variance, while Route B (self-normalized importance sampling) performs well near β=1 using 10K-100K simulations (Experiments section).",
+    "On the 8-parameter Hodgkin-Huxley neuronal model with 7 summary statistics, the Route B (NLE) estimator trained on 10K simulations produces stable marginal posteriors across β ∈ {0.1, 1.0, 2.0} with posterior predictive checks qualitatively matching Allen Cell Types Database recordings (Section on Hodgkin-Huxley application)."
+  ]
+}

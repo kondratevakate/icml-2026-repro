@@ -1,0 +1,11 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "MarxistLeninist/repro-agd-l0l1-smoothness",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu"
+  ],
+  "n_claims": 5
+}

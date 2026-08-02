@@ -1,0 +1,13 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "prarabdhmisra/TzQElzflxR",
+  "hw_signals": [
+    "numpy",
+    "second",
+    "cpu",
+    "seconds",
+    "gpu"
+  ],
+  "n_claims": 6
+}

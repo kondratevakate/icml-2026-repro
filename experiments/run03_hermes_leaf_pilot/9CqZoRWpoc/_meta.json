@@ -1,0 +1,12 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "tomyimkc/repro-certificate-guided-pruning-for-stochastic-lipschitz-optimization",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "minutes",
+    "gpu"
+  ],
+  "n_claims": 6
+}

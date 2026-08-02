@@ -1,0 +1,14 @@
+{
+  "orid": "K1EPPO9t2c",
+  "title": "Loss-Aware Distributionally Robust Optimization via Trainable Optimal Transport Ambiguity Sets",
+  "openreview": "https://openreview.net/forum?id=K1EPPO9t2c",
+  "arxiv": "2509.12689",
+  "anchored_claims": [
+    "The paper formulates learning the ambiguity set for OT-DRO as a bilevel problem in which the upper level tunes the ambiguity-set geometry parameter theta and the lower level solves a standard OT-DRO problem (Section 4.2).",
+    "Theorem 5.1 establishes that the proposed hypergradient descent procedure converges to a critical point of the bilevel problem under mild conditions, including square-summable step sizes (Section 5.1, Theorem 5.1).",
+    "Algorithm 1 computes hypergradients through the nonsmooth conservative implicit function theorem, allowing differentiation through conic (OT-DRO) programs without assuming the solution map is continuously differentiable (Section 5, Algorithm 1).",
+    "In portfolio optimization experiments with k=2, J=30, n_b=20, gamma=0.05, beta=0.1, the relative improvement of the learned ambiguity set over a fixed Wasserstein ball increases as sample size decreases (Section 6.1, Figure 2).",
+    "Figure 3 shows the learned ambiguity set still enforces the coverage constraint, containing the true data-generating distribution with the specified high probability despite being shaped to reduce loss (Section 6.1, Figure 3).",
+    "Across 10 independent linear regression trials, the learned decision-focused ambiguity set consistently yields less conservative (lower average loss) decisions than baseline OT-DRO ambiguity sets (Section 6.2, Figure 5)."
+  ]
+}

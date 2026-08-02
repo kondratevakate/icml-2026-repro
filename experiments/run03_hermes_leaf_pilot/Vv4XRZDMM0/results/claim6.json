@@ -1,0 +1,19 @@
+{
+  "claim": "Claim 6: FMoW satellite imagery, six regions (249 countries in training data), near-tight worst-case coverage with smaller sets than single-source methods (Sec. 6.1, Fig. 8)",
+  "verdict": "inconclusive",
+  "reason": "Reproduction requires the WILDS FMoW v1.1 dataset (>100 GB, >1M images) plus DenseNet-121 training for 30 epochs and prediction over 100 calibration/test splits (README steps 1-4). This is not attainable CPU-only inside the ~75-minute budget; no download was started.",
+  "what_was_verified_instead": "nothing - deliberately NOT substituted by a synthetic toy, per the task's hard rule",
+  "paper_side_facts_checked_in_text": {
+    "n_countries_in_fmow_training_text": 249,
+    "n_regions": 6,
+    "regions": [
+      "Africa",
+      "Americas",
+      "Asia",
+      "Europe",
+      "Oceania",
+      "Other"
+    ],
+    "source": "arXiv 2601.02998v2, Section 6.1 text: 'over one million images from 249 countries/regions ... coverage across regions in Africa, the Americas, Asia, Europe, Oceania and Other'"
+  }
+}

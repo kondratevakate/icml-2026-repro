@@ -1,0 +1,235 @@
+perfect 500 0
+perfect 500 1
+perfect 500 2
+perfect 500 3
+perfect 500 4
+perfect 500 5
+perfect 500 6
+perfect 500 7
+perfect 500 8
+perfect 500 9
+perfect 500 10
+perfect 500 11
+perfect 500 12
+perfect 500 13
+perfect 500 14
+perfect 500 15
+perfect 500 16
+perfect 500 17
+perfect 500 18
+perfect 500 19
+perfect 1000 0
+perfect 1000 1
+perfect 1000 2
+perfect 1000 3
+perfect 1000 4
+perfect 1000 5
+perfect 1000 6
+perfect 1000 7
+perfect 1000 8
+perfect 1000 9
+perfect 1000 10
+perfect 1000 11
+perfect 1000 12
+perfect 1000 13
+perfect 1000 14
+perfect 1000 15
+perfect 1000 16
+perfect 1000 17
+perfect 1000 18
+perfect 1000 19
+perfect 2000 0
+perfect 2000 1
+perfect 2000 2
+perfect 2000 3
+perfect 2000 4
+perfect 2000 5
+perfect 2000 6
+perfect 2000 7
+perfect 2000 8
+perfect 2000 9
+perfect 2000 10
+perfect 2000 11
+perfect 2000 12
+perfect 2000 13
+perfect 2000 14
+perfect 2000 15
+perfect 2000 16
+perfect 2000 17
+perfect 2000 18
+perfect 2000 19
+violated 500 0
+violated 500 1
+violated 500 2
+violated 500 3
+violated 500 4
+violated 500 5
+violated 500 6
+violated 500 7
+violated 500 8
+violated 500 9
+violated 500 10
+violated 500 11
+violated 500 12
+violated 500 13
+violated 500 14
+violated 500 15
+violated 500 16
+violated 500 17
+violated 500 18
+violated 500 19
+violated 1000 0
+violated 1000 1
+violated 1000 2
+violated 1000 3
+violated 1000 4
+violated 1000 5
+violated 1000 6
+violated 1000 7
+violated 1000 8
+violated 1000 9
+violated 1000 10
+violated 1000 11
+violated 1000 12
+violated 1000 13
+violated 1000 14
+violated 1000 15
+violated 1000 16
+violated 1000 17
+violated 1000 18
+violated 1000 19
+violated 2000 0
+violated 2000 1
+violated 2000 2
+violated 2000 3
+violated 2000 4
+violated 2000 5
+violated 2000 6
+violated 2000 7
+violated 2000 8
+violated 2000 9
+violated 2000 10
+violated 2000 11
+violated 2000 12
+violated 2000 13
+violated 2000 14
+violated 2000 15
+violated 2000 16
+violated 2000 17
+violated 2000 18
+violated 2000 19
+{
+  "alpha": 0.1,
+  "d": 5,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "sizes": [
+    500,
+    1000,
+    2000
+  ],
+  "true_L1_violated_analytic": 0.125,
+  "summary": {
+    "perfect_n500": {
+      "cv_L1_mean": 0.0007199999999999908,
+      "cv_L1_std": 0.012601333262794058,
+      "nocv_L1_mean": 0.18070000000000003,
+      "nocv_L1_std": 0.0123682658444909,
+      "cv_L2_mean": -0.016367085316739145,
+      "nocv_L2_mean": 0.0898992586875367,
+      "true_L1": 0.0,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 0.25,
+      "frac_seeds_nocv_L1_positive": 1.0
+    },
+    "perfect_n1000": {
+      "cv_L1_mean": 0.00016999999999999096,
+      "cv_L1_std": 0.009053016072006056,
+      "nocv_L1_mean": 0.17912,
+      "nocv_L1_std": 0.007048517574639362,
+      "cv_L2_mean": -0.01325760616567516,
+      "nocv_L2_mean": 0.08817545422655755,
+      "true_L1": 0.0,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 0.1,
+      "frac_seeds_nocv_L1_positive": 1.0
+    },
+    "perfect_n2000": {
+      "cv_L1_mean": -0.0025000000000000066,
+      "cv_L1_std": 0.00516952609046516,
+      "nocv_L1_mean": 0.170915,
+      "nocv_L1_std": 0.0026063911832263395,
+      "cv_L2_mean": -0.01091569041007579,
+      "nocv_L2_mean": 0.07837327434878938,
+      "true_L1": 0.0,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 0.0,
+      "frac_seeds_nocv_L1_positive": 1.0
+    },
+    "violated_n500": {
+      "cv_L1_mean": 0.038639999999999994,
+      "cv_L1_std": 0.012752035131695648,
+      "nocv_L1_mean": 0.1991,
+      "nocv_L1_std": 0.010351328417164633,
+      "cv_L2_mean": -0.012612729165091504,
+      "nocv_L2_mean": 0.10887889671536921,
+      "true_L1": 0.10233407019448568,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 1.0,
+      "frac_seeds_nocv_L1_positive": 1.0
+    },
+    "violated_n1000": {
+      "cv_L1_mean": 0.037029999999999993,
+      "cv_L1_std": 0.010749376726117662,
+      "nocv_L1_mean": 0.19624000000000003,
+      "nocv_L1_std": 0.007692489843997187,
+      "cv_L2_mean": -0.009782238866839682,
+      "nocv_L2_mean": 0.10603577479020991,
+      "true_L1": 0.10312859538730072,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 1.0,
+      "frac_seeds_nocv_L1_positive": 1.0
+    },
+    "violated_n2000": {
+      "cv_L1_mean": 0.052225,
+      "cv_L1_std": 0.010259379854552613,
+      "nocv_L1_mean": 0.18015500000000007,
+      "nocv_L1_std": 0.003538145700787349,
+      "cv_L2_mean": -0.0031579521216759917,
+      "nocv_L2_mean": 0.09740807770096524,
+      "true_L1": 0.10281372393010116,
+      "n_seeds": 20,
+      "frac_seeds_cv_L1_positive": 1.0,
+      "frac_seeds_nocv_L1_positive": 1.0
+    }
+  },
+  "checks": {
+    "cv_near_zero_in_perfect_regime": true,
+    "nocv_strongly_positive_in_perfect_regime": true,
+    "nocv_beats_cv_by_factor>3_in_perfect_regime": true,
+    "cv_positive_in_violated_regime": true,
+    "cv_is_lower_bound_in_violated_regime": true
+  },
+  "all_checks_pass": true,
+  "command": ".venv/bin/python verify_claim6.py"
+}

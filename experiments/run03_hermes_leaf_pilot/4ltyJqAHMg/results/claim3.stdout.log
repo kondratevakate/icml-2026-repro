@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "deepseekv3_syntax_gm_is_30.28": true,
+    "deepseekv3_semantic_gm_is_21.32": true,
+    "qwen25coder32b_semantic_gm_is_23.45": true,
+    "most_models_below_20_on_syntax": false,
+    "most_models_below_20_on_semantic": true,
+    "most_models_below_20_pooled": true
+  },
+  "sub_verdicts": {
+    "reported_model_scores": "verified",
+    "most_models_below_20pct": "falsified"
+  },
+  "mutation_test": {
+    "description": "swap the GM metric for MB (modify-better) and recount the '<=20%' population",
+    "syntax_mb_le20": {
+      "n": 3,
+      "of": 24,
+      "frac": 0.125
+    },
+    "semantic_mb_le20": {
+      "n": 6,
+      "of": 24,
+      "frac": 0.25
+    },
+    "predicted": "the '<=20%' majority disappears on both splits (metric-dependence)",
+    "mutation_behaves_as_predicted": true
+  },
+  "verdict": "falsified"
+}
+{"n": 10, "of": 24, "frac": 0.4167} {"n": 15, "of": 24, "frac": 0.625}

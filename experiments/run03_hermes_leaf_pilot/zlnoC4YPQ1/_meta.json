@@ -1,0 +1,12 @@
+{
+  "area": "Probabilistic Methods",
+  "disputed": true,
+  "space": "sugan04/repro-robust-bayesian-optimisation",
+  "hw_signals": [
+    "numpy",
+    "scipy",
+    "cpu",
+    "hours"
+  ],
+  "n_claims": 5
+}

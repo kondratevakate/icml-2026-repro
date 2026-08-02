@@ -1,0 +1,60 @@
+{
+  "claim": 2,
+  "claim_text": "Theorem 2 (Section 3.1) characterizes the population-optimal prediction set as a superlevel set of a shared score function h_{lambda*}(x,y) = sum_k lambda_k*(x) f_k(y|x), with complementary slackness ensuring exact 1-alpha coverage for at least one source.",
+  "source": "Theorem 2, Section 3.1; proof Appendix B.3",
+  "command": "CLAIM2_INSTANCES=300 .venv/bin/python verify_claim2.py",
+  "config": {
+    "K": 3,
+    "alpha": 0.1,
+    "tau": 2.5,
+    "tol": 1e-07,
+    "y_grid_points": 601,
+    "lp_solver": "scipy.optimize.linprog(method=\"highs\")",
+    "duals": "-res.ineqlin.marginals"
+  },
+  "regression_geometry_PRIMARY": {
+    "n_instances": 300,
+    "C1_structure_superlevel_set": 1.0,
+    "C1_mean_disagreement_mass": 0.0,
+    "C1_max_disagreement_mass": 0.0,
+    "C1_mean_disagreement_frac_of_set": 0.0,
+    "C2_complementary_slackness_tight": 1.0,
+    "C3_zero_lambda_implies_slack": 1.0,
+    "C4_exists_positive_lambda": 1.0,
+    "C5_max_duality_gap": 1.0891127377732346e-07,
+    "C5_median_duality_gap": 5.773159728050814e-14,
+    "mean_n_active_sources": 2.3133333333333335,
+    "mean_boundary_mass": 0.04829997432965913,
+    "mean_frac_fractional_I": 0.0038491403216860784,
+    "mutation_frac_as_good_as_optimum": 0.0
+  },
+  "classification_geometry_SECONDARY": {
+    "n_instances": 300,
+    "C1_structure_superlevel_set": 1.0,
+    "C1_mean_disagreement_mass": 0.0,
+    "C1_max_disagreement_mass": 0.0,
+    "C1_mean_disagreement_frac_of_set": 0.0,
+    "C2_complementary_slackness_tight": 1.0,
+    "C3_zero_lambda_implies_slack": 1.0,
+    "C4_exists_positive_lambda": 1.0,
+    "C5_max_duality_gap": 4.755462690297918e-10,
+    "C5_median_duality_gap": 4.440892098500626e-16,
+    "mean_n_active_sources": 1.8033333333333332,
+    "mean_boundary_mass": 1.8033333333333332,
+    "mean_frac_fractional_I": 0.3005555555555555,
+    "mutation_frac_as_good_as_optimum": 0.0
+  },
+  "mutation": {
+    "design": "wrong lambda' (log-normal perturbation of lambda*, and uniform lambda' = mean(lambda*)); form {y : h_lambda'(y) > 1}",
+    "prediction_before_running": "never as good as the optimum: infeasible or strictly larger; frac_as_good_as_optimum == 0.0",
+    "regression_frac_as_good": 0.0,
+    "classification_frac_as_good": 0.0
+  },
+  "VERDICT_CAP": "verified",
+  "wall_seconds": 2.89,
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1"
+  },
+  "verdict": "verified"
+}

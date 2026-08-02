@@ -1,0 +1,9 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "ai-sherpa/fixed-budget-fixed-confidence-best-arm-repro",
+  "hw_signals": [
+    "cpu"
+  ],
+  "n_claims": 5
+}

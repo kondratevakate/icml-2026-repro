@@ -1,0 +1,14 @@
+{
+  "orid": "okzQ1x71pS",
+  "title": "Generalizing Stochastic Smoothing for Differentiation and Gradient Estimation",
+  "openreview": "https://openreview.net/forum?id=okzQ1x71pS",
+  "arxiv": "2410.08125",
+  "anchored_claims": [
+    "Lemma 3 generalizes the stochastic-smoothing gradient identity to absolutely continuous but not necessarily differentiable densities, enabling smoothing with distributions such as Laplace and triangular that lack differentiable densities (Section 2, Lemma 3).",
+    "Theorem 7 extends the smoothing framework to multivariate distributions with covariance matrices, allowing differentiation with respect to scale parameters (Section 2, Theorem 7).",
+    "Theorem 8 derives estimators for the derivative of the output covariance matrix, enabling gradient-based uncertainty quantification (Section 2, Theorem 8).",
+    "Section 4 benchmarks variance-reduction methods for stochastic-smoothing gradient estimation across 6 distributions (Gaussian, Logistic, Gumbel, Cauchy, Laplace, Triangular) and 24 combinations of sampling strategy (MC, Antithetic MC, Cartesian/Latin-Hypercube QMC and RQMC), covariate (None, f(x), Leave-One-Out) and antithetic pairing (Section 4).",
+    "Section 4 finds that Cartesian RQMC combined with the Leave-One-Out covariate, without antithetic pairing, achieves the lowest gradient-estimator variance among the tested combinations when feasible (Section 4).",
+    "Sections 4.2-4.5 demonstrate the framework on differentiable sorting/ranking (MNIST, n=5), Warcraft shortest-path prediction, differentiable rendering (Utah teapot pose estimation), and cryo-electron tomography simulation optimization (Section 4.2, Section 4.3, Section 4.4, Section 4.5)."
+  ]
+}

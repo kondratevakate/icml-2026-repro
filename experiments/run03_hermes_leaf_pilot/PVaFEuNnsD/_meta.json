@@ -1,0 +1,13 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "snaykey/repro-scaling-exponents-pinn",
+  "hw_signals": [
+    "cpu",
+    "gpu",
+    "numpy",
+    "scipy",
+    "second"
+  ],
+  "n_claims": 6
+}

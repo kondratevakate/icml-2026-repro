@@ -1,0 +1,14 @@
+{
+  "orid": "gQXkbQSZWS",
+  "title": "On the Expressive Power of Permutation-Equivariant Weight-Space Networks",
+  "openreview": "https://openreview.net/forum?id=gQXkbQSZWS",
+  "arxiv": "2602.01083",
+  "anchored_claims": [
+    "Theorem 5.2 proves that the prominent permutation-equivariant weight-space architectures DWS, NP-NFN, HNP-NFN, GMN, and NG-GNN have identical expressive power for both invariant and equivariant mappings on compact sets (Theorem 5.2).",
+    "Proposition 5.3 shows Neural Functional Transformers (NFTs) differ in expressive power from the other architectures in general, but become equivalent under a general-position (GP) assumption requiring distinct bias terms per layer (Proposition 5.3).",
+    "Theorem 6.1 establishes that permutation-invariant weight-space networks are universal approximators of function-space functionals, i.e., maps depending only on the realized function and not the specific parameterization (Theorem 6.1).",
+    "Proposition 6.2 proves a non-universality result showing invariant weight-space networks cannot approximate all permutation-invariant functionals, using a counterexample built from Weisfeiler-Leman graph indistinguishability (Proposition 6.2).",
+    "Theorem 6.3 recovers universality for permutation-invariant functionals under the general-position assumption via continuous canonization maps that order neurons by bias value (Theorem 6.3).",
+    "Theorem 7.4 shows permutation-equivariant operators achieve universal approximation under the general-position assumption via canonization-based factorization, while Proposition 7.1 shows fixed-architecture equivariant networks cannot approximate function-space operators that increase geometric complexity (Proposition 7.1, Theorem 7.4)."
+  ]
+}

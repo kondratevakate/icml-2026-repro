@@ -1,0 +1,14 @@
+{
+  "orid": "Oz335dV48X",
+  "title": "DFlash: Block Diffusion for Flash Speculative Decoding",
+  "openreview": "https://openreview.net/forum?id=Oz335dV48X",
+  "arxiv": "2602.06036",
+  "anchored_claims": [
+    "DFlash uses a lightweight block diffusion draft model to generate speculative draft tokens in parallel, conditioned on hidden features extracted from the target LLM (Figure 2).",
+    "On Qwen3 models with thinking disabled, DFlash consistently outperforms EAGLE-3 and reaches about 4.9x average greedy-decoding speedup over autoregressive decoding (Table 1).",
+    "With thinking mode enabled, DFlash maintains high acceptance length and roughly 4.5x speedups on reasoning-model settings (Table 2).",
+    "On SGLang with the FA4 backend, DFlash provides throughput speedups across Qwen3-4B, Qwen3-8B, and Qwen3-Coder-30B-A3B-Instruct up to 5.1x (Table 3).",
+    "Long-context fine-tuning preserves or improves DFlash acceptance length as LongBench context length increases beyond 4K (Table 4).",
+    "Ablations show that draft depth, number of target hidden features, block-size choice, and KV injection all materially affect DFlash acceptance length and speedup (Table 6; Table 7; Table 8; Table 9)."
+  ]
+}

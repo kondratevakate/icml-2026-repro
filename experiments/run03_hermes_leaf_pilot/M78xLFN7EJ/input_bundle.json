@@ -1,0 +1,13 @@
+{
+  "orid": "M78xLFN7EJ",
+  "title": "Protein Design with Agent Rosetta: A Case Study for Specialized Scientific Agents",
+  "openreview": "https://openreview.net/forum?id=M78xLFN7EJ",
+  "arxiv": "2603.15952",
+  "anchored_claims": [
+    "Using simplified action syntax raises Agent Rosetta's composition-penalty generation success rate from about 70% (GPT-5 without the simplification) to at least 98.88% across all tested LLMs (Section 3.1).",
+    "On fixed-backbone sequence design across 8 test protein structures (74-125 residues), Agent Rosetta's action success rate is at least 86% across all LLMs, and its median RMSD matches ProteinMPNN within 0.20 Å tolerance while outperforming baselines on 5 of 8 conformations (Section 3.2).",
+    "Gemini 2.5 Flash and Qwen3 Instruct achieve the best cost-performance tradeoff among LLM backbones tested for backbone-stabilization design, using 30 LLM queries per trajectory and 128 candidate designs per step (Section 3.2).",
+    "For designing a single non-canonical formyl-tryptophan (TRF) residue into the protein core across 4 de novo folds (40-153 residues), GPT-5 achieves the highest TRF inclusion success rate, about 14.5%, on the most challenging structure (PDB 8UZL) (Section 3.3).",
+    "Agent Rosetta outperforms the human expert baseline on AF3 RMSD and pLDDT metrics for non-canonical amino acid design, evaluated over 16 independent trajectories per method with 1,000 bootstrap samples (Section 3.3)."
+  ]
+}

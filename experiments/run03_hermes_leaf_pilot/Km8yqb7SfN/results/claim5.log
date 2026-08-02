@@ -1,0 +1,163 @@
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/Km8yqb7SfN/verify_claim5.py:73: RuntimeWarning: divide by zero encountered in log
+  lz = np.log(p) + eta * d
+{
+  "command": ".venv/bin/python verify_claim5.py",
+  "claim": 5,
+  "source": "Proposition 3.1, Section 3.1, arXiv 2602.01603",
+  "T1_cdf_derivative_matches_density_symbolically": true,
+  "T1_total_mass_F1_minus_F0": 1.0,
+  "T1_numeric_mass": {
+    "2": 1.0,
+    "4": 1.0019982593439805,
+    "8": 1.0000000003319425,
+    "16": 1.000000000559052
+  },
+  "T2_relative_span_of_aggregate_derivative": {
+    "2": 0.0,
+    "3": 4.155868232090521e-16,
+    "4": 4.544398259318199e-16,
+    "8": 5.836889199637676e-16,
+    "16": 5.741114596083249e-16
+  },
+  "M2_wrong_alpha_relative_span": {
+    "3": 0.1617991920601908,
+    "4": 0.12237480809665231,
+    "8": 0.06220014258452878,
+    "16": 0.03140523754081747
+  },
+  "T3_grid_optimum_vs_closed_form": {
+    "2": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "tv_distance": 6.2534612904618925e-15,
+          "objective_mirror_ascent": 0.8333328124999968,
+          "objective_closed_form": 0.8333328124999994,
+          "objective_gap": 2.55351295663786e-15
+        },
+        {
+          "seed": 1,
+          "tv_distance": 0.3273072544094191,
+          "objective_mirror_ascent": 0.8333300263812871,
+          "objective_closed_form": 0.8333328124999994,
+          "objective_gap": 2.7861187122946163e-06
+        },
+        {
+          "seed": 2,
+          "tv_distance": 0.3042640827454344,
+          "objective_mirror_ascent": 0.8333298707426444,
+          "objective_closed_form": 0.8333328124999994,
+          "objective_gap": 2.9417573549350706e-06
+        },
+        {
+          "seed": 3,
+          "tv_distance": 0.30764873432630846,
+          "objective_mirror_ascent": 0.83333044600768,
+          "objective_closed_form": 0.8333328124999994,
+          "objective_gap": 2.3664923193278398e-06
+        },
+        {
+          "seed": 4,
+          "tv_distance": 0.31351521432927176,
+          "objective_mirror_ascent": 0.833329981207072,
+          "objective_closed_form": 0.8333328124999994,
+          "objective_gap": 2.831292927329976e-06
+        }
+      ],
+      "max_tv_distance": 0.3273072544094191,
+      "max_abs_objective_gap": 2.9417573549350706e-06
+    },
+    "4": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "tv_distance": 0.11959397850267109,
+          "objective_mirror_ascent": 0.9541896844643305,
+          "objective_closed_form": 0.9541919501728603,
+          "objective_gap": 2.265708529791688e-06
+        },
+        {
+          "seed": 1,
+          "tv_distance": 0.34916463214240717,
+          "objective_mirror_ascent": 0.9541873503578411,
+          "objective_closed_form": 0.9541919501728603,
+          "objective_gap": 4.599815019212805e-06
+        },
+        {
+          "seed": 2,
+          "tv_distance": 0.37041215054706567,
+          "objective_mirror_ascent": 0.9541826738074989,
+          "objective_closed_form": 0.9541919501728603,
+          "objective_gap": 9.2763653614103e-06
+        },
+        {
+          "seed": 3,
+          "tv_distance": 0.37875090940784695,
+          "objective_mirror_ascent": 0.9541846132700608,
+          "objective_closed_form": 0.9541919501728603,
+          "objective_gap": 7.336902799526257e-06
+        },
+        {
+          "seed": 4,
+          "tv_distance": 0.30134427445310485,
+          "objective_mirror_ascent": 0.9541879684619077,
+          "objective_closed_form": 0.9541919501728603,
+          "objective_gap": 3.981710952616346e-06
+        }
+      ],
+      "max_tv_distance": 0.37875090940784695,
+      "max_abs_objective_gap": 9.2763653614103e-06
+    },
+    "8": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "tv_distance": 0.36986416596175986,
+          "objective_mirror_ascent": 0.9970182186293772,
+          "objective_closed_form": 0.9970242447974,
+          "objective_gap": 6.026168022810197e-06
+        },
+        {
+          "seed": 1,
+          "tv_distance": 0.43375488223935965,
+          "objective_mirror_ascent": 0.9970186986008116,
+          "objective_closed_form": 0.9970242447974,
+          "objective_gap": 5.546196588435137e-06
+        },
+        {
+          "seed": 2,
+          "tv_distance": 0.5386946236759129,
+          "objective_mirror_ascent": 0.9970097747772718,
+          "objective_closed_form": 0.9970242447974,
+          "objective_gap": 1.4470020128221073e-05
+        },
+        {
+          "seed": 3,
+          "tv_distance": 0.5637669967259159,
+          "objective_mirror_ascent": 0.9970119717244239,
+          "objective_closed_form": 0.9970242447974,
+          "objective_gap": 1.2273072976132227e-05
+        },
+        {
+          "seed": 4,
+          "tv_distance": 0.38397119730311186,
+          "objective_mirror_ascent": 0.9970189584330895,
+          "objective_closed_form": 0.9970242447974,
+          "objective_gap": 5.286364310519431e-06
+        }
+      ],
+      "max_tv_distance": 0.5637669967259159,
+      "max_abs_objective_gap": 1.4470020128221073e-05
+    }
+  },
+  "M1_N2_max_abs_density_minus_1": 0.0,
+  "T4_naive": {
+    "argmax_bin_center": 0.49875,
+    "mass_at_argmax": 0.4999981366803579,
+    "mass_within_0.01_of_0.5": 1.0,
+    "mean": 0.5,
+    "std": 0.001250018633057519
+  },
+  "T4_iama_N8_mass_outside_center": 0.9217672266458095,
+  "T4_naive_mass_outside_center": 0.0
+}

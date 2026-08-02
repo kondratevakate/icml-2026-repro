@@ -1,0 +1,13 @@
+{
+  "orid": "L0T4pmqkMg",
+  "title": "Near-Optimal Convergence of Accelerated Gradient Methods under Generalized and $(L_0,L_1)$-Smoothness",
+  "openreview": "https://openreview.net/forum?id=L0T4pmqkMg",
+  "arxiv": "2508.06884",
+  "anchored_claims": [
+    "Theorem 3.3 proves Algorithm 1 achieves oracle complexity of 5√ℓ(0)R̄/√ε + k(δ) gradient calls for functions with subquadratic or quadratic growth under generalized ℓ-smoothness (Theorem 3.3).",
+    "Corollary 3.4 shows that optimizing over the free parameter δ yields complexity O(√ℓ(0)R/√ε), which is provably optimal in the small-ε regime (Corollary 3.4).",
+    "For (L₀,L₁)-smooth functions (ℓ(s)=L₀+L₁s), the paper's bound reduces to O(√L₀R/√ε), removing the non-constant multiplicative factors present in prior results such as √(L₀+L₁‖∇f(x⁰)‖)R/√ε from Li et al. (2024a) and exp(L₁R)·√L₀R/√ε from Gorbunov et al. (2025) (Table 1).",
+    "Algorithm 2 (Section 4) removes the initial gradient-descent phase required by Algorithm 1, giving a parameter-stable accelerated method without pre-running GD (Algorithm 2, Section 4).",
+    "Theorem 4.3 provides refined complexity bounds with improved non-dominant terms compared to prior accelerated methods under (L₀,L₁)-smoothness (Theorem 4.3)."
+  ]
+}

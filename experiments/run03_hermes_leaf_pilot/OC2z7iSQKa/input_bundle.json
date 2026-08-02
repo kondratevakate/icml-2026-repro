@@ -1,0 +1,13 @@
+{
+  "orid": "OC2z7iSQKa",
+  "title": "$\\tau^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+  "openreview": "https://openreview.net/forum?id=OC2z7iSQKa",
+  "arxiv": "2506.07982",
+  "anchored_claims": [
+    "tau2-bench introduces a telecom dual-control environment where both the conversational agent and simulated user can act with tools in a shared dynamic state (Figure 1).",
+    "The telecom domain is modeled with separate agent and user databases, 13 agent tools, 30 user tools, and 114 sampled tasks from a 2,285-task full set (Table 1).",
+    "The benchmark uses a compositional task generator that creates verifiable telecom tasks from intent and subtask components (Section 3.2).",
+    "Agents show lower pass@1 in default dual-control telecom operation than in no-user and oracle-plan modes, isolating the cost of decentralized user coordination (Figure 4).",
+    "Telecom performance declines as the number of required actions or distinct issues increases (Figure 5)."
+  ]
+}

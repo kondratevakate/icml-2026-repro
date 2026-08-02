@@ -1,0 +1,12 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "algorise/repro-maximum-likelihood-reinforcement-learning",
+  "hw_signals": [
+    "cpu",
+    "numpy",
+    "scipy",
+    "gpu"
+  ],
+  "n_claims": 5
+}

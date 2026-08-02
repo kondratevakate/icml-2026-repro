@@ -1,0 +1,12 @@
+{
+  "orid": "4ltyJqAHMg",
+  "title": "Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?",
+  "openreview": "https://openreview.net/forum?id=4ltyJqAHMg",
+  "arxiv": "2601.18119",
+  "anchored_claims": [
+    "SQLBench (Squirrel) comprises 469 syntax-error tasks (Squirrel-Syntax) and 516 semantic-error tasks (Squirrel-Semantic), built from over 1,000 seed SQL scripts spanning 26 business scenarios, with scripts averaging over 140 lines, AST width >11, and AST depth >8.7 (Benchmark Construction section).",
+    "Claude-4-Sonnet achieves only 36.46% Graph Match score on Squirrel-Syntax debugging and 32.17% on Squirrel-Semantic debugging, the best performance among evaluated models (Main Results table).",
+    "DeepSeek-V3 scores 30.28% (Graph Match) on Squirrel-Syntax and 21.32% on Squirrel-Semantic, while Qwen-2.5-Coder-32B scores 23.45% on Squirrel-Semantic, with most evaluated LLMs failing to exceed 20% success rate on enterprise SQL debugging (Main Results table).",
+    "SQLBench scripts contain on the order of 420+ tokens and 17.34-21.62 functions per script on average, reflecting enterprise-scale ETL SQL complexity rather than the short queries used in prior Text-to-SQL benchmarks (Benchmark Statistics section)."
+  ]
+}

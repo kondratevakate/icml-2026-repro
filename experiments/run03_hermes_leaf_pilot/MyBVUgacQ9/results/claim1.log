@@ -1,0 +1,14 @@
+T1-T3 runs: 450
+  converged (res<1e-8): 450  feasible (viol<1e-8): 450
+  max final residual 3.846e-16  max final violation 2.220e-16
+  max_last_k_gap (o(1/k) witness) 0.000e+00 ; runs with k*gap<1e-6: 450/450
+  max blockwise-optimality error 5.192e-10
+MUT-A (Asm 2.6 violated): collapse->0: True  w->-inf: True  infeasible: True  max||x||=0.00e+00 min viol=1.000 max w=-4000.0
+MUT-B rho sweep (threshold 500):
+   rho/thr=  0.0001  worst res 0.00e+00  worst viol 2.22e-15
+   rho/thr=   0.001  worst res 5.32e-16  worst viol 2.27e-16
+   rho/thr=    0.01  worst res 1.64e-16  worst viol 1.11e-16
+   rho/thr=     0.1  worst res 1.28e-25  worst viol 1.73e-18
+   rho/thr=       1  worst res 1.24e-04  worst viol 2.90e-07
+   rho/thr=       4  worst res 1.41e-03  worst viol 1.26e-06
+wrote results/claim1.json in 1045.9s

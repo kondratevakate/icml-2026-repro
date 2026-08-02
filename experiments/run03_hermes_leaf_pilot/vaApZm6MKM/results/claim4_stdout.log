@@ -1,0 +1,98 @@
+{
+  "grid": {
+    "alphas": [
+      0.01,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "n_p": 197,
+    "losses": [
+      "L1",
+      "L2",
+      "KL"
+    ]
+  },
+  "decomposition": {
+    "L1": {
+      "max_loss_decomposition_abs_error": 0.0,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 0.0
+    },
+    "L2": {
+      "max_loss_decomposition_abs_error": 1.1102230246251565e-16,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 0.0
+    },
+    "KL": {
+      "max_loss_decomposition_abs_error": 8.881784197001252e-16,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 0.0
+    }
+  },
+  "mutation_swap_max_min": {
+    "L1": {
+      "max_loss_decomposition_abs_error": 0.0,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 0.98
+    },
+    "L2": {
+      "max_loss_decomposition_abs_error": 1.1102230246251565e-16,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 0.9603999999999999
+    },
+    "KL": {
+      "max_loss_decomposition_abs_error": 8.881784197001252e-16,
+      "max_ERT_additivity_abs_error": 0.0,
+      "max_one_sidedness_violation": 4.503217453131898
+    }
+  },
+  "mutation_swap_worked_example": {
+    "L1": {
+      "ERT_plus_correct": 0.025999999999999978,
+      "ERT_minus_correct": 0.07000000000000002,
+      "ERT_plus_swapped": 0.07000000000000002,
+      "note": "swapping max/min makes the 'over-coverage' component report the under-coverage mass: the asymmetric attribution is inverted."
+    },
+    "L2": {
+      "ERT_plus_correct": 0.0017799999999999962,
+      "ERT_minus_correct": 0.018500000000000023,
+      "ERT_plus_swapped": 0.018500000000000023,
+      "note": "swapping max/min makes the 'over-coverage' component report the under-coverage mass: the asymmetric attribution is inverted."
+    },
+    "KL": {
+      "ERT_plus_correct": 0.013594479020716671,
+      "ERT_minus_correct": 0.06469475880706521,
+      "ERT_plus_swapped": 0.06469475880706521,
+      "note": "swapping max/min makes the 'over-coverage' component report the under-coverage mass: the asymmetric attribution is inverted."
+    }
+  },
+  "mutation_note_additivity": "additivity is invariant under relabelling the two parts, so the mechanism that breaks under the swap is ONE-SIDEDNESS / attribution, which it does (max violation ~0.98 for L1, 4.50 for KL vs 0.0 for the correct definition).",
+  "worked_example_p_values_0.98_0.95_0.90_0.85_0.60_target_0.9": {
+    "L1": {
+      "ERT": 0.096,
+      "ERT_plus": 0.025999999999999978,
+      "ERT_minus": 0.07000000000000002,
+      "sum_parts": 0.096,
+      "additivity_err": 0.0
+    },
+    "L2": {
+      "ERT": 0.020280000000000017,
+      "ERT_plus": 0.0017799999999999962,
+      "ERT_minus": 0.018500000000000023,
+      "sum_parts": 0.02028000000000002,
+      "additivity_err": 3.469446951953614e-18
+    },
+    "KL": {
+      "ERT": 0.07828923782778188,
+      "ERT_plus": 0.013594479020716671,
+      "ERT_minus": 0.06469475880706521,
+      "sum_parts": 0.07828923782778188,
+      "additivity_err": 0.0
+    }
+  },
+  "all_checks_pass": true,
+  "command": ".venv/bin/python verify_claim4.py"
+}

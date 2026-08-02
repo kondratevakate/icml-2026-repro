@@ -1,0 +1,16 @@
+{
+  "area": "Reinforcement Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-off-policy-large-action-optimization-matters",
+  "hw_signals": [
+    "numpy",
+    "scipy",
+    "gpu",
+    "second",
+    "cpu",
+    "hour",
+    "minute",
+    "hours"
+  ],
+  "n_claims": 6
+}

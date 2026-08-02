@@ -1,0 +1,12 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "DineshAI/MyBVUgacQ9",
+  "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
+    "cpu"
+  ],
+  "n_claims": 6
+}

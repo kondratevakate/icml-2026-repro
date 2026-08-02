@@ -1,0 +1,15 @@
+{
+  "area": "Probabilistic Methods",
+  "disputed": true,
+  "space": "qy2100/repro-ballast-bayesian-active-learning-with-look-ahead-amendment-for-sea-drifter-trajectories-un",
+  "hw_signals": [
+    "minutes",
+    "hours",
+    "numpy",
+    "scipy",
+    "cpu",
+    "gpu",
+    "hour"
+  ],
+  "n_claims": 5
+}

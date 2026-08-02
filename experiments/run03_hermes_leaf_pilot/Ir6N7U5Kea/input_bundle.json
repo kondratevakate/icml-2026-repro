@@ -1,0 +1,14 @@
+{
+  "orid": "Ir6N7U5Kea",
+  "title": "Causal Matrix Completion under Multiple Treatments via Mixed Synthetic Nearest Neighbors",
+  "openreview": "https://openreview.net/forum?id=Ir6N7U5Kea",
+  "arxiv": "2603.11942",
+  "anchored_claims": [
+    "MSNN provably preserves Synthetic Nearest Neighbors' entry-wise finite-sample error bound (Theorem 4.5) and asymptotic normality with convergence rate scaling as K_MSNN^(-1/2) (Theorem 4.6) (Section 4.2).",
+    "Corollary 4.10 shows the expected number of usable data subgroups under MCAR grows by a multiplicative factor of [∑_d' (p_d'/p_d)^(r+1)]^c for MSNN relative to standard SNN, formalizing the effective-sample-size gain from mixed anchor sets (Section 4.3).",
+    "Corollary 4.11 shows the relative efficiency gap between data-sparse and data-rich treatment levels is reduced from quadratic to linear order under MSNN (Section 4.3).",
+    "On MCAR-generated data at a low treatment probability p(d)=0.01, MSNN achieves a 4.69% feasible rate and mean relative error of 3.91e-2, versus a 0.03% feasible rate and 0.806 MRE for standard SNN (Table 1).",
+    "Under MNAR data, MSNN consistently attains 3-26% feasible imputation rates versus under 5% for SNN, with 2-3x error reductions across treatment levels (Tables 2-3).",
+    "Mixed anchor rows/columns are constructed via bipartite cliques spanning multiple treatment levels while preserving the target row's same-treatment data, relying on the shared latent row factor assumption (Assumption 2.5) (Section 3.2-3.3, Algorithms 2-3)."
+  ]
+}

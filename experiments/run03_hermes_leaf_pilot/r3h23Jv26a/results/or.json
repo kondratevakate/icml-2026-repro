@@ -1,0 +1,1 @@
+{"name":"New Version Available", "errors": [  { "type": "New Version Available", "message": "We have migrated to a new UI! The OpenReview API is now accessible at https://api.openreview.net. To continue using openreview-py, change the baseurl setting of openreview.Client to https://api.openreview.net" } ]}

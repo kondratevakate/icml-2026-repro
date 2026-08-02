@@ -1,0 +1,13 @@
+{
+  "orid": "S1TwW9szYm",
+  "title": "Gradient-Free Approaches is a Key to an Efficient Interaction with Markovian Stochasticity",
+  "openreview": "https://openreview.net/forum?id=S1TwW9szYm",
+  "arxiv": "2601.01160",
+  "anchored_claims": [
+    "For smooth strongly convex problems with two-point zero-order feedback and Markovian noise of mixing time τ, Theorem 1 (and its extension Theorem 1') gives an oracle complexity of O((d+τ)σ²/(μ²ε)), which reduces to the i.i.d. zero-order rate O(dσ²/(μ²ε)) whenever τ ≤ d, i.e., convergence becomes independent of τ (Table 1, Section 2, Theorem 1/1').",
+    "The same τ-independence-when-τ≤d phenomenon is established for non-smooth Markovian problems via a smoothing technique, giving oracle complexity O((d+τ)σ²G²/(μ²ε²)) (Table 1, Theorem 3/3').",
+    "The authors argue zero-order methods are more resource-efficient than first-order methods under Markovian noise: assuming a zero-order oracle call costs d times less than a gradient call, first-order Markovian SGD requires resources scaling as d·τ while their zero-order method scales only as d+τ (Section 1.2).",
+    "Matching information-theoretic lower bounds (Theorems 6, 7, and 8, for one-point and two-point feedback) are established up to logarithmic factors, confirming optimality of the upper bounds (Section 2.3, Appendix F).",
+    "For one-point feedback under Markovian noise, the derived rate is O(d(d+τ)σ²/(μ³ε²)), extending the i.i.d. one-point rate O(d²σ²/(μ³ε²)) by only an additive τ term rather than a multiplicative dτ term (Table 1, Section 2)."
+  ]
+}

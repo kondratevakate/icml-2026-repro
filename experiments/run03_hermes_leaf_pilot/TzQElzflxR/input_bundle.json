@@ -1,0 +1,14 @@
+{
+  "orid": "TzQElzflxR",
+  "title": "Improved Stochastic Optimization of LogSumExp",
+  "openreview": "https://openreview.net/forum?id=TzQElzflxR",
+  "arxiv": "2509.24894",
+  "anchored_claims": [
+    "The paper defines a Safe KL divergence with a bounded-density constraint (Definition 2.1, Equations 3-4) whose induced approximation to LogSumExp satisfies F_ρ − O(ρ) ≤ F ≤ F_ρ (Proposition 2.4, Section 2).",
+    "The rescaled SoftPlus-based conjugate of the Safe KL function is proven to be ρ-strongly convex, with its own conjugate being (1/ρ)-smooth (Lemma 2.7, Section 2.2).",
+    "The approximation family is shown to bound and connect to the CVaR functional, recovering CVaR and LogSumExp as limiting cases (Proposition 2.6, Section 2.1).",
+    "In continuous entropy-regularized optimal transport experiments with regularization ε=0.01, the proposed semi-dual formulation (Equations 14-15) avoids the numerical overflow issues of the baseline and reaches a converged objective in roughly 10^4 iterations (Figure 2, Section 3.1).",
+    "In KL-regularized distributionally robust optimization on California Housing, the proposed method converges with a stepsize of η=10⁻⁴ across batch sizes of 10, 100, and 1000, whereas the baseline requires a much smaller η=10⁻⁶ at batch size 10 (Figure 3, Section 3.2).",
+    "In unbalanced optimal-transport-based DRO on MNIST with label noise, the proposed approach (Equation 22) converges faster than the baseline (Equation 21) using η=10⁻⁴ versus the baseline's required η=10⁻⁵ (Figure 4, Section 3.3)."
+  ]
+}

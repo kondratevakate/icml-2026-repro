@@ -1,0 +1,22 @@
+A) symbolic expansion of eq. 6 (T=4):
+   row 1: 0 quadratic terms, dt exponents [] (all = 3: True); linear-term dt exponents [1]
+   row 2: 0 quadratic terms, dt exponents [] (all = 3: True); linear-term dt exponents [1, 2]
+   row 3: 8 quadratic terms, dt exponents [3] (all = 3: True); linear-term dt exponents [2, 3]
+   row 4: 16 quadratic terms, dt exponents [3] (all = 3: True); linear-term dt exponents [2, 3]
+   symbolic vs numeric model max abs error: 2.776e-17
+   fitted exponent of ||C|| ~ dt^p : 3.0000
+B) ADMM on eq. 6 (T=6, m=2kg, rho=4, 4 initialisations):
+   dt= 0.002  ||C||=4.382e-08  worst factor 0.7143  median 0.7143  viol 7.1e-18
+   dt= 0.005  ||C||=6.847e-07  worst factor 0.7143  median 0.7143  viol 8.0e-18
+   dt= 0.010  ||C||=5.477e-06  worst factor 0.7143  median 0.7143  viol 1.1e-17
+   dt= 0.020  ||C||=4.382e-05  worst factor 0.7142  median 0.7142  viol 1.1e-17
+   dt= 0.050  ||C||=6.847e-04  worst factor 0.7138  median 0.7138  viol 2.2e-17
+   dt= 0.100  ||C||=5.477e-03  worst factor 0.7106  median 0.7104  viol 4.5e-17
+   MUTATION (nonlinearity forced dt-independent, ||C|| fixed):
+   dt= 0.002  ||C||=5.477e+00  worst factor 0.9997  viol 4.3e-05
+   dt= 0.005  ||C||=5.477e+00  worst factor 0.9997  viol 4.4e-05
+   dt= 0.010  ||C||=5.477e+00  worst factor 0.9997  viol 4.8e-05
+   dt= 0.020  ||C||=5.477e+00  worst factor 0.9997  viol 5.9e-05
+   dt= 0.050  ||C||=5.477e+00  worst factor 0.9997  viol 1.1e-04
+   dt= 0.100  ||C||=5.477e+00  worst factor 0.9997  viol 2.1e-04
+wrote results/claim4.json in 743.5s

@@ -1,0 +1,59 @@
+claim 1 (Proposition 1, discrete conservation)
+  PASS  verdict == verified
+  PASS  symbolic sum difference is identically 0 for N=3,4,5,6
+  PASS  all symbolic residuals '0'
+  PASS  240 configs per dtype (4 shapes x 3 radii x 20 seeds)
+  PASS  float64 max rel conservation error 4.436e-16 < 1e-13
+  PASS  float64 max == 4.436e-16 (logbook)
+  PASS  float32 max == 7.392e-08 (logbook)
+  PASS  float32 median == 1.475e-08 (logbook)
+  PASS  float32 max lies in the paper's quoted 1e-7..1e-8 band
+  PASS  mutation asymmetric_inflow min == 9.677e-3
+  PASS  mutation nonperiodic min == 2.259e-2
+  PASS  asymmetric mutation >1e4x baseline error
+  PASS  nonperiodic mutation >1e4x baseline error
+claim 2 (Propositions 2 & 3, L-head / U-head bound guarantees)
+  PASS  verdict == verified
+  PASS  symbolic L margin == a*(1-alpha)
+  PASS  symbolic U margin == b*(1-beta)
+  PASS  540 configs (4 shapes x 3 radii x 15 seeds x 3 logit scales)
+  PASS  L-head: 0/540 configs violate the lower bound
+  PASS  U-head: 0/540 configs violate the upper bound
+  PASS  L-head worst excursion 3.552e-15 < 1e-12 (float roundoff)
+  PASS  U-head worst excursion 1.110e-15 < 1e-12 (float roundoff)
+  PASS  no clipping/projection in the implementation
+  PASS  mutation alpha_cap=1.6: 120/120 configs violate
+  PASS  mutation beta_cap=1.6: 120/120 configs violate
+  PASS  mutation violations are O(1)+, not roundoff
+claim 6 (D-head: DCL, not architecture, enforces dual bounds)
+  PASS  verdict == verified
+  PASS  D-head averaged update conserves: 4.377e-16 < 1e-13
+  PASS  6/6 untrained seeds show bound violations
+  PASS  untrained violation rates lb 3.27% / ub 2.65% are percent-scale
+  PASS  untrained max violation magnitude 0.479 > 0.4
+  PASS  after DCL minimization: 6/6 seeds have exactly 0 violations
+  PASS  after DCL: violation rate exactly 0%
+  PASS  after DCL: L_DCL 1.039e-08 < 1e-6
+  PASS  DCL reduced by >100x versus untrained
+  PASS  MUTATION (maximize DCL): 0/6 seeds reach zero violations
+  PASS  MUTATION magnifies violations 2.897 > 0.479
+  PASS  violation <= 0.5*|du_out - du_in| holds on all 20 seeds
+  PASS  Spearman rho(sqrt(DCL), violation magnitude) = 0.903 over n=90
+claim 3 (empirical table claim)
+  PASS  verdict == inconclusive
+  PASS  no toy substitute was produced
+  PASS  5 concrete blockers recorded
+  PASS  no code/dataset URL found in the paper text
+claim 4 (empirical table claim)
+  PASS  verdict == inconclusive
+  PASS  no toy substitute was produced
+  PASS  5 concrete blockers recorded
+  PASS  no code/dataset URL found in the paper text
+claim 5 (empirical table claim)
+  PASS  verdict == inconclusive
+  PASS  no toy substitute was produced
+  PASS  6 concrete blockers recorded
+  PASS  no code/dataset URL found in the paper text
+  PASS  claim-4 discrepancy recorded: anchored V_ub 1.87% vs Table 4's 2.87% (ResNet) / 2.01% (FNO)
+
+REPRODUCIBILITY GATE: PASSED — every number quoted in logbook.md matches results/*.json

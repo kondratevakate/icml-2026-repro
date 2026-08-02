@@ -1,0 +1,31 @@
+{
+  "command": ".venv/bin/python verify_claim6.py",
+  "claim": "Mixed anchors via bipartite cliques, Assumption 2.5 (Sections 3.2-3.3, Alg 2-3)",
+  "n_seeds": 25,
+  "n_anchor_sets": 141,
+  "frac_struct_target_col_all_d": 1.0,
+  "frac_struct_col_treatment_match": 1.0,
+  "frac_MAC_spanning_multiple_levels": 0.0,
+  "mean_levels_in_MAC": 1.0,
+  "mean_levels_in_SNN_MAC": 0.028368794326241134,
+  "mean_MAC_size": 6.0,
+  "mean_SNN_MAC_size": 0.028368794326241134,
+  "median_rel_err_A25_holds": 0.026810742990947017,
+  "median_rel_err_A25_violated_MUTATION": 3.6619514079233673,
+  "mean_rel_err_A25_holds": 0.11210404033216774,
+  "mean_rel_err_A25_violated_MUTATION": 29.99140818299543,
+  "frac_runs_mutation_worse": 1.0,
+  "balanced_MCAR_p": [
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2
+  ],
+  "balanced_n_anchor_sets": 2479,
+  "balanced_frac_MAC_spanning_multiple_levels": 0.9572408229124647,
+  "balanced_mean_levels_in_MAC": 2.465106897942719,
+  "balanced_frac_struct_col_treatment_match": 1.0,
+  "balanced_median_rel_err_A25_holds": 0.054817143090824194,
+  "balanced_median_rel_err_A25_violated_MUTATION": 1.7248402545082486
+}

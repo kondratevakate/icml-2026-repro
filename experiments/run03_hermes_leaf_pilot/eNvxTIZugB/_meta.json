@@ -1,0 +1,14 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-dal-a-practical-prior-free-black-box-framework-for-piecewise-stationary-bandits",
+  "hw_signals": [
+    "second",
+    "numpy",
+    "seconds",
+    "cpu",
+    "hour",
+    "gpu"
+  ],
+  "n_claims": 6
+}

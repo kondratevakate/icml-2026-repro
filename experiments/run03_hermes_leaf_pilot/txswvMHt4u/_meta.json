@@ -1,0 +1,12 @@
+{
+  "area": "Reinforcement Learning",
+  "disputed": true,
+  "space": "rdubwiley/repro-hierarchical-successor-representation-for-robust-transfer",
+  "hw_signals": [
+    "numpy",
+    "scipy",
+    "cpu",
+    "gpu"
+  ],
+  "n_claims": 5
+}

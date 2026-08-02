@@ -1,0 +1,16 @@
+{
+  "symbolic_variance": "-L**2*p*(p - 1)",
+  "symbolic_matches_prop2": true,
+  "max_rel_err_vs_prop2": 0.024650252525253893,
+  "min_IS_empirical": 4.964008684107795,
+  "all_IS_positive": true,
+  "max_IS_vcp": 3.030488053497039e-26,
+  "mutation_max_IS": 3.030488053497039e-26
+}
+p=0.91 IS_emp=52.4235 IS_prop2=52.4841 rel_err=0.0012 IS_vcp=2.1217202906824334e-26
+p=0.93 IS_emp=37.1588 IS_prop2=37.1128 rel_err=0.0012 IS_vcp=2.1217202906824334e-26
+p=0.95 IS_emp=26.2693 IS_prop2=26.2184 rel_err=0.0019 IS_vcp=2.1217202906824334e-26
+p=0.96 IS_emp=21.0262 IS_prop2=20.8316 rel_err=0.0093 IS_vcp=2.1217202906824334e-26
+p=0.97 IS_emp=15.7496 IS_prop2=15.6231 rel_err=0.0081 IS_vcp=2.1217202906824334e-26
+p=0.98 IS_emp=10.3785 IS_prop2=10.4010 rel_err=0.0022 IS_vcp=2.1217202906824334e-26
+p=0.99 IS_emp=5.1618 IS_prop2=5.1790 rel_err=0.0033 IS_vcp=2.1217202906824334e-26

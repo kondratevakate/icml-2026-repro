@@ -1,0 +1,48 @@
+{
+  "best_matching_config": {
+    "vcp_cov": [
+      0.89975,
+      0.0020090256868756876
+    ],
+    "vcp_len": [
+      22.836603218916903,
+      0.057632193985979824
+    ],
+    "pt_cov": [
+      0.9016000000000002,
+      0.001340954098668869
+    ],
+    "pt_len": [
+      22.48949627237174,
+      0.06254120621005599
+    ],
+    "component_mean": 10.0,
+    "n_per_fold": 1000,
+    "beta": [
+      1.0,
+      1.0
+    ],
+    "pt_shorter": true,
+    "abs_err_vcp_len": 0.05739678108309576,
+    "abs_err_pt_len": 0.12450372762826234
+  },
+  "all_configs_pt_shorter": true,
+  "n_configs": 16,
+  "fraction_of_configs_within_1pct_of_paper_vcp_len": 0.375
+}
+mean= 10.0 n=  500 beta=[1.0, 1.0] VCP len=23.078+-0.075 cov=0.901 | PT len=22.706+-0.097 cov=0.901 | shorter=True
+mean= 10.0 n=  500 beta=[1.0, 2.0] VCP len=23.078+-0.075 cov=0.901 | PT len=22.706+-0.097 cov=0.901 | shorter=True
+mean= 10.0 n= 1000 beta=[1.0, 1.0] VCP len=22.837+-0.058 cov=0.900 | PT len=22.489+-0.063 cov=0.902 | shorter=True
+mean= 10.0 n= 1000 beta=[1.0, 2.0] VCP len=22.837+-0.058 cov=0.900 | PT len=22.489+-0.063 cov=0.902 | shorter=True
+mean= 10.0 n= 2000 beta=[1.0, 1.0] VCP len=22.704+-0.024 cov=0.902 | PT len=22.294+-0.036 cov=0.901 | shorter=True
+mean= 10.0 n= 2000 beta=[1.0, 2.0] VCP len=22.704+-0.024 cov=0.902 | PT len=22.294+-0.036 cov=0.901 | shorter=True
+mean= 10.0 n= 5000 beta=[1.0, 1.0] VCP len=22.605+-0.013 cov=0.901 | PT len=22.197+-0.021 cov=0.900 | shorter=True
+mean= 10.0 n= 5000 beta=[1.0, 2.0] VCP len=22.605+-0.013 cov=0.901 | PT len=22.197+-0.021 cov=0.900 | shorter=True
+mean= 20.0 n=  500 beta=[1.0, 1.0] VCP len=44.174+-0.208 cov=0.900 | PT len=43.189+-0.273 cov=0.902 | shorter=True
+mean= 20.0 n=  500 beta=[1.0, 2.0] VCP len=44.174+-0.208 cov=0.900 | PT len=43.189+-0.273 cov=0.902 | shorter=True
+mean= 20.0 n= 1000 beta=[1.0, 1.0] VCP len=43.520+-0.164 cov=0.898 | PT len=42.547+-0.191 cov=0.903 | shorter=True
+mean= 20.0 n= 1000 beta=[1.0, 2.0] VCP len=43.520+-0.164 cov=0.898 | PT len=42.547+-0.191 cov=0.903 | shorter=True
+mean= 20.0 n= 2000 beta=[1.0, 1.0] VCP len=43.041+-0.066 cov=0.901 | PT len=41.925+-0.095 cov=0.901 | shorter=True
+mean= 20.0 n= 2000 beta=[1.0, 2.0] VCP len=43.041+-0.066 cov=0.901 | PT len=41.925+-0.095 cov=0.901 | shorter=True
+mean= 20.0 n= 5000 beta=[1.0, 1.0] VCP len=42.759+-0.043 cov=0.901 | PT len=41.590+-0.055 cov=0.901 | shorter=True
+mean= 20.0 n= 5000 beta=[1.0, 2.0] VCP len=42.759+-0.043 cov=0.901 | PT len=41.590+-0.055 cov=0.901 | shorter=True

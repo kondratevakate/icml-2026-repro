@@ -1,0 +1,14 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "Srishti280992/repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bound",
+  "hw_signals": [
+    "numpy",
+    "gpu",
+    "cpu",
+    "seconds",
+    "minutes",
+    "hours"
+  ],
+  "n_claims": 6
+}

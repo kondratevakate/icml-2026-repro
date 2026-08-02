@@ -1,0 +1,14 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-latent-collaboration-in-multi-agent-systems",
+  "hw_signals": [
+    "cpu",
+    "gpu",
+    "a100",
+    "hour",
+    "minutes",
+    "hours"
+  ],
+  "n_claims": 6
+}

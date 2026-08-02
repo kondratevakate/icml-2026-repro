@@ -1,0 +1,13 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "nstp/repro-row-stochastic-matrices-can-provably-outperform-doubly-stochastic-matrices-in",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "second",
+    "scipy",
+    "gpu"
+  ],
+  "n_claims": 4
+}

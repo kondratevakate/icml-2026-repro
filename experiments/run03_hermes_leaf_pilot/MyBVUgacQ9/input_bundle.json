@@ -1,0 +1,14 @@
+{
+  "orid": "MyBVUgacQ9",
+  "title": "Last-iterate Convergence of ADMM on Multi-affine Quadratic Equality Constrained Problem",
+  "openreview": "https://openreview.net/forum?id=MyBVUgacQ9",
+  "arxiv": "2603.11919",
+  "anchored_claims": [
+    "Theorem 3.1 establishes sublinear convergence of ADMM to stationary points on multi-affine quadratic equality constrained problems under Assumptions 2.3 and 2.6, given a sufficiently large penalty parameter rho (Section 3).",
+    "Theorem 3.2 proves a linear convergence rate when the nonlinearity norm ||C|| satisfies the bound in Equation 4 relative to Q's properties, provided the Lagrangian is second-order differentiable at limit points (Section 3).",
+    "Theorem 3.3 achieves linear convergence without requiring second-order differentiability when the constraint indicator functions {I_i} are polyhedral (Section 3).",
+    "For robotic locomotion dynamics, Corollary 4.2 shows linear convergence holds when the discretization step Δt is below a threshold t0, since nonlinear terms decay as O((Δt)^3) (Section 4).",
+    "Empirically, ADMM outperforms PADMM, IPDS-ADMM, and IADMM baselines on multi-affine constrained problems, and toy-problem experiments show q≥10 is sufficient to transition from sublinear to linear convergence (Figures 2 and 4).",
+    "The method is validated on 2D locomotion simulation and on real robot experiments including a humanoid jump and quadruped bounding task (Figures 5 and 6)."
+  ]
+}

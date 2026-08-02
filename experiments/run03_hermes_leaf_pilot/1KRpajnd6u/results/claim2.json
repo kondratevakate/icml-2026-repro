@@ -1,0 +1,30 @@
+{
+  "command": ".venv/bin/python verify_claim2.py",
+  "claim": 2,
+  "symbolic_L_margin": "a*(1 - alpha)",
+  "symbolic_L_positive_for_alpha_lt_1": true,
+  "symbolic_U_margin": "b*(1 - beta)",
+  "symbolic_U_positive_for_beta_lt_1": true,
+  "n_configs": 540,
+  "L_head_max_lower_bound_violation": 3.552043094562313e-15,
+  "L_head_n_violating_configs": 0,
+  "U_head_max_upper_bound_violation": 1.1102230246251565e-15,
+  "U_head_n_violating_configs": 0,
+  "no_clipping_in_implementation": true,
+  "mutation_alpha_cap_1.6": {
+    "max_violation": 340.01632467091133,
+    "n_violating": 120,
+    "n_configs": 120
+  },
+  "mutation_beta_cap_1.6": {
+    "max_violation": 341.96897477314735,
+    "n_violating": 120,
+    "n_configs": 120
+  },
+  "verdict": "verified",
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1",
+    "sympy": "1.14.0"
+  }
+}

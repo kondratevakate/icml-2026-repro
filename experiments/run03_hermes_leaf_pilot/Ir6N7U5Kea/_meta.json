@@ -1,0 +1,9 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "snaykey/repro-online-tabular-mdp-regret",
+  "hw_signals": [
+    "cpu"
+  ],
+  "n_claims": 6
+}

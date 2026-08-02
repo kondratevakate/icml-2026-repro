@@ -1,0 +1,10 @@
+Thm 3.3 regime (box [0.3,1.5] polyhedral, ||C||=1):
+  poly_q2_rho1: worst res factor 0.2000 | worst Thm3.3-gap factor 0.0522 | active constraints at limit [4] | viol 0.0e+00 | local-min probe failures 0
+  poly_q2_rho4: worst res factor 0.0668 | worst Thm3.3-gap factor 0.0881 | active constraints at limit [4] | viol 0.0e+00 | local-min probe failures 0
+  poly_q5_rho1: worst res factor 0.0385 | worst Thm3.3-gap factor 0.0056 | active constraints at limit [4] | viol 0.0e+00 | local-min probe failures 0
+  poly_q5_rho4: worst res factor 0.0273 | worst Thm3.3-gap factor 0.0818 | active constraints at limit [4] | viol 2.2e-16 | local-min probe failures 0
+MUTATION A (eq.4 violated, ||C|| inflated):
+  poly_Cscale10_rho4: worst res factor 0.9858 | worst Thm3.3-gap factor 0.9977
+  poly_Cscale50_rho4: worst res factor 1.0006 | worst Thm3.3-gap factor 0.9997
+MUTATION B (ball): [0.06251095161165127, 0.06349949994752957, 0.0628129100329071, 0.06251337494064255, 0.06192708865306882, 0.06266790182377308, 0.06283805364286843, 0.06251462969980728, 0.06246084255358908, 0.06269368587947691, 0.06300760204009882, 0.0625845133472788]
+wrote results/claim3.json in 332.7s

@@ -1,0 +1,14 @@
+{
+  "orid": "Vv4XRZDMM0",
+  "title": "Multi-Distribution Robust Conformal Prediction",
+  "openreview": "https://openreview.net/forum?id=Vv4XRZDMM0",
+  "arxiv": "2601.02998",
+  "anchored_claims": [
+    "Theorem 1 (Section 2) establishes finite-sample uniform validity of max-p aggregation, showing it yields coverage guarantees under any mixture distribution of the K sources.",
+    "Theorem 2 (Section 3.1) characterizes the population-optimal prediction set as a superlevel set of a shared score function h_{λ*}(x,y) = Σ_k λ_k*(x) f_k(y|x), with complementary slackness ensuring exact 1−α coverage for at least one source.",
+    "Theorem 3 (Section 3.2) proves max-p aggregation with learned conformity scores is asymptotically optimal, converging to the oracle-optimal prediction set up to boundary regions.",
+    "In linear classification simulations, the method's prediction sets are 34.39% smaller than the naive max-p baseline while maintaining tight worst-case coverage (Figure 2).",
+    "In linear regression simulations, the method achieves a 22.44% average reduction in prediction set size while maintaining valid ~90% worst-case coverage (Figure 5).",
+    "On the FMoW satellite imagery dataset spanning six geographic regions (with 249 countries in the training data), the method achieves near-tight worst-case coverage with smaller sets than single-source methods (Section 6.1, Figure 8)."
+  ]
+}

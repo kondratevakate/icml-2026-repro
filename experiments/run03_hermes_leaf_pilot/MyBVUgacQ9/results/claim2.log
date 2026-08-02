@@ -1,0 +1,22 @@
+q = 2, rho grid [1.0, 2.0, 4.0], 48 initialisations per cell
+small-||C|| regime (Thm 3.2 region):
+   ||C||=     0  best rho=   4  worst contraction factor 0.0588  viol 0.0e+00
+   ||C||=  0.01  best rho=   4  worst contraction factor 0.0589  viol 0.0e+00
+   ||C||=  0.05  best rho=   4  worst contraction factor 0.0589  viol 0.0e+00
+   ||C||=   0.2  best rho=   4  worst contraction factor 0.0588  viol 0.0e+00
+   ||C||=   0.5  best rho=   4  worst contraction factor 0.0588  viol 0.0e+00
+   ||C||=     1  best rho=   2  worst contraction factor 0.1111  viol 0.0e+00
+MUTATION large-||C|| regime (eq. 4 violated):
+   ||C||=     2  best rho=   1  worst contraction factor 0.2507  viol 0.0e+00
+   ||C||=     5  best rho=   1  worst contraction factor 0.8058  viol 1.1e-16
+   ||C||=    10  best rho=   1  worst contraction factor 0.8585  viol 5.6e-17
+   ||C||=    25  best rho=   1  worst contraction factor 0.9981  viol 4.7e-08
+   ||C||=    50  best rho=   1  worst contraction factor 1.0004  viol 7.7e-05
+{
+ "max_worst_factor_over_small_C": 0.11109895850590845,
+ "min_worst_factor_over_large_C": 0.25074402136938345,
+ "all_small_C_linear_factor_lt_1": true,
+ "some_large_C_not_linear": true,
+ "monotone_degradation": false
+}
+wrote results/claim2.json in 2191.2s

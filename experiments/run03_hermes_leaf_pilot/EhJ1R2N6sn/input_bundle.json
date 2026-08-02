@@ -1,0 +1,12 @@
+{
+  "orid": "EhJ1R2N6sn",
+  "title": "Geometric Coherence Learning for Structuring Value Functions in Plain MDPs",
+  "openreview": "https://openreview.net/forum?id=EhJ1R2N6sn",
+  "arxiv": "2602.02978",
+  "anchored_claims": [
+    "GCR-RL recasts value-function learning as learning a partially ordered set (poset) over states/state-actions, enforcing geometric coherence through a sequence of super-poset refinements combined with standard TD learning (Section 3).",
+    "A soft-enforcement variant adds a combined loss L_total = L_TD + λ_sym·L_sym + λ_dag·L_dag + λ_ord·L_ord, using a near-equivariance symmetry module and a logic-order module that extracts acyclic partial orders from TD evidence (Section 3).",
+    "A hard-enforcement variant projects updates onto a manifold of valid posets via tangent-normal decomposition, and Theorem 4.3 shows restricted TD descent on this feasible manifold converges linearly, while Theorem 4.4 establishes an oracle sample-complexity speedup of O(W(D*)/(1+(|G|-1)ρ) · 1/ε) (Theorems 4.2-4.4).",
+    "Theorem 3.2 shows that symmetry exploitation yields a sample amplification factor of approximately 1+(K-1)ρ, and GCR-RL demonstrates improved sample efficiency and more stable value learning (reduced Bellman residuals) over baselines across four environments: RotMirror-Grid, BtnPerm-Minigrid, Atari, and Noisy-RPS Chain (Table 1)."
+  ]
+}

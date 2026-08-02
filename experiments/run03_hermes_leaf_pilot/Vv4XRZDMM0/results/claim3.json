@@ -1,0 +1,1928 @@
+{
+  "claim": "Theorem 3 (Section 3.2): asymptotic optimality of max-p aggregation with learned scores",
+  "command": "python verify_claim3.py",
+  "alpha": 0.1,
+  "K": 3,
+  "n_x": 5,
+  "m": 12,
+  "sample_sizes": [
+    100,
+    400,
+    1600,
+    6400,
+    25600
+  ],
+  "worlds": 8,
+  "randomizations": 120,
+  "rho_T_mean": 2.875,
+  "rho_T_per_world": [
+    3.0,
+    2.8,
+    3.0,
+    3.0,
+    2.8,
+    3.0,
+    2.6,
+    2.8
+  ],
+  "main": {
+    "100": {
+      "mean_abs_size_gap_vs_core": 2.7820833333333317,
+      "max_abs_size_gap_vs_core": 3.2699999999999836,
+      "mean_symdiff_outside_T": 1.282291666666667,
+      "max_symdiff_outside_T": 2.0,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8738333333333334
+    },
+    "400": {
+      "mean_abs_size_gap_vs_core": 2.2527083333333318,
+      "max_abs_size_gap_vs_core": 2.8266666666666707,
+      "mean_symdiff_outside_T": 0.4695833333333331,
+      "max_symdiff_outside_T": 1.0,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8953333333333333
+    },
+    "1600": {
+      "mean_abs_size_gap_vs_core": 2.3697916666666643,
+      "max_abs_size_gap_vs_core": 2.845000000000005,
+      "mean_symdiff_outside_T": 0.4654166666666665,
+      "max_symdiff_outside_T": 0.9883333333333332,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.9028333333333334
+    },
+    "6400": {
+      "mean_abs_size_gap_vs_core": 2.2464583333333303,
+      "max_abs_size_gap_vs_core": 2.6099999999999985,
+      "mean_symdiff_outside_T": 0.0693749999999999,
+      "max_symdiff_outside_T": 0.2983333333333329,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8986666666666666
+    },
+    "25600": {
+      "mean_abs_size_gap_vs_core": 2.2156249999999904,
+      "max_abs_size_gap_vs_core": 2.5899999999999794,
+      "mean_symdiff_outside_T": 0.05458333333333323,
+      "max_symdiff_outside_T": 0.19999999999999957,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.892
+    }
+  },
+  "mutation_frozen_uniform_lambda": {
+    "100": {
+      "mean_abs_size_gap_vs_core": 2.5012499999999935,
+      "max_abs_size_gap_vs_core": 3.220000000000007,
+      "mean_symdiff_outside_T": 1.1254166666666674,
+      "max_symdiff_outside_T": 1.8000000000000034,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8768333333333334
+    },
+    "400": {
+      "mean_abs_size_gap_vs_core": 2.11208333333333,
+      "max_abs_size_gap_vs_core": 2.5549999999999846,
+      "mean_symdiff_outside_T": 0.5216666666666663,
+      "max_symdiff_outside_T": 0.8766666666666655,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8805
+    },
+    "1600": {
+      "mean_abs_size_gap_vs_core": 1.964166666666668,
+      "max_abs_size_gap_vs_core": 2.2516666666666625,
+      "mean_symdiff_outside_T": 0.4193749999999997,
+      "max_symdiff_outside_T": 0.6000000000000002,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8996666666666666
+    },
+    "6400": {
+      "mean_abs_size_gap_vs_core": 2.007916666666662,
+      "max_abs_size_gap_vs_core": 2.3533333333333344,
+      "mean_symdiff_outside_T": 0.36479166666666607,
+      "max_symdiff_outside_T": 0.7999999999999983,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8831666666666667
+    },
+    "25600": {
+      "mean_abs_size_gap_vs_core": 1.9935416666666628,
+      "max_abs_size_gap_vs_core": 2.3433333333333346,
+      "mean_symdiff_outside_T": 0.3577083333333331,
+      "max_symdiff_outside_T": 0.6000000000000002,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8908333333333334
+    }
+  },
+  "mutation_single_source_density_score": {
+    "100": {
+      "mean_abs_size_gap_vs_core": 3.762708333333337,
+      "max_abs_size_gap_vs_core": 4.260000000000017,
+      "mean_symdiff_outside_T": 1.8460416666666686,
+      "max_symdiff_outside_T": 2.4700000000000006,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8923333333333333
+    },
+    "400": {
+      "mean_abs_size_gap_vs_core": 3.392708333333328,
+      "max_abs_size_gap_vs_core": 3.9149999999999876,
+      "mean_symdiff_outside_T": 1.6522916666666665,
+      "max_symdiff_outside_T": 2.0949999999999975,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8743333333333333
+    },
+    "1600": {
+      "mean_abs_size_gap_vs_core": 3.450416666666671,
+      "max_abs_size_gap_vs_core": 4.2466666666666635,
+      "mean_symdiff_outside_T": 1.5972916666666674,
+      "max_symdiff_outside_T": 2.153333333333335,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.894
+    },
+    "6400": {
+      "mean_abs_size_gap_vs_core": 3.367916666666673,
+      "max_abs_size_gap_vs_core": 3.8616666666666744,
+      "mean_symdiff_outside_T": 1.5131250000000007,
+      "max_symdiff_outside_T": 1.8716666666666693,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8978333333333334
+    },
+    "25600": {
+      "mean_abs_size_gap_vs_core": 3.357916666666675,
+      "max_abs_size_gap_vs_core": 4.0266666666666895,
+      "mean_symdiff_outside_T": 1.6233333333333337,
+      "max_symdiff_outside_T": 2.0,
+      "n_worlds_satisfying_thm3_bound": 8,
+      "n_worlds": 8,
+      "min_worst_source_coverage": 0.8936666666666667
+    }
+  },
+  "main_worlds": [
+    {
+      "seed": 7000,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.21246798406305,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.869999999999983,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.2699999999999836,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3424679840630667,
+          "mean_symdiff": 3.530000000000004,
+          "mean_symdiff_outside_T": 0.7299999999999988,
+          "worst_source_coverage": 0.9491666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 9.70833333333333,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.1083333333333307,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5041346507297195,
+          "mean_symdiff": 2.291666666666666,
+          "mean_symdiff_outside_T": 0.49166666666666664,
+          "worst_source_coverage": 0.9231666666666667
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.399999999999995,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 1.7999999999999954,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.812467984063055,
+          "mean_symdiff": 1.8000000000000034,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.911
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.600000000000003,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.0000000000000036,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.6124679840630467,
+          "mean_symdiff": 2.0,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8986666666666666
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.565000000000005,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 1.9650000000000052,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.647467984063045,
+          "mean_symdiff": 1.975,
+          "mean_symdiff_outside_T": 0.005000000000000001,
+          "worst_source_coverage": 0.9131666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7001,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.13127773319666,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.629999999999994,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.2299999999999933,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3012777331966658,
+          "mean_symdiff": 4.0299999999999985,
+          "mean_symdiff_outside_T": 1.5999999999999965,
+          "worst_source_coverage": 0.9
+        },
+        {
+          "n": 400,
+          "mean_size": 9.586666666666668,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.1866666666666674,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.3446110665299917,
+          "mean_symdiff": 2.186666666666662,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.9135
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.425,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.0250000000000004,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.506277733196659,
+          "mean_symdiff": 2.6549999999999985,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.9036666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.91499999999999,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.51499999999999,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.0162777331966693,
+          "mean_symdiff": 2.5149999999999992,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8986666666666666
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.873333333333319,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.4733333333333185,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.0579443998633407,
+          "mean_symdiff": 2.473333333333334,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8946666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7002,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.379053852521656,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.971666666666664,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.771666666666664,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.407387185854992,
+          "mean_symdiff": 3.62833333333334,
+          "mean_symdiff_outside_T": 1.0283333333333335,
+          "worst_source_coverage": 0.9131666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 9.706666666666653,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.5066666666666526,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.672387185855003,
+          "mean_symdiff": 2.9066666666666694,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.8975
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.045000000000005,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.845000000000005,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.3340538525216505,
+          "mean_symdiff": 3.1549999999999945,
+          "mean_symdiff_outside_T": 0.5550000000000003,
+          "worst_source_coverage": 0.908
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.794999999999979,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.5949999999999784,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.584053852521677,
+          "mean_symdiff": 2.5950000000000006,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.9023333333333333
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.78999999999998,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.5899999999999794,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.589053852521676,
+          "mean_symdiff": 2.600000000000001,
+          "mean_symdiff_outside_T": 0.005000000000000001,
+          "worst_source_coverage": 0.8988333333333334
+        }
+      ]
+    },
+    {
+      "seed": 7003,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.16325594088616,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.339999999999998,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.139999999999998,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.8232559408861615,
+          "mean_symdiff": 4.379999999999992,
+          "mean_symdiff_outside_T": 2.0,
+          "worst_source_coverage": 0.8738333333333334
+        },
+        {
+          "n": 400,
+          "mean_size": 10.02666666666667,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.8266666666666707,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.1365892742194887,
+          "mean_symdiff": 3.6266666666666736,
+          "mean_symdiff_outside_T": 1.0,
+          "worst_source_coverage": 0.9036666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.819999999999983,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.6199999999999823,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.343255940886177,
+          "mean_symdiff": 2.9800000000000013,
+          "mean_symdiff_outside_T": 0.17999999999999963,
+          "worst_source_coverage": 0.9086666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.809999999999999,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.6099999999999985,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.353255940886161,
+          "mean_symdiff": 2.6100000000000025,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.9096666666666666
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.600000000000003,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.400000000000003,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5632559408861564,
+          "mean_symdiff": 2.400000000000001,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.893
+        }
+      ]
+    },
+    {
+      "seed": 7004,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.148959674325523,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.843333333333312,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.2433333333333128,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.1056263409922105,
+          "mean_symdiff": 3.3533333333333273,
+          "mean_symdiff_outside_T": 1.1550000000000011,
+          "worst_source_coverage": 0.877
+        },
+        {
+          "n": 400,
+          "mean_size": 9.918333333333324,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.3183333333333245,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.0306263409921987,
+          "mean_symdiff": 3.1183333333333296,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9121666666666667
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.90333333333332,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.3033333333333204,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.045626340992203,
+          "mean_symdiff": 2.703333333333334,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9058333333333334
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.669999999999986,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.069999999999986,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.278959674325537,
+          "mean_symdiff": 2.069999999999999,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8993333333333333
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.54333333333332,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.943333333333321,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.4056263409922023,
+          "mean_symdiff": 1.9433333333333338,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.9025
+        }
+      ]
+    },
+    {
+      "seed": 7005,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.290230940840278,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.19166666666669,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.791666666666689,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.0985642741735884,
+          "mean_symdiff": 4.398333333333324,
+          "mean_symdiff_outside_T": 1.4016666666666697,
+          "worst_source_coverage": 0.9023333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 9.565000000000003,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.1650000000000027,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.725230940840275,
+          "mean_symdiff": 2.635000000000002,
+          "mean_symdiff_outside_T": 0.23499999999999951,
+          "worst_source_coverage": 0.8953333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.906666666666666,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.506666666666666,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.3835642741736116,
+          "mean_symdiff": 2.976666666666667,
+          "mean_symdiff_outside_T": 0.4233333333333324,
+          "worst_source_coverage": 0.9146666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.77333333333334,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.37333333333334,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5168976075069374,
+          "mean_symdiff": 2.486666666666665,
+          "mean_symdiff_outside_T": 0.05666666666666669,
+          "worst_source_coverage": 0.9
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.766666666666646,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.366666666666646,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5235642741736317,
+          "mean_symdiff": 2.366666666666668,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.8973333333333333
+        }
+      ]
+    },
+    {
+      "seed": 7006,
+      "rho_T": 2.6,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.562766050890161,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.400000000000004,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 2.400000000000004,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.7627660508901575,
+          "mean_symdiff": 3.199999999999993,
+          "mean_symdiff_outside_T": 1.0,
+          "worst_source_coverage": 0.925
+        },
+        {
+          "n": 400,
+          "mean_size": 9.600000000000003,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.6000000000000032,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.562766050890158,
+          "mean_symdiff": 2.0,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.8981666666666667
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.61166666666666,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 2.6116666666666593,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.5510993842235021,
+          "mean_symdiff": 2.9883333333333337,
+          "mean_symdiff_outside_T": 0.9883333333333332,
+          "worst_source_coverage": 0.9028333333333334
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.705,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.705,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.4577660508901613,
+          "mean_symdiff": 2.301666666666665,
+          "mean_symdiff_outside_T": 0.2983333333333329,
+          "worst_source_coverage": 0.9093333333333333
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.906666666666665,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.9066666666666645,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.256099384223497,
+          "mean_symdiff": 1.9600000000000004,
+          "mean_symdiff_outside_T": 0.026666666666666665,
+          "worst_source_coverage": 0.9153333333333333
+        }
+      ]
+    },
+    {
+      "seed": 7007,
+      "rho_T": 2.8,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.75573947374557,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.410000000000009,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.410000000000009,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.14573947374556,
+          "mean_symdiff": 3.9333333333333362,
+          "mean_symdiff_outside_T": 1.3433333333333353,
+          "worst_source_coverage": 0.9071666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 10.310000000000002,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.3100000000000023,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.2457394737455667,
+          "mean_symdiff": 2.370000000000002,
+          "mean_symdiff_outside_T": 0.029999999999999995,
+          "worst_source_coverage": 0.9366666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.246666666666687,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.2466666666666875,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.3090728070788815,
+          "mean_symdiff": 2.600000000000001,
+          "mean_symdiff_outside_T": 0.576666666666667,
+          "worst_source_coverage": 0.912
+        },
+        {
+          "n": 6400,
+          "mean_size": 10.103333333333344,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.103333333333344,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.452406140412225,
+          "mean_symdiff": 2.1033333333333313,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.9016666666666666
+        },
+        {
+          "n": 25600,
+          "mean_size": 10.079999999999986,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.079999999999986,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.475739473745583,
+          "mean_symdiff": 2.479999999999999,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.892
+        }
+      ]
+    }
+  ],
+  "mutation_worlds": [
+    {
+      "seed": 7000,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.21246798406305,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.669999999999982,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.0699999999999825,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.5424679840630677,
+          "mean_symdiff": 3.7300000000000066,
+          "mean_symdiff_outside_T": 0.9299999999999994,
+          "worst_source_coverage": 0.9318333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 9.836666666666646,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.236666666666647,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.3758013173964034,
+          "mean_symdiff": 2.636666666666668,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9178333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.559999999999999,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 1.959999999999999,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.652467984063051,
+          "mean_symdiff": 2.760000000000005,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9043333333333333
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.58666666666667,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 1.98666666666667,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.6258013173963803,
+          "mean_symdiff": 2.3866666666666676,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.9085
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.636666666666663,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.0366666666666635,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5758013173963867,
+          "mean_symdiff": 2.436666666666667,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.8998333333333334
+        }
+      ]
+    },
+    {
+      "seed": 7001,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.13127773319666,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.700000000000005,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.3000000000000043,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.231277733196655,
+          "mean_symdiff": 4.099999999999997,
+          "mean_symdiff_outside_T": 1.7000000000000033,
+          "worst_source_coverage": 0.8771666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 9.645,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.244999999999999,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.28627773319666,
+          "mean_symdiff": 2.2449999999999966,
+          "mean_symdiff_outside_T": 0.6449999999999994,
+          "worst_source_coverage": 0.8943333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.246666666666679,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.8466666666666782,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.684611066529981,
+          "mean_symdiff": 2.64666666666667,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.909
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.441666666666661,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.0416666666666607,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.4896110665299984,
+          "mean_symdiff": 2.758333333333339,
+          "mean_symdiff_outside_T": 0.3583333333333328,
+          "worst_source_coverage": 0.9008333333333334
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.45333333333333,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.0533333333333292,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.47794439986333,
+          "mean_symdiff": 2.853333333333338,
+          "mean_symdiff_outside_T": 0.4533333333333328,
+          "worst_source_coverage": 0.9
+        }
+      ]
+    },
+    {
+      "seed": 7002,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.379053852521656,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.674999999999986,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.4749999999999863,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.7040538525216693,
+          "mean_symdiff": 2.9583333333333344,
+          "mean_symdiff_outside_T": 0.641666666666666,
+          "worst_source_coverage": 0.9085
+        },
+        {
+          "n": 400,
+          "mean_size": 9.588333333333335,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.3883333333333345,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.790720519188321,
+          "mean_symdiff": 2.7883333333333393,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.885
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.451666666666663,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.2516666666666625,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.927387185854993,
+          "mean_symdiff": 3.051666666666665,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9033333333333333
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.553333333333335,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.3533333333333344,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.8257205191883212,
+          "mean_symdiff": 2.846666666666671,
+          "mean_symdiff_outside_T": 0.44666666666666616,
+          "worst_source_coverage": 0.898
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.543333333333335,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.3433333333333346,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.835720519188321,
+          "mean_symdiff": 2.743333333333338,
+          "mean_symdiff_outside_T": 0.3433333333333329,
+          "worst_source_coverage": 0.8958333333333334
+        }
+      ]
+    },
+    {
+      "seed": 7003,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.16325594088616,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.420000000000007,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.220000000000007,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.7432559408861525,
+          "mean_symdiff": 4.273333333333325,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.9051666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 9.754999999999985,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.5549999999999846,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.408255940886175,
+          "mean_symdiff": 2.5549999999999997,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.9038333333333334
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.451666666666657,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.251666666666657,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.7115892742195022,
+          "mean_symdiff": 2.6516666666666686,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.9126666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.500000000000002,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.3000000000000016,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.663255940886158,
+          "mean_symdiff": 2.299999999999999,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8991666666666667
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.491666666666664,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.2916666666666634,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.671589274219496,
+          "mean_symdiff": 2.2916666666666647,
+          "mean_symdiff_outside_T": 0.0,
+          "worst_source_coverage": 0.8981666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7004,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.148959674325523,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.83999999999998,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.2399999999999807,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.1089596743255425,
+          "mean_symdiff": 3.3499999999999943,
+          "mean_symdiff_outside_T": 1.1550000000000011,
+          "worst_source_coverage": 0.8768333333333334
+        },
+        {
+          "n": 400,
+          "mean_size": 9.723333333333324,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.123333333333324,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.225626340992199,
+          "mean_symdiff": 3.076666666666664,
+          "mean_symdiff_outside_T": 0.8766666666666655,
+          "worst_source_coverage": 0.8991666666666667
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.211666666666686,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.611666666666686,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.7372930076588373,
+          "mean_symdiff": 2.4116666666666684,
+          "mean_symdiff_outside_T": 0.41166666666666585,
+          "worst_source_coverage": 0.9046666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 8.828333333333317,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.2283333333333175,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.479373659007794,
+          "mean_symdiff": 2.8283333333333385,
+          "mean_symdiff_outside_T": 0.7999999999999983,
+          "worst_source_coverage": 0.8831666666666667
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.121666666666677,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.5216666666666772,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.7727069923411536,
+          "mean_symdiff": 2.7216666666666725,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.9001666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7005,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.290230940840278,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.658333333333337,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.2583333333333364,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.631897607506941,
+          "mean_symdiff": 3.0616666666666656,
+          "mean_symdiff_outside_T": 0.6316666666666666,
+          "worst_source_coverage": 0.88
+        },
+        {
+          "n": 400,
+          "mean_size": 9.525,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.125,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.7652309408402775,
+          "mean_symdiff": 3.0749999999999975,
+          "mean_symdiff_outside_T": 0.4749999999999997,
+          "worst_source_coverage": 0.8973333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.456666666666667,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.0566666666666666,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.833564274173611,
+          "mean_symdiff": 2.7433333333333385,
+          "mean_symdiff_outside_T": 0.3433333333333329,
+          "worst_source_coverage": 0.8996666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.666666666666663,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.266666666666662,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.6235642741736154,
+          "mean_symdiff": 3.066666666666664,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.898
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.66166666666666,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 2.2616666666666596,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.628564274173618,
+          "mean_symdiff": 3.0616666666666643,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.8908333333333334
+        }
+      ]
+    },
+    {
+      "seed": 7006,
+      "rho_T": 2.6,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.562766050890161,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 9.654999999999998,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.6549999999999976,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.507766050890164,
+          "mean_symdiff": 2.0649999999999986,
+          "mean_symdiff_outside_T": 0.6050000000000001,
+          "worst_source_coverage": 0.8813333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 8.979999999999999,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 0.9799999999999986,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.0172339491098374,
+          "mean_symdiff": 1.8200000000000032,
+          "mean_symdiff_outside_T": 0.62,
+          "worst_source_coverage": 0.8805
+        },
+        {
+          "n": 1600,
+          "mean_size": 9.70499999999999,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.7049999999999894,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.457766050890172,
+          "mean_symdiff": 1.7049999999999996,
+          "mean_symdiff_outside_T": 0.19999999999999957,
+          "worst_source_coverage": 0.9145
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.961666666666662,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.9616666666666625,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.201099384223499,
+          "mean_symdiff": 2.0383333333333327,
+          "mean_symdiff_outside_T": 0.038333333333333344,
+          "worst_source_coverage": 0.9008333333333334
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.734999999999985,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 1.7349999999999852,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.427766050890176,
+          "mean_symdiff": 1.865000000000002,
+          "mean_symdiff_outside_T": 0.06500000000000003,
+          "worst_source_coverage": 0.8986666666666666
+        }
+      ]
+    },
+    {
+      "seed": 7007,
+      "rho_T": 2.8,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.75573947374557,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.791666666666654,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.7916666666666536,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.7640728070789153,
+          "mean_symdiff": 4.308333333333325,
+          "mean_symdiff_outside_T": 1.539999999999999,
+          "worst_source_coverage": 0.9188333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 10.24333333333335,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.24333333333335,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.312406140412219,
+          "mean_symdiff": 2.5566666666666666,
+          "mean_symdiff_outside_T": 0.35666666666666613,
+          "worst_source_coverage": 0.9186666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.030000000000005,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.0300000000000047,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.5257394737455643,
+          "mean_symdiff": 2.4299999999999997,
+          "mean_symdiff_outside_T": 0.39999999999999913,
+          "worst_source_coverage": 0.9071666666666667
+        },
+        {
+          "n": 6400,
+          "mean_size": 9.92499999999999,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.92499999999999,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.630739473745579,
+          "mean_symdiff": 2.875000000000003,
+          "mean_symdiff_outside_T": 0.6749999999999992,
+          "worst_source_coverage": 0.8911666666666667
+        },
+        {
+          "n": 25600,
+          "mean_size": 9.70499999999999,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 1.7049999999999894,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 2.74926052625442,
+          "mean_symdiff": 2.505,
+          "mean_symdiff_outside_T": 0.6000000000000002,
+          "worst_source_coverage": 0.8915
+        }
+      ]
+    }
+  ],
+  "mutation2_worlds": [
+    {
+      "seed": 7000,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.21246798406305,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.425000000000008,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.825000000000008,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.7874679840630421,
+          "mean_symdiff": 4.218333333333325,
+          "mean_symdiff_outside_T": 1.410000000000003,
+          "worst_source_coverage": 0.9291666666666667
+        },
+        {
+          "n": 400,
+          "mean_size": 11.45000000000001,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.8500000000000103,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.76246798406304,
+          "mean_symdiff": 4.199999999999992,
+          "mean_symdiff_outside_T": 1.5749999999999973,
+          "worst_source_coverage": 0.9226666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 11.030000000000005,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.430000000000005,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1824679840630452,
+          "mean_symdiff": 4.229999999999992,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.894
+        },
+        {
+          "n": 6400,
+          "mean_size": 11.240000000000018,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.6400000000000183,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.9724679840630319,
+          "mean_symdiff": 4.039999999999998,
+          "mean_symdiff_outside_T": 1.5999999999999965,
+          "worst_source_coverage": 0.8978333333333334
+        },
+        {
+          "n": 25600,
+          "mean_size": 11.108333333333348,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.21246798406305,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.508333333333349,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1041346507297014,
+          "mean_symdiff": 4.308333333333324,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.9031666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7001,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.13127773319666,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.291666666666679,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.891666666666678,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.639611066529981,
+          "mean_symdiff": 4.4216666666666615,
+          "mean_symdiff_outside_T": 1.865000000000003,
+          "worst_source_coverage": 0.94
+        },
+        {
+          "n": 400,
+          "mean_size": 11.016666666666667,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.616666666666667,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.914611066529992,
+          "mean_symdiff": 4.0233333333333325,
+          "mean_symdiff_outside_T": 1.8016666666666699,
+          "worst_source_coverage": 0.9236666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.619999999999994,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.2199999999999935,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3112777331966656,
+          "mean_symdiff": 3.620000000000007,
+          "mean_symdiff_outside_T": 1.5999999999999965,
+          "worst_source_coverage": 0.904
+        },
+        {
+          "n": 6400,
+          "mean_size": 10.569999999999997,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.1699999999999964,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3612777331966628,
+          "mean_symdiff": 3.570000000000005,
+          "mean_symdiff_outside_T": 1.400000000000003,
+          "worst_source_coverage": 0.909
+        },
+        {
+          "n": 25600,
+          "mean_size": 10.496666666666664,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.13127773319666,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.096666666666664,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.4346110665299951,
+          "mean_symdiff": 3.7033333333333416,
+          "mean_symdiff_outside_T": 1.5033333333333332,
+          "worst_source_coverage": 0.8975
+        }
+      ]
+    },
+    {
+      "seed": 7002,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.379053852521656,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.460000000000017,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 4.260000000000017,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.919053852521639,
+          "mean_symdiff": 4.529999999999992,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.9263333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 11.114999999999988,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.9149999999999876,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.264053852521668,
+          "mean_symdiff": 5.0950000000000015,
+          "mean_symdiff_outside_T": 2.0949999999999975,
+          "worst_source_coverage": 0.8985
+        },
+        {
+          "n": 1600,
+          "mean_size": 11.23666666666669,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 4.036666666666689,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1423871858549663,
+          "mean_symdiff": 4.763333333333337,
+          "mean_symdiff_outside_T": 1.963333333333334,
+          "worst_source_coverage": 0.9073333333333333
+        },
+        {
+          "n": 6400,
+          "mean_size": 11.061666666666675,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.8616666666666744,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3173871858549813,
+          "mean_symdiff": 4.261666666666659,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.899
+        },
+        {
+          "n": 25600,
+          "mean_size": 11.041666666666673,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.379053852521656,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.841666666666673,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.3373871858549826,
+          "mean_symdiff": 4.241666666666658,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.8936666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7003,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.2,
+      "lp_optimal_size": 9.16325594088616,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 10.90666666666667,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.7066666666666697,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.2565892742194897,
+          "mean_symdiff": 5.046666666666665,
+          "mean_symdiff_outside_T": 2.4700000000000006,
+          "worst_source_coverage": 0.8923333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 10.970000000000002,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.7700000000000022,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1932559408861572,
+          "mean_symdiff": 4.610000000000009,
+          "mean_symdiff_outside_T": 1.8200000000000027,
+          "worst_source_coverage": 0.9126666666666666
+        },
+        {
+          "n": 1600,
+          "mean_size": 11.446666666666664,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 4.2466666666666635,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.7165892742194959,
+          "mean_symdiff": 4.953333333333331,
+          "mean_symdiff_outside_T": 2.153333333333335,
+          "worst_source_coverage": 0.91
+        },
+        {
+          "n": 6400,
+          "mean_size": 10.871666666666652,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.6716666666666518,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.2915892742195076,
+          "mean_symdiff": 4.871666666666667,
+          "mean_symdiff_outside_T": 1.8716666666666693,
+          "worst_source_coverage": 0.9005
+        },
+        {
+          "n": 25600,
+          "mean_size": 11.22666666666669,
+          "oracle_core_size": 7.2,
+          "lp_optimal_size": 9.16325594088616,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 4.0266666666666895,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.9365892742194699,
+          "mean_symdiff": 4.773333333333336,
+          "mean_symdiff_outside_T": 1.9733333333333338,
+          "worst_source_coverage": 0.9016666666666666
+        }
+      ]
+    },
+    {
+      "seed": 7004,
+      "rho_T": 2.8,
+      "oracle_core_size": 7.6,
+      "lp_optimal_size": 9.148959674325523,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.208333333333309,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.6083333333333094,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.7406263409922138,
+          "mean_symdiff": 4.4816666666666665,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.9268333333333333
+        },
+        {
+          "n": 400,
+          "mean_size": 10.04666666666667,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.4466666666666708,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.9022930076588525,
+          "mean_symdiff": 3.0,
+          "mean_symdiff_outside_T": 1.0766666666666673,
+          "worst_source_coverage": 0.8918333333333334
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.19166666666669,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.59166666666669,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.7572930076588333,
+          "mean_symdiff": 2.6083333333333343,
+          "mean_symdiff_outside_T": 0.6083333333333335,
+          "worst_source_coverage": 0.9045
+        },
+        {
+          "n": 6400,
+          "mean_size": 10.288333333333348,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.6883333333333486,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.6606263409921747,
+          "mean_symdiff": 2.9116666666666697,
+          "mean_symdiff_outside_T": 0.7116666666666654,
+          "worst_source_coverage": 0.9045
+        },
+        {
+          "n": 25600,
+          "mean_size": 10.040000000000004,
+          "oracle_core_size": 7.6,
+          "lp_optimal_size": 9.148959674325523,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 2.440000000000005,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.9089596743255184,
+          "mean_symdiff": 2.8400000000000043,
+          "mean_symdiff_outside_T": 0.7999999999999983,
+          "worst_source_coverage": 0.8985
+        }
+      ]
+    },
+    {
+      "seed": 7005,
+      "rho_T": 3.0,
+      "oracle_core_size": 7.4,
+      "lp_optimal_size": 9.290230940840278,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.580000000000013,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 4.180000000000012,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.7102309408402654,
+          "mean_symdiff": 5.019999999999999,
+          "mean_symdiff_outside_T": 2.0200000000000005,
+          "worst_source_coverage": 0.9266666666666666
+        },
+        {
+          "n": 400,
+          "mean_size": 10.879999999999978,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.4799999999999773,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.4102309408403002,
+          "mean_symdiff": 4.279999999999995,
+          "mean_symdiff_outside_T": 1.6533333333333302,
+          "worst_source_coverage": 0.9063333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 10.748333333333314,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.348333333333313,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.5418976075069644,
+          "mean_symdiff": 4.948333333333333,
+          "mean_symdiff_outside_T": 2.0,
+          "worst_source_coverage": 0.895
+        },
+        {
+          "n": 6400,
+          "mean_size": 11.233333333333354,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.8333333333333535,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.056897607506924,
+          "mean_symdiff": 4.633333333333343,
+          "mean_symdiff_outside_T": 1.8000000000000034,
+          "worst_source_coverage": 0.902
+        },
+        {
+          "n": 25600,
+          "mean_size": 11.060000000000008,
+          "oracle_core_size": 7.4,
+          "lp_optimal_size": 9.290230940840278,
+          "rho_T": 3.0,
+          "abs_size_gap_vs_core": 3.6600000000000072,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.2302309408402703,
+          "mean_symdiff": 4.860000000000002,
+          "mean_symdiff_outside_T": 2.0,
+          "worst_source_coverage": 0.9065
+        }
+      ]
+    },
+    {
+      "seed": 7006,
+      "rho_T": 2.6,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.562766050890161,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.120000000000006,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 3.1200000000000063,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.042766050890155,
+          "mean_symdiff": 4.573333333333343,
+          "mean_symdiff_outside_T": 1.9933333333333334,
+          "worst_source_coverage": 0.9008333333333334
+        },
+        {
+          "n": 400,
+          "mean_size": 10.916666666666657,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 2.916666666666657,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.2460993842235042,
+          "mean_symdiff": 4.283333333333327,
+          "mean_symdiff_outside_T": 1.8833333333333322,
+          "worst_source_coverage": 0.8743333333333333
+        },
+        {
+          "n": 1600,
+          "mean_size": 11.146666666666684,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 3.1466666666666843,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.0160993842234771,
+          "mean_symdiff": 3.653333333333339,
+          "mean_symdiff_outside_T": 1.4533333333333363,
+          "worst_source_coverage": 0.9081666666666667
+        },
+        {
+          "n": 6400,
+          "mean_size": 10.70333333333333,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 2.7033333333333296,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.4594327175568318,
+          "mean_symdiff": 3.6966666666666685,
+          "mean_symdiff_outside_T": 1.4966666666666635,
+          "worst_source_coverage": 0.901
+        },
+        {
+          "n": 25600,
+          "mean_size": 10.974999999999996,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.562766050890161,
+          "rho_T": 2.6,
+          "abs_size_gap_vs_core": 2.974999999999996,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1877660508901653,
+          "mean_symdiff": 3.825000000000007,
+          "mean_symdiff_outside_T": 1.6249999999999973,
+          "worst_source_coverage": 0.9041666666666667
+        }
+      ]
+    },
+    {
+      "seed": 7007,
+      "rho_T": 2.8,
+      "oracle_core_size": 8.0,
+      "lp_optimal_size": 9.75573947374557,
+      "per_n": [
+        {
+          "n": 100,
+          "mean_size": 11.509999999999993,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.5099999999999927,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.0457394737455763,
+          "mean_symdiff": 4.069999999999998,
+          "mean_symdiff_outside_T": 1.4100000000000001,
+          "worst_source_coverage": 0.9373333333333334
+        },
+        {
+          "n": 400,
+          "mean_size": 11.14666666666665,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.1466666666666505,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.4090728070789185,
+          "mean_symdiff": 3.6000000000000068,
+          "mean_symdiff_outside_T": 1.313333333333335,
+          "worst_source_coverage": 0.8936666666666667
+        },
+        {
+          "n": 1600,
+          "mean_size": 11.583333333333327,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.583333333333327,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 0.9724061404122422,
+          "mean_symdiff": 3.5833333333333326,
+          "mean_symdiff_outside_T": 1.2000000000000004,
+          "worst_source_coverage": 0.9076666666666666
+        },
+        {
+          "n": 6400,
+          "mean_size": 11.375000000000012,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.3750000000000124,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.1807394737455565,
+          "mean_symdiff": 3.825000000000006,
+          "mean_symdiff_outside_T": 1.4250000000000018,
+          "worst_source_coverage": 0.8996666666666666
+        },
+        {
+          "n": 25600,
+          "mean_size": 11.315000000000015,
+          "oracle_core_size": 8.0,
+          "lp_optimal_size": 9.75573947374557,
+          "rho_T": 2.8,
+          "abs_size_gap_vs_core": 3.3150000000000155,
+          "thm3_bound_satisfied": true,
+          "slack_vs_thm3_bound": 1.2407394737455535,
+          "mean_symdiff": 3.8850000000000047,
+          "mean_symdiff_outside_T": 1.4850000000000008,
+          "worst_source_coverage": 0.9065
+        }
+      ]
+    }
+  ],
+  "runtime_sec": 21.3
+}

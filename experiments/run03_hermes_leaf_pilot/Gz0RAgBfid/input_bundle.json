@@ -1,0 +1,14 @@
+{
+  "orid": "Gz0RAgBfid",
+  "title": "Gecko: A Simulation Environment with Stateful Feedback for Refining Agent Tool Calls",
+  "openreview": "https://openreview.net/forum?id=Gz0RAgBfid",
+  "arxiv": "2602.19218",
+  "anchored_claims": [
+    "Gecko's five components—Argument Validator, Response Generator, Task State Estimator, Task Feedback Generator, and API Schema Converter—provide stateful feedback (validity checking, response synthesis, and task achievement assessment) that lets an LLM refine tool calls without executing them against real systems (Section 3).",
+    "The Argument Validator achieves 100% accuracy in identifying correct arguments and detecting syntactic errors, while the Response Generator's synthesized tool outputs yield only a 5.4% accuracy decrease relative to using real tool responses (Section 3.1, 3.2, Table 2).",
+    "GATS (using Gecko feedback with up to 3 refinement retries) improves GPT-4o's overall accuracy on BFCLv3 from 76.93% to 84.62%, and Gemini-3.0-pro reaches a state-of-the-art 85.19% on the same benchmark (Section 4, Table 3).",
+    "On τ²-bench, GATS improves GPT-5-thinking from 72.3% to 76.3% and Gemini-3.0-pro from 78.8% to 82.3% (Table 4).",
+    "BFCLv3 evaluation covers 3,633 tasks across 8,578 simulated tools, and τ²-bench covers 114 retail and 50 airline tasks with domain-specific APIs (Section 4).",
+    "GATS outperforms Reflexion, Self-Refine, and Best-of-N refinement baselines while achieving the best performance at a reasonable computational cost (Table 5)."
+  ]
+}

@@ -1,0 +1,237 @@
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/Ir6N7U5Kea/verify_claim1.py:107: RankWarning: Polyfit may be poorly conditioned
+  slope = float(np.polyfit(np.log(list(sds)), np.log(list(sds.values())), 1)[0])
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/Ir6N7U5Kea/verify_claim1.py:107: RankWarning: Polyfit may be poorly conditioned
+  slope = float(np.polyfit(np.log(list(sds)), np.log(list(sds.values())), 1)[0])
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/Ir6N7U5Kea/verify_claim1.py:107: RankWarning: Polyfit may be poorly conditioned
+  slope = float(np.polyfit(np.log(list(sds)), np.log(list(sds.values())), 1)[0])
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/Ir6N7U5Kea/verify_claim1.py:107: RankWarning: Polyfit may be poorly conditioned
+  slope = float(np.polyfit(np.log(list(sds)), np.log(list(sds.values())), 1)[0])
+{
+  "command": ".venv/bin/python verify_claim1.py",
+  "claim": "Theorem 4.5 + Theorem 4.6 (Section 4.2)",
+  "config": {
+    "K_values": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "n_seeds": 300,
+    "MAR_per_group": 6,
+    "MAC": 8,
+    "n_cols": 200,
+    "r": 3,
+    "sigma_rel": 0.001,
+    "f_scales": [
+      1.0,
+      5.0,
+      25.0,
+      625.0
+    ],
+    "target_level": "low (f=1)"
+  },
+  "main": {
+    "sd_by_K": {
+      "1": 0.004945417762986981,
+      "2": 0.003314162655582168,
+      "4": 0.0019384229727280116,
+      "8": 0.0013123946199930093,
+      "16": 0.0009489155254182436,
+      "32": 0.0006457609862720893
+    },
+    "loglog_slope": -0.5903046114846285,
+    "ks_stat": 0.23764650650475447,
+    "ks_pvalue": 6.33280524415476e-90,
+    "n_statistics": 1800,
+    "max_ratio_absdiff_over_thm45_rate": {
+      "1": 0.002518499643853322,
+      "2": 0.0029779952889100706,
+      "4": 0.0012355155120053294,
+      "8": 0.0009567812163216812,
+      "16": 0.0008158230982401862,
+      "32": 0.0002891489699742122
+    },
+    "studentized_mean": -0.0008607240399528928,
+    "studentized_sd": 4.953003627659196,
+    "shape_ks_pvalue_by_K_empirical_standardization": {
+      "1": 3.452299581954991e-06,
+      "2": 1.5616085919698237e-06,
+      "4": 0.06534953741062022,
+      "8": 0.0764899857814686,
+      "16": 0.035705122666503164,
+      "32": 0.359636735283798
+    },
+    "variance_inflation_by_K": {
+      "1": 5.622242382534705,
+      "2": 5.147841945171912,
+      "4": 5.514831711144659,
+      "8": 4.849230909933319,
+      "16": 4.348723938241633,
+      "32": 4.059354441740195
+    }
+  },
+  "anchor_size_sweep_K8": {
+    "R6_C8": {
+      "sd_by_K": {
+        "8": 0.0014020806637748406
+      },
+      "loglog_slope": -1.579702488757641,
+      "ks_stat": 0.27032093587265704,
+      "ks_pvalue": 2.1231146327002545e-13,
+      "n_statistics": 200,
+      "max_ratio_absdiff_over_thm45_rate": {
+        "8": 0.0009567812163216812
+      },
+      "studentized_mean": 0.25925255131492664,
+      "studentized_sd": 4.827371528815937,
+      "shape_ks_pvalue_by_K_empirical_standardization": {
+        "8": 0.05982047245123756
+      },
+      "variance_inflation_by_K": {
+        "8": 4.827371528815937
+      }
+    },
+    "R12_C16": {
+      "sd_by_K": {
+        "8": 0.0008531497779973806
+      },
+      "loglog_slope": -1.699152222980421,
+      "ks_stat": 0.35199399869560133,
+      "ks_pvalue": 1.1528972977333382e-22,
+      "n_statistics": 200,
+      "max_ratio_absdiff_over_thm45_rate": {
+        "8": 0.0007802681202758731
+      },
+      "studentized_mean": -0.5284178432027824,
+      "studentized_sd": 5.390040259106972,
+      "shape_ks_pvalue_by_K_empirical_standardization": {
+        "8": 0.7612728134588808
+      },
+      "variance_inflation_by_K": {
+        "8": 5.390040259106972
+      }
+    },
+    "R24_C32": {
+      "sd_by_K": {
+        "8": 0.0007429083449209854
+      },
+      "loglog_slope": -1.732421357983885,
+      "ks_stat": 0.35959973593071315,
+      "ks_pvalue": 1.1517410469945872e-23,
+      "n_statistics": 200,
+      "max_ratio_absdiff_over_thm45_rate": {
+        "8": 0.0007778090414986919
+      },
+      "studentized_mean": -0.350518655391768,
+      "studentized_sd": 8.537569576107714,
+      "shape_ks_pvalue_by_K_empirical_standardization": {
+        "8": 0.9196285131745066
+      },
+      "variance_inflation_by_K": {
+        "8": 8.537569576107714
+      }
+    },
+    "R48_C64": {
+      "sd_by_K": {
+        "8": 0.0006323440811495118
+      },
+      "loglog_slope": -1.7711670975414193,
+      "ks_stat": 0.4037304642440852,
+      "ks_pvalue": 5.897153406913841e-30,
+      "n_statistics": 200,
+      "max_ratio_absdiff_over_thm45_rate": {
+        "8": 0.0007434478178804558
+      },
+      "studentized_mean": -0.5847336988115921,
+      "studentized_sd": 9.690056851805293,
+      "shape_ks_pvalue_by_K_empirical_standardization": {
+        "8": 0.8073987224522106
+      },
+      "variance_inflation_by_K": {
+        "8": 9.690056851805293
+      }
+    }
+  },
+  "mutation_M1_column_treatment_mismatch": {
+    "sd_by_K": {
+      "1": 2.871453134557659,
+      "2": 0.24195714181321987,
+      "4": 2.071023313820291,
+      "8": 0.18098409928322484,
+      "16": 0.14456469545788864,
+      "32": 0.12483753211057867
+    },
+    "loglog_slope": -0.810394415316582,
+    "ks_stat": 0.5144346567683873,
+    "ks_pvalue": 0.0,
+    "n_statistics": 1800,
+    "max_ratio_absdiff_over_thm45_rate": {
+      "1": 0.7348824407813683,
+      "2": 0.5218394094287844,
+      "4": 0.5428558571934494,
+      "8": 0.41113383375613916,
+      "16": 0.2984406193964336,
+      "32": 0.44463462375037405
+    },
+    "studentized_mean": 201.054159296669,
+    "studentized_sd": 6283.483892740663,
+    "shape_ks_pvalue_by_K_empirical_standardization": {
+      "1": 5.0161349094348556e-48,
+      "2": 0.04019663205261059,
+      "4": 5.958765801161127e-44,
+      "8": 5.590921434620382e-05,
+      "16": 0.05027104912414626,
+      "32": 0.04411945258895045
+    },
+    "variance_inflation_by_K": {
+      "1": 4844.415492353862,
+      "2": 4600.824313190383,
+      "4": 5565.7867520237405,
+      "8": 5273.808643990984,
+      "16": 7066.181793333675,
+      "32": 9165.67620893865
+    }
+  },
+  "mutation_M2_no_weights": {
+    "sd_by_K": {
+      "1": 0.008067361499042944,
+      "2": 0.010213747839428286,
+      "4": 0.003769025060386737,
+      "8": 0.00254373374697723,
+      "16": 0.0016176761394978533,
+      "32": 0.0012208188361835439
+    },
+    "loglog_slope": -0.6332581573391156,
+    "ks_stat": 0.31483573721346575,
+    "ks_pvalue": 4.436786040225164e-159,
+    "n_statistics": 1800,
+    "max_ratio_absdiff_over_thm45_rate": {
+      "1": 0.00497414267065511,
+      "2": 0.014153982393512931,
+      "4": 0.002153773342379292,
+      "8": 0.0011786566257033781,
+      "16": 0.0008311523594672134,
+      "32": 0.0008522269689755814
+    },
+    "studentized_mean": 0.15078357664776618,
+    "studentized_sd": 10.994506521833257,
+    "shape_ks_pvalue_by_K_empirical_standardization": {
+      "1": 3.576989406200598e-07,
+      "2": 1.3508171473265794e-22,
+      "4": 3.8451147408030947e-05,
+      "8": 0.00044988420027010866,
+      "16": 0.08316360604727213,
+      "32": 0.07550280637003381
+    },
+    "variance_inflation_by_K": {
+      "1": 9.063777143858331,
+      "2": 18.87013233216403,
+      "4": 10.03639878080649,
+      "8": 8.139726626281904,
+      "16": 7.244726662568032,
+      "32": 8.14238567953025
+    }
+  }
+}

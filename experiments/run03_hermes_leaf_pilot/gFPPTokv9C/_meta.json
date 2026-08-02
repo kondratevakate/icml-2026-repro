@@ -1,0 +1,13 @@
+{
+  "area": "Probabilistic Methods",
+  "disputed": true,
+  "space": "Srishti280992/repro-expectation-consistency-loss-rethink-confidence-calibration-under-covariate-shift",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "scipy",
+    "minutes"
+  ],
+  "n_claims": 6
+}

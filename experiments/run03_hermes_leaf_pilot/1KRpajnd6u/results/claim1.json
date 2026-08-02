@@ -1,0 +1,51 @@
+{
+  "command": ".venv/bin/python verify_claim1.py",
+  "claim": 1,
+  "symbolic_sum_difference": {
+    "N=3": "0",
+    "N=4": "0",
+    "N=5": "0",
+    "N=6": "0"
+  },
+  "symbolic_exact": true,
+  "conservation_rel_err_float32": {
+    "n_configs": 240,
+    "max": 7.392088142433329e-08,
+    "median": 1.4752693137761787e-08,
+    "min": 1.8547410951034896e-09
+  },
+  "conservation_rel_err_float64": {
+    "n_configs": 240,
+    "max": 4.436477518062519e-16,
+    "median": 2.17909861675445e-16,
+    "min": 0.0
+  },
+  "mutation": {
+    "asymmetric_inflow": {
+      "max": 0.010400212689435251,
+      "median": 0.010051187803702677,
+      "min": 0.009676584590255922
+    },
+    "nonperiodic": {
+      "max": 0.4521499666926353,
+      "median": 0.11181172159689837,
+      "min": 0.02259045063778126
+    }
+  },
+  "mutation_ratio_asymmetric_over_baseline": 130904.61590560232,
+  "mutation_ratio_nonperiodic_over_baseline": 305603.1016202809,
+  "paper_reported_range": {
+    "table2": [
+      1.19e-07,
+      2.38e-07
+    ],
+    "table3_fluxnet": 3.3e-08,
+    "table4_fluxnet": 7.7e-08
+  },
+  "verdict": "verified",
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1",
+    "sympy": "1.14.0"
+  }
+}

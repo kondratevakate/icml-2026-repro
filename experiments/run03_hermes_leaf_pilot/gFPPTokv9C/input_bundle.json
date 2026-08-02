@@ -1,0 +1,14 @@
+{
+  "orid": "gFPPTokv9C",
+  "title": "Expectation Consistency Loss: Rethink Confidence Calibration under Covariate Shift",
+  "openreview": "https://openreview.net/forum?id=gFPPTokv9C",
+  "arxiv": "2605.21552",
+  "anchored_claims": [
+    "Theorem 3.1 establishes the Expectation Consistency Condition: canonical calibration under covariate shift holds for class k if and only if the conditional expectation of P(Y_k=1|X) matches between source and target distributions given the calibrated score S, which is strictly weaker than requiring full distributional alignment (Section 3.1, Theorem 3.1).",
+    "Theorem 3.2 proves the Expectation Consistency Loss (ECL) estimator has O(B/epsilon^2) sample complexity with an explicit finite-sample bound on the gap between empirical and population ECL, matching the complexity of histogram-binning-based ECE estimation (Section 3.4, Theorem 3.2).",
+    "Theorem 3.3 shows the mini-batch ECL formulation using auxiliary variables u_j^s and u_j^t yields an unbiased gradient estimator, E[∇_θ L̂_ecl^mini] = ∇_θ L̂_ecl, enabling standard SGD training (Section 3.5, Theorem 3.3).",
+    "ECL is extended to top-label calibration (Appendix D.1, Section E.1) and class-wise calibration (Appendix D.2, Section E.2), with differentiable soft-binning implementations for canonical, class-wise, and top-label variants given in Appendix F.",
+    "On MNIST-to-SVHN top-label calibration with LeNet-5, ECL reduces ECE to 21.5% versus 61.9% for the uncalibrated baseline; with ResNet20, ECL achieves 36.8% ECE versus 48.2% for PseudoCal; with DenseNet40, ECL achieves 38.4% ECE versus 80.8% uncalibrated (Table 2).",
+    "Table 1 shows ECL is the only compared method that simultaneously handles covariate shift, supports class-wise and canonical calibration, tolerates unbounded density ratios, and is mini-batch trainable, while Figure 2 reliability diagrams and Appendix Table 3 (source-vs-target calibration gap) further corroborate the approach on simulated data and the PACS dataset (Table 1, Figure 2, Appendix Table 3)."
+  ]
+}

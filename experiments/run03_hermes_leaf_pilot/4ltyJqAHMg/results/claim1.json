@@ -1,0 +1,58 @@
+{
+  "claim": 1,
+  "command": ".venv/bin/python verify_claim1.py",
+  "source": "Table 1 (Sec 4); Abstract; Sec 3.1",
+  "observed": {
+    "Squirrel-Syntax": {
+      "type": "SQL debugging",
+      "n_test": 469.0,
+      "tok": 496.9,
+      "line": 163.69,
+      "func": 21.62,
+      "depth": 8.93,
+      "width": 11.69
+    },
+    "Squirrel-Semantic": {
+      "type": "SQL debugging",
+      "n_test": 516.0,
+      "tok": 425.93,
+      "line": 141.58,
+      "func": 17.34,
+      "depth": 8.75,
+      "width": 11.12
+    }
+  },
+  "checks": {
+    "n_syntax_is_469": true,
+    "n_semantic_is_516": true,
+    "seed_1000plus_26_scenarios_sentence_present": true,
+    "syntax_lines_gt_140": true,
+    "syntax_ast_width_gt_11": true,
+    "syntax_ast_depth_gt_8.7": true,
+    "semantic_lines_gt_140": true,
+    "semantic_ast_width_gt_11": true,
+    "semantic_ast_depth_gt_8.7": true
+  },
+  "all_checks_pass": true,
+  "mutation_test": {
+    "description": "replace Squirrel rows with BIRD-Critic-open row",
+    "mutant_row": {
+      "type": "SQL debugging",
+      "n_test": 600.0,
+      "tok": 49.18,
+      "line": 9.73,
+      "func": 4.3,
+      "depth": 8.03,
+      "width": 6.01
+    },
+    "thresholds_under_mutation": {
+      "lines_gt_140": false,
+      "ast_width_gt_11": false,
+      "ast_depth_gt_8.7": false
+    },
+    "predicted": "all complexity thresholds fail",
+    "mutation_behaves_as_predicted": true
+  },
+  "verdict": "verified",
+  "scope": "paper-internal consistency; benchmark corpus is not public so the statistics cannot be independently recomputed"
+}

@@ -1,0 +1,13 @@
+{
+  "orid": "EeuLO2BjFN",
+  "title": "Maximum Likelihood Reinforcement Learning",
+  "openreview": "https://openreview.net/forum?id=EeuLO2BjFN",
+  "arxiv": "2602.02710",
+  "anchored_claims": [
+    "MaxRL defines a compute-indexed family of sample-based objectives that interpolates between standard RL and exact maximum likelihood as sampling compute increases (Abstract).",
+    "The MaxRL objectives admit a simple unbiased policy-gradient estimator for non-differentiable sampling settings (Abstract).",
+    "The paper claims MaxRL converges to maximum-likelihood optimization in the infinite-compute limit (Abstract).",
+    "Empirically, MaxRL Pareto-dominates tested existing methods across all evaluated models and tasks (Abstract).",
+    "MaxRL reports up to 20x test-time scaling efficiency gains compared with a GRPO-trained counterpart (Abstract)."
+  ]
+}

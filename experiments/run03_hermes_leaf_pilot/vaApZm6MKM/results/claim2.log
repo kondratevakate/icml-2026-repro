@@ -1,0 +1,39 @@
+done diamonds seed0 n1000
+done diamonds seed0 n2000
+done diamonds seed0 n5000
+done diamonds seed1 n1000
+done diamonds seed1 n2000
+done diamonds seed1 n5000
+done diamonds seed2 n1000
+done diamonds seed2 n2000
+done diamonds seed2 n5000
+done superconduct seed0 n1000
+done superconduct seed0 n2000
+done superconduct seed0 n5000
+done superconduct seed1 n1000
+done superconduct seed1 n2000
+done superconduct seed1 n5000
+done superconduct seed2 n1000
+done superconduct seed2 n2000
+done superconduct seed2 n5000
+Traceback (most recent call last):
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/verify_claim2.py", line 97, in <module>
+    f = fit_predictor(X[tr], y[tr], seed)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/verify_claim2.py", line 56, in fit_predictor
+    verbose=-1).fit(Xtr, ytr)
+                ^^^^^^^^^^^^^
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/.venv/lib/python3.12/site-packages/lightgbm/sklearn.py", line 1536, in fit
+    super().fit(
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/.venv/lib/python3.12/site-packages/lightgbm/sklearn.py", line 1067, in fit
+    _X, _y = _LGBMValidateData(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 3055, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 1327, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/.venv/lib/python3.12/site-packages/sklearn/utils/validation.py", line 1110, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 10)) while a minimum of 2 is required by LGBMRegressor.

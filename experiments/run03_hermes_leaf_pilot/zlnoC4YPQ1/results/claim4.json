@@ -1,0 +1,158 @@
+{
+  "claim": 4,
+  "source": "Theorem 4.1 (Sec 4.3), Appendix F; mechanism: Definition 3.1 / Sec 3",
+  "command": ".venv/bin/python verify_claim4.py",
+  "Psi_at_0": 1.0,
+  "fc_bound_at_Tc0": "sqrt(T)*sqrt(betaprime)*sqrt(gamma)",
+  "a2_bound_at_Tc0": "sqrt(T)*sqrt(betaprime)*sqrt(gamma)",
+  "symbolic_fc_equals_gpucb": true,
+  "symbolic_a2_equals_gpucb": true,
+  "per_seed": {
+    "0": {
+      "gp_ucb_cum_regret": 22.37107851310958,
+      "fc_cum_regret": 22.37107851310958,
+      "a2_cum_regret": 22.37107851310958,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "1": {
+      "gp_ucb_cum_regret": 51.27540245020433,
+      "fc_cum_regret": 51.27540245020433,
+      "a2_cum_regret": 51.27540245020433,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "2": {
+      "gp_ucb_cum_regret": 29.01844005401159,
+      "fc_cum_regret": 29.01844005401159,
+      "a2_cum_regret": 29.01844005401159,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "3": {
+      "gp_ucb_cum_regret": 36.441388912300326,
+      "fc_cum_regret": 36.441388912300326,
+      "a2_cum_regret": 36.441388912300326,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "4": {
+      "gp_ucb_cum_regret": 34.00374515512009,
+      "fc_cum_regret": 34.00374515512009,
+      "a2_cum_regret": 34.00374515512009,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "5": {
+      "gp_ucb_cum_regret": 44.350369450274954,
+      "fc_cum_regret": 44.350369450274954,
+      "a2_cum_regret": 44.350369450274954,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "6": {
+      "gp_ucb_cum_regret": 28.393066752566536,
+      "fc_cum_regret": 28.393066752566536,
+      "a2_cum_regret": 28.393066752566536,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "7": {
+      "gp_ucb_cum_regret": 42.289842227280495,
+      "fc_cum_regret": 42.289842227280495,
+      "a2_cum_regret": 42.289842227280495,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "8": {
+      "gp_ucb_cum_regret": 27.48345604162051,
+      "fc_cum_regret": 27.48345604162051,
+      "a2_cum_regret": 27.48345604162051,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    },
+    "9": {
+      "gp_ucb_cum_regret": 34.28205160282423,
+      "fc_cum_regret": 34.28205160282423,
+      "a2_cum_regret": 34.28205160282423,
+      "max_query_diff_fc": 0.0,
+      "max_query_diff_a2": 0.0,
+      "abs_regret_diff_fc": 0.0,
+      "abs_regret_diff_a2": 0.0
+    }
+  },
+  "max_abs_regret_diff_fc_vs_gpucb": 0.0,
+  "max_abs_regret_diff_a2_vs_gpucb": 0.0,
+  "max_query_diff_fc": 0.0,
+  "max_query_diff_a2": 0.0,
+  "mean_cum_regret": {
+    "gp_ucb_cum_regret": 34.990884115931266,
+    "fc_cum_regret": 34.990884115931266,
+    "a2_cum_regret": 34.990884115931266
+  },
+  "identical_trajectories_all_seeds": true,
+  "mutation_small_L": {
+    "0": {
+      "abs_regret_diff": 23.926689159821052,
+      "max_query_diff": 0.44
+    },
+    "1": {
+      "abs_regret_diff": 2.046990502020172,
+      "max_query_diff": 0.765
+    },
+    "2": {
+      "abs_regret_diff": 22.660258513365683,
+      "max_query_diff": 0.85
+    },
+    "3": {
+      "abs_regret_diff": 32.054293516455985,
+      "max_query_diff": 0.63
+    },
+    "4": {
+      "abs_regret_diff": 17.81319203254477,
+      "max_query_diff": 0.625
+    },
+    "5": {
+      "abs_regret_diff": 23.63064676059291,
+      "max_query_diff": 0.475
+    },
+    "6": {
+      "abs_regret_diff": 27.116713155394823,
+      "max_query_diff": 0.585
+    },
+    "7": {
+      "abs_regret_diff": 24.13173720803278,
+      "max_query_diff": 0.75
+    },
+    "8": {
+      "abs_regret_diff": 34.705384168241025,
+      "max_query_diff": 0.81
+    },
+    "9": {
+      "abs_regret_diff": 21.658222284389105,
+      "max_query_diff": 0.39
+    }
+  },
+  "mutation_n_seeds_with_diverging_trajectory": 10,
+  "mutation_max_regret_diff": 34.705384168241025,
+  "mutation_breaks_equivalence": true,
+  "verdict_ok": true
+}

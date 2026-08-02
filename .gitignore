@@ -47,3 +47,8 @@ Thumbs.db
 **/SPEC_notes.txt
 experiments/**/official_code/
 experiments/**/.venv/
+
+# official paper code (nested git repo, read-only, do not commit)
+experiments/run03_hermes_leaf_pilot/*/code_mdcp/
+**/code_mdcp
+**/code_mdcp/**

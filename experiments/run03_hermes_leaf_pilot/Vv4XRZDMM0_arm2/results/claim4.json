@@ -1,0 +1,253 @@
+{
+  "claim": 4,
+  "claim_text": "In linear classification simulations, the method's prediction sets are 34.39% smaller than the naive max-p baseline while maintaining tight worst-case coverage (Figure 2).",
+  "source": "Section 5.2, Simulation results paragraph; Figure 2",
+  "paper_value_pct": 34.39,
+  "paper_value_sd_reduction_pct": 47.1,
+  "command": "CLAIM4_REPS=2 .venv/bin/python verify_claim4.py",
+  "config": {
+    "K": 3,
+    "d": 10,
+    "C": 6,
+    "tau": 2.5,
+    "alpha": 0.1,
+    "n_per_source": 2000,
+    "n_reps": 2,
+    "split": [
+      0.375,
+      0.125,
+      0.5
+    ],
+    "lambda_basis": "SplineTransformer(n_knots=5, degree=3)+bias",
+    "lambda_steps": 1500,
+    "lambda_lr": 0.02,
+    "cross_fitted": true,
+    "crossfit_folds": 5,
+    "source_model": "HistGradientBoostingClassifier(max_iter=100)"
+  },
+  "measured": {
+    "size_mdcp_mean": 2.742166666666667,
+    "size_mdcp_se": 0.2051666666666667,
+    "size_baseline_agg_mean": 2.7265,
+    "size_baseline_agg_se": 0.24383333333333335,
+    "reduction_pct_mean": -0.7070915561825608,
+    "reduction_pct_se": 1.4814154255574952,
+    "sd_reduction_pct_mean": -10.494446830942003,
+    "sd_reduction_pct_se": 2.080047554701067,
+    "mdcp_avg_coverage": 0.9319999999999999,
+    "mdcp_worstcase_coverage_mean": 0.9145000000000001,
+    "mdcp_worstcase_coverage_se": 0.0035000000000000027,
+    "baseline_agg_worstcase_coverage_mean": 0.94,
+    "baseline_src_own_coverage_mean": 0.8955000000000001,
+    "baseline_src_worstcase_coverage_mean": 0.6215,
+    "baseline_src_size_mean": 1.6132222222222223
+  },
+  "mutation": {
+    "design": "replace learned lambda_hat(x) by uniform lambda_k == 1/K",
+    "prediction_before_running": "efficiency gain over Baseline-agg largely collapses",
+    "reduction_pct_mean": 11.703933340814727,
+    "reduction_pct_se": 4.467091235551561,
+    "size_mean": 2.3965,
+    "worstcase_coverage_mean": 0.914
+  },
+  "non_vacuity": {
+    "max_possible_set_size": 6,
+    "mdcp_size_below_C": true,
+    "baseline_src_own_coverage_near_nominal": true
+  },
+  "text_search": {
+    "chars_searched": 167823,
+    "occurrences_of_34_39": 1,
+    "occurrences_of_47_10": 1
+  },
+  "erm_diagnostics": {
+    "note": "stationarity_g_k should equal 1-alpha=0.9 at the ERM optimum; the in-sample arm cannot reach it because p_hat_pool interpolates.",
+    "crossfit_g_mean": [
+      0.7303613047422534,
+      0.728694767511304,
+      0.7361560720949919
+    ],
+    "insample_g_mean": [
+      0.602511003285502,
+      0.543940110567155,
+      0.6018070479034942
+    ],
+    "crossfit_lambda_bar": 5.470547964526789,
+    "insample_lambda_bar": 110.65692234716659,
+    "insample_reduction_pct_mean": -41.074735078634745,
+    "insample_size_mean": 3.8745000000000003,
+    "insample_worstcase_coverage_mean": 0.9005000000000001
+  },
+  "VERDICT_CAP": "verified",
+  "wall_seconds": 78.36,
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1"
+  },
+  "per_rep": [
+    {
+      "rep": 0,
+      "mdcp": {
+        "cov": 0.9263333333333333,
+        "per_source": [
+          0.933,
+          0.928,
+          0.918
+        ],
+        "worst": 0.918,
+        "size": 2.9473333333333334,
+        "size_sd": 1.2661334527590766
+      },
+      "baseline_agg": {
+        "cov": 0.9566666666666667,
+        "per_source": [
+          0.955,
+          0.945,
+          0.97
+        ],
+        "worst": 0.945,
+        "size": 2.9703333333333335,
+        "size_sd": 1.1678646574731797
+      },
+      "baseline_src": [
+        {
+          "k": 0,
+          "cov_own_source": 0.923,
+          "cov_all": 0.6316666666666667,
+          "worst": 0.424,
+          "size": 1.4573333333333334
+        },
+        {
+          "k": 1,
+          "cov_own_source": 0.87,
+          "cov_all": 0.7186666666666667,
+          "worst": 0.524,
+          "size": 1.9933333333333334
+        },
+        {
+          "k": 2,
+          "cov_own_source": 0.912,
+          "cov_all": 0.7046666666666667,
+          "worst": 0.6,
+          "size": 1.477
+        }
+      ],
+      "mutation_uniform_lambda": {
+        "cov": 0.9236666666666666,
+        "per_source": [
+          0.926,
+          0.899,
+          0.946
+        ],
+        "worst": 0.899,
+        "size": 2.49,
+        "size_sd": 0.946325442935982
+      },
+      "lambda_mean": [
+        6.068558055598541,
+        2.7236074371320558,
+        7.071900979632068
+      ],
+      "erm_stationarity_g": [
+        0.6944980835767256,
+        0.7305859174017885,
+        0.7302450736367174
+      ],
+      "erm_lambda_bar": 6.1458546589434,
+      "arm_insample": {
+        "cov": 0.9303333333333333,
+        "worst": 0.889,
+        "size": 4.532666666666667,
+        "size_sd": 1.5819082464296919,
+        "lambda_bar": 117.86938314784449,
+        "stationarity_g": [
+          0.5356738189798971,
+          0.45195981820679726,
+          0.5291147636919759
+        ]
+      }
+    },
+    {
+      "rep": 1,
+      "mdcp": {
+        "cov": 0.9376666666666666,
+        "per_source": [
+          0.942,
+          0.911,
+          0.96
+        ],
+        "worst": 0.911,
+        "size": 2.537,
+        "size_sd": 1.255317864518914
+      },
+      "baseline_agg": {
+        "cov": 0.9546666666666667,
+        "per_source": [
+          0.95,
+          0.935,
+          0.979
+        ],
+        "worst": 0.935,
+        "size": 2.482666666666667,
+        "size_sd": 1.11509971363372
+      },
+      "baseline_src": [
+        {
+          "k": 0,
+          "cov_own_source": 0.894,
+          "cov_all": 0.86,
+          "worst": 0.797,
+          "size": 1.9066666666666667
+        },
+        {
+          "k": 1,
+          "cov_own_source": 0.868,
+          "cov_all": 0.7756666666666666,
+          "worst": 0.707,
+          "size": 1.5863333333333334
+        },
+        {
+          "k": 2,
+          "cov_own_source": 0.906,
+          "cov_all": 0.7566666666666667,
+          "worst": 0.677,
+          "size": 1.2586666666666666
+        }
+      ],
+      "mutation_uniform_lambda": {
+        "cov": 0.9453333333333334,
+        "per_source": [
+          0.931,
+          0.929,
+          0.976
+        ],
+        "worst": 0.929,
+        "size": 2.303,
+        "size_sd": 1.0618695096943596
+      },
+      "lambda_mean": [
+        3.2252756573626575,
+        4.50381017464469,
+        7.140713244356389
+      ],
+      "erm_stationarity_g": [
+        0.7662245259077811,
+        0.7268036176208195,
+        0.7420670705532664
+      ],
+      "erm_lambda_bar": 4.795241270110177,
+      "arm_insample": {
+        "cov": 0.923,
+        "worst": 0.912,
+        "size": 3.2163333333333335,
+        "size_sd": 1.6604574455648458,
+        "lambda_bar": 103.4444615464887,
+        "stationarity_g": [
+          0.6693481875911069,
+          0.6359204029275126,
+          0.6744993321150125
+        ]
+      }
+    }
+  ]
+}

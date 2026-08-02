@@ -1,0 +1,13 @@
+{
+  "orid": "DUmWdZetqZ",
+  "title": "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
+  "openreview": "https://openreview.net/forum?id=DUmWdZetqZ",
+  "arxiv": "2602.03972",
+  "anchored_claims": [
+    "Theorem 3.2 establishes that the FC2FB meta-algorithm converts a fixed-confidence algorithm into a fixed-budget algorithm whose error probability decays exponentially in the budget (Section 3, Theorem 3.2).",
+    "When the fixed-confidence sample complexity is T*_delta = A*ln(1/delta) + C, FC2FB yields a fixed-budget sample complexity of O(A*ln(1/delta)*ln(A*ln(1/delta)/Q) + C), matching the fixed-confidence complexity up to logarithmic factors (Section 3).",
+    "FCW2S (Algorithm 4) converts a weak fixed-confidence algorithm (Definition 4.1) into a strong one (Definition 3.1) via parallel execution and majority voting (Section 4).",
+    "FC2AT (Algorithm 6) is an anytime variant of the meta-algorithm using a doubling trick that requires no prior knowledge of the budget (Section 4).",
+    "The framework's sample-complexity improvements are demonstrated on heterogeneous noise bandits (Corollary 5.2), linear bandits (Corollary 5.4), and unimodal bandits (Corollary 5.7) (Section 5)."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "rahit/repro-dflash-block-diffusion-for-flash-speculative-decoding",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "second",
+    "gpu",
+    "hours"
+  ],
+  "n_claims": 6
+}

@@ -1,0 +1,14 @@
+{
+  "orid": "srIStBTJiu",
+  "title": "Off-Policy Learning in Large Action Spaces: Optimization Matters More Than Estimation",
+  "openreview": "https://openreview.net/forum?id=srIStBTJiu",
+  "arxiv": "2509.03456",
+  "anchored_claims": [
+    "Proposition 2.1 shows gradient descent on OPE-based objectives (e.g., IPS, Clipped IPS, Doubly Robust, MIPS, OffCEM, POTEC) can be trapped in suboptimal regions for O(K) iterations, where K is the number of actions (Section 2, Proposition 2.1).",
+    "Proposition 2.2 proves the optimization landscape of OPE-based objectives contains exponentially many local maxima in K (Section 2, Proposition 2.2).",
+    "Proposition 3.1 proves that weighted log-likelihood (PWLL) objectives combined with L2-regularized softmax policies are strongly concave, guaranteeing a unique global maximum (Section 3, Proposition 3.1).",
+    "Figure 2 shows that low mean-squared error of the off-policy value estimator does not correlate with high reward from the learned policy, i.e., good OPE performance does not predict good OPL performance (Section 4, Figure 2).",
+    "Figure 1 shows OPE-based objectives are highly sensitive to batch size and learning rate, whereas PWLL objectives (including LPI, cLPI, and RegKL variants) remain robust across these hyperparameter configurations (Section 3, Figure 1).",
+    "On large-action-space benchmarks including MovieLens (K=60K), Twitch (K=200K), and GoodReads (K=1M actions), PWLL-based policies outperform estimator-aware methods such as POTEC (Section 4, Figure 3)."
+  ]
+}

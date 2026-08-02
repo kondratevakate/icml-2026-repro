@@ -1,0 +1,14 @@
+{
+  "orid": "ZVyd4r9Xl5",
+  "title": "Beyond Majority Voting: LLM Aggregation by Leveraging Higher-Order Information",
+  "openreview": "https://openreview.net/forum?id=ZVyd4r9Xl5",
+  "arxiv": "2510.01499",
+  "anchored_claims": [
+    "The Optimal Weight (OW) algorithm assigns each LLM a weight ω_i = σ_k^{-1}(x_i) based on its accuracy x_i, and Theorem 1 proves OW is Bayes-optimal among all aggregators with access to the same first-order accuracy information (Algorithm 1, Theorem 1).",
+    "The Inverse Surprisingly Popular (ISP) algorithm uses only second-order information (pairwise prediction correlations, no ground-truth labels) to compute a counterfactual advantage score per label, and Theorem 2 proves the ordering E[Adv_ISP(s*)] ≥ E[Adv_MV(s*)] ≥ E[Adv_SP(s*)], i.e., ISP dominates majority voting which dominates the classical Surprisingly Popular algorithm (Algorithm 2, Theorem 2).",
+    "In simulated experiments with N=4 agents and M=10,000 questions, ISP achieves 90.48% accuracy versus 85.13% for majority voting at K=2 answer options, and 94.45% versus 92.64% at K=4 options, with the gap shrinking at rate Θ(1/K) (simulation results section).",
+    "On real-world datasets, OW-L attains 73.66% accuracy on UltraFeedback, 90.37% on MMLU, and 85.78% on ARMMAN, each exceeding majority voting's 72.21%, 89.32%, and 85.24% respectively (Table 3).",
+    "Across 16 model ensembles, OW-L outperforms majority voting in 97.92% of cases, with absolute accuracy improvements ranging from 0.54% to 14.20% (Section on real-world experiments).",
+    "Corollary 1 connects the optimal aggregation weights to the Bradley-Terry model, showing that in the binary setting the optimal weights are proportional to the inverse logistic function of each model's accuracy (Corollary 1)."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "MunchProductionz/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql",
+  "hw_signals": [
+    "seconds",
+    "minute",
+    "cpu",
+    "second"
+  ],
+  "n_claims": 4
+}

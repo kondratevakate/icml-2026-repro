@@ -1,0 +1,45 @@
+{
+  "faithful": {
+    "mode": "faithful",
+    "n_cases": 3200,
+    "violations": {
+      "C1": 0,
+      "C2": 0,
+      "C3": 0,
+      "C4": 0,
+      "C5": 0
+    },
+    "n_case2_projected": 807,
+    "worst_ratio_err_over_eps": 0.3460760003629127,
+    "n_records": 3200
+  },
+  "mutation_M1_big_w": {
+    "mode": "M1_big_w",
+    "n_cases": 3200,
+    "violations": {
+      "C1": 617,
+      "C2": 626,
+      "C3": 634,
+      "C4": 0,
+      "C5": 0
+    },
+    "n_case2_projected": 807,
+    "worst_ratio_err_over_eps": 7.538911957970677,
+    "n_records": 3200
+  },
+  "mutation_M2_argmax": {
+    "mode": "M2_argmax",
+    "n_cases": 3200,
+    "violations": {
+      "C1": 728,
+      "C2": 731,
+      "C3": 0,
+      "C4": 0,
+      "C5": 0
+    },
+    "n_case2_projected": 807,
+    "worst_ratio_err_over_eps": 4005.542670465794,
+    "n_records": 3200
+  },
+  "elapsed_s": 223.71756601333618
+}

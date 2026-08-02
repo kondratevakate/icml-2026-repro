@@ -1,0 +1,12 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-caffnet-hard-constraint-affine-neural-networks",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "minutes",
+    "hours"
+  ],
+  "n_claims": 5
+}

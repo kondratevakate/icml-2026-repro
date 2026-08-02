@@ -1,0 +1,386 @@
+{
+  "claim": "Algorithm 6 / Appendix D (Theorem D.5): FC2AT is an anytime variant of FC2FB via a doubling trick, requiring no knowledge of the budget",
+  "command": ".venv/bin/python verify_claim4.py",
+  "T1_phase_lengths_depend_only_on_Q_and_i": {
+    "Q=1": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "Q=8": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "independent_of_horizon": true
+  },
+  "T1_recommendation_defined_for_every_t": true,
+  "T2_exhaustive": [
+    {
+      "A": 5.0,
+      "C": 0.0,
+      "Q": 1.0,
+      "delta0": 0.5,
+      "Bstar": 19.556182728544254,
+      "T_range": [
+        77,
+        20077
+      ],
+      "n_T_checked": 20001,
+      "propD3_violations": 0,
+      "propD4_violations": 0
+    },
+    {
+      "A": 50.0,
+      "C": 20.0,
+      "Q": 1.0,
+      "delta0": 0.36787944117144233,
+      "Bstar": 703.7274421793791,
+      "T_range": [
+        2813,
+        22813
+      ],
+      "n_T_checked": 20001,
+      "propD3_violations": 0,
+      "propD4_violations": 0
+    },
+    {
+      "A": 10.0,
+      "C": 100.0,
+      "Q": 8.0,
+      "delta0": 0.5,
+      "Bstar": 711.3120346609335,
+      "T_range": [
+        2830,
+        22830
+      ],
+      "n_T_checked": 20001,
+      "propD3_violations": 0,
+      "propD4_violations": 0
+    },
+    {
+      "A": 200.0,
+      "C": 0.0,
+      "Q": 4.0,
+      "delta0": 0.1,
+      "Bstar": 5022.5713337480665,
+      "T_range": [
+        20083,
+        40083
+      ],
+      "n_T_checked": 20001,
+      "propD3_violations": 0,
+      "propD4_violations": 0
+    }
+  ],
+  "T2_total_T_checked": 80004,
+  "T2_propD3_violations": 0,
+  "T2_propD4_violations": 0,
+  "T3_thmD5": [
+    {
+      "A": 5.0,
+      "C": 0.0,
+      "Q": 1.0,
+      "delta0": 0.5,
+      "rows": [
+        {
+          "T": 77,
+          "I_f": 5,
+          "T_If": 32.0,
+          "exact_err": 1.0,
+          "thmD5_bound": 2.5903295402246447,
+          "ok": true
+        },
+        {
+          "T": 154,
+          "I_f": 6,
+          "T_If": 64.0,
+          "exact_err": 0.5330881794139072,
+          "thmD5_bound": 2.3252443275978227,
+          "ok": true
+        },
+        {
+          "T": 308,
+          "I_f": 7,
+          "T_If": 128.0,
+          "exact_err": 0.0973038135335539,
+          "thmD5_bound": 1.9128613127774003,
+          "ok": true
+        },
+        {
+          "T": 616,
+          "I_f": 8,
+          "T_If": 256.0,
+          "exact_err": 0.004287654765814624,
+          "thmD5_bound": 1.340146502746905,
+          "ok": true
+        },
+        {
+          "T": 1232,
+          "I_f": 9,
+          "T_If": 512.0,
+          "exact_err": 1.5324214469798906e-05,
+          "thmD5_bound": 0.6974204157604196,
+          "ok": true
+        },
+        {
+          "T": 2464,
+          "I_f": 10,
+          "T_If": 1024.0,
+          "exact_err": 1.5324214469798906e-05,
+          "thmD5_bound": 0.20870669607571857,
+          "ok": true
+        },
+        {
+          "T": 4928,
+          "I_f": 11,
+          "T_If": 2048.0,
+          "exact_err": 2.328342116005891e-10,
+          "thmD5_bound": 0.022199793756492017,
+          "ok": true
+        }
+      ],
+      "violations": 0,
+      "err_ratio_first_to_last": 4294901480.0085754
+    },
+    {
+      "A": 50.0,
+      "C": 20.0,
+      "Q": 1.0,
+      "delta0": 0.36787944117144233,
+      "rows": [
+        {
+          "T": 2813,
+          "I_f": 10,
+          "T_If": 1024.0,
+          "exact_err": 0.7757800533834978,
+          "thmD5_bound": 2.208387322029479,
+          "ok": true
+        },
+        {
+          "T": 5626,
+          "I_f": 11,
+          "T_If": 2048.0,
+          "exact_err": 0.2491745856651539,
+          "thmD5_bound": 1.7074748305228362,
+          "ok": true
+        },
+        {
+          "T": 11252,
+          "I_f": 12,
+          "T_If": 4096.0,
+          "exact_err": 0.02294614003165023,
+          "thmD5_bound": 1.0565951472704995,
+          "ok": true
+        },
+        {
+          "T": 22504,
+          "I_f": 13,
+          "T_If": 8192.0,
+          "exact_err": 0.00034316267019811515,
+          "thmD5_bound": 0.4298367130720496,
+          "ok": true
+        },
+        {
+          "T": 45008,
+          "I_f": 14,
+          "T_If": 16384.0,
+          "exact_err": 1.1257379259464857e-07,
+          "thmD5_bound": 0.07916276854492546,
+          "ok": true
+        },
+        {
+          "T": 90016,
+          "I_f": 15,
+          "T_If": 32768.0,
+          "exact_err": 1.266416697474732e-14,
+          "thmD5_bound": 0.003247303531182055,
+          "ok": true
+        },
+        {
+          "T": 180032,
+          "I_f": 16,
+          "T_If": 65536.0,
+          "exact_err": 1.6038108905486583e-28,
+          "thmD5_bound": 7.678541189036949e-06,
+          "ok": true
+        }
+      ],
+      "violations": 0,
+      "err_ratio_first_to_last": 4.8371042867660413e+27
+    },
+    {
+      "A": 10.0,
+      "C": 100.0,
+      "Q": 8.0,
+      "delta0": 0.5,
+      "rows": [
+        {
+          "T": 2830,
+          "I_f": 7,
+          "T_If": 1024.0,
+          "exact_err": 0.0973038135335539,
+          "thmD5_bound": 0.4771791410992876,
+          "ok": true
+        },
+        {
+          "T": 5660,
+          "I_f": 8,
+          "T_If": 2048.0,
+          "exact_err": 1.5324214469798906e-05,
+          "thmD5_bound": 0.10729919128217763,
+          "ok": true
+        },
+        {
+          "T": 11320,
+          "I_f": 9,
+          "T_If": 4096.0,
+          "exact_err": 2.328342116005891e-10,
+          "thmD5_bound": 0.006808121611929681,
+          "ok": true
+        },
+        {
+          "T": 22640,
+          "I_f": 10,
+          "T_If": 8192.0,
+          "exact_err": 5.421010863689727e-20,
+          "thmD5_bound": 4.054534765150989e-05,
+          "ok": true
+        },
+        {
+          "T": 45280,
+          "I_f": 11,
+          "T_If": 16384.0,
+          "exact_err": 2.938735877055727e-39,
+          "thmD5_bound": 2.842668853706935e-09,
+          "ok": true
+        },
+        {
+          "T": 90560,
+          "I_f": 12,
+          "T_If": 32768.0,
+          "exact_err": 8.636168555094496e-78,
+          "thmD5_bound": 4.620182914281216e-17,
+          "ok": true
+        },
+        {
+          "T": 181120,
+          "I_f": 13,
+          "T_If": 65536.0,
+          "exact_err": 7.458340731200295e-155,
+          "thmD5_bound": 1.0110643207668247e-31,
+          "ok": true
+        }
+      ],
+      "violations": 0,
+      "err_ratio_first_to_last": 1.3046308427088243e+153
+    }
+  ],
+  "T3_violations": 0,
+  "T3_min_err_ratio_first_to_last": 4294901480.0085754,
+  "M1_constant_phase_length": {
+    "rows": [
+      {
+        "T": 2813,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 2.208387322029479,
+        "violated": false
+      },
+      {
+        "T": 5626,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 1.7074748305228362,
+        "violated": false
+      },
+      {
+        "T": 11252,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 1.0565951472704995,
+        "violated": false
+      },
+      {
+        "T": 22504,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 0.4298367130720496,
+        "violated": true
+      },
+      {
+        "T": 45008,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 0.07916276854492546,
+        "violated": true
+      },
+      {
+        "T": 90016,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 0.003247303531182055,
+        "violated": true
+      },
+      {
+        "T": 180032,
+        "T_If": 2.0,
+        "err": 1.0,
+        "thmD5_bound": 7.678541189036949e-06,
+        "violated": true
+      }
+    ],
+    "n_violations": 4,
+    "err_stalls_at": 1.0
+  },
+  "M2_slow_growth_1p05": {
+    "rows": [
+      {
+        "T": 2813,
+        "T_If": 132,
+        "T_over_4": 703.25,
+        "propD4_holds": false
+      },
+      {
+        "T": 5626,
+        "T_If": 261,
+        "T_over_4": 1406.5,
+        "propD4_holds": false
+      },
+      {
+        "T": 11252,
+        "T_If": 516,
+        "T_over_4": 2813.0,
+        "propD4_holds": false
+      },
+      {
+        "T": 22504,
+        "T_If": 1021,
+        "T_over_4": 5626.0,
+        "propD4_holds": false
+      },
+      {
+        "T": 45008,
+        "T_If": 2122,
+        "T_over_4": 11252.0,
+        "propD4_holds": false
+      },
+      {
+        "T": 90016,
+        "T_If": 4202,
+        "T_over_4": 22504.0,
+        "propD4_holds": false
+      }
+    ],
+    "n_propD4_violations": 6
+  },
+  "verdict": "verified"
+}

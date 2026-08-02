@@ -1,0 +1,165 @@
+{
+  "claim": "Section 4 / Algorithm 4 / Prop 4.2 + 4.3: FCW2S converts a weak FC algorithm (Def 4.1) into a strong FC algorithm (Def 3.1) by parallel runs + majority vote",
+  "command": ".venv/bin/python verify_claim3.py",
+  "delta0": 0.04598493014643029,
+  "f_delta0": 100,
+  "grid": [
+    {
+      "delta": 0.5,
+      "L": 4,
+      "exact_err": 0.011896345085607862,
+      "prop42_bound": 0.5,
+      "exact_tail": 0.011923174634761282,
+      "prop43_bound": 0.0625,
+      "Tstar": 400
+    },
+    {
+      "delta": 0.2,
+      "L": 10,
+      "exact_err": 6.567660108519819e-05,
+      "prop42_bound": 0.1767766952966369,
+      "exact_tail": 4.264105456947131e-05,
+      "prop43_bound": 0.0009765625,
+      "Tstar": 1000
+    },
+    {
+      "delta": 0.1,
+      "L": 14,
+      "exact_err": 2.320983305501708e-06,
+      "prop42_bound": 0.08838834764831845,
+      "exact_tail": 1.120113621984431e-06,
+      "prop43_bound": 6.103515625000003e-05,
+      "Tstar": 1400
+    },
+    {
+      "delta": 0.01,
+      "L": 27,
+      "exact_err": 5.871377781163892e-11,
+      "prop42_bound": 0.009290680585958756,
+      "exact_tail": 4.4810380110327325e-11,
+      "prop43_bound": 7.450580596923824e-09,
+      "Tstar": 2700
+    },
+    {
+      "delta": 0.001,
+      "L": 40,
+      "exact_err": 1.7235299950134438e-15,
+      "prop42_bound": 0.0009765625,
+      "exact_tail": 1.0072275522867079e-16,
+      "prop43_bound": 9.094947017729282e-13,
+      "Tstar": 4000
+    },
+    {
+      "delta": 0.0001,
+      "L": 54,
+      "exact_err": 2.40036966025315e-20,
+      "prop42_bound": 8.631674575031096e-05,
+      "exact_tail": 4.452065636853322e-22,
+      "prop43_bound": 5.551115123125776e-17,
+      "Tstar": 5400
+    },
+    {
+      "delta": 1e-06,
+      "L": 80,
+      "exact_err": 2.490298595999683e-29,
+      "prop42_bound": 9.5367431640625e-07,
+      "exact_tail": 5.484492844098666e-32,
+      "prop43_bound": 8.271806125530277e-25,
+      "Tstar": 8000
+    },
+    {
+      "delta": 1e-08,
+      "L": 107,
+      "exact_err": 1.2346373509257018e-38,
+      "prop42_bound": 8.860283456763035e-09,
+      "exact_tail": 1.350370542742876e-41,
+      "prop43_bound": 6.162975822039151e-33,
+      "Tstar": 10700
+    }
+  ],
+  "T1_prop42_violations": 0,
+  "T1_prop42_vs_delta_violations": 0,
+  "T2_prop43_violations": 0,
+  "T2_prop43_vs_delta_violations": 0,
+  "T3_slope_A_empirical": 578.0697251841659,
+  "T3_slope_A_predicted": 577.0780163555854,
+  "T3_R2": 0.999929188662671,
+  "T3_intercept_C": 40.453962749299535,
+  "MC_L": 54,
+  "MC_runs": [
+    {
+      "seed": 0,
+      "mc_err": 0.0,
+      "mc_tail": 0.0
+    },
+    {
+      "seed": 1,
+      "mc_err": 0.0,
+      "mc_tail": 0.0
+    },
+    {
+      "seed": 2,
+      "mc_err": 0.0,
+      "mc_tail": 0.0
+    },
+    {
+      "seed": 3,
+      "mc_err": 0.0,
+      "mc_tail": 0.0
+    },
+    {
+      "seed": 4,
+      "mc_err": 0.0,
+      "mc_tail": 0.0
+    }
+  ],
+  "MC_mean_err": 0.0,
+  "MC_mean_tail": 0.0,
+  "MC_exact_err": 2.40036966025315e-20,
+  "MC_exact_tail": 4.452065636853322e-22,
+  "MC_err_abs_dev": 2.40036966025315e-20,
+  "MC_tail_abs_dev": 4.452065636853322e-22,
+  "M1_first_terminated_wins": [
+    {
+      "delta": 0.1,
+      "L": 14,
+      "err_first_terminated": 0.48266297277901987,
+      "prop42_bound": 0.08838834764831845
+    },
+    {
+      "delta": 0.01,
+      "L": 27,
+      "err_first_terminated": 0.719462227400971,
+      "prop42_bound": 0.009290680585958756
+    },
+    {
+      "delta": 0.001,
+      "L": 40,
+      "err_first_terminated": 0.8478719147187813,
+      "prop42_bound": 0.0009765625
+    },
+    {
+      "delta": 0.0001,
+      "L": 54,
+      "err_first_terminated": 0.9212985581576586,
+      "prop42_bound": 8.631674575031096e-05
+    },
+    {
+      "delta": 1e-06,
+      "L": 80,
+      "err_first_terminated": 0.9768570456686544,
+      "prop42_bound": 9.5367431640625e-07
+    },
+    {
+      "delta": 1e-08,
+      "L": 107,
+      "err_first_terminated": 0.993507527141016,
+      "prop42_bound": 8.860283456763035e-09
+    }
+  ],
+  "M1_violations_of_prop42": 6,
+  "M1_error_at_largest_L": 0.993507527141016,
+  "M1_error_ratio_first_to_last": 0.48581712729239535,
+  "M1_stalls_near_delta0": true,
+  "verdict": "verified"
+}

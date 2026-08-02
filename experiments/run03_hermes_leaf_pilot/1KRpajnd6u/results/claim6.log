@@ -1,0 +1,50 @@
+{
+  "command": ".venv/bin/python verify_claim6.py",
+  "claim": 6,
+  "d_head_max_conservation_rel_err_float64": 4.3773029143449126e-16,
+  "untrained_branches": {
+    "dcl": 0.1949303844918595,
+    "lb_rate": 3.271484375,
+    "ub_rate": 2.6529947916666665,
+    "max_mag": 0.4786924404859297,
+    "n_seeds": 6,
+    "n_seeds_with_violation": 6
+  },
+  "after_DCL_minimization": {
+    "dcl": 1.0394281897437476e-08,
+    "lb_rate": 0.0,
+    "ub_rate": 0.0,
+    "max_mag": 0.0,
+    "n_seeds_zero_violation": 6
+  },
+  "mutation_maximize_DCL": {
+    "dcl": 15.490651955769762,
+    "lb_rate": 2.4251302083333335,
+    "ub_rate": 2.2623697916666665,
+    "max_mag": 2.8968640079028365,
+    "n_seeds_zero_violation": 0
+  },
+  "optimizer": {
+    "adam_lr": 0.05,
+    "steps": 200,
+    "grid": "32x32",
+    "radius": 2,
+    "dtype": "float64"
+  },
+  "analytic_bound_violation_le_half_branch_gap": {
+    "holds_all_20_seeds": true,
+    "max_observed_violation": 1.002267134360665
+  },
+  "dcl_vs_violation_spearman": {
+    "rho": 0.9030207441567119,
+    "p": 4.798063524949263e-34,
+    "n": 90,
+    "n_zero_violation": 48
+  },
+  "verdict": "verified",
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.1",
+    "torch": "2.13.0+cpu"
+  }
+}

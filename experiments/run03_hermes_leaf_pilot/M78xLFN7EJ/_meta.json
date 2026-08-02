@@ -1,0 +1,13 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "Shibashish/repro-protein-design-with-agent-rosetta-a-case-study-for-specialized-scientific-agents",
+  "hw_signals": [
+    "numpy",
+    "scipy",
+    "second",
+    "gpu",
+    "hours"
+  ],
+  "n_claims": 5
+}

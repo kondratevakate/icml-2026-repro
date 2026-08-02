@@ -1,0 +1,11 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-on-the-interplay-of-pre-training-mid-training-and-rl-on-reasoning-language-models",
+  "hw_signals": [
+    "gpu",
+    "cpu",
+    "minute"
+  ],
+  "n_claims": 6
+}

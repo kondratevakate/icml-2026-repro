@@ -1,0 +1,32 @@
+{
+  "claim": 3,
+  "claim_text": "CAffNet guarantees A(x)y<=b(x) without full row rank of A(x) and handles arbitrary m via sub-constraints of cardinality at most min(m, n_out)",
+  "source": "Section 3 / 3.1 (Eq. 2), Lemma 3.3 (App. A), Theorem 3.4 (App. B), Table 1",
+  "command": ".venv/bin/python verify_claim3.py",
+  "E1_exhaustive_2d": {
+    "n_systems": 372,
+    "n_rank_deficient_systems": 9,
+    "n_cases": 27900,
+    "n_caffnet_failures": 0,
+    "max_violation": 0.0,
+    "hardnet_infeasible": 16506,
+    "hardnet_cases": 27900,
+    "hardnet_infeasible_frac": 0.5916129032258064,
+    "mutation_truncated_gamma_failures": 6799,
+    "mutation_cases": 27900,
+    "mutation_failure_frac": 0.24369175627240144
+  },
+  "E2E3_random_sweep": {
+    "n_cases": 8800,
+    "n_caffnet_failures": 0,
+    "max_violation": 0.0,
+    "n_rank_deficient": 1275,
+    "hardnet_infeasible": 6805,
+    "hardnet_infeasible_frac": 0.7732954545454546,
+    "mutation_truncated_gamma_failures": 1669,
+    "mutation_cases": 7000,
+    "mutation_failure_frac": 0.23842857142857143
+  },
+  "elapsed_s": 286.0207328796387
+}
+E4 all_ok: True

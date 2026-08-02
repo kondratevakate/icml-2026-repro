@@ -1,0 +1,13 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "SabaPivot/repro-on-the-expressive-power-of-permutation-equivariant-weight-space-networks",
+  "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
+    "cpu",
+    "gpu"
+  ],
+  "n_claims": 6
+}

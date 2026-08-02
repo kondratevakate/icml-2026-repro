@@ -1,0 +1,14 @@
+{
+  "orid": "32XNOcwH1z",
+  "title": "Efficient Preference Poisoning Attack on Offline RLHF",
+  "openreview": "https://openreview.net/forum?id=32XNOcwH1z",
+  "arxiv": "2605.02495",
+  "anchored_claims": [
+    "Theorem 3.1 shows that flipping a single preference label shifts the DPO gradient by a vector o_i·β·Δψ_i that is independent of the current policy parameter θ, enabling reformulation of preference poisoning as a binary sparse approximation problem in gradient space (Section 3, Theorem 3.1).",
+    "Theorem 3.4 establishes a lower bound on the number of required label flips, |ℱ| ≥ ||g†||_2/(2β), showing flip requirements scale linearly with the target gradient norm (Section 3, Theorem 3.4).",
+    "The Binary-Aware Lattice Attack (BAL-A) uses a penalty parameter M ≥ M_0(B,R,K*) so that the shortest lattice vector has coefficients constrained to {-1,0,1}^n, and under a separation condition ρ_k² > M²(K*-k), recovers the true K*-flip attack pattern exactly (Section 4.1, Lemma 4.1, Theorem 4.3).",
+    "The Binary Matching Pursuit Attack (BMP-A) recovers the exact flip support within K* iterations when the gradient dictionary's coherence satisfies μ(V) < b/((2K*-1)B) (Section 5.2, Theorem 5.3).",
+    "Theorem 5.4 provides impossibility certificates against K-flip attacks under a spectral norm condition ||g†||_2 - ε > √K·||V||_2 and a coherence condition (||g†||_2 - ε)² > B²(K + μ(V)K(K-1)) (Section 5, Theorem 5.4).",
+    "On the SHP dataset, the crafted attack shifts the trained policy far closer to the intended target than clean training does (||π_θ†-π_θ̂||_1 ≈ 0.012 vs ||π_clean-π_θ̂||_1 ≈ 0.224), and BMP-A runs roughly four orders of magnitude faster than BAL-A (1.37×10⁻⁴s vs 0.6865s) on the same data subset (Section 6.2.3)."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-generalizing-stochastic-smoothing-for-differentiation-and-gradient-estimation",
+  "hw_signals": [
+    "numpy",
+    "scipy",
+    "gpu",
+    "second",
+    "cpu",
+    "seconds"
+  ],
+  "n_claims": 6
+}

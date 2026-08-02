@@ -1,0 +1,13 @@
+{
+  "area": "Reinforcement Learning",
+  "disputed": true,
+  "space": "Srishti280992/repro-efficient-preference-poisoning-attack-on-offline-rlhf",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "seconds",
+    "minutes"
+  ],
+  "n_claims": 6
+}

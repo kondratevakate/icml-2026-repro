@@ -1,0 +1,563 @@
+{
+  "claim": "Theorem 1 (Section 2): finite-sample uniform validity of max-p aggregation",
+  "alpha": 0.1,
+  "K": 3,
+  "n_cal_per_source": 50,
+  "n_trials_per_world": 4000,
+  "command": "python verify_claim1.py",
+  "main": {
+    "runs": [
+      {
+        "seed": 1000,
+        "per_source_coverage": [
+          0.9812593703148426,
+          0.9767441860465116,
+          0.986496624156039
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9767441860465116,
+        "mean_set_size": 18.4575,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1001,
+        "per_source_coverage": [
+          0.9887556221889056,
+          0.9834958739684921,
+          0.9849962490622656
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9834958739684921,
+        "mean_set_size": 19.084,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1002,
+        "per_source_coverage": [
+          0.9917541229385307,
+          0.9909977494373593,
+          0.9932483120780196
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9909977494373593,
+        "mean_set_size": 19.3055,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1003,
+        "per_source_coverage": [
+          0.9887556221889056,
+          0.9879969992498124,
+          0.9827456864216054
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9827456864216054,
+        "mean_set_size": 19.02,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1004,
+        "per_source_coverage": [
+          0.9865067466266867,
+          0.9954988747186797,
+          0.994748687171793
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9865067466266867,
+        "mean_set_size": 19.49125,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1005,
+        "per_source_coverage": [
+          0.9932533733133433,
+          0.9894973743435859,
+          0.9857464366091523
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9857464366091523,
+        "mean_set_size": 19.109,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1006,
+        "per_source_coverage": [
+          0.9902548725637181,
+          0.9894973743435859,
+          0.994748687171793
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9894973743435859,
+        "mean_set_size": 19.48125,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1007,
+        "per_source_coverage": [
+          0.9955022488755623,
+          0.9932483120780196,
+          0.9984996249062266
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9932483120780196,
+        "mean_set_size": 19.67125,
+        "union_identity_mismatches": 0
+      }
+    ],
+    "worst_source_coverage_min": 0.9767441860465116,
+    "worst_source_coverage_mean": 0.9861227956914267,
+    "n_worlds": 8,
+    "n_worlds_below_target": 0,
+    "mean_set_size": 19.20246875
+  },
+  "mixture": {
+    "n_mixture_weights": 968,
+    "worst_mixture_coverage": 0.9767441860465116
+  },
+  "union_identity_total_mismatches": 0,
+  "mutation_no_plus_one": {
+    "runs": [
+      {
+        "seed": 1000,
+        "per_source_coverage": [
+          0.9752623688155923,
+          0.9662415603900976,
+          0.9804951237809453
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9662415603900976,
+        "mean_set_size": 18.02575,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1001,
+        "per_source_coverage": [
+          0.9850074962518741,
+          0.9819954988747187,
+          0.978244561140285
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.978244561140285,
+        "mean_set_size": 18.7415,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1002,
+        "per_source_coverage": [
+          0.9895052473763118,
+          0.9849962490622656,
+          0.9834958739684921
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9834958739684921,
+        "mean_set_size": 18.8455,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1003,
+        "per_source_coverage": [
+          0.9782608695652174,
+          0.9834958739684921,
+          0.9774943735933983
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9774943735933983,
+        "mean_set_size": 18.586,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1004,
+        "per_source_coverage": [
+          0.9805097451274363,
+          0.9924981245311327,
+          0.9924981245311327
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9805097451274363,
+        "mean_set_size": 19.25425,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1005,
+        "per_source_coverage": [
+          0.987256371814093,
+          0.9842460615153789,
+          0.9789947486871718
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9789947486871718,
+        "mean_set_size": 18.79075,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1006,
+        "per_source_coverage": [
+          0.9895052473763118,
+          0.9849962490622656,
+          0.9939984996249063
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9849962490622656,
+        "mean_set_size": 19.31,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1007,
+        "per_source_coverage": [
+          0.9910044977511244,
+          0.9924981245311327,
+          0.9969992498124531
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9910044977511244,
+        "mean_set_size": 19.5675,
+        "union_identity_mismatches": 0
+      }
+    ],
+    "worst_source_coverage_min": 0.9662415603900976,
+    "worst_source_coverage_mean": 0.980122701215034,
+    "n_worlds": 8,
+    "n_worlds_below_target": 0,
+    "mean_set_size": 18.890156249999997
+  },
+  "mutation_mean_p": {
+    "runs": [
+      {
+        "seed": 1000,
+        "per_source_coverage": [
+          0.9662668665667167,
+          0.9519879969992499,
+          0.9654913728432108
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9519879969992499,
+        "mean_set_size": 17.24675,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1001,
+        "per_source_coverage": [
+          0.9730134932533733,
+          0.972993248312078,
+          0.9684921230307577
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9684921230307577,
+        "mean_set_size": 18.06625,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1002,
+        "per_source_coverage": [
+          0.9602698650674663,
+          0.9662415603900976,
+          0.9707426856714179
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9602698650674663,
+        "mean_set_size": 17.66525,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1003,
+        "per_source_coverage": [
+          0.9610194902548725,
+          0.967741935483871,
+          0.9654913728432108
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9610194902548725,
+        "mean_set_size": 17.8155,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1004,
+        "per_source_coverage": [
+          0.95952023988006,
+          0.9669917479369843,
+          0.978244561140285
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.95952023988006,
+        "mean_set_size": 18.31725,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1005,
+        "per_source_coverage": [
+          0.9640179910044977,
+          0.9669917479369843,
+          0.9662415603900976
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9640179910044977,
+        "mean_set_size": 18.04025,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1006,
+        "per_source_coverage": [
+          0.97976011994003,
+          0.9767441860465116,
+          0.9887471867966992
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9767441860465116,
+        "mean_set_size": 18.96275,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1007,
+        "per_source_coverage": [
+          0.9805097451274363,
+          0.9872468117029257,
+          0.9707426856714179
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.9707426856714179,
+        "mean_set_size": 19.11875,
+        "union_identity_mismatches": 0
+      }
+    ],
+    "worst_source_coverage_min": 0.9519879969992499,
+    "worst_source_coverage_mean": 0.9640993222443541,
+    "n_worlds": 8,
+    "n_worlds_below_target": 0,
+    "mean_set_size": 18.15409375
+  },
+  "mutation_single_source": {
+    "runs": [
+      {
+        "seed": 1000,
+        "per_source_coverage": [
+          0.9115442278860569,
+          0.6961740435108777,
+          0.6901725431357839
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.6901725431357839,
+        "mean_set_size": 13.166,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1001,
+        "per_source_coverage": [
+          0.9130434782608695,
+          0.6571642910727682,
+          0.5926481620405101
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.5926481620405101,
+        "mean_set_size": 13.24775,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1002,
+        "per_source_coverage": [
+          0.9070464767616192,
+          0.6976744186046512,
+          0.7186796699174793
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.6976744186046512,
+        "mean_set_size": 13.09975,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1003,
+        "per_source_coverage": [
+          0.9205397301349325,
+          0.7156789197299325,
+          0.6826706676669168
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.6826706676669168,
+        "mean_set_size": 13.52225,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1004,
+        "per_source_coverage": [
+          0.9137931034482759,
+          0.7569392348087022,
+          0.7239309827456865
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.7239309827456865,
+        "mean_set_size": 13.3705,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1005,
+        "per_source_coverage": [
+          0.9175412293853074,
+          0.6399099774943736,
+          0.7014253563390848
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.6399099774943736,
+        "mean_set_size": 13.41975,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1006,
+        "per_source_coverage": [
+          0.9077961019490255,
+          0.6751687921980495,
+          0.5513878469617405
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.5513878469617405,
+        "mean_set_size": 13.56625,
+        "union_identity_mismatches": 0
+      },
+      {
+        "seed": 1007,
+        "per_source_coverage": [
+          0.8845577211394303,
+          0.7021755438859715,
+          0.5896474118529632
+        ],
+        "per_source_n": [
+          1334.0,
+          1333.0,
+          1333.0
+        ],
+        "worst_source_coverage": 0.5896474118529632,
+        "mean_set_size": 14.174,
+        "union_identity_mismatches": 0
+      }
+    ],
+    "worst_source_coverage_min": 0.5513878469617405,
+    "worst_source_coverage_mean": 0.6460052513128283,
+    "n_worlds": 8,
+    "n_worlds_below_target": 8,
+    "mean_set_size": 13.44578125
+  },
+  "mc_lower_tolerance_99pct": 0.8770143867765773,
+  "runtime_sec": 170.8
+}

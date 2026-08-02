@@ -1,0 +1,12 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "gchauhan/repro-gecko-a-simulation-environment-with-stateful-feedback-for-refining-agent-tool-calls",
+  "hw_signals": [
+    "second",
+    "cpu",
+    "gpu",
+    "hours"
+  ],
+  "n_claims": 6
+}

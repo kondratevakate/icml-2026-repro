@@ -1,0 +1,21 @@
+{
+  "command": ".venv/bin/python verify_claim4.py",
+  "claim": 4,
+  "source": "Theorem 5.3, Section 5.2, arXiv 2602.01603",
+  "T": 20,
+  "n_runs_per_config": 200,
+  "L_safety_factor": 1.25,
+  "n_configs": 60,
+  "max_ratio_lhs_over_full_bound": 0.2610937379684688,
+  "n_configs_full_bound_violated": 0,
+  "MUTATION_drop_bias_term": {
+    "n_noisy_configs": 36,
+    "n_violating_decay_only_bound": 36,
+    "max_ratio_decay_only": 16539502480.574667
+  },
+  "bias_floor_monotone": {
+    "n": 12,
+    "n_monotone": 12
+  }
+}
+C4 exit 0

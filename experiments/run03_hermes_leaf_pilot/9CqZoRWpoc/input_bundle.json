@@ -1,0 +1,14 @@
+{
+  "orid": "9CqZoRWpoc",
+  "title": "Certificate-Guided Pruning for Stochastic Lipschitz Optimization",
+  "openreview": "https://openreview.net/forum?id=9CqZoRWpoc",
+  "arxiv": "2601.20231",
+  "anchored_claims": [
+    "Certificate-Guided Pruning (CGP) maintains an explicit active set A_t of candidate optima using confidence-adjusted Lipschitz envelopes, certifying with high probability that any point outside A_t is suboptimal (Section 3, Algorithm 1).",
+    "Under a margin condition with near-optimality dimension α (Assumption 2.3), the Shrinkage Theorem bounds the active set volume as Vol(A_t) ≤ C·(2(β_t + Lη_t) + γ_t)^(d−α) (Theorem 4.6).",
+    "CGP achieves ε-optimality with probability at least 1−δ using T = Õ(L^d ε^{-(2+α)} log(1/δ)) samples, improving on the worst-case Õ(ε^{-(2+d)}) rate whenever α < d (Theorem 4.8).",
+    "A matching lower bound shows any algorithm requires Ω(ε^{-(2+α)}) samples under the same margin condition, establishing CGP's minimax sample-complexity optimality (Theorem 4.9).",
+    "CGP-Adaptive learns the Lipschitz constant L online via a doubling scheme, adding only an O(log T) multiplicative overhead to the sample complexity (Theorem 5.1, Section 5).",
+    "CGP-TR, a trust-region variant, scales to dimension d > 50 via certified restarts that provably never falsely eliminate the region containing the true optimizer x* (Theorem 6.1, Section 6)."
+  ]
+}

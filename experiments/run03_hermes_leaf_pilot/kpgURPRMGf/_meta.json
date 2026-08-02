@@ -1,0 +1,11 @@
+{
+  "area": "Deep Learning",
+  "disputed": true,
+  "space": "feliksier/icml2026-repro-kpgURPRMGf",
+  "hw_signals": [
+    "cpu",
+    "gpu",
+    "numpy"
+  ],
+  "n_claims": 5
+}

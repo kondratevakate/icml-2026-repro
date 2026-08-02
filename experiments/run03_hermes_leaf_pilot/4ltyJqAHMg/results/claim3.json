@@ -1,0 +1,133 @@
+{
+  "claim": 3,
+  "command": ".venv/bin/python verify_claim3.py",
+  "source": "Table 2 (Sec 5.1 Main Results); prose Sec 5.1; Abstract",
+  "observed": {
+    "deepseek_v3": {
+      "syn_em": 17.91,
+      "syn_gm": 30.28,
+      "syn_mb": 60.34,
+      "sem_em": 11.24,
+      "sem_gm": 21.32,
+      "sem_mb": 33.27
+    },
+    "qwen_2.5_coder_32B": {
+      "syn_em": 12.79,
+      "syn_gm": 20.26,
+      "syn_mb": 52.88,
+      "sem_em": 17.44,
+      "sem_gm": 23.45,
+      "sem_mb": 34.69
+    },
+    "n_models": 24,
+    "syntax_gm_le20": {
+      "n": 10,
+      "of": 24,
+      "frac": 0.4167
+    },
+    "semantic_gm_le20": {
+      "n": 15,
+      "of": 24,
+      "frac": 0.625
+    },
+    "pooled_gm_le20": {
+      "n": 25,
+      "of": 48,
+      "frac": 0.5208
+    },
+    "closed_source_syntax_gm_le20": {
+      "n": 6,
+      "of": 12,
+      "frac": 0.5
+    },
+    "closed_source_semantic_gm_le20": {
+      "n": 6,
+      "of": 12,
+      "frac": 0.5
+    },
+    "open_source_n": 12,
+    "all_syntax_gm": {
+      "Qwen-2.5-Instruct": 8.53,
+      "Qwen-2.5-Coder": 8.96,
+      "Qwen-2.5-Coder#2": 20.26,
+      "Qwen-3-Instruct": 20.47,
+      "Qwen-3-Coder-Instruct": 20.9,
+      "Qwen-3-Coder-Instruct#2": 23.88,
+      "QwQ": 20.51,
+      "Seed-Coder-Instruct": 14.93,
+      "OmniSQL": 6.4,
+      "Deepseek-V3": 30.28,
+      "Deepseek-V3.1": 30.49,
+      "Deepseek-R1": 21.98,
+      "Claude-4-Sonnet": 36.46,
+      "GPT-4o-mini-2024-07-18": 4.69,
+      "GPT-4o-2024-11-20": 4.69,
+      "GPT-4.1": 17.7,
+      "GPT-5": 18.55,
+      "Gemini-2.5-Pro": 21.54,
+      "Kimi-K2": 27.72,
+      "O1-preview": 21.11,
+      "O3-mini": 19.83,
+      "Doubao-Seed-1.6": 30.92,
+      "Doubao-Seed-1.6-flash": 3.63,
+      "Doubao-Seed-1.6-thinking": 23.24
+    },
+    "all_semantic_gm": {
+      "Qwen-2.5-Instruct": 5.62,
+      "Qwen-2.5-Coder": 7.75,
+      "Qwen-2.5-Coder#2": 23.45,
+      "Qwen-3-Instruct": 15.5,
+      "Qwen-3-Coder-Instruct": 15.12,
+      "Qwen-3-Coder-Instruct#2": 19.96,
+      "QwQ": 15.31,
+      "Seed-Coder-Instruct": 14.15,
+      "OmniSQL": 6.4,
+      "Deepseek-V3": 21.32,
+      "Deepseek-V3.1": 14.73,
+      "Deepseek-R1": 22.09,
+      "Claude-4-Sonnet": 32.17,
+      "GPT-4o-mini-2024-07-18": 6.4,
+      "GPT-4o-2024-11-20": 4.84,
+      "GPT-4.1": 17.05,
+      "GPT-5": 16.47,
+      "Gemini-2.5-Pro": 23.06,
+      "Kimi-K2": 20.93,
+      "O1-preview": 11.43,
+      "O3-mini": 28.68,
+      "Doubao-Seed-1.6": 20.93,
+      "Doubao-Seed-1.6-flash": 3.11,
+      "Doubao-Seed-1.6-thinking": 20.93
+    }
+  },
+  "checks": {
+    "deepseekv3_syntax_gm_is_30.28": true,
+    "deepseekv3_semantic_gm_is_21.32": true,
+    "qwen25coder32b_semantic_gm_is_23.45": true,
+    "most_models_below_20_on_syntax": false,
+    "most_models_below_20_on_semantic": true,
+    "most_models_below_20_pooled": true
+  },
+  "all_checks_pass": false,
+  "sub_verdicts": {
+    "reported_model_scores": "verified",
+    "most_models_below_20pct": "falsified"
+  },
+  "mutation_test": {
+    "description": "swap the GM metric for MB (modify-better) and recount the '<=20%' population",
+    "syntax_mb_le20": {
+      "n": 3,
+      "of": 24,
+      "frac": 0.125
+    },
+    "semantic_mb_le20": {
+      "n": 6,
+      "of": 24,
+      "frac": 0.25
+    },
+    "predicted": "the '<=20%' majority disappears on both splits (metric-dependence)",
+    "mutation_behaves_as_predicted": true
+  },
+  "verdict": "falsified",
+  "verdict_reason": "the three quoted per-model GM scores match Table 2 exactly, but the universal statement 'most evaluated LLMs fail to exceed 20%' is false on Squirrel-Syntax under GM (see fractions)",
+  "scope": "paper-internal consistency only; scores cannot be independently re-measured (no public benchmark data, model outputs, or Graph-Match scorer)"
+}

@@ -1,0 +1,52 @@
+{
+  "claim": 3,
+  "source": "Definition 2.1 (Sec 2.2); mechanism per Def 3.1 + Lemma D.5; Appendix H",
+  "config": {
+    "kernel": "RBF",
+    "lengthscale": 0.15,
+    "outputscale": 1.0,
+    "sigma_noise": 1.0,
+    "L": 1.96,
+    "c": 1.0,
+    "magnitudes": [
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0,
+      100000.0,
+      1000000.0,
+      10000000.0,
+      100000000.0,
+      1000000000.0,
+      10000000000.0,
+      100000000000.0,
+      1000000000000.0
+    ],
+    "n_points": 8,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "command": ".venv/bin/python verify_claim3.py",
+  "n_configurations": 1040,
+  "rcgp_sup_deviation_all_configs": 1.4211920707183219,
+  "rcgp_sup_deviation_over_sigma_uc": 1.5436710285023965,
+  "rcgp_max_absolute_drift_1e6_to_1e12": 9.932433134539342e-07,
+  "gp_sup_deviation_all_configs": 498309928918.9554,
+  "gp_min_growth_ratio_1e6_to_1e12": 999998.0895855927,
+  "gp_growth_is_linear_in_c": true,
+  "rcgp_bounded": true,
+  "mutation_constant_weight_sup_deviation": 453585364497.02374,
+  "mutation_breaks_boundedness": true,
+  "verdict_ok": true
+}

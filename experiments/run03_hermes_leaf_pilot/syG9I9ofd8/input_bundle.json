@@ -1,0 +1,14 @@
+{
+  "orid": "syG9I9ofd8",
+  "title": "Latent Collaboration in Multi-Agent Systems",
+  "openreview": "https://openreview.net/forum?id=syG9I9ofd8",
+  "arxiv": "2511.20639",
+  "anchored_claims": [
+    "LatentMAS replaces text-mediated multi-agent communication with auto-regressive latent thought generation and a shared latent working memory (Figure 3).",
+    "The paper proves latent thoughts can be more expressive than equivalent text reasoning under a linear representation hypothesis (Theorem 3.1).",
+    "Latent working memory preserves information equivalently to directly inputting preceding agents' outputs under the paper's formal setup (Theorem 3.3).",
+    "LatentMAS reports higher accuracy, lower output token usage, and faster inference than single-agent and text-based MAS baselines across six general tasks in the sequential MAS setting (Table 1).",
+    "On AIME, GPQA-Diamond, and other reasoning-intensive tasks, LatentMAS is evaluated under both sequential and hierarchical MAS settings with accuracy, token, and speed metrics (Table 2).",
+    "Input-output alignment improves downstream accuracy by 2.3% to 5.3% across three analyzed benchmarks (Figure 7)."
+  ]
+}

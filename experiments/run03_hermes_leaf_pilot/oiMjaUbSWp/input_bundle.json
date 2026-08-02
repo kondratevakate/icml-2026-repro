@@ -1,0 +1,12 @@
+{
+  "orid": "oiMjaUbSWp",
+  "title": "On the Epistemic Uncertainty of Overparametrized Neural Networks",
+  "openreview": "https://openreview.net/forum?id=oiMjaUbSWp",
+  "arxiv": "2605.25234",
+  "anchored_claims": [
+    "Overparametrized one-hidden-layer ReLU networks (M>M* neurons) exhibit continuous non-identifiability through weight-splitting, where redundant neurons split a true neuron's contribution via coefficients constrained to a simplex, in addition to the discrete permutation symmetries present in exactly-specified models (Section 3.1, Section 3.2, Corollary 2).",
+    "Because standard information-theoretic uncertainty measures fail on these non-identifiable parameters, epistemic uncertainty is instead defined via the trace of the posterior weight covariance, EU(y|x) := tr(Cov_P(w|·)), enabling a variance-based decomposition into discrete (permutation) and continuous (splitting) sources of residual uncertainty (Section 2.1, Section 2.2, Example 1).",
+    "For one-hidden-layer ReLU networks, Theorem 1 characterizes the induced posterior over splitting coefficients as following symmetric Dirichlet distributions with concentration parameter alpha=(p+1)/2 (Lemma 4), with posterior means of individual redundant neurons scaling as O(M^-1/2) and within-neuron covariance remaining constant while cross-neuron covariance decays as O(M^-1) (Theorem 1, Corollary 1, Section 3.2).",
+    "The posterior over splitting coordinates remains non-degenerate even as the number of training samples n approaches infinity, showing that substantial parameter-space uncertainty persists despite the underlying function being fully identified (Section 3.2, Figure 2)."
+  ]
+}

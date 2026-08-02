@@ -1,0 +1,24 @@
+{
+  "n_total_pool": 45,
+  "n_built": 42,
+  "n_skipped": 3,
+  "skipped_orids": [
+    "EzpJxPDqXB",
+    "zPjmtawzT8",
+    "VLWuEuQkCF"
+  ],
+  "pilot_orids": [
+    "Vv4XRZDMM0",
+    "EhJ1R2N6sn",
+    "20hdQQQrA4",
+    "L0T4pmqkMg",
+    "eNvxTIZugB"
+  ],
+  "pilot_areas": {
+    "Vv4XRZDMM0": "Probabilistic Methods",
+    "EhJ1R2N6sn": "Reinforcement Learning",
+    "20hdQQQrA4": "Deep Learning",
+    "L0T4pmqkMg": "Optimization",
+    "eNvxTIZugB": "General Machine Learning"
+  }
+}

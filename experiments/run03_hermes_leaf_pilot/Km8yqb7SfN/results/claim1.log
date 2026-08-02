@@ -1,0 +1,157 @@
+{
+  "command": ".venv/bin/python verify_claim1.py",
+  "claim": 1,
+  "source": "Equation (1), Section 3, arXiv 2602.01603",
+  "b_nonlinearity": {
+    "instances": [
+      {
+        "K": 4,
+        "N": 2,
+        "seed": 0,
+        "max_chord_gap": 0.013978035222778629
+      },
+      {
+        "K": 4,
+        "N": 2,
+        "seed": 1,
+        "max_chord_gap": 0.0028268681774957782
+      },
+      {
+        "K": 4,
+        "N": 2,
+        "seed": 2,
+        "max_chord_gap": 0.004374105172543552
+      },
+      {
+        "K": 4,
+        "N": 2,
+        "seed": 3,
+        "max_chord_gap": 0.017354722480192097
+      },
+      {
+        "K": 4,
+        "N": 2,
+        "seed": 4,
+        "max_chord_gap": 0.008142338848066588
+      },
+      {
+        "K": 4,
+        "N": 4,
+        "seed": 0,
+        "max_chord_gap": 0.0013850993907930098
+      },
+      {
+        "K": 4,
+        "N": 4,
+        "seed": 1,
+        "max_chord_gap": 0.01235223982352096
+      },
+      {
+        "K": 4,
+        "N": 4,
+        "seed": 2,
+        "max_chord_gap": 0.08138751536948363
+      },
+      {
+        "K": 4,
+        "N": 4,
+        "seed": 3,
+        "max_chord_gap": 0.001118075678531838
+      },
+      {
+        "K": 4,
+        "N": 4,
+        "seed": 4,
+        "max_chord_gap": 0.010279884239385528
+      },
+      {
+        "K": 4,
+        "N": 8,
+        "seed": 0,
+        "max_chord_gap": 0.00010367640447705995
+      },
+      {
+        "K": 4,
+        "N": 8,
+        "seed": 1,
+        "max_chord_gap": 0.0008071175028669941
+      },
+      {
+        "K": 4,
+        "N": 8,
+        "seed": 2,
+        "max_chord_gap": 0.014517813949958436
+      },
+      {
+        "K": 4,
+        "N": 8,
+        "seed": 3,
+        "max_chord_gap": 0.0006402963244395155
+      },
+      {
+        "K": 4,
+        "N": 8,
+        "seed": 4,
+        "max_chord_gap": 0.03826229194975428
+      },
+      {
+        "K": 6,
+        "N": 2,
+        "seed": 0,
+        "max_chord_gap": 0.00433866738822225
+      },
+      {
+        "K": 6,
+        "N": 2,
+        "seed": 1,
+        "max_chord_gap": 0.014334134520034514
+      },
+      {
+        "K": 6,
+        "N": 2,
+        "seed": 2,
+        "max_chord_gap": 0.007108767048759956
+      },
+      {
+        "K": 6,
+        "N": 2,
+        "seed": 3,
+        "max_chord_gap": 0.0036598780158720867
+      },
+      {
+        "K": 6,
+        "N": 2,
+        "seed": 4,
+        "max_chord_gap": 0.001997823798704168
+      },
+      {
+        "K": 6,
+        "N": 4,
+        "seed": 0,
+        "max_chord_gap": 0.02981437609161547
+      },
+      {
+        "K": 6,
+        "N": 4,
+        "seed": 1,
+        "max_chord_gap": 0.01879405043306015
+      },
+      {
+        "K": 6,
+        "N": 4,
+        "seed": 2,
+        "max_chord_gap": 0.0077351814287783816
+      },
+      {
+        "K": 6,
+        "N": 4,
+        "seed": 3,
+        "max_chord_gap": 0.010030454593926263
+      },
+      {
+        "K": 6,
+        "N": 4,
+        "seed": 4,
+        "max_chord_gap": 0.002431768712
+c_adaptation summary: {'n_instances': 60, 'n_instances_iama_better': 60, 'min_improvement': 0.005726281407999689, 'median_improvement': 0.040962929766955425}
+C1 exit 0

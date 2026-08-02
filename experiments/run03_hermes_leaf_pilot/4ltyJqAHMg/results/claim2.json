@@ -1,0 +1,139 @@
+{
+  "claim": 2,
+  "command": ".venv/bin/python verify_claim2.py",
+  "source": "Table 2 (Sec 5.1 Main Results); prose Sec 5.1",
+  "observed": {
+    "claude_row": {
+      "syn_em": 23.88,
+      "syn_gm": 36.46,
+      "syn_mb": 68.02,
+      "sem_em": 31.78,
+      "sem_gm": 32.17,
+      "sem_mb": 43.69
+    },
+    "n_models_enumerated": 24,
+    "argmax_syntax_gm": [
+      "Claude-4-Sonnet",
+      36.46
+    ],
+    "argmax_semantic_gm": [
+      "Claude-4-Sonnet",
+      32.17
+    ],
+    "runner_up_syntax_gm": 30.92,
+    "runner_up_semantic_gm": 28.68,
+    "all_syntax_gm": {
+      "Qwen-2.5-Instruct": 8.53,
+      "Qwen-2.5-Coder": 8.96,
+      "Qwen-2.5-Coder#2": 20.26,
+      "Qwen-3-Instruct": 20.47,
+      "Qwen-3-Coder-Instruct": 20.9,
+      "Qwen-3-Coder-Instruct#2": 23.88,
+      "QwQ": 20.51,
+      "Seed-Coder-Instruct": 14.93,
+      "OmniSQL": 6.4,
+      "Deepseek-V3": 30.28,
+      "Deepseek-V3.1": 30.49,
+      "Deepseek-R1": 21.98,
+      "Claude-4-Sonnet": 36.46,
+      "GPT-4o-mini-2024-07-18": 4.69,
+      "GPT-4o-2024-11-20": 4.69,
+      "GPT-4.1": 17.7,
+      "GPT-5": 18.55,
+      "Gemini-2.5-Pro": 21.54,
+      "Kimi-K2": 27.72,
+      "O1-preview": 21.11,
+      "O3-mini": 19.83,
+      "Doubao-Seed-1.6": 30.92,
+      "Doubao-Seed-1.6-flash": 3.63,
+      "Doubao-Seed-1.6-thinking": 23.24
+    },
+    "all_semantic_gm": {
+      "Qwen-2.5-Instruct": 5.62,
+      "Qwen-2.5-Coder": 7.75,
+      "Qwen-2.5-Coder#2": 23.45,
+      "Qwen-3-Instruct": 15.5,
+      "Qwen-3-Coder-Instruct": 15.12,
+      "Qwen-3-Coder-Instruct#2": 19.96,
+      "QwQ": 15.31,
+      "Seed-Coder-Instruct": 14.15,
+      "OmniSQL": 6.4,
+      "Deepseek-V3": 21.32,
+      "Deepseek-V3.1": 14.73,
+      "Deepseek-R1": 22.09,
+      "Claude-4-Sonnet": 32.17,
+      "GPT-4o-mini-2024-07-18": 6.4,
+      "GPT-4o-2024-11-20": 4.84,
+      "GPT-4.1": 17.05,
+      "GPT-5": 16.47,
+      "Gemini-2.5-Pro": 23.06,
+      "Kimi-K2": 20.93,
+      "O1-preview": 11.43,
+      "O3-mini": 28.68,
+      "Doubao-Seed-1.6": 20.93,
+      "Doubao-Seed-1.6-flash": 3.11,
+      "Doubao-Seed-1.6-thinking": 20.93
+    }
+  },
+  "checks": {
+    "claude_syntax_gm_is_36.46": true,
+    "claude_semantic_gm_is_32.17": true,
+    "claude_is_argmax_syntax_gm": true,
+    "claude_is_argmax_semantic_gm": true,
+    "n_evaluated_models_is_24": true
+  },
+  "all_checks_pass": true,
+  "internal_inconsistency": {
+    "intro_states_33.17_for_semantic": true,
+    "table2_and_abstract_state": 32.17,
+    "note": "Introduction (Sec 1) reports 33.17% on Squirrel-Semantic, contradicting Table 2/Abstract (32.17%). The anchored claim's 32.17 matches the table."
+  },
+  "mutation_test": {
+    "A_leave_one_out": {
+      "description": "drop the Claude-4-Sonnet row from the pool",
+      "argmax_syntax_gm": [
+        "Doubao-Seed-1.6",
+        30.92
+      ],
+      "argmax_semantic_gm": [
+        "O3-mini",
+        28.68
+      ],
+      "predicted": "arg-max moves to another model on both splits",
+      "behaves_as_predicted": true
+    },
+    "B_value_perturbation": {
+      "description": "set Claude syntax GM to (runner-up - 0.01)",
+      "runner_up_syntax_gm": 30.92,
+      "argmax_syntax_gm": [
+        "Doubao-Seed-1.6",
+        30.92
+      ],
+      "predicted": "arg-max flips away from Claude",
+      "behaves_as_predicted": true
+    },
+    "C_metric_and_pool_swap": {
+      "description": "rank by EM instead of GM with the paper's SFT rows added to the pool",
+      "argmax_syntax_em": [
+        "+ DM-SFT",
+        27.27
+      ],
+      "predicted": "a fine-tuned 7B row overtakes Claude, i.e. 'best' is metric/pool specific",
+      "behaves_as_predicted": true
+    },
+    "observation_em_within_24_model_pool": {
+      "argmax_syntax_em": [
+        "Claude-4-Sonnet",
+        23.88
+      ],
+      "argmax_semantic_em": [
+        "Claude-4-Sonnet",
+        31.78
+      ],
+      "note": "Claude is also the EM arg-max among the 24 evaluated LLMs; an earlier prediction that the EM swap alone would flip the winner was WRONG and is recorded here rather than dropped."
+    },
+    "mutation_behaves_as_predicted": true
+  },
+  "verdict": "verified",
+  "scope": "paper-internal consistency only; the 985 benchmark tasks, the model outputs and the Graph-Match scorer are not public, so the scores cannot be independently re-measured"
+}

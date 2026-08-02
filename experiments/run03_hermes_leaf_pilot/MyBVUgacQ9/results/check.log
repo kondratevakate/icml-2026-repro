@@ -1,0 +1,47 @@
+claim 1 (Theorem 3.1) -- verified
+  PASS  c1.n_runs == 450 (450)
+  PASS  c1.all runs converged (res < 1e-8) (450/450)
+  PASS  c1.all runs feasible (viol < 1e-8) (450/450)
+  PASS  c1.max final residual = 3.85e-16 (<1e-14) (3.846e-16)
+  PASS  c1.max final constraint violation = 2.22e-16 (<1e-14) (2.220e-16)
+  PASS  c1.o(1/k) witness max_last_k_gap = 0.0 (0.000e+00)
+  PASS  c1.k*gap < 1e-6 in 450/450 runs (450)
+  PASS  c1.max blockwise-optimality error = 5.19e-10 (<1e-8) (5.192e-10)
+  PASS  c1.MUT-A iterates collapse to origin (max||x||=0.00e+00)
+  PASS  c1.MUT-A dual diverges to -inf (w <= -4000) (max w=-4000.0)
+  PASS  c1.MUT-A limit point infeasible (violation = 1.0) (min viol=1.000)
+  PASS  c1.MUT-B threshold value = 500 (500.0)
+  PASS  c1.MUT-B rho far below threshold still converges (worst res < 1e-12) (sufficient-not-necessary)
+claim 2 (Theorem 3.2 / eq. 4) -- verified
+  PASS  c2.||C||=0 reference contraction factor = 0.0588 (0.0588)
+  PASS  c2.worst factor over small-||C|| regime = 0.1111 (<0.2) (0.1111)
+  PASS  c2.all small-||C|| runs linear (factor < 0.999) 
+  PASS  c2.MUTATION ||C||=25 factor = 0.9981 (>=0.99) (0.9981)
+  PASS  c2.MUTATION ||C||=50 factor = 1.0004 (>=1: no contraction) and viol 7.7e-05 (1.0004, viol 7.7e-05)
+  PASS  c2.MUTATION arm loses linear rate 
+claim 3 (Theorem 3.3, polyhedral) -- verified
+  PASS  c3.all 4 polyhedral cells contract, worst residual factor = 0.2000 (<0.25) (0.2000)
+  PASS  c3.worst Theorem-3.3 gap factor = 0.0881 (<0.2) (0.0881)
+  PASS  c3.all 4 box constraints active at the limit (nonsmooth regime) 
+  PASS  c3.limit point passes local-minimum probe in every cell (0 failures) 
+  PASS  c3.MUTATION ||C||x10 -> residual factor 0.9858, gap factor 0.9977 (0.9858, 0.9977)
+  PASS  c3.MUTATION ||C||x50 -> residual factor 1.0006 (no contraction) (1.0006)
+claim 4 (Corollary 4.2) -- verified
+  PASS  c4.every quadratic coefficient of eq. 6 carries dt^3 exactly (rows: [[], [], [3], [3]])
+  PASS  c4.symbolic vs numeric model agreement = 2.78e-17 (<1e-12) (2.78e-17)
+  PASS  c4.fitted exponent in ||C|| ~ dt^p equals 3.0000 (3.0000)
+  PASS  c4.ADMM on eq. 6 linear for every dt in [0.002, 0.1] (worst factor 0.7143) (max 0.7143)
+  PASS  c4.all eq.-6 runs feasible (violation < 1e-14) (4.5e-17)
+  PASS  c4.MUTATION dt-independent nonlinearity (||C||=5.477) kills the linear rate (factor 0.9997 at every dt) (min factor 0.9997, ||C||=5.477)
+claim 5 (Figures 2 and 4) -- inconclusive
+  PASS  c5.q=0.5 already linear, best factor 0.2296 (0.2296)
+  PASS  c5.q=2 already linear, best factor 0.0475 (0.0475)
+  PASS  c5.all 5 tested q < 10 are already linear (no sublinear regime found) (5/5)
+  PASS  c5.median best factor below q=10 (0.0588) is NOT worse than at/above q=10 (0.0287) by any order of magnitude (0.0588 vs 0.0287)
+  PASS  c5.baseline comparison (Fig. 4) declared inconclusive, no numbers fabricated 
+claim 6 (Figures 5 and 6) -- inconclusive
+  PASS  c6.verdict is inconclusive 
+  PASS  c6.hardware parts marked not reproducible 
+
+38 assertions passed, 0 failed
+ALL LOGBOOK NUMBERS REPRODUCED FROM results/*.json

@@ -1,0 +1,36 @@
+{
+  "claim": 4,
+  "command": ".venv/bin/python verify_claim4.py",
+  "source": "Table 1 (Sec 4); Sec 4 'Complexity of SQL Scripts'",
+  "observed": {
+    "Squirrel-Syntax_tokens": 496.9,
+    "Squirrel-Semantic_tokens": 425.93,
+    "Squirrel-Syntax_func": 21.62,
+    "Squirrel-Semantic_func": 17.34,
+    "max_tokens_among_prior_benchmarks": 154.63
+  },
+  "checks": {
+    "syntax_tokens_ge_420": true,
+    "semantic_tokens_ge_420": true,
+    "semantic_func_is_17.34": true,
+    "syntax_func_is_21.62": true,
+    "func_range_17.34_to_21.62": true
+  },
+  "all_checks_pass": true,
+  "mutation_test": {
+    "description": "apply the '>=420 tokens and >=17 functions' predicate to every prior benchmark row",
+    "per_benchmark": {
+      "Spider 1.0 (Yu et al., 2018)": null,
+      "Spider 2.0-snow (Lei et al., 2025)": false,
+      "Spider 2.0-lite (Lei et al., 2025)": false,
+      "BIRD (Li et al., 2024)": null,
+      "BIRD-Critic-open (Li et al., 2026)": false,
+      "BIRD-Critic-postgresql (Li et al., 2026)": false,
+      "BIRD-Critic-flash (Li et al., 2026)": false
+    },
+    "predicted": "no prior benchmark satisfies it",
+    "mutation_behaves_as_predicted": true
+  },
+  "verdict": "verified",
+  "scope": "paper-internal consistency; the SQL corpus is not public so token/function counts cannot be independently recomputed"
+}

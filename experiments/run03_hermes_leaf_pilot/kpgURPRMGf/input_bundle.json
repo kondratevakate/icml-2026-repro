@@ -1,0 +1,13 @@
+{
+  "orid": "kpgURPRMGf",
+  "title": "The Flexibility Trap: Rethinking the Value of Arbitrary Order in Diffusion Language Models",
+  "openreview": "https://openreview.net/forum?id=kpgURPRMGf",
+  "arxiv": "2601.15165",
+  "anchored_claims": [
+    "Arbitrary-order decoding has flatter Pass@ scaling than autoregressive order on reasoning benchmarks, indicating lower reachable reasoning potential under practical sampling (Figure 3)",
+    "Problems solved by arbitrary-order decoding are largely a subset of those solved by autoregressive-order decoding in the Pass@ solution-coverage analysis (Figure 4)",
+    "The paper identifies entropy degradation at logical-fork tokens as a mechanism by which arbitrary-order decoding bypasses hard decisions and narrows exploration (Figure 7)",
+    "JustGRPO reaches 89.1% GSM8K accuracy with standard GRPO on LLaDA-Instruct while avoiding diffusion-specific RL adaptations (Table 1)",
+    "JustGRPO-trained models remain compatible with parallel decoding, with larger accuracy gains at higher parallel token counts than the original instruct model (Figure 8)"
+  ]
+}

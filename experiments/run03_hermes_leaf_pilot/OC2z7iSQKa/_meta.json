@@ -1,0 +1,13 @@
+{
+  "area": "Applications",
+  "disputed": true,
+  "space": "jomasego/repro-tau2-bench",
+  "hw_signals": [
+    "gpu",
+    "cpu",
+    "minutes",
+    "a100",
+    "hours"
+  ],
+  "n_claims": 5
+}

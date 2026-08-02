@@ -1,0 +1,168 @@
+{
+  "command": ".venv/bin/python verify_claim2.py",
+  "claim": "Corollary 4.10 (Section 4.3)",
+  "cases": [
+    {
+      "name": "paper_MCAR_low_r1c1",
+      "p": [
+        0.115,
+        0.01,
+        0.025,
+        0.05,
+        0.8
+      ],
+      "d_index": 1,
+      "r": 1,
+      "c": 1,
+      "n_configs_enumerated": 30,
+      "P_snn_exact": 1e-06,
+      "P_snn_thm48": 1.0000000000000002e-06,
+      "P_msnn_exact": 0.00643225,
+      "P_msnn_thm48": 0.006432250000000001,
+      "rel_err_snn": 2.1175823681357506e-16,
+      "rel_err_msnn": 2.696915505424706e-16,
+      "ratio_exact": 6432.25,
+      "ratio_corollary_4_10": 6432.25,
+      "rel_err_ratio": 0.0,
+      "mutation_single_level_ratio": 1.0
+    },
+    {
+      "name": "paper_MCAR_low_r2c1",
+      "p": [
+        0.115,
+        0.01,
+        0.025,
+        0.05,
+        0.8
+      ],
+      "d_index": 1,
+      "r": 2,
+      "c": 1,
+      "n_configs_enumerated": 150,
+      "P_snn_exact": 1e-10,
+      "P_snn_thm48": 1.0000000000000002e-10,
+      "P_msnn_exact": 5.12141625e-05,
+      "P_msnn_thm48": 5.121416250000001e-05,
+      "rel_err_snn": 1.2924697071141055e-16,
+      "rel_err_msnn": 1.3231229892775073e-16,
+      "ratio_exact": 512141.625,
+      "ratio_corollary_4_10": 512141.625,
+      "rel_err_ratio": 0.0,
+      "mutation_single_level_ratio": 1.0
+    },
+    {
+      "name": "paper_MCAR_low_r1c2",
+      "p": [
+        0.115,
+        0.01,
+        0.025,
+        0.05,
+        0.8
+      ],
+      "d_index": 1,
+      "r": 1,
+      "c": 2,
+      "n_configs_enumerated": 630,
+      "P_snn_exact": 1e-10,
+      "P_snn_thm48": 1.0000000000000002e-10,
+      "P_msnn_exact": 0.00413738400625,
+      "P_msnn_thm48": 0.0041373840062500005,
+      "rel_err_snn": 1.2924697071141055e-16,
+      "rel_err_msnn": 2.0964013412295127e-16,
+      "ratio_exact": 41373840.06249999,
+      "ratio_corollary_4_10": 41373840.0625,
+      "rel_err_ratio": 1.8007950399742588e-16,
+      "mutation_single_level_ratio": 1.0
+    },
+    {
+      "name": "paper_MCAR_med_r2c2",
+      "p": [
+        0.115,
+        0.01,
+        0.025,
+        0.05,
+        0.8
+      ],
+      "d_index": 2,
+      "r": 2,
+      "c": 2,
+      "n_configs_enumerated": 15650,
+      "P_snn_exact": 1.52587890625e-13,
+      "P_snn_thm48": 1.5258789062500008e-13,
+      "P_msnn_exact": 0.0001639306525360254,
+      "P_msnn_thm48": 0.00016393065253602547,
+      "rel_err_snn": 4.963083675318163e-16,
+      "rel_err_msnn": 4.960339123797666e-16,
+      "ratio_exact": 1074335924.460096,
+      "ratio_corollary_4_10": 1074335924.460096,
+      "rel_err_ratio": 0.0,
+      "mutation_single_level_ratio": 1.0
+    },
+    {
+      "name": "uniform3_r2c2",
+      "p": [
+        0.4,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "d_index": 1,
+      "r": 2,
+      "c": 2,
+      "n_configs_enumerated": 4112,
+      "P_snn_exact": 2.56e-06,
+      "P_snn_thm48": 2.5600000000000013e-06,
+      "P_msnn_exact": 2.304e-05,
+      "P_msnn_thm48": 2.3040000000000017e-05,
+      "rel_err_snn": 4.963083675318163e-16,
+      "rel_err_msnn": 7.352716556026907e-16,
+      "ratio_exact": 9.0,
+      "ratio_corollary_4_10": 9.0,
+      "rel_err_ratio": 0.0,
+      "mutation_single_level_ratio": 1.0
+    },
+    {
+      "name": "skew3_r3c2",
+      "p": [
+        0.2,
+        0.05,
+        0.15,
+        0.6
+      ],
+      "d_index": 1,
+      "r": 3,
+      "c": 2,
+      "n_configs_enumerated": 65600,
+      "P_snn_exact": 4.8828125e-15,
+      "P_snn_thm48": 4.882812500000003e-15,
+      "P_msnn_exact": 2.11615783203125e-06,
+      "P_msnn_thm48": 2.1161578320312497e-06,
+      "rel_err_snn": 6.462348535570525e-16,
+      "rel_err_msnn": 2.0013463420194267e-16,
+      "ratio_exact": 433389124.00000006,
+      "ratio_corollary_4_10": 433389123.9999995,
+      "rel_err_ratio": 1.2377832605197453e-15,
+      "mutation_single_level_ratio": 1.0
+    }
+  ],
+  "monte_carlo": {
+    "p": [
+      0.4,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "r": 2,
+    "c": 1,
+    "m": 9,
+    "n": 9,
+    "d_index": 1,
+    "n_seeds": 4000,
+    "mean_feasible_snn_tuples": 0.06125,
+    "se_snn": 0.00475712801401596,
+    "pred_snn": 0.07168000000000001,
+    "mean_feasible_msnn_tuples": 0.1965,
+    "se_msnn": 0.009460143290551653,
+    "pred_msnn": 0.21504
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "DineshAI/ZVyd4r9Xl5",
+  "hw_signals": [
+    "cpu",
+    "seconds",
+    "second",
+    "a100",
+    "gpu",
+    "numpy",
+    "scipy"
+  ],
+  "n_claims": 6
+}

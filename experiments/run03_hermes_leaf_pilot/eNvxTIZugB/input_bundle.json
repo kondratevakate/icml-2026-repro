@@ -1,0 +1,14 @@
+{
+  "orid": "eNvxTIZugB",
+  "title": "DAL: A Practical Prior-Free Black-Box Framework for Piecewise Stationary Bandits",
+  "openreview": "https://openreview.net/forum?id=eNvxTIZugB",
+  "arxiv": "2501.19401",
+  "anchored_claims": [
+    "DAL (Detection Augmented bandit) is presented as Algorithm 1 (Section 3), a black-box framework that pairs any stationary bandit algorithm with a change detector to handle piecewise stationary environments.",
+    "Theorem 1 (Section 4) proves DAL achieves an order-optimal O~(sqrt(N_T * T)) regret bound, where N_T is the number of change-points over horizon T.",
+    "Table 1 (Section 4) shows DAL combined with LinUCB matches the state-of-the-art d*sqrt(N_T*T) regret bound for piecewise-stationary linear bandits, and DAL with GLM-UCB attains the same rate for generalized linear bandits.",
+    "For piecewise-stationary self-concordant bandits, DAL improves the regret bound from the prior d^(2/3) T^(2/3) N_T^(1/3) rate to d*sqrt(N_T*T) (Table 1, Section 4).",
+    "DAL is empirically compared against MASTER (Wei & Luo, 2021), ADA-OPKB (Hong et al., 2023), and WeightUCB (Wang et al., 2023) in piecewise-stationary environments (Section 5.1, Figures 1-3) and drifting environments (Section 5.2, Figures 4-5).",
+    "The regret analysis in Appendix A.1 decomposes total regret into false-alarm cost, detection latency, the base stationary algorithm's regret, and forced-exploration cost."
+  ]
+}

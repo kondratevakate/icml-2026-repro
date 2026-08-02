@@ -1,0 +1,92 @@
+NN seed0: mse=0.001761 vmax=0.201455 (259s)
+NN seed1: mse=0.000638 vmax=0.100016 (493s)
+NN seed2: mse=0.000958 vmax=0.084629 (729s)
+NN seed3: mse=0.002495 vmax=0.231337 (945s)
+NN seed4: mse=0.014488 vmax=0.603303 (1337s)
+HardNet seed0: mse=0.000873 vmax=0.131719 (2535s)
+HardNet seed1: mse=0.000560 vmax=0.075686 (3154s)
+HardNet seed2: mse=0.001886 vmax=0.143605 (3622s)
+HardNet seed3: mse=0.001739 vmax=0.184509 (4143s)
+HardNet seed4: mse=0.004188 vmax=0.228809 (4535s)
+CAffNet-FF seed0: mse=0.006774 vmax=0.000000 (5406s)
+CAffNet-FF seed1: mse=0.001630 vmax=0.000000 (5916s)
+CAffNet-FF seed2: mse=0.001141 vmax=0.000000 (6373s)
+CAffNet-FF seed3: mse=0.002311 vmax=0.000000 (6649s)
+CAffNet-FF seed4: mse=0.003372 vmax=0.000000 (6689s)
+CAffNet-TF seed0: mse=0.000313 vmax=0.000000 (6765s)
+CAffNet-TF seed1: mse=0.002088 vmax=0.000000 (6846s)
+CAffNet-TF seed2: mse=0.000622 vmax=0.000000 (7133s)
+CAffNet-TF seed3: mse=0.000350 vmax=0.000000 (7946s)
+CAffNet-TF seed4: mse=0.001594 vmax=0.000000 (10123s)
+CAffNet-TF-nolayer seed0: mse=0.001414 vmax=0.229451 (13691s)
+CAffNet-TF-nolayer seed1: mse=0.003309 vmax=0.165878 (13948s)
+CAffNet-TF-nolayer seed2: mse=0.001110 vmax=0.107944 (14205s)
+CAffNet-TF-nolayer seed3: mse=0.005329 vmax=0.315155 (14992s)
+CAffNet-TF-nolayer seed4: mse=0.002894 vmax=0.177526 (15269s)
+{
+  "claim": 4,
+  "claim_text": "CAffNet-TF achieves 73.33% MSE reduction vs the soft-constrained NN with zero constraint violations (Sec 4.1, Table 2)",
+  "source": "Section 4.1, Table 2; setup Appendix D.1",
+  "command": ".venv/bin/python verify_claim4.py --epochs 8000 --seeds 5",
+  "epochs": 8000,
+  "seeds": 5,
+  "paper_table2": {
+    "NN": 0.0045,
+    "HardNet": 0.0037,
+    "CAffNet-FF": 0.002,
+    "CAffNet-TF": 0.0012
+  },
+  "paper_reduction_pct": 73.33,
+  "paper_reduction_pct_recomputed": 73.33333333333334,
+  "aggregate": {
+    "NN": {
+      "mse": 0.004068023292347789,
+      "viol_max": 0.24414825439453125,
+      "viol_mean": 0.0013534180703572928,
+      "viol_pct_samples": 26.049999618530272,
+      "T_train_ms": 33.30019687414169,
+      "T_test_ms": 28.04126739501953,
+      "mse_std": 0.005250139420049549
+    },
+    "HardNet": {
+      "mse": 0.0018492587492801248,
+      "viol_max": 0.15286564826965332,
+      "viol_mean": 0.000736968731507659,
+      "viol_pct_samples": 25.900000381469727,
+      "T_train_ms": 79.94261464476585,
+      "T_test_ms": 61.21363639831543,
+      "mse_std": 0.0012726362652026998
+    },
+    "CAffNet-FF": {
+      "mse": 0.0030457738786935805,
+      "viol_max": 0.0,
+      "viol_mean": 0.0,
+      "viol_pct_samples": 0.0,
+      "T_train_ms": 53.84147514700889,
+      "T_test_ms": 27.075529098510742,
+      "mse_std": 0.002008835386389401
+    },
+    "CAffNet-TF": {
+      "mse": 0.000993488630047068,
+      "viol_max": 0.0,
+      "viol_mean": 0.0,
+      "viol_pct_samples": 0.0,
+      "T_train_ms": 85.843057179451,
+      "T_test_ms": 77.9050350189209,
+      "mse_std": 0.0007173944653999999
+    },
+    "CAffNet-TF-nolayer": {
+      "mse": 0.0028114043874666096,
+      "viol_max": 0.19919078350067138,
+      "viol_mean": 0.0011043015983887017,
+      "viol_pct_samples": 25.550000381469726,
+      "T_train_ms": 128.61817412376405,
+      "T_test_ms": 84.34548377990723,
+      "mse_std": 0.0015125360445057603
+    }
+  },
+  "reproduced_reduction_pct_TF_vs_NN": 75.57809878041054,
+  "reproduced_reduction_pct_FF_vs_NN": 25.128897751817814,
+  "mutation_TF_nolayer_viol_max": 0.19919078350067138,
+  "elapsed_s": 15269.018192529678
+}

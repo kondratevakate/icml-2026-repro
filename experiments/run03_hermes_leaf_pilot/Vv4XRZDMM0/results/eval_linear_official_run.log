@@ -1,0 +1,28 @@
+NumPy version: 2.5.1
+MDCP available: True
+
+======================================================================
+Starting trial 1 with seed 34567
+======================================================================
+Saved density snapshot to ../eval_out/data_density/evaluation_compact_rand_avg/classification/trial01_seed34567.npz
+Saved density snapshot to ../eval_out/data_density/evaluation_compact_rand_avg/regression/trial01_seed34567.npz
+
+Classification data summary:
+  Total samples: 6000
+  Classes: [np.int64(0), np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5)]
+  Class distributions: [array([ 97, 119, 328, 457, 380, 619]), array([120, 999,   1, 507, 242, 131]), array([370, 852, 137,  48,  14, 579])]
+
+Regression data summary:
+  Total samples: 6000
+  Source 1: mean=-3.95, std=3.67
+  Source 2: mean=-1.37, std=2.03
+  Source 3: mean=-0.90, std=4.03
+
+Splitting data into train/calibration/test sets...
+Classification split - Train: 2250 (37.5%), Cal: 750 (12.5%), Test: 3000 (50.0%)
+Regression split - Train: 2250 (37.5%), Cal: 750 (12.5%), Test: 3000 (50.0%)
+
+=== MDCP Classification Setup ===
+  Source 0: 759 samples, classes=6
+  Source 1: 760 samples, classes=5
+  Source 2: 731 samples, classes=6

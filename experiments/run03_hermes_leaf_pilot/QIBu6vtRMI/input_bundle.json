@@ -1,0 +1,13 @@
+{
+  "orid": "QIBu6vtRMI",
+  "title": "Exact and Approximate Algorithms for Polytree Learning",
+  "openreview": "https://openreview.net/forum?id=QIBu6vtRMI",
+  "arxiv": "2605.03622",
+  "anchored_claims": [
+    "The exact algorithm for finding an optimal polytree with bounded in-degree k runs in time O((2+epsilon)^n * |I|^O(1)) for arbitrarily small epsilon > 0 (Theorem 3.3).",
+    "This improves on the previously fastest known exact algorithm, which runs in time O(3^n * |I|^O(1)) matching Gruttemeier et al. (2021a) (Theorem 3.1).",
+    "A polynomial-time algorithm achieves a (k+1)-approximation to the optimal polytree score for arbitrary scoring functions with in-degree bound k, and this approximation ratio is shown near-optimal under the Unique Games Conjecture (Theorem 4.1).",
+    "For additive scoring functions, a polynomial-time algorithm achieves a 2-approximation to the optimal polytree score (Theorem 4.2).",
+    "The near-tightness of the (2+epsilon)^n exact-algorithm running time is established via a reduction from k'-Set Cover, showing no improvement below (2+epsilon)^n is possible under standard complexity assumptions (Theorem 3.5)."
+  ]
+}

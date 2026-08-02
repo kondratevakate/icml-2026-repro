@@ -1,0 +1,12 @@
+{
+  "area": "General Machine Learning",
+  "disputed": true,
+  "space": "snaykey/repro-kernel-dataset-closeness",
+  "hw_signals": [
+    "cpu",
+    "gpu",
+    "numpy",
+    "scipy"
+  ],
+  "n_claims": 6
+}

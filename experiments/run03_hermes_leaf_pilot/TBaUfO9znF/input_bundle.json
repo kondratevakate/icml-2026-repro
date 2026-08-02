@@ -1,0 +1,14 @@
+{
+  "orid": "TBaUfO9znF",
+  "title": "On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models",
+  "openreview": "https://openreview.net/forum?id=TBaUfO9znF",
+  "arxiv": "2512.07783",
+  "anchored_claims": [
+    "The paper uses a controlled synthetic reasoning framework with explicit dependency graphs, contextual templates, and process-verified evaluation (Figure 2).",
+    "RL yields extrapolative pass@128 gains only when the post-training tasks sit near the model's edge of competence; gains vanish when tasks are already covered or too far out-of-distribution (Figure 1; Figure 3).",
+    "Contextual generalization requires minimal but nonzero pre-training exposure to long-tail contexts; exposure of at least about 1% enables RL to reinforce transfer (Figure 1; Figure 4).",
+    "Mid-training plus RL outperforms RL alone on OOD-hard reasoning under fixed compute, with reported +10.8% gains (Figure 1; Figure 6).",
+    "Process-aware reward compositions reduce shortcut exploitation and improve reasoning performance relative to pure outcome rewards (Figure 7).",
+    "Training dynamics show reward stagnates when RL data are too easy or too hard, but improves when tasks are calibrated to the edge of competence (Figure 11)."
+  ]
+}

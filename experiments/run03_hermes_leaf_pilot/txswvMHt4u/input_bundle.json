@@ -1,0 +1,13 @@
+{
+  "orid": "txswvMHt4u",
+  "title": "Hierarchical Successor Representation for Robust Transfer",
+  "openreview": "https://openreview.net/forum?id=txswvMHt4u",
+  "arxiv": "2602.12753",
+  "anchored_claims": [
+    "The Hierarchical Successor Representation (HSR) Bellman operator is proven to be a contraction mapping with respect to the max-norm with contraction coefficient equal to the discount factor γ, guaranteeing convergence of iterative HSR computation (Theorem 3.1, Section 3).",
+    "In the Four-Room gridworld transfer experiment, HSR shows significantly higher transfer efficiency than baseline successor representation (SR) methods (p=0.008) and about 40% lower representation change (instability) under task shifts (p<0.001) (Figure 2).",
+    "HSR decomposed via non-negative matrix factorization (HSR-NMF) outperforms all SR-based baselines, including RW-SR+SVD, eSR+SVD, eSR+NMF, and HSR+SVD, in sample-efficient transfer learning on the G1 navigation task (Wilcoxon signed-rank test p<10⁻⁹) (Figure 3).",
+    "HSR-NMF produces a sparse code that uniformly tiles the state space and shows elevated activation at critical topological bottleneck states, while matching the reconstruction efficiency of SR-SVD (Figure 4).",
+    "In procedurally generated mazes with pure exploration over 10^5 interaction steps, HSR-SPIE maintains high state coverage as maze size increases, whereas SR-SPIE coverage degrades drastically in larger mazes (Figure 5)."
+  ]
+}

@@ -1,0 +1,351 @@
+seed 0 n 250
+seed 0 n 500
+seed 0 n 1000
+seed 0 n 2000
+seed 0 n 5000
+seed 1 n 250
+seed 1 n 500
+seed 1 n 1000
+seed 1 n 2000
+seed 1 n 5000
+seed 2 n 250
+seed 2 n 500
+seed 2 n 1000
+seed 2 n 2000
+seed 2 n 5000
+seed 3 n 250
+seed 3 n 500
+seed 3 n 1000
+seed 3 n 2000
+seed 3 n 5000
+seed 4 n 250
+seed 4 n 500
+seed 4 n 1000
+seed 4 n 2000
+seed 4 n 5000
+seed 5 n 250
+seed 5 n 500
+seed 5 n 1000
+seed 5 n 2000
+seed 5 n 5000
+seed 6 n 250
+seed 6 n 500
+seed 6 n 1000
+seed 6 n 2000
+seed 6 n 5000
+seed 7 n 250
+seed 7 n 500
+seed 7 n 1000
+seed 7 n 2000
+seed 7 n 5000
+seed 8 n 250
+seed 8 n 500
+seed 8 n 1000
+seed 8 n 2000
+seed 8 n 5000
+seed 9 n 250
+seed 9 n 500
+seed 9 n 1000
+seed 9 n 2000
+seed 9 n 5000
+{
+  "alpha": 0.1,
+  "d": 8,
+  "sizes": [
+    250,
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "theoretical_L1_mean_over_seeds": 0.09493760190785615,
+  "theoretical_L2_mean_over_seeds": 0.012008103915903717,
+  "summary": {
+    "n=250": {
+      "L1_ERT": {
+        "not_conditional_mean": 0.039279999999999995,
+        "not_conditional_std": 0.026184453402734988,
+        "conditional_mean": -0.00480000000000001,
+        "conditional_std": 0.01856965266234132,
+        "separation": 0.04408000000000001
+      },
+      "L2_ERT": {
+        "not_conditional_mean": -0.012000667324727229,
+        "not_conditional_std": 0.013624763459983523,
+        "conditional_mean": -0.02072684330249915,
+        "conditional_std": 0.006798650604462014,
+        "separation": 0.00872617597777192
+      },
+      "CovGap_k10": {
+        "not_conditional_mean": 0.04562861110607115,
+        "not_conditional_std": 0.011524900762700269,
+        "conditional_mean": 0.04942439583292863,
+        "conditional_std": 0.010813731680206284,
+        "separation": -0.0037957847268574804
+      },
+      "CovGap_k5": {
+        "not_conditional_mean": 0.03397318626491689,
+        "not_conditional_std": 0.010861508637128436,
+        "conditional_mean": 0.036953972432900495,
+        "conditional_std": 0.015850385069202316,
+        "separation": -0.0029807861679836054
+      },
+      "CovGap_k20": {
+        "not_conditional_mean": 0.08106080773390473,
+        "not_conditional_std": 0.01791899685257841,
+        "conditional_mean": 0.07970510344059105,
+        "conditional_std": 0.017782412300890085,
+        "separation": 0.0013557042933136781
+      },
+      "L1_ERT_partitionwise_mutation": {
+        "not_conditional_mean": 0.004000000000000001,
+        "not_conditional_std": 0.022696607676038285,
+        "conditional_mean": 0.0011200000000000008,
+        "conditional_std": 0.018640858349335744,
+        "separation": 0.00288
+      },
+      "marginal_coverage": {
+        "not_conditional_mean": 0.9016,
+        "not_conditional_std": 0.019283153269110336,
+        "conditional_mean": 0.892,
+        "conditional_std": 0.012649110640673528,
+        "separation": 0.009599999999999942
+      }
+    },
+    "n=500": {
+      "L1_ERT": {
+        "not_conditional_mean": 0.03423999999999999,
+        "not_conditional_std": 0.01745137243886566,
+        "conditional_mean": 0.0022399999999999894,
+        "conditional_std": 0.01732992787059427,
+        "separation": 0.032
+      },
+      "L2_ERT": {
+        "not_conditional_mean": -0.007346834852483363,
+        "not_conditional_std": 0.0063092779403474296,
+        "conditional_mean": -0.013789043263451766,
+        "conditional_std": 0.005892565815505836,
+        "separation": 0.006442208410968403
+      },
+      "CovGap_k10": {
+        "not_conditional_mean": 0.036588186705252455,
+        "not_conditional_std": 0.009469804686036901,
+        "conditional_mean": 0.03699474800564658,
+        "conditional_std": 0.008757760544529432,
+        "separation": -0.00040656130039412597
+      },
+      "CovGap_k5": {
+        "not_conditional_mean": 0.026335295124735224,
+        "not_conditional_std": 0.008568488271693896,
+        "conditional_mean": 0.02615770083823104,
+        "conditional_std": 0.010461200676831952,
+        "separation": 0.00017759428650418463
+      },
+      "CovGap_k20": {
+        "not_conditional_mean": 0.05068590044858031,
+        "not_conditional_std": 0.015638663573590082,
+        "conditional_mean": 0.046978468402667874,
+        "conditional_std": 0.010873411999636972,
+        "separation": 0.003707432045912437
+      },
+      "L1_ERT_partitionwise_mutation": {
+        "not_conditional_mean": 0.0027399999999999994,
+        "not_conditional_std": 0.0103765312123079,
+        "conditional_mean": 0.002379999999999999,
+        "conditional_std": 0.012996753440763582,
+        "separation": 0.0003600000000000005
+      },
+      "marginal_coverage": {
+        "not_conditional_mean": 0.8968,
+        "not_conditional_std": 0.01737124060048679,
+        "conditional_mean": 0.9006000000000001,
+        "conditional_std": 0.012682271089990163,
+        "separation": -0.0038000000000000256
+      }
+    },
+    "n=1000": {
+      "L1_ERT": {
+        "not_conditional_mean": 0.02517999999999999,
+        "not_conditional_std": 0.009531190901456123,
+        "conditional_mean": -4.000000000001034e-05,
+        "conditional_std": 0.007364129276431803,
+        "separation": 0.02522
+      },
+      "L2_ERT": {
+        "not_conditional_mean": -0.009151399215319215,
+        "not_conditional_std": 0.003083444877685745,
+        "conditional_mean": -0.01063800848172174,
+        "conditional_std": 0.0024806838594660383,
+        "separation": 0.0014866092664025249
+      },
+      "CovGap_k10": {
+        "not_conditional_mean": 0.024913136398494275,
+        "not_conditional_std": 0.0063147594432532315,
+        "conditional_mean": 0.02301951253908021,
+        "conditional_std": 0.004177722221176486,
+        "separation": 0.0018936238594140647
+      },
+      "CovGap_k5": {
+        "not_conditional_mean": 0.018075183458688717,
+        "not_conditional_std": 0.005756824878241701,
+        "conditional_mean": 0.016147231629721776,
+        "conditional_std": 0.00454474501651321,
+        "separation": 0.001927951828966941
+      },
+      "CovGap_k20": {
+        "not_conditional_mean": 0.036944042959267356,
+        "not_conditional_std": 0.0076803084923211225,
+        "conditional_mean": 0.032691233793642124,
+        "conditional_std": 0.004951542179282155,
+        "separation": 0.004252809165625232
+      },
+      "L1_ERT_partitionwise_mutation": {
+        "not_conditional_mean": 0.0033699999999999993,
+        "not_conditional_std": 0.008066603994246899,
+        "conditional_mean": -0.0063100000000000005,
+        "conditional_std": 0.01049842369120241,
+        "separation": 0.00968
+      },
+      "marginal_coverage": {
+        "not_conditional_mean": 0.8997000000000002,
+        "not_conditional_std": 0.00718401002226473,
+        "conditional_mean": 0.9004000000000001,
+        "conditional_std": 0.006873136110975839,
+        "separation": -0.0006999999999999229
+      }
+    },
+    "n=2000": {
+      "L1_ERT": {
+        "not_conditional_mean": 0.039380000000000005,
+        "not_conditional_std": 0.007251041304529991,
+        "conditional_mean": -0.0021500000000000087,
+        "conditional_std": 0.004856181627575311,
+        "separation": 0.04153000000000001
+      },
+      "L2_ERT": {
+        "not_conditional_mean": -0.0038126878684712853,
+        "not_conditional_std": 0.0030794465607153734,
+        "conditional_mean": -0.009333110332287248,
+        "conditional_std": 0.0010258662481297586,
+        "separation": 0.005520422463815964
+      },
+      "CovGap_k10": {
+        "not_conditional_mean": 0.020252159017962228,
+        "not_conditional_std": 0.005890302629095214,
+        "conditional_mean": 0.01573866021340579,
+        "conditional_std": 0.0037271979703270876,
+        "separation": 0.004513498804556437
+      },
+      "CovGap_k5": {
+        "not_conditional_mean": 0.018584179673963235,
+        "not_conditional_std": 0.006868489250071723,
+        "conditional_mean": 0.00935460766930661,
+        "conditional_std": 0.0024746246822398683,
+        "separation": 0.009229572004656626
+      },
+      "CovGap_k20": {
+        "not_conditional_mean": 0.02811073145719472,
+        "not_conditional_std": 0.004287727058492648,
+        "conditional_mean": 0.024012103242465242,
+        "conditional_std": 0.00465048339383481,
+        "separation": 0.004098628214729477
+      },
+      "L1_ERT_partitionwise_mutation": {
+        "not_conditional_mean": 0.006895000000000001,
+        "not_conditional_std": 0.00890540425808958,
+        "conditional_mean": -0.0036849999999999995,
+        "conditional_std": 0.007657383691575081,
+        "separation": 0.01058
+      },
+      "marginal_coverage": {
+        "not_conditional_mean": 0.89645,
+        "not_conditional_std": 0.013222045983886157,
+        "conditional_mean": 0.8984,
+        "conditional_std": 0.00460868744872117,
+        "separation": -0.0019500000000000073
+      }
+    },
+    "n=5000": {
+      "L1_ERT": {
+        "not_conditional_mean": 0.06776399999999999,
+        "not_conditional_std": 0.006706664148442203,
+        "conditional_mean": 0.0018079999999999958,
+        "conditional_std": 0.005108418150464975,
+        "separation": 0.065956
+      },
+      "L2_ERT": {
+        "not_conditional_mean": 0.0038333248424602083,
+        "not_conditional_std": 0.0018320132757610027,
+        "conditional_mean": -0.005012520278845899,
+        "conditional_std": 0.0006675875132103798,
+        "separation": 0.008845845121306107
+      },
+      "CovGap_k10": {
+        "not_conditional_mean": 0.015781677327942313,
+        "not_conditional_std": 0.0028534791197045778,
+        "conditional_mean": 0.010321626874727784,
+        "conditional_std": 0.0017543740418945557,
+        "separation": 0.005460050453214529
+      },
+      "CovGap_k5": {
+        "not_conditional_mean": 0.012339650951968392,
+        "not_conditional_std": 0.00467844736136476,
+        "conditional_mean": 0.007296879139853959,
+        "conditional_std": 0.0022435208047499847,
+        "separation": 0.005042771812114433
+      },
+      "CovGap_k20": {
+        "not_conditional_mean": 0.019709616124494966,
+        "not_conditional_std": 0.003067210644064271,
+        "conditional_mean": 0.014339380354642514,
+        "conditional_std": 0.0030676224111469376,
+        "separation": 0.005370235769852452
+      },
+      "L1_ERT_partitionwise_mutation": {
+        "not_conditional_mean": 0.005620000000000001,
+        "not_conditional_std": 0.005646336865614734,
+        "conditional_mean": -0.0004920000000000006,
+        "conditional_std": 0.004315907320598995,
+        "separation": 0.006112000000000001
+      },
+      "marginal_coverage": {
+        "not_conditional_mean": 0.8969799999999999,
+        "not_conditional_std": 0.0066274882119850016,
+        "conditional_mean": 0.9021199999999998,
+        "conditional_std": 0.004329618920875127,
+        "separation": -0.005139999999999922
+      }
+    }
+  },
+  "checks": {
+    "theoretical_L1_not_conditional": 0.09493760190785615,
+    "theoretical_L1_conditional": 0.0,
+    "covgap_k10_at_5000_not_conditional": 0.015781677327942313,
+    "covgap_relative_error_vs_theory_at_5000": 0.8337678958516396,
+    "covgap_unaligned_at_5000_(rel_err>0.5)": true,
+    "covgap_separation_at_5000": 0.005460050453214529,
+    "covgap_nearly_identical_at_5000_(|sep|<0.02)": true,
+    "L1_ERT_separation_at_5000": 0.065956,
+    "L1_ERT_at_5000_not_conditional": 0.06776399999999999,
+    "L1_ERT_at_5000_conditional": 0.0018079999999999958,
+    "L1_ERT_separates_at_5000": true,
+    "L1_ERT_separation_at_500": 0.032,
+    "L1_ERT_already_separates_at_500": true,
+    "mutation_partitionwise_L1_ERT_separation_at_5000": 0.006112000000000001,
+    "mutation_degrades_separation": true
+  },
+  "all_checks_pass": true,
+  "command": ".venv/bin/python verify_claim3.py"
+}

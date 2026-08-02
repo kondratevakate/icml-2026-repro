@@ -1,0 +1,61 @@
+{
+  "orid": "vaApZm6MKM",
+  "title": "Conditional Coverage Diagnostics for Conformal Prediction",
+  "area": "General Machine Learning",
+  "n_anchored": 6,
+  "n_claim_files": 4,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": false,
+  "check_detail": "PASS: claim1 L1 max_table1_formula error\nTraceback (most recent call last):\n  File \"/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vaApZm6MKM/check_reproducibility.py\", line 28, in <module>\n    d3[\"results\"][\"convergence\"][\"n_points\"] <= 5000,\n    ~~^^^^^^^^^^^\nKeyError: 'results'\n",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 1.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 6,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "inconclusive",
+    "claim2": "inconclusive",
+    "claim3": "inconclusive",
+    "claim4": "inconclusive",
+    "claim5": "inconclusive",
+    "claim6": "inconclusive"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true,
+    "claim6": true
+  },
+  "per_claim_note": {
+    "claim1": "no resolvable verdict in artifact",
+    "claim3": "no resolvable verdict in artifact",
+    "claim4": "no resolvable verdict in artifact",
+    "claim6": "no resolvable verdict in artifact",
+    "claim2": "",
+    "claim5": ""
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)",
+    "check_reproducibility.py FAILED — red run must not score green"
+  ],
+  "tokens": {
+    "tokens_used": null,
+    "note": "no usage data"
+  }
+}

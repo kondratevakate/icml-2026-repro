@@ -1,0 +1,14 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "tomyimkc/repro-provably-data-driven-lagrangian-relaxation-for-mixed-integer-linear-programming",
+  "hw_signals": [
+    "second",
+    "numpy",
+    "cpu",
+    "minutes",
+    "scipy",
+    "gpu"
+  ],
+  "n_claims": 6
+}

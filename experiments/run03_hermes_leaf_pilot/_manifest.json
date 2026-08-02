@@ -1,0 +1,224 @@
+{
+  "Vv4XRZDMM0": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 6
+  },
+  "EhJ1R2N6sn": {
+    "status": "built",
+    "area": "Reinforcement Learning",
+    "n_claims": 4
+  },
+  "EzpJxPDqXB": {
+    "status": "skipped",
+    "reason": "no anchored claims in GT"
+  },
+  "20hdQQQrA4": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 5
+  },
+  "M78xLFN7EJ": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 5
+  },
+  "EeuLO2BjFN": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 5
+  },
+  "L0T4pmqkMg": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 5
+  },
+  "OC2z7iSQKa": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 5
+  },
+  "0xOj6kVMbb": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 5
+  },
+  "K1EPPO9t2c": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 6
+  },
+  "syG9I9ofd8": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 6
+  },
+  "gFPPTokv9C": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 6
+  },
+  "srIStBTJiu": {
+    "status": "built",
+    "area": "Reinforcement Learning",
+    "n_claims": 6
+  },
+  "zlnoC4YPQ1": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 5
+  },
+  "eNvxTIZugB": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "oiMjaUbSWp": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 4
+  },
+  "Gz0RAgBfid": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 6
+  },
+  "1KRpajnd6u": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 6
+  },
+  "GAQE4Wr53f": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 4
+  },
+  "txswvMHt4u": {
+    "status": "built",
+    "area": "Reinforcement Learning",
+    "n_claims": 5
+  },
+  "TBaUfO9znF": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 6
+  },
+  "ronJusfDvK": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 6
+  },
+  "QIBu6vtRMI": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 5
+  },
+  "32XNOcwH1z": {
+    "status": "built",
+    "area": "Reinforcement Learning",
+    "n_claims": 6
+  },
+  "TzQElzflxR": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 6
+  },
+  "vaApZm6MKM": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "dDkl5ZcyTl": {
+    "status": "built",
+    "area": "Probabilistic Methods",
+    "n_claims": 5
+  },
+  "OwLuqetJuB": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 6
+  },
+  "9CqZoRWpoc": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 6
+  },
+  "Oz335dV48X": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 6
+  },
+  "kpgURPRMGf": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 5
+  },
+  "zPjmtawzT8": {
+    "status": "skipped",
+    "reason": "no anchored claims in GT"
+  },
+  "okzQ1x71pS": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "S1TwW9szYm": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 5
+  },
+  "gQXkbQSZWS": {
+    "status": "built",
+    "area": "Deep Learning",
+    "n_claims": 6
+  },
+  "MyBVUgacQ9": {
+    "status": "built",
+    "area": "Optimization",
+    "n_claims": 6
+  },
+  "4ltyJqAHMg": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 4
+  },
+  "VLWuEuQkCF": {
+    "status": "skipped",
+    "reason": "no anchored claims in GT"
+  },
+  "ZVyd4r9Xl5": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "Km8yqb7SfN": {
+    "status": "built",
+    "area": "Reinforcement Learning",
+    "n_claims": 6
+  },
+  "dWuxvV7ekd": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "PVaFEuNnsD": {
+    "status": "built",
+    "area": "Applications",
+    "n_claims": 6
+  },
+  "r3h23Jv26a": {
+    "status": "built",
+    "area": "Social Aspects",
+    "n_claims": 5
+  },
+  "Ir6N7U5Kea": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 6
+  },
+  "DUmWdZetqZ": {
+    "status": "built",
+    "area": "General Machine Learning",
+    "n_claims": 5
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "claude_syntax_gm_is_36.46": true,
+  "claude_semantic_gm_is_32.17": true,
+  "claude_is_argmax_syntax_gm": true,
+  "claude_is_argmax_semantic_gm": true,
+  "n_evaluated_models_is_24": true
+}
+{
+  "A_leave_one_out": {
+    "description": "drop the Claude-4-Sonnet row from the pool",
+    "argmax_syntax_gm": [
+      "Doubao-Seed-1.6",
+      30.92
+    ],
+    "argmax_semantic_gm": [
+      "O3-mini",
+      28.68
+    ],
+    "predicted": "arg-max moves to another model on both splits",
+    "behaves_as_predicted": true
+  },
+  "B_value_perturbation": {
+    "description": "set Claude syntax GM to (runner-up - 0.01)",
+    "runner_up_syntax_gm": 30.92,
+    "argmax_syntax_gm": [
+      "Doubao-Seed-1.6",
+      30.92
+    ],
+    "predicted": "arg-max flips away from Claude",
+    "behaves_as_predicted": true
+  },
+  "C_metric_and_pool_swap": {
+    "description": "rank by EM instead of GM with the paper's SFT rows added to the pool",
+    "argmax_syntax_em": [
+      "+ DM-SFT",
+      27.27
+    ],
+    "predicted": "a fine-tuned 7B row overtakes Claude, i.e. 'best' is metric/pool specific",
+    "behaves_as_predicted": true
+  },
+  "observation_em_within_24_model_pool": {
+    "argmax_syntax_em": [
+      "Claude-4-Sonnet",
+      23.88
+    ],
+    "argmax_semantic_em": [
+      "Claude-4-Sonnet",
+      31.78
+    ],
+    "note": "Claude is also the EM arg-max among the 24 evaluated LLMs; an earlier prediction that the EM swap alone would flip the winner was WRONG and is recorded here rather than dropped."
+  },
+  "mutation_behaves_as_predicted": true
+}
+VERDICT verified

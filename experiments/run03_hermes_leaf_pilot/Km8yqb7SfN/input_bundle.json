@@ -1,0 +1,14 @@
+{
+  "orid": "Km8yqb7SfN",
+  "title": "Inference-Aware Meta-Alignment of LLMs via Non-Linear GRPO",
+  "openreview": "https://openreview.net/forum?id=Km8yqb7SfN",
+  "arxiv": "2602.01603",
+  "anchored_claims": [
+    "IAMA optimizes the objective ℛ[π] = g(R1[π],...,Rm[π]) − β·KL[π||πref], where each Ri measures reward under an inference-time transformation such as Best-of-N sampling, allowing a single trained base policy π to adapt to multiple alignment criteria at inference time (Section 3, Equation 1).",
+    "Non-linear GRPO (Algorithm 1) replaces the standard scalar reward with an approximated functional derivative ∂R/∂π evaluated at the current policy's empirical distribution, requiring only a drop-in reward function on top of standard GRPO (Section 4, Algorithm 1).",
+    "Theorem 5.2 proves linear convergence of exact non-linear GRPO updates to the optimal policy, with excess loss bounded by β·KL[π*||π0] / ((L+β)/L)^T − 1 under a step size η=1/L (Section 5, Theorem 5.2).",
+    "Theorem 5.3 shows that with approximation error ε and optimization residual δ, inexact non-linear GRPO updates converge to a neighborhood of the optimum with an additive bias term of 2(ε+δ)/β (Section 5, Theorem 5.3).",
+    "Proposition 3.1 shows that naive weighted-sum training collapses to a degenerate policy outputting only a single medium value (δ0.5), whereas IAMA with Best-of-N yields a bimodal optimal policy π*(y) ∝ y^(α−1)(1−y)^(α−1)/(y^α+(1−y)^α)^2 with α=1/(N−1) (Section 3, Proposition 3.1).",
+    "On the HH-RLHF task with Alpaca-7B, IAMA trained with Best-of-N sampling (N=4) pushes the helpfulness-harmlessness Pareto front forward relative to standard alignment, while without Best-of-N sampling IAMA performs equivalently to standard alignment (Section 6.2)."
+  ]
+}

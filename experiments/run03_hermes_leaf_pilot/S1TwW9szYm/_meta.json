@@ -1,0 +1,12 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "sotayamashita/repro-gradient-free-approaches-is-a-key-to-an-efficient-interaction-with-markovian-stochasticity",
+  "hw_signals": [
+    "numpy",
+    "cpu",
+    "gpu",
+    "seconds"
+  ],
+  "n_claims": 5
+}

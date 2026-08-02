@@ -1,0 +1,12 @@
+{
+  "area": "Reinforcement Learning",
+  "disputed": true,
+  "space": "algorise/repro-geometric-coherence-learning-for-structuring-value-functions-in-plain-mdps",
+  "hw_signals": [
+    "second",
+    "cpu",
+    "gpu",
+    "numpy"
+  ],
+  "n_claims": 4
+}

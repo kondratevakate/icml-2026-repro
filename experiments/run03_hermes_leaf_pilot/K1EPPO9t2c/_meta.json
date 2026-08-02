@@ -1,0 +1,14 @@
+{
+  "area": "Optimization",
+  "disputed": true,
+  "space": "Srishti280992/repro-loss-aware-dro-trainable-ot-ambiguity-sets",
+  "hw_signals": [
+    "second",
+    "cpu",
+    "minute",
+    "gpu",
+    "numpy",
+    "scipy"
+  ],
+  "n_claims": 6
+}

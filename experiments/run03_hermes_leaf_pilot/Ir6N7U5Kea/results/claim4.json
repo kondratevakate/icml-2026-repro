@@ -1,0 +1,328 @@
+{
+  "command": ".venv/bin/python verify_claim4.py --reps 10 --targets 1500",
+  "claim": "Table 1, MCAR simulation (Section 5.1)",
+  "config": {
+    "m": 300,
+    "n": 100,
+    "r": 3,
+    "sigma_rel": 0.001,
+    "K": 1,
+    "reps": 10,
+    "targets_per_rep": 500,
+    "p_MCAR": [
+      0.115,
+      0.01,
+      0.025,
+      0.05,
+      0.8
+    ],
+    "f_scales": [
+      1.0,
+      5.0,
+      25.0,
+      625.0
+    ],
+    "max_anchor_rows": 10,
+    "max_anchor_cols": 10
+  },
+  "paper_table1": {
+    "SNN": {
+      "low(p=0.01)": [
+        0.03,
+        0.806
+      ],
+      "medium(p=0.025)": [
+        1.2,
+        0.577
+      ],
+      "high(p=0.05)": [
+        11.34,
+        0.515
+      ]
+    },
+    "MSNN": {
+      "low(p=0.01)": [
+        4.69,
+        0.0391
+      ],
+      "medium(p=0.025)": [
+        63.73,
+        0.00118
+      ],
+      "high(p=0.05)": [
+        99.29,
+        0.000705
+      ]
+    }
+  },
+  "results": {
+    "SNN": {
+      "low(p=0.01)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.01": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.1": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          }
+        },
+        "mean_MAR": null,
+        "mean_MAC": null,
+        "paper_FR_percent": 0.03,
+        "paper_MRE": 0.806
+      },
+      "medium(p=0.025)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.01": {
+            "FR_percent_mean": 0.08,
+            "FR_percent_sd": 0.10327955589886445,
+            "MRE_mean": 6.1667250376932525,
+            "MRE_sd": 10.747504396752152,
+            "n_reps_with_feasible": 4
+          },
+          "0.1": {
+            "FR_percent_mean": 0.5399999999999999,
+            "FR_percent_sd": 0.2674987019698517,
+            "MRE_mean": 20.371296798545668,
+            "MRE_sd": 47.750086643388,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 1.8148148148148149,
+        "mean_MAC": 1.1851851851851851,
+        "paper_FR_percent": 1.2,
+        "paper_MRE": 0.577
+      },
+      "high(p=0.05)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.36,
+            "FR_percent_sd": 0.30983866769659335,
+            "MRE_mean": 2.452542178112852,
+            "MRE_sd": 2.3143809958673023,
+            "n_reps_with_feasible": 8
+          },
+          "0.01": {
+            "FR_percent_mean": 0.9,
+            "FR_percent_sd": 0.40276819911981904,
+            "MRE_mean": 2.771912547111509,
+            "MRE_sd": 2.8176668107951617,
+            "n_reps_with_feasible": 10
+          },
+          "0.1": {
+            "FR_percent_mean": 6.1000000000000005,
+            "FR_percent_sd": 0.7438637868140465,
+            "MRE_mean": 2.0668269029089386,
+            "MRE_sd": 0.8451112135297275,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 1.977049180327869,
+        "mean_MAC": 1.2065573770491804,
+        "paper_FR_percent": 11.34,
+        "paper_MRE": 0.515
+      }
+    },
+    "MSNN": {
+      "low(p=0.01)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.4,
+            "FR_percent_sd": 0.6324555320336759,
+            "MRE_mean": 0.022698773948558158,
+            "MRE_sd": 0.020870697467858544,
+            "n_reps_with_feasible": 5
+          },
+          "0.01": {
+            "FR_percent_mean": 23.1,
+            "FR_percent_sd": 6.532142748661337,
+            "MRE_mean": 0.10764766036593183,
+            "MRE_sd": 0.18811224581341687,
+            "n_reps_with_feasible": 10
+          },
+          "0.1": {
+            "FR_percent_mean": 55.9,
+            "FR_percent_sd": 7.517239446025973,
+            "MRE_mean": 0.12377243681156733,
+            "MRE_sd": 0.08412446702469968,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 4.011449016100179,
+        "mean_MAC": 9.994633273703041,
+        "paper_FR_percent": 4.69,
+        "paper_MRE": 0.0391
+      },
+      "medium(p=0.025)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 19.68,
+            "FR_percent_sd": 3.6334250752943533,
+            "MRE_mean": 0.0295124379518317,
+            "MRE_sd": 0.006829084222450721,
+            "n_reps_with_feasible": 10
+          },
+          "0.01": {
+            "FR_percent_mean": 75.64000000000001,
+            "FR_percent_sd": 5.001155422055544,
+            "MRE_mean": 0.04421482381772834,
+            "MRE_sd": 0.02278300220177885,
+            "n_reps_with_feasible": 10
+          },
+          "0.1": {
+            "FR_percent_mean": 97.48,
+            "FR_percent_sd": 1.9349418595916512,
+            "MRE_mean": 0.05348849930383367,
+            "MRE_sd": 0.022989238250754142,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 7.21830118998769,
+        "mean_MAC": 9.888387361510054,
+        "paper_FR_percent": 63.73,
+        "paper_MRE": 0.00118
+      },
+      "high(p=0.05)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 81.42,
+            "FR_percent_sd": 4.486473497575178,
+            "MRE_mean": 0.03460343123249773,
+            "MRE_sd": 0.007931596299542255,
+            "n_reps_with_feasible": 10
+          },
+          "0.01": {
+            "FR_percent_mean": 98.28,
+            "FR_percent_sd": 0.9986657765906132,
+            "MRE_mean": 0.04352409576815531,
+            "MRE_sd": 0.03408846838972789,
+            "n_reps_with_feasible": 10
+          },
+          "0.1": {
+            "FR_percent_mean": 100.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": 0.043141633994824756,
+            "MRE_sd": 0.03306569643061322,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 9.7058,
+        "mean_MAC": 9.918,
+        "paper_FR_percent": 99.29,
+        "paper_MRE": 0.000705
+      }
+    },
+    "MSNN_MUTATION_single_level": {
+      "low(p=0.01)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.01": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.1": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          }
+        },
+        "mean_MAR": null,
+        "mean_MAC": null,
+        "paper_FR_percent": null,
+        "paper_MRE": null
+      },
+      "medium(p=0.025)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.0,
+            "FR_percent_sd": 0.0,
+            "MRE_mean": null,
+            "MRE_sd": null,
+            "n_reps_with_feasible": 0
+          },
+          "0.01": {
+            "FR_percent_mean": 0.08,
+            "FR_percent_sd": 0.10327955589886445,
+            "MRE_mean": 6.1667250376932525,
+            "MRE_sd": 10.747504396752152,
+            "n_reps_with_feasible": 4
+          },
+          "0.1": {
+            "FR_percent_mean": 0.5399999999999999,
+            "FR_percent_sd": 0.2674987019698517,
+            "MRE_mean": 20.371296798545668,
+            "MRE_sd": 47.750086643388,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 1.8148148148148149,
+        "mean_MAC": 1.1851851851851851,
+        "paper_FR_percent": null,
+        "paper_MRE": null
+      },
+      "high(p=0.05)": {
+        "by_feasibility_tolerance": {
+          "0.001": {
+            "FR_percent_mean": 0.36,
+            "FR_percent_sd": 0.30983866769659335,
+            "MRE_mean": 2.452542178112852,
+            "MRE_sd": 2.3143809958673023,
+            "n_reps_with_feasible": 8
+          },
+          "0.01": {
+            "FR_percent_mean": 0.9,
+            "FR_percent_sd": 0.40276819911981904,
+            "MRE_mean": 2.771912547111509,
+            "MRE_sd": 2.8176668107951617,
+            "n_reps_with_feasible": 10
+          },
+          "0.1": {
+            "FR_percent_mean": 6.1000000000000005,
+            "FR_percent_sd": 0.7438637868140465,
+            "MRE_mean": 2.0668269029089386,
+            "MRE_sd": 0.8451112135297275,
+            "n_reps_with_feasible": 10
+          }
+        },
+        "mean_MAR": 1.977049180327869,
+        "mean_MAC": 1.2065573770491804,
+        "paper_FR_percent": null,
+        "paper_MRE": null
+      }
+    }
+  },
+  "elapsed_sec": 1238.5066452026367
+}

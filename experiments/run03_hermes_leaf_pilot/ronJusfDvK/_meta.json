@@ -1,0 +1,15 @@
+{
+  "area": "Probabilistic Methods",
+  "disputed": true,
+  "space": "tomyimkc/repro-amortized-simulation-based-inference-in-generalized-bayes-via-neural-posterior-e",
+  "hw_signals": [
+    "second",
+    "numpy",
+    "scipy",
+    "gpu",
+    "cpu",
+    "minute",
+    "seconds"
+  ],
+  "n_claims": 6
+}

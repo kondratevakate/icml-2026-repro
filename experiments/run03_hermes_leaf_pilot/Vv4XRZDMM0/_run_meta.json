@@ -1,0 +1,71 @@
+{
+  "orid": "Vv4XRZDMM0",
+  "paper": "Multi-Distribution Robust Conformal Prediction (Yang & Jin)",
+  "arxiv": "2601.02998v2",
+  "finished_utc": "2026-08-01T11:58:33.313399Z",
+  "environment": {
+    "host": "WSL2 Ubuntu",
+    "python": "3.12 (.venv)",
+    "numpy": "2.5.1",
+    "torch": "2.13.0+cpu",
+    "sklearn": "1.9.0",
+    "device": "CPU only",
+    "cores": 8
+  },
+  "verdicts": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "inconclusive",
+    "claim5": "inconclusive",
+    "claim6": "inconclusive"
+  },
+  "mutation_tests_run": {
+    "claim1": [
+      "no_plus_one_correction",
+      "mean_p_aggregation",
+      "single_source_calibration"
+    ],
+    "claim2": [
+      "uniform_lambda",
+      "inverted_superlevel",
+      "drop_active_constraint"
+    ],
+    "claim3": [
+      "frozen_uniform_lambda",
+      "single_source_density_score"
+    ]
+  },
+  "commands": [
+    "python verify_claim1.py",
+    "python verify_claim2.py",
+    "python verify_claim3.py",
+    "python notebook/eval_linear.py --num-trials 3 --base-seed 34567 --seeds 34567 34568 34569  (official code; did not finish)",
+    "python check_reproducibility.py"
+  ],
+  "reproducibility_gate": {
+    "script": "check_reproducibility.py",
+    "values_checked": 54,
+    "exit_code": 0
+  },
+  "contamination_control": {
+    "read_paper": true,
+    "read_official_code": true,
+    "read_other_repro_logbooks": false,
+    "huggingface_spaces_visited": false
+  },
+  "artifacts_sha256_16": {
+    "plan.md": "a419b246d299f56c",
+    "logbook.md": "951d8aaf4a409e84",
+    "check_reproducibility.py": "2f5e667ef6b087ca",
+    "verify_claim1.py": "a36d7edf1b380d64",
+    "verify_claim2.py": "5cf3b6e4a5b2046f",
+    "verify_claim3.py": "639ed11479b777c0",
+    "results/claim1.json": "a32b43553de78766",
+    "results/claim2.json": "954b6232a78ce5bc",
+    "results/claim3.json": "b65c79c0621515c9",
+    "results/claim4_5.json": "fb14a8735b92c844",
+    "results/claim6.json": "20d0eaa786dbc308",
+    "results/eval_linear_official_run.log": "7547e0029feadeac"
+  }
+}

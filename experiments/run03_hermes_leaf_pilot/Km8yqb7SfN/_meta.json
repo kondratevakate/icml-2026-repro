@@ -1,0 +1,12 @@
+{
+  "area": "Reinforcement Learning",
+  "disputed": true,
+  "space": "ProCreations/repro-inference-aware-meta-alignment-of-llms-via-non-linear-grpo",
+  "hw_signals": [
+    "cpu",
+    "numpy",
+    "second",
+    "scipy"
+  ],
+  "n_claims": 6
+}

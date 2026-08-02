@@ -1,0 +1,11 @@
+{
+  "area": "Probabilistic Methods",
+  "disputed": true,
+  "space": "Jaycee766/repro-on-the-epistemic-uncertainty-of-overparametrized-neural-networks",
+  "hw_signals": [
+    "numpy",
+    "gpu",
+    "cpu"
+  ],
+  "n_claims": 4
+}

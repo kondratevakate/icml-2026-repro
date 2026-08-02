@@ -1,0 +1,138 @@
+{
+  "command": ".venv/bin/python verify_claim3.py",
+  "claim": "Corollary 4.11 (Section 4.3)",
+  "symbolic": {
+    "ratio_SNNd_over_MSNNmax": "p_d**(c*r + c + r)*p_max**(-c*(r + 1) - r)/gamma**c",
+    "ratio_MSNNd_over_MSNNmax": "(p_d/p_max)**r",
+    "matches_corollary_4_11_first": true,
+    "matches_corollary_4_11_second": true,
+    "rho_exponent_SNN_over_MSNNmax": "c*r + c + r",
+    "rho_exponent_MSNN_over_MSNNmax": "r",
+    "quadratic_term_present_in_SNN_ratio": true,
+    "MSNN_ratio_is_linear_in_r": true
+  },
+  "numeric": [
+    {
+      "r": 3,
+      "c": 3,
+      "L": 4,
+      "rhos": [
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "slope_SNNd_over_MSNNmax": 15.000000000000005,
+      "expected_slope_1": 15,
+      "slope_MSNNd_over_MSNNmax": 3.0000000000000018,
+      "expected_slope_2": 3,
+      "mutation_slope_SNNd_over_SNNmax": 15.000000000000005,
+      "mutation_expected": 15
+    },
+    {
+      "r": 2,
+      "c": 4,
+      "L": 3,
+      "rhos": [
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "slope_SNNd_over_MSNNmax": 14.000000000000005,
+      "expected_slope_1": 14,
+      "slope_MSNNd_over_MSNNmax": 2.000000000000001,
+      "expected_slope_2": 2,
+      "mutation_slope_SNNd_over_SNNmax": 14.000000000000005,
+      "mutation_expected": 14
+    },
+    {
+      "r": 5,
+      "c": 2,
+      "L": 4,
+      "rhos": [
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "slope_SNNd_over_MSNNmax": 17.000000000000004,
+      "expected_slope_1": 17,
+      "slope_MSNNd_over_MSNNmax": 5.000000000000003,
+      "expected_slope_2": 5,
+      "mutation_slope_SNNd_over_SNNmax": 17.000000000000004,
+      "mutation_expected": 17
+    },
+    {
+      "r": 3,
+      "c": 5,
+      "L": 2,
+      "rhos": [
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "slope_SNNd_over_MSNNmax": 23.00000000000001,
+      "expected_slope_1": 23,
+      "slope_MSNNd_over_MSNNmax": 3.0000000000000018,
+      "expected_slope_2": 3,
+      "mutation_slope_SNNd_over_SNNmax": 23.00000000000001,
+      "mutation_expected": 23
+    }
+  ],
+  "enumeration_crosscheck": [
+    {
+      "p": [
+        0.2,
+        0.05,
+        0.15,
+        0.6
+      ],
+      "r": 1,
+      "c": 1,
+      "d_index": 1,
+      "dmax_index": 3,
+      "exact_SNNd_over_MSNNmax": 0.0005411255411255411,
+      "pred_SNNd_over_MSNNmax": 0.0005411255411255412,
+      "exact_MSNNd_over_MSNNmax": 0.08333333333333333,
+      "pred_MSNNd_over_MSNNmax": 0.08333333333333334
+    },
+    {
+      "p": [
+        0.2,
+        0.05,
+        0.15,
+        0.6
+      ],
+      "r": 2,
+      "c": 2,
+      "d_index": 1,
+      "dmax_index": 3,
+      "exact_SNNd_over_MSNNmax": 2.2521042220504135e-09,
+      "pred_SNNd_over_MSNNmax": 2.2521042220504156e-09,
+      "exact_MSNNd_over_MSNNmax": 0.006944444444444443,
+      "pred_MSNNd_over_MSNNmax": 0.006944444444444446
+    },
+    {
+      "p": [
+        0.2,
+        0.05,
+        0.15,
+        0.6
+      ],
+      "r": 3,
+      "c": 2,
+      "d_index": 1,
+      "dmax_index": 3,
+      "exact_SNNd_over_MSNNmax": 1.3352981689122951e-12,
+      "pred_SNNd_over_MSNNmax": 1.335298168912297e-12,
+      "exact_MSNNd_over_MSNNmax": 0.0005787037037037038,
+      "pred_MSNNd_over_MSNNmax": 0.0005787037037037039
+    }
+  ]
+}

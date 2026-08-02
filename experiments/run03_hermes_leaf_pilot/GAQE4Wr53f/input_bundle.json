@@ -1,0 +1,12 @@
+{
+  "orid": "GAQE4Wr53f",
+  "title": "Row-Stochastic Matrices Can Provably Outperform Doubly Stochastic Matrices in Decentralized Learning",
+  "openreview": "https://openreview.net/forum?id=GAQE4Wr53f",
+  "arxiv": "2511.19513",
+  "anchored_claims": [
+    "In the weighted Hilbert space L²(λ;R^d), the λ-induced row-stochastic mixing matrix W is self-adjoint whereas the doubly stochastic matrix W^ds is not, and this non-self-adjointness introduces additional multiplicative penalty terms (κ_λ > 1 and λ_max² > 1) that amplify consensus error under the doubly stochastic design (Section 5.2, Section 6.2).",
+    "Theorem 6.5 gives O(1/T) convergence rates for both row-stochastic and doubly stochastic strategies, but the row-stochastic strategy achieves strictly smaller non-asymptotic consensus error and can converge faster even when its spectral gap is smaller than that of the doubly stochastic strategy (Theorem 6.5).",
+    "Theorem 7.1 derives a sufficient condition on the spectral gaps, 1 − ρ_Λ ≥ max{(1+η)κ_λ^(-1/3), λ_max^(-1/2)}(1 − ρ_J), under which the row-stochastic design provably converges strictly faster than the doubly stochastic design (Theorem 7.1).",
+    "Corollary 7.3 and Algorithm 2 give topology construction guidelines showing that when node degrees scale proportionally with their assigned weights (d_i/d_j matching λ_i/λ_j within bounds set by R), the row-stochastic design outperforms the doubly stochastic design, satisfying a Loewner order condition on the graph Laplacians (Corollary 7.3, Remark 7.4, Algorithm 2)."
+  ]
+}

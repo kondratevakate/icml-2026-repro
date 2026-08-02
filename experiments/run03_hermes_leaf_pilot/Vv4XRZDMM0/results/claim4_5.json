@@ -1,0 +1,24 @@
+{
+  "claims": [
+    "Claim 4: linear classification, 34.39% smaller sets than Baseline-agg (Fig. 2)",
+    "Claim 5: linear regression, 22.44% average size reduction, ~90% worst-case coverage (Fig. 5)"
+  ],
+  "paper_quotes": {
+    "classification": "MDCP sets are on average 34.39% smaller than Baseline-agg (Sec. 5.2, Fig. 2)",
+    "regression": "about 22% narrower than Baseline-agg in Linear (Sec. 5.3, Fig. 5); appendix reports a median 26.3% reduction over 120 regression configurations"
+  },
+  "attempt": {
+    "code": "official code_mdcp (copied read-only to mdcp_run/), unmodified",
+    "command": "python notebook/eval_linear.py --num-trials 3 --base-seed 34567 --seeds 34567 34568 34569",
+    "interpreter": ".venv/bin/python (CPU, numpy 2.5.1, torch 2.13.0+cpu, sklearn 1.9.0, matplotlib installed for notebook/simulation.py import)",
+    "status": "DID NOT COMPLETE within the reproduction budget",
+    "wall_time_seconds_before_stop": 1780,
+    "last_log_line": "=== MDCP Classification Setup ===  Source 0/1/2 fitted; run then entered the GAMMA_GRID loop (8 gamma values, eval_linear.py line 315) with no further output",
+    "reason": "one trial requires fitting the LambdaSpline model and evaluating MDCP for each of GAMMA_GRID=[0,0.001,0.01,0.1,1,10,100,1000] on 3000 test points, twice (classification+regression); the paper averages 100 such trials",
+    "trials_completed": 0,
+    "trials_needed_by_paper": 100
+  },
+  "measured_percent_reduction": null,
+  "verdict": "inconclusive",
+  "log_file": "results/eval_linear_official_run.log"
+}

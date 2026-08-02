@@ -1,0 +1,13 @@
+{
+  "orid": "dDkl5ZcyTl",
+  "title": "Markov Chain Monte Carlo without Evaluating the Target: an Auxiliary Variable Approach",
+  "openreview": "https://openreview.net/forum?id=dDkl5ZcyTl",
+  "arxiv": "2406.05242",
+  "anchored_claims": [
+    "Section 2 unifies the exchange algorithm (Algorithm 1), PoissonMH (Algorithm 2), and TunaMH (Algorithm 3) as instances of one common auxiliary-variable procedure (Section 2).",
+    "The proposed meta-algorithm (Algorithm 4) introduces two auxiliary variables, ω1 guiding the proposal and ω2 enabling target-ratio estimation, and Proposition 2 proves it preserves the target distribution Π as stationary (Algorithm 4, Proposition 2).",
+    "Proposition 1 gives a reversibility condition on the auxiliary-variable estimator, R_{θ→θ'}(ω)π(θ|x)P_{θ→θ'}(ω) = π(θ'|x)P_{θ'→θ}(ω), that guarantees the resulting kernel targets the correct posterior (Proposition 1).",
+    "The framework yields two new algorithms: Locally Balanced PoissonMH (Algorithm 5), which uses gradient-informed locally balanced proposals with balancing functions such as Barker's g(t)=t/(1+t) or the MALA-type g(t)=sqrt(t), and TunaMH with an SGLD proposal (Algorithm 6), which uses independent minibatches for gradient estimation and acceptance-ratio evaluation (Algorithm 5, Algorithm 6).",
+    "The framework is designed to apply to both doubly-intractable distributions, where the likelihood f_θ(x)/Z(θ) has an intractable normalizing constant, and tall-data settings with millions to billions of observations, without needing to evaluate the full target density (Section 1)."
+  ]
+}

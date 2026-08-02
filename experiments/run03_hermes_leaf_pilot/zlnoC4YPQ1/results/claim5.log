@@ -1,0 +1,224 @@
+{
+  "claim": 5,
+  "source": "Section 5.3 / Figure 1 (+ Appendix I.4.2 configuration)",
+  "command": ".venv/bin/python verify_claim5.py",
+  "note": "paper reports no numeric regret values; the testable content is the method ordering",
+  "A_maintext_T100": {
+    "n_iter": 100,
+    "T_c_budget": 5,
+    "near": 0.2,
+    "far": 0.5,
+    "low": -10.0,
+    "high": 25.0,
+    "ranking_by_mean": [
+      [
+        "fc_rcgp_ucb[Tc=zero,L=1.96]",
+        219.275
+      ],
+      [
+        "a2_rcgp_ucb[Tc=zero,L=1.96]",
+        224.619
+      ],
+      [
+        "a2_rcgp_ucb[Tc=zero,L=q95]",
+        242.569
+      ],
+      [
+        "fc_rcgp_ucb[Tc=zero,L=q95]",
+        244.041
+      ],
+      [
+        "gp_ucb",
+        247.373
+      ],
+      [
+        "MUT_fc_rcgp_ucb[L=inf]",
+        247.373
+      ],
+      [
+        "MUT_a2_rcgp_ucb[L=inf]",
+        247.373
+      ],
+      [
+        "studentt_ucb",
+        438.825
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=q95]",
+        714.845
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=1.96]",
+        778.988
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=q95]",
+        786.717
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=1.96]",
+        793.609
+      ],
+      [
+        "diagnostics_gp",
+        980.929
+      ]
+    ],
+    "best_rcgp_variant": "fc_rcgp_ucb[Tc=zero,L=1.96]",
+    "best_rcgp_mean": 219.27472941461596,
+    "worst_rcgp_mean": 793.6091974863696,
+    "best_baseline_mean": 247.37312941031036,
+    "all_rcgp_variants_beat_all_baselines": false,
+    "some_rcgp_variant_beats_all_baselines": true,
+    "gp_ucb_is_worst_baseline": false,
+    "mutation_effect": {
+      "fc_rcgp_ucb": {
+        "intact_mean": 219.27472941461596,
+        "mutated_mean": 247.37312941031036,
+        "gp_ucb_mean": 247.37312941031036,
+        "mutated_equals_gp_ucb": true,
+        "mutation_worsens_regret": true
+      },
+      "a2_rcgp_ucb": {
+        "intact_mean": 224.61917871952397,
+        "mutated_mean": 247.37312941031036,
+        "gp_ucb_mean": 247.37312941031036,
+        "mutated_equals_gp_ucb": true,
+        "mutation_worsens_regret": true
+      }
+    }
+  },
+  "B_appendix_T30": {
+    "n_iter": 30,
+    "T_c_budget": 4,
+    "near": 0.1,
+    "far": 0.4,
+    "low": -10.0,
+    "high": 25.0,
+    "ranking_by_mean": [
+      [
+        "fc_rcgp_ucb[Tc=zero,L=1.96]",
+        148.42
+      ],
+      [
+        "a2_rcgp_ucb[Tc=zero,L=1.96]",
+        151.471
+      ],
+      [
+        "gp_ucb",
+        157.587
+      ],
+      [
+        "fc_rcgp_ucb[Tc=zero,L=q95]",
+        157.587
+      ],
+      [
+        "MUT_fc_rcgp_ucb[L=inf]",
+        157.587
+      ],
+      [
+        "MUT_a2_rcgp_ucb[L=inf]",
+        157.587
+      ],
+      [
+        "a2_rcgp_ucb[Tc=zero,L=q95]",
+        158.074
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=q95]",
+        181.67
+      ],
+      [
+        "studentt_ucb",
+        191.62
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=1.96]",
+        215.217
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=1.96]",
+        235.021
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=q95]",
+        239.165
+      ],
+      [
+        "diagnostics_gp",
+        255.017
+      ]
+    ],
+    "best_rcgp_variant": "fc_rcgp_ucb[Tc=zero,L=1.96]",
+    "best_rcgp_mean": 148.42023986818123,
+    "worst_rcgp_mean": 239.1645455962659,
+    "best_baseline_mean": 157.58672284987364,
+    "all_rcgp_variants_beat_all_baselines": false,
+    "some_rcgp_variant_beats_all_baselines": true,
+    "gp_ucb_is_worst_baseline": false,
+    "mutation_effect": {
+      "fc_rcgp_ucb": {
+        "intact_mean": 148.42023986818123,
+        "mutated_mean": 157.58672284987364,
+        "gp_ucb_mean": 157.58672284987364,
+        "mutated_equals_gp_ucb": true,
+        "mutation_worsens_regret": true
+      },
+      "a2_rcgp_ucb": {
+        "intact_mean": 151.4709846606881,
+        "mutated_mean": 157.58672284987364,
+        "gp_ucb_mean": 157.58672284987364,
+        "mutated_equals_gp_ucb": true,
+        "mutation_worsens_regret": true
+      }
+    }
+  },
+  "uncorrupted_T30": {
+    "ranking_by_mean": [
+      [
+        "a2_rcgp_ucb[Tc=zero,L=q95]",
+        34.704
+      ],
+      [
+        "gp_ucb",
+        34.991
+      ],
+      [
+        "a2_rcgp_ucb[Tc=zero,L=1.96]",
+        34.991
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=1.96]",
+        37.265
+      ],
+      [
+        "fc_rcgp_ucb[Tc=zero,L=1.96]",
+        40.896
+      ],
+      [
+        "fc_rcgp_ucb[Tc=zero,L=q95]",
+        41.596
+      ],
+      [
+        "studentt_ucb",
+        42.29
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=q95]",
+        183.988
+      ],
+      [
+        "a2_rcgp_ucb[Tc=est,L=q95]",
+        223.149
+      ],
+      [
+        "diagnostics_gp",
+        233.43
+      ],
+      [
+        "fc_rcgp_ucb[Tc=est,L=1.96]",
+        245.164
+      ]
+    ]
+  }
+}

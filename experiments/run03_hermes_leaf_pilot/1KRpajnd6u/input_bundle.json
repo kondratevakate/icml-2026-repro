@@ -1,0 +1,14 @@
+{
+  "orid": "1KRpajnd6u",
+  "title": "FluxNet: Learning Capacity-Constrained Local Transport Operators for Conservative and Bounded PDE Surrogates",
+  "openreview": "https://openreview.net/forum?id=1KRpajnd6u",
+  "arxiv": "2602.01941",
+  "anchored_claims": [
+    "Proposition 1 shows that under periodic boundary conditions with symmetric stencils, FluxNet's flux-based update rule (the same flux serves as outflow for the sender cell and inflow for the receiver cell) exactly preserves the global sum of the transported quantity, yielding conservation errors at the machine-precision level (~1e-7 to 1e-8) (Proposition 1).",
+    "The L-Head and U-Head mechanisms parameterize outflow as a fraction of the cell's available capacity above a lower bound (or below an upper bound), and Propositions 2 and 3 prove that this construction guarantees the next state stays within the prescribed bounds without any post-hoc clipping or projection (Propositions 2 and 3).",
+    "On the shallow-water equations rollout task at horizon T=2, FluxNet-LAP achieves a depth MAE of 3.12e-3 versus 6.74e-3 for the best baseline (a post-hoc projection method), while also reducing conservation error from 3.3e-7 (baseline) to 3.3e-8 (Table 3).",
+    "On the traffic flow benchmark at horizon T=2, FluxNet-D attains an MAE of 3.48e-3 compared to 15.9e-3 for a CNN-AR baseline, and reduces conservation error from 2.1e-2 to 7.7e-8, though FluxNet-D shows slightly higher upper-bound violation rates on some settings (1.87% vs 3.20% for CNN-AR) (Table 4).",
+    "On the spinodal decomposition experiment, a FluxNet model trained to take steps of 1000*dt achieves a 17.3x rollout speedup relative to the base timestep while preserving two-point correlation statistics of the simulated microstructure (Table 5).",
+    "The D-Head (dual bounds) variant enforces upper and lower capacity constraints via a dual consistency loss (DCL) rather than a strict architectural guarantee, achieving empirically near-zero bound violations rather than the exact guarantees proven for the single-bound L-Head and U-Head cases (Section on Bound Enforcement / D-Head)."
+  ]
+}

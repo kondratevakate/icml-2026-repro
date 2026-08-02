@@ -1,0 +1,2927 @@
+===PAGE 1===
+Conditional Coverage Diagnostics for Conformal Prediction
+Sacha Braun1, 2, David Holzmüller3, Michael I. Jordan1, 4, and Francis Bach1, 2
+1Sierra team, Inria Paris, France
+{sacha.braun, francis.bach}@inria.fr
+2Ecole Normale Supérieure, PSL Research University, Paris
+3Soda team, Inria Paris-Saclay, France
+david.holzmuller@inria.fr
+4Departments of EECS and Statistics, UC Berkeley, USA
+jordan@cs.berkeley.edu
+Abstract
+Evaluating conditional coverage remains one of the most persistent challenges in assessing the
+reliability of predictive systems. Although conformal methods can give guarantees on marginal cover-
+age, no method can guarantee to produce sets with correct conditional coverage, leaving practitioners
+without a clear way to interpret local deviations. To overcome sample-inefficiency and overfitting
+issues of existing metrics, we cast conditional coverage estimation as a classification problem. Condi-
+tional coverage is violated if and only if any classifier can achieve lower risk than the target coverage.
+Through the choice of a (proper) loss function, the resulting risk difference gives a conservative
+estimate of natural miscoverage measures such as L1 and L2 distance, and can even separate the
+effects of over- and under-coverage, as well as handle non-constant target coverages. We call the
+resulting family of metrics excess risk of the target coverage (ERT). We show experimentally that the
+use of modern classifiers provides much higher statistical power than simple classifiers underlying
+established metrics like CovGap. Additionally, we use our metric to benchmark different confor-
+mal prediction methods. Finally, we release an open-source package for ERT as well as previous
+conditional coverage metrics. Together, these contributions provide a new lens for understanding,
+diagnosing, and improving the conditional reliability of predictive systems.
+1
+Introduction
+Uncertainty quantification is central to decision-making across science, engineering, and policy.
+In
+many applications, the goal is not a single point prediction but a set of plausible outcomes with a
+desired confidence level.
+This is formalized by a predictive set rule 𝐶(·), which outputs a region
+expected to contain the true outcome with a desired probability. Such predictive sets capture data
+noise, model imperfections, and variability, supporting safer decisions and clearer communication of
+model confidence.
+Conformal prediction (CP) offers a general framework for constructing prediction sets with finite-
+sample coverage guarantees (Vovk et al., 2005; Shafer and Vovk, 2008). Its only requirement is that the
+available data samples are exchangeable: a condition even weaker than the standard independent and
+identically distributed (i.i.d.) assumption. In recent years, CP has rapidly emerged as a go-to tool for
+adding rigorous, model-agnostic uncertainty estimates to modern black-box predictors (Angelopoulos
+and Bates, 2023). This makes it especially appealing for scientific and industrial applications where
+formal guarantees on model predictions are essential.
+CP’s simplicity hides an important drawback: it only guarantees marginal coverage, which means
+that the constructed prediction set contains the true outcome with probability 1 −𝛼on average across
+the population. That is, the coverage is right on average, but not necessarily for each individual. In
+practice one often desires conditional coverage; i.e., asking that the coverage guarantee holds not only
+on average but also for specific subpopulations or feature values.
+1
+arXiv:2512.11779v1  [stat.ML]  12 Dec 2025
+===PAGE 2===
+Achieving exact conditional coverage is impossible in general without strong distributional assump-
+tions (Vovk, 2012; Lei and Wasserman, 2014; Foygel Barber et al., 2021), and even approximate versions
+are notoriously difficult to deploy. Improving conditional coverage in CP typically requires carefully
+designed nonconformity scores. Common strategies rely on models that provide uncertainty estimates,
+such as quantile regression (Romano et al., 2019), predictive distributions (Izbicki et al., 2022; Braun
+et al., 2025), or local score adjustments (Guan, 2023; Messoudi et al., 2022; Thurin et al., 2025). Recent
+work proposes post hoc corrections that directly model conditional quantiles of the nonconformity score
+(Plassier et al., 2025). There is, however, a difficulty in assessing whether progress is being made in
+this literature, which is the lack of standard way to evaluate conditional coverage and thereby compare
+algorithms. The fundamental problem of the evaluation of conditional coverage is the focus of the
+current paper.
+Evaluating conditional coverage is difficult. Group-based diagnostics, such as fairness-style coverage
+gaps (Ding et al., 2023), require large sample sizes per group and are highly sensitive to group definitions.
+Geometric scans such as worst-case slab coverage (WSC, Cauchois et al., 2021) offer a more adaptive
+view but suffer from severe sample complexity in high dimensions.
+Dependence-based diagnostics
+(Feldman et al., 2021) capture correlations between coverage and auxiliary variables but do not provide
+a standalone notion of conditional validity. In short, there is still no robust, general-purpose metric for
+assessing conditional coverage in practice.
+Contributions.
+We address this gap by reframing conditional coverage evaluation as a supervised
+prediction task: given features 𝑋∈𝒳, predict whether the label 𝑌∈𝒴falls inside the predictive set
+𝐶𝛼(𝑋), where (𝑋, 𝑌) ∼P𝑋,𝑌. Under perfect conditional coverage, for any proper loss ℓthe Bayes-
+optimal predictor, ℎ: 𝒳→𝒴, which is defined as the minimizer of the risk E[ℓ(ℎ(𝑋), 1{𝑌∈𝐶𝛼(𝑋)}]
+is the constant 1 −𝛼. Consequently, any predictor that consistently outperforms this constant directly
+exposes a violation of conditional coverage. Building on this insight, we introduce the excess risk of the
+target coverage (ℓ-ERT) metric to quantify deviations from conditional validity. Our metric provides an
+estimate of E𝑋[𝐷𝜙(𝑝(𝑋)‖1−𝛼)] where 𝐷𝜙is the Bregman divergence of a convex function 𝜙(Bregman,
+1967). For instance, we can reliably estimate the quantity E[ |1 −𝛼−P(𝑌∈𝐶𝛼(𝑋)|𝑋)| ].
+To contextualize our contribution, we establish a formal connection between existing group-based
+diagnostics and our metrics, showing that our formulation generalizes partition-based estimators to
+arbitrary predictor classes. This unified perspective unlocks the full potential of functional estimation,
+integrating both parametric and nonparametric approaches to assess conditional coverage, moving
+beyond heuristic group evaluations toward principled, model-based inference.
+Through experiments, we demonstrate that our proposed conditional coverage metrics are empir-
+ically more robust, that is, less prone to misleading diagnostics, than existing alternatives. Finally,
+we benchmark several conformal prediction methods on real-world regression and classification tasks
+to compare their conditional coverage performance. To support reproducibility and to catalyze fur-
+ther progress in conformal prediction, we release covmetrics1, an open-source package for evaluating
+conditional coverage using our approach alongside established metrics.
+Overall, this work casts conditional coverage evaluation as a key missing piece for practical conformal
+prediction, and offers new tools to fill the gap.
+Background on conformal prediction.
+We begin with a brief overview of split conformal predic-
+tion, a widely used and computationally simple approach for constructing prediction sets with marginal
+validity guarantees (Papadopoulos et al., 2002; Lei et al., 2018; Angelopoulos and Bates, 2023). Sup-
+pose we observe data 𝒟= {(𝑋𝑖, 𝑌𝑖)}𝑛
+𝑖=1 sampled i.i.d. from a joint distribution P𝑋,𝑌, where 𝑋𝑖∈𝒳
+are feature vectors and 𝑌𝑖∈𝒴are outcomes. For a new test pair, (𝑋test, 𝑌test), the aim is to form a
+predictive set 𝐶𝛼(𝑋test) such that
+P𝑋,𝑌(𝑌test ∈𝐶𝛼(𝑋test)) = 1 −𝛼.
+To achieve this, the dataset is randomly divided into two parts: a training set 𝒟1 of size 𝑛1 and a
+calibration set 𝒟2 of size 𝑛2. A predictive model is fit on 𝒟1, while 𝒟2 is reserved for calibrating the
+1https://github.com/ElSacho/covmetrics
+2
+===PAGE 3===
+prediction sets. Central to the procedure is a nonconformity score 𝑆(𝑋, 𝑌) ∈R, which quantifies how
+atypical a candidate response 𝑌is relative to the model. Using these scores, the predictive sets are
+then computed as:
+𝐶𝛼(𝑋test) = {𝑦: 𝑆(𝑋test, 𝑦) ≤^𝑞𝛼} ,
+(1)
+with
+^𝑞𝛼:= 𝑄1−𝛼
+(︃
+1
+𝑛2 + 1
+𝑛2
+∑︁
+𝑘=1
+𝛿𝑆(𝑋𝑘,𝑌𝑘) +
+𝛿∞
+𝑛2 + 1
+)︃
+,
+(2)
+where 𝑄1−𝛼(P) returns the 1 −𝛼quantile of the distribution P, and 𝛿𝑥is the Dirac measure centered
+at 𝑥. By the exchangeability of the data, this construction guarantees the marginal coverage property:
+P𝑋,𝑌(𝑌test ∈𝐶𝛼(𝑋test) | 𝒟1) ∈
+[︃
+1 −𝛼, 1 −𝛼+
+1
+𝑛2 + 1
+)︃
+.
+It is important to note that the guarantee in Eq. (1) is marginal, which means that coverage holds
+on average over the distribution of 𝑋test and 𝒟2. A stronger requirement is conditional coverage, which
+demands
+P𝑌|𝑋(𝑌test ∈𝐶𝛼(𝑋test) | 𝑋test) = 1 −𝛼,
+(3)
+for almost every 𝑋test, but achieving (3) is impossible in general without additional assumptions. For
+a given conformal prediction strategy that achieves marginal coverage (1), it is essential to be able to
+measure how close from a conditional guarantee (3) we are.
+Notation.
+We denote by 1𝑥∈𝐴the indicator function, equal to 1 if 𝑥∈𝐴and to 0 if 𝑥/∈𝐴, for some
+set 𝐴. We denote by sgn(𝑥) the function that returns the sign of 𝑥∈R, where sgn(0) = 0. We write
+Δ𝑑:=
+{︁
+𝑝∈R𝑑⃒⃒⃒
+𝑝𝑖≥0 ∀𝑖= 1, . . . , 𝑑, ∑︀𝑑
+𝑖=1 𝑝𝑖= 1
+}︁
+to denote the probability simplex.
+2
+Related Work on Evaluating Conditional Coverage
+In the following, we assume that a predictive model has already been trained to produce a predictive
+set rule 𝐶𝛼(·) for the output variable 𝑌∈𝒴, given a feature vector 𝑋∈𝒳. We are given a test dataset,
+𝒟test = {(𝑋𝑖, 𝑌𝑖)}𝑚
+𝑖=1, to evaluate the conditional coverage of this predictive strategy. The test samples
+are assumed to be sampled i.i.d. from the distribution P𝑋,𝑌and unseen during training.
+Group-based diagnostics.
+A common way to study conditional coverage for a predictive set 𝐶𝛼(·)
+is to evaluate coverage over subpopulations or other partitions of the data. To make this concrete, fix
+a finite set of groups 𝒢and a mapping 𝑔: 𝒳→𝒢that assigns each feature 𝑥∈𝒳, to a group 𝑔(𝑥) ∈𝒢.
+For a given group g ∈𝒢and a test sample with indices ℐg = {𝑖: 𝑔(𝑋𝑖) = g}, the empirical coverage in
+group g is
+𝐶g =
+1
+|ℐg|
+∑︁
+𝑖∈ℐg
+1{𝑌𝑖∈𝐶𝛼(𝑋𝑖)}.
+We review several strategies for defining these groups in Appendix A. Unless stated otherwise, in the
+following, the groups are obtained by clustering the feature space using the k-means algorithm. Below
+we review strategies that use such groupings to diagnose conditional miscoverage.
+• Coverage gap (CovGap). This measure the average absolute deviation from the target coverage
+across groups,
+CovGap =
+1
+|𝒢|
+∑︁
+g∈𝒢⃒⃒
+𝐶g −(1 −𝛼)⃒⃒.
+This metric is one of the most commonly used metrics in the literature (see, e.g, Ding et al. 2023;
+Kaur et al. 2025; Zhu et al. 2025; Fillioux et al. 2024; Liu et al. 2025). A problem is that CovGap
+requires a large number of samples within each group to be consistent.
+3
+===PAGE 4===
+• Weighted coverage gap (WCovGap). To connect CovGap to our main metrics, we introduce
+its corrected version that assigns a weight to each group’s coverage gap:
+WCovGap =
+∑︁
+g∈𝒢
+|ℐg|
+𝑚⃒⃒
+𝐶g −(1 −𝛼)⃒⃒.
+This formulation highlights that this metric can be interpreted as nonparametric estimators of
+the quantity,
+L1-Miscoverage := E𝑋
+[︀⃒⃒P𝑌|𝑋(𝑌∈𝐶𝛼(𝑋) | 𝑋) −(1 −𝛼)⃒⃒
+]︀.
+Indeed, CovGap(𝑋) := 𝐶𝑔(𝑋) is an estimate of P(𝑌∈𝐶𝛼(𝑋) | 𝑔(𝑋) = g), and |ℐg|
+𝑚an estimate
+of P𝑋(𝑔(𝑋) = g). Under standard regularity assumptions, specifically, if the partition 𝒢becomes
+increasingly fine (i.e., the number of groups tends to infinity while their diameters shrink to
+zero) and if ℎ*(𝑋) := E[1𝑌∈𝐶𝛼(𝑋) | 𝑋] is Lipschitz-continuous, then the groupwise coverage 𝐶g
+converges to the true conditional coverage P𝑌|𝑋(𝑌∈𝐶𝛼(𝑋) | 𝑋) (see, e.g, Györfi et al. 2005;
+Bach 2024). Consequently, the weighted CovGap (WCovGap) metric provides a nonparametric
+estimate of the stated quantity. If the groups are balanced in size, the metric CovGap admits the
+same type of probabilistic interpretation.
+This observation is central to understanding the positioning of our work: previous strategies can
+be seen as partition-wise estimators of conditional coverage. In contrast, our approach leverages
+modern classifiers to obtain a more accurate estimation of conditional coverage.
+Worst-case slab diagnostic.
+Rather than pre-specified groups, some diagnostics scan geometric
+slices of the feature space, if 𝒳⊂R𝑑.
+This strategy is commonly refer to as the worst-case slab
+coverage (WSC, Cauchois et al., 2021).
+• Worst-case slab coverage (WSC). For a direction 𝑣∈R𝑑and scalars 𝑎< 𝑏, define the slab
+𝑆𝑣,𝑎,𝑏:= {𝑥∈R𝑑: 𝑎≤𝑣⊤𝑥≤𝑏}.
+For a mass threshold 𝛿∈(0, 1] let ℐ𝑣,𝑎,𝑏= {𝑖: 𝑋𝑖∈𝑆𝑣,𝑎,𝑏}. The empirical WSC in direction 𝑣is
+WSC𝑛
+(︀𝐶𝛼(·), 𝑣
+)︀:= inf
+𝑎<𝑏
+⎧
+⎨
+⎩
+1
+|ℐ𝑣,𝑎,𝑏|
+∑︁
+𝑖∈ℐ𝑣,𝑎,𝑏
+1{𝑌𝑖∈𝐶𝛼(𝑋𝑖)}⃒⃒⃒⃒⃒⃒
+|ℐ𝑣,𝑎,𝑏|
+𝑛
+≥𝛿
+⎫
+⎬
+⎭.
+In practice, the induced metric requires a finite set of directions 𝑉and computes:
+WSC = inf
+𝑣∈𝑉WSC𝑛
+(︀𝐶𝛼(·), 𝑣
+)︀.
+This set is typically generated by sampling vectors at random from R𝑑. When evaluating over a
+finite set of directions 𝑉, WSC uniformly approximates the population slab-coverage with high
+probability; the approximation error depends on the VC dimension (Vapnik, 2000) of the class
+of slabs induced by 𝑉. However, under conditional coverage, without sufficient test data WSC
+tends to provide a pessimist estimate of the conditional coverage violation by overfitting the test
+set by isolating miscovered points. Furthermore, this strategy does not adapt well to categorical
+data.
+In Appendix A we review additional metrics. One of them is feature-stratified coverage (FSC),
+a group-based metric that reports the group with the worst coverage. This metric often appears in
+fairness-related work (see e.g, Angelopoulos and Bates 2023; Ding et al. 2023; Jung et al. 2023). Several
+grouping strategies besides categorical attributes or clustering have also been studied. For example,
+equal opportunity of coverage (EOC) (Wang et al., 2023) forms groups based on the output, and size-
+stratified coverage (SSC) (Angelopoulos et al., 2021) groups examples by the size of the prediction set.
+Another approach is to avoid explicit grouping and instead measure statistical dependence between the
+coverage indicator 𝑍:= 1{𝑌∈𝐶𝛼(𝑋)} and the prediction-set size. Feldman et al. (2021) introduced
+4
+===PAGE 5===
+two such dependence measures based on Pearson’s correlation and the Hilbert–Schmidt independence
+criterion (HSIC).
+Each diagnostic has strengths and limitations. Group-based metrics (CovGap, FSC, EOC, SSC)
+are intuitive and directly tied to fairness-style guarantees, but their statistical power depends strongly
+on the choice of groups and on having enough data per group. Geometric scans like WSC explore
+slices of 𝒳without pre-specified semantic groups but suffer from the complexity of the feature space.
+Representation-based measures (Pearson, HSIC) provide complementary, model-driven checks for de-
+pendence between coverage and auxiliary signals, but low dependence does not prove full conditional
+coverage. A central challenge in catalyzing research progress in conformal prediction is the lack of
+reliable ways to assess conditional coverage empirically. Although many recent methods are designed
+to improve conditional coverage (Gibbs et al., 2025; Ding et al., 2023; Kaur et al., 2025; Plassier et al.,
+2025), existing guarantees are largely theoretical, and robust practical metrics remain elusive.
+3
+Evaluating Conditional Coverage
+We would like the conditional coverage
+𝑝(𝑥) := P(𝑌∈𝐶𝛼(𝑋) | 𝑋= 𝑥),
+to be equal to 1 −𝛼P𝑋-almost surely. Introducing the binary random variable 𝑍= 1{𝑌∈𝐶𝛼(𝑋)},
+we can rewrite
+𝑝(𝑥) = P(𝑍= 1|𝑋= 𝑥).
+Estimating P(𝑍= 1|𝑋= 𝑥) is a binary classification problem, as we have access to a dataset of
+pairs (𝑋𝑖, 𝑍𝑖). Some metrics such as CovGap or WSC implicitly learn classifiers based on histograms or
+slabs. However, these methods are rarely used for classification due to their poor practical performance.
+Explicitly reformulating conditional miscoverage estimation as a classification problem allows us to
+leverage strong and practically proven classifiers. Once a classifier ℎ: 𝒳→[0, 1] is trained, we still
+need to use it to assess conditional miscoverage. The key idea is that under conditional coverage, given
+a proper score ℓ, no classifier can achieve a lower risk than the constant predictor 1−𝛼. If we can learn
+a predictor that performs better, then conditional coverage does not hold. This leads to a metric with
+theoretical guarantees and a clear interpretation. In particular, our metric is a conservative estimate of
+E[𝑑(1−𝛼, 𝑝(𝑋))] for any 𝑑: [0, 1]×[0, 1] →R such that for all 𝑝∈[0, 1], 𝑑(𝑝, ·) is convex and minimized
+at 𝑝.
+3.1
+Excess risk of the target coverage (ERT)
+For a given classifier ℎand loss function ℓ, the associated risk is defined as
+ℛℓ(ℎ) := E𝑋,𝑍[ℓ(ℎ(𝑋), 𝑍)].
+The Bayes predictor in this task is (see, e.g., Devroye et al. 2013):
+ℎ*(𝑥) ∈argmin
+𝑞∈[0,1]
+E[ℓ(𝑞, 𝑍) | 𝑋= 𝑥].
+If the loss ℓis a proper loss (see, e.g, Gneiting and Raftery 2007; Bröcker 2009), then it is optimal to
+predict the true probability ℎ*(𝑋) = E[𝑍|𝑋] = 𝑝(𝑋)
+P𝑋-almost surely. If conditional coverage holds,
+we get ℎ*(𝑋) = E[𝑍|𝑋] = 1 −𝛼
+P𝑋-almost surely, so no classifier can achieve lower risk than the
+constant 1 −𝛼prediction. Proper losses include the Brier score, ℓ(𝑝, 𝑦) = (𝑝−𝑦)2, and the log-loss
+score, ℓ(𝑝, 𝑦) = −𝑦log 𝑝−(1 −𝑦) log(1 −𝑝), where 𝑝∈[0, 1] denotes the predicted probability of the
+event occurring and 𝑦∈{0, 1} denotes the observed outcome.
+This motivates the excess risk of the target coverage (ℓ-ERT). For a general proper loss ℓ, we define
+ℓ-ERT := ℛℓ(1 −𝛼) −ℛℓ(𝑝).
+Larger values of ℓ-ERT correspond to greater violations of conditional coverage.
+5
+===PAGE 6===
+Interpretation and examples.
+ERT has a probabilistic interpretation. Indeed,
+ℓ-ERT = ℛℓ(1 −𝛼) −ℛℓ(𝑝)
+= E𝑋,𝑍[ℓ(1 −𝛼, 𝑍) −ℓ(𝑝(𝑋), 𝑍)]
+= E𝑋[E𝑍[ℓ(1 −𝛼, 𝑍) −ℓ(𝑝(𝑋), 𝑍)|𝑋]]
+= E𝑋[𝑑ℓ(1 −𝛼, 𝑝(𝑋))],
+where 𝑑ℓ(𝑝, 𝑞) := E𝑦∼𝑞[ℓ(𝑝, 𝑦) −ℓ(𝑞, 𝑦)] is the divergence associated with the proper score ℓ(see, e.g,
+Bröcker 2009). We summarize the ℓ-ERT scores for different proper scores in Table 1.
+Name
+Proper score ℓ(𝑝, 𝑦)
+ℓ-ERT formula
+𝐿1-ERT
+sgn(𝑝−(1 −𝛼))(1 −𝛼−𝑦)
+E𝑋[|1 −𝛼−𝑝(𝑋)|]
+𝐿2-ERT
+Brier score: (𝑦−𝑝)2
+E𝑋[(1 −𝛼−𝑝(𝑋))2]
+KL-ERT
+Log-loss: −log 𝑝𝑦
+E𝑋[𝐷KL(𝑝(𝑋)‖1 −𝛼)]
+Table 1: Examples of proper scoring rules and their associated ERT scores.
+We will show in Section 3.2 that a general class of convex distances can be estimated via ERTs.
+Estimation from finite samples.
+Since 𝑝(𝑋) is unknown in practice, we define the functional
+ℓ-ERT(ℎ) := ℛℓ(1 −𝛼) −ℛℓ(ℎ),
+(4)
+This metric quantifies how much better a predictor ℎperforms relative to the constant baseline 1 −𝛼.
+While we cannot guarantee that the learned predictor ℎcoincides with the Bayes-optimal predictor ℎ*,
+our procedure always provides a lower bound on the true ℓ-ERT, that is for all measurable classifiers,
+ℓ-ERT(ℎ) ≤ℓ-ERT.
+Therefore, it suffices to find an ℎthat performs better than the constant 1 −𝛼to conclude that
+conditional coverage is not achieved, and use ℓ-ERT(ℎ) to lower-bound E[𝑑ℓ(1 −𝛼, 𝑝(𝑋))].
+To estimate ℓ-ERT(ℎ), we can evaluate their empirical risks that is
+\
+ℓ-ERT(ℎ) = 1
+𝑚
+𝑚
+∑︁
+𝑖=1
+[︀ℓ(1 −𝛼, 𝑍𝑖) −ℓ(ℎ(𝑋𝑖), 𝑍𝑖)
+]︀.
+To avoid overfitting and misleading diagnostics, we cannot train ℎon the values 𝑋𝑖that it is
+evaluated on. In general, cross-validation can be used for this purpose, where multiple classifiers are
+trained on different subsets of the data, such that each data point can be evaluated using a classifier that
+was not trained on it. For random forest, we can use out-of-bag predictions. The resulting algorithm
+for evaluating conditional coverage using 𝑘-fold cross-validation is summarized in Algorithm 1.
+Figure 1 illustrates the usefulness of our metric by showing prediction sets produced under different
+conformal strategies together with their estimated conditional coverage. The function ℎis estimated
+with a neural network that has two hidden layers of width 64. In the first strategy, which applies a non
+conditional conformal method, the prediction sets fail to reflect local variations in conditional miscov-
+erage. This leads to large estimated ERT values, with 𝐿1-ERT(ℎ) ≈0.0757 and 𝐿2-ERT(ℎ) ≈0.0073.
+In the second strategy, where prediction sets are closer to satisfying conditional coverage, the esti-
+mator ℎidentifies coverage levels near 1 −𝛼.
+The resulting ERT values are closer to zero, with
+𝐿1-ERT(ℎ) ≈0.0148 and 𝐿2-ERT(ℎ) ≈−0.00002, which signals improved conditional behavior.
+We also compare our functional estimator ℎto the partition based nonparametric estimator CovGap(𝑋).
+In one dimension, the feature space is simple to cluster and the partition-based approach can approx-
+imate 𝑝well. This advantage does not persist as the feature dimension grows, a point that will be
+demonstrated in Section 4.
+6
+===PAGE 7===
+Algorithm 1 Compute \
+ℓ-ERT.
+Require: Data {(𝑋𝑖, 𝑍𝑖)}𝑚
+𝑖=1, number of folds 𝑘≥2, proper score ℓ, level 𝛼, classification method.
+1: Partition the data: Randomly divide {1, . . . , 𝑚} into 𝑘approx. equal-sized folds {ℐ1, . . . , ℐ𝑘}.
+2: for 𝑗= 1 to 𝑘do
+3:
+Define folds: ℐ(𝑗)
+val = ℐ𝑗,
+ℐ(𝑗)
+tr = {1, . . . , 𝑚} ∖ℐ𝑗.
+4:
+Train classifier: Fit a classifier ℎ(𝑗) on {(𝑋𝑖, 𝑍𝑖) | 𝑖∈ℐ(𝑗)
+tr } using the specified method.
+5:
+Evaluate on validation fold: For each 𝑖∈ℐ(𝑗)
+val, compute
+\
+ℓ-ERT
+(𝑗) =
+1
+|ℐ(𝑗)
+val|
+∑︁
+𝑖∈ℐ(𝑗)
+val
+ℓ(1 −𝛼, 𝑍𝑖) −ℓ(ℎ(𝑗)(𝑋𝑖), 𝑍𝑖).
+6: end for
+7: Aggregate across folds: \
+ℓ-ERT = 1
+𝑘
+𝑘
+∑︁
+𝑗=1
+\
+ℓ-ERT
+(𝑗).
+X1
+0
+10
+20
+30
+Y
+ˆf(X)
+Test point
+Conformal sets
+−1.00 −0.75 −0.50 −0.25
+0.00
+0.25
+0.50
+0.75
+1.00
+X
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+CovGap(X)
+h(X)
+P(Y ∈C(X)|X)
+1 −α
+X
+0
+10
+20
+30
+Y
+Test point
+Conformal sets
+−1.00 −0.75 −0.50 −0.25
+0.00
+0.25
+0.50
+0.75
+1.00
+X1
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+CovGap(X)
+h(X)
+P(Y ∈C(X)|X)
+1 −α
+Figure 1: Illustration of conditional coverage estimation. The top panel shows data generated from
+𝑌∼𝒩(𝑓(𝑋), 𝜎(𝑋)), 𝑋∼𝒰([−1, 1]) with 𝑓(𝑥) = 3 sin(𝑥) + 𝑒𝑥and 𝜎(𝑥) = 1/2 + |𝑥| + 𝑥2, and their
+predictive sets. The bottom panel shows the conditional coverage estimation ℎused to estimate the
+𝐿2-ERT(ℎ), conditional coverage estimation induced by a partition-wise estimator, true conditional
+coverage, and desired 1 −𝛼conditional coverage. Left: Conformal sets from the score 𝑆(𝑋, 𝑌) =
+|𝑌−^𝑓(𝑋)|. Right: Conformal sets by fitting quantiles 𝛼/2 and 1−𝛼/2 of P𝑌|𝑋following the procedure
+in Romano et al. (2019).
+3.2
+Estimating general distances
+Previously, Table 1 illustrated that specific choices of the proper loss ℓcan recover common dis-
+tance functions. However, we can go much beyond that and estimate any convex distance function
+𝑓(𝑞) = 𝑑(1 −𝛼, 𝑞) using an ERT, as long as the proper score ℓis allowed to depend on 𝑓and therefore
+the coverage 1 −𝛼itself. The following proposition formalizes this statement.
+Proposition 3.1 (Representing convex losses as ERTs). Let 𝑓: [0, 1] →R≥0 be convex with 𝑓(1 −𝛼) = 0.
+Let 𝑓′ be a subderivative of 𝑓satisfying 𝑓′(1 −𝛼) = 0. Then, the function
+ℓ(𝑝, 𝑦) := ℓ𝑓,𝑓′(𝑝, 𝑦) := −𝑓(𝑝) −(𝑦−𝑝)𝑓′(𝑝)
+(𝑝∈[0, 1], 𝑦∈{0, 1})
+7
+===PAGE 8===
+is a proper score satisfying
+ℓ-ERT = E𝑋[𝑓(𝑝(𝑋))] .
+Proof. First, ℓis a proper score because for all 𝑝, 𝑞∈[0, 1], convexity of 𝑓yields
+E𝑦∼𝑞[ℓ(𝑝, 𝑦)] = −𝑓(𝑝) −(𝑞−𝑝)𝑓′(𝑝) ≥−𝑓(𝑞) = E𝑦∼𝑞[ℓ(𝑞, 𝑦)] .
+Since we assumed 𝑓′(1 −𝛼) = 0, we have ℓ(1 −𝛼, 𝑍) = −𝑓(1 −𝛼) = 0. Hence,
+E𝑍∼𝑝[ℓ(1 −𝛼, 𝑍) −ℓ(𝑝, 𝑍)] = E𝑍∼𝑝[−ℓ(𝑝, 𝑍)] = 𝑓(𝑝) + (𝑝−𝑝)𝑓′(𝑝) = 𝑓(𝑝) .
+Taking the expectation over 𝑋yields the claim.
+A related formulation in Section B shows that ERT can estimate 𝑑if it is a Bregman divergence of
+convex functions.
+3.3
+Separating over-coverage and under-coverage
+Theorem 3.1 implies that we can estimate asymmetric distance measures to gain more insights on
+the nature of miscoverage. In particular, one can decompose the convex function 𝑓from above as
+𝑓= 𝑓+ + 𝑓−with an over-coverage part 𝑓+(𝑝) := 𝑓(max{𝑝, 1 −𝛼}) that only penalizes the case
+𝑝> 1 −𝛼and an under-coverage part 𝑓−(𝑝) = 𝑓(min{𝑝, 1 −𝛼}) that only penalizes 𝑝< 1 −𝛼.
+Correspondingly, one can decompose the proper loss ℓand the ERT as
+ℓ(𝑝, 𝑦) = ℓ+(𝑝, 𝑦) + ℓ−(𝑝, 𝑦) −ℓ(1 −𝛼, 𝑦)
+ℓ-ERT = ℓ+-ERT + ℓ−-ERT
+ℓ+(𝑝, 𝑦) := ℓ(max{𝑝, 1 −𝛼}, 𝑦)
+ℓ−(𝑝, 𝑦) := ℓ(min{𝑝, 1 −𝛼}, 𝑦) .
+Together, ℓ+-ERT and ℓ−-ERT provide a decomposition of conditional coverage error into two
+complementary components. The first identifies unnecessary conservatism, while the second highlights
+locations where the procedure is too aggressive and exhibits under-coverage. This split view delivers
+more informative diagnostics and supports targeted improvements in the design of conformal prediction
+methods.
+3.4
+Extensions
+A proxy for conditional coverage.
+The learned predictor ℎcan also be used as a proxy for
+conditional coverage. For a given test point 𝑋test, its conditional coverage can be estimated as
+ℎ(𝑋test) ≈P
+(︀𝑌test ∈𝐶𝛼(𝑋test) | 𝑋test
+)︀.
+This approximation provides a corrective proxy for conditional coverage: rather than modifying the
+predictive set 𝐶𝛼(𝑋test), we adjust its predicted coverage level from 1 −𝛼to ℎ(𝑋test).
+Evaluating conditional coverage rules.
+We further extend our metric to settings where the tar-
+get conditional coverage is not fixed at 1 −𝛼, but instead varies according to a specified decision rule.
+This extension, detailed in Appendix D, enables testing whether a given strategy satisfies conditional
+coverage with respect to adaptive or context-dependent coverage levels.
+4
+Experiments
+Our package covmetrics2 and the code for all our experiments3 is accessible and reproducible from
+GitHub.
+2https://github.com/ElSacho/covmetrics
+3https://github.com/ElSacho/Conditional_Coverage_Estimation
+8
+===PAGE 9===
+4.1
+Comparing different classifiers
+The quality of the ERT estimation hinges on the choice of a good classifier, which depends on the
+data type of 𝑋. We will restrict our experiments to the case where 𝑋is a fixed-dimensional vector of
+numerical and/or categorical features, also known as tabular data. For other modalities like images or
+text, tabular classifiers could be used on top of embeddings of 𝑋to keep the training fast. As we want
+our metric to be reasonably fast to compute, we are particularly interested in finding fast classifiers.
+For this reason, we do not tune the hyperparameters of the classifiers. Based on recent benchmarks
+(Erickson et al., 2025; Holzmüller et al., 2024), we choose a subselection of classifiers that are promising
+in terms of their speed-accuracy trade-off. We provide more details on those classifiers in Appendix F.
+We note that our results show performances of specific configurations, but other trade-offs can also be
+achieved.
+We begin by examining how various classifiers perform when estimating the conditional coverage
+quantity. This is achieved by comparing how well different tabular classifiers estimate the conditional
+miscoverage. We review those classifiers in Appendix F. To pursue this, we select the four largest regres-
+sion datasets in TabArena (Erickson et al., 2025). Each dataset is divided into three parts; a training
+set (with 40% of the data) used to learn a predictor 𝑓that minimizes the empirical mean squared error.
+A calibration set (with 10% of the data) used with the nonconformity score 𝑆(𝑋, 𝑌) = |𝑌−𝑓(𝑋)| to
+construct the set rule 𝐶𝛼(·) with 1−𝛼= 0.9 such that when the residual distribution is heteroskedastic,
+these sets are not expected to be conditional. A test set (with 50% of the data) used to evaluate the
+𝐿1-ERT, 𝐿2-ERT and KL-ERT metrics, performing 5-fold cross-validation.
+We compare the estimated metric values as a function of the number of test samples and average
+all results over ten runs. Since our estimator gives a lower bound on the true ℓ-ERT value, a larger
+estimate indicates a stronger classifier. In Table 2 we report the average percentage improvement over
+the best strategy, averaged across all test sample sizes and all datasets, as well as the average time
+required to estimate our metrics per 1,000 samples. Because averaging can hide important effects, we
+also report results for each dataset as a function of the number of test samples in Figures 2 and 3.
+Classifier
+Avg. % of max ERT
+Avg. time per
+1K samples [s]
+Device
+𝐿1-ERT
+𝐿2-ERT
+KL-ERT
+TabICLv1.1
+71.91.9
+55.42.7
+60.21.8
+5.10.7
+GPU
+RealTabPFN-2.5
+71.61.7
+55.72.5
+59.71.9
+5.20.7
+GPU
+CatBoost
+68.72.8
+50.82.7
+55.22.1
+18.74.5
+CPU
+LightGBM (medium)
+68.42.2
+49.92.5
+53.61.7
+2.60.3
+CPU
+ExtraTrees
+65.92.4
+30.53.2
+0.00.0
+2.10.4
+CPU
+RandomForest
+65.92.8
+35.72.5
+0.00.0
+2.70.5
+CPU
+PartitionWise
+38.31.9
+14.11.1
+1.70.9
+0.20.0
+CPU
+Table 2: ERT recovered by different methods, relative to the highest value among all methods and
+number of samples, averaged over all number of test samples and datasets. Experiments are repeated
+10 times, and the index number is the standard deviation across those 10 experiments.
+Results.
+As shown in Table 2, the tabular foundation models TabICLv1.1 (Qu et al., 2025) and
+RealTabPFN-2.5 (Grinsztajn et al., 2025) show excellent performance across different metrics. However,
+they can be very slow without a GPU, and they are generally only usable up to a certain size of datasets
+(around 100K samples). Gradient-boosted decision trees like CatBoost (Prokhorenkova et al., 2018)
+and LightGBM (Ke et al., 2017) are closely behind, but they do facilitate fast training on CPUs
+and are scalable to large datasets. In particular, LightGBM with the relatively cheap configuration
+from Holzmüller et al. (2024) excels through its training speed while still recovering large ERT values.
+Therefore, we suggest LightGBM as the default classifier to use with ERT. Random Forest (Breiman,
+2001) and ExtraTrees (Geurts et al., 2006) are also fast but exhibit worse results, particularly for the
+KL-ERT, which heavily penalizes overconfidence, and the 𝐿2-ERT. PartitionWise, the strategy used
+9
+===PAGE 10===
+for CovGap, is fastest but performs much worse than the other classifiers. Figures 2 and 3 show that
+on two out of four datasets, PartitionWise detects almost no miscoverage. Overall, our results suggest
+that results of tabular classification benchmarks transfer approximately to the task of ERT estimation.
+Differences between metrics.
+Table 2 also shows that the 𝐿1-ERT is considerably easier to estimate
+than the 𝐿2-ERT and KL-ERT. Indeed, for the 𝐿1-ERT, the classifiers only need to predict on the right
+side of 1 −𝛼to be optimal, whereas for the others they need to predict the exact probability. Hence,
+we recommend using the 𝐿1-ERT as the default metric.
+103
+104
+Number of test samples (log scale)
+0.00
+0.02
+0.04
+0.06
+0.08
+L1-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+103
+104
+Number of test samples (log scale)
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+L1-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+Figure 2: Illustration of the estimation of 𝐿1-ERT for different classifiers as a number of sampled data
+available. Left: physiochemical_protein dataset. Right: Diamonds dataset.
+103
+104
+Number of test samples (log scale)
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+L1-ERT
+103
+104
+Number of test samples (log scale)
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+L1-ERT
+Figure 3: Illustration of the estimation of 𝐿1-ERT for different classifiers as a number of sampled data
+available. Legend shared with Figure 2. Left: Food_Delivery_Time dataset. Right: Superconduc-
+tivity dataset.
+4.2
+Comparison with existing metrics
+We illustrate that existing methods can fail to accurately assess conditional coverage in scenarios where
+our approach succeeds. To this end, we generate a synthetic dataset following
+𝑌∼𝒩
+(︀0, 𝜎(𝑋1)
+)︀,
+with
+𝑋∼𝒰([−1, 1]8),
+where 𝑋1 is the first component of the vector 𝑋.
+Prediction sets are constructed using two different strategies:
+• Standard CP: Using the nonconformity score 𝑆(𝑋, 𝑌) = |𝑌| within the standard conformal
+prediction framework using 3,000 i.i.d. samples.
+10
+===PAGE 11===
+• Oracle sets: Using the ground-truth oracle that provides the true conditional quantiles 𝛼/2 and
+1 −𝛼/2 of the underlying distribution.
+The first strategy produces marginally valid but conditionally invalid prediction sets, while the
+second produces conditional sets by construction.
+The first experiment evaluates how many test points are needed to obtain reliable estimates for
+commonly used metrics (CovGap, WSC) compared to our proposed metrics. We measure each metric
+as a function of the number of test points on a log scale, computing 𝐿1-ERT and 𝐿2-ERT respectively
+estimating E𝑋[|1 −𝛼−𝑝(𝑋)|] and E𝑋[(1 −𝛼−𝑝(𝑋))2] using 5-fold cross-validation, and show the
+results in Figure 4.
+Results.
+The results are striking: group-based metrics are extremely unaligned with their theoretical
+values and require large sample sizes to converge. Even with 5,000 points, they provide nearly identical
+diagnostics across these two very different scenarios, and WSC exhibits similar instability. By contrast,
+our metrics adapt rapidly. In particular, 𝐿1-ERT stabilizes very quickly, providing reliable estimates
+of conditional coverage deviation in the naive scenario. 𝐿2-ERT needs more samples to converge to its
+true value but already diagnoses conditional coverage failure with few samples. This is not surprising
+as, as explained earlier, the 𝐿1 version only requires that the sign of ℎ(𝑋)−(1−𝛼) matches the sign of
+𝑝(𝑋)−(1−𝛼), whereas the 𝐿2 version instead depends on the closeness of ℎ(𝑋) to the true conditional
+probability itself, which typically requires more data.
+In the scenario with perfect conditional coverage, all of our proposed metrics converge rapidly to
+values indicating no failure, while WSC continues to struggle even with 50,000 samples. These results
+demonstrate that our methods not only provide more accurate diagnostics but also require far fewer
+samples to detect conditional coverage deviations reliably.
+0.6
+0.8
+1.0
+WSC
+Theoretical value
+0.00
+0.05
+0.10
+0.15
+CovGap
+L1-ERT
+Theoretical value
+103
+104
+105
+Number of test samples (log scale)
+0.00
+0.01
+0.02
+L2-ERT
+Theoretical value
+0.6
+0.8
+1.0
+WSC
+Theoretical value
+0.00
+0.05
+0.10
+0.15
+CovGap
+L1-ERT
+Theoretical value
+103
+104
+105
+Number of test samples (log scale)
+0.00
+0.01
+0.02
+L2-ERT
+Theoretical value
+Figure 4: Estimated metrics as a number of test samples points. Top figure: WSC. Middle figure:
+CovGap & 𝐿1-ERT. Bottom axis: 𝐿2-ERT Left: Standard CP not conditional. Right: Oracle sets
+conditional. Theoretical values are estimated using the true value P(𝑌∈𝐶𝛼(𝑋)|𝑋) for 300, 000 samples
+of P𝑋.
+Figure 5 visualizes the data distribution and the induced prediction sets for both strategies with
+test dataset of size 1, 500. Precise metrics values are reported in Table 3. Since only the first feature
+is informative, we plot (𝑋1, 𝑌) while ignoring the remaining features, and we also show (𝑋1, ℎ(𝑋))
+to illustrate our estimator’s learned conditional coverage, as well as (𝑋1, 𝐶𝑜𝑣𝐺𝑎𝑝(𝑋)) to illustrate the
+difference between a partition-wise estimator and our estimator. As expected, our approach clearly
+11
+===PAGE 12===
+identifies regions of under- and over-coverage in the first scenario, and accurately recovers a near-
+constant predictor equal to 1 −𝛼in the oracle setting.
+X1
+−10
+−5
+0
+5
+10
+Y
+Test point
+Conformal sets
+−1.00
+−0.75
+−0.50
+−0.25
+0.00
+0.25
+0.50
+0.75
+1.00
+X1
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+CovGap(X)
+h(X)
+P(Y ∈C(X)|X)
+1 −α
+X1
+−10
+−5
+0
+5
+10
+Y
+Test point
+Oracle sets
+−1.00 −0.75 −0.50 −0.25
+0.00
+0.25
+0.50
+0.75
+1.00
+X1
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+CovGap(X)
+h(X)
+P(Y ∈C(X)|X)
+1 −α
+Figure 5: Illustration of conditional coverage estimation. The top panel shows data, generated from
+𝑌∼𝒩(0, 𝜎(𝑋1)) with 𝜎(𝑥) = 0.5 + |𝑥| + 𝑥2, where 𝑋∼𝒰([−1, 1]8), and 𝑋1 is the first component of
+such a vector 𝑋. The bottom panel shows the conditional coverage estimation ℎ, conditional coverage
+estimation induced by a partition-wise estimator, true conditional coverage, and desired 1−𝛼conditional
+coverage. Left: Conformal sets from the score 𝑆(𝑋, 𝑌) = |𝑌| using 3, 000 samples. Right: Oracle sets
+that achieve conditional coverage.
+We evaluate the metrics on a test set of size 1, 500, as reported in Table 3. In the first experiment,
+where the predictive sets are not conditional, certain metrics fail to detect deviations from conditional
+coverage. This is the case for SSC, HSIC, and Pearson correlation as they rely solely on prediction
+set sizes, which are uniform across samples. Similarly, metrics based on feature-space clustering (FSC,
+CovGap) also fail to detect the coverage violation, due to the difficulty of clustering the feature space.
+The only baseline that identifies a conditional coverage failure in this case is the WSC metric.
+In contrast, under the second (oracle) strategy, all prediction sets satisfy conditional coverage by
+construction. The WSC metric still reports a conditional coverage failure, with values comparable to the
+first example. This occurs because, in high-dimensional feature spaces, WSC can overemphasize local
+fluctuations and misidentify regions with apparent over- or under-coverage. Similarly, EOC detects a
+false conditional coverage violation by grouping extreme outputs values together.
+Our proposed 𝐿1-ERT metric and 𝐿2-ERT metrics, however, correctly distinguish between the two
+settings: they detect the conditional coverage failure in the first example and reports no such failure in
+the oracle case.
+4.3
+Real datasets
+4.3.1
+Regression
+We next compare conditional coverage metrics across the most widely used conformal prediction strate-
+gies. In particular, we build upon the benchmarking framework of Dheur et al. (2025) to evaluate
+multivariate regression conformal prediction methods. For each strategy, we first train the underly-
+ing predictive model and then conformalize its outputs using the standard split conformal prediction
+procedure. Detailed descriptions of all strategies are provided in Appendix E.
+Our evaluation is conducted on several datasets commonly used in regression studies.
+Dataset
+specifications and algorithmic details are reported in Appendix G.1.
+All experiments are repeated ten times, and we report averaged estimates across runs. We dis-
+tinguish between univariate regression (𝑌∈R) and multivariate regression (𝑌∈R𝑘, for 𝑘≥2) to
+12
+===PAGE 13===
+Not conditional
+Conditional
+FSC
+0.8680.014 ✗
+0.8810.012 ✓
+CovGap
+0.0160.004 ✗
+0.0140.004 ✓
+WCovGap
+0.0160.004 ✗
+0.0140.004 ✓
+WSC
+0.7400.019 ✓
+0.7900.014 ✗
+EOC
+0.3410.009 ✓
+0.1860.018 ✗
+SSC
+0.0040.003 ✗
+0.0130.003 ✓
+HSIC
+0.0000.000 ✗
+0.0000.000 ✓
+Pearson
+0.0000.000 ✗
+0.0190.016 ✓
+𝐿1-ERT (Ours)
+0.0910.007 ✓
+−0.0050.009 ✓
+𝐿2-ERT (Ours)
+0.0090.001 ✓
+−0.0000.000 ✓
+Table 3: Conditional metrics for both synthetic samples and whether they accurately diagnose
+conditional coverage. ✓: Accurate diagnostic. ✗: Failure.
+highlight how conditional coverage behaves under increasing output dimensionality. The univariate
+results are deferred to Appendix H.
+Multivariate results.
+We present aggregated results across six datasets, with dataset specific in-
+formation provided in Appendix H. Our first analysis compares the metrics 𝐿1-ERT and WCovGap,
+which both aim to estimate E𝑋[|1 −𝛼−𝑝(𝑋)|], as shown in Figure 6. Each metric is averaged over
+all datasets. Although both target the same quantity, our metric consistently yields a larger estimate
+of conditional miscoverage. Because it serves as a lower bound on the true expectation, this indicates
+that our approach offers a more precise view of conditional coverage than the partition based estimator
+used in prior methods. Figure 7 then compares the estimation of WSC with our estimator for 𝐿2-ERT.
+These results, however, must be interpreted with care. As shown in Figure 8, improvements in con-
+ditional coverage often come hand-in-hand with larger prediction sets. For instance, the C-PCP (Dheur
+et al., 2025) method achieves the best conditional coverage across all metrics, but also produces one of
+the largest prediction intervals. Conversely, methods such as MVCS (Braun et al., 2025) yield smaller
+predictive sets at the cost of poorer conditional coverage. This observation underscores a fundamental
+trade-off: strategies that aggressively minimize prediction volume while maintaining marginal coverage
+often sacrifice conditional coverage. Understanding and managing this trade-off is crucial for tailoring
+conformal prediction methods to specific applications.
+CP2-PCP-Linear
+C-PCP
+HR
+C-HDR
+L-CP
+CopulaCPTS
+STDQR
+HD-PCP
+MSE
+DR-CP
+PCP
+MVCS
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+L1-ERT
+C-PCP
+L-CP
+CP2-PCP-Linear
+C-HDR
+CopulaCPTS
+HR
+DR-CP
+STDQR
+HD-PCP
+PCP
+MSE
+MVCS
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+WCovGap
+Figure 6: Metric values averaged across all datasets for all methods in multivariate regression. Left:
+𝐿1-ERT (lower is better). Right: WCovGap (lower is better)
+4.3.2
+Classification
+In classification, most of the strategies are commonly tailored to specific problems such as long-tailed
+classification, so we choose to only compare the two most used conformal prediction strategies for
+13
+===PAGE 14===
+C-PCP
+CP2-PCP-Linear
+C-HDR
+HR
+L-CP
+MSE
+CopulaCPTS
+STDQR
+PCP
+DR-CP
+HD-PCP
+MVCS
+0.000
+0.002
+0.004
+0.006
+0.008
+0.010
+L2-ERT
+C-HDR
+C-PCP
+CP2-PCP-Linear
+CopulaCPTS
+HR
+DR-CP
+L-CP
+STDQR
+HD-PCP
+PCP
+MSE
+MVCS
+0.0
+0.2
+0.4
+0.6
+0.8
+WSC
+Figure 7: Metric values averaged across all datasets for all methods in multivariate regression. Left:
+𝐿2-ERT (lower is better). Right: WSC (closer to 0.9 is better).
+DR-CP
+MVCS
+C-HDR
+HD-PCP
+STDQR
+L-CP
+PCP
+CP2-PCP-Linear
+C-PCP
+MSE
+HR
+CopulaCPTS
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+Average ratio volume over minimal volume
+Figure 8: Normalized set sizes averaged all datasets in multivariate regression, where the normalization
+is done by dividing each volume by the smallest volume across all methods (smaller is better).
+classification, given a predictive model that returns probabilities estimates ^𝑓(𝑋) ∈Δ𝑑. The first one
+is the negative likelihood prediction (Sadinle et al., 2019) and uses the score 𝑆(𝑋, 𝑌) = −𝑝(𝑋)𝑌. The
+second one (Romano et al., 2020; Angelopoulos et al., 2021) uses the cumulative likelihood scores. We
+first define the permutation 𝜋(𝑥) of {1, . . . , 𝐾} that sorts the probabilities in decreasing order, i.e.,
+^𝑓𝜋1(𝑥)(𝑥) ≥^𝑓𝜋2(𝑥)(𝑥) ≥· · · ≥^𝑓𝜋𝐾(𝑥)(𝑥).
+Then, the score function is defined as :
+𝑆(𝑋, 𝑌) =
+𝜋𝑘(𝑋)
+∑︁
+𝑗=1
+^𝑓𝜋𝑗(𝑋)(𝑋),
+where 𝑌= 𝜋𝑘(𝑋).
+For MNIST, FashionMNIST, and CIFAR, we trained a CNN composed of two convolutional layers
+followed by max pooling, then two fully connected layers with dropout and ReLU activations. The
+model was trained with cross entropy loss to learn ^𝑓. We used early stopping when the accuracy fell
+below 1 −𝛼, since otherwise both conformal strategies tend to produce many empty sets, which would
+make the results uninformative.
+For the CIFAR100 experiment, we trained a ResNet model with cross-entropy loss to learn ^𝑓. To
+learn the classifier for ERT, we re-used this pretrained model, but replaced its final layer with a new
+one. This avoided the cost of learning a large feature space from scratch.
+We report the ERT values in Table 4. For the classification problem, both strategies remain far from
+conditional. In general, we believe that calibrating the predictors leads to better conditional coverage.
+Interestingly for CIFAR100, the 𝐿1-ERT and the KL-ERT lead to two different conclusions: the former
+suggests that the likelihood strategy is more conditional than the cumulative one, while the latter
+suggests the opposite. We attribute this discrepancy to the larger number of empty predictive sets
+produced by the likelihood strategy, for which the conditional coverage equals zero, that are weighted
+differently by the KL than the 𝐿1.
+This is supported by the analysis of under-coverage and over-
+coverage. This situation happens more frequently under the likelihood strategy. As a consequence,
+14
+===PAGE 15===
+Dataset
+Method
+𝐿1-ERT
+KL-ERT
+KL+-ERT
+KL−-ERT
+CIFAR10
+cumulative
+0.0720.005
+−0.0170.008
+−0.0300.005
+0.0120.006
+likelihood
+0.0160.002
+0.0280.006
+0.0070.001
+0.0220.007
+CIFAR100
+cumulative
+0.0410.005
+0.1910.024
+0.0160.008
+0.1750.026
+likelihood
+0.0070.003
+0.4090.025
+0.0850.022
+0.3230.020
+FashionMNIST
+cumulative
+0.1650.004
+−0.2600.014
+−0.1850.010
+−0.0750.004
+likelihood
+0.0980.005
+−0.0680.008
+−0.0420.006
+−0.0260.005
+MNIST
+cumulative
+0.1500.006
+−0.2160.017
+−0.1590.012
+−0.0570.006
+likelihood
+0.1450.003
+−0.1870.007
+−0.1280.005
+−0.0590.002
+Table 4: ERT scores obtained for the classification problems.
+this strategy yields a larger value of KL−-ERT than KL+-ERT, since the KL divergence assigns more
+weight to such extreme situations.
+5
+Conclusions
+Reliable estimation of conditional coverage is a key challenge for catalyzing further research progress
+in conformal prediction. We have addressed this challenge by moving from partition-based estimators
+to a functional-based framework. This shift provides a new perspective on how conditional coverage
+can be understood, measured, and improved. By framing the problem as one of risk minimization,
+we introduce a family of interpretable and reliable metrics that leverage the full expressive power of
+modern predictive models to detect and quantify conditional coverage violations.
+Our framework unifies and extends existing diagnostics, transforming what was previously a collec-
+tion of local, nonparametric estimators into a coherent, model-based approach. This transition not only
+provides more accurate and stable estimates but also offers a deeper understanding of what conditional
+coverage represents in practice. While the reliability of our metrics naturally depends on the quality of
+the learned classifier, this dependency is also a strength.
+To encourage reproducibility and practical adoption, we release an open-source package implement-
+ing all proposed metrics alongside existing ones. Empirical results confirm the benefits of our approach
+and reveal that improving conditional coverage often leads to larger prediction sets. Understanding
+and controlling this balance is a promising direction for future research.
+Acknowledgements
+Authors acknowledge funding from the European Union (ERC-2022-SYG-OCEAN-101071601). Views
+and opinions expressed are however those of the author(s) only and do not necessarily reflect those
+of the European Union or the European Research Council Executive Agency. Neither the European
+Union nor the granting authority can be held responsible for them. This publication is part of the Chair
+«Markets and Learning», supported by Air Liquide, BNP PARIBAS ASSET MANAGEMENT Europe,
+EDF, Orange and SNCF, sponsors of the Inria Foundation. This work has also received support from
+the French government, managed by the National Research Agency, under the France 2030 program
+with the reference «PR[AI]RIE-PSAI» (ANR-23-IACL-0008).
+Finally, the authors would like to thank Eugène Berta for fruitful discussions regarding this work.
+15
+===PAGE 16===
+References
+Angelopoulos, A., S. Bates, J. Malik, and M. I. Jordan (2021). Uncertainty sets for image classifiers
+using conformal prediction. In International Conference on Learning Representations.
+Angelopoulos, A. N. and S. Bates (2023). Conformal prediction: A gentle introduction. Foundations
+and Trends in Machine Learning 16(4), 494–591.
+Bach, F. (2024). Learning Theory from First Principles. MIT Press.
+Berta, E., D. Holzmüller, M. I. Jordan, and F. Bach (2025). Structured matrix scaling for multi-class
+calibration. arXiv preprint arXiv:2511.03685.
+Braun, S., L. Aolaritei, M. I. Jordan, and F. Bach (2025). Minimum volume conformal sets for multi-
+variate regression. arXiv preprint arXiv:2503.19068.
+Braun, S., E. Berta, M. I. Jordan, and F. Bach (2025). Multivariate conformal prediction via confor-
+malized gaussian scoring. arXiv preprint arXiv:2507.20941.
+Bregman, L. M. (1967). The relaxation method of finding the common point of convex sets and its
+application to the solution of problems in convex programming. USSR computational mathematics
+and mathematical physics 7(3), 200–217.
+Breiman, L. (2001). Random forests. Machine learning 45(1), 5–32.
+Bröcker, J. (2009). Reliability, sufficiency, and the decomposition of proper scores. Quarterly Journal
+of the Royal Meteorological Society: A Journal of the Atmospheric Sciences, Applied Meteorology and
+Physical Oceanography 135(643), 1512–1519.
+Cauchois, M., S. Gupta, and J. C. Duchi (2021).
+Knowing what you know: valid and validated
+confidence sets in multiclass and multilabel prediction. Journal of Machine Learning Research 22(81),
+1–42.
+Devroye, L., L. Györfi, and G. Lugosi (2013). A Probabilistic Theory of Pattern Recognition, Volume 31.
+Springer Science & Business Media.
+Dheur, V., M. Fontana, Y. Estievenart, N. Desobry, and S. B. Taieb (2025). A unified comparative
+study with generalized conformity scores for multi-output conformal regression.
+In International
+Conference on Machine Learning.
+Ding, T., A. Angelopoulos, S. Bates, M. Jordan, and R. J. Tibshirani (2023). Class-conditional confor-
+mal prediction with many classes. In Advances in Neural Information Processing Systems.
+Ding, T., J.-B. Fermanian, and J. Salmon (2025). Conformal prediction for long-tailed classification.
+arXiv preprint arXiv:2507.06867.
+Erickson, N., J. Mueller, A. Shirkov, H. Zhang, P. Larroy, M. Li, and A. Smola (2020). Autogluon-
+tabular: Robust and accurate automl for structured data. arXiv preprint arXiv:2003.06505.
+Erickson, N., L. Purucker, A. Tschalzev, D. Holzmüller, P. M. Desai, D. Salinas, and F. Hutter (2025).
+Tabarena: A living benchmark for machine learning on tabular data. In International Conference on
+Machine Learning.
+Feldman, S., S. Bates, and Y. Romano (2021). Improving conditional coverage via orthogonal quantile
+regression. In Advances in Neural Information Processing Systems.
+Feldman, S., S. Bates, and Y. Romano (2023). Calibrated multiple-output quantile regression with
+representation learning. Journal of Machine Learning Research 24(24), 1–48.
+16
+===PAGE 17===
+Fillioux, L., J. Silva-Rodríguez, I. B. Ayed, P.-H. Cournede, M. Vakalopoulou, S. Christodoulidis, and
+J. Dolz (2024). Are foundation models for computer vision good conformal predictors? arXiv preprint
+arXiv:2412.06082.
+Foygel Barber, R., E. J. Candes, A. Ramdas, and R. J. Tibshirani (2021). The limits of distribution-free
+conditional predictive inference. Information and Inference: A Journal of the IMA 10(2), 455–482.
+Gauthier, E., F. Bach, and M. I. Jordan (2025a). Adaptive coverage policies in conformal prediction.
+arXiv preprint arXiv:2510.04318.
+Gauthier, E., F. Bach, and M. I. Jordan (2025b). Backward conformal prediction. In Advances in
+Neural Information Processing Systems.
+Geurts, P., D. Ernst, and L. Wehenkel (2006). Extremely randomized trees. Machine learning 63(1),
+3–42.
+Gibbs, I., J. J. Cherian, and E. J. Candès (2025). Conformal prediction with conditional guarantees.
+Journal of the Royal Statistical Society Series B: Statistical Methodology 87, 1100–1126.
+Gneiting, T. and A. E. Raftery (2007). Strictly proper scoring rules, prediction, and estimation. Journal
+of the American Statistical Association 102(477), 359–378.
+Gretton, A., O. Bousquet, A. Smola, and B. Schölkopf (2005). Measuring statistical dependence with
+hilbert-schmidt norms. In International Conference on Algorithmic Learning Theory.
+Grinsztajn, L., K. Flöge, O. Key, F. Birkel, P. Jund, B. Roof, B. Jäger, D. Safaric, S. Alessi, A. Hayler,
+et al. (2025). Tabpfn-2.5: Advancing the state of the art in tabular foundation models. arXiv preprint
+arXiv:2511.08667.
+Guan, L. (2023). Localized conformal prediction: A generalized inference framework for conformal
+prediction. Biometrika 110(1), 33–50.
+Györfi, L., M. Kohler, A. Krzyzak, and H. Walk (2005). A Distribution-Free Theory of Nonparametric
+Regression. Springer Science+Business Media.
+Holzmüller, D., L. Grinsztajn, and I. Steinwart (2024). Better by default: Strong pre-tuned MLPs and
+boosted trees on tabular data. In Advances in Neural Information Processing Systems.
+Izbicki, R., G. Shimizu, and R. B. Stern (2022). CD-split and HPD-split: Efficient conformal regions
+in high dimensions. Journal of Machine Learning Research 23(87), 1–32.
+Jung, C., G. Noarov, R. Ramalingam, and A. Roth (2023). Batch multivalid conformal prediction. In
+International Conference on Learning Representations.
+Kaur, J. N., M. I. Jordan, and A. Alaa (2025). Conformal prediction sets with improved conditional
+coverage using trust scores. arXiv preprint arXiv:2501.10139.
+Ke, G., Q. Meng, T. Finley, T. Wang, W. Chen, W. Ma, Q. Ye, and T.-Y. Liu (2017). Lightgbm: A
+highly efficient gradient boosting decision tree. Advances in neural information processing systems 30.
+Lei, J., M. G’Sell, A. Rinaldo, R. J. Tibshirani, and L. Wasserman (2018). Distribution-free predictive
+inference for regression. Journal of the American Statistical Association 113(523), 1094–1111.
+Lei, J. and L. Wasserman (2014). Distribution-free prediction bands for non-parametric regression.
+Journal of the Royal Statistical Society Series B: Statistical Methodology 76(1), 71–96.
+Liu, S., J. Huang, and L. Ong (2025). Conformal prediction meets long-tail classification. arXiv preprint
+arXiv:2508.11345.
+Messoudi, S., S. Destercke, and S. Rousseau (2021). Copula-based conformal prediction for multi-target
+regression. Pattern Recognition 120, 108101.
+17
+===PAGE 18===
+Messoudi, S., S. Destercke, and S. Rousseau (2022). Ellipsoidal conformal inference for multi-target
+regression. In Conformal and Probabilistic Prediction with Applications.
+Mukama, B. C., S. Messoudi, S. Destercke, and S. Rousseau (2025). Copula-based conformal prediction
+for prioritized heterogeneous multi-task learning. Pattern Recognition, 112347.
+Papadopoulos, H., K. Proedrou, V. Vovk, and A. Gammerman (2002). Inductive confidence machines
+for regression. In European Conference on Machine Learning.
+Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, P. Pretten-
+hofer, R. Weiss, V. Dubourg, et al. (2011). Scikit-learn: Machine learning in python. Journal of
+Machine Learning Research 12, 2825–2830.
+Plassier, V., A. Fishkov, V. Dheur, M. Guizani, S. B. Taieb, M. Panov, and E. Moulines (2025).
+Rectifying conformity scores for better conditional coverage. In International Conference on Machine
+Learning.
+Plassier, V., A. Fishkov, M. Guizani, M. Panov, and E. Moulines (2025).
+Probabilistic conformal
+prediction with approximate conditional validity. In International Conference on Learning Represen-
+tations.
+Plassier, V., A. Fishkov, M. Panov, and E. Moulines (2024). Conditionally valid probabilistic conformal
+prediction. In arXiv preprint arXiv:2407.01794.
+Prokhorenkova, L., G. Gusev, A. Vorobev, A. V. Dorogush, and A. Gulin (2018). Catboost: unbiased
+boosting with categorical features. Advances in neural information processing systems 31.
+Qu, J., D. Holzmüller, G. Varoquaux, and M. L. Morvan (2025). TabICL: A tabular foundation model
+for in-context learning on large data. In International Conference on Machine Learning.
+Romano, Y., R. F. Barber, C. Sabatti, and E. J. Candès (2020). With malice towards none: Assessing
+uncertainty via equalized coverage. Harvard Data Science Review.
+Romano, Y., E. Patterson, and E. Candes (2019). Conformalized quantile regression. In Advances in
+Neural Information Processing Systems.
+Romano, Y., M. Sesia, and E. Candes (2020). Classification with valid and adaptive coverage. In
+Advances in Neural Information Processing Systems.
+Sadinle, M., J. Lei, and L. Wasserman (2019). Least ambiguous set-valued classifiers with bounded
+error levels. Journal of the American Statistical Association 114(525), 223–234.
+Shafer, G. and V. Vovk (2008). A tutorial on conformal prediction. Journal of Machine Learning
+Research 9(3), 371–421.
+Sun, S. and R. Yu (2024).
+Copula conformal prediction for multi-step time series forecasting.
+In
+International Conference on Learning Representations.
+Thurin, G., K. Nadjahi, and C. Boyer (2025).
+Optimal transport-based conformal prediction.
+In
+International Conference on Machine Learning.
+Vapnik, V. (2000). The Nature of Statistical Learning Theory. Springer Science & Business Media.
+Vovk, V. (2012).
+Conditional validity of inductive conformal predictors.
+In Asian Conference on
+Machine Learning.
+Vovk, V., A. Gammerman, and G. Shafer (2005). Algorithmic Learning in a Random World. Springer.
+Wang, F., L. Cheng, R. Guo, K. Liu, and P. S. Yu (2023).
+Equal opportunity of coverage in fair
+regression. In Advances in Neural Information Processing Systems.
+18
+===PAGE 19===
+Wang, Z., R. Gao, M. Yin, M. Zhou, and D. M. Blei (2023). Probabilistic conformal prediction using
+conditional random samples. In International Conference on Artificial Intelligence and Statistics.
+Zhou, Y., L. Lindemann, and M. Sesia (2024). Conformalized adaptive forecasting of heterogeneous
+trajectories. In International Conference on Machine Learning.
+Zhu,
+Y.,
+D. Hernández,
+Y. He,
+Z. Ding,
+B. Xiong,
+E. Kharlamov,
+and S. Staab (2025).
+Predicate-conditional conformalized answer sets for knowledge graph embeddings. arXiv preprint
+arXiv:2505.16877.
+19
+===PAGE 20===
+Appendix
+A
+Additional metrics
+Group-based diagnostics.
+We start by reviewing additional group-based diagnostics.
+• Equalized / group-wise coverage. A fairness-style requirement is that every group attains
+the nominal coverage:
+P𝑌|𝑔(𝑋)=g(𝑌∈𝐶𝛼(𝑋) | 𝑔(𝑋) = g) = 1 −𝛼
+∀g ∈𝒢.
+This notion appears in the conformal fairness literature (e.g, Romano et al. 2020; Ding et al.
+2025) and is evaluated in practice by returning the values 𝐶g for all g.
+• Feature-stratified coverage (FSC). To focus on the worst-off group, FSC reports the minimal
+empirical coverage across groups:
+FSC = min
+g∈𝒢𝐶g.
+FSC highlights subgroups where coverage is lowest and has been used in several works (e.g,
+Angelopoulos and Bates 2023; Ding et al. 2023; Jung et al. 2023). This metric is often viewed as
+a fairness measure, as it focuses on the group that exhibits the poorest coverage.
+All of the above group-based diagnostics are sensitive to how the groups 𝒢are chosen. Most of
+the time, they are created by partitioning the feature space, either with clustering methods, or by
+using categorical features. Much of the recent work focuses on finding or learning useful partitions that
+reveal conditional coverage violations, by applying the induced CovGap or FSC metric. In the following,
+unless otherwise specified, the groups used to evaluate FSC and CovGap are obtained by clustering the
+feature space. We will use the following notation to refer to alternative grouping strategies.
+• Equal opportunity of coverage (EOC). To account for differences in outcomes, EOC requires
+that coverage rates across protected groups are equal conditional on the true label; in regression
+this means that for each outcome value 𝑦(or a discretization of 𝑦), the coverage within each
+protected subgroup should match. This idea was introduced by Wang et al. (2023). However,
+defining groups based on the outcome can lead to misleading metrics. For instance, consider
+an interval predictor [𝑞𝛼/2, 𝑞1−𝛼/2] for 𝑌∼𝒩(0, 1), where 𝑞𝛼/2 and 𝑞1−𝛼/2 are the 𝛼/2 and
+1 −𝛼/2 quantiles of the normal distribution respectively. If all extreme values of 𝑌are grouped
+together, the resulting group may show a coverage of zero, even though the prediction interval is
+conditionally valid.
+• Size-stratified coverage (SSC). Instead of grouping by features, SSC groups examples by the
+size (e.g., volume or cardinality) of their prediction sets. It is model-agnostic and useful when
+𝑋is high-dimensional because it avoids requiring semantically meaningful groups.
+However,
+SSC can fail to detect conditional-coverage problems in some settings. Consider, for example
+regression with the nonconformity score 𝑆(𝑋, 𝑌) := |𝑌−𝑓(𝑋)| (cf. Angelopoulos et al., 2021).
+This score cannot capture heteroskedasticity (Vovk, 2012), outputting prediction sets with the
+same sizes independently of the covariate. Thus, in this case, SSC will not reveal coverage failures.
+Furthermore, it requires access to the prediction set sizes which can be computationally costly
+for some strategies.
+Representation-based diagnostics (dependence on auxiliary variables).
+An alternative to
+grouping is to measure statistical dependence between the coverage indicator
+𝑍:= 1{𝑌∈𝐶𝛼(𝑋)}
+and auxiliary variables 𝑉(for example, prediction-set size, nonconformity score, residuals, or other
+model-derived quantities). If 𝑍is independent of 𝑉, this is evidence that coverage does not systemati-
+cally vary with 𝑍. Feldman et al. (2021) proposed two measures induced by this remark.
+20
+===PAGE 21===
+• Pearson’s correlation. This is a simple measure of linear dependence,
+𝑅corr(𝑍, 𝑉) =
+Cov(𝑍, 𝑉)
+√︀
+Var(𝑍) Var(𝑉),
+where 𝑉is the prediction-set size. This is fast and interpretable but only captures linear rela-
+tionships.
+• HSIC (Hilbert–Schmidt independence criterion). The HSIC is a nonparametric kernel-
+based dependence measure that can detect arbitrary nonlinear dependence.
+Given a suitable
+pair of kernels, HSIC estimates the maximum mean discrepancy (MMD) (Gretton et al., 2005)
+between the joint distribution P𝑍,𝑉and the product of marginals P𝑍⊗P𝑉. Feldman et al. (2021)
+defined the metric based on HSIC:
+𝑅HSIC(𝑍, 𝑉) =
+√︁
+HSIC(𝑍, 𝑉),
+where the square root emphasizes small deviations from independence and gives a loss that is
+easier to interpret and optimize. Here, 𝑉is again the prediction-set size.
+B
+Estimating Bregman divergences with ERTs
+The following proposition is related to Theorem 3.1 and studies the setting when there is a single proper
+score ℓthat estimates a distance 𝑑(1 −𝛼, 𝑝) simultaneously for all 𝛼and 𝑝.
+Proposition 5.1. A function 𝑑(𝑝, 𝑞) arises as the divergence of some proper scoring rule if and only
+if there exists a convex function 𝜙: [0, 1] →R such that
+𝑑(𝑝, 𝑞) = 𝐷𝜙(𝑞‖𝑝) = 𝜙(𝑞) −𝜙(𝑝) −(𝑞−𝑝) 𝑠(𝑝)
+for any choice of subgradient 𝑠(𝑝) ∈𝜕𝜙(𝑝). Furthermore, the associated proper score is defined as
+ℓ𝜙(𝑝, 𝑦) := 𝜙(𝑝) + (𝑦−𝑝) 𝑠(𝑝).
+and
+ℓ𝜙-ERT = E𝑋[𝐷𝜙(𝑝(𝑋)‖1 −𝛼)].
+Proof. Let ℓbe a proper scoring rule for binary outcomes and write 𝑝, 𝑞∈[0, 1] for probabilities of the
+event 𝑌= 1. Define
+𝜙(𝑞) := E𝑌∼𝑞
+[︀ℓ(𝑞, 𝑌)
+]︀= 𝑞ℓ(𝑞, 1) + (1 −𝑞) ℓ(𝑞, 0).
+Properness of ℓmeans that for every fixed 𝑝∈[0, 1] and every 𝑞∈[0, 1],
+𝜙(𝑞) = E𝑌∼𝑞[ℓ(𝑞, 𝑌)] ≤E𝑌∼𝑞[ℓ(𝑝, 𝑌)] = 𝑞ℓ(𝑝, 1) + (1 −𝑞) ℓ(𝑝, 0).
+Rearranging gives
+𝜙(𝑞) ≤𝜙(𝑝) + (𝑞−𝑝)(ℓ(𝑝, 1) −ℓ(𝑝, 0))
+so 𝜙is convex on [0, 1] and the function 𝑝↦→ℓ(𝑝, 1) −ℓ(𝑝, 0) defines a subgradient of 𝜙at 𝑝. Denote
+by 𝑠(𝑝) ∈𝜕𝜙(𝑝) any such subgradient. Then for every 𝑝, 𝑞∈[0, 1],
+E𝑞[ℓ(𝑝, 𝑌)] = 𝜙(𝑝) + (𝑞−𝑝) 𝑠(𝑝),
+and hence the divergence of ℓsatisfies
+𝑑ℓ(𝑝, 𝑞) = E𝑞[ℓ(𝑝, 𝑌)] −E𝑞[ℓ(𝑞, 𝑌)] = 𝜙(𝑝) + (𝑞−𝑝) 𝑠(𝑝) −𝜙(𝑞) = 𝜙(𝑞) −𝜙(𝑝) −(𝑞−𝑝) 𝑠(𝑝),
+which is exactly the Bregman divergence 𝐷𝜙(𝑞‖𝑝) generated by 𝜙.
+Conversely, let 𝜙: [0, 1] →R be convex and for each 𝑝∈[0, 1] choose a subgradient 𝑠(𝑝) ∈𝜕𝜙(𝑝).
+Define a score ℓ𝜙by
+ℓ𝜙(𝑝, 𝑦) := 𝜙(𝑝) + (𝑦−𝑝) 𝑠(𝑝).
+21
+===PAGE 22===
+by construction, and convexity of 𝜙implies for every 𝑝and 𝑞,
+E𝑞[ℓ𝜙(𝑝, 𝑌)] = 𝜙(𝑝) + (𝑞−𝑝) 𝑠(𝑝) ≥𝜙(𝑞).
+Thus ℓ𝜙is proper, and its divergence equals
+E𝑞[ℓ𝜙(𝑝, 𝑌)] −E𝑞[ℓ𝜙(𝑞, 𝑌)] = 𝜙(𝑝) + (𝑞−𝑝) 𝑠(𝑝) −𝜙(𝑞) = 𝐷𝜙(𝑞‖𝑝).
+Therefore a function 𝑑(𝑝, 𝑞) arises as the divergence of a proper scoring rule if and only if it is the
+Bregman divergence of some convex generator 𝜙, as claimed. Note that the score ℓ𝜙is determined up
+to addition of an arbitrary function of the outcome whose expectation under every 𝑞is zero, and that
+when 𝜙is differentiable the subgradient 𝑠(𝑝) may be replaced by the derivative 𝜙′(𝑝).
+Using this proper score to evaluate the ℓ𝜙-ERT we get
+ℓ𝜙-ERT = ℛℓ𝜙(1 −𝛼) −ℛℓ𝜙(𝑝)
+= E𝑋,𝑍[ℓ𝜙(1 −𝛼, 𝑍) −ℓ𝜙(𝑝(𝑋), 𝑍)]
+= E𝑋[E𝑍[ℓ𝜙(1 −𝛼, 𝑍) −ℓ𝜙(𝑝(𝑋), 𝑍)|𝑋]]
+= E𝑋[E𝑍∼𝑝(𝑋)[ℓ𝜙(1 −𝛼, 𝑍) −ℓ𝜙(𝑝(𝑋), 𝑍)]]
+= E𝑋[𝑑ℓ𝜙(1 −𝛼, 𝑝(𝑋))]
+= E𝑋[𝐷𝜙(𝑝(𝑋)‖1 −𝛼)].
+C
+Link with Gibbs et al. (2025)
+To get predictive sets with conditional guarantees, Gibbs et al. (2025) used the fact that conditional
+coverage holds if for all measurable function 𝜙,
+E𝑋,𝑍[𝜙(𝑋)(1 −𝛼−𝑍)] = 0.
+To obtain a more operational interpretation, suppose we restrict attention to predictors of the form
+ℎ(𝑥) = 𝜃𝑇𝜑(𝑥), where 𝜑(𝑥) is a feature map. The associated mean squared risk is
+𝐹(𝜃) = E𝑋,𝑍[(𝜃𝑇𝜑(𝑋) −𝑍)2]
+and has gradient
+∇𝜃𝐹(𝜃) = 2 E𝑋,𝑍[(𝜃𝑇𝜑(𝑋) −𝑍)𝜑(𝑋)].
+Write 𝜃𝛼such that ℎ𝜃𝛼(𝑋) = 1 −𝛼, (that exists when 𝜑(𝑋) has a non-zero constant component).
+For this class of models, our metric 𝐿2-ERT compares any 𝜃to this target via
+𝐹(𝜃𝛼) −inf
+𝜃𝐹(𝜃).
+When conditional coverage holds, both the gradient and the 𝐿2-ERT are equal to zero. In this sense,
+the quantity 𝐹(𝜃𝛼) −𝐹(𝜃) offers more interpretability than the gradient alone. While the gradient
+describes only a local direction in the parameter space of improvement, the risk difference has a clear
+interpretation that has already been discussed. Indeed, when 𝐹(𝜃𝛼) −inf𝜃𝐹(𝜃) = 0 we have E𝑋,𝑍[(1 −
+𝛼−𝑍)𝜑(𝑋)] = 0 but it can be that 𝐹(𝜃𝛼)−inf𝜃𝐹(𝜃) is very small but that ‖E𝑋,𝑍[(1−𝛼−𝑍)𝜑(𝑋)]‖2 is
+very large. That is why E𝑋,𝑍[𝜙(𝑋)(1−𝛼−𝑍)] cannot be used as an interpretable quantity to quantify
+conditional miscoverage deviation, but only to assess if there is conditional coverage or not.
+D
+Extension to a conditional coverage rule
+While conditional coverage is often defined with a fixed target level,
+P
+(︀𝑌∈𝐶𝛼(𝑋test) | 𝑋test
+)︀= 1 −𝛼
+P𝑋-almost surely,
+ensuring that the prediction set 𝐶𝛼(𝑋) covers the true label with probability 1 −𝛼for every possible
+input 𝑋, a uniform coverage level may be neither necessary nor desirable in practice. In many settings,
+22
+===PAGE 23===
+one may wish to adapt the coverage level to reflect varying uncertainty, heteroskedastic noise, or
+task-specific risk preferences. Recent conformal prediction methods allow adapting 𝛼dynamically to
+optimize other objectives (Gauthier et al., 2025b,a).
+To formalize this flexibility, we introduce a conditional miscoverage rule 𝛼: 𝒳→[0, 1], which pre-
+scribes a desired miscoverage level 𝛼(𝑋) that may vary with the input features. Under this generalized
+framework, the target conditional coverage condition becomes
+E
+[︀1{𝑌∈𝐶𝛼(𝑋test)} | 𝑋test
+]︀= 1 −𝛼(𝑋test)
+P𝑋-almost surely.
+This formulation recovers the standard conformal setting in the special case where 𝛼(𝑋) is constant,
+while enabling the analysis of predictors designed to achieve non-uniform, data-dependent coverage
+guarantees. It thus provides a principled way to study how prediction methods align with arbitrary,
+application-driven notions of conditional reliability. This could be useful for example in classification,
+where the discrete nature of the target may not allow to achieve constant coverage.
+We next adapt our framework for the ℓ-ERT metric under this setting by writing
+ℓ-ERT = ℛℓ(1 −𝛼) −ℛℓ(𝑝) = E
+[︁(︀𝑑ℓ(1 −𝛼(𝑋), 𝑝(𝑋)
+)︀]︁
+.
+and its variational form
+ℓ-ERT(ℎ) = ℛℓ(1 −𝛼) −ℛℓ(ℎ) = E𝑋,𝑌
+[︁
+ℓ(1 −𝛼(𝑋), 𝑌
+)︀−ℓ(ℎ(𝑋), 𝑌
+)︀]︁
+.
+The formulas above work for the 𝐿2-ERT and the KL-ERT, where the proper score ℓdoes not depend
+on 1 −𝛼. If general distance metrics should be estimated as in Theorem 3.1, such as for the 𝐿1-ERT,
+the proper scoring rule ℓneeds to depend on 𝛼(𝑋), and we obtain
+ℓ-ERT = E
+[︁(︀𝑑ℓ𝛼(𝑋)(1 −𝛼(𝑋), 𝑝(𝑋)
+)︀]︁
+.
+and its variational form
+ℓ-ERT(ℎ) = E𝑋,𝑌
+[︁
+ℓ𝛼(𝑋)(1 −𝛼(𝑋), 𝑌
+)︀−ℓ𝛼(𝑋)(ℎ(𝑋), 𝑌
+)︀]︁
+.
+The remaining components of the procedure remain unchanged. For convenience, we refer to the
+resulting metrics using the same terminology as in the fixed 1 −𝛼case, since that setting corresponds
+to a particular instance of this more general framework.
+E
+Benchmarking strategies
+The strategies we compare can be differentiated in four main groups—ones that uses density estimation,
+latent spaces, hyper-rectangles, or minimizing a quantity while ensuring marginal coverage. We build
+upon the work of Dheur et al. (2025) that already explained most of those strategies, but we recall
+their specificities here for completeness.
+Among the density-based methods, given a predictive density ^𝑝(𝑦|𝑥), the benchmarked strategies
+are:
+• DR-CP (Sadinle et al., 2019): Defines the conformity score as 𝑆DR-CP(𝑋, 𝑌) = −^𝑝(𝑌|𝑋), leading
+to prediction regions that are density superlevel sets, 𝐶DR-CP(𝑋) = {𝑦: ^𝑝(𝑦|𝑋) ≥−^𝑞}.
+• C-HDR (Izbicki et al., 2022): Conformalize the highest predictive density (HPD) by using
+the nonconformity score 𝑆HDP(𝑋, 𝑌) = P𝑦∼^𝑝(·|𝑋) ( ^𝑝(𝑦|𝑋) ≥^𝑝(𝑌|𝑋) ). It then produces regions
+𝐶C-HDR(𝑋) = {𝑦: ^𝑓(𝑦|𝑋) ≥^𝑡𝑞}, where ^𝑡𝑞defines the highest density region (HDR) at level ^𝑞.
+• PCP (Wang et al., 2023): Draws 𝐿samples ˜𝑌(𝑙) ∼^𝑝𝑌|𝑥with ^𝑝𝑌|𝑥the estimated conditional distri-
+bution, and defines conformity as the distance to the nearest sample, 𝑆PCP(𝑋, 𝑌) = min𝑙∈[𝐿] ‖𝑌−˜𝑌(𝑙)‖2;
+the corresponding region is a union of 𝐿balls centered at the sampled points.
+• HD-PCP (Wang et al., 2023): Extends PCP by retaining only the top ⌊(1 −𝛼)𝐿⌋samples with
+highest density, concentrating the prediction region on high-density areas.
+23
+===PAGE 24===
+• C-PCP (Dheur et al., 2025): Estimates the conditional CDF of the conformity score 𝑆(𝑋, 𝑌),
+𝑆CDF(𝑥, 𝑦) = P(𝑆𝑊(𝑋, 𝑌) ≤𝑆𝑊(𝑥, 𝑦) | 𝑋= 𝑥),
+using a Monte Carlo approximation with 𝐾samples
+𝑆ECDF(𝑥, 𝑦) = 1
+𝐾
+𝐾
+∑︁
+𝑘=1
+1[𝑆𝑊(𝑥, ^𝑌(𝑘)) ≤𝑆𝑊(𝑥, 𝑦)],
+^𝑌(𝑘) ∼^𝐹𝑌|𝑥.
+When 𝑆(𝑥, 𝑦) = 𝑆PCP(𝑥, 𝑦), this yields
+𝑆C-PCP(𝑥, 𝑦) = 1
+𝐾
+∑︁
+𝑘∈[𝐾]
+1
+{︃
+min
+𝑙∈[𝐿] ‖ ^𝑌(𝑘) −˜𝑌(𝑙)‖2 ≤min
+𝑙∈[𝐿] ‖𝑦−˜𝑌(𝑙)‖2
+}︃
+.
+• CP2-PCP (Plassier et al., 2024): Builds predictive sets by using samples from an implicit
+conditional generative model. For each calibration point it uses two independent draws from the
+conditional generator to define a conformity score and an inflation parameter 𝜏that accounts for
+the conditional mass around likely outputs. At prediction time it forms a union of balls around
+new generated samples, with their size chosen to guarantee marginal validity while improving
+approximate conditional adaptivity.
+• MSE: Naïve multivariate generalization of the univariate score 𝑆(𝑋, 𝑌) = |𝑌−𝑓(𝑋)|, by using
+the multivariate score 𝑆(𝑋, 𝑌) = ‖𝑌−𝑓(𝑋)‖2.
+Among the latent space-based methods, the benchmarked strategies are:
+• STDQR (Feldman et al., 2023): Constructs multivariate prediction regions in a latent space 𝒵
+to overcome limitations of standard multivariate prediction methods. Instead of using directional
+quantile regression as originally introduced, we follow Dheur et al. (2025) procedure where the
+region 𝑅𝒵with coverage 1 −𝛼is constructed by selecting the 1 −𝛼proportion of latent samples
+closest to the origin, ensuring correct coverage directly in the latent space. These latent regions
+are then mapped to the output space 𝒴via a conditional generative model (originally a CVAE,
+here replaced with a normalizing flow). A conformalization step refines coverage by creating a
+grid of latent samples, mapping them to 𝒴, and forming small balls around each mapped point.
+• L-CP (Dheur et al., 2025): Defines conformity in a latent space using an invertible conditional
+generative model ^𝑄: 𝒵× 𝒳→𝒴. A latent variable 𝑍∼𝒩(0, 𝐼𝑑) is mapped to the output space
+via ^𝑄, and the conformity score is measured in latent space as
+𝑆L-CP(𝑋, 𝑌) = ‖ ^𝑄−1(𝑌; 𝑋)‖.
+The prediction region is obtained by taking a ball of radius ^𝑞around the origin in latent space and
+mapping it back to the output space. This method avoids grid-based directional quantile regres-
+sion, improving scalability and computational efficiency, and generalizes distributional conformal
+prediction to multivariate outputs.
+Among the hyper-rectangle-based methods, the benchmarked strategies are:
+• CopulaCPTS (Sun and Yu, 2024): This method models the joint dependence between marginal
+conformity scores via a copula. The calibration data are split into two sets: 𝒟cal-1 to estimate
+empirical CDFs ^𝐹𝑖of conformity scores for each output dimension 𝑖∈[𝑑], and 𝒟cal-2 to calibrate
+the copula parameters. The optimal thresholds 𝑠*
+1, . . . , 𝑠*
+𝑑are obtained by minimizing a coverage-
+based loss, ensuring marginal validity while reducing region size.
+The final prediction region
+is
+𝐶CopulaCPTS(𝑋) = {𝑦∈𝒴: 𝑆𝑖(𝑋, 𝑦𝑖) < 𝑠*
+𝑖, ∀𝑖∈[𝑑]}.
+Other copula’s based strategies include Messoudi et al. (2021); Mukama et al. (2025).
+24
+===PAGE 25===
+• HR (Romano et al., 2019; Zhou et al., 2024): Constructs axis-aligned (hyper-rectangular) predic-
+tion regions by fitting univariate quantiles ˜𝑞𝛼/2(𝑥)𝑖and ˜𝑞1−𝛼/2(𝑥)𝑖folowing Romano et al. (2019)
+for each output dimension 𝑖∈[𝑘], with ˜𝛼= 2(1 −(1 −𝛼)1/𝑘). The conformity score is defined as
+(inspired from Zhou et al. (2024) which extends uni-variate scorings to multi-variate ones)
+𝑆HR(𝑋, 𝑌) = max
+𝑖∈[𝑘]
+{︁
+˜𝑞𝛼/2(𝑋)𝑖−𝑌𝑖, 𝑌𝑖−˜𝑞1−𝛼/2(𝑋)𝑖
+}︁
+,
+yielding rectangular prediction regions aligned with coordinate axes.
+Finally, among the strategies which minimizes the size of the prediction sets, we use:
+• MVCS (Braun et al., 2025): Minimizes the volume of the sets {𝑦∈R𝑘, ‖𝑀(𝑋)(𝑦−𝑓(𝑋))‖𝑝≤1}
+where 𝑀(𝑋) is positive definite, 𝑓(𝑋) ∈R𝑘, and 𝑝> 0 defines a 𝑝-norm, while ensuring valid
+marginal coverage. The conformalization set is done with the score 𝑆(𝑋, 𝑌) = ‖𝑀(𝑋)(𝑌−𝑓(𝑋)‖𝑝.
+F
+Strong classifiers
+Here, we provide more details on the classifiers used in Section 4. In the following, we will refer to
+training and test data for the data that the classifier ℎis trained and evaluated on, not to be confused
+with the data that the original prediction set method 𝐶𝛼is trained on.
+We employ the following
+classifiers in our evaluation:
+Tabular foundation models.
+We evaluate the recent models RealTabPFN-2.5 (Grinsztajn et al.,
+2025) and TabICLv1.1 (Qu et al., 2025). These models can predict ℎ(𝑥test
+1
+), . . . , ℎ(𝑥test
+𝑛
+) with a single
+forward pass through a neural network that takes both the test input and the entire training set into
+account. They have been found to perform very well already without hyperparameter tuning (Erickson
+et al., 2025).
+Gradient-boosted decision trees.
+We choose two representatives: CatBoost (Prokhorenkova et al.,
+2018) is known for its strong default performance. We adopt its hyperparameters from AutoGluon
+(Erickson et al., 2020) and TabArena (Erickson et al., 2025), using 300 early stopping rounds instead of
+AutoGluon’s custom early stopping logic. To obtain a faster model, we use LightGBM (Ke et al., 2017)
+with cheaper hyperparameters adapted from the tuned defaults of Holzmüller et al. (2024), reducing
+the number of early stopping rounds to 100 and using cross-entropy loss for early stopping (as for
+CatBoost). Both CatBoost and LightGBM are fitted in parallel for eight inner cross-validation folds
+for each outer cross-validation fold, following TabArena. The inner cross-validation folds are used for
+early stopping, and the final validation predictions are concatenated and used to fit a quadratic scaling
+post-hoc calibrator (Berta et al., 2025). Test set predictions are made based on the post-hoc calibrator
+applied to the average of the eight models’ predictions.
+Bagging models.
+Random Forest (Breiman, 2001) is a popular baseline for tabular ML. Extremely
+randomized trees (ExtraTrees/XT, Geurts et al., 2006) are a more randomized variant that performs
+similarly while being faster (Erickson et al., 2025). We fit both models with 300 estimators and otherwise
+use the default hyperparameters from scikit-learn (Pedregosa et al., 2011).
+PartitionWise
+Partition-wise estimation first groups samples in the feature space and then predicts
+by using the average label within each group. The predictor relies on KMeans to form the partitions,
+and the number of clusters is selected through a fourth root rule based on the test set size, which keeps
+the model flexible while avoiding clusters that are too small. At inference time, each new sample is
+assigned to its nearest cluster and the model predicts the mean stored for that cluster.
+Trade-offs.
+We chose to only fit boosted trees with inner cross-validation, both because they need
+validation sets for early stopping and because they are still reasonably fast with parallelization. The
+use of cross-validation also allows for the application of post-hoc calibration. Other methods might
+also benefit from post-hoc calibration, especially for non-L1 metrics, at the cost of higher runtime due
+to cross-validation.
+25
+===PAGE 26===
+Discussion and other options.
+We omit from-scratch trained tabular neural networks from our
+comparison as they are relatively slow, especially on CPUs, and their un-tuned performance is sub-
+optimal (Erickson et al., 2025). If runtime is less of a concern, for ideal sample-efficiency, automated
+machine learning methods such as AutoGluon (Erickson et al., 2020) can be employed that combine
+multiple models and hyperparameter setting, ensembling, and post-hoc calibration. However, when
+these methods are used with time limits, the result may not be reproducible.
+Hardware.
+We ran tabular foundation models on GPUs (NVIDIA RTX8000, V100 and RTX6000)
+and the other models on CPUs (Cascade Lake Intel Xeon 5217 with 8 cores and AMD EPYC 7302
+with 16 cores).
+G
+Additional information regarding the experiments
+G.1
+Details on the datasets
+See Table 5 for details on the datasets used for the classifiers comparison, Table 6 for details on the
+uni-variate datasets and Table 7 for the multivariate ones.
+Dataset
+Number of
+samples
+Number
+of test samples
+Number
+of features
+physiochemical_protein
+45730
+22865
+9
+Food_Delivery_Time
+45593
+22797
+10
+diamonds
+53940
+26970
+9
+superconductivity
+21263
+10632
+81
+Table 5: Description of the univariate datasets.
+Dataset
+Number of
+samples
+Number
+of test samples
+Number
+of features
+ailerons
+13750
+1375
+40
+bank8FM
+8192
+820
+8
+cpu-act
+8192
+820
+21
+house-8L
+22784
+2280
+8
+miami
+13932
+1394
+16
+sulfur
+10081
+1009
+6
+Table 6: Description of the univariate datasets.
+Dataset
+Number of
+samples
+Number
+of test samples
+Number
+of features
+Dimension
+of targets
+Bias
+7752
+776
+22
+2
+CASP
+45730
+4574
+8
+2
+House
+21613
+2162
+17
+2
+rf1
+9125
+914
+64
+8
+rf2
+9125
+914
+576
+8
+Taxi
+61286
+6130
+6
+2
+Table 7: Description of the multivariate datasets.
+H
+Additional experiments
+Synthetic dataset
+See Figures 9 & 10 & 11 & 12.
+26
+===PAGE 27===
+103
+104
+Number of test samples (log scale)
+0.000
+0.002
+0.004
+0.006
+0.008
+0.010
+0.012
+L2-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+103
+104
+Number of test samples (log scale)
+0.000
+0.005
+0.010
+0.015
+0.020
+0.025
+0.030
+L2-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+Figure 9: Illustration of the estimation of 𝐿2-ERT for different classifiers as a number of sampled data
+available. Left: physiochemical_protein dataset Right: Diamonds dataset
+103
+104
+Number of test samples (log scale)
+0.000
+0.001
+0.002
+0.003
+0.004
+L2-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+103
+104
+Number of test samples (log scale)
+0.000
+0.005
+0.010
+0.015
+0.020
+L2-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+Figure 10: Illustration of the estimation of 𝐿2-ERT for different classifiers as a number of sampled data
+available. Left: Food_Delivery_Time dataset Right: Superconductivity dataset
+103
+104
+Number of test samples (log scale)
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+KL-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+103
+104
+Number of test samples (log scale)
+0.000
+0.025
+0.050
+0.075
+0.100
+0.125
+KL-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+Figure 11: Illustration of the estimation of KL-ERT for different classifiers as a number of sampled
+data available. Left: physiochemical_protein dataset Right: Diamonds dataset
+Uni-variate regression.
+See Figures 13 & 14 & 15.
+27
+===PAGE 28===
+103
+104
+Number of test samples (log scale)
+0.000
+0.005
+0.010
+0.015
+0.020
+KL-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+103
+104
+Number of test samples (log scale)
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+KL-ERT
+CatBoost
+LightGBM
+PartitionWise
+RandomForest
+TabICLv1.1
+RealTabPFN-2.5
+ExtraTrees
+Figure 12: Illustration of the estimation of KL-ERT for different classifiers as a number of sampled
+data available. Left: Food_Delivery_Time dataset Right: Superconductivity dataset
+STDQR
+CopulaCPTS
+CP2-PCP-Linear
+HR
+HD-PCP
+L-CP
+C-PCP
+PCP
+C-HDR
+DR-CP
+MVCS
+MSE
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+L1-ERT
+STDQR
+CP2-PCP-Linear
+CopulaCPTS
+HR
+C-PCP
+DR-CP
+HD-PCP
+L-CP
+C-HDR
+PCP
+MVCS
+MSE
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+WCovGap
+Figure 13: Metric values averaged across all datasets for all methods in univariate regression. Left:
+𝐿1-ERT (lower is better). Right: WCovGap (lower is better)
+CP2-PCP-Linear
+HR
+STDQR
+CopulaCPTS
+C-PCP
+HD-PCP
+C-HDR
+PCP
+L-CP
+DR-CP
+MVCS
+MSE
+0.000
+0.002
+0.004
+0.006
+0.008
+L2-ERT
+C-PCP
+C-HDR
+HD-PCP
+CP2-PCP-Linear
+HR
+STDQR
+PCP
+CopulaCPTS
+L-CP
+DR-CP
+MVCS
+MSE
+0.0
+0.2
+0.4
+0.6
+0.8
+WSC
+Figure 14: Metric values averaged across all datasets for all methods in univariate regression. Left:
+𝐿2-ERT (lower is better). Right: WSC (closer to 0.9 is better).
+28
+===PAGE 29===
+DR-CP
+MVCS
+HD-PCP
+STDQR
+MSE
+CopulaCPTS
+HR
+C-HDR
+PCP
+L-CP
+CP2-PCP-Linear
+C-PCP
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+Average ratio volume over minimal volume
+Figure 15: Normalized set sizes averaged all datasets in univariate regression, where the normalization
+is done by dividing each volume by the smallest volume across all methods (smaller is better).
+29
+===PAGE 30===
+Dataset
+Method
+𝐿1-ERT
+𝐿2-ERT
+WSC
+WCovGap
+Size
+Ailerons
+MSE
+0.02870.0058
+0.00100.0004
+0.7770.015
+0.0250.004
+1.420.03
+MVCS
+0.02490.0042
+0.00070.0004
+0.7680.019
+0.0230.003
+1.430.02
+HR
+0.01260.0000
+−0.00040.0000
+0.8040.000
+0.0170.000
+1.460.00
+DR-CP
+0.00240.0000
+−0.00070.0000
+0.7830.000
+0.0090.000
+1.460.00
+C-HDR
+0.02930.0000
+0.00130.0000
+0.7830.000
+0.0260.000
+1.640.00
+PCP
+0.00720.0000
+−0.00000.0000
+0.7790.000
+0.0200.000
+1.580.00
+HD-PCP
+0.00040.0000
+−0.00050.0000
+0.7970.000
+0.0270.000
+1.440.00
+C-PCP
+0.03930.0000
+0.00200.0000
+0.8040.000
+0.0260.000
+1.800.00
+CP2-PCP
+0.00520.0000
+−0.00030.0000
+0.7990.000
+0.0220.000
+1.690.00
+L-CP
+0.01320.0000
+−0.00010.0000
+0.7790.000
+0.0200.000
+1.550.00
+STDQR
+−0.00180.0000
+−0.00050.0000
+0.7900.000
+0.0150.000
+1.440.00
+CopulaCPTS
+−0.00040.0000
+−0.00090.0000
+0.7940.000
+0.0220.000
+1.440.00
+MiamiHousing2016
+MSE
+0.07360.0050
+0.00880.0015
+0.6470.014
+0.0560.012
+0.910.02
+MVCS
+0.05090.0078
+0.00470.0013
+0.7130.023
+0.0400.006
+0.820.02
+HR
+0.02740.0001
+0.00050.0002
+0.7710.001
+0.0280.001
+0.870.00
+DR-CP
+0.03080.0003
+0.00100.0002
+0.7460.000
+0.0330.001
+0.850.00
+C-HDR
+0.01570.0003
+0.00020.0003
+0.8000.003
+0.0180.000
+0.950.00
+PCP
+0.02770.0005
+0.00110.0005
+0.7660.003
+0.0220.000
+0.960.01
+HD-PCP
+0.03240.0069
+0.00160.0004
+0.7570.000
+0.0210.001
+0.860.00
+C-PCP
+0.01840.0026
+0.00020.0003
+0.8020.002
+0.0230.002
+1.060.00
+CP2-PCP
+0.02940.0040
+0.00070.0003
+0.7770.001
+0.0170.001
+1.010.00
+L-CP
+0.00180.0027
+−0.00030.0000
+0.7820.000
+0.0150.001
+0.930.00
+STDQR
+0.01710.0012
+0.00030.0001
+0.7640.000
+0.0180.000
+0.850.00
+CopulaCPTS
+0.01280.0001
+0.00020.0000
+0.7920.000
+0.0210.000
+0.890.00
+bank8FM
+MSE
+0.09760.0082
+0.02490.0026
+0.5350.029
+0.0430.010
+0.830.04
+MVCS
+0.06050.0089
+0.00910.0025
+0.6390.038
+0.0210.008
+0.710.01
+HR
+0.02440.0000
+0.00070.0000
+0.7440.000
+0.0290.000
+0.880.00
+DR-CP
+0.05880.0007
+0.00450.0001
+0.7440.000
+0.0340.000
+0.710.00
+C-HDR
+0.03300.0001
+0.00070.0001
+0.8010.003
+0.0320.000
+0.970.00
+PCP
+0.03570.0003
+0.00230.0001
+0.7180.001
+0.0320.001
+0.830.00
+HD-PCP
+0.03220.0021
+0.00170.0003
+0.7680.001
+0.0250.001
+0.800.00
+C-PCP
+0.02150.0035
+0.00030.0000
+0.7800.000
+0.0210.000
+1.070.00
+CP2-PCP
+0.01360.0021
+−0.00010.0000
+0.7550.003
+0.0200.000
+1.010.00
+L-CP
+0.02310.0003
+0.00020.0001
+0.7450.004
+0.0330.000
+0.940.00
+STDQR
+0.00160.0018
+0.00030.0002
+0.7400.001
+0.0190.000
+0.820.00
+CopulaCPTS
+0.02370.0000
+0.00110.0000
+0.7610.000
+0.0150.000
+0.870.00
+30
+===PAGE 31===
+Dataset
+Method
+𝐿1-ERT
+𝐿2-ERT
+WSC
+WCovGap
+Size
+cpu-act
+MSE
+0.07520.0108
+0.01420.0034
+0.6120.034
+0.0490.005
+1.080.02
+MVCS
+0.07640.0036
+0.02380.0022
+0.6710.012
+0.0270.003
+1.050.04
+HR
+0.00540.0015
+−0.00060.0000
+0.7540.005
+0.0180.002
+1.010.04
+DR-CP
+0.02760.0072
+0.00250.0013
+0.7700.005
+0.0240.001
+0.880.00
+C-HDR
+0.03530.0040
+0.00190.0005
+0.7350.011
+0.0390.005
+1.010.01
+PCP
+0.02980.0040
+0.00030.0005
+0.7770.012
+0.0310.001
+1.000.01
+HD-PCP
+0.02150.0005
+0.00020.0000
+0.7710.004
+0.0240.001
+0.910.00
+C-PCP
+0.02750.0172
+0.00070.0008
+0.7660.005
+0.0330.007
+1.190.04
+CP2-PCP
+0.01660.0034
+−0.00010.0001
+0.7390.007
+0.0150.001
+1.020.00
+L-CP
+0.04000.0028
+0.00150.0003
+0.7410.003
+0.0240.003
+1.100.04
+STDQR
+0.02720.0047
+0.00070.0003
+0.7680.008
+0.0220.002
+0.930.00
+CopulaCPTS
+0.01900.0005
+0.00070.0000
+0.7430.009
+0.0180.000
+1.010.03
+house-8L
+MSE
+0.05430.0051
+0.00470.0007
+0.7230.013
+0.0390.004
+1.530.01
+MVCS
+0.04060.0076
+0.00290.0007
+0.7630.012
+0.0230.004
+1.470.01
+HR
+0.01380.0007
+0.00010.0001
+0.7680.011
+0.0200.003
+1.510.01
+DR-CP
+0.03510.0031
+0.00180.0004
+0.7700.016
+0.0250.006
+1.350.03
+C-HDR
+0.01100.0008
+0.00010.0000
+0.8070.005
+0.0130.004
+1.470.04
+PCP
+0.02220.0079
+0.00080.0003
+0.7860.007
+0.0240.003
+1.650.01
+HD-PCP
+0.02310.0004
+0.00060.0002
+0.7970.017
+0.0190.004
+1.410.03
+C-PCP
+0.01580.0015
+0.00030.0001
+0.8060.017
+0.0150.000
+1.720.01
+CP2-PCP
+0.01600.0018
+0.00040.0001
+0.7990.015
+0.0160.001
+1.740.03
+L-CP
+0.02140.0109
+0.00320.0026
+0.7520.024
+0.0230.010
+1.700.03
+STDQR
+0.02190.0021
+0.00030.0000
+0.7820.013
+0.0190.003
+1.450.00
+CopulaCPTS
+0.02690.0042
+0.00070.0003
+0.7700.007
+0.0220.003
+1.510.00
+sulfur
+MSE
+0.02010.0063
+0.00010.0003
+0.7530.017
+0.0210.005
+1.450.04
+MVCS
+0.01160.0099
+−0.00020.0007
+0.7440.020
+0.0250.003
+1.410.04
+HR
+0.00610.0010
+−0.00000.0001
+0.7880.002
+0.0160.000
+1.540.00
+DR-CP
+0.00010.0024
+−0.00050.0001
+0.7620.000
+0.0180.000
+1.520.00
+C-HDR
+0.01860.0067
+−0.00090.0007
+0.7890.009
+0.0260.005
+1.610.03
+PCP
+0.01590.0022
+0.00040.0000
+0.7950.002
+0.0280.001
+1.750.01
+HD-PCP
+0.01260.0011
+−0.00050.0001
+0.7930.004
+0.0280.001
+1.560.00
+C-PCP
+0.00370.0077
+−0.00060.0001
+0.7710.005
+0.0170.003
+1.800.02
+CP2-PCP
+0.00270.0030
+−0.00080.0002
+0.7910.002
+0.0210.001
+1.710.00
+L-CP
+0.02300.0026
+0.00070.0001
+0.7890.009
+0.0320.002
+1.620.01
+STDQR
+0.00620.0003
+−0.00050.0000
+0.7840.004
+0.0130.000
+1.520.00
+CopulaCPTS
+0.00070.0025
+−0.00040.0001
+0.7530.003
+0.0160.001
+1.510.00
+Multivariate regression
+The metrics EOC and SSC are used to compute the CovGap.
+31
+===PAGE 32===
+Dataset
+Method
+𝐿1-ERT
+𝐿2-ERT
+WSC
+WCovGap
+Size
+CASP
+MSE
+0.04070.0040
+0.00230.0004
+0.8180.007
+0.0250.003
+1.260.01
+MVCS
+0.03040.0039
+0.00160.0005
+0.8340.006
+0.0160.002
+1.230.01
+HR
+0.02520.0000
+0.00080.0000
+0.8240.000
+0.0200.000
+1.320.00
+DR-CP
+0.01770.0000
+0.00050.0000
+0.8360.000
+0.0170.000
+1.250.00
+C-HDR
+0.02350.0000
+0.00080.0000
+0.8620.000
+0.0210.000
+1.350.00
+PCP
+0.01470.0000
+0.00030.0000
+0.8270.000
+0.0220.000
+1.410.00
+HD-PCP
+0.02380.0000
+0.00060.0000
+0.8170.000
+0.0180.000
+1.300.00
+C-PCP
+0.02320.0000
+0.00040.0000
+0.8450.000
+0.0090.000
+1.440.00
+CP2-PCP
+0.01540.0000
+0.00030.0000
+0.8450.000
+0.0160.000
+1.430.00
+L-CP
+0.01170.0000
+0.00020.0000
+0.8460.000
+0.0090.000
+1.420.00
+STDQR
+0.01580.0000
+0.00040.0000
+0.8190.000
+0.0160.000
+1.320.00
+CopulaCPTS
+0.01400.0000
+0.00020.0000
+0.8310.000
+0.0130.000
+1.340.00
+bias
+MSE
+0.02680.0174
+0.00110.0010
+0.7220.026
+0.0170.005
+1.030.01
+MVCS
+0.02190.0096
+0.00050.0009
+0.7260.021
+0.0140.004
+1.040.02
+HR
+0.01470.0000
+−0.00030.0000
+0.7090.000
+0.0290.000
+1.090.00
+DR-CP
+0.03380.0000
+0.00270.0000
+0.6790.000
+0.0310.000
+1.200.00
+C-HDR
+0.03870.0000
+0.00180.0000
+0.6960.000
+0.0340.000
+1.360.00
+PCP
+0.01810.0000
+−0.00030.0000
+0.7050.000
+0.0240.000
+1.310.00
+HD-PCP
+0.01830.0000
+0.00080.0000
+0.6920.000
+0.0290.000
+1.190.00
+C-PCP
+0.00280.0000
+−0.00060.0000
+0.7050.000
+0.0270.000
+1.410.00
+CP2-PCP
+0.01990.0000
+0.00290.0000
+0.6670.000
+0.0390.000
+1.300.00
+L-CP
+0.04850.0000
+0.00330.0000
+0.6460.000
+0.0420.000
+1.240.00
+STDQR
+0.01390.0000
+−0.00000.0000
+0.6920.000
+0.0220.000
+1.190.00
+CopulaCPTS
+0.04460.0000
+0.00230.0000
+0.6750.000
+0.0440.000
+1.210.00
+house
+MSE
+0.05990.0070
+0.00640.0017
+0.6820.021
+0.0440.006
+1.090.02
+MVCS
+0.06050.0049
+0.00710.0009
+0.7130.018
+0.0380.005
+1.020.03
+HR
+0.03390.0038
+0.00260.0006
+0.7400.012
+0.0380.001
+1.170.02
+DR-CP
+0.04500.0001
+0.00370.0002
+0.7540.002
+0.0260.000
+1.070.00
+C-HDR
+0.01670.0054
+0.00080.0001
+0.7580.000
+0.0210.000
+1.110.00
+PCP
+0.05130.0024
+0.00490.0002
+0.7400.000
+0.0210.001
+1.210.00
+HD-PCP
+0.03610.0037
+0.00230.0001
+0.7460.007
+0.0260.001
+1.120.00
+C-PCP
+0.01810.0030
+0.00050.0000
+0.7700.003
+0.0200.000
+1.280.00
+CP2-PCP
+0.01660.0042
+0.00050.0002
+0.7900.004
+0.0180.002
+1.270.00
+L-CP
+0.02860.0006
+0.00180.0001
+0.7740.000
+0.0200.000
+1.220.00
+STDQR
+0.03820.0006
+0.00270.0001
+0.7510.007
+0.0280.000
+1.140.00
+CopulaCPTS
+0.02120.0013
+0.00080.0001
+0.7660.002
+0.0130.000
+1.220.00
+32
+===PAGE 33===
+Dataset
+Method
+𝐿1-ERT
+𝐿2-ERT
+WSC
+WCovGap
+Size
+rf1
+MSE
+0.06470.0063
+0.00680.0020
+0.6490.030
+0.0600.006
+0.950.00
+MVCS
+0.10110.0074
+0.02260.0034
+0.5880.032
+0.0710.007
+0.400.01
+HR
+0.03720.0134
+0.00290.0025
+0.7170.027
+0.0360.000
+0.570.02
+DR-CP
+0.08600.0016
+0.01320.0002
+0.6890.010
+0.0530.009
+0.460.02
+C-HDR
+0.04840.0059
+0.00320.0001
+0.7650.021
+0.0300.010
+0.460.03
+PCP
+0.09580.0005
+0.01010.0006
+0.6560.009
+0.0750.001
+0.480.01
+HD-PCP
+0.09720.0066
+0.01940.0030
+0.6120.004
+0.0700.005
+0.470.01
+C-PCP
+0.03240.0088
+0.00190.0017
+0.7440.009
+0.0280.004
+0.480.01
+CP2-PCP
+0.04480.0121
+0.00420.0030
+0.7170.000
+0.0290.013
+0.460.02
+L-CP
+0.05500.0004
+0.00590.0014
+0.7020.005
+0.0300.013
+0.460.02
+STDQR
+0.09340.0113
+0.01520.0049
+0.6370.021
+0.0730.004
+0.480.01
+CopulaCPTS
+0.07590.0005
+0.00870.0023
+0.7330.075
+0.0380.006
+0.480.02
+rf2
+MSE
+0.04980.0096
+0.00330.0021
+0.7370.016
+0.0240.003
+0.950.00
+MVCS
+0.11000.0097
+0.03290.0058
+0.5730.042
+0.0760.009
+0.530.02
+HR
+0.05570.0019
+0.01100.0001
+0.7140.014
+0.0200.005
+1.070.01
+DR-CP
+0.06690.0015
+0.01280.0001
+0.7270.020
+0.0220.001
+0.390.00
+C-HDR
+0.05240.0099
+0.00490.0021
+0.7570.004
+0.0210.001
+0.400.00
+PCP
+0.08250.0007
+0.01450.0027
+0.7010.005
+0.0250.007
+0.420.01
+HD-PCP
+0.07220.0035
+0.01150.0004
+0.7390.011
+0.0230.000
+0.420.00
+C-PCP
+0.03660.0053
+0.00110.0000
+0.7490.021
+0.0160.004
+0.420.00
+CP2-PCP
+0.02910.0081
+0.00130.0004
+0.7500.022
+0.0150.004
+0.420.00
+L-CP
+0.05800.0186
+0.00770.0030
+0.7140.015
+0.0130.001
+0.400.00
+STDQR
+0.07020.0079
+0.00950.0016
+0.7430.004
+0.0170.004
+0.420.00
+CopulaCPTS
+0.06430.0024
+0.01220.0026
+0.7070.087
+0.0310.002
+1.431.02
+taxi
+MSE
+0.02340.0031
+0.00110.0001
+0.8150.003
+0.0180.001
+1.880.00
+MVCS
+0.01950.0027
+0.00070.0002
+0.8160.006
+0.0200.001
+3.120.01
+HR
+0.00440.0025
+0.00010.0000
+0.8440.002
+0.0070.002
+3.480.00
+DR-CP
+0.01970.0015
+0.00050.0002
+0.8300.004
+0.0140.001
+2.700.01
+C-HDR
+0.01280.0002
+0.00020.0000
+0.8400.004
+0.0110.001
+2.740.00
+PCP
+0.01520.0023
+0.00070.0001
+0.8080.004
+0.0200.003
+3.200.01
+HD-PCP
+0.01060.0011
+0.00040.0002
+0.8330.005
+0.0150.002
+2.990.02
+C-PCP
+0.01120.0068
+0.00010.0001
+0.8460.001
+0.0090.001
+3.260.01
+CP2-PCP
+−0.00260.0047
+−0.00000.0000
+0.8490.007
+0.0120.002
+3.240.02
+L-CP
+0.00880.0006
+0.00010.0000
+0.8320.000
+0.0090.000
+3.040.00
+STDQR
+0.00530.0004
+0.00020.0001
+0.8390.002
+0.0100.000
+3.040.01
+CopulaCPTS
+0.00300.0026
+0.00000.0000
+0.8470.000
+0.0100.001
+3.380.03
+33

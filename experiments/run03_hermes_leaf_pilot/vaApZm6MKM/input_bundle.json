@@ -1,0 +1,14 @@
+{
+  "orid": "vaApZm6MKM",
+  "title": "Conditional Coverage Diagnostics for Conformal Prediction",
+  "openreview": "https://openreview.net/forum?id=vaApZm6MKM",
+  "arxiv": "2512.11779",
+  "anchored_claims": [
+    "The paper introduces a family of Excess Risk of the Target Coverage (ERT) metrics—L1-ERT, L2-ERT, and KL-ERT—for evaluating conditional coverage in conformal prediction, built on the principle that no classifier can outperform a constant 1-alpha predictor under perfect conditional coverage (Table 1, Section 3.1).",
+    "Using LightGBM as the underlying classifier for L1-ERT achieves 68.4% relative statistical power (relative to maximum), compared to only 38.3% for the PartitionWise classifier underlying CovGap (Table 2, Section 4.1).",
+    "In synthetic experiments, group-based metrics like CovGap remain unreliable and unaligned with their theoretical values even at 5,000 test points, whereas ERT metrics such as L1-ERT converge with far fewer samples (Figure 4, Section 4.2).",
+    "The metrics decompose conditional coverage error into asymmetric components ell_plus-ERT and ell_minus-ERT, separating unnecessary conservatism (over-coverage) from excessive aggressiveness (under-coverage) (Section 3.3).",
+    "Classification experiments report divergent KL_plus-ERT and KL_minus-ERT values across conformal prediction methods, demonstrating the over/under-coverage decomposition in practice (Table 4, Section 4.3.2).",
+    "Algorithm 1 estimates the ERT metrics from finite samples using k-fold cross-validation to avoid overfitting the classifier used in the estimation (Algorithm 1)."
+  ]
+}

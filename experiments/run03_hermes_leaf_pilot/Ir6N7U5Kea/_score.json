@@ -1,0 +1,63 @@
+{
+  "orid": "Ir6N7U5Kea",
+  "title": "Causal Matrix Completion under Multiple Treatments via Mixed Synthetic Nearest Neighbors",
+  "area": "General Machine Learning",
+  "n_anchored": 6,
+  "n_claim_files": 5,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": true,
+  "check_detail": "passed",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 1.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 6,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "inconclusive",
+    "claim2": "inconclusive",
+    "claim3": "inconclusive",
+    "claim4": "inconclusive",
+    "claim5": "inconclusive",
+    "claim6": "inconclusive"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true,
+    "claim6": true
+  },
+  "per_claim_note": {
+    "claim1": "no resolvable verdict in artifact",
+    "claim2": "no resolvable verdict in artifact",
+    "claim3": "no resolvable verdict in artifact",
+    "claim4": "no resolvable verdict in artifact",
+    "claim6": "no resolvable verdict in artifact",
+    "claim5": ""
+  },
+  "warnings": [
+    "no _run_meta.json (OK for v2: metrics come from artifacts)"
+  ],
+  "tokens": {
+    "tokens_before": 34455971,
+    "tokens_after": 49164533,
+    "tokens_used": 14708562,
+    "requests_used": 160,
+    "note": "delta from before/after snapshots"
+  }
+}
