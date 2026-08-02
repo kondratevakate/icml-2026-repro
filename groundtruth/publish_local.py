@@ -12,6 +12,49 @@ import json, os, sys, argparse
 from huggingface_hub import HfApi
 
 OWNER = "kondratevakate"
+SPACE_MAP = os.path.join(os.path.dirname(os.path.abspath(__file__)), "space_map.json")
+
+
+def resolve_space_id(api, orid, fallback_space_id):
+    """Never create a duplicate Space for a paper that already has one.
+
+    1) Consult space_map.json (hard orid->space_id mapping, maintained manually/by script).
+    2) Best-effort: scan all owner Spaces' README for `paper-<orid>` tag.
+    3) Fallback: generated slug (only if truly new paper).
+    Returns (space_id, existed_bool)."""
+    # 1) hard map
+    try:
+        mp = json.load(open(SPACE_MAP))
+        if orid in mp:
+            return mp[orid], True
+    except Exception:
+        pass
+    # 2) tag scan
+    try:
+        for s in api.list_spaces(author=OWNER):
+            sid = s.id
+            try:
+                readme = api.hf_hub_download(repo_id=sid, repo_type="space",
+                                            filename="README.md", local_files_only=False)
+                if f"paper-{orid}" in open(readme).read():
+                    return sid, True
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"  (tag-scan skipped: {type(e).__name__})")
+    return fallback_space_id, False
+
+
+def register_space(orid, space_id):
+    """Record orid->space_id in space_map.json so future runs EDIT, never duplicate."""
+    try:
+        mp = json.load(open(SPACE_MAP))
+    except Exception:
+        mp = {}
+    if orid not in mp:
+        mp[orid] = space_id
+        json.dump(mp, open(SPACE_MAP, "w"), indent=2)
+        print(f"  registered {orid} -> {space_id} in space_map.json")
 
 
 def pts_of(score_path):
@@ -45,11 +88,14 @@ def main():
     meta = json.load(open(meta_p))
     space_id = meta.get("space_id") or f"{OWNER}/repro-{os.path.basename(d)}"
     orid = next((t[6:] for t in meta.get("tags", []) if t.startswith("paper-")), "?")
+    api = HfApi()
+    # resolve by paper-<orid> tag across ALL owner spaces -> EDIT existing, never duplicate
+    resolved, existed = resolve_space_id(api, orid, space_id)
+    if existed and resolved != space_id:
+        print(f"  NOTE: editing EXISTING space {resolved} (tag paper-{orid}) instead of {space_id}")
+        space_id = resolved
     local_pts = pts_of(os.path.join(d, "_score.json"))
     print(f"local  {orid}: pts={local_pts}  space={space_id}")
-
-    api = HfApi()
-    # fetch remote _score.json if Space exists
     remote_pts = None
     try:
         remote_score = api.hf_hub_download(repo_id=space_id, repo_type="space",
@@ -83,6 +129,7 @@ def main():
     api.upload_file(path_or_fileobj=readme.encode(), path_in_repo="README.md",
                     repo_id=space_id, repo_type="space",
                     commit_message="Add challenge tags")
+    register_space(orid, space_id)
     print(f"PUBLISHED {space_id}  url=https://huggingface.co/spaces/{space_id}")
 
 
