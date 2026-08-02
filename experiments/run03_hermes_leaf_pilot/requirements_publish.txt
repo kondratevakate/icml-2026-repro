@@ -1,0 +1,5 @@
+# Publish pipeline deps for ICML-2026 repro logbooks (arm1..arm4)
+# Install into the run03 base venv (or any venv with the repo base deps):
+#   /tmp/run03_base_venv/bin/pip install -r requirements_publish.txt
+trackio>=0.32.0
+huggingface_hub>=0.25.0

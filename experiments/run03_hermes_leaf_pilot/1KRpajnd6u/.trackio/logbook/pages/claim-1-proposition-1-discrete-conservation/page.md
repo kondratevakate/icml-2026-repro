@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_d825d58976a7", "created_at": "2026-08-02T04:00:00+00:00", "title": "Claim 1 \u2014 Proposition 1 (discrete conservation)"}
+{"type": "markdown", "id": "cell_609a628e25b3", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 1 \u2014 Proposition 1 (discrete conservation)"}
 -->
 **Paper source:** Section 3.2, Eq. (2); Appendix A, Proposition 1, Eqs. (6)–(9).
 **Script:** `verify_claim1.py` → `results/claim1.json`. Command: `.venv/bin/python verify_claim1.py`.

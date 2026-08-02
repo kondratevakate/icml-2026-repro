@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_9d973235baa5", "created_at": "2026-08-02T04:00:00+00:00", "title": "Claim 6 \u2014 D-head: DCL, not architecture, enforces the dual bound"}
+{"type": "markdown", "id": "cell_a3b14d787577", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 6 \u2014 D-head: DCL, not architecture, enforces the dual bound"}
 -->
 **Paper source:** Section 3.4, Eqs. (3)–(4); Table 1 row "D"; Conclusion.
 **Script:** `verify_claim6.py` → `results/claim6.json`. Command: `.venv/bin/python verify_claim6.py`.

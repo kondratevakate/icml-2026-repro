@@ -8,7 +8,7 @@
     "icml2026-repro",
     "paper-4ltyJqAHMg"
   ],
-  "updated_at": "2026-08-02T08:41:49+00:00",
+  "updated_at": "2026-08-02T08:51:12+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?",
@@ -57,10 +57,10 @@
     "file": "workspace.json",
     "file_count": 0,
     "total_size": 0,
-    "bucket_id": "kondratevakate/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql-artifacts"
+    "bucket_id": null
   },
-  "agent_view_tokens": 2236,
+  "agent_view_tokens": 2237,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "d6c72c67eaf81cae6eb5"
+  "revision": "105441f134a3d06f2915"
 }

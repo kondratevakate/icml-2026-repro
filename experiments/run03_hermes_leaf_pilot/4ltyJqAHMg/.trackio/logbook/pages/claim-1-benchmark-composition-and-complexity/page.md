@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_be9626997e46", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 1 \u2014 benchmark composition and complexity"}
+{"type": "markdown", "id": "cell_5519440cf131", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 1 \u2014 benchmark composition and complexity"}
 -->
 **Source:** Abstract; §3.1 (seed corpus sentence); **Table 1**, §4.
 **Verdict: `verified` (paper-internal) / `inconclusive` (independent re-measurement).**

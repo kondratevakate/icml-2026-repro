@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_d41747258a62", "created_at": "2026-08-02T04:00:00+00:00", "title": "Claim 3 \u2014 Table 3 (shallow water) \u2014 inconclusive"}
+{"type": "markdown", "id": "cell_bb359902269b", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 3 \u2014 Table 3 (shallow water) \u2014 inconclusive"}
 -->
 **Paper source:** Section 4.2, Table 3. Quoted: FluxNet-LAP depth MAE 3.12e-3 vs 6.74e-3
 (Box+Mass projection), E_cons 3.3e-7 → 3.3e-8.

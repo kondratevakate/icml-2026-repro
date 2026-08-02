@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_e81f348b968d", "created_at": "2026-08-02T04:00:00+00:00", "title": "Claim 2 \u2014 Propositions 2 and 3 (L-head / U-head bound guarantees)"}
+{"type": "markdown", "id": "cell_d998b723c313", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 2 \u2014 Propositions 2 and 3 (L-head / U-head bound guarantees)"}
 -->
 **Paper source:** Section 3.3, Propositions 2 and 3 (with Table 1 parameterizations).
 **Script:** `verify_claim2.py` → `results/claim2.json`. Command: `.venv/bin/python verify_claim2.py`.

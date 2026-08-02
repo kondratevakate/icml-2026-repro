@@ -2,12 +2,12 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_2ab4878e6fd5", "created_at": "2026-08-02T04:00:00+00:00", "title": "Overall findings"}
+{"type": "markdown", "id": "cell_c3e058624e96", "created_at": "2026-08-02T05:00:00+00:00", "title": "Overall findings"}
 -->
-**Overall:** Propositions 1-3 and the D-head dual-bound claim (Claim 6) are verified by independent numerical audit with mutation tests. Claims 3, 4, 5 (trained-model accuracy and GPU speedup) are inconclusive — blocked by unreleased data / training / no GPU — and recorded honestly with reasons, no synthetic stand-in.
+**Overall findings** in per-claim pages. Verdicts follow the evidence; mutation tests confirm mechanism, not correlation; inconclusive claims state the blocker honestly.
 
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_b01d0ab715d7", "created_at": "2026-08-02T04:00:00+00:00", "title": "Evidence boundary"}
+{"type": "markdown", "id": "cell_8aa56e1c457e", "created_at": "2026-08-02T05:00:00+00:00", "title": "Evidence boundary"}
 -->
 What this evidence does **NOT** cover:
 
@@ -37,7 +37,7 @@ What this evidence does **NOT** cover:
    it is a transcription error in the anchored claim or a number from a table version I did not see.
 
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_e9faa4856954", "created_at": "2026-08-02T04:00:00+00:00", "title": "Artifacts"}
+{"type": "markdown", "id": "cell_c4738209de87", "created_at": "2026-08-02T05:00:00+00:00", "title": "Artifacts"}
 -->
 ```
 notes_paper.md          single-read paper notes (no notes_code.md: no code released)
@@ -52,16 +52,16 @@ check_reproducibility.py  reproducibility gate — PASSES (exit 0, 0 failed asse
 
 ---
 <!-- trackio-cell
-{"type": "artifact", "id": "cell_63c68382a07c", "created_at": "2026-08-02T04:00:00+00:00", "title": "Reproduction bundle", "artifact": "repro-fluxnet-learning-capacity-constrained-local-transport-operators/repro-bundle:v0", "artifact_type": "dataset"}
+{"type": "artifact", "id": "cell_d1ffb50f3bed", "created_at": "2026-08-02T05:00:00+00:00", "title": "Reproduction bundle", "artifact": "repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates/repro-bundle:v0", "artifact_type": "dataset"}
 -->
-**📦 Artifact** `repro-fluxnet-learning-capacity-constrained-local-transport-operators/repro-bundle:v0` · dataset
+**📦 Artifact** `repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates/repro-bundle:v0` · dataset
 
-https://huggingface.co/buckets/kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-artifacts#repro-fluxnet-learning-capacity-constrained-local-transport-operators/repro-bundle:v0
+https://huggingface.co/buckets/kondratevakate/repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates-artifacts#repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates/repro-bundle:v0
 
 ---
 <!-- trackio-cell
-{"type": "dashboard", "id": "cell_ff6eaaf49be2", "created_at": "2026-08-02T04:00:00+00:00", "title": "Dashboard: repro-fluxnet-learning-capacity-constrained-local-transport-operators", "dashboard_project": "repro-fluxnet-learning-capacity-constrained-local-transport-operators"}
+{"type": "dashboard", "id": "cell_8817be01bf40", "created_at": "2026-08-02T05:00:00+00:00", "title": "Dashboard: repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates", "dashboard_project": "repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates"}
 -->
-**🎯 Trackio dashboard** `repro-fluxnet-learning-capacity-constrained-local-transport-operators`
+**🎯 Trackio dashboard** `repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates`
 
-trackio-local-dashboard://repro-fluxnet-learning-capacity-constrained-local-transport-operators
+trackio-local-dashboard://repro-fluxnet-learning-capacity-constrained-local-transport-operators-for-conservative-and-bounded-pde-surrogates

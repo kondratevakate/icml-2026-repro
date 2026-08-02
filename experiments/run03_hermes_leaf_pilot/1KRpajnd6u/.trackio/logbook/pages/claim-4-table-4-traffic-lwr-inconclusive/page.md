@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_e8a47c185a81", "created_at": "2026-08-02T04:00:00+00:00", "title": "Claim 4 \u2014 Table 4 (traffic LWR) \u2014 inconclusive"}
+{"type": "markdown", "id": "cell_77a4f37360cb", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 4 \u2014 Table 4 (traffic LWR) \u2014 inconclusive"}
 -->
 **Paper source:** Section 4.3, Table 4.
 **Record:** `results/claim4.json`. Same data/training blockers as claim 3.

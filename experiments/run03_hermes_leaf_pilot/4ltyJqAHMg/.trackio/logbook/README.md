@@ -1,5 +1,5 @@
 ---
-title: "Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?"
+title: "Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?"
 emoji: 🎯
 colorFrom: yellow
 colorTo: red
@@ -13,6 +13,6 @@ tags:
  - paper-4ltyJqAHMg
 ---
 
-# Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?
+# Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?
 
 An open experiment logbook, published with [Trackio](https://github.com/gradio-app/trackio).

@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_02f3e4558919", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 4 \u2014 420+ tokens, 17.34 / 21.62 functions per script"}
+{"type": "markdown", "id": "cell_23b851bd2fef", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 4 \u2014 420+ tokens, 17.34 / 21.62 functions per script"}
 -->
 **Source:** §4 "Complexity of SQL Scripts"; **Table 1**.
 **Verdict: `verified` (paper-internal) / `inconclusive` (independent re-measurement).**
