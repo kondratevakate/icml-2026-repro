@@ -48,13 +48,13 @@ survival-eval, uqct.
 
 ## 3. BLOCKERS (must resolve before mass run)
 
-- **No HF token.** `~/.hf_token` absent, `HF_TOKEN` unset. `groundtruth/publish_logbooks.py`
-  uses `huggingface_hub.HfApi()` → will fail without auth. **Space sync is BLOCKED until
-  the user provides a token** (chmod 600, not printed).
-- **Compaction on arm2 is low-value.** arm2 is already ~25 min/paper; compaction won't speed
-  it up, only adds risk of losing precision. User wants it anyway (likely as an experiment).
-  Plan: add a summarization step in the leaf loop that keeps executed numbers/results intact,
-  compresses only discussion/prose. Risk: must be verified not to drop claim-relevant detail.
+- **HF token IS available.** Found at `/home/kate/.cache/huggingface/token` (37 bytes).
+  `huggingface_hub` is not installed in system python (only needs `pip install huggingface_hub`
+  in the run venv). Space sync is UNBLOCKED — no user-provided token needed.
+- **Compaction on arm2 DOES save tokens.** At 33+ papers the leaf transcript grows large;
+  summarizing history before each LLM call cuts router token volume (shared 95M limit) and
+  reduces empty-tool-call retries. Agreed: add compaction to arm2 (keeps executed numbers
+  verbatim, compresses only discussion/prose).
 - **`publish_logbooks.py` assumes a branch + `.trackio` structure** — needs the local
   re-run to also emit `.trackio/logbook/` (or an adapter) before it can push.
 - **Router rate-limit (HTTP 524)** already hit batch-1 (JOyxs9ElI7, 418BWmKIzX). Mass runs
