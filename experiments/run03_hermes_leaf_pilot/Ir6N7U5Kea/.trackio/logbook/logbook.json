@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Causal Matrix Completion under Multiple Treatments via Mixed Synthetic Nearest Neighbors",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-causal-matrix-completion-under-multiple-treatments-via-mixed-synthetic-nearest-neighbors",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-Ir6N7U5Kea"
+  ],
+  "updated_at": "2026-08-02T08:41:57+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Causal Matrix Completion under Multiple Treatments via Mixed Synthetic Nearest Neighbors",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-4-5-fc2fb-bound-with-exponent-2-1-2",
+        "title": "Claim 1 — Theorem 4.5: FC2FB bound with exponent 2α+1/2",
+        "file": "pages/claim-1-theorem-4-5-fc2fb-bound-with-exponent-2-1-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-corollary-4-10-gain-factor-p-d-p-d-r-1-c",
+        "title": "Claim 2 — Corollary 4.10: gain factor [Σ(p_d'/p_d)^(r+1)]^c",
+        "file": "pages/claim-2-corollary-4-10-gain-factor-p-d-p-d-r-1-c/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-corollary-4-11-gap-reduced-from-quadratic-to-linear",
+        "title": "Claim 3 — Corollary 4.11: gap reduced from quadratic to linear",
+        "file": "pages/claim-3-corollary-4-11-gap-reduced-from-quadratic-to-linear/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-table-1-mcar-simulation-numbers",
+        "title": "Claim 4 — Table 1: MCAR simulation numbers",
+        "file": "pages/claim-4-table-1-mcar-simulation-numbers/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-tables-2-3-mnar-simulation-numbers",
+        "title": "Claim 5 — Tables 2-3: MNAR simulation numbers",
+        "file": "pages/claim-5-tables-2-3-mnar-simulation-numbers/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-mixed-anchors-via-bipartite-cliques-assumption-2-5",
+        "title": "Claim 6 — Mixed anchors via bipartite cliques (Assumption 2.5)",
+        "file": "pages/claim-6-mixed-anchors-via-bipartite-cliques-assumption-2-5/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-causal-matrix-completion-under-multiple-treatments-via-mixed-synthetic-nearest-neighbors-artifacts"
+  },
+  "agent_view_tokens": 1701,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "0e634baa070b1d54664c"
+}

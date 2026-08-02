@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "updated_at": "2026-08-02T08:41:43+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-3-5-universal-approximation-bound-3-3-sqrt-n-out-k",
+        "title": "Claim 1 — Theorem 3.5 (universal approximation, bound (3 + 3 sqrt(n_out)) K)",
+        "file": "pages/claim-1-theorem-3-5-universal-approximation-bound-3-3-sqrt-n-out-k/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-eq-8-trainable-null-space-component",
+        "title": "Claim 2 — Eq. (8) trainable null-space component",
+        "file": "pages/claim-2-eq-8-trainable-null-space-component/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-no-full-row-rank-requirement-cardinality-min-m-n-out",
+        "title": "Claim 3 — no full-row-rank requirement; cardinality <= min(m, n_out)",
+        "file": "pages/claim-3-no-full-row-rank-requirement-cardinality-min-m-n-out/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-73-33-mse-reduction-caffnet-tf-vs-soft-nn-with-zero-violations",
+        "title": "Claim 4 — 73.33% MSE reduction (CAffNet-TF vs soft NN) with zero violations",
+        "file": "pages/claim-4-73-33-mse-reduction-caffnet-tf-vs-soft-nn-with-zero-violations/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-safety-critical-control-caffnet-avoids-obstacles-hardnet-and-soft-nn-fail",
+        "title": "Claim 5 — safety-critical control: CAffNet avoids obstacles, HardNet and soft NN fail",
+        "file": "pages/claim-5-safety-critical-control-caffnet-avoids-obstacles-hardnet-and-soft-nn-fail/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks-artifacts"
+  },
+  "agent_view_tokens": 3248,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "e31e876c1e85a06c43ea"
+}

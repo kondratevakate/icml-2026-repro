@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-4ltyJqAHMg"
+  ],
+  "updated_at": "2026-08-02T08:41:49+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-benchmark-composition-and-complexity",
+        "title": "Claim 1 — benchmark composition and complexity",
+        "file": "pages/claim-1-benchmark-composition-and-complexity/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-claude-4-sonnet-36-46-32-17-gm-best-model",
+        "title": "Claim 2 — Claude-4-Sonnet 36.46 / 32.17 GM, best model",
+        "file": "pages/claim-2-claude-4-sonnet-36-46-32-17-gm-best-model/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-deepseek-v3-30-28-21-32-qwen-2-5-coder-32b-23-45-most-llms-fail-to-exceed-20",
+        "title": "Claim 3 — DeepSeek-V3 30.28 / 21.32, Qwen-2.5-Coder-32B 23.45, \"most LLMs fail to exceed 20%\"",
+        "file": "pages/claim-3-deepseek-v3-30-28-21-32-qwen-2-5-coder-32b-23-45-most-llms-fail-to-exceed-20/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-420-tokens-17-34-21-62-functions-per-script",
+        "title": "Claim 4 — 420+ tokens, 17.34 / 21.62 functions per script",
+        "file": "pages/claim-4-420-tokens-17-34-21-62-functions-per-script/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql-artifacts"
+  },
+  "agent_view_tokens": 2236,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "d6c72c67eaf81cae6eb5"
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Last-iterate Convergence of ADMM on Multi-affine Quadratic Equality Constrained Problem",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-last-iterate-convergence-of-admm-on-multi-affine-quadratic-equality-constrained-problem",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-MyBVUgacQ9"
+  ],
+  "updated_at": "2026-08-02T08:42:09+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Last-iterate Convergence of ADMM on Multi-affine Quadratic Equality Constrained Problem",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-3-1-section-3-sublinear-convergence-to-a-stationary-point",
+        "title": "Claim 1 — Theorem 3.1 (Section 3): sublinear convergence to a stationary point",
+        "file": "pages/claim-1-theorem-3-1-section-3-sublinear-convergence-to-a-stationary-point/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-3-2-equation-4-section-3-linear-rate-for-small-c",
+        "title": "Claim 2 — Theorem 3.2 + Equation 4 (Section 3): linear rate for small ‖C‖",
+        "file": "pages/claim-2-theorem-3-2-equation-4-section-3-linear-rate-for-small-c/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-3-3-section-3-linear-rate-with-polyhedral-indicators-no-second-order-differentiability",
+        "title": "Claim 3 — Theorem 3.3 (Section 3): linear rate with polyhedral indicators, no second-order differentiability",
+        "file": "pages/claim-3-theorem-3-3-section-3-linear-rate-with-polyhedral-indicators-no-second-order-differentiability/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-corollary-4-2-section-4-locomotion-linear-rate-for-t-t0-because-nonlinearity-is-o-t",
+        "title": "Claim 4 — Corollary 4.2 (Section 4): locomotion, linear rate for Δt ≤ t0 because nonlinearity is O(Δt³)",
+        "file": "pages/claim-4-corollary-4-2-section-4-locomotion-linear-rate-for-t-t0-because-nonlinearity-is-o-t/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-section-5-figures-2-and-4-baselines-q-10-gives-the-sublinear-linear-transition",
+        "title": "Claim 5 — Section 5, Figures 2 and 4 (baselines + \"q ≥ 10 gives the sublinear→linear transition\")",
+        "file": "pages/claim-5-section-5-figures-2-and-4-baselines-q-10-gives-the-sublinear-linear-transition/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-section-5-figures-5-and-6-2d-locomotion-simulation-real-robot-experiments",
+        "title": "Claim 6 — Section 5, Figures 5 and 6: 2D locomotion simulation + real robot experiments",
+        "file": "pages/claim-6-section-5-figures-5-and-6-2d-locomotion-simulation-real-robot-experiments/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-last-iterate-convergence-of-admm-on-multi-affine-quadratic-equality-constrained-problem-artifacts"
+  },
+  "agent_view_tokens": 4843,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "e3d54bf56e0619dd660e"
+}

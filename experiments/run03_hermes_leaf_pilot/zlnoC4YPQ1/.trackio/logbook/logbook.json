@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Robust Bayesian Optimisation with Unbounded Corruptions",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-robust-bayesian-optimisation-with-unbounded-corruptions",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-zlnoC4YPQ1"
+  ],
+  "updated_at": "2026-08-02T08:42:17+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Robust Bayesian Optimisation with Unbounded Corruptions",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-4-2-fc-rcgp-ucb-sublinear-regret-for-1-4",
+        "title": "Claim 1 — Theorem 4.2 (FC-RCGP-UCB), sublinear regret for α < 1/4",
+        "file": "pages/claim-1-theorem-4-2-fc-rcgp-ucb-sublinear-regret-for-1-4/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-4-3-a2-rcgp-ucb-sublinear-regret-for-1-7",
+        "title": "Claim 2 — Theorem 4.3 (A2-RCGP-UCB), sublinear regret for α < 1/7",
+        "file": "pages/claim-2-theorem-4-3-a2-rcgp-ucb-sublinear-regret-for-1-7/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-corruptions-of-possibly-infinite-magnitude-bounded-only-in-frequency-definition-2-1",
+        "title": "Claim 3 — corruptions of possibly infinite magnitude, bounded only in frequency (Definition 2.1)",
+        "file": "pages/claim-3-corruptions-of-possibly-infinite-magnitude-bounded-only-in-frequency-definition-2-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-zero-cost-robustness-at-t-c-0-theorem-4-1",
+        "title": "Claim 4 — zero-cost robustness at T_c = 0 (Theorem 4.1)",
+        "file": "pages/claim-4-zero-cost-robustness-at-t-c-0-theorem-4-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-corrupted-forrester-experiment-rcgp-methods-beat-gp-ucb-student-t-diagnosticsgp",
+        "title": "Claim 5 — corrupted Forrester experiment: RCGP methods beat GP-UCB / Student-t / DiagnosticsGP",
+        "file": "pages/claim-5-corrupted-forrester-experiment-rcgp-methods-beat-gp-ucb-student-t-diagnosticsgp/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-robust-bayesian-optimisation-with-unbounded-corruptions-artifacts"
+  },
+  "agent_view_tokens": 3463,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "ab046da26178cc02f671"
+}

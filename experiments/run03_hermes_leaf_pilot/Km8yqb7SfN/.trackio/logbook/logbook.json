@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Inference-Aware Meta-Alignment of LLMs via Non-Linear GRPO",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-inference-aware-meta-alignment-of-llms-via-non-linear-grpo",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-Km8yqb7SfN"
+  ],
+  "updated_at": "2026-08-02T08:42:02+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Inference-Aware Meta-Alignment of LLMs via Non-Linear GRPO",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-equation-1-section-3-verified",
+        "title": "Claim 1 — Equation (1), Section 3 → **verified**",
+        "file": "pages/claim-1-equation-1-section-3-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-algorithm-1-proposition-4-2-section-4-verified",
+        "title": "Claim 2 — Algorithm 1 / Proposition 4.2, Section 4 → **verified**",
+        "file": "pages/claim-2-algorithm-1-proposition-4-2-section-4-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-5-2-section-5-1-verified-up-to-a-numerically-estimated-l",
+        "title": "Claim 3 — Theorem 5.2, Section 5.1 → **verified** (up to a numerically estimated L)",
+        "file": "pages/claim-3-theorem-5-2-section-5-1-verified-up-to-a-numerically-estimated-l/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-5-3-section-5-2-verified",
+        "title": "Claim 4 — Theorem 5.3, Section 5.2 → **verified**",
+        "file": "pages/claim-4-theorem-5-3-section-5-2-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-proposition-3-1-section-3-1-verified",
+        "title": "Claim 5 — Proposition 3.1, Section 3.1 → **verified**",
+        "file": "pages/claim-5-proposition-3-1-section-3-1-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-section-6-2-hh-rlhf-alpaca-7b-inconclusive",
+        "title": "Claim 6 — Section 6.2 (HH-RLHF / Alpaca-7B) → **inconclusive**",
+        "file": "pages/claim-6-section-6-2-hh-rlhf-alpaca-7b-inconclusive/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-inference-aware-meta-alignment-of-llms-via-non-linear-grpo-artifacts"
+  },
+  "agent_view_tokens": 3386,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "9e86d7cf026f8118e1bc"
+}

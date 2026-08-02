@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-DUmWdZetqZ"
+  ],
+  "updated_at": "2026-08-02T08:43:31+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-3-2-fc2fb-converts-fc-fb-with-exponentially-decaying-error",
+        "title": "Claim 1 — Theorem 3.2: FC2FB converts FC → FB with exponentially decaying error",
+        "file": "pages/claim-1-theorem-3-2-fc2fb-converts-fc-fb-with-exponentially-decaying-error/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-inverted-sample-complexity-o-a-ln-1-ln-a-ln-1-q-c",
+        "title": "Claim 2 — inverted sample complexity `O(A ln(1/δ)·ln(A ln(1/δ)/Q) + C)`",
+        "file": "pages/claim-2-inverted-sample-complexity-o-a-ln-1-ln-a-ln-1-q-c/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-fcw2s-algorithm-4-converts-weak-fc-def-4-1-strong-fc-def-3-1",
+        "title": "Claim 3 — FCW2S (Algorithm 4) converts weak FC (Def 4.1) → strong FC (Def 3.1)",
+        "file": "pages/claim-3-fcw2s-algorithm-4-converts-weak-fc-def-4-1-strong-fc-def-3-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-fc2at-algorithm-6-anytime-variant-via-the-doubling-trick-no-budget-knowledge",
+        "title": "Claim 4 — FC2AT (Algorithm 6): anytime variant via the doubling trick, no budget knowledge",
+        "file": "pages/claim-4-fc2at-algorithm-6-anytime-variant-via-the-doubling-trick-no-budget-knowledge/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-improvements-on-heterogeneous-noise-cor-5-2-linear-cor-5-4-unimodal-cor-5-7",
+        "title": "Claim 5 — improvements on heterogeneous-noise (Cor 5.2), linear (Cor 5.4), unimodal (Cor 5.7)",
+        "file": "pages/claim-5-improvements-on-heterogeneous-noise-cor-5-2-linear-cor-5-4-unimodal-cor-5-7/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai-artifacts"
+  },
+  "agent_view_tokens": 4279,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "2bacf84a46edfc376dc9"
+}
