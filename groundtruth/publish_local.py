@@ -79,6 +79,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("dir")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--force", action="store_true",
+                    help="publish even if local_pts <= remote_pts (e.g. refreshed logbook, same score)")
     a = ap.parse_args()
     d = os.path.abspath(a.dir)
     trackio = os.path.join(d, ".trackio")
@@ -107,8 +109,11 @@ def main():
         print(f"remote {orid}: not found ({type(e).__name__})")
 
     if remote_pts is not None and local_pts is not None and local_pts <= remote_pts:
-        print(f"SKIP: local {local_pts} <= remote {remote_pts} (no improvement)")
-        return
+        if a.force:
+            print(f"FORCE: local {local_pts} <= remote {remote_pts} but --force set, publishing")
+        else:
+            print(f"SKIP: local {local_pts} <= remote {remote_pts} (no improvement)")
+            return
     if a.dry_run:
         print("DRY-RUN: would publish (local better or remote missing)")
         return
