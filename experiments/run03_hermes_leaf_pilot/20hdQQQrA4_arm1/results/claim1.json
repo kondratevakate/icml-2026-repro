@@ -5,19 +5,19 @@
   "main": {
     "n_instances": 6000,
     "n_bound_violations": 0,
-    "worst_ratio_err_over_bound": 0.16639064364932787,
+    "worst_ratio_err_over_bound": 0.16641775230703537,
     "eq31_matrix_norm_violations": 0,
-    "sub_bound_violations_1p3sqrtn": 35891
+    "sub_bound_violations_1p3sqrtn": 36067
   },
   "mutation_w_scale_50K": {
     "n_instances": 3000,
     "n_bound_violations": 0,
-    "worst_ratio_err_over_bound": 0.16639064364932787,
+    "worst_ratio_err_over_bound": 0.1662721678833856,
     "eq31_matrix_norm_violations": 0,
-    "sub_bound_violations_1p3sqrtn": 17873
+    "sub_bound_violations_1p3sqrtn": 17966
   },
   "command": "python verify_claim1.py",
   "numpy": "2.5.1",
-  "seconds": 1047.88,
+  "seconds": 740.51,
   "verdict": "verified"
 }

@@ -9,7 +9,7 @@ Two fixes to verify_claim1.py:
 """
 import json, time
 import numpy as np
-from caffnet_core import P_gamma, caffnet, gamma_set, sample_in_ball
+from caffnet_core import P_gamma, caffnet, gamma_set, sample_in_ball, seed_of
 
 K = 1e-2
 OUT = "results/claim1b.json"
@@ -63,7 +63,7 @@ def run(n_seeds=200):
         for m in (2, 3, 5, 7):
             for p in (1, 2, 3):
                 for seed in range(n_seeds):
-                    rng = np.random.default_rng(hash((n_out, m, p, seed, 7)) % (2**32))
+                    rng = np.random.default_rng(seed_of(n_out, m, p, seed, 7))
                     A, b, y0 = boundary_instance(
                         rng, n_out, m, rank=max(1, min(m, n_out) - 1))
                     f_t = y0

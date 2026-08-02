@@ -71,3 +71,9 @@ def sample_in_ball(rng, n, radius, p=2):
     v = rng.normal(size=n)
     v = v / max(np.linalg.norm(v, p), 1e-12)
     return v * radius * rng.uniform(0.0, 0.999) ** (1.0 / n)
+
+
+def seed_of(*parts):
+    """Deterministic seed across processes (python's hash() is salted for str/tuples)."""
+    import zlib
+    return zlib.crc32(repr(parts).encode()) % (2**32)

@@ -1,15 +1,15 @@
 {
   "claim": "1b",
   "K": 0.01,
-  "case2_instances": 9250,
-  "main_instances": 9250,
+  "case2_instances": 9241,
+  "main_instances": 9241,
   "main_bound_violations": 0,
-  "main_worst_ratio": 0.3989530618884642,
-  "subbound_intersection_gamma_tested": 8846,
+  "main_worst_ratio": 0.40027124127498115,
+  "subbound_intersection_gamma_tested": 8866,
   "subbound_intersection_gamma_violations": 0,
-  "mutation_argmax_instances": 9250,
-  "mutation_argmax_bound_violations": 3580,
-  "mutation_argmax_worst_ratio": 294990.2806016218,
+  "mutation_argmax_instances": 9241,
+  "mutation_argmax_bound_violations": 3545,
+  "mutation_argmax_worst_ratio": 30853.935405391814,
   "command": "python verify_claim1b.py",
-  "seconds": 361.98
+  "seconds": 327.48
 }

@@ -3,7 +3,7 @@
   "title": "CAffNet: Hard Constraint-Affine Neural Networks",
   "area": null,
   "n_anchored": 5,
-  "n_claim_files": 6,
+  "n_claim_files": 12,
   "source": "ARTIFACTS (results/claim*.json) — not self-report",
   "check_reproducibility_pass": null,
   "check_detail": "no check_reproducibility.py",

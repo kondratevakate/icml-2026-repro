@@ -11,7 +11,7 @@ MUTATION: break Eq. 28 by letting ||w_phi||_p = 50K. The bound is then predicted
 import json, sys, time
 import numpy as np
 from caffnet_core import (P_gamma, caffnet, gamma_set, random_feasible_instance,
-                          sample_in_ball)
+                          sample_in_ball, seed_of)
 
 K = 1e-2
 OUT = "results/claim1.json"
@@ -28,7 +28,7 @@ def run(w_scale, n_seeds=40):
                 for redundant in (False, True):
                     for seed in range(n_seeds):
                         rng = np.random.default_rng(
-                            hash((n_out, m, p, redundant, seed)) % (2**32))
+                            seed_of(n_out, m, p, redundant, seed))
                         rank = max(1, min(m, n_out) - (1 if redundant else 0))
                         A, b, y0 = random_feasible_instance(
                             rng, n_out, m, rank=rank, redundant=redundant)

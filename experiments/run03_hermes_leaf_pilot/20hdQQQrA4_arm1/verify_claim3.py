@@ -12,7 +12,7 @@ sub-constraints of size at most min(m, n_out).
 """
 import json, time
 import numpy as np
-from caffnet_core import caffnet, gamma_set, hardnet_like, random_feasible_instance
+from caffnet_core import caffnet, gamma_set, hardnet_like, random_feasible_instance, seed_of
 
 OUT = "results/claim3.json"
 
@@ -30,7 +30,7 @@ def sweep():
         for m in (1, 2, 3, 5, 8, 12):
             for regime in ("rank_deficient", "redundant", "full"):
                 for seed in range(30):
-                    rng = np.random.default_rng(hash((n_out, m, regime, seed)) % (2**32))
+                    rng = np.random.default_rng(seed_of(n_out, m, regime, seed))
                     if regime == "rank_deficient":
                         rank = max(1, min(m, n_out) - 1)
                         red = False

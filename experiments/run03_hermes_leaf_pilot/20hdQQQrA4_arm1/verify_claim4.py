@@ -17,7 +17,14 @@ import torch
 import torch.nn as nn
 
 torch.set_num_threads(1)   # fastest for these tiny batches (benchmarked)
-EPOCHS = int(sys.argv[1]) if len(sys.argv) > 1 else 50000
+def _argv_epochs():
+    for a in sys.argv[1:]:
+        if a.isdigit():
+            return int(a)
+    return 50000
+
+
+EPOCHS = _argv_epochs()
 SEEDS = [0, 1, 2, 3, 4]
 OUT = "results/claim4.json"
 

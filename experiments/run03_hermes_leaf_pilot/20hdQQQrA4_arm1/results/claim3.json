@@ -3,11 +3,11 @@
   "sweep": {
     "n_instances": 2160,
     "caffnet_violating_instances": 0,
-    "caffnet_max_violation": 9.2148511043888e-15,
-    "hardnet_like_violating_instances": 962,
-    "hardnet_like_max_violation": 55.588662009447745,
-    "truncated_k_eq_1_violating": 519,
-    "truncated_k_eq_min_only_violating": 165,
+    "caffnet_max_violation": 2.7200464103316335e-14,
+    "hardnet_like_violating_instances": 999,
+    "hardnet_like_max_violation": 28.467269962504773,
+    "truncated_k_eq_1_violating": 506,
+    "truncated_k_eq_min_only_violating": 194,
     "max_cardinality_of_selected_gamma": 4
   },
   "fig1_example": {
@@ -42,6 +42,6 @@
   },
   "command": "python verify_claim3.py",
   "numpy": "2.5.1",
-  "seconds": 182.06,
+  "seconds": 237.03,
   "verdict": "verified"
 }
