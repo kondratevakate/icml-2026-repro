@@ -7,13 +7,14 @@
 - batch_prompts/*.txt regenerated without compaction block.
 
 ## Launch plan (per user: 1-2 parallel)
-## Wave 1 (finalizing)
-- TBSyYj4VV6: done, logbook 87 lines, ALL_CLAIMS_REGENERATED (6/6 verified -> ~10/10).
-- l35QweVxgn: results/claim1-6.json done, but logbook.md missing in _arm2b (agent cut off;
-  first rewriter deleg_2a3f55f2 misread sibling l35QweVxgn/ logbook and did nothing).
-  -> launched deleg_fbdbfe87 (strict: write ONLY _arm2b/logbook.md from _arm2b/results).
-- Watchdog: old (proc_41d83b965118) killed at 54min; relaunched watchdog_wave1b (proc_80cf76bcbc0b, 120min)
-  to score+publish both when l35QweVxgn_arm2b/logbook.md appears, write NEXT_WAVE.txt.
+## Wave 1 (DONE, published)
+- TBSyYj4VV6: **10/10** (6/6 verified) — Space published (re-published after scorer fix).
+- l35QweVxgn: **10/10** (6/6 verified) — Space published (re-published after scorer fix).
+- CRITICAL FIX: score_run.parse_logbook now universal (3/5/6-col tables). Was scoring 0/12 incorrectly.
+
+## Wave 2 (RUNNING)
+- tRsnpaRO0m + LJdacnMXkr — deleg_dc194e52 (background), prompts demand 3-col logbook format.
+- watchdog_wave2 (proc_a70797ec2ad8) scores+publishes both, writes NEXT_WAVE.txt.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
