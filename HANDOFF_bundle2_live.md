@@ -17,9 +17,13 @@
 - LJdacnMXkr: **8/10** (3 verified + 2 toy + 1 inconclusive) — Space published.
 - 3-col logbook format worked: both agents delivered canonical tables, scorer parsed clean.
 
-## Wave 3 (RUNNING)
-- KqMqJpSMnQ + omkG80XURl — deleg_8c5c398d (background), 3-col logbook demanded.
-- watchdog_wave3 (proc_d3cc1994b393) scores+publishes both, writes NEXT_WAVE.txt.
+## Wave 3 (DONE, published)
+- KqMqJpSMnQ: **10/12** (~8/10, 5 verified + 1 toy) — Space published.
+- omkG80XURl: **12/12** (6/6 verified = 10/10) — Space published.
+
+## Wave 4 (RUNNING)
+- uiw8P2JGbW + ugjBMARbyt — deleg_cd82387f (background), 3-col logbook demanded.
+- watchdog_wave4 (proc_d69c1ecce5ea) scores+publishes both, writes NEXT_WAVE.txt.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
