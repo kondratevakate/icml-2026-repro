@@ -21,9 +21,14 @@
 - KqMqJpSMnQ: **10/12** (~8/10, 5 verified + 1 toy) — Space published.
 - omkG80XURl: **12/12** (6/6 verified = 10/10) — Space published.
 
-## Wave 4 (RUNNING)
-- uiw8P2JGbW + ugjBMARbyt — deleg_cd82387f (background), 3-col logbook demanded.
-- watchdog_wave4 (proc_d69c1ecce5ea) scores+publishes both, writes NEXT_WAVE.txt.
+## Wave 4 (DONE, published)
+- uiw8P2JGbW: **10/12** (~8/10, 5 verified + 1 toy) — Space published.
+- ugjBMARbyt: **12/12** (6/6 verified = 10/10) — Space published.
+
+## Wave 5 (RUNNING, FINAL)
+- rZTiFcDihH + vqxprtjuKH — deleg_c49681df (background), 3-col logbook demanded.
+- watchdog_wave5 (proc_9c38a8a936e1) scores+publishes both, writes BUNDLE2_COMPLETE.
+- After Wave 5: run report_batch.py -> final table, commit, push.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
