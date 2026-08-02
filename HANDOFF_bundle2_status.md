@@ -23,7 +23,8 @@ omkG80XURl, uiw8P2JGbW, ugjBMARbyt, rZTiFcDihH, vqxprtjuKH
 - Compaction goal: cut token volume on 33+ paper batch vs no-compaction baseline.
 
 ## TODO
-- [ ] deleg_f26563e7 finishes → score + compare.
-- [ ] Dispatch Bundle 2 in pairs (background delegate_task).
+- [ ] deleg_f26563e7 finishes → score + compare. [AUTOMATED: watchdog_compaction.sh proc_d7122fa3f68b polls logbook.md, scores, compares, writes COMPACTION_DECISION.txt + notifies]
+- [ ] Dispatch Bundle 2 in pairs (background delegate_task). [after decision]
 - [ ] Per paper: score_run.py → publish_local.py (compare-and-publish, dedup-guarded).
 - [ ] Report final table + token usage.
+- [ ] Router status: localhost:8319 ALIVE (2026-08-02 23:45). /v1/usage needs token for read; agents proxied without key.
