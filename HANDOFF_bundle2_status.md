@@ -23,7 +23,9 @@ omkG80XURl, uiw8P2JGbW, ugjBMARbyt, rZTiFcDihH, vqxprtjuKH
 - Compaction goal: cut token volume on 33+ paper batch vs no-compaction baseline.
 
 ## TODO
-- [ ] deleg_f26563e7 finishes → score + compare. [AUTOMATED: watchdog_compaction.sh proc_d7122fa3f68b polls logbook.md, scores, compares, writes COMPACTION_DECISION.txt + notifies]
+- [ ] deleg_f26563e7 finished verify_claim1-5 BUT did NOT write logbook.md (ended early).
+      -> launched deleg_e195facf (background) to write logbook.md ONLY from existing results/ (no re-run).
+- [ ] watchdog2_compaction.sh (proc_d8893fdf5f39) waits for deleg_e195facf logbook, scores, compares vs original arm2, writes COMPACTION_DECISION.txt + notifies.
 - [ ] Dispatch Bundle 2 in pairs (background delegate_task). [after decision]
 - [ ] Per paper: score_run.py → publish_local.py (compare-and-publish, dedup-guarded).
 - [ ] Report final table + token usage.
