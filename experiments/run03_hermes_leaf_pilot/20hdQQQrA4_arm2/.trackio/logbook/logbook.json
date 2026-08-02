@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "title": "Reproduction: Conditional Coverage Diagnostics for Conformal Prediction",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction",
+  "paper": {
+    "arxiv_id": "2512.11779"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-vaApZm6MKM"
+  ],
+  "updated_at": "2026-07-19T08:22:06+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Conditional Coverage Diagnostics for Conformal Prediction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-ert-metrics-with-modern-classifiers-have-higher-statistical-power-than-simple-classifiers-behind-metrics-like-covgap",
+        "title": "Claim 1: ERT metrics with modern classifiers have higher statistical power than simple classifiers behind metrics like CovGap",
+        "file": "pages/claim-1-ert-metrics-with-modern-classifiers-have-higher-statistical-power-than-simple-classifiers-behind-metrics-like-covgap/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-the-metrics-can-separate-the-effects-of-over-and-under-coverage",
+        "title": "Claim 2: The metrics can separate the effects of over- and under-coverage",
+        "file": "pages/claim-2-the-metrics-can-separate-the-effects-of-over-and-under-coverage/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 2496,
+  "revision": "1784449326964043400"
+}

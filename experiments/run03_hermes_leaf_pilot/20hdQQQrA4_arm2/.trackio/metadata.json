@@ -1,0 +1,15 @@
+{
+  "space_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks",
+  "emoji": "\ud83c\udfaf",
+  "created_at": "",
+  "last_page": "caffnet-hard-constraint-affine-neural-networks",
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "paper": {
+    "arxiv_id": "2605.24437"
+  },
+  "private": false,
+  "autosync": true
+}
