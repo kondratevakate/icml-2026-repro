@@ -12,9 +12,14 @@
 - l35QweVxgn: **10/10** (6/6 verified) — Space published (re-published after scorer fix).
 - CRITICAL FIX: score_run.parse_logbook now universal (3/5/6-col tables). Was scoring 0/12 incorrectly.
 
-## Wave 2 (RUNNING)
-- tRsnpaRO0m + LJdacnMXkr — deleg_dc194e52 (background), prompts demand 3-col logbook format.
-- watchdog_wave2 (proc_a70797ec2ad8) scores+publishes both, writes NEXT_WAVE.txt.
+## Wave 2 (DONE, published)
+- tRsnpaRO0m: **10/10** (6/6 verified) — Space published.
+- LJdacnMXkr: **8/10** (3 verified + 2 toy + 1 inconclusive) — Space published.
+- 3-col logbook format worked: both agents delivered canonical tables, scorer parsed clean.
+
+## Wave 3 (RUNNING)
+- KqMqJpSMnQ + omkG80XURl — deleg_8c5c398d (background), 3-col logbook demanded.
+- watchdog_wave3 (proc_d3cc1994b393) scores+publishes both, writes NEXT_WAVE.txt.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
