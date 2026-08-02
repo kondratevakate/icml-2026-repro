@@ -1,1 +1,9 @@
-{"claim": 3, "source": "arm4-lightweight", "verdict": "see logbook.md", "mode": "text-only"}
+{
+  "claim": 3,
+  "source": "ARC-lightweight verify_claim3.py (execution attempted 2026-08-02)",
+  "command": "python verify_claim3.py",
+  "verdict": "inconclusive",
+  "execution_success": false,
+  "error": "ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0 (size 1 is different from 6) at line 91 — shape bug in ARC-generated code (A_test dimensionality)",
+  "note": "ARC-light generated code; executed locally via brainiac_brainage_py311 venv. Script raised before producing metrics. Claim 3 NOT reproduced numerically."
+}

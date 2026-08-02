@@ -3,37 +3,37 @@
   "title": "CAffNet: Hard Constraint-Affine Neural Networks",
   "area": null,
   "n_anchored": 5,
-  "n_claim_files": 6,
+  "n_claim_files": 3,
   "source": "ARTIFACTS (results/claim*.json) — not self-report",
   "check_reproducibility_pass": null,
   "check_detail": "no check_reproducibility.py",
-  "execution_success": true,
-  "claim_coverage": 1.0,
-  "full_evidence_rate": 0.2,
-  "inconclusive_rate": 0.2,
+  "execution_success": false,
+  "claim_coverage": 0.6,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 0.4,
   "toy_rate": 0.0,
-  "not_attempted_rate": 0.0,
-  "n_mutation_tests": 1,
-  "has_evidence_boundary": true,
-  "n_with_evidence_boundary": 1,
+  "not_attempted_rate": 0.4,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": false,
+  "n_with_evidence_boundary": 0,
   "wall_time_min": null,
   "human_interventions": null,
   "per_claim_verdict": {
-    "claim1": "verified",
+    "claim1": "inconclusive",
     "claim2": "verified",
-    "claim3": "verified",
-    "claim4": "falsified",
-    "claim5": "inconclusive"
+    "claim3": "inconclusive",
+    "claim4": "not_attempted",
+    "claim5": "not_attempted"
   },
   "per_claim_mutation": {
-    "claim1": true,
+    "claim1": false,
     "claim2": false,
     "claim3": false,
     "claim4": false,
     "claim5": false
   },
   "per_claim_boundary": {
-    "claim1": true,
+    "claim1": false,
     "claim2": false,
     "claim3": false,
     "claim4": false,
@@ -42,16 +42,17 @@
   "per_claim_note": {
     "claim1": "explicit verdict/VERDICT_CAP field",
     "claim2": "explicit verdict/VERDICT_CAP field",
-    "claim3": "explicit verdict/VERDICT_CAP field",
-    "claim4": "explicit verdict/VERDICT_CAP field",
-    "claim5": "explicit verdict/VERDICT_CAP field"
+    "claim3": "explicit verdict/VERDICT_CAP field"
   },
-  "warnings": [],
+  "warnings": [
+    "no claim artifact shows a real executed numeric experiment"
+  ],
   "_meta_crosscheck": {
     "execution_success": null,
     "claim_coverage_meta": null,
     "per_claim_verdict_meta": null
   },
+  "finished_utc": "2026-08-02T12:54:00Z",
   "tokens": {
     "tokens_total_live": 95136143,
     "note": "live snapshot only (no before/after)"

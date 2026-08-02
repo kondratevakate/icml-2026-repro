@@ -1,168 +1,111 @@
-"""verify_claim3.py — no full-row-rank requirement + decomposition cardinality.
+"""verify_claim3.py — no full-row-rank requirement; arbitrary cardinality via
+sub-constraints of size at most min(m, n_out).
 
-Claim (Section 3, Lemma 3.3 / Theorem 3.4, Table 1):
-  Unlike HardNet, CAffNet guarantees A(x) y <= b(x) WITHOUT requiring A(x) to have
-  full row rank, and handles arbitrary constraint cardinality m by decomposing into
-  sub-constraint combinations of at most min(m, n_out) constraints.
-
-Tests:
-  E1 EXHAUSTIVE family: all 2-D systems built from a fixed finite dictionary of
-     normal directions with duplicated / negated / scaled (hence linearly dependent)
-     rows, all subsets of size m = 2..5 -> for every instance with a non-empty
-     feasible set, and for a deterministic grid of f_theta and w_phi, the CAffNet
-     candidate set must contain a feasible point (Lemma 3.3) and the output must
-     satisfy all m constraints (Theorem 3.4). Failures counted.
-  E2 RANDOM sweep with m up to 8 > n_out and forced dependent rows, 200 seeds x
-     shapes, same assertions. Also records max violation ReLU(A y - b).
-  E3 BASELINE: the HardNet-Aff single pseudo-inverse correction on the SAME
-     instances -> fraction of infeasible outputs (must be > 0, otherwise CAffNet's
-     advantage would not be demonstrated on these instances).
-  E4 CARDINALITY: number of combinations |Gamma| = sum_{k<=min(m,n_out)} C(m,k)
-     matches Eq. (2) and is <= 2^m - 1.
-
-MUTATION (M-trunc): truncate Gamma to k <= min(m,n_out) - 1. If min(m,n_out) really
-is the required cardinality, feasibility failures must appear. Run on the same
-instances; number of failures reported.
-
-Run: .venv/bin/python verify_claim3.py
+ A. Feasibility (Thm 3.4 / Lemma 3.3) on instances where A(x) is deliberately
+    rank-deficient, redundant, linearly dependent, and m >> n_out.
+ B. HardNet-style baseline (single pseudo-inverse correction on the violated rows,
+    which requires full row rank) on the SAME instances -> violations appear.
+    This is the mutation: replace the decomposition mechanism with the naive one.
+ C. Cardinality: verify the certificate always lies at k <= min(m, n_out) and that
+    truncating Gamma (k = 1 only, or k = min(m,n_out) only) can LOSE feasibility.
+ D. The 2-D example of Fig. 1 / Sec. 1: [0,1][x,y]^T <= 0 (rank-deficient, non-unique).
 """
-import itertools
-import json
-import math
-import time
-
+import json, time
 import numpy as np
+from caffnet_core import caffnet, gamma_set, hardnet_like, random_feasible_instance
 
-from caffnet_core import caffnet_output, gamma_set, hardnet_aff, random_feasible_system
-
-TOL = 1e-9
-
-
-def check(A, b, f_th, w, kmax=None):
-    y, info = caffnet_output(f_th, w, A, b, p=2.0, kmax=kmax)
-    if y is None:
-        return False, np.inf
-    v = float(np.max(np.maximum(A @ y - b, 0.0)))
-    return v <= TOL, v
+OUT = "results/claim3.json"
 
 
-def exhaustive_2d():
-    """E1: exhaustive over a finite dictionary of directions in R^2."""
-    ang = [0, np.pi / 4, np.pi / 2, 3 * np.pi / 4, np.pi, 5 * np.pi / 4]
-    dirs = [np.array([np.cos(a), np.sin(a)]) for a in ang]
-    # add scaled duplicates -> guarantees linearly dependent rows in many subsets
-    dirs = dirs + [2.0 * dirs[0], -1.0 * dirs[1], 3.0 * dirs[2]]
-    idx = range(len(dirs))
-    f_grid = [np.array([u, v]) for u in (-3.0, -0.7, 0.0, 0.7, 3.0)
-              for v in (-3.0, -0.7, 0.0, 0.7, 3.0)]
-    w_grid = [np.zeros(2), np.array([1.0, -2.0]), np.array([-5.0, 4.0])]
-    n_inst = n_case = n_fail = n_infeasible_set = 0
-    n_rank_def = 0
-    maxviol = 0.0
-    hn_fail = hn_total = 0
-    mut_fail = mut_total = 0
-    for m in (2, 3, 4, 5):
-        for comb in itertools.combinations(idx, m):
-            A = np.stack([dirs[i] for i in comb])
-            b = np.ones(m) * 1.0            # contains 0 => feasible set non-empty
-            n_inst += 1
-            if np.linalg.matrix_rank(A) < min(m, 2):
-                n_rank_def += 1
-            for f_th, w in itertools.product(f_grid, w_grid):
-                ok, v = check(A, b, f_th, w)
-                n_case += 1
-                maxviol = max(maxviol, 0.0 if ok else v)
-                if not ok:
-                    n_fail += 1
-                yh = hardnet_aff(f_th, A, b)
-                hn_total += 1
-                if np.max(np.maximum(A @ yh - b, 0.0)) > 1e-7:
-                    hn_fail += 1
-                if min(m, 2) - 1 >= 1:       # mutation: truncated Gamma
-                    okm, _ = check(A, b, f_th, w, kmax=min(m, 2) - 1)
-                    mut_total += 1
-                    if not okm:
-                        mut_fail += 1
-    return dict(n_systems=n_inst, n_rank_deficient_systems=n_rank_def,
-                n_cases=n_case, n_caffnet_failures=n_fail,
-                max_violation=maxviol,
-                hardnet_infeasible=hn_fail, hardnet_cases=hn_total,
-                hardnet_infeasible_frac=hn_fail / max(hn_total, 1),
-                mutation_truncated_gamma_failures=mut_fail,
-                mutation_cases=mut_total,
-                mutation_failure_frac=mut_fail / max(mut_total, 1))
-
-
-def random_sweep():
-    """E2/E3: random systems, m possibly >> n_out, forced dependent rows."""
-    n_fail = n_case = 0
-    hn_fail = 0
-    mut_fail = mut_total = 0
-    maxviol = 0.0
-    rank_def = 0
+def sweep():
+    tot = 0
+    caff_viol = 0
+    caff_max = 0.0
+    hard_viol = 0
+    hard_max = 0.0
+    k1_viol = 0
+    kmax_only_viol = 0
+    max_k_used = 0
     for n_out in (1, 2, 3, 4):
-        for m in (n_out, n_out + 1, n_out + 3, min(8, n_out + 5)):
-            for dep in (0, 1, 2):
-                if dep >= m:
-                    continue
-                for seed in range(200):
-                    rng = np.random.default_rng([99, n_out, m, dep, seed])
-                    A, b, y0 = random_feasible_system(rng, m, n_out, dep_rows=dep)
-                    if np.linalg.matrix_rank(A) < min(m, n_out):
-                        rank_def += 1
-                    f_th = y0 + rng.normal(size=n_out) * 4.0
-                    w = rng.normal(size=n_out) * 2.0
-                    ok, v = check(A, b, f_th, w)
-                    n_case += 1
-                    if not ok:
-                        n_fail += 1
-                        maxviol = max(maxviol, v)
-                    yh = hardnet_aff(f_th, A, b)
-                    if np.max(np.maximum(A @ yh - b, 0.0)) > 1e-7:
-                        hn_fail += 1
+        for m in (1, 2, 3, 5, 8, 12):
+            for regime in ("rank_deficient", "redundant", "full"):
+                for seed in range(30):
+                    rng = np.random.default_rng(hash((n_out, m, regime, seed)) % (2**32))
+                    if regime == "rank_deficient":
+                        rank = max(1, min(m, n_out) - 1)
+                        red = False
+                    elif regime == "redundant":
+                        rank = min(m, n_out); red = True
+                    else:
+                        rank = min(m, n_out); red = False
+                    A, b, y0 = random_feasible_instance(rng, n_out, m, rank=rank, redundant=red)
+                    f = y0 + rng.normal(size=n_out) * 3.0     # usually infeasible
+                    w = rng.normal(size=n_out)
+                    tot += 1
+                    y, gam = caffnet(f, A, b, w, p=2, return_gamma=True)
+                    v = float(np.max(A @ y - b))
+                    caff_max = max(caff_max, v)
+                    if v > 1e-9:
+                        caff_viol += 1
+                    if gam is not None:
+                        max_k_used = max(max_k_used, len(gam))
+                    yh = hardnet_like(f, A, b)
+                    vh = float(np.max(A @ yh - b))
+                    hard_max = max(hard_max, vh)
+                    if vh > 1e-9:
+                        hard_viol += 1
+                    # truncated Gamma variants (mutation of the decomposition)
+                    y1 = caffnet(f, A, b, w, p=2, kmax=1)
+                    if np.max(A @ y1 - b) > 1e-9:
+                        k1_viol += 1
                     kk = min(m, n_out)
-                    if kk - 1 >= 1:
-                        okm, _ = check(A, b, f_th, w, kmax=kk - 1)
-                        mut_total += 1
-                        if not okm:
-                            mut_fail += 1
-    return dict(n_cases=n_case, n_caffnet_failures=n_fail,
-                max_violation=maxviol, n_rank_deficient=rank_def,
-                hardnet_infeasible=hn_fail,
-                hardnet_infeasible_frac=hn_fail / max(n_case, 1),
-                mutation_truncated_gamma_failures=mut_fail,
-                mutation_cases=mut_total,
-                mutation_failure_frac=mut_fail / max(mut_total, 1))
+                    ymax = f
+                    best_d = np.inf
+                    from caffnet_core import P_gamma
+                    import itertools
+                    if np.all(A @ f - b <= 1e-9):
+                        ymax = f
+                    else:
+                        found = False
+                        for gm in itertools.combinations(range(m), kk):
+                            yy = P_gamma(f, A, b, gm, w)
+                            if np.all(A @ yy - b <= 1e-9):
+                                d = np.linalg.norm(yy - f)
+                                if d < best_d:
+                                    ymax, best_d, found = yy, d, True
+                        if not found:
+                            kmax_only_viol += 1
+                            continue
+                    if np.max(A @ ymax - b) > 1e-9:
+                        kmax_only_viol += 1
+    return dict(n_instances=tot,
+                caffnet_violating_instances=caff_viol, caffnet_max_violation=caff_max,
+                hardnet_like_violating_instances=hard_viol, hardnet_like_max_violation=hard_max,
+                truncated_k_eq_1_violating=k1_viol,
+                truncated_k_eq_min_only_violating=kmax_only_viol,
+                max_cardinality_of_selected_gamma=max_k_used)
 
 
-def cardinality_check():
-    rows = []
-    ok = True
-    for m in range(1, 11):
-        for n_out in range(1, 6):
-            g = gamma_set(m, n_out)
-            formula = sum(math.comb(m, k) for k in range(1, min(m, n_out) + 1))
-            kmax = max(len(x) for x in g)
-            good = (len(g) == formula and kmax <= min(m, n_out)
-                    and len(g) <= 2 ** m - 1)
-            ok &= good
-            rows.append(dict(m=m, n_out=n_out, size=len(g), formula=formula,
-                             max_k=kmax, bound_2m_minus_1=2 ** m - 1, ok=good))
-    return dict(all_ok=bool(ok), rows=rows)
+def fig1_example():
+    """Sec. 1 example: {(x,y) : [0,1][x,y]^T <= 0}; the whole line y=0 (and below) is feasible;
+    A is rank deficient in the column sense (n_out=2, rank 1) -> non-unique projection."""
+    A = np.array([[0.0, 1.0], [0.0, 2.0]])   # linearly dependent rows
+    b = np.array([0.0, 0.0])
+    f = np.array([1.5, 2.0])                 # infeasible
+    outs = {}
+    for name, w in (("w_zero", np.zeros(2)), ("w_left", np.array([-5.0, 0.0])),
+                    ("w_right", np.array([5.0, 0.0]))):
+        y = caffnet(f, A, b, w, p=2)
+        outs[name] = dict(y=y.tolist(), max_violation=float(np.max(A @ y - b)))
+    yh = hardnet_like(f, A, b)
+    outs["hardnet_like"] = dict(y=yh.tolist(), max_violation=float(np.max(A @ yh - b)))
+    return outs
 
 
 if __name__ == "__main__":
     t0 = time.time()
-    res = {"claim": 3,
-           "claim_text": "CAffNet guarantees A(x)y<=b(x) without full row rank of A(x) "
-                         "and handles arbitrary m via sub-constraints of cardinality "
-                         "at most min(m, n_out)",
-           "source": "Section 3 / 3.1 (Eq. 2), Lemma 3.3 (App. A), Theorem 3.4 (App. B), Table 1",
-           "command": ".venv/bin/python verify_claim3.py"}
-    res["E1_exhaustive_2d"] = exhaustive_2d()
-    res["E2E3_random_sweep"] = random_sweep()
-    res["E4_cardinality"] = cardinality_check()
-    res["elapsed_s"] = time.time() - t0
-    json.dump(res, open("results/claim3.json", "w"), indent=2)
-    print(json.dumps({k: v for k, v in res.items() if k != "E4_cardinality"}, indent=2))
-    print("E4 all_ok:", res["E4_cardinality"]["all_ok"])
+    res = dict(claim=3, sweep=sweep(), fig1_example=fig1_example(),
+               command="python verify_claim3.py", numpy=np.__version__,
+               seconds=round(time.time() - t0, 2))
+    json.dump(res, open(OUT, "w"), indent=2)
+    print(json.dumps(res, indent=2))

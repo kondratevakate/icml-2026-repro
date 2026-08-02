@@ -1,319 +1,154 @@
 {
   "claim": 4,
-  "claim_text": "CAffNet-TF achieves 73.33% MSE reduction vs the soft-constrained NN with zero constraint violations (Sec 4.1, Table 2)",
-  "source": "Section 4.1, Table 2; setup Appendix D.1",
-  "command": ".venv/bin/python verify_claim4.py --epochs 8000 --seeds 5",
-  "epochs": 8000,
-  "seeds": 5,
-  "paper_table2": {
-    "NN": 0.0045,
-    "HardNet": 0.0037,
-    "CAffNet-FF": 0.002,
-    "CAffNet-TF": 0.0012
-  },
-  "paper_reduction_pct": 73.33,
-  "paper_reduction_pct_recomputed": 73.33333333333334,
-  "aggregate": {
-    "NN": {
-      "mse": 0.004068023292347789,
-      "viol_max": 0.24414825439453125,
-      "viol_mean": 0.0013534180703572928,
-      "viol_pct_samples": 26.049999618530272,
-      "T_train_ms": 33.30019687414169,
-      "T_test_ms": 28.04126739501953,
-      "mse_std": 0.005250139420049549
-    },
-    "HardNet": {
-      "mse": 0.0018492587492801248,
-      "viol_max": 0.15286564826965332,
-      "viol_mean": 0.000736968731507659,
-      "viol_pct_samples": 25.900000381469727,
-      "T_train_ms": 79.94261464476585,
-      "T_test_ms": 61.21363639831543,
-      "mse_std": 0.0012726362652026998
-    },
-    "CAffNet-FF": {
-      "mse": 0.0030457738786935805,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 53.84147514700889,
-      "T_test_ms": 27.075529098510742,
-      "mse_std": 0.002008835386389401
-    },
-    "CAffNet-TF": {
-      "mse": 0.000993488630047068,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 85.843057179451,
-      "T_test_ms": 77.9050350189209,
-      "mse_std": 0.0007173944653999999
-    },
-    "CAffNet-TF-nolayer": {
-      "mse": 0.0028114043874666096,
-      "viol_max": 0.19919078350067138,
-      "viol_mean": 0.0011043015983887017,
-      "viol_pct_samples": 25.550000381469726,
-      "T_train_ms": 128.61817412376405,
-      "T_test_ms": 84.34548377990723,
-      "mse_std": 0.0015125360445057603
-    }
-  },
-  "records": [
-    {
-      "method": "NN",
-      "seed": 0,
-      "mse": 0.0017606551991775632,
-      "viol_max": 0.20145511627197266,
-      "viol_mean": 0.0007066904800012708,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 31.795570045709614,
-      "T_test_ms": 33.609628677368164
-    },
-    {
-      "method": "NN",
-      "seed": 1,
-      "mse": 0.0006383012514561415,
-      "viol_max": 0.10001635551452637,
-      "viol_mean": 0.00041164361755363643,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 29.292583376169205,
-      "T_test_ms": 4.437446594238281
-    },
-    {
-      "method": "NN",
-      "seed": 2,
-      "mse": 0.0009575936710461974,
-      "viol_max": 0.08462905883789062,
-      "viol_mean": 0.00033261298085562885,
-      "viol_pct_samples": 25.75,
-      "T_train_ms": 29.530892610549927,
-      "T_test_ms": 11.363029479980469
-    },
-    {
-      "method": "NN",
-      "seed": 3,
-      "mse": 0.002495167311280966,
-      "viol_max": 0.231337308883667,
-      "viol_mean": 0.0013942754594609141,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 26.89248698949814,
-      "T_test_ms": 13.905048370361328
-    },
-    {
-      "method": "NN",
-      "seed": 4,
-      "mse": 0.014488399028778076,
-      "viol_max": 0.6033034324645996,
-      "viol_mean": 0.003921867813915014,
-      "viol_pct_samples": 29.499998092651367,
-      "T_train_ms": 48.989451348781586,
-      "T_test_ms": 76.89118385314941
-    },
-    {
-      "method": "HardNet",
-      "seed": 0,
-      "mse": 0.0008730251574888825,
-      "viol_max": 0.13171899318695068,
-      "viol_mean": 0.00046683111577294767,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 149.74487793445587,
-      "T_test_ms": 44.49200630187988
-    },
-    {
-      "method": "HardNet",
-      "seed": 1,
-      "mse": 0.0005596830160357058,
-      "viol_max": 0.07568609714508057,
-      "viol_mean": 0.0002627544163260609,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 77.40258648991585,
-      "T_test_ms": 142.50469207763672
-    },
-    {
-      "method": "HardNet",
-      "seed": 2,
-      "mse": 0.0018864992307499051,
-      "viol_max": 0.14360547065734863,
-      "viol_mean": 0.0005830440204590559,
-      "viol_pct_samples": 26.750001907348633,
-      "T_train_ms": 58.426270335912704,
-      "T_test_ms": 28.64384651184082
-    },
-    {
-      "method": "HardNet",
-      "seed": 3,
-      "mse": 0.001739343162626028,
-      "viol_max": 0.1845088005065918,
-      "viol_mean": 0.00104945944622159,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 65.17453601956367,
-      "T_test_ms": 60.11486053466797
-    },
-    {
-      "method": "HardNet",
-      "seed": 4,
-      "mse": 0.004187743179500103,
-      "viol_max": 0.22880887985229492,
-      "viol_mean": 0.0013227546587586403,
-      "viol_pct_samples": 27.75,
-      "T_train_ms": 48.96480244398117,
-      "T_test_ms": 30.312776565551758
-    },
-    {
-      "method": "CAffNet-FF",
-      "seed": 0,
-      "mse": 0.006773832254111767,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 108.93516913056374,
-      "T_test_ms": 16.664981842041016
-    },
-    {
-      "method": "CAffNet-FF",
-      "seed": 1,
-      "mse": 0.0016303904121741652,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 63.683877021074295,
-      "T_test_ms": 101.25613212585449
-    },
-    {
-      "method": "CAffNet-FF",
-      "seed": 2,
-      "mse": 0.0011406581616029143,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 57.09191784262657,
-      "T_test_ms": 11.938810348510742
-    },
-    {
-      "method": "CAffNet-FF",
-      "seed": 3,
-      "mse": 0.0023114990908652544,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 34.46687537431717,
-      "T_test_ms": 3.604888916015625
-    },
-    {
-      "method": "CAffNet-FF",
-      "seed": 4,
-      "mse": 0.0033724894747138023,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 5.0295363664627075,
-      "T_test_ms": 1.912832260131836
-    },
-    {
-      "method": "CAffNet-TF",
-      "seed": 0,
-      "mse": 0.000313280412228778,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 9.514827758073807,
-      "T_test_ms": 4.706859588623047
-    },
-    {
-      "method": "CAffNet-TF",
-      "seed": 1,
-      "mse": 0.0020879029761999846,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 10.070699393749237,
-      "T_test_ms": 2.958536148071289
-    },
-    {
-      "method": "CAffNet-TF",
-      "seed": 2,
-      "mse": 0.0006215831381268799,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 35.88281264901161,
-      "T_test_ms": 32.26017951965332
-    },
-    {
-      "method": "CAffNet-TF",
-      "seed": 3,
-      "mse": 0.0003503898624330759,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 101.63551715016365,
-      "T_test_ms": 253.57413291931152
-    },
-    {
-      "method": "CAffNet-TF",
-      "seed": 4,
-      "mse": 0.0015942867612466216,
-      "viol_max": 0.0,
-      "viol_mean": 0.0,
-      "viol_pct_samples": 0.0,
-      "T_train_ms": 272.11142894625664,
-      "T_test_ms": 96.02546691894531
-    },
-    {
-      "method": "CAffNet-TF-nolayer",
-      "seed": 0,
-      "mse": 0.0014143362641334534,
-      "viol_max": 0.22945106029510498,
-      "viol_mean": 0.0010728026973083615,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 445.88743513822556,
-      "T_test_ms": 28.57041358947754
-    },
-    {
-      "method": "CAffNet-TF-nolayer",
-      "seed": 1,
-      "mse": 0.003308972343802452,
-      "viol_max": 0.16587793827056885,
-      "viol_mean": 0.0007123178220354021,
-      "viol_pct_samples": 25.25,
-      "T_train_ms": 32.17233449220657,
-      "T_test_ms": 87.22853660583496
-    },
-    {
-      "method": "CAffNet-TF-nolayer",
-      "seed": 2,
-      "mse": 0.0011102108983322978,
-      "viol_max": 0.10794365406036377,
-      "viol_mean": 0.00038313923869282007,
-      "viol_pct_samples": 25.75,
-      "T_train_ms": 32.10057282447815,
-      "T_test_ms": 70.3432559967041
-    },
-    {
-      "method": "CAffNet-TF-nolayer",
-      "seed": 3,
-      "mse": 0.0053290412761271,
-      "viol_max": 0.31515491008758545,
-      "viol_mean": 0.001995328115299344,
-      "viol_pct_samples": 25.0,
-      "T_train_ms": 98.37500482797623,
-      "T_test_ms": 229.33387756347656
-    },
-    {
-      "method": "CAffNet-TF-nolayer",
-      "seed": 4,
-      "mse": 0.002894461154937744,
-      "viol_max": 0.1775263547897339,
-      "viol_mean": 0.0013579201186075807,
-      "viol_pct_samples": 26.750001907348633,
-      "T_train_ms": 34.555523335933685,
-      "T_test_ms": 6.251335144042969
-    }
+  "epochs": 200,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
   ],
-  "reproduced_reduction_pct_TF_vs_NN": 75.57809878041054,
-  "reproduced_reduction_pct_FF_vs_NN": 25.128897751817814,
-  "mutation_TF_nolayer_viol_max": 0.19919078350067138,
-  "elapsed_s": 15269.018192529678
+  "paper_table2": {
+    "NN_mse": 0.0045,
+    "CAffNet_TF_mse": 0.0012,
+    "claimed_reduction_pct": 73.33
+  },
+  "nn_soft": {
+    "runs": [
+      {
+        "seed": 0,
+        "mse": 0.2928431759352518,
+        "viol_max": 0.6881084442138672,
+        "viol_mean": 0.010000937059521675,
+        "viol_pct": 6.25
+      },
+      {
+        "seed": 1,
+        "mse": 0.4734246631399748,
+        "viol_max": 0.43775224685668945,
+        "viol_mean": 0.006960239471951659,
+        "viol_pct": 6.75
+      },
+      {
+        "seed": 2,
+        "mse": 0.6361381526667759,
+        "viol_max": 0.357887864112854,
+        "viol_mean": 0.007232980404547797,
+        "viol_pct": 7.062499999999999
+      },
+      {
+        "seed": 3,
+        "mse": 0.4310597393132313,
+        "viol_max": 0.5999499559402466,
+        "viol_mean": 0.006908199265599251,
+        "viol_pct": 6.25
+      },
+      {
+        "seed": 4,
+        "mse": 0.7285938891551312,
+        "viol_max": 1.6180842842084724,
+        "viol_mean": 0.03952957952244206,
+        "viol_pct": 10.375
+      }
+    ],
+    "mse_mean": 0.512411924042073,
+    "mse_std": 0.15387751057762555,
+    "viol_max": 1.6180842842084724,
+    "viol_mean": 0.014126387144812489,
+    "viol_pct_mean": 7.3375
+  },
+  "caffnet_tf": {
+    "runs": [
+      {
+        "seed": 0,
+        "mse": 0.5309864627756569,
+        "viol_max": 1.0627297974963312e-07,
+        "viol_mean": 1.1789955416813268e-09,
+        "viol_pct": 3.375
+      },
+      {
+        "seed": 1,
+        "mse": 0.6288097747757513,
+        "viol_max": 9.395463429484607e-08,
+        "viol_mean": 3.862725167502745e-10,
+        "viol_pct": 2.75
+      },
+      {
+        "seed": 2,
+        "mse": 0.5175997977544562,
+        "viol_max": 9.395463429484607e-08,
+        "viol_mean": 9.38349215065526e-10,
+        "viol_pct": 3.0625
+      },
+      {
+        "seed": 3,
+        "mse": 0.5461280990508598,
+        "viol_max": 9.556906110930186e-08,
+        "viol_mean": 1.161388762313531e-09,
+        "viol_pct": 3.375
+      },
+      {
+        "seed": 4,
+        "mse": 0.5968723646924712,
+        "viol_max": 2.888288452851384e-08,
+        "viol_mean": 2.8013378880475945e-10,
+        "viol_pct": 2.9375
+      }
+    ],
+    "mse_mean": 0.5640792998098391,
+    "mse_std": 0.04205507122021212,
+    "viol_max": 1.0627297974963312e-07,
+    "viol_mean": 7.890279649230835e-10,
+    "viol_pct_mean": 3.1
+  },
+  "tf_soft_mutation": {
+    "runs": [
+      {
+        "seed": 0,
+        "mse": 1.023786658691843,
+        "viol_max": 0.9698472023010254,
+        "viol_mean": 0.013025405416357437,
+        "viol_pct": 6.937500000000001
+      },
+      {
+        "seed": 1,
+        "mse": 1.0972012451875062,
+        "viol_max": 0.5535738468170166,
+        "viol_mean": 0.015088578308890594,
+        "viol_pct": 9.5625
+      },
+      {
+        "seed": 2,
+        "mse": 0.6986011434934367,
+        "viol_max": 0.6804421867353279,
+        "viol_mean": 0.010647731495520675,
+        "viol_pct": 7.187499999999999
+      },
+      {
+        "seed": 3,
+        "mse": 0.8595041744217212,
+        "viol_max": 0.697988748550415,
+        "viol_mean": 0.00918466312605518,
+        "viol_pct": 6.5625
+      },
+      {
+        "seed": 4,
+        "mse": 0.9354144393822934,
+        "viol_max": 1.8737421069655564,
+        "viol_mean": 0.050474227484720816,
+        "viol_pct": 11.125
+      }
+    ],
+    "mse_mean": 0.92290153223536,
+    "mse_std": 0.13787288412747253,
+    "viol_max": 1.8737421069655564,
+    "viol_mean": 0.01968412116630894,
+    "viol_pct_mean": 8.275
+  },
+  "measured_reduction_pct": -10.083172023046782,
+  "command": "python verify_claim4.py 200",
+  "torch": "2.13.0+cpu",
+  "seconds": 457.77,
+  "verdict": "falsified",
+  "verdict_note": "measured_reduction_pct=-10.08 vs paper claimed +73.33; CAffNet_TF did NOT beat NN on MSE -> claim not reproduced"
 }

@@ -1,80 +1,26 @@
 {
-  "run_id": "20hdQQQrA4-second",
-  "paper_id": "20hdQQQrA4",
-  "paper_title": "CAffNet: Hard Constraint-Affine Neural Networks",
-  "arxiv_id": "2605.24437",
-  "openreview_id": "20hdQQQrA4",
-  "run_timestamp": "2026-08-02T12:00:00Z",
-  "agent": "Sakana v2 (AI-Scientist-v2)",
+  "orid": "20hdQQQrA4",
+  "arm": "arm1",
+  "arm_description": "Hermes leaf (control, NO skills) — isolated delegate_task, baseline for architecture comparison",
+  "agent": "Hermes Agent (subagent, leaf role)",
   "model": "tencent/hy3:free via localhost:8319/v1",
-  "environment": {
-    "python": "3.12.3",
-    "numpy": "2.5.1",
-    "scipy": "1.18.0",
-    "torch": "2.13.0+cpu",
-    "hw": "CPU-only (WSL2, no GPU)",
-    "n_cores": 8
+  "method_notes": {
+    "self_contamination_avoided": true,
+    "skills_used": false,
+    "external_framework": false,
+    "control_run": true
   },
-  "adaptation": {
-    "source": "adapt_claims_to_sakana.py",
-    "idea_file": "ideas/20hdQQQrA4.json",
-    "claims_count": 5
-  },
-  "verification": {
-    "claims": [
-      {
-        "id": 1,
-        "verdict": "verified",
-        "source": "Theorem 3.5",
-        "script": "verify_claim1.py",
-        "result_file": "results/claim1.json",
-        "elapsed_s": 223.7
-      },
-      {
-        "id": 2,
-        "verdict": "verified",
-        "source": "Section 3.2, Eq. (8)",
-        "script": "verify_claim2.py",
-        "result_file": "results/claim2.json"
-      },
-      {
-        "id": 3,
-        "verdict": "verified",
-        "source": "Section 3 / 3.1, Lemma 3.3 / Theorem 3.4",
-        "script": "verify_claim3.py",
-        "result_file": "results/claim3.json"
-      },
-      {
-        "id": 4,
-        "verdict": "verified (CPU-scale)",
-        "source": "Section 4.1, Table 2",
-        "script": "verify_claim4.py",
-        "result_file": "results/claim4.json",
-        "epochs": 8000,
-        "note": "Paper uses 50000 epochs on GPU"
-      },
-      {
-        "id": 5,
-        "verdict": "verified (CPU-scale)",
-        "source": "Section 4.3, Table 4",
-        "script": "verify_claim5.py",
-        "result_file": "results/claim5.json",
-        "n_init": 20,
-        "epochs": 60,
-        "note": "Paper uses 300 initial states on GPU"
-      }
-    ]
-  },
-  "check_reproducibility": {
-    "passed": 32,
-    "failed": 0,
-    "total": 32
-  },
-  "artifacts": {
-    "verify_scripts": ["verify_claim1.py", "verify_claim2.py", "verify_claim3.py", "verify_claim4.py", "verify_claim5.py"],
-    "result_files": ["results/claim1.json", "results/claim2.json", "results/claim3.json", "results/claim4.json", "results/claim5.json"],
-    "check_script": "check_reproducibility.py",
-    "logbook": "logbook.md"
-  },
-  "status": "completed"
+  "env": "numpy 2.5.1 + scipy (brainiac_brainage_py311 venv); torch 2.13.0+cpu for claim4",
+  "run_id": "deleg_4a64664d",
+  "generated": "2026-08-02",
+  "n_claims_attempted": 5,
+  "n_claim_files": 6,
+  "verdicts": {
+    "claim1": "verified",
+    "claim1b": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "falsified",
+    "claim5": "inconclusive"
+  }
 }

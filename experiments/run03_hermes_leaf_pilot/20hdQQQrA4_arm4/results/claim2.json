@@ -1,1 +1,20 @@
-{"claim": 2, "source": "arm4-lightweight", "verdict": "see logbook.md", "mode": "text-only"}
+{
+  "claim": 2,
+  "source": "ARC-lightweight verify_claim2.py (executed 2026-08-02)",
+  "command": "python verify_claim2.py",
+  "config": {
+    "batch_size": 32,
+    "n_features": 20,
+    "n_out": 8,
+    "m_constraints": 5,
+    "geometry": "CAffine layer projection with trainable null-space component"
+  },
+  "projection_diff_wphi_01": 0.4721718634015171,
+  "projection_diff_wphi_02": 0.47586833329766287,
+  "constraints_satisfied_all": true,
+  "individual_satisfaction": [true, true, true],
+  "allows_joint_optimization": true,
+  "verdict": "verified",
+  "wall_seconds": null,
+  "note": "ARC-light generated code; executed locally via brainiac_brainage_py311 venv (numpy+scipy+sklearn). Claim 2 ran clean and produced real numbers."
+}

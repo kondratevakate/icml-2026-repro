@@ -1,1 +1,9 @@
-{"claim": 1, "source": "arm4-lightweight", "verdict": "see logbook.md", "mode": "text-only"}
+{
+  "claim": 1,
+  "source": "ARC-lightweight verify_claim1.py (execution attempted 2026-08-02)",
+  "command": "python verify_claim1.py",
+  "verdict": "inconclusive",
+  "execution_success": false,
+  "error": "ValueError: matmul: Input operand 1 does not have enough dimensions (has 0) at project_to_constraints() line 43 — shape bug in ARC-generated code (f_pred passed with wrong rank)",
+  "note": "ARC-light generated code; executed locally via brainiac_brainage_py311 venv. Script raised before producing metrics. Claim 1 NOT reproduced numerically."
+}

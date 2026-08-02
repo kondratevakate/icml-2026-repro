@@ -1,18 +1,43 @@
 {
   "claim": 2,
-  "claim_text": "Eq. (8) includes a trainable null-space component (I - Ag^dag Ag) w_phi(x), enabling joint optimisation over feasible projections instead of a fixed orthogonal projection",
-  "source": "Section 3.2, Eq. (8); text after Theorem 3.4; Remark 3.6",
-  "command": ".venv/bin/python verify_claim2.py",
-  "T1_max_abs_residual_Ag_Pg_minus_bg": 1.8118839761882555e-13,
-  "T2_max_abs_reachability_error": 1.709743457922741e-14,
-  "T3_max_abs_dev_from_orthogonal_projection_at_w0": 9.992007221626409e-15,
-  "n_instances": 280,
-  "mean_nullspace_dim": 1.2321428571428572,
-  "T4_n": 38,
-  "T4_n_improved": 29,
-  "T4_frac_improved": 0.7631578947368421,
-  "T4_median_rel_loss_reduction": 0.8467062805981707,
-  "MUT_no_nullspace_equals_w0": true,
-  "MUT_n_worse_than_optimised": 29,
-  "elapsed_s": 390.82365369796753
+  "A_consistency": {
+    "max_abs_residual_Ag_Pg_minus_bg": 1.8701817872113224e-11,
+    "n_seeds": 200
+  },
+  "B_degeneracy": {
+    "n_full_col_rank_cases": 565,
+    "max_spread_when_full_col_rank": 2.8760747774580336e-12,
+    "n_rank_deficient_cases": 1641,
+    "min_spread_when_rank_deficient": 0.2062498910155222,
+    "median_spread_when_rank_deficient": 0.8511246191604565
+  },
+  "C_trainability": {
+    "n_seeds": 8,
+    "loss_trained_w": [
+      0.6905404615448473,
+      0.0903298772796122,
+      0.6121761587321335,
+      0.6649365025541323,
+      0.37016758155190504,
+      0.555329926431037,
+      0.3352024491306613,
+      0.3450300039454466
+    ],
+    "loss_w_zero_orthogonal": [
+      0.9390393108554201,
+      0.5432357778499491,
+      0.9487150398500679,
+      1.0348134684318882,
+      0.6272045229187444,
+      1.3201342498323787,
+      0.7864273133611083,
+      0.9715639361603309
+    ],
+    "mean_loss_trained": 0.4579641201462219,
+    "mean_loss_orthogonal": 0.896391702407486,
+    "seeds_where_trained_strictly_better": 8
+  },
+  "command": "python verify_claim2.py",
+  "numpy": "2.5.1",
+  "seconds": 214.01
 }
