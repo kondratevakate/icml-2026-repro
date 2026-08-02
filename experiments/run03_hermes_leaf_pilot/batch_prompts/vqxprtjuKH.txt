@@ -1,0 +1,6 @@
+This is arm2 (Hermes + K-Dense skill set) reproduction of ICML-2026 paper orid vqxprtjuKH.
+Working dir: /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vqxprtjuKH_arm2b (has TASK.md, input_bundle.json, paper/, venv).
+GOAL: reproduce anchored claims via executable verify scripts on CPU. Use `paper-claim-reproduction` skill.
+Model: tencent/hy3:free via localhost:8319/v1. CPU-only.
+CONTEXT-COMPACTION (mandatory): after every ~6 tool turns write COMPACTION.md (summary + ALL executed numbers verbatim). Later turns reference COMPACTION.md. Never summarize away raw numbers.
+DELIVERABLES in /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vqxprtjuKH_arm2b/: verify_claimN.py + results/claimN.json (real numbers); logbook.md (per-claim verdicts); _run_meta.json (arm=arm2, agent=Hermes+K-Dense skills, model=tencent/hy3:free via localhost:8319/v1).
