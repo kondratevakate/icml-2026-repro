@@ -1,0 +1,18 @@
+{
+  "space_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks",
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "arxiv_id": "2605.24437",
+  "title": "CAffNet: Hard Constraint-Affine Neural Networks",
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "trace_dataset": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks-traces",
+  "artifacts_bucket": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks-artifacts",
+  "workspace_bucket": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

@@ -1,0 +1,50 @@
+{
+  "claim": 1,
+  "source": "Theorem 3.5",
+  "command": "python verify_claim1.py",
+  "config": {
+    "trials_per_seed_per_cell": 200,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "cells_m_nout": [
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "K_values": [
+      0.05,
+      0.2,
+      1.0
+    ],
+    "note": "fixed modest setting; no sweep (budget rule)"
+  },
+  "n_instances": 2400,
+  "n_case2_projected": 706,
+  "max_ratio_over_all": 1.7137897456544158,
+  "n_bound_violations": 0,
+  "n_infeasible_caffnet": 0,
+  "mutation_hardnet_aff": {
+    "prediction": "single pseudo-inverse correction leaves some instances infeasible",
+    "n_infeasible": 92,
+    "max_violation": 5.761571319519882,
+    "n_error_ratio_over_bound": 0
+  },
+  "verdict": "verified",
+  "wall_seconds": 3.86
+}

@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_74b4737863d6", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 4 \u2014 FC2AT (Algorithm 6): anytime variant via the doubling trick, no budget knowledge"}
+{"type": "markdown", "id": "cell_8a34be25141e", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 4 \u2014 FC2AT (Algorithm 6): anytime variant via the doubling trick, no budget knowledge"}
 -->
 **Source:** Section 4 pointer + Appendix D (Algorithm 6, Defs D.1–D.2, Props D.3–D.4, Thm D.5).
 **Script:** `verify_claim4.py` → `results/claim4.json`

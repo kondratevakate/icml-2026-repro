@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_021a545a4eee", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 1 \u2014 Theorem 3.2: FC2FB converts FC \u2192 FB with exponentially decaying error"}
+{"type": "markdown", "id": "cell_56153152146b", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 1 \u2014 Theorem 3.2: FC2FB converts FC \u2192 FB with exponentially decaying error"}
 -->
 **Source:** Section 3, Algorithm 3 + Theorem 3.2.
 **Script:** `verify_claim1.py` → `results/claim1.json`

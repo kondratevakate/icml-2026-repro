@@ -1,0 +1,175 @@
+{
+  "claim": 5,
+  "source": "Experiments, safety-critical control (obstacle avoidance)",
+  "command": "python verify_claim5.py",
+  "scale_note": "PAPER: trained policy, 300 initial states, GPU. THIS RUN: analytic nominal controller + the three constraint operators, 12 initial states x 3 seeds x 200 steps x 2 regimes, CPU-only. Only the qualitative avoid/collide outcome is claimed here.",
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_init": 12,
+    "steps": 200,
+    "dt": 0.05,
+    "alpha": 1.0,
+    "regimes": {
+      "single_obstacle_loose_box": {
+        "obstacles": [
+          [
+            [
+              1.0,
+              0.0
+            ],
+            0.4
+          ]
+        ],
+        "umax": 2.0,
+        "lam_soft": 0.05,
+        "alpha": 1.0
+      },
+      "two_obstacles_tight_box": {
+        "obstacles": [
+          [
+            [
+              0.8,
+              0.16
+            ],
+            0.36
+          ],
+          [
+            [
+              1.25,
+              -0.16
+            ],
+            0.36
+          ]
+        ],
+        "umax": 0.9,
+        "lam_soft": 0.05,
+        "alpha": 1.0
+      },
+      "narrow_gap_weak_barrier": {
+        "obstacles": [
+          [
+            [
+              1.0,
+              0.52
+            ],
+            0.48
+          ],
+          [
+            [
+              1.0,
+              -0.52
+            ],
+            0.48
+          ]
+        ],
+        "umax": 1.2,
+        "lam_soft": 0.02,
+        "alpha": 6.0
+      }
+    },
+    "constraint_matrix_rank_deficient": true
+  },
+  "regimes": {
+    "single_obstacle_loose_box": {
+      "caff": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.05371047582585198,
+        "max_violation": 7.105427357601002e-15,
+        "mean_final_goal_dist": 9.412142202300693e-05
+      },
+      "hardnet": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.053710475825852255,
+        "max_violation": 7.105427357601002e-15,
+        "mean_final_goal_dist": 9.412142202300696e-05
+      },
+      "soft": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 1.3508154658744465,
+        "max_violation": 1.3635801047408567,
+        "mean_final_goal_dist": 4.759558243251103
+      }
+    },
+    "two_obstacles_tight_box": {
+      "caff": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.00011643966683205775,
+        "max_violation": 2.942091015256665e-15,
+        "mean_final_goal_dist": 1.1254221925442573
+      },
+      "hardnet": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.00011202782527897082,
+        "max_violation": 0.6200904138622801,
+        "mean_final_goal_dist": 1.1250751234691763
+      },
+      "soft": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.6668667530992668,
+        "max_violation": 0.0,
+        "mean_final_goal_dist": 2.2119043713838917
+      }
+    },
+    "narrow_gap_weak_barrier": {
+      "caff": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.02823963574706534,
+        "max_violation": 2.220446049250313e-16,
+        "mean_final_goal_dist": 2.4494383282576063e-06
+      },
+      "hardnet": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.02823963574706534,
+        "max_violation": 2.220446049250313e-16,
+        "mean_final_goal_dist": 2.4494383282576063e-06
+      },
+      "soft": {
+        "n_rollouts": 36,
+        "n_collisions": 0,
+        "min_clearance": 0.01706023311159005,
+        "max_violation": 0.2516106740064692,
+        "mean_final_goal_dist": 2.4431449610699995e-06
+      }
+    }
+  },
+  "caffnet_collision_free_in_all_regimes": true,
+  "discriminating_regimes": [],
+  "baseline_max_constraint_violation": {
+    "single_obstacle_loose_box": {
+      "hardnet": 7.105427357601002e-15,
+      "soft": 1.3635801047408567
+    },
+    "two_obstacles_tight_box": {
+      "hardnet": 0.6200904138622801,
+      "soft": 0.0
+    },
+    "narrow_gap_weak_barrier": {
+      "hardnet": 2.220446049250313e-16,
+      "soft": 0.2516106740064692
+    }
+  },
+  "mutation_baselines": {
+    "prediction": "CAffNet: 0 collisions and 0 constraint violations in every regime; at least one baseline collides",
+    "observation": "PREDICTION WRONG, recorded verbatim rather than rewritten: no baseline collided in ANY of the three regimes tried (single obstacle / loose box, two obstacles / tight box, narrow gap / weak barrier). What the baselines do lose is the hard-constraint guarantee itself: HardNet-Aff reaches a CBF violation of 0.620 in the tight regime and the soft arm 1.364 in the loose regime, while CAffNet stays at machine precision (<=7.1e-15) everywhere."
+  },
+  "verdict": "partial: verified (CAffNet avoids + baselines violate the hard constraint) / inconclusive (no baseline collision observed)",
+  "wall_seconds": 55.18,
+  "sub_verdicts": {
+    "caffnet_satisfies_hard_constraint_and_avoids": "verified",
+    "baselines_lose_the_hard_guarantee": "verified",
+    "baselines_actually_collide": "inconclusive"
+  },
+  "verdict_cap_reason": "In this CPU-scale single-integrator reimplementation the CBF is conservative enough that the baselines' constraint violations (HardNet-Aff max 0.62, soft max 1.36) did not translate into an actual collision in any of the three regimes tried. The paper's collision outcome depends on its trained policy and dynamics, which are unreleased and GPU-scale."
+}

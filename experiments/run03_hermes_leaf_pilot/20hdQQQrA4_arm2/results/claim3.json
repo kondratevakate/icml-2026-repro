@@ -1,0 +1,218 @@
+{
+  "claim": 3,
+  "source": "Section 3 (rank-deficiency + cardinality decomposition)",
+  "command": "python verify_claim3.py",
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "random_trials_per_seed": 150,
+    "dictionary_geometries": 5
+  },
+  "n_cases": 705,
+  "n_rank_deficient": 705,
+  "n_violations_caffnet": 0,
+  "max_violation_caffnet": 0.0,
+  "mutation_hardnet_aff": {
+    "prediction": "single pseudo-inverse correction is infeasible at a non-zero rate",
+    "n_violations": 57,
+    "violation_rate": 0.08085106382978724,
+    "max_violation": 17.67265585393773
+  },
+  "cardinality": {
+    "formula": "sum_{k=0}^{min(m,n_out)} C(m,k)",
+    "kmax_equals_min_m_nout": true,
+    "rows": [
+      {
+        "m": 1,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 2
+      },
+      {
+        "m": 1,
+        "n_out": 2,
+        "kmax": 1,
+        "n_subsets": 2
+      },
+      {
+        "m": 1,
+        "n_out": 3,
+        "kmax": 1,
+        "n_subsets": 2
+      },
+      {
+        "m": 1,
+        "n_out": 4,
+        "kmax": 1,
+        "n_subsets": 2
+      },
+      {
+        "m": 1,
+        "n_out": 5,
+        "kmax": 1,
+        "n_subsets": 2
+      },
+      {
+        "m": 2,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 3
+      },
+      {
+        "m": 2,
+        "n_out": 2,
+        "kmax": 2,
+        "n_subsets": 4
+      },
+      {
+        "m": 2,
+        "n_out": 3,
+        "kmax": 2,
+        "n_subsets": 4
+      },
+      {
+        "m": 2,
+        "n_out": 4,
+        "kmax": 2,
+        "n_subsets": 4
+      },
+      {
+        "m": 2,
+        "n_out": 5,
+        "kmax": 2,
+        "n_subsets": 4
+      },
+      {
+        "m": 3,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 4
+      },
+      {
+        "m": 3,
+        "n_out": 2,
+        "kmax": 2,
+        "n_subsets": 7
+      },
+      {
+        "m": 3,
+        "n_out": 3,
+        "kmax": 3,
+        "n_subsets": 8
+      },
+      {
+        "m": 3,
+        "n_out": 4,
+        "kmax": 3,
+        "n_subsets": 8
+      },
+      {
+        "m": 3,
+        "n_out": 5,
+        "kmax": 3,
+        "n_subsets": 8
+      },
+      {
+        "m": 4,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 5
+      },
+      {
+        "m": 4,
+        "n_out": 2,
+        "kmax": 2,
+        "n_subsets": 11
+      },
+      {
+        "m": 4,
+        "n_out": 3,
+        "kmax": 3,
+        "n_subsets": 15
+      },
+      {
+        "m": 4,
+        "n_out": 4,
+        "kmax": 4,
+        "n_subsets": 16
+      },
+      {
+        "m": 4,
+        "n_out": 5,
+        "kmax": 4,
+        "n_subsets": 16
+      },
+      {
+        "m": 5,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 6
+      },
+      {
+        "m": 5,
+        "n_out": 2,
+        "kmax": 2,
+        "n_subsets": 16
+      },
+      {
+        "m": 5,
+        "n_out": 3,
+        "kmax": 3,
+        "n_subsets": 26
+      },
+      {
+        "m": 5,
+        "n_out": 4,
+        "kmax": 4,
+        "n_subsets": 31
+      },
+      {
+        "m": 5,
+        "n_out": 5,
+        "kmax": 5,
+        "n_subsets": 32
+      },
+      {
+        "m": 6,
+        "n_out": 1,
+        "kmax": 1,
+        "n_subsets": 7
+      },
+      {
+        "m": 6,
+        "n_out": 2,
+        "kmax": 2,
+        "n_subsets": 22
+      },
+      {
+        "m": 6,
+        "n_out": 3,
+        "kmax": 3,
+        "n_subsets": 42
+      },
+      {
+        "m": 6,
+        "n_out": 4,
+        "kmax": 4,
+        "n_subsets": 57
+      },
+      {
+        "m": 6,
+        "n_out": 5,
+        "kmax": 5,
+        "n_subsets": 63
+      }
+    ]
+  },
+  "mutation_truncated_enumeration": {
+    "prediction": "truncating to min(m,n_out)-1 makes feasibility failures appear",
+    "n_cases": 450,
+    "n_failures": 114,
+    "failure_rate": 0.25333333333333335
+  },
+  "verdict": "verified",
+  "wall_seconds": 1.37
+}

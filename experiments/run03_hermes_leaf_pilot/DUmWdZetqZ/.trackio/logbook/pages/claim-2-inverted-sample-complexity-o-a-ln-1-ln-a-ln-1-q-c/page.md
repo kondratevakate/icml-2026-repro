@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_ae6f8ee9936d", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 2 \u2014 inverted sample complexity `O(A ln(1/\u03b4)\u00b7ln(A ln(1/\u03b4)/Q) + C)`"}
+{"type": "markdown", "id": "cell_d2640ec65f0b", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 2 \u2014 inverted sample complexity `O(A ln(1/\u03b4)\u00b7ln(A ln(1/\u03b4)/Q) + C)`"}
 -->
 **Source:** Section 3, the display immediately after Theorem 3.2 (δ₀ = 1/e).
 **Script:** `verify_claim2.py` → `results/claim2.json`

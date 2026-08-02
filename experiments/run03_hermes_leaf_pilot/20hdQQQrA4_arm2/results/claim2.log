@@ -1,0 +1,28 @@
+{
+  "claim": 2,
+  "source": "Section 3 (CAffine layer, null-space term w_phi)",
+  "command": "python verify_claim2.py",
+  "config": {
+    "instances_per_seed": 200,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "geometry": "equality A y = b, under-determined (m < n_out)"
+  },
+  "n_instances": 600,
+  "a_invariance_max_abs_residual": 7.854827899222983e-14,
+  "b_reachability_max_abs_error": 2.1843638009499955e-14,
+  "c_degenerate_w0_vs_orthogonal_max_abs_diff": 0.0,
+  "d_frac_instances_w_beats_fixed": 1.0,
+  "d_median_relative_loss_reduction": 0.5174386887053746,
+  "mutation_w_zero": {
+    "prediction": "w=0 reproduces the fixed orthogonal projection EXACTLY on every instance",
+    "n_exact_matches": 600,
+    "n_instances": 600
+  },
+  "verdict": "verified",
+  "wall_seconds": 1.34
+}
+ALLDONE

@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_bfc4174b2260", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 2 \u2014 Claude-4-Sonnet 36.46 / 32.17 GM, best model"}
+{"type": "markdown", "id": "cell_19239e6018dd", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 2 \u2014 Claude-4-Sonnet 36.46 / 32.17 GM, best model"}
 -->
 **Source:** **Table 2**, §5.1 Main Results (prose: "peak success rate of 36.46% GM score … 32.17% GM").
 **Verdict: `verified` (paper-internal) / `inconclusive` (independent re-measurement).**

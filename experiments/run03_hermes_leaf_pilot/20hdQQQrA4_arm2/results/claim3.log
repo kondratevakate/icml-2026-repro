@@ -1,0 +1,33 @@
+{
+  "claim": 3,
+  "source": "Section 3 (rank-deficiency + cardinality decomposition)",
+  "command": "python verify_claim3.py",
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "random_trials_per_seed": 150,
+    "dictionary_geometries": 5
+  },
+  "n_cases": 705,
+  "n_rank_deficient": 705,
+  "n_violations_caffnet": 0,
+  "max_violation_caffnet": 0.0,
+  "mutation_hardnet_aff": {
+    "prediction": "single pseudo-inverse correction is infeasible at a non-zero rate",
+    "n_violations": 57,
+    "violation_rate": 0.08085106382978724,
+    "max_violation": 17.67265585393773
+  },
+  "mutation_truncated_enumeration": {
+    "prediction": "truncating to min(m,n_out)-1 makes feasibility failures appear",
+    "n_cases": 450,
+    "n_failures": 114,
+    "failure_rate": 0.25333333333333335
+  },
+  "verdict": "verified",
+  "wall_seconds": 1.48
+}
+DONE3

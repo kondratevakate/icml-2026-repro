@@ -1,5 +1,5 @@
 ---
-title: "Reproduction: Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors"
+title: "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors"
 emoji: 🎯
 colorFrom: yellow
 colorTo: red
@@ -13,6 +13,6 @@ tags:
  - paper-DUmWdZetqZ
 ---
 
-# Reproduction: Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors
+# Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors
 
 An open experiment logbook, published with [Trackio](https://github.com/gradio-app/trackio).

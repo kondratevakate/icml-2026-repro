@@ -1,0 +1,92 @@
+/home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/20hdQQQrA4/verify_claim5.py:213: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  viol_max = max(viol_max, float(r.max()))
+NN s0 ep0 cost/init=11382028.0 (19s)
+NN s0 ep10 cost/init=3425220.4 (143s)
+NN s0 ep20 cost/init=2037519.6 (225s)
+NN s0 ep30 cost/init=1277773.1 (348s)
+NN s0 ep40 cost/init=906510.0 (460s)
+NN s0 ep50 cost/init=701908.7 (520s)
+DONE NN s0: collision=True dmin=0.341 vmax=3.1526
+NN s1 ep0 cost/init=9173269.6 (595s)
+NN s1 ep10 cost/init=4481153.2 (651s)
+NN s1 ep20 cost/init=2557072.0 (719s)
+NN s1 ep30 cost/init=1558760.2 (789s)
+NN s1 ep40 cost/init=1030680.3 (866s)
+NN s1 ep50 cost/init=729418.0 (944s)
+DONE NN s1: collision=True dmin=0.092 vmax=4.5091
+NN s2 ep0 cost/init=9029963.2 (1031s)
+NN s2 ep10 cost/init=3814879.2 (1103s)
+NN s2 ep20 cost/init=1612331.0 (1186s)
+NN s2 ep30 cost/init=823991.6 (1251s)
+NN s2 ep40 cost/init=537269.3 (1324s)
+NN s2 ep50 cost/init=418856.3 (1396s)
+DONE NN s2: collision=True dmin=0.361 vmax=3.4848
+HardNet s0 ep0 cost/init=10428559.2 (1456s)
+HardNet s0 ep10 cost/init=3770928.0 (1554s)
+HardNet s0 ep20 cost/init=2938080.8 (1661s)
+HardNet s0 ep30 cost/init=2388699.2 (1715s)
+HardNet s0 ep40 cost/init=1955298.4 (1792s)
+HardNet s0 ep50 cost/init=1662582.8 (1860s)
+DONE HardNet s0: collision=True dmin=0.430 vmax=1.7715
+HardNet s1 ep0 cost/init=11018138.4 (1943s)
+HardNet s1 ep10 cost/init=6710256.0 (2020s)
+HardNet s1 ep20 cost/init=3877371.2 (2098s)
+HardNet s1 ep30 cost/init=2653484.4 (2186s)
+HardNet s1 ep40 cost/init=1982952.8 (2451s)
+HardNet s1 ep50 cost/init=1531895.2 (2807s)
+DONE HardNet s1: collision=False dmin=0.793 vmax=1.9192
+HardNet s2 ep0 cost/init=9109432.8 (2914s)
+HardNet s2 ep10 cost/init=4319020.4 (3377s)
+HardNet s2 ep20 cost/init=3032091.6 (3587s)
+HardNet s2 ep30 cost/init=2309045.6 (3737s)
+HardNet s2 ep40 cost/init=2000710.4 (3906s)
+HardNet s2 ep50 cost/init=1734550.8 (4091s)
+DONE HardNet s2: collision=True dmin=0.344 vmax=1.4020
+CAffNet s0 ep0 cost/init=4501135.2 (4360s)
+CAffNet s0 ep10 cost/init=3981507.2 (5129s)
+CAffNet s0 ep20 cost/init=3770184.4 (5875s)
+CAffNet s0 ep30 cost/init=3061497.6 (6621s)
+CAffNet s0 ep40 cost/init=2777053.4 (7299s)
+CAffNet s0 ep50 cost/init=2630367.2 (7724s)
+DONE CAffNet s0: collision=False dmin=1.783 vmax=0.0000
+CAffNet s1 ep0 cost/init=5181590.0 (7951s)
+CAffNet s1 ep10 cost/init=4726382.4 (8451s)
+CAffNet s1 ep20 cost/init=4197712.0 (9109s)
+CAffNet s1 ep30 cost/init=3959376.0 (10140s)
+CAffNet s1 ep40 cost/init=3594219.6 (10900s)
+CAffNet s1 ep50 cost/init=3540175.2 (11861s)
+DONE CAffNet s1: collision=False dmin=1.975 vmax=0.0000
+CAffNet s2 ep0 cost/init=5086299.6 (13334s)
+CAffNet s2 ep10 cost/init=4613834.8 (14506s)
+CAffNet s2 ep20 cost/init=3927527.2 (15002s)
+CAffNet s2 ep30 cost/init=3644682.0 (15465s)
+CAffNet s2 ep40 cost/init=3383540.4 (16159s)
+CAffNet s2 ep50 cost/init=3161506.0 (16403s)
+DONE CAffNet s2: collision=False dmin=1.728 vmax=0.0000
+{
+  "NN": {
+    "n_seeds": 3,
+    "n_collisions": 3,
+    "n_reached_goal": 1,
+    "mean_test_viol_max": 3.715461254119873,
+    "mean_train_viol_pct": 34.62222222222223,
+    "mean_cost_per_init": 490910.8833333333
+  },
+  "HardNet": {
+    "n_seeds": 3,
+    "n_collisions": 2,
+    "n_reached_goal": 0,
+    "mean_test_viol_max": 1.6975751320521038,
+    "mean_train_viol_pct": 60.76666666666667,
+    "mean_cost_per_init": 1399075.9333333333
+  },
+  "CAffNet": {
+    "n_seeds": 3,
+    "n_collisions": 0,
+    "n_reached_goal": 0,
+    "mean_test_viol_max": 8.940696716308594e-08,
+    "mean_train_viol_pct": 0.14444444444444446,
+    "mean_cost_per_init": 3043799.066666667
+  }
+}

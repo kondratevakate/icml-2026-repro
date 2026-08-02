@@ -1,0 +1,12 @@
+{
+  "orid": "20hdQQQrA4",
+  "arm": "arm4_arc_lightweight",
+  "framework": "AutoResearchClaw (researchclaw.llm.client)",
+  "model": "tencent/hy3:free via localhost:8319/v1",
+  "mode": "lightweight (single LLM call, no tree-search execution)",
+  "note": "Full ARC pipeline (run_ais_v2.py) requires external Sakana repo + venv (not installed). This is a direct client call producing verify-script stubs + verdicts in text.",
+  "finished_utc": "2026-08-02T12:54:00Z",
+  "verify_scripts_extracted": 3,
+  "claims_total": 5,
+  "claims_verified_text": 5
+}

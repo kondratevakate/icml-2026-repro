@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_7bcf436be74e", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 3 \u2014 DeepSeek-V3 30.28 / 21.32, Qwen-2.5-Coder-32B 23.45, \"most LLMs fail to exceed 20%\""}
+{"type": "markdown", "id": "cell_82d054efb3b5", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 3 \u2014 DeepSeek-V3 30.28 / 21.32, Qwen-2.5-Coder-32B 23.45, \"most LLMs fail to exceed 20%\""}
 -->
 **Source:** **Table 2**, §5.1; Abstract ("most models score below 20%").
 **Verdict: `falsified`** (the three per-model numbers are correct; the universal statement is not).

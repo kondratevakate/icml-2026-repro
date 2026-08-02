@@ -52,3 +52,11 @@ experiments/**/.venv/
 experiments/run03_hermes_leaf_pilot/*/code_mdcp/
 **/code_mdcp
 **/code_mdcp/**
+**/data/openml/**
+
+# python venvs
+**/.venv/
+# large datasets / model artifacts
+**/*.arff
+**/*.arff.gz
+**/data/openml/**

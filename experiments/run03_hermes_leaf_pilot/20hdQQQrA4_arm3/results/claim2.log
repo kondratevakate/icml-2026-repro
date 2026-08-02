@@ -1,0 +1,18 @@
+{
+  "claim": 2,
+  "claim_text": "Eq. (8) includes a trainable null-space component (I - Ag^dag Ag) w_phi(x), enabling joint optimisation over feasible projections instead of a fixed orthogonal projection",
+  "source": "Section 3.2, Eq. (8); text after Theorem 3.4; Remark 3.6",
+  "command": ".venv/bin/python verify_claim2.py",
+  "T1_max_abs_residual_Ag_Pg_minus_bg": 1.8118839761882555e-13,
+  "T2_max_abs_reachability_error": 1.709743457922741e-14,
+  "T3_max_abs_dev_from_orthogonal_projection_at_w0": 9.992007221626409e-15,
+  "n_instances": 280,
+  "mean_nullspace_dim": 1.2321428571428572,
+  "T4_n": 38,
+  "T4_n_improved": 29,
+  "T4_frac_improved": 0.7631578947368421,
+  "T4_median_rel_loss_reduction": 0.8467062805981707,
+  "MUT_no_nullspace_equals_w0": true,
+  "MUT_n_worse_than_optimised": 29,
+  "elapsed_s": 390.82365369796753
+}

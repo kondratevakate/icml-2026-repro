@@ -5,14 +5,5 @@
     "paper-DUmWdZetqZ"
   ],
   "arxiv_id": "2602.03972",
-  "title": "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
-  "private": false,
-  "repos_public": false,
-  "embed_content": false,
-  "trace_dataset": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai-traces",
-  "artifacts_bucket": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai-artifacts",
-  "workspace_bucket": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai-artifacts",
-  "trace_publication": "private",
-  "workspace_publication": "private",
-  "local_dashboards": {}
+  "title": "Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors"
 }

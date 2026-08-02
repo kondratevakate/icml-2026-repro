@@ -1,0 +1,115 @@
+{
+  "run_id": "20hdQQQrA4-arm2-rerun",
+  "paper_id": "20hdQQQrA4",
+  "paper_title": "CAffNet: Hard Constraint-Affine Neural Networks",
+  "arxiv_id": "2605.24437",
+  "openreview_id": "20hdQQQrA4",
+  "arm": "arm2",
+  "arm_description": "Hermes agent + K-Dense skill set (icml-repro-arm2 skills); method skill paper-claim-reproduction",
+  "supersedes": "deleg_85700d01 (previous arm2 attempt: tool-budget exhaustion on claim 4, no logbook / gate / run meta produced)",
+  "run_timestamp": "2026-08-02T13:20:00Z",
+  "agent": "Hermes Agent (subagent, leaf)",
+  "model": "tencent/hy3:free via nous",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "torch": "not used",
+    "hw": "CPU-only (WSL2, 8 vCPU, no GPU)",
+    "n_cores": 8
+  },
+  "method_notes": {
+    "self_contamination_avoided": "references/20hdQQQrA4-caffnet-verification.md (a prior reproduction of THIS paper shipped with the skill) was deliberately not opened; no other arm's artifacts were read",
+    "official_code_executed": false,
+    "implementation": "independent numpy reimplementation of Section 3 (caff_core.py, vec_caff.py)",
+    "budget_discipline": "fixed modest settings, no sweeps: claim 1 capped at 200 trials x 3 seeds x 4 cells"
+  },
+  "verification": {
+    "claims_count": 5,
+    "claims": [
+      {
+        "id": 1,
+        "verdict": "verified",
+        "source": "Theorem 3.5",
+        "script": "verify_claim1.py",
+        "result_file": "results/claim1.json",
+        "route": "structural guarantee (no training)",
+        "mutation": "HardNet-Aff single pseudo-inverse (92/2400 infeasible)",
+        "elapsed_s": 3.86
+      },
+      {
+        "id": 2,
+        "verdict": "verified",
+        "source": "Section 3 (null-space term w_phi)",
+        "script": "verify_claim2.py",
+        "result_file": "results/claim2.json",
+        "route": "four-property decomposition (invariance / reachability / degenerate / benefit)",
+        "mutation": "w := 0 reproduces the fixed orthogonal projection exactly (600/600)",
+        "elapsed_s": 1.34
+      },
+      {
+        "id": 3,
+        "verdict": "verified",
+        "source": "Section 3 (rank deficiency + cardinality min(m, n_out))",
+        "script": "verify_claim3.py",
+        "result_file": "results/claim3.json",
+        "route": "exhaustive dictionary of rank-deficient geometries + random sweep",
+        "mutation": "HardNet-Aff violates 57/705; truncated enumeration fails 114/450",
+        "elapsed_s": 1.48
+      },
+      {
+        "id": 4,
+        "verdict": "verified (structural) / toy (magnitude)",
+        "source": "Experiments, piecewise benchmark (73.33% MSE reduction, zero violations)",
+        "script": "verify_claim4.py",
+        "result_file": "results/claim4.json",
+        "route": "split claim (structural half executable, magnitude half GPU-scale)",
+        "mutation": "remove the CAffine layer: soft baseline violates 413/1200 test points",
+        "scale_note": "PAPER: CAffNet-TF transformer, GPU. THIS RUN: 1-32-32-2 numpy MLP, 1500 Adam steps, 3 seeds, CPU",
+        "elapsed_s": 111.5
+      },
+      {
+        "id": 5,
+        "verdict": "partial: verified (CAffNet avoids + baselines violate the hard constraint) / inconclusive (no baseline collision observed)",
+        "source": "Experiments, safety-critical control",
+        "script": "verify_claim5.py",
+        "result_file": "results/claim5.json",
+        "route": "split claim; 3 constraint regimes, 12 initial states x 3 seeds x 200 steps",
+        "sub_verdicts": {
+          "caffnet_satisfies_hard_constraint_and_avoids": "verified",
+          "baselines_lose_the_hard_guarantee": "verified",
+          "baselines_actually_collide": "inconclusive"
+        },
+        "recorded_failed_prediction": "the pre-registered prediction that a baseline would collide was wrong in all 3 regimes; recorded verbatim, not rewritten",
+        "elapsed_s": 88.43
+      }
+    ],
+    "verdict_counts": {
+      "verified": 3,
+      "verified_structural_toy_magnitude": 1,
+      "partial_verified_inconclusive": 1,
+      "falsified": 0
+    }
+  },
+  "check_reproducibility": {
+    "passed": 68,
+    "failed": 0,
+    "total": 68,
+    "rerun_mode": {
+      "passed": 73,
+      "failed": 0,
+      "all_json_bit_for_bit_identical": true
+    },
+    "negative_control_passed": true
+  },
+  "artifacts": {
+    "plan": "plan.md",
+    "core_modules": ["caff_core.py", "vec_caff.py"],
+    "verify_scripts": ["verify_claim1.py", "verify_claim2.py", "verify_claim3.py", "verify_claim4.py", "verify_claim5.py"],
+    "result_files": ["results/claim1.json", "results/claim2.json", "results/claim3.json", "results/claim4.json", "results/claim5.json"],
+    "logs": ["results/claim1.log", "results/claim2.log", "results/claim3.log", "results/claim4.log", "results/claim5.log"],
+    "check_script": "check_reproducibility.py",
+    "logbook": "logbook.md"
+  },
+  "status": "completed"
+}

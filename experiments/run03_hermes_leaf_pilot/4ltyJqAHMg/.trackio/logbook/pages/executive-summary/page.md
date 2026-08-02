@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_4622bad06c1e", "created_at": "2026-08-02T05:00:00+00:00", "title": "Executive summary", "pinned": true, "pinned_at": "2026-08-02T05:00:00+00:00"}
+{"type": "markdown", "id": "cell_91a2eb012535", "created_at": "2026-08-02T05:00:00+00:00", "title": "Executive summary", "pinned": true, "pinned_at": "2026-08-02T05:00:00+00:00"}
 -->
 Independent CPU reproduction of the paper's anchored claims (numpy/torch/scipy/sympy). Per-claim verdicts below; mutation tests on every verified claim; honest inconclusive where data/GPU/training blocks a full reproduction. Wall time and cost near zero.
 
@@ -18,7 +18,7 @@ Independent CPU reproduction of the paper's anchored claims (numpy/torch/scipy/s
 
 ---
 <!-- trackio-cell
-{"type": "figure", "id": "cell_19811f05d439", "created_at": "2026-08-02T05:00:00+00:00", "title": "Reproduction poster", "pinned": true, "pinned_at": "2026-08-02T05:00:00+00:00"}
+{"type": "figure", "id": "cell_6b202dacc9c0", "created_at": "2026-08-02T05:00:00+00:00", "title": "Reproduction poster", "pinned": true, "pinned_at": "2026-08-02T05:00:00+00:00"}
 -->
 ````html
 <!-- poster_embed.html -->

@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_3a2dd5dfde8a", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 5 \u2014 improvements on heterogeneous-noise (Cor 5.2), linear (Cor 5.4), unimodal (Cor 5.7)"}
+{"type": "markdown", "id": "cell_ba0528a2d660", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 5 \u2014 improvements on heterogeneous-noise (Cor 5.2), linear (Cor 5.4), unimodal (Cor 5.7)"}
 -->
 **Source:** Section 5 (5.1 Alg 5 / Thm 5.1 / Cor 5.2; 5.3 Cor 5.4; 5.4 Cor 5.7).
 **Script:** `verify_claim5.py` → `results/claim5.json`

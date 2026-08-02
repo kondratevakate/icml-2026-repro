@@ -8,7 +8,7 @@
     "icml2026-repro",
     "paper-DUmWdZetqZ"
   ],
-  "updated_at": "2026-08-02T08:43:31+00:00",
+  "updated_at": "2026-08-02T08:53:53+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Fixed Budget is No Harder Than Fixed Confidence in Best-Arm Identification up to Logarithmic Factors",
@@ -63,10 +63,10 @@
     "file": "workspace.json",
     "file_count": 0,
     "total_size": 0,
-    "bucket_id": "kondratevakate/repro-fixed-budget-no-harder-than-fixed-confidence-bai-artifacts"
+    "bucket_id": null
   },
   "agent_view_tokens": 4279,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "2bacf84a46edfc376dc9"
+  "revision": "f62a0e2b765ae981c1d1"
 }

@@ -8,7 +8,7 @@
     "icml2026-repro",
     "paper-4ltyJqAHMg"
   ],
-  "updated_at": "2026-08-02T08:51:12+00:00",
+  "updated_at": "2026-08-02T08:52:48+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?",
@@ -62,5 +62,5 @@
   "agent_view_tokens": 2237,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "105441f134a3d06f2915"
+  "revision": "669a505f8495581ecfc8"
 }

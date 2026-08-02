@@ -1,0 +1,486 @@
+{
+  "claim": 3,
+  "claim_text": "CAffNet guarantees A(x)y<=b(x) without full row rank of A(x) and handles arbitrary m via sub-constraints of cardinality at most min(m, n_out)",
+  "source": "Section 3 / 3.1 (Eq. 2), Lemma 3.3 (App. A), Theorem 3.4 (App. B), Table 1",
+  "command": ".venv/bin/python verify_claim3.py",
+  "E1_exhaustive_2d": {
+    "n_systems": 372,
+    "n_rank_deficient_systems": 9,
+    "n_cases": 27900,
+    "n_caffnet_failures": 0,
+    "max_violation": 0.0,
+    "hardnet_infeasible": 16506,
+    "hardnet_cases": 27900,
+    "hardnet_infeasible_frac": 0.5916129032258064,
+    "mutation_truncated_gamma_failures": 6799,
+    "mutation_cases": 27900,
+    "mutation_failure_frac": 0.24369175627240144
+  },
+  "E2E3_random_sweep": {
+    "n_cases": 8800,
+    "n_caffnet_failures": 0,
+    "max_violation": 0.0,
+    "n_rank_deficient": 1275,
+    "hardnet_infeasible": 6805,
+    "hardnet_infeasible_frac": 0.7732954545454546,
+    "mutation_truncated_gamma_failures": 1669,
+    "mutation_cases": 7000,
+    "mutation_failure_frac": 0.23842857142857143
+  },
+  "E4_cardinality": {
+    "all_ok": true,
+    "rows": [
+      {
+        "m": 1,
+        "n_out": 1,
+        "size": 1,
+        "formula": 1,
+        "max_k": 1,
+        "bound_2m_minus_1": 1,
+        "ok": true
+      },
+      {
+        "m": 1,
+        "n_out": 2,
+        "size": 1,
+        "formula": 1,
+        "max_k": 1,
+        "bound_2m_minus_1": 1,
+        "ok": true
+      },
+      {
+        "m": 1,
+        "n_out": 3,
+        "size": 1,
+        "formula": 1,
+        "max_k": 1,
+        "bound_2m_minus_1": 1,
+        "ok": true
+      },
+      {
+        "m": 1,
+        "n_out": 4,
+        "size": 1,
+        "formula": 1,
+        "max_k": 1,
+        "bound_2m_minus_1": 1,
+        "ok": true
+      },
+      {
+        "m": 1,
+        "n_out": 5,
+        "size": 1,
+        "formula": 1,
+        "max_k": 1,
+        "bound_2m_minus_1": 1,
+        "ok": true
+      },
+      {
+        "m": 2,
+        "n_out": 1,
+        "size": 2,
+        "formula": 2,
+        "max_k": 1,
+        "bound_2m_minus_1": 3,
+        "ok": true
+      },
+      {
+        "m": 2,
+        "n_out": 2,
+        "size": 3,
+        "formula": 3,
+        "max_k": 2,
+        "bound_2m_minus_1": 3,
+        "ok": true
+      },
+      {
+        "m": 2,
+        "n_out": 3,
+        "size": 3,
+        "formula": 3,
+        "max_k": 2,
+        "bound_2m_minus_1": 3,
+        "ok": true
+      },
+      {
+        "m": 2,
+        "n_out": 4,
+        "size": 3,
+        "formula": 3,
+        "max_k": 2,
+        "bound_2m_minus_1": 3,
+        "ok": true
+      },
+      {
+        "m": 2,
+        "n_out": 5,
+        "size": 3,
+        "formula": 3,
+        "max_k": 2,
+        "bound_2m_minus_1": 3,
+        "ok": true
+      },
+      {
+        "m": 3,
+        "n_out": 1,
+        "size": 3,
+        "formula": 3,
+        "max_k": 1,
+        "bound_2m_minus_1": 7,
+        "ok": true
+      },
+      {
+        "m": 3,
+        "n_out": 2,
+        "size": 6,
+        "formula": 6,
+        "max_k": 2,
+        "bound_2m_minus_1": 7,
+        "ok": true
+      },
+      {
+        "m": 3,
+        "n_out": 3,
+        "size": 7,
+        "formula": 7,
+        "max_k": 3,
+        "bound_2m_minus_1": 7,
+        "ok": true
+      },
+      {
+        "m": 3,
+        "n_out": 4,
+        "size": 7,
+        "formula": 7,
+        "max_k": 3,
+        "bound_2m_minus_1": 7,
+        "ok": true
+      },
+      {
+        "m": 3,
+        "n_out": 5,
+        "size": 7,
+        "formula": 7,
+        "max_k": 3,
+        "bound_2m_minus_1": 7,
+        "ok": true
+      },
+      {
+        "m": 4,
+        "n_out": 1,
+        "size": 4,
+        "formula": 4,
+        "max_k": 1,
+        "bound_2m_minus_1": 15,
+        "ok": true
+      },
+      {
+        "m": 4,
+        "n_out": 2,
+        "size": 10,
+        "formula": 10,
+        "max_k": 2,
+        "bound_2m_minus_1": 15,
+        "ok": true
+      },
+      {
+        "m": 4,
+        "n_out": 3,
+        "size": 14,
+        "formula": 14,
+        "max_k": 3,
+        "bound_2m_minus_1": 15,
+        "ok": true
+      },
+      {
+        "m": 4,
+        "n_out": 4,
+        "size": 15,
+        "formula": 15,
+        "max_k": 4,
+        "bound_2m_minus_1": 15,
+        "ok": true
+      },
+      {
+        "m": 4,
+        "n_out": 5,
+        "size": 15,
+        "formula": 15,
+        "max_k": 4,
+        "bound_2m_minus_1": 15,
+        "ok": true
+      },
+      {
+        "m": 5,
+        "n_out": 1,
+        "size": 5,
+        "formula": 5,
+        "max_k": 1,
+        "bound_2m_minus_1": 31,
+        "ok": true
+      },
+      {
+        "m": 5,
+        "n_out": 2,
+        "size": 15,
+        "formula": 15,
+        "max_k": 2,
+        "bound_2m_minus_1": 31,
+        "ok": true
+      },
+      {
+        "m": 5,
+        "n_out": 3,
+        "size": 25,
+        "formula": 25,
+        "max_k": 3,
+        "bound_2m_minus_1": 31,
+        "ok": true
+      },
+      {
+        "m": 5,
+        "n_out": 4,
+        "size": 30,
+        "formula": 30,
+        "max_k": 4,
+        "bound_2m_minus_1": 31,
+        "ok": true
+      },
+      {
+        "m": 5,
+        "n_out": 5,
+        "size": 31,
+        "formula": 31,
+        "max_k": 5,
+        "bound_2m_minus_1": 31,
+        "ok": true
+      },
+      {
+        "m": 6,
+        "n_out": 1,
+        "size": 6,
+        "formula": 6,
+        "max_k": 1,
+        "bound_2m_minus_1": 63,
+        "ok": true
+      },
+      {
+        "m": 6,
+        "n_out": 2,
+        "size": 21,
+        "formula": 21,
+        "max_k": 2,
+        "bound_2m_minus_1": 63,
+        "ok": true
+      },
+      {
+        "m": 6,
+        "n_out": 3,
+        "size": 41,
+        "formula": 41,
+        "max_k": 3,
+        "bound_2m_minus_1": 63,
+        "ok": true
+      },
+      {
+        "m": 6,
+        "n_out": 4,
+        "size": 56,
+        "formula": 56,
+        "max_k": 4,
+        "bound_2m_minus_1": 63,
+        "ok": true
+      },
+      {
+        "m": 6,
+        "n_out": 5,
+        "size": 62,
+        "formula": 62,
+        "max_k": 5,
+        "bound_2m_minus_1": 63,
+        "ok": true
+      },
+      {
+        "m": 7,
+        "n_out": 1,
+        "size": 7,
+        "formula": 7,
+        "max_k": 1,
+        "bound_2m_minus_1": 127,
+        "ok": true
+      },
+      {
+        "m": 7,
+        "n_out": 2,
+        "size": 28,
+        "formula": 28,
+        "max_k": 2,
+        "bound_2m_minus_1": 127,
+        "ok": true
+      },
+      {
+        "m": 7,
+        "n_out": 3,
+        "size": 63,
+        "formula": 63,
+        "max_k": 3,
+        "bound_2m_minus_1": 127,
+        "ok": true
+      },
+      {
+        "m": 7,
+        "n_out": 4,
+        "size": 98,
+        "formula": 98,
+        "max_k": 4,
+        "bound_2m_minus_1": 127,
+        "ok": true
+      },
+      {
+        "m": 7,
+        "n_out": 5,
+        "size": 119,
+        "formula": 119,
+        "max_k": 5,
+        "bound_2m_minus_1": 127,
+        "ok": true
+      },
+      {
+        "m": 8,
+        "n_out": 1,
+        "size": 8,
+        "formula": 8,
+        "max_k": 1,
+        "bound_2m_minus_1": 255,
+        "ok": true
+      },
+      {
+        "m": 8,
+        "n_out": 2,
+        "size": 36,
+        "formula": 36,
+        "max_k": 2,
+        "bound_2m_minus_1": 255,
+        "ok": true
+      },
+      {
+        "m": 8,
+        "n_out": 3,
+        "size": 92,
+        "formula": 92,
+        "max_k": 3,
+        "bound_2m_minus_1": 255,
+        "ok": true
+      },
+      {
+        "m": 8,
+        "n_out": 4,
+        "size": 162,
+        "formula": 162,
+        "max_k": 4,
+        "bound_2m_minus_1": 255,
+        "ok": true
+      },
+      {
+        "m": 8,
+        "n_out": 5,
+        "size": 218,
+        "formula": 218,
+        "max_k": 5,
+        "bound_2m_minus_1": 255,
+        "ok": true
+      },
+      {
+        "m": 9,
+        "n_out": 1,
+        "size": 9,
+        "formula": 9,
+        "max_k": 1,
+        "bound_2m_minus_1": 511,
+        "ok": true
+      },
+      {
+        "m": 9,
+        "n_out": 2,
+        "size": 45,
+        "formula": 45,
+        "max_k": 2,
+        "bound_2m_minus_1": 511,
+        "ok": true
+      },
+      {
+        "m": 9,
+        "n_out": 3,
+        "size": 129,
+        "formula": 129,
+        "max_k": 3,
+        "bound_2m_minus_1": 511,
+        "ok": true
+      },
+      {
+        "m": 9,
+        "n_out": 4,
+        "size": 255,
+        "formula": 255,
+        "max_k": 4,
+        "bound_2m_minus_1": 511,
+        "ok": true
+      },
+      {
+        "m": 9,
+        "n_out": 5,
+        "size": 381,
+        "formula": 381,
+        "max_k": 5,
+        "bound_2m_minus_1": 511,
+        "ok": true
+      },
+      {
+        "m": 10,
+        "n_out": 1,
+        "size": 10,
+        "formula": 10,
+        "max_k": 1,
+        "bound_2m_minus_1": 1023,
+        "ok": true
+      },
+      {
+        "m": 10,
+        "n_out": 2,
+        "size": 55,
+        "formula": 55,
+        "max_k": 2,
+        "bound_2m_minus_1": 1023,
+        "ok": true
+      },
+      {
+        "m": 10,
+        "n_out": 3,
+        "size": 175,
+        "formula": 175,
+        "max_k": 3,
+        "bound_2m_minus_1": 1023,
+        "ok": true
+      },
+      {
+        "m": 10,
+        "n_out": 4,
+        "size": 385,
+        "formula": 385,
+        "max_k": 4,
+        "bound_2m_minus_1": 1023,
+        "ok": true
+      },
+      {
+        "m": 10,
+        "n_out": 5,
+        "size": 637,
+        "formula": 637,
+        "max_k": 5,
+        "bound_2m_minus_1": 1023,
+        "ok": true
+      }
+    ]
+  },
+  "elapsed_s": 286.0207328796387
+}

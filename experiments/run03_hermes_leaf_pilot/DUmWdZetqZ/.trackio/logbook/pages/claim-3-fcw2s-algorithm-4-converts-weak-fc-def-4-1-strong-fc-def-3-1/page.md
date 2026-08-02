@@ -2,7 +2,7 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_80506f3db91d", "created_at": "2026-08-02T04:30:00+00:00", "title": "Claim 3 \u2014 FCW2S (Algorithm 4) converts weak FC (Def 4.1) \u2192 strong FC (Def 3.1)"}
+{"type": "markdown", "id": "cell_e0b464e14123", "created_at": "2026-08-02T05:00:00+00:00", "title": "Claim 3 \u2014 FCW2S (Algorithm 4) converts weak FC (Def 4.1) \u2192 strong FC (Def 3.1)"}
 -->
 **Source:** Section 4, Algorithm 4, Propositions 4.2 and 4.3 (proofs in Appendix C).
 **Script:** `verify_claim3.py` → `results/claim3.json`

@@ -1,0 +1,46 @@
+{
+  "claim": 4,
+  "source": "Experiments, piecewise-constraint benchmark (73.33% MSE reduction, zero violations)",
+  "command": "python verify_claim4.py",
+  "scale_note": "PAPER: CAffNet-TF transformer, full piecewise benchmark, GPU. THIS RUN: 1-32-32-2 numpy MLP, 1500 Adam steps, 3 seeds, CPU-only.",
+  "config": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 1500,
+    "mu_soft_penalty": 1.0,
+    "n_train": 512,
+    "n_test": 400
+  },
+  "structural": {
+    "n_test_points_total": 1200,
+    "caffnet_n_violations": 0,
+    "caffnet_max_violation": 4.440892098500626e-16,
+    "soft_baseline_n_violations": 413,
+    "soft_baseline_max_violation": 0.02751128373616074,
+    "verdict": "verified"
+  },
+  "magnitude": {
+    "measured_mse_soft": 0.000738264437131936,
+    "measured_mse_caffnet": 0.0006701706865874811,
+    "measured_reduction_pct": 9.223490543441393,
+    "paper_reduction_pct": 73.33,
+    "paper_internal_arithmetic": {
+      "check": "1 - 0.0012/0.0045",
+      "value_pct": 73.33333333333334,
+      "consistent_with_73_33": true
+    },
+    "verdict": "toy",
+    "verdict_cap_reason": "magnitude depends on the paper's transformer variant, its unreleased benchmark data and 50k-epoch GPU training; this run is a reduced-scale MLP surrogate"
+  },
+  "mutation_remove_caffine_layer": {
+    "prediction": "the soft-penalty arm shows a non-zero violation rate; CAffNet exactly zero",
+    "soft_n_violations": 413,
+    "caff_n_violations": 0
+  },
+  "verdict": "verified (structural) / toy (magnitude)",
+  "wall_seconds": 117.58
+}
+BOTHDONE
