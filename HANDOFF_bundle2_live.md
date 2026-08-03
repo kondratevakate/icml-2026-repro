@@ -29,8 +29,8 @@
 - rZTiFcDihH: logbook + 6/6 results DONE (verdicts 1/3/4/5 inconclusive per agent — paper PDF unreachable; claims 2/6 verified). Will score+publish when watchdog sees it.
 - vqxprtjuKH: deleg_f9f2e87c got 5/6 results (claim1,3,4,5,6) but **claim2.json missing** — agent stalled waiting on verify_claim2.py (hung/very long) and hit its own limit. logbook NOT written.
   -> Killed stale agent's claim2.py (PID 1042, 389min). Kept mine (proc_cae05dd7b166 / PID 2374, 74min) — single writer to results/claim2.json.
-  -> On claim2 done: launch logbook-writer (6 results -> logbook.md), then score+publish both (watchdog_wave5b or manual).
-- watchdog_wave5b (proc_2e155b4f743b, 150min) still polling for both logbooks.
+  -> On claim2 done: launch logbook-writer (6 results -> logbook.md), then score+publish both.
+- watchdog_wave5b (proc_2e155b4f743b) TIMED OUT at 150min (logbook not ready). RELAUNCHED watchdog_wave5c (proc_fc621f927605, 240min) to catch logbook + publish both + BUNDLE2_COMPLETE.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
