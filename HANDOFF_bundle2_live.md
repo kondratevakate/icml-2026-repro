@@ -25,13 +25,12 @@
 - uiw8P2JGbW: **10/12** (~8/10, 5 verified + 1 toy) — Space published.
 - ugjBMARbyt: **12/12** (6/6 verified = 10/10) — Space published.
 
-## Wave 5 (RECOVERING)
-- Original deleg_c49681df finished but BOTH agents cut off before logbook:
-  * rZTiFcDihH: 6/6 results present, logbook.md written at 04:19 (OK).
-  * vqxprtjuKH: only 3/6 results (claim1,5,6); claim2,3,4 missing + no logbook.
-- watchdog_wave5 (proc_9c38a8a936e1) died SIGTERM at ~24min (not killed by me; cause unknown).
-- LAUNCHED deleg_f9f2e87c: finish vqxprtjuKH (run verify_claim2/3/4.py -> 3 JSONs + logbook.md).
-- RELAUNCHED watchdog_wave5b (proc_2e155b4f743b, 150min): waits for both logbooks, scores+publishes, writes BUNDLE2_COMPLETE.
+## Wave 5 (RECOVERING — vqxprtjuKH stuck on claim2)
+- rZTiFcDihH: logbook + 6/6 results DONE (verdicts 1/3/4/5 inconclusive per agent — paper PDF unreachable; claims 2/6 verified). Will score+publish when watchdog sees it.
+- vqxprtjuKH: deleg_f9f2e87c got 5/6 results (claim1,3,4,5,6) but **claim2.json missing** — agent stalled waiting on verify_claim2.py (hung/very long) and hit its own limit. logbook NOT written.
+  -> LAUNCHED verify_claim2.py directly in background (proc_cae05dd7b166, timeout 9000s) to produce results/claim2.json.
+  -> NEXT STEP (on claim2 done): launch logbook-writer (read 6 results -> logbook.md), then score+publish both.
+- watchdog_wave5b (proc_2e155b4f743b, 150min) still polling for both logbooks.
 - Wave 2 (next): tRsnpaRO0m + LJdacnMXkr
 - Wave 3: KqMqJpSMnQ + omkG80XURl
 - Wave 4: uiw8P2JGbW + ugjBMARbyt
