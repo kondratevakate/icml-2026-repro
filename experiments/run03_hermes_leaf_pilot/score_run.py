@@ -303,6 +303,9 @@ def score(d):
     n_mut = sum(1 for k, v in mutations.items() if v is True)
     n_bound = sum(1 for k, v in boundaries.items() if v is True)
     any_real_evidence = any(c.get("executed") for c in per_claim.values())
+    # rubric: verified/falsified = 2, toy = 1, else 0 (mutation is a quality flag, not a gate)
+    rubric_points = sum(2 if v in ("verified", "falsified") else 1 if v == "toy" else 0
+                         for v in verdicts.values())
 
     out = {
         "orid": bundle.get("orid"),
@@ -311,6 +314,7 @@ def score(d):
                  if os.path.exists(os.path.join(d, "_meta.json")) else None),
         "n_anchored": n_anchored,
         "n_claim_files": len(claim_files),
+        "rubric_points": rubric_points,
         "source": "ARTIFACTS (results/claim*.json) — not self-report",
         "check_reproducibility_pass": pc,
         "check_detail": detail if pc is not True else "passed",
