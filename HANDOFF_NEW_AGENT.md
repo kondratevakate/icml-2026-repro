@@ -108,6 +108,15 @@ but keeps `logbook.json` + `pages/*.md`.
    that read `results/claimN.json` + `TASK.md`, write `logbook.md` (verdicts taken ONLY from the
    agent's own JSON — never invent), run `score_run.py`, regen Trackio. Verify each `_score.json`.
    Then move to `benchmark_v1_prefed/`.
+   - **Enumerate the 10 salvageable runs first** (claims are at depth 3 → use `-maxdepth 3`,
+    NOT 2, or you get 0):
+    ```bash
+    cd /home/kate/projects/02_academia/icml-2026-repro
+    find experiments/run03_hermes_leaf_pilot/runs_incomplete -maxdepth 3 \
+      -name 'claim*.json' -path '*/results/*' -printf '%h\n' | sort -u
+    # -> 10 dirs (expect: 418BWmKIzX, 69IOkVkTQX, KqMqJpSMnQ, TBSyYj4VV6,
+    #    Vv4XRZDMM0_arm2_arm2, e6hVbhHEXh, mL4i6z7Miy, omkG80XURl, vqxprtjuKH, wpKA7G7Cqu)
+    ```
 3. **Discard the 35 empty shells** (move to `runs_discarded/`, not delete).
 4. **Optional, before locking D2:** a 2nd clean (prompt-held) compaction pilot.
 5. **RQ8 (autonomous extraction):** build `extraction-GT` layer in `corpus_all` if promoting to
