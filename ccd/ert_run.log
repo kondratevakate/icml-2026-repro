@@ -1,0 +1,18 @@
+alpha=0.1  q(standard CP)=2.376  z=1.645
+THEORETICAL (300k, exact conditional coverage):  L1=0.0948   L2=0.01195
+  (oracle conditional sets: L1=L2=0 by construction)
+
+ n_test |  L1-ERT(MLP)  L1-ERT(bins)    CovGap |  L2-ERT(MLP) | rel.err L1: MLP vs CovGap
+   1000 |       0.0210        0.0872    0.0952 |     -0.01077 |  77.8% vs   0.4%
+   3000 |       0.0677        0.0912    0.0930 |      0.00455 |  28.6% vs   1.9%
+  10000 |       0.0686        0.0959    0.0961 |      0.00754 |  27.6% vs   1.4%
+  30000 |       0.0866        0.0952    0.0953 |      0.00963 |   8.6% vs   0.5%
+
+=== Claim 2: separating over- and under-coverage (n=30000) ===
+  over-coverage  part: estimated 0.0445   theoretical 0.0460
+  under-coverage part: estimated 0.0464   theoretical 0.0488
+  (standard CP over-covers where sigma is small and under-covers where sigma is large,
+   so both parts should be clearly non-zero and the split identifies the direction)
+
+=== sanity: oracle conditional sets (should be ~0) ===
+  L1-ERT(MLP) on oracle sets: 0.0014   CovGap: 0.0042

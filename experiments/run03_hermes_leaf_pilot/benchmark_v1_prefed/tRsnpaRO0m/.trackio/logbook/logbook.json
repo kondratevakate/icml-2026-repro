@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-tRsnpaRO0m"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "nature-of-this-paper-and-what-reproduce-can-mean",
+        "title": "Nature of this paper and what \"reproduce\" can mean",
+        "file": "pages/nature-of-this-paper-and-what-reproduce-can-mean/page.md",
+        "children": []
+      },
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "per-claim-detail",
+        "title": "Per-claim detail",
+        "file": "pages/per-claim-detail/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-graphops-are-self-adjoint-positivity-preserving-and-unify-dense-sparse",
+        "title": "Claim 1 \u2014 \u2014 graphops are self-adjoint, positivity-preserving, and unify dense + sparse",
+        "file": "pages/claim-1-graphops-are-self-adjoint-positivity-preserving-and-unify-dense-sparse/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-bofops-via-ess-sup-x-x",
+        "title": "Claim 2 \u2014 \u2014 bofops via ess sup_x \u03bd_x(\u03a9) < \u221e",
+        "file": "pages/claim-2-bofops-via-ess-sup-x-x/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-4-1-mpnn-lipschitz-w-r-t-the-action-metric-d-m",
+        "title": "Claim 3 \u2014 \u2014 Theorem 4.1, MPNN Lipschitz w.r.t. the action metric d_M",
+        "file": "pages/claim-3-theorem-4-1-mpnn-lipschitz-w-r-t-the-action-metric-d-m/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-corollary-5-3-compactness-of-bofop-didms-under-the-mover-s-distance",
+        "title": "Claim 4 \u2014 \u2014 Corollary 5.3, compactness of bofop-DIDMs under the mover's distance",
+        "file": "pages/claim-4-corollary-5-3-compactness-of-bofop-didms-under-the-mover-s-distance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-section-6-1-universal-approximation-on-sparse-graphs",
+        "title": "Claim 5 \u2014 \u2014 Section 6.1, universal approximation on sparse graphs",
+        "file": "pages/claim-5-section-6-1-universal-approximation-on-sparse-graphs/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-section-6-2-vanishing-generalization-error",
+        "title": "Claim 6 \u2014 \u2014 Section 6.2, vanishing generalization error",
+        "file": "pages/claim-6-section-6-2-vanishing-generalization-error/page.md",
+        "children": []
+      },
+      {
+        "slug": "overall-assessment",
+        "title": "Overall assessment",
+        "file": "pages/overall-assessment/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

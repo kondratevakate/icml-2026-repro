@@ -1,9 +1,0 @@
-{
-  "space_id": "kondratevakate/repro-beyond-text-to-sql-can-llms-really-debug-enterprise-etl-sql",
-  "tags": [
-    "icml2026-repro",
-    "paper-4ltyJqAHMg"
-  ],
-  "arxiv_id": "2601.18119",
-  "title": "Beyond Text-to-SQL: Can LLMs Really Debug Enterprise ETL SQL?"
-}

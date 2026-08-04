@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Understanding Behavior Cloning with Action Quantization",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-9uENnRAcSl",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-9uENnRAcSl"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Understanding Behavior Cloning with Action Quantization",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "claim-1-bc-with-quantized-actions-log-loss-matches-lower-bounds-up-to-the-quanti",
+        "title": "Claim 1 \u2014 BC with quantized actions + log-loss matches lower bounds up to the quantization term (Theorem 2, \u00a73.2)",
+        "file": "pages/claim-1-bc-with-quantized-actions-log-loss-matches-lower-bounds-up-to-the-quanti/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-under-p-iiss-rtvc-the-regret-bound-is-polynomial-not-exponential-in-h-w-",
+        "title": "Claim 2 \u2014 Under P-IISS + RTVC the regret bound is polynomial (not exponential) in H w.r.t. eps_q (Theorem 3, \u00a73.1\u20133.2)",
+        "file": "pages/claim-2-under-p-iiss-rtvc-the-regret-bound-is-polynomial-not-exponential-in-h-w-/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-non-smooth-quantizers-can-incur-h-1-regret-despite-o-eps-q-in-distributi",
+        "title": "Claim 3 \u2014 Non-smooth quantizers can incur H\u00b7\u03a9(1) regret despite O(eps_q) in-distribution error (Theorem 6, \u00a74.1)",
+        "file": "pages/claim-3-non-smooth-quantizers-can-incur-h-1-regret-despite-o-eps-q-in-distributi/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-model-based-data-augmentation-improves-horizon-dependence-to-h-log-n-eps",
+        "title": "Claim 4 \u2014 Model-based data augmentation improves horizon dependence to H\u00b7[\u221a(log|\u03a0|/n)+eps_q] without RTVC (Theorem 7, \u00a74.2)",
+        "file": "pages/claim-4-model-based-data-augmentation-improves-horizon-dependence-to-h-log-n-eps/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-information-theoretic-lower-bounds-regret-h-1-n-eps-q-deterministic-h-1-",
+        "title": "Claim 5 \u2014 Information-theoretic lower bounds: regret \u2265 H\u00b7(1/n+eps_q) [deterministic] / H\u00b7(\u221a(1/n)+eps_q) [stochastic] (Theorems 8\u20139, \u00a75)",
+        "file": "pages/claim-5-information-theoretic-lower-bounds-regret-h-1-n-eps-q-deterministic-h-1-/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-binning-quantizers-preserve-policy-smoothness-better-than-learned-determ",
+        "title": "Claim 6 \u2014 Binning quantizers preserve policy smoothness better than learned; deterministic experts violate RTVC more (\u00a74.1, empirical)",
+        "file": "pages/claim-6-binning-quantizers-preserve-policy-smoothness-better-than-learned-determ/page.md",
+        "children": []
+      },
+      {
+        "slug": "evidence-boundary-reproducibility-notes",
+        "title": "Evidence boundary & reproducibility notes",
+        "file": "pages/evidence-boundary-reproducibility-notes/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

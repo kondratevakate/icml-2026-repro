@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "logbook",
+        "title": "logbook",
+        "file": "pages/logbook/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

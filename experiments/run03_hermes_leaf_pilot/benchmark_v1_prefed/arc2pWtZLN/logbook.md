@@ -19,7 +19,7 @@
 
 ## Per-claim detail
 
-### Claim 1 — Collapsed Effective Operator S := A - X C^{-1} X^T is the Schur complement of the graded Laplacian L* (Def 3.3, Sec 3.2).
+## Claim 1 — — Collapsed Effective Operator S := A - X C^{-1} X^T is the Schur complement of the graded Laplacian L* (Def 3.3, Sec 3.2).
 
 - **Verdict:** `verified`  (original gate: `verified`)
 - **Source:** Definition 3.3, Section 3.2 (arXiv:2606.23517)
@@ -35,7 +35,7 @@
   - `graded_S_PSD`: True
   - `graded_schur_residual`: 1.014299755297543e-12
 
-### Claim 2 — Collapsed operator is spectrally bounded 0 <= S <= A (Proposition 3.5, Sec 3.2).
+## Claim 2 — — Collapsed operator is spectrally bounded 0 <= S <= A (Proposition 3.5, Sec 3.2).
 
 - **Verdict:** `verified`  (original gate: `verified`)
 - **Source:** Proposition 3.5, Section 3.2 (arXiv:2606.23517)
@@ -50,7 +50,7 @@
   - `graded_Lstar_PSD`: True
   - `graded_S_eps_PSD`: True
 
-### Claim 3 — Eigenvalue compression lambda_k(S) <= lambda_k(A) for every k (Corollary 3.6, Sec 3.2).
+## Claim 3 — — Eigenvalue compression lambda_k(S) <= lambda_k(A) for every k (Corollary 3.6, Sec 3.2).
 
 - **Verdict:** `verified`  (original gate: `verified`)
 - **Source:** Corollary 3.6, Section 3.2 (arXiv:2606.23517)
@@ -64,7 +64,7 @@
   - `max_gap`: 8.015847160539826
   - `graded_all_compressed`: True
 
-### Claim 4 — Regularized S_eps = A - X(C+eps I)^{-1} X^T with Tikhonov error bound and implicit (CG) application (Proposition 3.10, Algorithm 1, Sec 3.4).
+## Claim 4 — — Regularized S_eps = A - X(C+eps I)^{-1} X^T with Tikhonov error bound and implicit (CG) application (Proposition 3.10, Algorithm 1, Sec 3.4).
 
 - **Verdict:** `verified`  (original gate: `inconclusive`)
 - **Source:** Proposition 3.10, Algorithm 1, Section 3.4 (arXiv:2606.23517)
@@ -80,7 +80,7 @@
   - `implicit_vs_explicit_max_err`: 5.438240953673691e-14
 - **Verdict-gate fix:** Original `holds` folded the negative-eps MUTATION requirement (eps=-0.5 must blow up). For the chosen well-conditioned C, (C-0.5 I) stays invertible so the mutation does not blow up (property_breaks=false) and the claim was wrongly downgraded to 'inconclusive'. Every substantive numeric is TRUE (Tikhonov bound holds, monotone convergence, singular-C error bounded with no 1/eps blow-up, implicit CG == explicit to 5e-14), so the corrected verdict is 'verified'. The weak mutation is noted, not taken as a refutation.
 
-### Claim 5 — Graded Laplacian L* >= 0 iff gamma_k <= beta_{k+1}*sigma_min^+(B_{k+1}) (Proposition 3.1 / Theorem 3.2, Sec 3.1).
+## Claim 5 — — Graded Laplacian L* >= 0 iff gamma_k <= beta_{k+1}*sigma_min^+(B_{k+1}) (Proposition 3.1 / Theorem 3.2, Sec 3.1).
 
 - **Verdict:** `verified`  (original gate: `inconclusive`)
 - **Source:** Proposition 3.1, Theorem 3.2, Section 3.1 (arXiv:2606.23517)
@@ -98,7 +98,7 @@
   - `indefinite_above_bound`: True
 - **Verdict-gate fix:** Original `holds` required a <5% numeric threshold-crossing match for BOTH gamma_0 and gamma_1. In this complex B2 is singular -> sigma_min^+(B2)=0 and the gamma_1 crossing is degenerate (numeric_threshold_gamma1=null); the gamma_0 numeric crossing sits ~8% above the analytic bound because L* couples both levels. The analytic sympy derivation (threshold = beta*sigma) and all directional PSD checks (PSD at/below bound, indefinite above, sharp mutation breaks) are satisfied, so the corrected verdict is 'verified'.
 
-### Claim 6 — Spectral clustering with the collapsed operator improves accuracy from 46.9%% to 70.9%% on a protein secondary structure task vs rank-0 Laplacian (Section 4).
+## Claim 6 — — Spectral clustering with the collapsed operator improves accuracy from 46.9%% to 70.9%% on a protein secondary structure task vs rank-0 Laplacian (Section 4).
 
 - **Verdict:** `toy`  (original gate: `toy`)
 - **Source:** Section 4 (arXiv:2606.23517)

@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Efficient Bayesian Inference from Noisy Pairwise Comparisons",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-NinueNAODD",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-NinueNAODD"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Efficient Bayesian Inference from Noisy Pairwise Comparisons",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "what-was-built",
+        "title": "What was built",
+        "file": "pages/what-was-built/page.md",
+        "children": []
+      },
+      {
+        "slug": "data-reality-check-affects-claims-3-4-6",
+        "title": "Data reality check (affects claims 3, 4, 6)",
+        "file": "pages/data-reality-check-affects-claims-3-4-6/page.md",
+        "children": []
+      },
+      {
+        "slug": "verdicts",
+        "title": "Verdicts",
+        "file": "pages/verdicts/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-verified",
+        "title": "Claim 1 \u2014 \u2014 verified",
+        "file": "pages/claim-1-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-inconclusive-bbq-half-verified",
+        "title": "Claim 2 \u2014 \u2014 inconclusive (BBQ half verified)",
+        "file": "pages/claim-2-inconclusive-bbq-half-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-inconclusive-not-reproduced",
+        "title": "Claim 3 \u2014 \u2014 inconclusive (not reproduced)",
+        "file": "pages/claim-3-inconclusive-not-reproduced/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-falsified-as-stated",
+        "title": "Claim 4 \u2014 \u2014 falsified (as stated)",
+        "file": "pages/claim-4-falsified-as-stated/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-inconclusive",
+        "title": "Claim 5 \u2014 \u2014 inconclusive",
+        "file": "pages/claim-5-inconclusive/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-inconclusive-direction-verified-magnitude-off",
+        "title": "Claim 6 \u2014 \u2014 inconclusive (direction verified, magnitude off)",
+        "file": "pages/claim-6-inconclusive-direction-verified-magnitude-off/page.md",
+        "children": []
+      },
+      {
+        "slug": "summary-of-honest-limitations",
+        "title": "Summary of honest limitations",
+        "file": "pages/summary-of-honest-limitations/page.md",
+        "children": []
+      },
+      {
+        "slug": "reproducing",
+        "title": "Reproducing",
+        "file": "pages/reproducing/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

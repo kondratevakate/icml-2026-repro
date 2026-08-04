@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-caffnet-hard-constraint-affine-neural-networks",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-20hdQQQrA4"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: CAffNet: Hard Constraint-Affine Neural Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary-table",
+        "title": "Summary table",
+        "file": "pages/summary-table/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-3-5-universal-approximation-bound",
+        "title": "Claim 1 \u2014 Theorem 3.5 universal approximation bound",
+        "file": "pages/claim-1-theorem-3-5-universal-approximation-bound/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-eq-8-trainable-null-space-component",
+        "title": "Claim 2 \u2014 Eq. 8 trainable null-space component",
+        "file": "pages/claim-2-eq-8-trainable-null-space-component/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-no-full-row-rank-requirement-arbitrary-cardinality",
+        "title": "Claim 3 \u2014 no full-row-rank requirement, arbitrary cardinality",
+        "file": "pages/claim-3-no-full-row-rank-requirement-arbitrary-cardinality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-73-33-mse-reduction-with-zero-violations-4-1",
+        "title": "Claim 4 \u2014 73.33% MSE reduction with zero violations (\u00a74.1)",
+        "file": "pages/claim-4-73-33-mse-reduction-with-zero-violations-4-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-safety-critical-control-caffnet-avoids-obstacles-hardnet-and-soft-nn-fai",
+        "title": "Claim 5 \u2014 safety-critical control: CAffNet avoids obstacles, HardNet and soft NN fail",
+        "file": "pages/claim-5-safety-critical-control-caffnet-avoids-obstacles-hardnet-and-soft-nn-fai/page.md",
+        "children": []
+      },
+      {
+        "slug": "evidence-boundary-what-this-evidence-does-not-cover",
+        "title": "Evidence boundary \u2014 what this evidence does NOT cover",
+        "file": "pages/evidence-boundary-what-this-evidence-does-not-cover/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

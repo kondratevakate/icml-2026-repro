@@ -44,7 +44,10 @@ Also, the **gt** used for IHQ in the paper is the *official CLIC 2024 leaderboar
 
 ---
 
-### Claim 1 — verified
+## Claim 1 — — verified
+
+**Verdict:** sec. 3.3, eqs. 11–13, app. a
+
 *Source:* Sec. 3.3, Eqs. (11)–(13); derivation App. A. *Script:* `verify_claim1.py` (15 s).
 
 - **100 EM runs** (25 synthetic datasets × 4 random inits, data drawn from Eq. 2): **0 monotonicity violations** of the log-posterior; worst single-step change `+3.6e-3` (i.e. always increasing).
@@ -53,14 +56,20 @@ Also, the **gt** used for IHQ in the paper is the *official CLIC 2024 leaderboar
 - **Mutation:** replacing the E-step responsibility γ (Eq. 11) with a mis-specified `clip(γ^0.35·1.4)` breaks monotonicity in **10/10** datasets (worst step −17.26). ✔ property is load-bearing.
 - *Caveat:* this is an empirical check of an analytic guarantee, not a proof. The guarantee is the standard EM result (Dempster et al. 1977) and the M-step updates are exact maximisers of Q, so this is expected.
 
-### Claim 2 — inconclusive (BBQ half verified)
+## Claim 2 — — inconclusive (BBQ half verified)
+
+**Verdict:** fig. 3 / sec. 4.4
+
 *Source:* Fig. 3 / Sec. 4.4; dataset shapes App. D Table 6. *Script:* `verify_claim2.py` (25 s).
 
 - BBQ wall-clock, plain NumPy: IHQ-scr **0.069 s** (121 it), IHQ-unscr **0.098 s** (115 it), IHQ-all **0.393 s** (200 it), and a synthetic **HUMAINE-shaped** set (104,781 comparisons, 1,977 raters, 27 items) **1.38 s** (25 it). → "converges within seconds" ✔ on everything tested.
 - The "≈15 minutes for Crowd-BT" figure is implementation-specific. Our Crowd-BT costs **4.6 s/epoch** on the HUMAINE-shaped set (≈4.6 min for 60 epochs) — same order of magnitude, but it is *not* Google's code and not the real HUMAINE data, so this neither confirms nor refutes the number.
 - **Mutation:** subsampling to 20 raters (~1% of data) cuts BBQ runtime 47× (1.38 s → 0.029 s), confirming the timing is data-size driven rather than a fixed cost. ✔
 
-### Claim 3 — inconclusive (not reproduced)
+## Claim 3 — — inconclusive (not reproduced)
+
+**Verdict:** table 1
+
 *Source:* Table 1, IHQ-unscr. top-1. *Script:* `verify_claim3.py` (19 min, 500 rater-bootstraps).
 
 | | BBQ | Crowd-BT | Bayes-BT |
@@ -74,7 +83,10 @@ Also, the **gt** used for IHQ in the paper is the *official CLIC 2024 leaderboar
 - **Mutation:** re-drawing every pair's winner by a fair coin collapses all three to 4.0%, i.e. chance level (1/28 = 3.57%). ✔ the metric is measuring real signal.
 - Version note: the task spec's numbers (61.92/33.15/24.32) are **not** the v2 numbers (61.42/32.44/23.59) — they come from an earlier version of the paper.
 
-### Claim 4 — falsified (as stated)
+## Claim 4 — — falsified (as stated)
+
+**Verdict:** table 1, sec. 4.1
+
 *Source:* Table 1 + Sec. 4.1. *Script:* `verify_claim4.py` (15 min).
 
 Ranking the three methods by Kendall's τ using the paper's **own** Table 1 numbers:
@@ -87,7 +99,10 @@ Ranking the three methods by Kendall's τ using the paper's **own** Table 1 numb
 - **Mutation** (audit): shaving 0.01 off BBQ's HUMAINE τ drops the first-place count 5 → 4. ✔ the count is sensitive, not a tautology.
 - Partial empirical check on the 3 IHQ splits (200 bootstraps, τ vs the full-data BBQ ranking — a reference that *favours* BBQ): BBQ best on IHQ-all (0.9320), but Crowd-BT best on IHQ-scr (0.9135 vs 0.9098) and IHQ-unscr (0.8758 vs 0.8704). Consistent with the paper's own finding that BBQ is not first on IHQ-screened.
 
-### Claim 5 — inconclusive
+## Claim 5 — — inconclusive
+
+**Verdict:** app. f/g, fig. 4(v2)
+
 *Source:* App. F (interval construction) + Fig. 4 (v2); task cites App. G Fig. 6. *Script:* `verify_claim5.py` (9 min; 1,000 trials/config instead of 10,000, 50 comparisons per rater, R ∈ {5, 20, 50}).
 
 **Finding: the paper's stated interval constant is inconsistent with its stated confidence level.** Appendix F gives `p99 = sqrt(diag(cov)) · 3.29`, but `sqrt(2)·erfcinv(0.001) = 3.2905` is the **99.9%** two-sided constant; the 99% one is 2.576. Mean Type I error over R ∈ {5,20,50}:
@@ -103,7 +118,10 @@ Ranking the three methods by Kendall's τ using the paper's **own** Table 1 numb
 - **Mutation:** with a true win probability of 0.60 (H₀ false), rejection rates jump to 97–100% for all models and rules. ✔ the ~1% is genuinely a null-hypothesis quantity, and the tests have power.
 - *Caveat:* the credible-interval construction for BBQ/Bayes-BT (conditional Gamma posterior at the EM fixed point) is ours; the paper does not specify it fully, so the exact Bayes-BT number is implementation-sensitive.
 
-### Claim 6 — inconclusive (direction verified, magnitude off)
+## Claim 6 — — inconclusive (direction verified, magnitude off)
+
+**Verdict:** sec. 4.3, fig. 2, eq. 2
+
 *Source:* Sec. 4.3, Fig. 2, Eqs. (2) and (12). *Script:* `verify_claim6.py` (5 s). Real IHQ data.
 
 | split | our r | n (ours) | paper r | n (paper) |

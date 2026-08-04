@@ -1,0 +1,732 @@
+
+################## PAGE 5 ##################
+
+A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification
+evidences. For the vth view, we normalize the evidence to
+obtain belief and uncertainty masses:
+bv
+k = αv
+k −1
+Sv
+, uv = K
+Sv
+(4)
+where bv
+k is the belief mass of the kth category, and uv is
+the uncertainty of the opinion, and K = 5 is the number
+of sleep stages. Sv = P5
+k=1 αv
+k is the strength of Dirichlet
+distribution. According to subjective logic theory, both
+bv
+k ∈bv and uv must be non-negative, and their sum should
+be equal to 1, that is
+5
+X
+k=1
+bv
+k + uv = 1 ( bv
+k, uv ∈[0, 1] )
+(5)
+Aggregating View-Specific Opinions. This section presents
+a conflict-aware multi-view aggregation method (CMAM)
+for synthesizing a reliable joint opinion from different views
+{Mv}4
+v=1. Due to the influence of noise or other factors,
+opinions formed on different views may diverge. Therefore,
+following Principles 2 and 3 proposed in Section 3.1, we
+design CMAM to reasonably aggregate consistent or con-
+flicting opinions. First, we introduce a metric in Definition 1
+for quantifying the degree of conflict between two opinions.
+Definition 1 (Conflict-degree metric). For two opinions
+Ma=(ba, ua) and Mb=(bb, ub) over the same instance, the
+degree of conflict between Ma and Mb is calculated as:
+C(Ma, Mb) = 1 −
+P
+k ba
+k · bb
+k
+P
+i ba
+i · P
+j bb
+j
+(6)
+This metric guarantees two things: (1) C = 0 indicates
+perfectly consistent opinions. This situation arises when
+two absolute opinions supporting the same category are pre-
+sented. (2) C = 1 indicates completely conflicting opinions.
+Typically, C ranges from 0 to 1, and a larger C signifies
+greater conflict. Based on this metric, the details of the
+proposed CMAM are presented as follows.
+Definition 2 (Conflict-aware multi-view aggregation). Let
+Ma = (ba, ua) and Mb = (bb, ub) be two opinions over
+the same instance. The combined opinion Ma¯▽b is calcu-
+lated as follows:
+Ma¯▽b = Ma ¯▽Mb = (ba¯▽b, ua¯▽b)
+(7)
+ua¯▽b = C 2uaub
+ua + ub + (1 −C)uaub
+(8)
+ba¯▽b
+k
+= uabb
+k + ubba
+k + (1 −C)uaub(ba
+k + bb
+k)
+ua + ub
+(9)
+The obtained opinion Ma¯▽b is a combination of Ma and
+Mb. Its quality not only depends on the quality of the origi-
+nal opinions Ma and Mb, but also is affected by the degree
+of conflict between them. In particular, one opinion gains ad-
+ditional confidence when incorporating a consistent opinion,
+and becomes uncertain when combining a conflicting opin-
+ion. This characteristic distinguishes our proposed CMAM
+from other multi-view fusion methods, such as ECML (Xu
+et al., 2024) and DS-based fusion (Han et al., 2022). Follow-
+ing the subjective logic theory (Jsang, 2018), the uncertainty
+and belief masses of the combined opinion Ma¯▽b must be
+non-negative and sum up to one, i.e., P
+k ba¯▽b
+k
++ ua¯▽b = 1,
+and the proof in Appendix A.5.
+Following Definition 2, we can further combine more than
+two opinions with the following rule:
+M = M1 ¯▽M2 ¯▽... ¯▽Mn
+(n ≥2)
+(10)
+This is actually an extension of combining two opinions
+discussed in Definition 2. Based on the above multi-opinion
+fusion rule, we can get the final multi-view joint opinion,
+and hence get the probability of each category and the over-
+all uncertainty. Although CMAM improves the reliability
+of the final prediction, it still has certain limitations, and
+further details are provided in the Appendix A.6.
+3.5. Theoretical Analysis
+In this subsection, we theoretically analyze the advantages
+of CMAM. Section 3.1 presents two principles, Principle 2
+and 3, to guide reasonable multi-view aggregation. The
+following two propositions provide theoretical analysis to
+support these principles.
+Proposition 1. Given an opinion Mo = (bo, uo), integrat-
+ing additional consistent opinion Ma = (ba, ua) into Mo
+would produce a new opinion with lower uncertainty than
+uo.
+Proof.
+Let Mo¯▽a = (bo¯▽a, uo¯▽a) be the combination of Mo and
+Ma. The degree of conflict between Mo and Ma, denoted
+by C, is approaching 0 since they are consistent. Such that
+lim
+C→0 uo¯▽a = lim
+C→0(1 −C)uoua + C 2uoua
+uo + ua
+= uoua < uo
+Proposition 1 demonstrates that CMAM can enhance pre-
+diction confidence when incorporating consistent opinions.
+Proposition 2. Given an opinion Mo = (bo, uo), integrat-
+ing a conflictive opinion Mb with higher uncertainty (i.e.,
+ub > uo) into Mo would increase the uncertainty.
+Proof.
+Let Mo¯▽b = (bo¯▽b, uo¯▽b) be the combination of Mo and
+Mb. Since Mo and Mb are in conflict, the degree of con-
+5
+
+
+################## PAGE 6 ##################
+
+A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification
+Table 1. Performance comparison between ConfSleepNet and state-of-the-art methods for automatic sleep staging. ↑means higher is
+better. The best results are highlighted in bold.
+DATASET
+METHOD
+OVERALL METRICS
+F1-SCORE FOR EACH CLASS
+ACC ↑
+MF1 ↑
+W
+N1
+N2
+N3
+REM
+SLEEPEDF-20
+DEEPSLEEPNET (SUPRATAK ET AL., 2017)
+82.0
+76.9
+84.7
+46.6
+85.9
+84.8
+82.4
+TINYSLEEPNET (SUPRATAK & GUO, 2020)
+85.4
+80.5
+90.1
+51.4
+88.5
+88.3
+84.3
+SALIENTSLEEPNET (JIA ET AL., 2021)
+86.3
+80.6
+90.8
+49.9
+89.0
+84.8
+88.4
+XSLEEPNET (PHAN ET AL., 2022)
+86.4
+80.9
+91.5
+51.1
+87.5
+86.9
+87.4
+SLEEPYCO (LEE ET AL., 2024)
+86.3
+80.6
+89.1
+50.3
+88.3
+87.0
+88.5
+FLEXIBLESLEEPNET (REN ET AL., 2025)
+86.8
+81.4
+91.8
+53.2
+89.8
+85.0
+87.2
+TMCEK (LIANG ET AL., 2025)
+85.0
+80.2
+87.0
+50.3
+87.5
+88.1
+88.1
+HMDT-NET (WANG ET AL., 2026)
+86.4
+80.5
+89.1
+48.5
+89.2
+87.3
+88.4
+CONFSLEEPNET-
+86.3
+81.3
+91.2
+49.4
+88.0
+90.2
+87.8
+CONFSLEEPNET
+87.2
+81.8
+91.9
+49.5
+88.2
+90.4
+89.1
+SLEEPEDF-78
+DEEPSLEEPNET (SUPRATAK ET AL., 2017)
+77.8
+71.8
+90.9
+45.0
+79.2
+72.7
+71.1
+TINYSLEEPNET (SUPRATAK & GUO, 2020)
+83.1
+78.1
+92.8
+51.0
+85.3
+81.1
+80.3
+SALIENTSLEEPNET (JIA ET AL., 2021)
+82.6
+76.5
+92.3
+50.5
+84.4
+71.2
+84.2
+XSLEEPNET (PHAN ET AL., 2022)
+84.0
+78.7
+92.6
+50.3
+85.5
+79.2
+85.7
+SLEEPYCO (LEE ET AL., 2024)
+84.6
+78.7
+92.4
+50.4
+86.0
+80.5
+84.2
+FLEXIBLESLEEPNET (REN ET AL., 2025)
+84.6
+78.1
+92.1
+48.2
+85.7
+80.7
+83.9
+TMCEK (LIANG ET AL., 2025)
+81.4
+77.5
+92.2
+47.5
+84.2
+79.6
+84.3
+HMDT-NET (WANG ET AL., 2026)
+84.5
+77.9
+92.5
+50.3
+84.4
+81.2
+80.9
+CONFSLEEPNET-
+84.2
+78.2
+92.6
+45.4
+85.6
+82.4
+85.1
+CONFSLEEPNET
+85.3
+78.8
+93.1
+45.8
+86.1
+82.8
+86.0
+MASS-SS3
+DEEPSLEEPNET (SUPRATAK ET AL., 2017)
+86.2
+81.6
+87.3
+59.8
+90.3
+81.5
+89.3
+TINYSLEEPNET (SUPRATAK & GUO, 2020)
+87.5
+83.2
+87.3
+62.7
+91.8
+85.5
+88.6
+XSLEEPNET (PHAN ET AL., 2022)
+86.9
+82.7
+89.5
+60.3
+90.1
+83.6
+89.8
+SLEEPYCO (LEE ET AL., 2024)
+86.8
+82.5
+89.2
+60.1
+90.4
+83.8
+89.1
+TMCEK (LIANG ET AL., 2025)
+84.0
+79.0
+84.6
+56.2
+87.4
+81.6
+85.3
+CONFSLEEPNET-
+87.4
+82.5
+89.0
+58.7
+91.4
+84.6
+88.6
+CONFSLEEPNET
+88.9
+84.2
+90.2
+61.4
+92.4
+86.7
+90.2
+SHHS
+DEEPSLEEPNET (SUPRATAK ET AL., 2017)
+81.0
+73.9
+85.4
+40.5
+82.5
+79.3
+81.9
+XSLEEPNET (PHAN ET AL., 2022)
+87.6
+80.7
+92.0
+49.9
+88.3
+85.0
+88.2
+SLEEPYCO (LEE ET AL., 2024)
+87.9
+80.7
+92.6
+49.2
+88.5
+84.5
+88.6
+FLEXIBLESLEEPNET (REN ET AL., 2025)
+87.6
+79.6
+92.3
+40.0
+88.8
+87.0
+89.7
+TMCEK (LIANG ET AL., 2025)
+84.3
+78.0
+90.5
+43.2
+87.1
+85.1
+83.9
+CONFSLEEPNET-
+87.4
+79.1
+92.1
+41.1
+88.0
+84.9
+89.2
+CONFSLEEPNET
+88.2
+81.3
+93.4
+44.2
+90.0
+89.3
+89.7
+flict between them, C, is close to 1. Such that
+lim
+C→1 uo¯▽b = lim
+C→1(1 −C)uoub + C 2uoub
+uo + ub
+=
+2
+1 + uo
+ub
+uo > uo
+Proposition 2 demonstrates that CMAM can increase pre-
+diction uncertainty when incorporating conflicting opinions.
+Notably, the proofs only address the extreme cases (i.e.,
+C approaches 1 and 0). This is because we intend to use
+Propositions 1 and 2 to demonstrate that our fusion operation
+satisfies the two proposed design principles, and the extreme
+cases best illustrate these properties. For the general case
+(i.e., C ∈(0, 1)), the conclusions of the proofs can still be
+extended through continuity or monotonicity arguments.
+3.6. Multi-View Joint Training
+The evidential DNNs {fv(·)}4
+v=1 in ConfSleepNet are
+trained jointly to learn view-specific evidences {ev}4
+v=1
+from multiple views. In conventional neural network-based
+classifiers, the cross-entropy loss is commonly employed.
+However, we need to adapt the cross-entropy loss to account
+for the evidence-based networks. In order to extract as much
+evidence for the ground-truth category as possible, the loss
+function for the evidential DNN fv(·) can be defined as:
+Lv
+acc(ev) =
+Z " K
+X
+i=1
+−yi log(pv
+i )
+#
+1
+B(ev + 1)
+K
+Y
+j=1
+(pv
+j )ev
+j dpv
+=
+K
+X
+i=1
+yi [ψ(Sv) −ψ(ev
+i + 1)]
+(11)
+6
+
+
+################## PAGE 8 ##################
+
+A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification
+)
+(
+1 
+f
+)
+(
+2 
+f
+)
+(
+3 
+f
+)
+(
+4 
+f
+900
+0
+100
+800
+700
+600
+600
+500
+400
+300
+900
+0
+100
+800
+700
+600
+600
+500
+400
+300
+Num. of epochs
+Num. of epochs
+Figure 2. Intermediate prediction results produced by view-specific DNNs {fv(·)}4
+v=1 and the average degree of conflict between different
+views. (a) The results produced by DNN f1(·) and f2(·) have a 5-class structure, while (b) the results produced by f3(·) and f4(·) have
+a 3-class structure. (c) The conflict degree is typically at a low level over a sequence of epochs of the same sleep stage, and increases
+over transition epochs. (d) We reduce the impacts of conflictive views in making final results, which are obviously more precise than the
+view-specific results.
+(a) Case I
+(b) Case II
+(c) Case III
+(d) Case IV
+Figure 3. Confusion matrices on the MASS-SS3 dataset. Rows represent the true class, and columns represent the predicted class. Darker
+color indicates a larger number of correctly classified samples.
+Table 2. Performance comparison between different variants of ConfSleepNet.
+METHOD
+OVERALL METRICS
+F1-SCORE FOR EACH CLASS
+ACC ↑
+MF1 ↑
+W
+N1
+N2
+N3
+REM
+CASE I(CONFSLEEPNET-)
+87.4
+82.5
+89.0
+58.7
+91.4
+84.6
+88.6
+CASE II
+88.4
+83.6
+89.8
+60.6
+92.0
+86.0
+89.6
+CASE III
+88.0
+83.2
+89.4
+60.0
+91.8
+85.5
+89.3
+CASE IV(CONFSLEEPNET)
+88.9
+84.2
+90.2
+61.4
+92.4
+86.7
+90.2
+SleepNet achieves accuracy gains of 2.2%-4.9% over TM-
+CEK, further validating the superiority of CMAM.
+Case Study. We conducted a case study on a single patient
+from the MASS-SS3 dataset to investigate the conflict-aware
+multi-view aggregation process proposed in ConfSleepNet.
+Fig. 2(a) and (b) illustrate the overnight sleep staging results
+generated by the four evidential DNN {fv(·)}4
+v=1 on their
+respective views, along with the corresponding ground truth
+hypnograms. Specifically, f1(·) and f2(·) perform 5-class
+sleep staging as shown in Fig. 2(a), while f3(·) and f4(·)
+perform 3-class sleep staging as shown in Fig. 2(b). It can
+be intuitively observed that due to differences in the number
+of input views, classification granularity, and signal charac-
+teristics, the multiple opinions generated by {fv(·)}4
+v=1 are
+not always consistent.
+We quantified the degree of conflict between each pair of
+views using the conflict metric introduced in Section 3.4.
+The average conflict degree among views is presented in
+8
+
+
+################## PAGE 16 ##################
+
+A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification
+• SalientSleepNet (Jia et al., 2021) is a temporal fully convolutional network based on the U2-Net architecture (Qin
+et al., 2020), consisting of two independent U2-shaped streams that extract salient features from multimodal data. It’s
+designed with multi-scale extraction and multimodal attention modules help the model achieve excellent performance.
+• XSleepNet (Phan et al., 2022) is a sequence-to-sequence sleep staging model capable of learning joint representations
+from raw signals and time-frequency images. Its characteristic lies in preserving the representational capacity of
+different views while enhancing robustness to training data.
+• SleePyCo (Lee et al., 2024) employs a feature pyramid backbone network to extract multi-scale temporal and frequency
+features from raw EEG signals. Furthermore, through supervised contrastive learning, the method reduces the distance
+between features of the same class and increases the distance between features of different classes, demonstrating
+particularly strong discriminative ability for the N1 and REM sleep stages.
+• FlexibleSleepNet (Ren et al., 2025) is a lightweight classification model based on adaptive feature extraction (AFE)
+and scaling variation compression (SVC). AFE and SVC compress and expand the dimensions of features captured
+from multi-channel data, enabling the network to effectively learn spatiotemporal dependencies across channels.
+• TMCEK (Liang et al., 2025) is a trusted multi-view classification method that has achieved notable results in automatic
+sleep staging tasks. It integrates expert knowledge to improve feature interpretability and introduces a distribution-aware
+subjective opinion mechanism for more reliable confidence estimation.
+• HMDT-Net (Wang et al., 2026) aims to mitigate the impact of inter-subject variability on sleep staging models. The
+method proposes a trusted fusion strategy to effectively integrate heterogeneous multimodal data, while incorporating
+adversarial learning to extract common feature representations across subjects.
+A.9. Implementation Details and Evaluation Metrics
+Implementation Details. The proposed ConfSleepNet model and its variants were implemented using the PyTorch
+framework (version 1.9), and trained on an Nvidia GeForce RTX 3090 GPU with a total number of 100 training epochs. The
+models were trained with a batch size of 16, and the Adam optimizer (Kingma & Ba, 2014) is employed with a learning rate
+of 1e-3 for the loss function defined in Eq. (13). The multi-view input signals were segmented into sequences of 20 epochs
+(i.e., each sequence is composed of 20 sleep epochs). We evaluated our proposed model by using a k-fold cross-validation
+scheme, where k was set to 20, 10, 31, and 5 for SleepEDF-20, SleepEDF-78, MASS-SS3, and SHHS datasets, respectively.
+In each fold, we selected one group of subjects as testing data, one group for validation, and the remaining groups for
+training. For example, subject-wise 20-fold cross-validation on SleepEDF-20 with 20 subjects was a leave-one-subject-out
+cross-validation.
+Evaluation Metrics. We employed two performance metrics, accuracy (Acc) and macro-averaged F1-score (MF1), to
+evaluate the model. They are defined as follows:
+Acc =
+TP + TN
+TP + TN + FP + FN
+(16)
+MF1 =
+K
+P
+i=1
+F1i
+K
+(17)
+where TP is the number of true positives, TN is the number of true negatives, FP is the number of false positives, and
+FN is the number of false negatives. F1 = 2×P re×Rex
+P re+Rec , Rec =
+T P
+T P +F N , Pre =
+T P
+T P +F P , and K denotes the number of
+sleep stage classes. We further computed per-class metrics by considering a single class as a positive class and all other
+classes combined as a negative class.
+A.10. Conflicts Among View-Specific Opinions
+We calculated the sample distribution of a subject under different conflict degrees, as well as the proportions of different
+conflict intervals during sleep transition and non-transition periods. The results are presented in Tables 6 and 7. Statistical
+results show that nearly half (43.27%) of high-conflict instances occur during the transition period, a proportion significantly
+higher than that of other conflict levels, indicating a strong correlation between high conflict and the transition period.
+16
+
+
+################## PAGE 17 ##################
+
+A Conflict-aware Evidential Framework for Reliable Sleep Stage Classification
+Table 6. Sample distribution of a subject in MASS-SS3 under different conflict degrees.
+TOTAL EPOCHS
+LOW CONFLICT (0-0.3)
+MIDDLE CONFLICT (0.3-0.6)
+HIGH CONFLICT (0.6-1)
+AVERAGE
+774
+218 (28.17%)
+407 (52.58%)
+149 (19.25%)
+0.431
+Table 7. Proportions of different conflict intervals in transition and non-transition periods
+HIGH (0.6-1)
+MIDDLE (0.3-0.6)
+LOW (0.0-0.3)
+PROPORTION IN TRANSITION PERIOD
+43.28%
+8.85%
+7.34%
+PROPORTION OF NON-TRANSITION PERIOD
+56.72%
+91.15%
+92.66%
+RATIO OF TRANSITION PERIOD
+–
+4.89
+5.90
+The main reasons can be summarized as follows: (1) At the signal feature level, the transition between adjacent sleep
+stages involves mixed physiological features, to which EEG and EOG have different sensitivities; (2) The model inherently
+possesses uncertainty when modeling the boundaries of sleep stages; (3) Accurately identifying the transition period is also
+challenging for human experts, meaning that subjective judgment discrepancies most easily occur in this context, reflecting
+the inherent difficulty of the sleep stage classification task, a viewpoint supported by existing related works (Chen et al.,
+2025).
+A.11. Multi-View Benchmark
+Multi-View Dataset. We used four multi-view datasets: HandWritten5, Scene156, CUB7, and PIE8. Similar to previous
+work (Han et al., 2022), we extracted multi-view features from different datasets, with detailed descriptions of each dataset
+provided below:
+• HandWritten dataset consists of handwritten numerals (0–9) extracted from Dutch utility maps, with 200 instances
+per class (2,000 samples in total), where these numerals were converted into binary images and characterized using six
+feature sets.
+• Scene15 dataset was designed specifically for image scene classification tasks and contains 4,485 images spanning
+15 common indoor and outdoor scene categories, serving as a widely adopted benchmark for comparing various
+algorithms.
+• CUB dataset is the most widely used dataset for fine-grained visual classification tasks, comprising 11,788 images
+belonging to 200 bird subcategories.
+• PIE dataset contains 680 facial images from 68 subjects.
+Baseline Methods. We used six competitive baselines to evaluate CMAM:
+• EDL (Sensoy et al., 2018) explicitly models the predictive uncertainty of a model using subjective logic theory.
+Specifically, it imposes a Dirichlet distribution over class probabilities, thereby transforming the neural network’s
+predictions into subjective opinions. This model has achieved notable success in out-of-distribution sample detection
+and exhibits strong robustness to interference.
+• DCCAE (Wang et al., 2015) builds upon deep canonical correlation analysis (DCCA) by introducing an autoencoder’s
+reconstruction loss as a regularization term, effectively combining both objectives. This approach performs prominently
+in tasks that require both cross-view prediction capability and the preservation of single-view information.
+• ETMC (Han et al., 2022) is a trustworthy multi-view classification method that dynamically integrates different views
+at the evidence level to enhance classification reliability. This framework accurately identifies predictive uncertainty
+while endowing the model with robustness against potential noise.
+5https://archive.ics.uci.edu/dataset/72/multiple+features
+6https://figshare.com/articles/dataset/15-Scene_Image_Dataset/7007177/1
+7https://www.vision.caltech.edu/visipedia/CUB-200.html
+8http://www.cs.cmu.edu/afs/cs/project/PIE/MultiPie/Home.html
+17
+

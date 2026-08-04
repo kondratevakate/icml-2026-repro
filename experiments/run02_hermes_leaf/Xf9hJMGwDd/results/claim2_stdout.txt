@@ -1,0 +1,107 @@
+{
+  "claim": 2,
+  "source": "Theorem 3.4 (FDR control), Section 3.2; threshold Eq. (1), Section 2.3.2",
+  "command": "./.venv/bin/python verify_claim2.py",
+  "config": {
+    "n": 300,
+    "p": 20,
+    "n_perm": 5,
+    "n_seeds": 300,
+    "q_levels": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "n_non_null": 5,
+    "design": "adjacent support, Sec 5.1 / App F.5.1",
+    "black_box": "ridge fitted on all n samples (no split)",
+    "nu,rho": "ORACLE closed form (Theorem 3.4 hypothesis)"
+  },
+  "MAIN_semi_knockoffs": {
+    "0.05": {
+      "FDR": 0.0,
+      "FDR_mcse": 0.0,
+      "power": 0.0,
+      "mean_n_selected": 0.0
+    },
+    "0.1": {
+      "FDR": 0.023966866466866465,
+      "FDR_mcse": 0.006523935675191922,
+      "power": 0.043333333333333335,
+      "mean_n_selected": 0.49
+    },
+    "0.2": {
+      "FDR": 0.15577068084421025,
+      "FDR_mcse": 0.010778195757526985,
+      "power": 1.0,
+      "mean_n_selected": 6.373333333333333
+    }
+  },
+  "M1_mutation_no_plus_one_offset": {
+    "0.05": {
+      "FDR": 0.13470099345099343,
+      "FDR_mcse": 0.009317971678333264,
+      "power": 1.0,
+      "mean_n_selected": 6.056666666666667
+    },
+    "0.1": {
+      "FDR": 0.15510370892723832,
+      "FDR_mcse": 0.010677048620233337,
+      "power": 1.0,
+      "mean_n_selected": 6.346666666666667
+    },
+    "0.2": {
+      "FDR": 0.2693744708450591,
+      "FDR_mcse": 0.011689705194275264,
+      "power": 1.0,
+      "mean_n_selected": 7.54
+    }
+  },
+  "M2_mutation_asymmetric_statistic": {
+    "0.05": {
+      "FDR": 0.0775,
+      "FDR_mcse": 0.01318063604939711,
+      "power": 0.10333333333333333,
+      "mean_n_selected": 2.066666666666667
+    },
+    "0.1": {
+      "FDR": 0.6753940168162306,
+      "FDR_mcse": 0.005400577411180429,
+      "power": 0.9866666666666667,
+      "mean_n_selected": 16.013333333333332
+    },
+    "0.2": {
+      "FDR": 0.7117575132842161,
+      "FDR_mcse": 0.0021812391714245444,
+      "power": 1.0,
+      "mean_n_selected": 17.583333333333332
+    }
+  },
+  "M3_negative_control_rho_equals_nu": {
+    "0.05": {
+      "FDR": 0.0,
+      "FDR_mcse": 0.0,
+      "power": 0.0,
+      "mean_n_selected": 0.0
+    },
+    "0.1": {
+      "FDR": 0.0,
+      "FDR_mcse": 0.0,
+      "power": 0.0,
+      "mean_n_selected": 0.0
+    },
+    "0.2": {
+      "FDR": 0.009645021645021644,
+      "FDR_mcse": 0.003808198772578553,
+      "power": 0.03133333333333333,
+      "mean_n_selected": 0.23333333333333334
+    }
+  },
+  "predictions": {
+    "MAIN": "FDR <= q at every q",
+    "M1": "FDR > q (the +1 offset is the finite-sample correction)",
+    "M2": "FDR > q (sign exchangeability of Lemma 2.1 destroyed)",
+    "M3": "FDR still <= q but power collapses to ~0"
+  },
+  "wall_seconds": 53.02
+}

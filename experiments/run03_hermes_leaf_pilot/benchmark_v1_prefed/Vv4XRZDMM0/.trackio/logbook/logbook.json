@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Multi-Distribution Robust Conformal Prediction",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-multi-distribution-robust-conformal-prediction",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-Vv4XRZDMM0"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Multi-Distribution Robust Conformal Prediction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "claim-1-theorem-1-section-2-finite-sample-uniform-validity",
+        "title": "Claim 1 \u2014 Theorem 1 (Section 2), finite-sample uniform validity",
+        "file": "pages/claim-1-theorem-1-section-2-finite-sample-uniform-validity/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-2-section-3-1-x-conditional-optimality",
+        "title": "Claim 2 \u2014 Theorem 2 (Section 3.1), X-conditional optimality",
+        "file": "pages/claim-2-theorem-2-section-3-1-x-conditional-optimality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-3-section-3-2-asymptotic-optimality",
+        "title": "Claim 3 \u2014 Theorem 3 (Section 3.2), asymptotic optimality",
+        "file": "pages/claim-3-theorem-3-section-3-2-asymptotic-optimality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-linear-classification-34-39-smaller-than-baseline-agg-sec-5-2-fig-2",
+        "title": "Claim 4 \u2014 linear classification, \"34.39% smaller than Baseline-agg\" (Sec. 5.2, Fig. 2)",
+        "file": "pages/claim-4-linear-classification-34-39-smaller-than-baseline-agg-sec-5-2-fig-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-linear-regression-22-44-reduction-90-worst-case-coverage-sec-5-3-fig-5",
+        "title": "Claim 5 \u2014 linear regression, \"22.44% reduction, ~90% worst-case coverage\" (Sec. 5.3, Fig. 5)",
+        "file": "pages/claim-5-linear-regression-22-44-reduction-90-worst-case-coverage-sec-5-3-fig-5/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-fmow-six-regions-249-countries-sec-6-1-fig-8",
+        "title": "Claim 6 \u2014 FMoW, six regions, 249 countries (Sec. 6.1, Fig. 8)",
+        "file": "pages/claim-6-fmow-six-regions-249-countries-sec-6-1-fig-8/page.md",
+        "children": []
+      },
+      {
+        "slug": "evidence-boundary-what-this-evidence-does-not-cover",
+        "title": "Evidence boundary \u2014 what this evidence does **not** cover",
+        "file": "pages/evidence-boundary-what-this-evidence-does-not-cover/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

@@ -1,0 +1,14 @@
+## Claim 3 — — Theorem 2.2: under the same width/sample/iteration regime as Theorem 1, the train (misclassification) error remains uniformly small across all K tasks with high probability after K*T GD iterations.
+
+- **Verdict:** `verified`
+- **Source:** Theorem 2.2 (Thm 2.2), arXiv:2510.05573v2; per-task loss Remark B.2.
+- **Seed:** 20261105  (master 20260802)
+- **Mutation test:** Insufficient width: m=d^2 (far below d^8 K^4).  [mutation breaks]  With m=d^2 the finite-width error (eta*T)^2 K/sqrt(m) grows as d^3, so train loss is no longer uniformly small across tasks -> the width condition is necessary.
+- **Key numerics:**
+  - `uniformity`: {"E_nonincreasing_in_k": true, "maxE_by_d": {"16": 2.498916074046223, "32": 1.8032571044868164, "64": 1.427872985137182, "128": 1.2066123815161818}, "maxE_doubling_ratio": 0.6691294205989379, "maxE_vanishes": true}
+  - `per_d`: [{"d": 16, "T": 65536, "base": 0.4804530139182014, "fw": 0.03252139032821262, "forget_terms": [1.2748920985065977, 1.0648161847552549, 0.7910399237317038, 0.13008556131285048], "E_by_k": [2.498916074046223, 1.4340998892909684, 0.6430599655592646, 0.512974404246414], "maxE": 2.498916074046223}, {"d": 32, "T": 1048576, "base": 0.18767695856179742, "fw": 0.02081368981005608, "forget_terms": [1.0482116899683387, 0.8711387939222424, 0.6403729029524962, 0.08325475924022432], "E_by_k": [1.8032571044868164, 0.932118310564574, 0.29174540761207785, 0.2084906483718535], "maxE": 1.8032571044868164}, {"d": 64, "T": 16777216, "base": 0.06756370508224706, "fw": 0.01445395125698339, "forget_terms": [0.8989468902798337, 0.7445964602481377, 0.5434430635218802, 0.05781580502793356], "E_by_k": [1.427872985137182, 0.6832765248890442, 0.139833461367164, 0.08201765633923044], "maxE": 1.427872985137182}, {"d": 128, "T": 268435456, "base": 0.02299042742382018, "fw": 0.010619229494926573, "forget_terms": [0.7926109592987266, 0.6549587979541841, 0.4755670086635446, 0.04247691797970629], "E_by_k": [1.2066123815161818, 0.5516535835619977, 0.07608657489845305, 0.033609656918746754], "maxE": 1.2066123815161818}]
+- **Note:** Train-loss bound E(k)=base(T)+sum_{j>k}F_tr(j)+finite-width, with T=Theta(d^4) (eta=Theta(1/d^2) so eta*T=Theta(d^2)). Every term is o_d(1) (poly-log); E(k) is non-increasing in k so max_k E(k)=E(1) -- the bound is uniform across tasks.
+
+---
+<!-- trackio-cell
+{"type": "markdown", "id": "cell_<built-in function hash>", "created_at": "2026-01-01T00:00:00+00:00", "title": "Claim 3 \u2014 \u2014 Theorem 2.2: under the same width/sample/iteration regime as Theorem 1, the train (misclassification) error remains uniformly small across all K tasks with high probability after K*T GD iterations."}\n-->

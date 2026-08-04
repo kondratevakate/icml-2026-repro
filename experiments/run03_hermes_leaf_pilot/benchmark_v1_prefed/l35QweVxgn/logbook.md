@@ -27,7 +27,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
 
 ## Per-claim detail
 
-### Claim 1 — Theorem 2.1 gives a closed-form train-time forgetting bound of order O~(eta*T*sqrt(K-k)/(d*sqrt(n)) + eta*T*sqrt(K-k)/(d^2 polylog(d)) + eta^2*T^2*K^2/sqrt(m)).
+## Claim 1 — — Theorem 2.1 gives a closed-form train-time forgetting bound of order O~(eta*T*sqrt(K-k)/(d*sqrt(n)) + eta*T*sqrt(K-k)/(d^2 polylog(d)) + eta^2*T^2*K^2/sqrt(m)).
 
 - **Verdict:** `verified`
 - **Source:** Theorem 2.1 (Thm 2.1), Eq. (4), arXiv:2510.05573v2; kernel-regime forgetting object Eq. after Thm 2.2.
@@ -38,7 +38,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
   - `analytic_ratio_tests`: {"r_1_over_sqrt_n": 0.7071067811865476, "want": 0.5, "r_1_over_d2": 0.25, "r_1_over_sqrt_m": 0.5, "r_sqrt_Kmk": 1.527525231651947, "form_integrity_ok": true}
   - `empirical`: {"F_tr_mean_orth": 2.805497944413246e-07, "F_tr_std_orth": 2.19984082367426e-09, "F_tr_std_orth_2n": 1.2541789137271873e-09, "ratio_std_1_over_sqrt_n": 0.5701225744290029, "std_over_kernel_bound": 1.5561294093738783e-06}
 
-### Claim 2 — The forgetting bound holds under the regime n=O~(d^2 K), m=O~(d^8 K^4), eta*T=O(d^2) on a d-dim XOR-cluster dataset with K tasks (Theorem 1).
+## Claim 2 — — The forgetting bound holds under the regime n=O~(d^2 K), m=O~(d^8 K^4), eta*T=O(d^2) on a d-dim XOR-cluster dataset with K tasks (Theorem 1).
 
 - **Verdict:** `verified`
 - **Source:** Theorem 2.1 regime conditions (n=O~(d^2 K), m=O~(d^8 K^4), eta*T=O(d^2)), arXiv:2510.05573v2.
@@ -51,7 +51,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
   - `empirical_fluctuation_by_d`: {"16": 3.410632821818748e-07, "32": 1.7352943060102343e-08, "64": 2.1069328829309833e-09, "128": 8.983466520504458e-11}
 - **Note on vanishing:** Under the regime every term vanishes as d->inf (poly-logarithmically): term1 ~ 1/sqrt(log d) (via the polylog hidden in n=O~(d^2 K)), term2 ~ 1/log d, term3 ~ 1/log^2 d. Hence F_tr = o_d(1) as claimed.
 
-### Claim 3 — Theorem 2.2: under the same width/sample/iteration regime as Theorem 1, the train (misclassification) error remains uniformly small across all K tasks with high probability after K*T GD iterations.
+## Claim 3 — — Theorem 2.2: under the same width/sample/iteration regime as Theorem 1, the train (misclassification) error remains uniformly small across all K tasks with high probability after K*T GD iterations.
 
 - **Verdict:** `verified`
 - **Source:** Theorem 2.2 (Thm 2.2), arXiv:2510.05573v2; per-task loss Remark B.2.
@@ -62,7 +62,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
   - `per_d`: [{"d": 16, "T": 65536, "base": 0.4804530139182014, "fw": 0.03252139032821262, "forget_terms": [1.2748920985065977, 1.0648161847552549, 0.7910399237317038, 0.13008556131285048], "E_by_k": [2.498916074046223, 1.4340998892909684, 0.6430599655592646, 0.512974404246414], "maxE": 2.498916074046223}, {"d": 32, "T": 1048576, "base": 0.18767695856179742, "fw": 0.02081368981005608, "forget_terms": [1.0482116899683387, 0.8711387939222424, 0.6403729029524962, 0.08325475924022432], "E_by_k": [1.8032571044868164, 0.932118310564574, 0.29174540761207785, 0.2084906483718535], "maxE": 1.8032571044868164}, {"d": 64, "T": 16777216, "base": 0.06756370508224706, "fw": 0.01445395125698339, "forget_terms": [0.8989468902798337, 0.7445964602481377, 0.5434430635218802, 0.05781580502793356], "E_by_k": [1.427872985137182, 0.6832765248890442, 0.139833461367164, 0.08201765633923044], "maxE": 1.427872985137182}, {"d": 128, "T": 268435456, "base": 0.02299042742382018, "fw": 0.010619229494926573, "forget_terms": [0.7926109592987266, 0.6549587979541841, 0.4755670086635446, 0.04247691797970629], "E_by_k": [1.2066123815161818, 0.5516535835619977, 0.07608657489845305, 0.033609656918746754], "maxE": 1.2066123815161818}]
 - **Note:** Train-loss bound E(k)=base(T)+sum_{j>k}F_tr(j)+finite-width, with T=Theta(d^4) (eta=Theta(1/d^2) so eta*T=Theta(d^2)). Every term is o_d(1) (poly-log); E(k) is non-increasing in k so max_k E(k)=E(1) -- the bound is uniform across tasks.
 
-### Claim 4 — Theorem 2.3 bounds the delayed generalization gap by eta*T*exp(eta*T*(K-k+1)/sqrt(m))/n for Lipschitz, smooth losses; gap decays with n.
+## Claim 4 — — Theorem 2.3 bounds the delayed generalization gap by eta*T*exp(eta*T*(K-k+1)/sqrt(m))/n for Lipschitz, smooth losses; gap decays with n.
 
 - **Verdict:** `verified`
 - **Source:** Theorem 2.3 (Thm 2.3), Eq. after Thm 2.3, arXiv:2510.05573v2.
@@ -73,7 +73,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
   - `regime`: {"G_by_d": {"16": 0.09017989548252739, "32": 0.07213621826086634, "64": 0.06011250549480985, "128": 0.05152485628452731}, "exponent_by_d": {"16": 0.00012703668096958055, "32": 2.032586895513289e-05, "64": 3.5287966935994606e-06, "128": 6.48146331477452e-07}, "G_decreases": true, "exponent_to_zero": true}
   - `contrast_claim5`: "Theorem 2.3 is LINEAR in eta*T (and exponential in eta*T/sqrt(m)); Claim 5's improved bound (Thm B.1) is poly-logarithmic in T for self-bounded losses."
 
-### Claim 5 — Theorem 4 (Thm B.1) gives an improved generalization gap bound for self-bounded losses that scales poly-logarithmically rather than linearly in T, depending on the cumulative training loss of later tasks.
+## Claim 5 — — Theorem 4 (Thm B.1) gives an improved generalization gap bound for self-bounded losses that scales poly-logarithmically rather than linearly in T, depending on the cumulative training loss of later tasks.
 
 - **Verdict:** `verified`
 - **Source:** Theorem B.1 (improved gen. gap, the paper's 'Theorem 4'), Remark B.2, Eqs (6), arXiv:2510.05573v2.
@@ -83,7 +83,7 @@ Every verified claim has a MUTATION test: perturbing the setup (breaking task-me
   - `T_scan`: {"T_grid": [50, 100, 200, 400, 800], "G_improved": [0.07197762180584784, 0.11741682859618946, 0.17881633903861277, 0.258578418202709, 0.3591053311580691], "G_Thm23": [1.4675852886269917e-05, 2.9351705797826993e-05, 5.870341169680262e-05, 0.00011740682379819979, 0.00023481364921477772], "improved_growth_ratios": [1.6312963064118617, 1.5229191690535568, 1.4460558782990898, 1.3887676073436006], "predicted_polylog_ratios": [1.6312963064118615, 1.522919169053557, 1.44605587829909, 1.3887676073436002], "Thm23_growth_ratios": [2.0000000017230453, 2.0000000034460905, 2.000000006892181, 2.000000013784362], "polylog_in_T_confirmed": true, "linear_grows_faster": true}
   - `later_task_dependence`: {"later_loss_scale": [0.2, 0.5, 1.0, 2.0], "G_improved_by_scale": [3.041589853573734e-07, 3.2084967927197954e-07, 3.507275439982487e-07, 4.1908913634621457e-07], "depends_on_later_loss": true}
 
-### Claim 6 — Test-time forgetting decomposes as train-time forgetting (Thm 1) + delayed generalization gap (Thm 3/4); width, sample size and later-task data jointly (not individually) control forgetting.
+## Claim 6 — — Test-time forgetting decomposes as train-time forgetting (Thm 1) + delayed generalization gap (Thm 3/4); width, sample size and later-task data jointly (not individually) control forgetting.
 
 - **Verdict:** `verified`
 - **Source:** Decomposition Eq. (3) / Remark 2.5, Theorems 2.1 & 2.3, arXiv:2510.05573v2.

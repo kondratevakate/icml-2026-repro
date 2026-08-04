@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-uiw8P2JGbW"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary-verdict-table",
+        "title": "Summary verdict table",
+        "file": "pages/summary-verdict-table/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-5-1-fpa-revenue-monotonicity-for-tcpa",
+        "title": "Claim 1 \u2014 Theorem 5.1 (FPA revenue monotonicity for tCPA)",
+        "file": "pages/claim-1-theorem-5-1-fpa-revenue-monotonicity-for-tcpa/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-proof-mechanism-convexity-mean-preserving-spread",
+        "title": "Claim 2 \u2014 Proof mechanism (convexity + mean-preserving spread)",
+        "file": "pages/claim-2-proof-mechanism-convexity-mean-preserving-spread/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-5-2-corollary-5-3-1-optimality-welfare",
+        "title": "Claim 3 \u2014 Theorem 5.2 / Corollary 5.3 (\u03bc=1 optimality + welfare)",
+        "file": "pages/claim-3-theorem-5-2-corollary-5-3-1-optimality-welfare/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-5-8-vcg-spa-non-monotonicity-for-tcpa-6-2",
+        "title": "Claim 4 \u2014 Theorem 5.8 (VCG/SPA non-monotonicity for tCPA, 6.2%)",
+        "file": "pages/claim-4-theorem-5-8-vcg-spa-non-monotonicity-for-tcpa-6-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-5-10-budget-constraints-break-fpa-monotonicity-16-8",
+        "title": "Claim 5 \u2014 Theorem 5.10 (Budget constraints break FPA monotonicity, 16.8%)",
+        "file": "pages/claim-5-theorem-5-10-budget-constraints-break-fpa-monotonicity-16-8/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-theorem-5-11-lp-lifting-table-1-three-settings",
+        "title": "Claim 6 \u2014 Theorem 5.11 (LP lifting) + Table 1 (three settings)",
+        "file": "pages/claim-6-theorem-5-11-lp-lifting-table-1-three-settings/page.md",
+        "children": []
+      },
+      {
+        "slug": "reproducibility-honesty-notes",
+        "title": "Reproducibility & honesty notes",
+        "file": "pages/reproducibility-honesty-notes/page.md",
+        "children": []
+      },
+      {
+        "slug": "files-produced",
+        "title": "Files produced",
+        "file": "pages/files-produced/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

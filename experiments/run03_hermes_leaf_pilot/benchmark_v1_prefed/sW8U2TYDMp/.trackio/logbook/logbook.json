@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-sW8U2TYDMp",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-sW8U2TYDMp"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "nature-of-the-paper-and-of-this-reproduction",
+        "title": "Nature of the paper and of this reproduction",
+        "file": "pages/nature-of-the-paper-and-of-this-reproduction/page.md",
+        "children": []
+      },
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-epistemic-utility-is-the-log-score",
+        "title": "Claim 1 \u2014 epistemic utility is the log score",
+        "file": "pages/claim-1-epistemic-utility-is-the-log-score/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-10-linear-pool-impossibility",
+        "title": "Claim 2 \u2014 Theorem 10 (linear-pool impossibility)",
+        "file": "pages/claim-2-theorem-10-linear-pool-impossibility/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorems-8-9-10-frontier",
+        "title": "Claim 3 \u2014 Theorems 8/9/10 frontier",
+        "file": "pages/claim-3-theorems-8-9-10-frontier/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-19-waluigi-emergence",
+        "title": "Claim 4 \u2014 Theorem 19 (Waluigi emergence)",
+        "file": "pages/claim-4-theorem-19-waluigi-emergence/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-21-waluigi-shattering",
+        "title": "Claim 5 \u2014 Theorem 21 (Waluigi shattering)",
+        "file": "pages/claim-5-theorem-21-waluigi-shattering/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-theorem-14-benefit-does-not-descend-to-subagents",
+        "title": "Claim 6 \u2014 Theorem 14 (benefit does not descend to subagents)",
+        "file": "pages/claim-6-theorem-14-benefit-does-not-descend-to-subagents/page.md",
+        "children": []
+      },
+      {
+        "slug": "limitations-honesty-statement",
+        "title": "Limitations / honesty statement",
+        "file": "pages/limitations-honesty-statement/page.md",
+        "children": []
+      },
+      {
+        "slug": "files",
+        "title": "Files",
+        "file": "pages/files/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

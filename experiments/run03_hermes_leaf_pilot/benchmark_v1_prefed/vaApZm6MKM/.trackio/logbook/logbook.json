@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Conditional Coverage Diagnostics for Conformal Prediction",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-vaApZm6MKM"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Conditional Coverage Diagnostics for Conformal Prediction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "claim-1-ert-metric-identities-section-3-1",
+        "title": "Claim 1 \u2014 ERT metric identities (Section 3.1)",
+        "file": "pages/claim-1-ert-metric-identities-section-3-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-lightgbm-vs-partitionwise-power-section-4-1",
+        "title": "Claim 2 \u2014 LightGBM vs PartitionWise power (Section 4.1)",
+        "file": "pages/claim-2-lightgbm-vs-partitionwise-power-section-4-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-ert-convergence-section-4-2",
+        "title": "Claim 3 \u2014 ERT convergence (Section 4.2)",
+        "file": "pages/claim-3-ert-convergence-section-4-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-decomposing-into-ell-plus-ert-and-ell-minus-ert-section-3-3",
+        "title": "Claim 4 \u2014 Decomposing into ell_plus-ERT and ell_minus-ERT (Section 3.3)",
+        "file": "pages/claim-4-decomposing-into-ell-plus-ert-and-ell-minus-ert-section-3-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-kl-plus-kl-minus-divergence-table-4-section-4-3-2",
+        "title": "Claim 5 \u2014 KL_plus/KL_minus divergence (Table 4, Section 4.3.2)",
+        "file": "pages/claim-5-kl-plus-kl-minus-divergence-table-4-section-4-3-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-algorithm-1-k-fold-cross-validation-estimator",
+        "title": "Claim 6 \u2014 Algorithm 1: k-fold cross-validation estimator",
+        "file": "pages/claim-6-algorithm-1-k-fold-cross-validation-estimator/page.md",
+        "children": []
+      },
+      {
+        "slug": "evidence-boundary",
+        "title": "Evidence boundary",
+        "file": "pages/evidence-boundary/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

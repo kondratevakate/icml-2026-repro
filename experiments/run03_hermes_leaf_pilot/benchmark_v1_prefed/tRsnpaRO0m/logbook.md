@@ -32,7 +32,7 @@ rather than proof, the JSON `note` field says so explicitly.
 
 ## Per-claim detail
 
-### Claim 1 — graphops are self-adjoint, positivity-preserving, and unify dense + sparse
+## Claim 1 — — graphops are self-adjoint, positivity-preserving, and unify dense + sparse
 Ω = [0,1] discretised into n=400 uniform atoms; (Af)(x) = ∫W(x,y)f(y)dμ(y) → (1/n)·Wf.
 Tested a dense graphon kernel `0.5(1+cos 2π(x−y))` and a sparse ~3-regular graph mapped
 to the same space via W = n·A. Over 200 random probe pairs: ⟨Af,g⟩−⟨f,Ag⟩ ≤ 1.1e-16 and
@@ -41,7 +41,7 @@ objects" content of Def. 3.1, and it holds. Mutations target one property each a
 breaks only its own property (the signed-kernel mutation stays self-adjoint at 3e-18 —
 a good sign the tests are independent).
 
-### Claim 2 — bofops via ess sup_x ν_x(Ω) < ∞
+## Claim 2 — — bofops via ess sup_x ν_x(Ω) < ∞
 Under the n-interval embedding the fiber mass ν_x(Ω) is exactly the vertex degree, so
 the definition becomes a max-degree bound and is directly measurable. Bounded-degree
 family: 4, 4, 4, 4 across n = 100/200/400/800 (growth exponent −2e-16). Dense ER p=0.5:
@@ -49,7 +49,7 @@ family: 4, 4, 4, 4 across n = 100/200/400/800 (growth exponent −2e-16). Dense 
 exponent 0.43, confirming a *single* hub suffices to leave the bofop class. The definition
 discriminates exactly as claimed.
 
-### Claim 3 — Theorem 4.1, MPNN Lipschitz w.r.t. the action metric d_M
+## Claim 3 — — Theorem 4.1, MPNN Lipschitz w.r.t. the action metric d_M
 d_M = ‖f₁−f₂‖₂ + ‖A₁−A₂‖_{2→2}, with the operator-norm term computed **exactly by SVD**
 (true sup over the unit ball, not a sampled approximation). MPNN: 3 layers of
 h ← tanh(0.6h + 0.5·Ah) on max-degree-4 bofops, n=120, 300 random nearby pairs.
@@ -63,7 +63,7 @@ this correctly failed; that criterion was wrong — Lipschitz continuity require
 *bounded*, not constant — so it was replaced with a boundedness criterion. The cubic-activation
 mutation blows up by 47 orders of magnitude over the same sweep, so the test is discriminative.
 
-### Claim 4 — Corollary 5.3, compactness of bofop-DIDMs under the mover's distance
+## Claim 4 — — Corollary 5.3, compactness of bofop-DIDMs under the mover's distance
 DIDM = pushforward of the vertex measure under v ↦ (deg v, neighbour-degree distribution),
 represented as a joint histogram on the compact grid [0,r]², r=6. Mover's distance computed
 **exactly by linear programming** over the transport polytope (scipy HiGHS), ground metric ℓ¹.
@@ -76,7 +76,7 @@ distance 0.124 > 0 from all 20 sampled bofop DIDMs, so the inclusion is strict.
 evidence of total boundedness and a clean demonstration that the fiber bound is what buys it,
 but it is not a proof.
 
-### Claim 5 — Section 6.1, universal approximation on sparse graphs
+## Claim 5 — — Section 6.1, universal approximation on sparse graphs
 600 bofop graphs (n∈[60,90], r≤6), target F = tanh(mean deg) + 0.5·sin(mean nbr deg) — a
 permutation- and size-invariant, DIDM-continuous functional, exactly the class Sec. 6.1
 addresses. Model: MPNN with random tanh message-passing layers (depth 3) + mean readout +
@@ -88,7 +88,7 @@ and not from raw capacity.
 *Limitation:* random-feature MPNNs on a sampled family demonstrate the approximation, they do
 not reprove density in C(bofop-DIDM). Directionally faithful, toy in scale.
 
-### Claim 6 — Section 6.2, vanishing generalization error
+## Claim 6 — — Section 6.2, vanishing generalization error
 Fixed-capacity random-feature MPNN (width 64, depth 3) + ridge head on bofop graphs,
 5 replicates per point, m ∈ {50,…,800}, test set 400.
 *Process note:* the first run produced gaps of ~1e-7 with a meaningless slope — the head was

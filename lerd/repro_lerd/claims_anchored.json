@@ -1,0 +1,26 @@
+[
+ {
+  "text": "LERD combines an Event Posterior Differential Equation (EPDE), a Mean-Evolving Lognormal Process (MELP), a differentiable leaky-integrate-and-fire (dLIF) prior, and an Event-Relational Graph (ERG) to infer latent neural events and their cross-channel relations directly from multichannel EEG (Section on Architecture).",
+  "status": "unverified"
+ },
+ {
+  "text": "Theorem 4.1 derives a tractable integral-rate surrogate replacing the intractable KL divergence between the EPDE-induced path law and the dLIF prior, with a formal upper bound guaranteeing training stability (Theorem 4.1).",
+  "status": "unverified"
+ },
+ {
+  "text": "On the toy dataset spanning three frequency bands ([5-10], [10-15], [15-20] Hz), LERD achieves non-zero IoU scores between 0.202 and 0.473 for latent structure recovery, whereas baseline neural ODE methods achieve zero IoU despite strong prediction accuracy (Table 1).",
+  "status": "unverified"
+ },
+ {
+  "text": "On AD Cohort A (88 participants: 36 AD, 23 FTD, 29 HC), LERD attains 75.03±8.29% accuracy and 72.69±8.16% F1, outperforming LEAD (72.68%), ADFormer (69.35%), and other baselines (Table 2).",
+  "status": "unverified"
+ },
+ {
+  "text": "On AD Cohort B (168 participants: 59 AD, 7 MCI, 102 HC), LERD attains 89.82±8.39% accuracy and 64.87±10.67% F1 (Table 2).",
+  "status": "unverified"
+ },
+ {
+  "text": "Ablations show both the dLIF and ERG priors independently contribute to performance, with their combination yielding the best results on both EEG cohorts, and Figure 2 shows LERD-inferred dLIF frequencies exhibit disease-correlated 'oscillatory slowing' consistent with established AD biomarkers (Table 3, Figure 2).",
+  "status": "unverified"
+ }
+]
