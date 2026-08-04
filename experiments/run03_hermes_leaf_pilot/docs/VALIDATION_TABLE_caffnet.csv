@@ -1,0 +1,6 @@
+arm,c1,c2,c3,c4,c5,full_ev (computed),full_ev (stored_field),inconclusive_rate,not_attempted_rate,mutation_tests,coverage,execution_success,check_pass,tokens_note
+arm1 (leaf),verified,verified,verified,inconclusive,inconclusive,0.6,0.6,0.4,0.0,4,1.0,True,False,live snapshot only (no before/after)
+arm2 (+skills),verified,verified,verified,verified,inconclusive,0.8,0.0,0.2,0.0,0,1.0,True,True,live snapshot only (no before/after)
+arm3 (Sakana),verified,verified,verified,verified,verified,1.0,0.2,0.0,0.0,1,1.0,True,True,delta from before/after snapshots
+arm4 (ARC),inconclusive,verified,inconclusive,not_attempted,not_attempted,0.2,0.0,0.4,0.4,0,0.6,False,,live snapshot only (no before/after)
+arm2b (compaction),verified,verified,verified,inconclusive,inconclusive,0.6,0.0,0.4,0.0,0,1.0,True,True,live snapshot only (no before/after)
