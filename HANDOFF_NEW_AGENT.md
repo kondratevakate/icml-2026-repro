@@ -51,13 +51,13 @@ and must NOT be committed.
   `https://huggingface.co/datasets/ICML-2026-agent-repro/verdicts/...` via `huggingface_hub`
   (see `groundtruth/saturate_gt.py`). Cached locally in `groundtruth/data_live/` (e.g.
   `verdicts_live.json` 26 MB — metadata, not raw data).
-- **REAL reproduction datasets (the GBs Kate mentioned):** live on **D:**
-  `/mnt/d/projects/02_academia/icml-repro/data/` (sample/demo subsets: `sleepedf`,
-  `mimic3demo`, `mimic-iv-note-2.2`, `cifar100n`, `mfiddr_sample`), and full-scale sets
-  (Sleep-EDF Expanded 8.7 GB, full MIMIC, OpenNeuro `ds004504`, TCIA LIDC-IDRI) are pulled
-  on demand from **HF / OpenML / author URLs** into `/mnt/d/Downloads/` or
-  `~/.cache/huggingface` (currently 3.2 GB). Runs reference data by URL or by path under
-  `data/`; they do NOT assume data is in git.
+- **REAL reproduction datasets (the GBs of paper data):** NOT permanently stored in the repo
+  or a single D: folder. They are **fetched on demand from HF / OpenML / author URLs at run
+  time**, cached in `~/.cache/huggingface` (≈3.2 GB present) or temporarily in `D:\Downloads\`.
+  The only local copy under the codex repo is `/mnt/d/projects/02_academia/icml-repro/data/`
+  (2.5 MB of *sample/demo* subsets: `sleepedf`, `mimic3demo`, `mimic-iv-note-2.2`, `cifar100n`,
+  `mfiddr_sample`). Full-scale sets (Sleep-EDF Expanded 8.7 GB, full MIMIC, OpenNeuro `ds004504`,
+  TCIA LIDC-IDRI) are pulled by URL when a run needs them — they are gitignored and never committed.
 - **HF Spaces token:** `/home/kate/.cache/huggingface/token` (chmod 600). Publish via
   `HfApi().upload_folder(...)` — **git-over-HTTPS to HF fails** (credential prompt).
 
