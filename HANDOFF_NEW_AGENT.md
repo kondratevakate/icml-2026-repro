@@ -37,19 +37,40 @@ Remote: `git@github.com:kondratevakate/icml-2026-repro.git`. **Never push withou
 permission; commit only after validation.** (`/mnt/d/...` is a Windows-mounted *separate*
 checkout on branch `codex/...` — pilots are NOT there.)
 
-## 3. WHERE DATA LIVES
+## 3. WHERE DATA LIVES (and what is NOT in git)
 
-- **Anchored claims (precise, judge-used):** `groundtruth/data/claims_anchored.json`
-  (also mirrored in `groundtruth/data_live/`). NOT at repo root anymore.
-- **GT corpus + stimulus set:** `groundtruth/out/corpus_all.json`, `corpus_medical.json`,
-  `selected_for_runs.json` (the 42-paper pool).
+**The git repo holds CODE + LOGBOOKS + METADATA, NOT the large reproduction datasets.**
+GB-scale paper data lives on local D: and is fetched at run time by URL — it is gitignored
+and must NOT be committed.
+
+- **Anchored claims (precise, judge-used):** `groundtruth/data/claims_anchored.json` (≈6 MB;
+  this is *text metadata* — paper IDs, claim wording, section/table anchors — not datasets).
+- **GT corpus + stimulus set:** `groundtruth/out/corpus_all.json` (≈1.3 MB metadata),
+  `corpus_medical.json`, `selected_for_runs.json` (the 42-paper pool). All metadata.
+- **Challenge verdicts / leaderboard (external, URL-pinned):** pulled from
+  `https://huggingface.co/datasets/ICML-2026-agent-repro/verdicts/...` via `huggingface_hub`
+  (see `groundtruth/saturate_gt.py`). Cached locally in `groundtruth/data_live/` (e.g.
+  `verdicts_live.json` 26 MB — metadata, not raw data).
+- **REAL reproduction datasets (the GBs Kate mentioned):** live on **D:**
+  `/mnt/d/projects/02_academia/icml-repro/data/` (sample/demo subsets: `sleepedf`,
+  `mimic3demo`, `mimic-iv-note-2.2`, `cifar100n`, `mfiddr_sample`), and full-scale sets
+  (Sleep-EDF Expanded 8.7 GB, full MIMIC, OpenNeuro `ds004504`, TCIA LIDC-IDRI) are pulled
+  on demand from **HF / OpenML / author URLs** into `/mnt/d/Downloads/` or
+  `~/.cache/huggingface` (currently 3.2 GB). Runs reference data by URL or by path under
+  `data/`; they do NOT assume data is in git.
+- **HF Spaces token:** `/home/kate/.cache/huggingface/token` (chmod 600). Publish via
+  `HfApi().upload_folder(...)` — **git-over-HTTPS to HF fails** (credential prompt).
+
+> Rule: never `git add` large datasets. If a run produced a big artifact (e.g.
+> `*.ply`, `*.npy`, `results/*.json` > a few MB), confirm it is result output, not source
+> data, before committing; prefer gitignoring raw data dirs (`**/data/`, `**/*.arff`,
+> `**/*.ply` already ignored).
+
 - **Per-run artifacts:** `experiments/run03_hermes_leaf_pilot/{pilot_4arm, benchmark_v1_prefed,
   benchmark_v1_arm2b, runs_incomplete, docs, infra}/` — see §5.
 - **Pipeline scripts:** `groundtruth/*.py` (`local_to_trackio.py`, `score_run.py`, `corpus.py`,
   `build_icml_logbook.py`, …) and `experiments/run03_hermes_leaf_pilot/infra/` (`run_arm2.py`
   per-paper harness, `make_bundles.py`, `publish_logbook.py`, `snapshot_usage.py`).
-- **HF Spaces token:** `/home/kate/.cache/huggingface/token` (chmod 600). Publish via
-  `HfApi().upload_folder(...)` — **git-over-HTTPS to HF fails** (credential prompt).
 - **Experiments also mirrored on HF Spaces** as `paper-<orid>` tags (one Space per paper,
   EDIT not recreate).
 
