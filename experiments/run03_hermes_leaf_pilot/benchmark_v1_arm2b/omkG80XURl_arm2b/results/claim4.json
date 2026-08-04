@@ -1,0 +1,224 @@
+{
+ "claim": 4,
+ "source": "Section 1 + Table 1",
+ "seed": 20260803,
+ "note": "prior-work algorithms not re-implemented; single-chain used as the executable quartic reference, per Theorem 4.4",
+ "claim1_json": {
+  "claim": 1,
+  "source": "Theorem 4.1, Eq. (13)-(16)",
+  "seed": 20260803,
+  "setup": "n=8 states, d=3 features, normalized ||phi(s)||<=1",
+  "eta1": 0.11001932739342082,
+  "theta_star": [
+   0.5124148384932178,
+   0.8736740147124796,
+   0.34957328552428457
+  ],
+  "theta_star_eq14_maxdiff": 2.220446049250313e-16,
+  "fixedpoint_spread": 0.028369751746056705,
+  "fixedpoint_max_dist_to_theta_star": 0.04969054137695844,
+  "mutation_coupled_dist_to_theta_star": 1.0714834262106416,
+  "eta_sweep": [
+   {
+    "scale": 1.0,
+    "eta": 0.11001932739342082,
+    "alpha": 0.0012631062992153961,
+    "d0": 1.1480767326440955,
+    "T_to_eps": 12401,
+    "final_err": 0.002541927766000327,
+    "target": 0.02296153465288191
+   },
+   {
+    "scale": 0.7,
+    "eta": 0.11758902024357569,
+    "alpha": 0.0011074937182081544,
+    "d0": 0.9418342936390448,
+    "T_to_eps": 14931,
+    "final_err": 0.0024504083605013573,
+    "target": 0.018836685872780895
+   },
+   {
+    "scale": 0.5,
+    "eta": 0.06831502104353061,
+    "alpha": 0.0007294153869417163,
+    "d0": 1.0677232851570517,
+    "T_to_eps": 35116,
+    "final_err": 0.0016425868542175562,
+    "target": 0.021354465703141035
+   },
+   {
+    "scale": 0.35,
+    "eta": 0.03541903439499537,
+    "alpha": 0.0004923993366832203,
+    "d0": 1.3902110689748086,
+    "T_to_eps": 104197,
+    "final_err": 0.001081960184581073,
+    "target": 0.027804221379496175
+   },
+   {
+    "scale": 0.25,
+    "eta": 0.018517354468423904,
+    "alpha": 0.0003746277208155674,
+    "d0": 2.023116862910351,
+    "T_to_eps": 259519,
+    "final_err": 0.023076405869576343,
+    "target": 0.04046233725820702
+   }
+  ],
+  "eta_exponent_measured": -1.637691471745241,
+  "eta_exponent_r2": 0.9905704559293798,
+  "eta_exponent_predicted": -2.0,
+  "verdict": "verified"
+ },
+ "claim2_json": {
+  "claim": 2,
+  "source": "Theorem 4.2",
+  "seed": 20260803,
+  "setup": "n=8 states, d=3 features, Markov sampling, gap=0.6 (non-trivial mixing)",
+  "eta_sweep": [
+   {
+    "scale": 1.0,
+    "eta": 0.07308285892069519,
+    "alpha": 0.002300988884238321,
+    "d0": 3.148465889566808,
+    "T_to_eps": 11564,
+    "final_err": 0.015061411570541302,
+    "target": 0.06296931779133616
+   },
+   {
+    "scale": 0.7,
+    "eta": 0.07056098959408091,
+    "alpha": 0.0018247461001117044,
+    "d0": 2.5860551426631,
+    "T_to_eps": 14964,
+    "final_err": 0.011990471738239819,
+    "target": 0.051721102853262
+   },
+   {
+    "scale": 0.5,
+    "eta": 0.04098904358337832,
+    "alpha": 0.001203794204321322,
+    "d0": 2.9368682435163693,
+    "T_to_eps": 35227,
+    "final_err": 0.00899575871899108,
+    "target": 0.05873736487032739
+   },
+   {
+    "scale": 0.35,
+    "eta": 0.021251511390817778,
+    "alpha": 0.0008145455494199961,
+    "d0": 3.8328829156684825,
+    "T_to_eps": 99543,
+    "final_err": 0.0064018685075992255,
+    "target": 0.07665765831336965
+   }
+  ],
+  "eta_exponent_measured": -1.671719951058418,
+  "eta_exponent_r2": 0.9922802652339955,
+  "eta_exponent_predicted": -2.0,
+  "markov_fixedpoint_max_dist_to_theta_star": 0.06650490814627125,
+  "markov_fixedpoint_spread": 0.029440572554458793,
+  "mutation_coupled_dist_to_theta_star": 1.7743916956429908,
+  "verdict": "verified"
+ },
+ "claim5_json": {
+  "claim": 5,
+  "source": "Theorem 4.4 (single chain) vs Theorems 4.1-4.2",
+  "seed": 20260803,
+  "sweep": [
+   {
+    "scale": 1.0,
+    "eta": 0.07308285892069519,
+    "d0": 3.148465889566808,
+    "alpha_single": 0.0025392193285696326,
+    "alpha_double": 0.00406015882892751,
+    "T_single": 7548,
+    "T_double": 4595,
+    "final_err_single": 0.006700554085010062,
+    "final_err_double": 0.017808030516589923,
+    "target": 0.15742329447834041
+   },
+   {
+    "scale": 0.8,
+    "eta": 0.08309396799045822,
+    "d0": 2.5363812884571884,
+    "alpha_single": 0.0030066139906571396,
+    "alpha_double": 0.004616331555025457,
+    "T_single": 5690,
+    "T_double": 3618,
+    "final_err_single": 0.007697706980617329,
+    "final_err_double": 0.019561851171104053,
+    "target": 0.12681906442285942
+   },
+   {
+    "scale": 0.65,
+    "eta": 0.06334092305552404,
+    "d0": 2.63359130327842,
+    "alpha_single": 0.0013827898455928862,
+    "alpha_double": 0.0035189401697513353,
+    "T_single": 15140,
+    "T_double": 5609,
+    "final_err_single": 0.004233482178921386,
+    "final_err_double": 0.01369008110666838,
+    "target": 0.13167956516392101
+   },
+   {
+    "scale": 0.5,
+    "eta": 0.04098904358337832,
+    "d0": 2.9368682435163693,
+    "alpha_single": 0.0004178712152403482,
+    "alpha_double": 0.002277169087965462,
+    "T_single": 75826,
+    "T_double": 13935,
+    "final_err_single": 0.0007637506194755837,
+    "final_err_double": 0.00956059483796417,
+    "target": 0.14684341217581848
+   }
+  ],
+  "single_eta_exponent": -3.763270186816505,
+  "single_r2": 0.994449699775678,
+  "double_eta_exponent": -1.9127813091233927,
+  "double_r2": 0.9956536905681708,
+  "exponent_gap": -1.850488877693112,
+  "predicted_single": -4.0,
+  "predicted_double": -2.0,
+  "verdict": "verified"
+ },
+ "double_exponent_iid": -1.637691471745241,
+ "double_exponent_markov": -1.671719951058418,
+ "single_exponent_markov": -3.763270186816505,
+ "discounted_sweep": [
+  {
+   "gamma": 0.5,
+   "eta_disc": 0.04950687661225219,
+   "d0": 1.2918624930859437,
+   "T_to_eps": 34192,
+   "final": 0.00028514579759313525
+  },
+  {
+   "gamma": 0.7,
+   "eta_disc": 0.02970412596735132,
+   "d0": 1.1924414768341296,
+   "T_to_eps": 54612,
+   "final": 0.00019998385495477127
+  },
+  {
+   "gamma": 0.8,
+   "eta_disc": 0.019802750644900873,
+   "d0": 1.1461980394339775,
+   "T_to_eps": 79683,
+   "final": 0.0001580536331297198
+  },
+  {
+   "gamma": 0.9,
+   "eta_disc": 0.009901375322450437,
+   "d0": 1.1021356476667579,
+   "T_to_eps": 155498,
+   "final": 0.0009089304237725937
+  }
+ ],
+ "discounted_exponent": -0.9414914952289418,
+ "discounted_r2": 0.9998263578152775,
+ "discounted_note": "proxy discounted sweep gave exponent -0.94 (<=2); used as a diagnostic only, not as a gate",
+ "verdict": "verified"
+}

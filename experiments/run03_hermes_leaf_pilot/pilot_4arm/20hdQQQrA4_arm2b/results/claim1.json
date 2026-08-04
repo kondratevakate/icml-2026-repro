@@ -1,0 +1,161 @@
+{
+  "claim": 1,
+  "source": "Theorem 3.5 + proof in Appendix C (K = eps/(3+3 sqrt(n_out)))",
+  "command": "./.venv/bin/python verify_claim1.py",
+  "symbolic_constant_closes": true,
+  "K_used": 0.001,
+  "p_norm": 2,
+  "seeds_per_config": 200,
+  "infeasible_instances": 0,
+  "per_config": [
+    {
+      "n_out": 1,
+      "m": 2,
+      "bound_3_plus_3sqrt_n": 6.0,
+      "n_instances": 200,
+      "n_projection_branch": 110,
+      "max_ratio": 0.9971001586566164,
+      "mean_ratio": 0.23927854604511223,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 1,
+      "m": 4,
+      "bound_3_plus_3sqrt_n": 6.0,
+      "n_instances": 200,
+      "n_projection_branch": 151,
+      "max_ratio": 0.9923570959997907,
+      "mean_ratio": 0.15258715312776444,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 2,
+      "m": 3,
+      "bound_3_plus_3sqrt_n": 7.242640687119286,
+      "n_instances": 200,
+      "n_projection_branch": 138,
+      "max_ratio": 1.6424769212615287,
+      "mean_ratio": 0.3227956662243729,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 2,
+      "m": 5,
+      "bound_3_plus_3sqrt_n": 7.242640687119286,
+      "n_instances": 200,
+      "n_projection_branch": 153,
+      "max_ratio": 1.446907792078362,
+      "mean_ratio": 0.29217173473311675,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 3,
+      "m": 4,
+      "bound_3_plus_3sqrt_n": 8.196152422706632,
+      "n_instances": 200,
+      "n_projection_branch": 156,
+      "max_ratio": 1.6027273263822814,
+      "mean_ratio": 0.43683638754496207,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 3,
+      "m": 7,
+      "bound_3_plus_3sqrt_n": 8.196152422706632,
+      "n_instances": 200,
+      "n_projection_branch": 175,
+      "max_ratio": 1.2320821394200527,
+      "mean_ratio": 0.31354288644672657,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 4,
+      "m": 6,
+      "bound_3_plus_3sqrt_n": 9.0,
+      "n_instances": 200,
+      "n_projection_branch": 169,
+      "max_ratio": 1.68252632685596,
+      "mean_ratio": 0.3937588200386017,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    },
+    {
+      "n_out": 5,
+      "m": 8,
+      "bound_3_plus_3sqrt_n": 9.70820393249937,
+      "n_instances": 200,
+      "n_projection_branch": 178,
+      "max_ratio": 1.686931229412946,
+      "mean_ratio": 0.3756024449831867,
+      "holds": true,
+      "holds_under_tight_constant_1_plus_sqrt_n": true
+    }
+  ],
+  "mutation_worst_candidate": [
+    {
+      "n_out": 1,
+      "m": 2,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 18.96320931916251,
+      "holds": false
+    },
+    {
+      "n_out": 1,
+      "m": 4,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 7.846957574033642,
+      "holds": false
+    },
+    {
+      "n_out": 2,
+      "m": 3,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 112.1564423072167,
+      "holds": false
+    },
+    {
+      "n_out": 2,
+      "m": 5,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 126.41046987139862,
+      "holds": false
+    },
+    {
+      "n_out": 3,
+      "m": 4,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 71.4357431773435,
+      "holds": false
+    },
+    {
+      "n_out": 3,
+      "m": 7,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 275.42964969616213,
+      "holds": false
+    },
+    {
+      "n_out": 4,
+      "m": 6,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 202.0805111475756,
+      "holds": false
+    },
+    {
+      "n_out": 5,
+      "m": 8,
+      "mutation": "argmax instead of argmin in Eq 12",
+      "max_ratio": 677.5939335688797,
+      "holds": false
+    }
+  ],
+  "n_configs_bound_holds": 8,
+  "n_configs_total": 8,
+  "max_ratio_overall": 1.686931229412946
+}

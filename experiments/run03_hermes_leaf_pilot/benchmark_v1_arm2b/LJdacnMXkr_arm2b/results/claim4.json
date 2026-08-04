@@ -1,0 +1,192 @@
+{
+ "claim": 4,
+ "seed": 20260803,
+ "source": "Theorem 4.1",
+ "cases": [
+  {
+   "name": "gaussian_2d",
+   "n": 150,
+   "dim": 2,
+   "eps": 0.8,
+   "sinkhorn_iters": 41,
+   "sinkhorn": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 3.2199674402497936e-17,
+    "mass_conserving": true,
+    "mass_err": 9.250378241176804e-13,
+    "entrywise_positive": true,
+    "eig_min": -7.351293165668821e-18,
+    "eig_max": 1.0000000000000018,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   },
+   "row_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.38069698756907844,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": -4.41665660903787e-19,
+    "eig_max": 0.9999999999999984,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 3
+   },
+   "sym_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.17874884853863895,
+    "mass_conserving": false,
+    "mass_err": 0.4443869978533217,
+    "entrywise_positive": true,
+    "eig_min": -5.238353398746027e-18,
+    "eig_max": 1.0000000000000004,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 2
+   },
+   "row_normalized_wrt_own_degree": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 2.220446049250313e-16,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": -4.41665660903787e-19,
+    "eig_max": 0.9999999999999984,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   }
+  },
+  {
+   "name": "gaussian_3d",
+   "n": 150,
+   "dim": 3,
+   "eps": 1.0,
+   "sinkhorn_iters": 41,
+   "sinkhorn": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 4.0044232283679224e-17,
+    "mass_conserving": true,
+    "mass_err": 8.710809851208978e-13,
+    "entrywise_positive": true,
+    "eig_min": 1.354944952076835e-09,
+    "eig_max": 1.0000000000000009,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   },
+   "row_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.5384918601977029,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": 2.5204105366259178e-09,
+    "eig_max": 1.0000000000000018,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 3
+   },
+   "sym_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.25171611343309885,
+    "mass_conserving": false,
+    "mass_err": 0.4563508957115592,
+    "entrywise_positive": true,
+    "eig_min": 2.520410535597786e-09,
+    "eig_max": 1.0000000000000013,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 2
+   },
+   "row_normalized_wrt_own_degree": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 2.220446049250313e-16,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": 2.5204105366259178e-09,
+    "eig_max": 1.0000000000000018,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   }
+  },
+  {
+   "name": "exponential_2d",
+   "n": 150,
+   "dim": 2,
+   "eps": 0.8,
+   "sinkhorn_iters": 41,
+   "sinkhorn": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 3.788393341812626e-17,
+    "mass_conserving": true,
+    "mass_err": 8.72413252750448e-13,
+    "entrywise_positive": true,
+    "eig_min": 0.00045424898811004174,
+    "eig_max": 0.9999999999999978,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   },
+   "row_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.24174543077788546,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": 0.0005416049044993446,
+    "eig_max": 1.0000000000000013,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 3
+   },
+   "sym_normalized": {
+    "self_adjoint_m": false,
+    "sym_rel_err": 0.16798983317743446,
+    "mass_conserving": false,
+    "mass_err": 0.42417938370898034,
+    "entrywise_positive": true,
+    "eig_min": 0.0005416049044993706,
+    "eig_max": 1.0000000000000013,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 2
+   },
+   "row_normalized_wrt_own_degree": {
+    "self_adjoint_m": true,
+    "sym_rel_err": 2.220446049250313e-16,
+    "mass_conserving": true,
+    "mass_err": 4.440892098500626e-16,
+    "entrywise_positive": true,
+    "eig_min": 0.0005416049044993446,
+    "eig_max": 1.0000000000000013,
+    "max_abs_imag": 0.0,
+    "spectral_damping": true,
+    "n_satisfied": 4
+   }
+  }
+ ],
+ "mutation_indefinite_kernel": {
+  "self_adjoint_m": true,
+  "sym_rel_err": 1.6450954859784862e-16,
+  "mass_conserving": true,
+  "mass_err": 9.831024883055761e-13,
+  "entrywise_positive": true,
+  "eig_min": -0.11018735165801075,
+  "eig_max": 1.0000000000000013,
+  "max_abs_imag": 0.0,
+  "spectral_damping": false,
+  "n_satisfied": 3,
+  "kernel_min_eig": -13.105973139429693
+ },
+ "sinkhorn_satisfies_all_four": true,
+ "row_normalization_fails": true,
+ "sym_normalization_fails": true,
+ "mutation_breaks_spectral_damping": true,
+ "row_normalization_satisfies_all_four_wrt_own_degree": true,
+ "exclusivity_caveat": "Sinkhorn attains all four properties for an ARBITRARY prescribed mass measure m. Row normalization D^-1 W fails them for a prescribed m, but is itself self-adjoint, mass-conserving, positive and spectrally damped with respect to its OWN degree measure - i.e. the paper's exclusivity sub-claim holds only when the mass measure is specified in advance, which is a genuine counter-example to the claim as literally stated. Symmetric normalization D^-1/2 W D^-1/2 fails mass conservation outright.",
+ "verdict": "inconclusive"
+}

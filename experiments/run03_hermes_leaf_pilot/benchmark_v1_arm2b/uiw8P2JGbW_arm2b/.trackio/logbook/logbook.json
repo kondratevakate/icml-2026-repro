@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-uiw8P2JGbW"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-5-1-verified",
+        "title": "Claim 1 \u2014 Theorem 5.1 \u2014 **verified**",
+        "file": "pages/claim-1-theorem-5-1-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-5-1-proof-section-5-verified",
+        "title": "Claim 2 \u2014 Theorem 5.1 proof / Section 5 \u2014 **verified**",
+        "file": "pages/claim-2-theorem-5-1-proof-section-5-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-5-2-corollary-5-3-verified",
+        "title": "Claim 3 \u2014 Theorem 5.2 / Corollary 5.3 \u2014 **verified**",
+        "file": "pages/claim-3-theorem-5-2-corollary-5-3-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-5-8-verified",
+        "title": "Claim 4 \u2014 Theorem 5.8 \u2014 **verified**",
+        "file": "pages/claim-4-theorem-5-8-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-5-10-verified",
+        "title": "Claim 5 \u2014 Theorem 5.10 \u2014 **verified**",
+        "file": "pages/claim-5-theorem-5-10-verified/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-theorem-5-11-table-1-inconclusive",
+        "title": "Claim 6 \u2014 Theorem 5.11 + Table 1 \u2014 **inconclusive**",
+        "file": "pages/claim-6-theorem-5-11-table-1-inconclusive/page.md",
+        "children": []
+      },
+      {
+        "slug": "threats-to-validity",
+        "title": "Threats to validity",
+        "file": "pages/threats-to-validity/page.md",
+        "children": []
+      },
+      {
+        "slug": "reproduce",
+        "title": "Reproduce",
+        "file": "pages/reproduce/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

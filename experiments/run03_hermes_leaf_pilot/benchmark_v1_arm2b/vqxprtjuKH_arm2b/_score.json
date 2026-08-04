@@ -1,0 +1,64 @@
+{
+  "orid": "vqxprtjuKH",
+  "title": "Allocating Variance to Maximize Expectation",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "rubric_points": 6,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.5,
+  "inconclusive_rate": 0.5,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 6,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 6,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "inconclusive",
+    "claim3": "verified",
+    "claim4": "inconclusive",
+    "claim5": "verified",
+    "claim6": "inconclusive"
+  },
+  "per_claim_mutation": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true,
+    "claim6": true
+  },
+  "per_claim_boundary": {
+    "claim1": true,
+    "claim2": true,
+    "claim3": true,
+    "claim4": true,
+    "claim5": true,
+    "claim6": true
+  },
+  "per_claim_note": {
+    "claim1": "Theorem 1.1, §1.2 — PTAS for independent VarAlloc (E max_i X",
+    "claim2": "Theorem 1.2, §1.2 — PTAS for correlated VarAlloc (same addit",
+    "claim3": "Theorem 1.3, §1.2 — GraphVarAlloc m>1, Ω(1/log n)·OPT | **ve",
+    "claim4": "Theorem 1.6, §1.3 — only Θ(1/p) variables get variance Ω(p) ",
+    "claim5": "Lemma 2.1, §2.1 — small-variance O(ε√ln(1/ε)) bound | **veri",
+    "claim6": "Figures 1–2, §1.3 — ER-graph MC illustrations | **inconclusi"
+  },
+  "warnings": [],
+  "_meta_crosscheck": {
+    "execution_success": null,
+    "claim_coverage_meta": null,
+    "per_claim_verdict_meta": null
+  },
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

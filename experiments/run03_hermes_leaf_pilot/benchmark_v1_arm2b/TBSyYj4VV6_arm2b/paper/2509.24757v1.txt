@@ -1,0 +1,1634 @@
+                                                           Accelerating Regression Tasks with Quantum Algorithms
+
+                                                                                        Chenghua Liu1,2 and Zhengfeng Ji3
+
+                                                                         1
+                                                                             Institute of Software, Chinese Academy of Sciences, Beijing, China
+                                                                               2
+                                                                                   University of Chinese Academy of Sciences, Beijing, China
+arXiv:2509.24757v1 [quant-ph] 29 Sep 2025
+
+
+
+
+                                                              3
+                                                                  Department of Computer Science and Technology, Tsinghua University, Beijing, China
+
+
+                                                                                                  September 30, 2025
+
+
+                                                                                                          Abstract
+                                                          Regression is a cornerstone of statistics and machine learning, with applications spanning
+                                                      science, engineering, and economics. While quantum algorithms for regression have attracted
+                                                      considerable attention, most existing work has focused on linear regression, leaving many more
+                                                      complex yet practically important variants unexplored. In this work, we present a unified
+                                                      quantum framework for accelerating a broad class of regression tasks—including linear and
+                                                      multiple regression, Lasso, Ridge, Huber, ℓ p -, and δp -type regressions—achieving up to a
+                                                      quadratic improvement in the number of samples m over the best classical algorithms. This
+                                                      speedup is achieved by extending the recent classical breakthrough of Jambulapati et al. [2024]
+                                                      using several quantum techniques, including quantum leverage score approximation [Apers
+                                                      and Gribling, 2024] and the preparation of many copies of a quantum state [Hamoudi, 2022].
+                                                      For problems of dimension n, sparsity r ă n, and error parameter ε, our algorithm solves the
+                                                                   r ?mn{ε ` polypn, 1{εqq1 quantum time, demonstrating both the applicability and
+                                                      problem in Opr
+                                                      the efficiency of quantum computing in accelerating regression tasks.
+
+
+                                            1        Introduction
+                                            Regression lies at the heart of statistical modeling and data analysis, providing a fundamental
+                                            framework for understanding relationships between variables and making predictions. Among its
+                                            various forms, linear regression stands out as one of the most widely used and longest-standing
+                                            tools, with a history dating back over three centuries and applications ranging from the natural
+                                            sciences to economics and engineering [Legendre, 1806, Fisher, 1992, Neter et al., 1996]. Over the
+                                            decades, the basic linear regression model has been extended in multiple directions, including
+                                            ridge and lasso regression, ℓ p regression, Huber regression, each addressing different statistical
+                                            and computational challenges. These models have become indispensable in modern data analysis,
+                                            driving extensive theoretical research on fast regression methods. Among them, ℓ p regression has
+                                            witnessed a series of recent breakthroughs [Adil et al., Lee et al., 2019, Musco et al., 2022, Adil et al.,
+                                            2024, Jambulapati et al., 2024], alongside many other progress in other regression tasks.
+                                                With the rapid progress of quantum hardware and algorithms, there has been growing interest
+                                            in leveraging quantum computing to accelerate optimization and machine learning tasks. Among
+                                                1
+                                                    We use Op
+                                                           r f q to represent O p f ¨ poly logpm, n, 1{εqq throughout this paper to suppress polylogarithmic factors.
+
+
+                                                                                                              1
+them, regression stands out as a core problem in statistics and machine learning, and has attracted
+significant attention from the quantum algorithms community. A rich body of work has explored
+quantum approaches to linear regression under various models and assumptions, ranging from
+HHL-based solvers and conditional gradient method to quantum leverage score techniques [Wiebe
+et al., 2012, Schuld et al., 2016, Wang, 2017, Kerenidis and Prakash, 2017, Chakraborty et al., 2019,
+Shao and Xiang, 2020, Chen and de Wolf, 2023, Shao, 2023, Chen et al., 2023, Chakraborty et al.,
+2023, Song et al., 2023]. However, for broader and both theoretically and practically important
+regression tasks such as ℓ p regression and Huber regression, it remains unclear whether similar
+quantum speedups can be achieved. Given the diversity of regression tasks and their substantial
+significance in both machine learning and theoretical computer science, a natural question arises:
+To what extent can the advantages of quantum computing be extended beyond linear regression to encompass
+                                       this broader family of models?
+      In this work, we study this question by adopting the generalized linear model (GLM) sparsifi-
+cation framework and developing a quantum algorithmic approach tailored to it. Sparsification
+refers to the process of replacing a large dataset with a much smaller weighted subset (a sparsifier)
+that approximately preserves the objective value for all candidate solutions, thereby allowing the
+original optimization problem to be solved more efficiently. Once such a sparsifier is constructed,
+computations performed on it yield an approximate solution to the original problem. Consequently,
+our framework provides quantum speedups for approximately solving a broad class of empirical
+risk minimization (ERM) problems, covering linear and multiple regression, Lasso, ridge, Huber,
+ℓ p -, and δp -type regressions. This demonstrates both the unifying nature and the broad applicability
+of our approach in accelerating fundamental regression tasks.
+      To clearly specify the scope of our framework, we formalize the problem of optimizing a
+generalized linear model as
+                                                               m
+                                                               ÿ    `             ˘
+                                  minn Fpxq     for    Fpxq :“   f i xai , xy ´ bi ,                                  (1)
+                                  xPR                            i“1
+
+where the total loss F : Rn Ñ R, is defined by data vectors a1 , . . . , am P Rn , a response vector b P Rm ,
+and loss functions f 1 , . . . , f m : R Ñ R` .This general formulation serves as a unifying abstraction
+for many regression tasks, from linear regression to more sophisticated robust objectives.
+    When the number of samples m is much larger than the dimension n, a natural strategy for ac-
+celerating computation is to apply sparsification. This technique have been widely used in classical
+algorithm design, with graph sparsification being one of the most prominent examples [Spielman
+and Srivastava, 2011, Batson et al., 2012]. In a recent breakthrough, Jambulapati et al. [2024]
+systematically studied the GLM sparsification problem and presented a corresponding classical
+algorithm. Motivated by this advance, we investigate the potential for quantum speedups in this
+setting, leading to our quantum algorithmic GLM sparsification framework. To precisely describe
+GLM sparsification, we use the following definition:
+Definition
+řm             1 (Generalized Linear Model (GLM) Sparsification). Let the total loss function Fpxq :“
+                                                                 n               m
+      f
+  i“1 i pxa i xy ´ bi q be defined by vectors a1 , . . . , am P R ,a vector b P R , and loss functions f 1 , . . . , f m :
+             ,
+R Ñ R` . We say that F admits an s-sparse ε-approximation over the range rsmin , smax s if there exist
+                                m
+non-negative weights w P R`       , with at most s nonzero entries, such that
+                        ˇ              ˇ
+                                  r ˇˇ ď ε ¨ Fpxq, @x P Rn with s
+                        ˇ Fpxq ´ Fpxq                                    min ď Fpxq ď smax ,
+                        ˇ
+
+                řm
+where Fpxq
+      r    :“ i“1     wi f i pxai , xy ´ bi q is referred to as a s-sparse ε-approximate sparsifier of F over the
+range rsmin , smax s.
+
+                                                            2
+1.1    Our results
+We consider a generalized linear model as in eq. (1), where the loss functions f 1 , . . . , f m : R Ñ R`
+are applied to xai , xy ´ bi for ai P Rn . Throughout the analysis, we assume for convenience that the
+bias term is absent, i.e., b “ 0. This assumption entails no loss of generality: any nonzero bias bi
+can be incorporated into the vector by appending an additional coordinate, rewriting xai , xy ´ bi as
+xpai , bi q, px, ´1qy, thereby embedding the problem in Rn`1 with zero bias.
+     To enable effective GLM sparsification, we require that each loss function f i satisfies cer-
+tain regularity conditions. Specifically, we focus on losses that are L-auto-Lipschitz and lower
+θ-homogeneous—two mild and widely satisfied properties that imply several other desirable
+characteristics for sparsification. These conditions, along with their consequences, are discussed
+in detail by Jambulapati et al. [2024]. Following their results, we formalize this class of losses as
+pL, θ, cq-proper functions, defined as follows:
+
+Definition 2 (Proper Loss Functions). A family of loss functions       F “ t f 1 , . . . , f m u is called pL, θ, cq-
+proper if for each f i : R Ñ R` , the transformed function hi “ f i satisfies:
+                                                               a
+
+   1. (L-auto-Lipschitz) hi pxq ´ hi px1 q ď Lhi px ´ x1 q for all x, x1 P R.
+   2. (Lower θ-homogeneous with c) hi pλxq ě cλθ hi pxq for all x P R and λ ě 1.
+
+    We assume c ą 0, L ą 0, θ P p0, 4q; in particular, θ “ 1 already suffices for all applications in this
+paper.
+    In this paper, we introduce a quantum algorithmic framework for GLM sparsification, capable
+of efficiently constructing constructing ε-approximate sparsifiers for a broad class of pL, θ, cq-proper
+loss functions. Given query access to the data matrix and the loss functions, our method achieves
+quadratic speedups in the number of data points m over the fastest classical algorithms, while
+preserving the same approximation guarantees. Our main result is summarized in the following
+theorem.
+                                                                                        řm
+Theorem 3 (Informal, see theorem 10 for the formal statement). Let Fpxq :“ i“1                f i pxai , xyq be a total
+loss function defined by vectors a1 , . . . , am P Rn (with sparsity r ď n) and a pL, θ, cq-proper loss functions
+family F “ t f 1 , . . . , f m u. For any ε “ Op1{rq, smax ą smin ě 0, there exists a quantum algorithm that,
+with high probability2 , constructs an Oplogps
+                                            r                       2
+                                                   max {smin q ¨ n{ε q-sparse˘ε-approximate sparsifier of F over the
+                                    ` ?
+range rsmin , smax s, in time O   r pr mn{ε ` polypnqq ¨ logps {s q .
+                                                                   max min
+
+     We illustrate applicability with common loss functions. It is straightforward to verify that
+ℓ p pxq “ |x| p for p P p0, 2s is pL, θ, cq-proper with L “ 1, θ “ p{2, and c “ 1. For the more refined
+function γ p defined for p P p0, 2s by
+                                               #
+                                                   p 2
+                                                   2x                  for | x | ď 1,
+                                  γ p pxq :“          p                                                            (2)
+                                                   | x | ´ p1 ´ p{2q   otherwise,
+
+one similarly checks pL, θ, cq-properness with the same parameters, where the case p “ 1 re-
+covers the Huber loss. Regarding the dependence on the scale ratio smax {smin , when all f i are
+p-homogeneous the dependence disappears, and for γ p the scale ratio reduces to polypmq.
+   As an application of our framework, we achieve quantum speedups for a range of important
+regression problems, including linear regression, multiple regression, Lasso, Ridge, Huber, ℓ p
+   2
+    Throughout this paper, we say something holds “with high probability” if it holds with probability at least 1 ´
+O p1{nq.
+
+
+                                                            3
+Table 1: Comparison of runtimes for various regression problems in classical algorithms, previous
+quantum algorithms, and our work. Due to space constraints, we present only simplified expres-
+sions of the time complexities for each task; detailed discussions are provided in section 4.2. We list
+only the state-of-the-art results that allow direct comparison and omit data-dependent algorithms.
+
+Regression type                              Classical                              Quantum (previous)             Quantum (this work)
+                                            Opmr
+                                            r     ` n3 q                         r ?mn1.5 {ε ` polypn, 1{εqq
+                                                                                 Op                                   r ?mn{ε ` n3 q
+                                                                                                                      Opr
+Linear regression
+                      [Nelson and Nguyên, 2013, Clarkson and Woodruff, 2017]        [Song et al., 2023]               (corollary 23)
+                                     Opmr
+                                     r      ` N polypn, 1{εqq                   r ?mn1.5 {ε ` N polypn, 1{εqq
+                                                                                Op                              r ?mn{ε ` N polypn, 1{εqq
+                                                                                                                Opr
+Multiple regression
+                      [Nelson and Nguyên, 2013, Clarkson and Woodruff, 2017]        [Song et al., 2023]               (corollary 24)
+                                                                                   ? 1.5                                  ?
+                                       Opmr
+                                       r    ` polypn, 1{εqq                      Op mn {ε ` polypn, 1{εqq
+                                                                                 r                                    Opr mn{ε ` n3 q
+                                                                                                                      r
+Ridge regression
+                                        [Avron et al., 2017]                         [Song et al., 2023]               (corollary 25)
+                                           Opmn
+                                           r     2
+                                                   ` n3 q                                                        r ?mn{ε ` polypn, 1{εqq
+                                                                                                                 Opr
+Lasso regression                                                                             —
+                                        [Efron et al., 2004]                                                           (corollary 26)
+                                       Opmr
+                                        r   ` polypn, 1{εqq                                                      r ?mn{ε ` polypn, 1{εqq
+                                                                                                                 Opr
+Huber regression                                                                             —
+                                     [Jambulapati et al., 2024]                                                  (corollary 12, with p “ 1)
+                                                                                                                 r r?mn{ε ` polypn, 1{εq
+                                                                                                                   `                      ˘
+                                       Opmr
+                                        r   ` polypn, 1{εqq                                                     O
+ℓ p regression                                                                               —
+                                     [Jambulapati et al., 2024]                                                        (corollary 11)
+                                                                                                                     ?
+                                       Opmr
+                                        r   ` polypn, 1{εqq                                                      Opr mn{ε ` polypn, 1{εqq
+                                                                                                                 r
+γ p regression                                                                               —
+                                     [Jambulapati et al., 2024]                                                        (corollary 12)
+
+
+
+
+                                                                      2
+regression, and γ p regression. Since the sparsifier has size Opn{ε
+                                                                 r      q, it must be smaller than m
+                    ? dense), which requires ε “ Ωp n{mq. In this regime, the leading term in our
+                                                       a
+(otherwise it would be
+quantum runtime, r mn{ε, is strictly smaller than the classical mr; when ε is constant, this yields
+quadratic speedups in the parameter m, which often dominates in large-scale regression tasks
+where m " n. Moreover, for linear, multiple, and Ridge regression, our algorithm also subsumes
+the results of Song et al. [2023], the previous known quantum algorithm for the problem. We
+emphasize that our focus is on the computational task of approximately minimizing the loss function
+F, rather than on the statistical learning problem of estimating an unknown model from random
+samples. The latter setting was studied by Chen and de Wolf [2023], who investigated quantum
+algorithms for Lasso and ridge regression; in our notation, their results correspond to the case
+m “ Oplog n{ε2 q. For clarity, table 1 summarizes the resulting runtimes across classical algorithms,
+prior quantum work, and our algorithms.
+
+1.2    Techniques
+Generalized linear model sparsification. To systematically investigate quantum speedups for a
+broad class of regression problems, we adopt the generalized linear model (GLM) sparsification
+framework and further extend its applicability by allowing linear combinations of loss functions. At
+a high level, GLM sparsification replaces a large dataset with a much smaller weighted subset (the
+sparsifier) such that the total loss is preserved within a p1 ˘ εq factor for all choices of the variable
+x. This enables the original optimization problem to be approximated efficiently by solving it on
+the sparsifier. Recently established in the breakthrough works of Jambulapati et al. [2023, 2024],
+this framework unifies and generalizes sparsification techniques for a wide range of regression
+objectives. Its core idea is to compute, for each loss function f i , an importance score capturing its
+contribution to the objective, and then perform importance sampling to select a small representative
+set, reweighting them to form the sparsifier. In the quantum setting, our approach comprises two
+parts: (i) computing importance scores efficiently, and (ii) performing importance sampling based
+
+
+                                                                   4
+on these scores.
+
+Multiscale leverage score overestimates. Defining suitable importance scores in the GLM setting
+is challenging due to its high level of abstraction: rather than specifying a concrete loss function,
+only general conditions on f i are given. Jambulapati et al. [2024] addressed this by analyzing the
+iterated covering argument for ℓ p loss and generalizing ℓ p Lewis weights [Lewis, 1979, Bourgain
+et al., Cohen and Peng, 2015], yielding an approximate weight scheme consisting of multiple sets of
+weights. These can be interpreted as importance scores at different scales, connected by specific
+contraction properties. Building on this, we summarized the key structural ideas into the notion
+of multiscale leverage score overestimates (MLSO), which serves as the GLM analogue of importance
+scores.
+    To achieve quantum speedups, we use the results of Apers and Gribling [2024] on quantum
+leverage score approximation as a key foundation, enabling a quantum implementation of the
+contractive algorithm from Jambulapati et al. [2024]. This yields a quantum data structure, built
+with sublinear-time preprocessing, that supports efficient queries to MLSO values. Conceptually,
+our algorithm iteratively refines an initial coarse weight estimate over Op1q
+                                                                         r    rounds, followed by a
+final quantum refinement step to produce MLSO values. To support this process, we develop a
+quantum procedure for constructing the initial weight vector by slightly modifying each f i and
+generating an appropriate starting weight, ensuring that the entire pipeline remains fully quantum.
+
+Quantum importance sampling. Once quantum query access to the importance scores is avail-
+able, the next step is to perform importance sampling efficiently. The main challenge is that we do
+not have direct access to the normalized sampling distribution, but only to an oracle returning un-
+normalized importance scores. Our approach, inspired by the quantum hypergraph sparsification
+algorithm of Liu et al., uses the technique of preparing many copies of a quantum state [Hamoudi,
+2022] whose amplitudes are proportional to the importance scores. We combine this with a quan-
+tum sum estimation procedure [Li et al., 2019] to approximate the normalization constant, enabling
+correct reweighting of the sampled elements. The correctness of this method follows from a careful
+adaptation of the guarantees established in Jambulapati et al. [2024].
+
+
+2    Preliminaries
+Notations. For a positive integer n P Z` , we use rns to denote the  ř set 1, 2, . . . , n and rns0 to denote
+                                                 n
+the set 0, 1, . . . , n ´ 1. For vectors u, v P R , we write xu, vy “ iPrns ui vi for the standard inner
+product. For a vector w P Rn , we use diagpwq to denote the diagonal n ˆ n matrix whose i-th
+diagonal entry equals the i-th element of w.
+
+Quantum computational model. We assume the usual quantum computational model, which is
+a classical system that can (i) run quantum subroutines on Oplog mq qubits, (ii) can make quantum
+queries to the input, and (iii) has access to a quantum-read/classical write RAM (QRAM) of polypmq
+bits. The quantum query complexity measures the number of quantum queries that an algorithm
+makes. The quantum time complexity measures the number of elementary classical and quantum
+gates, quantum queries, and single-bit QRAM operations that algorithm uses. For readers less
+familiar with the basics of quantum computing, we refer to section A.
+    Regarding queries to the input, we consider an input matrix A P Rmˆn with row sparsity
+r ď n, where the matrix elements can be queried via the oracle O elem  A   : | iy| jy| 0y ÞÑ | iy| jy| aij y, @i P
+
+
+                                                        5
+rms , j P rns. In addition, the indices of the nonzero entries of each row can be queried via the oracle
+O idx
+  A : | iy| ky ÞÑ | iy| tik y, @i P rms , k P rri s, where tik is the column index of the k-th nonzero entry in
+the i-th row of A, and ri ď r is the number of nonzero entries in that row. For simplicity, we use the
+notation O A to refer to either of these two oracles. We will also use the following quantum queries:
+for a vector w P Rn , its elements can be queried via the oracle Ow : | iy| 0y ÞÑ | iy| wi y, i P rns; and for a
+family of functions F “ t f 1 , . . . , f m u, we assume access to the oracle OF : | iy| xy| 0y ÞÑ | iy| xy| f i pxqy.
+
+Quantum leverage score approximation. Let A P Rmˆn be a matrix with rows a1 , . . . , am . The
+leverage score of the i-th row is defined as
+
+                                      σi pAq :“ aJ   J  `
+                                                 i pA Aq ai ,       @i P rms ,                                    (3)
+
+where pAJ Aq` denotes the Moore-Penrose pseudoinverse of AJ A. Intuitively, σi pAq measures the
+“statistical importance” of row i with respect to the whole set of rows. Leverage scores are central to
+row-sampling methods that construct a smaller matrix A    r preserving the key spectral properties of
+A. Sampling rows proportionally to σi pAq and rescaling yields A    rJ A
+                                                                       r « AJ A with high probability,
+enabling accurate and efficient approximation of linear regression and other optimization tasks; we
+refer the reader to the survey of Woodruff [2014] for a comprehensive overview.
+    In a recent important work, Apers and Gribling [2024] introduced a simple recursive halving
+algorithm for quantum spectral approximation. As a corollary, they obtained a quantum algorithm
+for leverage score approximation, which serves as a cornerstone of our work—we invoke this result
+multiple times throughout our algorithms. For completeness, we restate their result below.
+
+Theorem 4 (Quantum Leverage Score Approximation). [Apers and Gribling, 2024, Theorem 3.2]
+Assume query access to a matrix A “ Rmˆn with row sparsity r. For any 0 ă ε ď 1, there exists a
+quantum algorithm that, with high probability, provides quantum query access to estimates r
+                                                                                          σi for any i P rms
+                                                                      ?
+satisfying p1 ´ εqσi pAq ď r
+                           σi ď p1 ` εqσi pAq. The algorithm makes Op mn{εq row queries to A and runs
+                                                                   r
+   r ?mn{ε ` nω ` mintnω , nr2 u{ε2 ` n2 {ε4 q time. Furthermore, the cost to estimate per r
+in Opr                                                                                         σi is one row
+                       2
+query to A and Opr{ε q time.
+                 r
+
+    We note that a row query to the i-th row of A returns the entire row, and the query can be made
+in superposition. Equivalently, one row query corresponds to Oprq queries to O A , since each row
+contains at most r nonzero entries.
+
+
+3    Quantum Algorithm for Multiscale Leverage Score Overestimates
+In this section, we present our core quantum algorithm, Quantum Multiscale Leverage Score Overesti-
+mates (QMLSO), the key to enabling quantum acceleration in our GLM sparsification framework.
+We begin by defining MLSO, distilling the structural ideas from the approximate weight scheme of
+Jambulapati et al. [2024], which serves as the GLM analogue of importance scores. We then describe
+our quantum procedure for computing MLSO values from an initial coarse weight estimate, using
+quantum leverage score approximation to achieve sublinear-time refinement. Finally, we develop
+a quantum algorithm for constructing suitable initial weights, ensuring that the entire MLSO
+computation can be executed fully within the quantum setting.
+
+
+
+
+                                                          6
+3.1   Multiscale leverage score overestimates (MLSO)
+We begin by recalling the definition of approximate weights introduced by Jambulapati et al. [2024],
+which generalizes the notion of ℓ p Lewis weights to capture the “statistical contribution” of each
+row at a given scale, where the scale refers to the magnitude range of residuals being considered.
+
+Definition 5 (Approximate Weights). Fix a matrix A P Rmˆn (where the i-th row is ai for each i P rms)
+                                                                               m
+and a family of loss functions F “ t f 1 , . . . , f m u. We say a vector w P R` is an α-approximate weight (with
+respect to A and F ) at scale s if, for all i P rms,
+                                                                                   m
+                           s   f p∥ M´1{2 ai ∥2 q                                  ÿ
+                             ď i                  ď αs,       where         M :“         wi a i aJ
+                                                                                                 i .
+                           α   wi ∥ M´1{2 ai ∥22                                   i“1
+
+    Since approximate weights are defined only at a single scale, they are not sufficient for handling
+general loss functions where homogeneity fails. To address this, Jambulapati et al. [2024] introduced
+weight schemes—collections of approximate weights defined consistently across a range of scales.
+These schemes guarantee that the contribution of each row is well controlled not only at a single
+scale but simultaneously across multiple scales, thereby capturing the multiscale structure inherent
+in A and F .
+
+Definition 6 (Weight Schemes). Fix a matrix A P Rmˆn (the i-th row is ai for each i P rms) and a
+family of loss functions F “ t f 1 , . . . , f m u. Let J Ď Z be a contiguous interval. We say that a family
+                      m
+W A,F ,J “ twpjq P R`   : j P J u is an α-approximate weight scheme if:
+   1. Each wpjq is an α-approximate weight (with respect to A and f ) at scale 2 j ;
+                                                pj`1q         pjq
+   2. For every pair j, j ` 1 P J , we have wi          ď αwi , @i P rms.
+We omit the subscript pA, F , J q when it is clear from context.
+
+   When working with weight schemes, we ultimately need a compact summary that upper
+bounds the statistical contribution of each row across all relevant scales. This motivates the notion
+of multiscale leverage score overestimates. By aggregating leverage scores over the entire weight
+scheme, such overestimates provide a single vector that controls row contributions across all scales.
+This will later serve as the key object enabling efficient sampling and sparsification in our quantum
+algorithm.
+
+Definition 7 (Multiscale Leverage Score Overestimates). Let A P Rmˆn be a matrix with rows
+a1 , . . . , am , let F “ t f 1 , . . . , f m u be a family of loss functions, and let J Ď Z be a contiguous interval.
+                                  m
+Suppose W “ twpjq P R`                : j P J u is an α-approximate weight scheme with respect to A, F , J . We say
+                        m
+that a vector z P R`      is a multiscale (leverage score) τ-overestimates with respect to A and W if
+
+                              ∥z∥1 ď τ,       and    zi ě σims pA, W q,        @i P rms ,
+
+where the multiscale leverage score of the i-th row is defined as
+                                                                1{2
+                                  σims pA, W q :“ max σi pWj          Aq,    @i P rms ,
+                                                    jPJ
+
+
+and Wj :“ diagpwpjq q for each j P J .
+
+
+
+
+                                                          7
+3.2   Quantum algorithm for MLSO
+We now present our quantum algorithm for computing multiscale leverage score overestimates
+(MLSO), which serves as a key subroutine in our main quantum algorithm for GLM sparsifica-
+tion. Our approach builds upon the classical contractive algorithm of Cohen and Peng [2015],
+Jambulapati et al. [2024], but is carefully adapted to the quantum setting.
+    The input consists of quantum oracles for the matrix A and the function family F , along with
+query access to an initial approximate weight vector w˝ and relevant parameters. The output
+is a data structure that provides efficient quantum query access to multiscale leverage score
+overestimates (see proposition 15 for a formal description).
+    The algorithm proceeds iteratively: over Op1q
+                                               r    rounds, it refines the largest-scale weight until it
+becomes well-conditioned. Once this condition is achieved, the algorithm recursively computes
+the weights at smaller scales and combines them to obtain the final MLSO. Within each iteration,
+the subroutine ModLevApprox supplies quantum query access to the modified leverage scores
+(proposition 13), while WeightCompute produces quantum query access to the updated weights for
+the subsequent round (proposition 14). The complete procedure is summarized in algorithm 1,
+and its formal guarantees are established in theorem 8. Owing to space limitations, the proof of
+theorem 8 is deferred to section B.
+
+Algorithm 1 QMLSOpOF , O A , Ow˝ , jmin , jmax , β, L, θ, cq
+Require: A matrix oracle O A ; a proper loss functions oracle OF with parameters L, θ, c; an initial
+    weight oracle Ow˝ with associated parameters β and jmax ; and an integer jmin ă jmax .
+Ensure: An instance Z of QOverestimate which stores the vector z being a multiscale Opn ¨
+    | jmax ´ jmin |q-overestimate with respect to matrix A and α-approximate scheme W “ twpjq P
+       m
+    R`   : j P J :“ Z X␣rjmin , jmax
+                                  ( su for some␣ α2L“1α( pL, θ, cq.
+ 1: ε Ð 0.1, δ Ð max 21 , θ´2      , C Ð max
+           Rˆ                 2              ˙ c , cV
+ 2: T Ð            log logp 1´ε 2 ¨ Cq ´ log log β { log δ
+                              p1`εq
+ 3: U p0q Ð Ow˝
+      witr
+ 4: for i “ 0 to T do
+          piq
+ 5:    Litr Ð ModLevApproxpO A , Uwpiq , εq
+                                            itr
+
+       Uwpi`1q Ð WeightComputepOF , Uwpiq , Litr , 2 jmax q
+                                                        piq
+ 6:
+             itr                                  itr
+ 7: end for
+ 8: U pjmax q Ð U pTq
+      w                witr
+ 9: for j “ jmax ´ 1, . . . to jmin do
+10:    Lpj`1q Ð ModLevApproxpO A , Uwpj`1q , εq
+11:   Uwpjq Ð WeightComputepOF , Uwpj`1q , Lpj`1q , 2 j q
+12: end for
+                        pjq
+13: Z Ð QOverestimateptL : j P J u, εq
+
+
+
+Theorem 8 (Quantum Multiscale Leverage Score Overestimates). There is a quantum algorithm
+QMLSOpOF , O A , Ow˝ , jmin , jmax , β, L, θ, cq that, given query access O A to a matrix A “ Rmˆn with
+row sparsity r ď n, query access OF to a pL, θ, cq-proper loss functions family F “ t f 1 , . . . , f m u, query
+                                         m
+access Ow˝ to a initial weight w˝ P R`      which is a β-approximate weight at scale 2 jmax (with
+                                                                                             ? respect to
+A and F ) for some integer jmax , and any integer jmin ă jmax , the algorithm makes Op mnq queries
+
+
+                                                              8
+            ?                        ?                                  r pr?mn ` nω ` nr2 q∆ ,
+                                                                          ´                  ¯
+to Ow˝ , Opr mn∆q queries to O A , Op mn∆q queries to OF , runs in time O
+where ∆ “ | jmax ´ jmin | ` maxtlog log β, 0u. Then, with high probability, it provides query access to
+a multiscale O pn ¨ | jmax ´ jmin |q-overestimates z with respect to A and α-approximate weight scheme
+                 m
+W “ twpjq P R`     : j P J :“ Z X rjmin , jmax su for some α “ αpL, θ, cq, where each query to z requires
+O pr |J |q time.
+r
+
+
+3.3   Initial Weight Construction
+When applying our QMLSO algorithm, it is crucial to start with a well-conditioned β-approximate
+weight, where β cannot be too large. In this subsection, we show how to construct such an
+initial weight by leveraging quantum leverage score approximation together with a binary search
+procedure, combined with a mild modification of the loss functions f i . Our initialization algorithm
+outputs a quantum data structure that, given query access to A and F , as well as the largest scale
+smax and a parameter δ, provides quantum query access to an initial weight vector w˝ (at scale
+smax ) together with the corresponding modified loss family F ˝ . This construction can be viewed as
+the quantum analogue of the initialization procedure introduced by Jambulapati et al. [2024]. We
+formalize this construction in the following theorem, and defer its proof to section C.
+
+Theorem 9 (Weight Initialization). Assume query access O A to a matrix A “ Rmˆn with row sparsity r
+and query access OF to a pL, θ, cq-proper loss functions family F “ t f 1 , . . . , f m u. There exists a quantum
+data structure WeightInitialize that supports the the following operations:
+   1. Initialization: WeightInitializepO A , OF , smax , δq, outputs an instance A, making Opr  r ?mnq queries
+                     ?                              ?
+      to O and Op
+           A
+                   r mnq queries to O , in Opr
+                                              F
+                                               r      mn ` nω ` nr2 q time.
+    2. Function query: A.QueryFunction, provides a query access OF ˝ to a pmaxt1, Lu, θ, cq-proper loss
+       functions family F ˝ “ t f 1˝ , . . . , f m˝ u which satisfies
+                 m
+                 ÿ                                     m
+                                                       ÿ
+                      f i pxai , xyq ď smax   ñ   0ď         f i˝ pxai , xyq ´ f i pxai , xyq ď CINIT δm2 smax ,   (4)
+                i“1                                    i“1
+
+      for some constant CINIT “ CINIT pL, θ, cq. Each query requires Oprq queries to O A and Op1q queries to
+      OF , and runs in Oprq
+                        r time.
+                                                                                        m
+    3. Weight query: A.QueryWeight, provides a query access Ow˝ to a weight w˝ P R`        which is a β-
+       approximate weight at scale smax with respect to A and F ˝ , where β “ OppL{cq2 m{δq. Each query
+       requires Oprq queries to O A and Op1q queries to OF , and runs in Oprq
+                                                                         r time.
+
+
+4     Quantum Algorithm for Generalized Linear Models Sparsification
+In this section, we present our Quantum Algorithm for GLM Sparsification, which builds on the
+MLSO procedure to achieve substantial quantum speedups. The first part outlines our quantum
+sparsification framework, which implements efficient importance sampling by combining the
+preparation of many copies of a quantum state [Hamoudi, 2022] with quantum sum estimation [Li
+et al., 2019], enabling sublinear-time sampling and reweighting. The second part demonstrates the
+versatility of this framework by embedding a broad class of optimization problems into it, showing
+that they can be solved with quantum speedups.
+
+
+
+
+                                                        9
+4.1    Quantum Algorithm for GLM Sparsification
+To describe our quantum sparsification framework, we rely on two fundamental primitives. The
+first is Multiple Quantum State Preparation, which efficiently produces many copies of a quantum
+state; measuring these copies yields samples where each index i is selected with probability
+proportional to wi , thereby enabling importance sampling with sublinear overhead (restated
+in theorem 20). The second is Quantum Sum Estimation, which offers a quadratic speedup
+over classical approaches and is crucial for efficient reweighting in our framework (restated in
+theorem 21).
+    With these tools in place, we now present our main result: the Quantum Algorithm for GLM
+Sparsification. Building on the QMLSO procedure and the primitives above, our algorithm effi-
+ciently sparsifies generalized linear models while achieving polynomial quantum speedups. The
+algorithm and its formal guarantee are stated below, with the proof deferred to section D.
+
+Algorithm 2 Quantum GLM Sparsification QGLMSparsifypOF , O A , L, θ, c, ε, smin , smax q
+Require: A matrix oracle O A ; a proper loss functions oracle OF with parameters L, θ, c; parameters
+    ε ą 0, smax ą smin ě 0.
+                                                        m                     řm
+Ensure: A non-negative weight vector w P R`                such that Fpxq
+                                                                     r    :“    i“1 wi f i pxai , xyq is an
+                             2
+    Oplogpsmax {smin q ¨ n{ε q-sparse ε-approximate sparsifier of F over the range rrsmin , smax ss.
+    r
+                                2
+    r “ 0, t Ð 1, M Ð Θpn{ε
+ 1: w                      r      q, δ Ð Opεsmin {pm3 smax qq
+                                                                  2
+ 2: jmin Ð tlog smin ´ 4 log mu, jmax Ð rlog smax s, β Ð OppL{cq m{δq
+ 3: A Ð WeightInitializepO A , OF , smax , δq                                                 (theorem 9)
+ 4: Z Ð QMLSOpA.QueryFunction, A.QueryWeight, jmin , jmax , β, L, θ, cq                       (theorem 8)
+ 5: ϑ Ð MultiSamplepZ , Mq                                                                  (theorem 20)
+    r Ð SumEstimatepZ , 0.1q
+ 6: ν                                                                                       (theorem 21)
+ 7: for i “ 1 to M do
+ 8:   Get zϑi from Z
+ 9:   wr ϑi Ð wrϑi ` νr{p1.1 Mzϑi q
+10: end for
+11: Return w.r
+
+                                                                                         řm
+Theorem 10 (Quantum Algorithm for GLM Sparsification). Let Fpxq :“ i“1                          f i pxai , xyq be a total loss
+function defined by vectors a1 , . . . , am P Rn (with sparsity r ď n) and a pL, θ, cq-proper loss functions family
+F “ t f 1 , . . . , f m u. There exists a quantum algorithm QGLMSparsifypO A , OF , L, θ, c, ε, smin , smax q that,
+given query access O A to the matrix A (where the i-row is ai ), query access OF to the function family F with
+parameters L, θ, c, and numbers ε ą 0, smax ą smin ě 0, outputs with high probability a non-negative weight
+                   m                    řm                                                     2
+vector w P R`          such that Fr :“ i“1   wi f i pxai , xyq ´is an Oplogps
+                                                                      r
+                                                                              max {smin q ¨ n{ε q-sparse ε-approximate
+                                                                               ?
+                                                            r pnω ` nr2 ` r mn{εq ¨ logps {s q .
+                                                                                                               ¯
+sparsifier of F over the range rs , s s, in time O
+                                    min    max                                                    max    min
+
+   We note that scale ratio term logpsmax {smin q can be removed when all f i are p-homogeneous for
+some p ą 0 (i.e., f i pλxq “ |λ| p f i pxq, and in particular ℓ p is p-homogeneous). For non-homogeneous
+cases such as γ p , this can be reduces to logppolypmqq via properness assumption [Jambulapati et al.,
+2024, Lemma 1.5].
+
+4.2    Applications
+Firstly, it’s not hard to verify that both ℓ p pxq “ | x | p and γ p (as defined in eq. (2)) are pL, θ, cq-
+                                                            p
+proper for p P p0, 2s, with parameters L “ 1, θ “ 2 , and c “ 1. Applying theorem 10, this
+
+                                                             10
+               2
+yields a Opn{ε
+         r       q-sparse ε-approximate sparsifier for the ℓ p and γ p losses, computable in time
+  ´ ?                   ¯
+r r mn{ε ` n ` nr2 . Given such an ε-approximate sparsifier, one can then invoke a fast classical
+O               ω
+
+algorithm to obtain an ε-accurate solution in polypn, 1{εq time. Notably, the case p “ 2 for ℓ p
+recovers linear regression (corollary 23), while p “ 1 for γ p corresponds to Huber regression.
+
+Corollary 11 (Quantum ℓ p Regression). Let p P p0, 2s. There exists a quantum algorithm that, given query
+access to a matrix A P Rmˆn (with row sparsity r ď n) and vector b P Rm , and ε ą 0, outputs with high
+                                                                                 r ?mn{εq ` polypn, εq
+probability an x P Rn such that ∥ Ax ´ b∥ pp ď p1 ` εq minxPRn ∥ Ax ´ b∥ pp , in Opr
+time.
+
+Corollary 12 (Quantum γ p Regression). Let p P p0, 2s. There exists a quantum algorithm that, given
+query access to a matrix A P Rmˆn where the i-th row is ai (with sparsity r ď n) and vector b P Rm ,
+and ε ą 0, outputs with high probability an x P Rn such that Fpxq ď p1 ` εq minxPRn Fpxq for Fpxq “
+řm                             r ?
+  i“1 γ p pxai , xy ´ bi q, in Opr mn{εq ` polypn, εq time.
+
+    Now we go further and consider the case of multiple regression. Given A P Rmˆn and
+                                                                                     ”BPR
+                                                                                          mˆN
+                                                                                             ı,
+the goal is to find X P RnˆN such that ∥ AX ´ B∥ F ď p1 ` εq AX 1 ´ B F . Writing X “ x1 , . . . , x N
+           ”            ı
+and B “ b1 , . . . , b N , we expand ∥ AX ´ B∥2F “ k“1
+                                                      řN
+                                                            ∥ Ax k ´ bk ∥2 “ k“1
+                                                                            ř N řm                k          2
+                                                                                      j“1 pxai , x y ´ B jk q .
+Thus, multiple regression reduces to a single large-scale linear regression problem, with an effective
+data dimension n1 “ nN. See corollary 24 for the formal description of the quantum algorithm.
+    We next turn to the ridge regression objective Fridge pxq “ }Ax ´ b}22 ` λ}x}22 . The regularization
+                                                                                                      ˘2
+term can be written as a sum of coordinate-wise quadratic losses: λ}x}22 “ nj“1
+                                                                                ř `?
+                                                                                            λxe j , xy . For
+using the GLM sparsification framework, we define
+                                „      ȷ                        „ ȷ
+                                   A                               b
+                            A1 “ ?       P Rpm`nqˆn ,      b1 “       P Rm`n ,                             (5)
+                                   λIn                            0n
+
+and use the quadratic loss f pxq “ x2 . Then for every x P Rn we have i“1
+                                                                                      řm`n ` 1
+                                                                                             f xai , xy ´ bi1 “
+                                                                                                             ˘
+
+}Ax ´ b}22 ` λ}x}22 “ Fridge pxq. Hence, ridge regression reduces to linear regression with an effective
+data size m1 “ m ` n. The formal quantum algorithm is given in corollary 25.
+      Beyond ridge, the lasso regression objective introduces ℓ1 regularization: Flasso pxq “ |Ax ´ b|22 `
+λ|x|1 . We define the loss functions F 1 “ t f 11 pxq “ ¨ ¨ ¨ “ f m1 pxq “ x2 ; f m`1
+                                                                                  1                    1
+                                                                                      pxq “ ¨ ¨ ¨ “ f m`n pxq “
+                                                              řm`n 1 1              1                 2
+| x |1 u, and adopt the notation from eq. (5). It follows that i“1 f pxai , xy ´ bi q “ ∥ Ax ´ b∥2 ` λ∥ x ∥1 .
+Hence, the GLM sparsification framework applies. The corresponding quantum algorithm is
+formally described in corollary 26.
+
+
+References
+Deeksha Adil, Rasmus Kyng, Richard Peng, and Sushant Sachdeva. Iterative Refinement for lp-norm
+ Regression, pages 1405–1424. doi: 10.1137/1.9781611975482.86. URL https://epubs.siam.org/
+ doi/abs/10.1137/1.9781611975482.86.
+
+Deeksha Adil, Rasmus Kyng, Richard Peng, and Sushant Sachdeva. Fast algorithms for lp-
+ regression. J. ACM, 71(5), October 2024. ISSN 0004-5411. doi: 10.1145/3686794. URL
+ https://doi.org/10.1145/3686794.
+
+
+                                                      11
+Simon Apers and Sander Gribling. Quantum speedups for linear programming via interior point
+  methods, 2024. URL https://arxiv.org/abs/2311.03215.
+
+Haim Avron, Kenneth L. Clarkson, and David P. Woodruff. Sharper Bounds for Regularized
+ Data Fitting. In Klaus Jansen, José D. P. Rolim, David P. Williamson, and Santosh S. Vempala,
+ editors, Approximation, Randomization, and Combinatorial Optimization. Algorithms and Techniques
+ (APPROX/RANDOM 2017), volume 81 of Leibniz International Proceedings in Informatics (LIPIcs),
+ pages 27:1–27:22, Dagstuhl, Germany, 2017. Schloss Dagstuhl – Leibniz-Zentrum für Informatik.
+ ISBN 978-3-95977-044-6. doi: 10.4230/LIPIcs.APPROX-RANDOM.2017.27. URL https://drops.
+ dagstuhl.de/entities/document/10.4230/LIPIcs.APPROX-RANDOM.2017.27.
+
+Joshua Batson, Daniel A. Spielman, and Nikhil Srivastava. Twice-ramanujan sparsifiers. SIAM
+  J. Comput., 41(6):1704–1721, January 2012. ISSN 0097-5397. doi: 10.1137/090772873. URL
+  https://doi.org/10.1137/090772873.
+
+Jean Bourgain, Joram Lindenstrauss, and Vitali Milman. Approximation of zonoids by zonotopes.
+
+Shantanav Chakraborty, András Gilyén, and Stacey Jeffery. The Power of Block-Encoded Matrix
+  Powers: Improved Regression Techniques via Faster Hamiltonian Simulation. In Christel Baier,
+  Ioannis Chatzigiannakis, Paola Flocchini, and Stefano Leonardi, editors, 46th International Collo-
+  quium on Automata, Languages, and Programming (ICALP 2019), volume 132 of Leibniz International
+  Proceedings in Informatics (LIPIcs), pages 33:1–33:14, Dagstuhl, Germany, 2019. Schloss Dagstuhl –
+  Leibniz-Zentrum für Informatik. ISBN 978-3-95977-109-2. doi: 10.4230/LIPIcs.ICALP.2019.33.
+  URL https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2019.33.
+
+Shantanav Chakraborty, Aditya Morolia, and Anurudh Peduri. Quantum Regularized Least
+  Squares. Quantum, 7:988, April 2023. ISSN 2521-327X. doi: 10.22331/q-2023-04-27-988. URL
+  https://doi.org/10.22331/q-2023-04-27-988.
+
+Menghan Chen, Chaohua Yu, Gongde Guo, and Song Lin. Faster quantum ridge regression
+ algorithm for prediction. International Journal of Machine Learning and Cybernetics, 14(1):117–124,
+ 2023.
+
+Yanlin Chen and Ronald de Wolf. Quantum Algorithms and Lower Bounds for Linear Regression
+  with Norm Constraints. In Kousha Etessami, Uriel Feige, and Gabriele Puppis, editors, 50th
+  International Colloquium on Automata, Languages, and Programming (ICALP 2023), volume 261
+  of Leibniz International Proceedings in Informatics (LIPIcs), pages 38:1–38:21, Dagstuhl, Germany,
+  2023. Schloss Dagstuhl – Leibniz-Zentrum für Informatik. ISBN 978-3-95977-278-5. doi: 10.
+  4230/LIPIcs.ICALP.2023.38. URL https://drops.dagstuhl.de/entities/document/10.4230/
+  LIPIcs.ICALP.2023.38.
+
+Kenneth L. Clarkson and David P. Woodruff. Low-rank approximation and regression in input
+  sparsity time. J. ACM, 63(6), January 2017. ISSN 0004-5411. doi: 10.1145/3019134. URL
+  https://doi.org/10.1145/3019134.
+
+Michael B. Cohen and Richard Peng. Lp row sampling by lewis weights. In Proceedings of the
+ Forty-Seventh Annual ACM Symposium on Theory of Computing, STOC ’15, page 183–192, New
+ York, NY, USA, 2015. Association for Computing Machinery. ISBN 9781450335362. doi: 10.1145/
+ 2746539.2746567. URL https://doi.org/10.1145/2746539.2746567.
+
+
+
+
+                                                12
+Bradley Efron, Trevor Hastie, Iain Johnstone, and Robert Tibshirani. Least angle regression. The
+  Annals of Statistics, 32(2):407–451, 2004. ISSN 00905364. URL http://www.jstor.org/stable/
+  3448465.
+
+R. A. Fisher. Statistical Methods for Research Workers, pages 66–70. Springer New York, New York,
+  NY, 1992. ISBN 978-1-4612-4380-9. doi: 10.1007/978-1-4612-4380-9 6. URL https://doi.org/
+  10.1007/978-1-4612-4380-9_6.
+
+Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone. Quantum random access memory. Phys.
+  Rev. Lett., 100:160501, Apr 2008. doi: 10.1103/PhysRevLett.100.160501. URL https://link.aps.
+  org/doi/10.1103/PhysRevLett.100.160501.
+
+Yassine Hamoudi. Preparing many copies of a quantum state in the black-box model. Phys. Rev. A,
+  105:062440, Jun 2022. doi: 10.1103/PhysRevA.105.062440. URL https://link.aps.org/doi/10.
+  1103/PhysRevA.105.062440.
+
+Arun Jambulapati, James R. Lee, Yang P. Liu, and Aaron Sidford. Sparsifying sums of norms. In
+ 2023 IEEE 64th Annual Symposium on Foundations of Computer Science (FOCS), pages 1953–1962,
+  2023. doi: 10.1109/FOCS57990.2023.00119.
+
+Arun Jambulapati, James R. Lee, Yang P. Liu, and Aaron Sidford. Sparsifying generalized lin-
+  ear models. In Proceedings of the 56th Annual ACM Symposium on Theory of Computing, STOC
+  2024, page 1665–1675, New York, NY, USA, 2024. Association for Computing Machinery.
+  ISBN 9798400703836. doi: 10.1145/3618260.3649684. URL https://doi.org/10.1145/3618260.
+  3649684.
+
+Iordanis Kerenidis and Anupam Prakash. Quantum Recommendation Systems. In Christos H.
+  Papadimitriou, editor, 8th Innovations in Theoretical Computer Science Conference (ITCS 2017),
+  volume 67 of Leibniz International Proceedings in Informatics (LIPIcs), pages 49:1–49:21, Dagstuhl,
+  Germany, 2017. Schloss Dagstuhl – Leibniz-Zentrum für Informatik. ISBN 978-3-95977-029-3.
+  doi: 10.4230/LIPIcs.ITCS.2017.49. URL https://drops.dagstuhl.de/entities/document/10.
+  4230/LIPIcs.ITCS.2017.49.
+
+Yin Tat Lee, Zhao Song, and Qiuyi Zhang. Solving empirical risk minimization in the current matrix
+  multiplication time. In Alina Beygelzimer and Daniel Hsu, editors, Proceedings of the Thirty-
+  Second Conference on Learning Theory, volume 99 of Proceedings of Machine Learning Research, pages
+  2140–2157. PMLR, 25–28 Jun 2019. URL https://proceedings.mlr.press/v99/lee19a.html.
+
+Adrien Marie Legendre. Nouvelles méthodes pour la détermination des orbites des comètes: avec un
+ supplément contenant divers perfectionnemens de ces méthodes et leur application aux deux comètes de
+ 1805. Courcier, 1806.
+
+Daniel R Lewis. Ellipsoids defined by banach ideal norms. Mathematika, 26(1):18–29, 1979.
+
+Tongyang Li, Shouvanik Chakrabarti, and Xiaodi Wu. Sublinear quantum algorithms for training
+  linear and kernel-based classifiers. In Kamalika Chaudhuri and Ruslan Salakhutdinov, editors,
+  Proceedings of the 36th International Conference on Machine Learning, volume 97 of Proceedings of
+  Machine Learning Research, pages 3815–3824. PMLR, 09–15 Jun 2019. URL https://proceedings.
+  mlr.press/v97/li19b.html.
+
+Chenghua Liu, Minbo Gao, Zhengfeng Ji, and Mingsheng Ying. Quantum speedup for hypergraph
+  sparsification. In Forty-second International Conference on Machine Learning.
+
+                                                  13
+Cameron Musco, Christopher Musco, David P. Woodruff, and Taisuke Yasuda. Active linear
+  regression for lp norms and beyond. In 2022 IEEE 63rd Annual Symposium on Foundations of
+ Computer Science (FOCS), pages 744–753, 2022. doi: 10.1109/FOCS54457.2022.00076.
+
+Jelani Nelson and Huy L. Nguyên. Osnap: Faster numerical linear algebra algorithms via sparser
+   subspace embeddings. In 2013 IEEE 54th Annual Symposium on Foundations of Computer Science,
+   pages 117–126, 2013. doi: 10.1109/FOCS.2013.21.
+
+John Neter, Michael H Kutner, Christopher J Nachtsheim, William Wasserman, et al. Applied linear
+  statistical models. 1996.
+
+Maria Schuld, Ilya Sinayskiy, and Francesco Petruccione. Prediction by linear regression on a
+ quantum computer. Phys. Rev. A, 94:022342, Aug 2016. doi: 10.1103/PhysRevA.94.022342. URL
+ https://link.aps.org/doi/10.1103/PhysRevA.94.022342.
+
+Changpeng Shao. Quantum speedup of leverage score sampling and its application. arXiv preprint
+  arXiv:2301.06107, 2023.
+
+Changpeng Shao and Hua Xiang. Quantum regularized least squares solver with parameter
+ estimate. Quantum Information Processing, 19(4), February 2020. ISSN 1570-0755. doi: 10.1007/
+ s11128-020-2615-9. URL https://doi.org/10.1007/s11128-020-2615-9.
+
+Zhao Song, Junze Yin, and Ruizhe Zhang. Revisiting quantum algorithms for linear regressions:
+  Quadratic speedups without data-dependent parameters. arXiv preprint arXiv:2311.14823, 2023.
+
+Daniel A. Spielman and Nikhil Srivastava. Graph sparsification by effective resistances. SIAM
+ J. Comput., 40(6):1913–1926, December 2011. ISSN 0097-5397. doi: 10.1137/080734029. URL
+ https://doi.org/10.1137/080734029.
+
+Guoming Wang. Quantum algorithm for linear regression. Phys. Rev. A, 96:012335, Jul 2017. doi: 10.
+ 1103/PhysRevA.96.012335. URL https://link.aps.org/doi/10.1103/PhysRevA.96.012335.
+
+Nathan Wiebe, Daniel Braun, and Seth Lloyd. Quantum algorithm for data fitting. Phys. Rev. Lett.,
+ 109:050505, Aug 2012. doi: 10.1103/PhysRevLett.109.050505. URL https://link.aps.org/doi/
+ 10.1103/PhysRevLett.109.050505.
+
+David P. Woodruff. Sketching as a tool for numerical linear algebra. Foundations and Trends® in
+ Theoretical Computer Science, 10(1–2):1–157, 2014. ISSN 1551-305X. doi: 10.1561/0400000060. URL
+ http://dx.doi.org/10.1561/0400000060.
+
+
+
+A     Quantum computing
+In quantum mechanics, a d-dimensional quantum state | vy “ pv0 , . . . , vd´1 qJ is represented as a
+unit vector in the Hilbert space Cd , satisfying iPrds0 |vi |2 “ 1. The computational basis of this space
+                                                ř
+
+is t| iyuiPrds , where | iy “ p0, . . . , 0, 1, 0, . . . , 0qJ with the i-th coordinate (0-indexed) equal to 1 and all
+              0
+
+others 0. For two states | uy, | vy P Cd , their inner product is xu|vy “ iPrds0 u˚i vi , with z˚ denoting
+                                                                                       ř
+
+complex conjugation. The tensor product of | uy P Cd1 and | vy P Cd2 is their Kronecker product,
+| uy b | vy “ pu0 v0 , u0 v1 , . . . , ud1 ´1 vd2 ´1 qJ , often abbreviated as | uy| vy.
+
+
+                                                         14
+    A quantum bit, or qubit, is simply a quantum state in C2 , expressible as | ψy “ α| 0y ` β| 1y, where
+                                                                                                       n
+α, β P C and |α|2 ` |β|2 “ 1. An n-qubit state belongs to the tensor product space pC2 qbn “ C2 , with
+basis states | iyiPr2n s . When measuring an n-qubit state | ψy in this basis, the outcome i is observed
+                     0
+with probability |xi|ψy|2 . Quantum operations are described by unitary operators U, which satisfy
+UU : “ U : U “ I, where U : denotes the conjugate transpose and I is the identity operator.
+      In many quantum algorithms, information is stored and accessed through quantum-read
+classical-write random access memory (QRAM) [Giovannetti et al., 2008], which is employed in
+numerous quantum algorithms. QRAM allows the storage and modification of a classical array
+a1 , . . . , an while supporting quantum query access via the unitary UQRAM : | iy| 0y ÞÑ | iy| ai y. If one is
+only concerned with quantum query complexity, the QRAM assumption can be removed at the cost
+of a polynomial increase in time complexity. While QRAM serves as a natural quantum analogue
+of the classical RAM model and is frequently employed in theoretical work, it is important to note
+that the practical realization of scalable QRAM remains highly uncertain given the current state of
+quantum hardware.
+      A quantum (query) algorithm A is a quantum circuit consisting of a sequence of unitaries
+U1 , . . . , UT , where each Ut may represent a quantum gate, a quantum oracle, or a QRAM operation.
+The time complexity of A is measured by the total number T of such operations. The algorithm
+acts on n qubits, initialized in the state | 0ybn . Applying the unitaries sequentially produces the
+final state | ψy “ UT . . . U1 | 0ybn . Finally, a measurement in the computational basis | iyiPr2n s then
+                                                                                                       0
+yields a classical outcome i with probability |xi|ψy|2 .
+
+
+B     Proof of theorem 8
+B.1    Quantum Subroutines
+To present our algorithm more clearly, we introduce the following data structure, which can be
+viewed as a straightforward application of theorem 4.
+
+Proposition 13 (Quantum Modified Leverage Score Approximation). Assume query access O A to a
+matrix A “ Rmˆn with row sparsity r and query access Ow to a vector w P R`   m
+                                                                               . For any 0 ă ε ď 1, there
+exists a quantum data structure ModLevApprox that supports the the following operations:
+   1. Initialization: ModLevApproxpO A , Ow , εq, outputs an instance L, making Oprr ?mn{εq queries to
+                   ?                           ?
+       O and Op
+         A
+                r mn{εq queries to O , in Opr
+                                        w
+                                          r       mn{ε ` pnω ` nr2 q{ε2 ` n2 {ε4 q time.
+    2. Query: L.Query, outputs an unitary satisfying
+
+                                             L.Query| iy| 0y “ | iy| r
+                                                                     σi y,
+
+                                                       σi ď p1 ` εqσi , with σi “ σi pW 1{2 Aq denoting the
+      where for all i P rms, it holds that p1 ´ εqσi ď r
+      leverage score, and W “ diagpwq. Each query requires Oprq queries to O A and Op1q queries to Ow ,
+                         2
+      and runs in Opr{ε
+                   r       q time.
+
+Proof of proposition 13. Write B :“ W 1{2 A P Rmˆn , where W “ diagpwq. Because W 1{2 rescales each
+              ?
+row of A by wi , B has the same row sparsity r. Let Ai be the i-th row of A. Fix a row index i and
+let Si “ supppAi¨ q with |Si | “ ri ď r. All entries of Ai can be obtained using Oprq queries to O A ,
+
+
+
+
+                                                      15
+one query to Ow , and Oprq
+                      r arithmetic time. For the superposition, we can perform
+                                           idx
+                                         O     1 ÿ
+                               | iy| 0y ÞÝÝAÑ ?        | iy| jy| 0y
+                                                ri
+                                                   jPS         i
+                                         elem
+                                        OA    1 ÿ
+                                       ÞÝÝÝÑ ?    | iy| jy| Aij y| 0y
+                                               ri
+                                                           jPSi
+                                         Ow  1 ÿ
+                                       ÞÝÝÑ ?    | iy| jy| Aij y| wi y| 0y
+                                              ri
+                                                       jPSi
+                                        U      1 ÿ                       ?
+                                       ÞÝÝMULT
+                                           ÝÑ ?    | iy| jy| Aij y| wi y| wi Aij y
+                                                ri
+                                                           jPSi
+                                               elem :    idx :
+                                          :
+                                        O w ,O A     1 ÿ
+                                                      ,O A
+                                       ÞÝÝÝÝÝÝÝÝÝÝÑ ?    | iy| jy| 0y| 0y| Bij y.
+                                                      ri
+                                                                          jPSi
+
+Thus one row query in theorem 4 corresponds Oprq queries to O A , Op1q queries to Ow , plus
+Oprq
+r     arithmetic time. Therefore, invoking the theorem 4 on B with accuracy ε gives, with high
+                                                    r ?mn{εq row queries to B and runs in O         r r?mn{ε `
+                                                                                                      `
+probability: (i) an initialisation that performs Op
+pnω ` nr2 q{ε2 ` n2 {ε4 ; substituting the row-query cost yields Opr    r ?mn{εq calls to O and Op      r ?mn{εq
+                        ˘
+                                                                                                A
+calls to Ow ; (ii) a query unitary that maps | iy| 0y to | iy| r
+                                                               σi pBqy with p1 ´ εqσi pBq ď r
+                                                                                            σi pBq ď p1 ` εqσi pBq,
+using one row query to B. Translating again, each query costs Oprq calls to O A , Op1q call to Ow , and
+       2
+Opr{ε
+r        q time.
+
+    The following proposition describes the weight update step in the algorithm QMLSO (algo-
+rithm 1).
+Proposition 14 (Weight Computation for Overestimates). Let s ą 0. Assume query access OF to the
+                                                                               m
+function family F “ t f 1 , . . . , f m u and query access Ow to a vector w P R` . Let L denote an instance of
+ModLevApprox. Then, there exists a quantum algorithm WeightComputepOF , Ow , L, sq such that
+                               WeightComputepOF , Ow , L, sq| iy| 0y “ | iy| wi1 y
+where                                                               a
+                                                      1 fp                 σi {wi q
+                                                 wi1 “ ¨ i                          ,
+                                                           s            σi {wi
+and σi is the leverage score returned by querying L at index i P rms. The algorithm makes Op1q queries to L,
+Ow , and OF , and requires an additional Op1q
+                                           r    time for computation.
+Proof of proposition 14. Consider the following procedure:
+                                   L.Query
+                           | iy| 0y ÞÝÝÝÝÝÑ | iy| σi y| 0y
+                                   O  w
+                                   ÞÝÝÑ | iy| σi y| wi y| 0y
+                                   U
+                                    ÞÝÝ  Ñ | iy| σi y| wi y| σi {wi y| 0y| 0y
+                                        DIV
+
+
+
+                                       USQRT                             a
+                                     ÞÝÝÝÑ | iy| σi y| wi y| σi {wi y| σi {wi y| 0y
+                                       OF                               a               a
+                                   ÞÝÝÑ      | iy| σi y| wi y| σi {wi y| σi {wi y| f i p σi {wi qy
+                                   UDIVpsrq
+                                   ÞÝÝÝÝÑ | iy| 0y| 0y| 0y| 0y| wi1 y,
+
+                                                                   16
+where UDIV computes the division σi {wi , USQRT computes square root, and UDIVpsrq carries out the
+                          ?
+                       f p σ {w q                                                           a
+arithmetic wi1 :“ 1s ¨ i ri i and then uncomputes the ancillary registers σi , wi , σi {wi , σi {wi .
+    The computation uses Op1q queries to L, Ow , and OF , and Op1q
+                                                              r    additional arithmetic operations,
+as claimed in the proposition.
+    The following proposition specifies the output data structure produced by QMLSO (algo-
+rithm 1).
+Proposition 15 (Preparation for Multiscale Overestimates). Let 0 ă ε ă 1, J “ tjmin , . . . , jmax u Ď Z
+be a contiguous interval. Suppose we are given a collection of instances tLpjq : j P J u, where each Lpjq is an
+instance of ModLevApprox. Then, there exists a quantum data structure QOverestimate that supports the
+following operations:
+    • Initialization: QOverestimateptLpjq : j P J u, εq, outputs an instance Z in total time Op   r ř
+                                                                                                       jPJ ζ j q,
+      where ζ j denotes the needed time of initialization of Lpjq .
+   • Query: Z .Query, outputs an unitary such that for every i P rms,
+                                                                            Z .Query| iy| 0y “ | iy| zi y,
+      where
+                                                                                           1 ÿ pjq
+                                                                                 zi “         σi ,
+                                                                                          1´ε
+                                                                                                    jPJ
+              pjq
+      and σi    is leverage score returned by querying Lpjq at index i P rms. This query is executed in
+      r ř                                                                       pjq
+      Op    jPJ ι j q time, where ι j represents the time required to querying L .
+
+Proof of proposition 15. For every j P J , suppose we hold an instance Lpjq of ModLevApprox. Denote
+by ζ j its initialization cost and by ι j the cost of a single query. The initialization of QOverestimate
+consists of initializing all instances Lpjq for j P J and storing ε in QRAM in Op1q   r    time, allowing
+access through a unitary Uε : | iy| 0y Ñ | iy| 1{1 ´ εy.
+    For the query operation, on input | iy| 0y, attach an accumulator register initialized to | 0y, and
+iterate over the scales j P J :
+                      pj     q
+                    L min .Query                pj        q                 U              pj       q     pj   q
+         | iy| 0y ÞÝÝÝÝÝÝÝÝÑ | iy| σi min y| 0y ÞÝÝADD
+                                                   ÝÑ | iy| σi min y| σi min y| 0y
+                        pj       q        :
+                    pL min .Queryq                            pj        q
+                    ÞÝÝÝÝÝÝÝÝÝÑ | iy| 0y| σi min y| 0y
+                      pj     `1q
+                    L min            .Query          pj        `1q                              U              pj     `1q                  pj      `1q
+                    ÞÝÝÝÝÝÝÝÝÝÑ | iy| σi min                            y| σpjmin q y| 0y ÞÝÝADD
+                                                                                             ÝÑ | iy| σi min                y| σpjmin q ` σi min         y| 0y
+                      pj   `1q        :
+                    pL min     .Queryq                             pj        q       pj    `1q
+                    ÞÝÝÝÝÝÝÝÝÝÝÝÑ | iy| 0y| σi min ` σi min                                      y| 0y
+                        ¨¨¨
+                                      ÿ pjq
+                     ÞÝÝÝÝÑ | iy| 0y|  σi y| 0y
+                                              jPJ
+                    U                               ÿ          pjq               U                                  ÿ      pjq
+                      ε
+                    ÞÝÑ | iy| 1{p1 ´ εqy|                     σi y| 0y ÞÝÝMULT
+                                                                           ÝÑ | iy| 1{p1 ´ εqy|                           σi y| zi y,
+                                                    jPJ                                                             jPJ
+
+The adder UADD and multiplier UMULT are implemented using fixed-point arithmetic and costs Op1q   r
+                                             pjq
+gates. The query procedure calls each L once and `invokes       ˘its inverse once; together this costs
+Θpι j q. Summing over all j P J , the total runtime is O jPJ ι j . The arithmetic overhead from the
+                                                        ř
+
+                   r J |q additional gates, which is absorbed in the stated complexity.
+adders contributes Op|
+
+                                                                                          17
+B.2    Proof of theorem 8
+We first analyze the time complexity. Since θ P p0, 4q, we have δ “ max 12 , θ´2
+                                                                          ␣        (
+                                                                                2    ă 1, and thus T “
+                                                                                  r ?mn ` nω ` nr2 q
+Θ L,θ,c plog log βq. In each iteration i ď T, the subroutine ModLevApprox runs in Opr
+time (absorbing the cost of queries), and provides query access such that each query requires Oprq
+calls to O A , Op1q calls to Owpiq , and Oprq
+                                         r time (proposition 13). The subroutine WeightCompute then
+                                itr
+                                               r time. This is because it makes Op1q calls to Lpiq
+constructs Uwpi`1q , where each query requires Oprq                                            itr
+                itr
+
+and Owpiq , each of which can be executed in Oprq
+                                             r time (proposition 14). For the downward recursion
+        itr
+across |J | scales (lines 9-12 of algorithm ´ 1), the complexity is¯ the same per step. Therefore, the
+                                               ?                                  ?
+total cost of iterations and recursion is O pr mn ` nω ` nr2 q∆ , makeing Op mnq queries to Ow˝ ,
+                                          r
+    ?                           ?
+Opr mn∆q queries to O A , Op mn∆q queries to OF , where ∆ “ | jmax ´ jmin     ´ |?
+                                                                                 ` maxtlog log β, 0u. In
+                                                                                                       ¯
+                                                                            r pr mn ` nω ` nr2 q |J |
+the final step of the algorithm, the data structure Z can be initialized in O
+time, and each call to Z .Query can be executed in O      r pr |J |q time. This follows directly from
+                                             ?
+proposition 15, with parameters ζ “ Opr t
+                                          r    mn ` n ` nr2 q and ι “ Oprq.
+                                                       ω                  r
+                                                                          t
+    In the remainder of this section, we will show that the vector z P Rm corresponding to the
+output of QMLSO (algorithm 1) is indeed an Opn ¨ | jmax ´ jmin |q-overestimate with respect to A and
+an α-approximate scheme W . To analyze the correctness of the algorithm, we first introduce the
+following metric.
+                                     m
+Definition 16. Define a metric d on R` by
+                                                       "                   *
+                                                               ui
+                                      dpu, wq :“ max       log    : i P rms
+                                                               wi
+    It is straightforward to verify that d is indeed a metric, as it satisfies symmetry, positivity, and
+the triangle inequality.
+    A useful characterization is the following, which is immediate from the definition: it shows
+that being an α-approximate weight is equivalent to requiring that w is almost a fixed point of the
+update map ϕs , up to distance log α in the metric d.
+Fact 17. Fix a matrix A P Rmˆn (where the i-th row is ai for each i P rms) and a family of loss functions
+                                         m
+F “ t f 1 , . . . , f m u. A vector w P R` is an α-approximate weight (with respect to A and F ) at scale s if and
+only if
+                                                 dpw, ϕs pwqq ď log α
+            m    m
+where ϕs : R` Ñ R` is the update function defined by
+                                      b
+                                               1{2
+                                   f
+                               1 i σi pW Aq{wi q
+                                     p
+                  pϕs pwqqi :“ ¨                       ,           and W :“ diag pwq .
+                               s       σi pW 1{2 Aq{wi
+                               m
+    Furthermore, W “ twpjq P R`   : j P J u is an α-approximate weight scheme if and only if
+
+                                @j P J : d wpjq , ϕ2j wpjq ď log α;
+                                             `        `   ˘˘
+                                                                                                               (6)
+                             @j, j ` 1 P J : d wpj`1q , wpjq ď log α.
+                                                `           ˘
+                                                                                                               (7)
+     In the noisy setting (where algorithm 1 actually operates), we define the update function
+rs,ε : R`m     m
+ϕ          Ñ R`  by                              ´a            ¯
+                                             f        σ̃  {w
+                               rs,ε pwq :“ 1
+                             ´         ¯       i        i    i
+                               ϕ                                 , @i P rms ,               (8)
+                                         i s      σ̃i {wi
+
+                                                       18
+      σi is an ε-approximation of σi pW 1{2 Aq, i.e., p1 ´ εqσi pW 1{2 Aq ď r
+where r                                                                     σi ď p1 ` εqσi pW 1{2 Aq.
+   Our analysis builds on the ideas of Jambulapati et al. [2024]. We use the following result, which
+shows that the weight update procedure remains “contractive” even when noise is present.
+
+Lemma␣ 18 (Contraction          of ␣a noisy( update,[Jambulapati  et al., 2024, Lemma 2.9]). Let δ “
+                                                                   m
+max 21 , θ´2                         2L 1                    1
+                                                                 R            1
+                 (
+            2      ,   C “    max       ,
+                                       c c  . For  any  w, w   P   ` and ε, ε   P r0, 1q, it holds that
+                     1               1               1`ε
+dpϕs,ε pwq, ϕs,ε1 pw qq ď δ ¨ dpw, w q ` log C ` log
+  r         r                                           1.
+                                                                                  1´ε
+
+    At the beginning, assuming the initial weight is β-approximate, we apply the triangle inequality
+of d together with lemma 18 to get
+            ´              ´       ¯¯     ´               ´       ¯¯     ´       ´       ¯           ´       ¯¯
+               p0q r           p0q            p0q             p0q                    p0q                 p0q
+          d witr , ϕsmax,ε   w itr    ď d   w itr , ϕsmax   w itr    ` d   ϕsmax   w itr   , ϕ
+                                                                                             rsmax,ε   w itr
+
+                                                    ď log β ` log C ` logp1 ` εq.
+
+   For the iterative procedure (lines 4-7 of algorithm 1), by applying lemma 18 inductively, we
+obtain
+                                                                                         ˆ                ˙   T´1
+               ´
+                    pTq r
+                                    ´
+                                         pTq
+                                               ¯¯
+                                                            T
+                                                                      ´
+                                                                           p0q r
+                                                                                              ´
+                                                                                                   p0q1`ε¯¯   ÿ     i
+           d       witr , ϕsmax,ε       witr        ď δ ¨d                witr , ϕ
+                                                                                 `smax ,ε         witr
+                                                                                        δ log C ` log
+                                                                                                      1´ε
+                                                                                    i“0
+                                                                    T   ˆ                 ˙
+                                                                    ÿ                1`ε
+                                                    ď δ T ¨ log β `   δi log C ` log
+                                                                                     1´ε
+                                                                                  i“0
+                                                            T                 1`ε
+                                                        δ log β ` log C ` log 1´ε
+                                                    ď                             .
+                                                                  1´δ
+Therefore, after T iterations, we have
+         ´             ´      ¯¯    ´                ´       ¯¯     ´          ´       ¯            ´       ¯¯
+             pTq          pTq          pTq r             pTq                       pTq                  pTq
+       d witr , ϕsmax witr       ď d witr , ϕsmax ,ε   w itr    ` d   ϕ
+                                                                      rsmax ,ε   w itr   , ϕ
+                                                                                           rsmax ,0   w itr
+                                    ´                ´       ¯¯
+                                       pTq r             pTq
+                                 ď d w ,ϕ    s ,ε w             ` log C ` logp1 ` εq
+                                                                itr         max         itr
+                                                        T                  1`ε
+                                                  δ log β ` log C ` log 1´ε
+                                                ď                              ` log C ` logp1 ` εq
+                                                              1´δ
+                                                  δ T log β ` 2 log C ` 2 logp1 ` εq ´ logp1 ´ εq
+                                                ď
+                                                                       1´δ
+                                                  3 log C
+                                                ď         ,
+                                                   1´δ
+where the first inequality follows from the triangle inequality of d, the second inequality applies
+lemma 18, the third inequality substitutes the previous bound, and the last inequality follows from
+the choice of T (line 2 of algorithm 1).
+    Set α :“ C3{p1´δq “ Θ L,θ,c p1q. By fact 17, we have that wpjmax q “ witr is α-approximate at scale
+                                                                          pTq
+
+smax “ 2 jmax .
+    We now proceed with a downward recursion across scales (lines 9-12 of algorithm 1). For each
+
+
+
+
+                                                                                    19
+j “ jmax ´ 1, . . . , jmin , define wpjq :“ ϕ
+                                            r j wpj`1q . By applying lemma 18 inductively, we obtain that
+                                                  `   ˘
+                                             2 ,ε
+           ´               ´   ¯¯
+          d wpjq , ϕr j wpjq
+                      2 ,ε
+              ´        ´       ¯           ´       ¯¯
+          “d ϕ  r j wpj`1q , ϕ      r2j wpj`1q
+                  2 ,ε                2 ,ε
+
+                             r j wpj`1q ` log C ` log 1 ` ε
+                  ´                ´          ¯¯
+          ď δ ¨ d wpj`1q , ϕ  2 ,ε                                1´ε
+                              r j`1 wpj`1q ` log 2 ` log C ` log 1 ` ε
+                ´ ´                     ´        ¯¯           ¯
+          “ δ ¨ d wpj`1q , ϕ    2 ,ε                                        1´ε
+                                                                       j ´1´j
+                                                                    ¯ maxÿ       ˆ              ˙
+             jmax ´j
+                        ´ ´
+                              pjmax q r
+                                               ´
+                                                  pjmax q
+                                                          ¯¯
+                                                                               i            1`ε
+          ďδ          ¨ d w          , ϕsmax ,ε w            ` log 2 `        δ log C ` log
+                                                                                            1´ε
+                                                                    i“0
+                               log C ` log 1`ε
+                                           1´ε
+          ď log α ` log 2 `                      .
+                                      1´δ
+Using the above result, we can now verify that eq. (6) holds.
+             ´          ´     ¯¯    ´             ´     ¯¯     ´       ´ ¯         ´ ¯¯
+            d wpjq , ϕ2j wpjq    “ d wpjq , ϕ
+                                            r j wpjq ` d ϕ
+                                             2 ,ε
+                                                                 r j wpjq , ϕ
+                                                                  2 ,ε
+                                                                            r j wpjq
+                                                                              2 ,0
+                                    ´             ´     ¯¯
+                                      pjq r         pjq
+                                 ď d w , ϕ2j ,ε w          ` log C ` logp1 ` εq
+                                                         log C ` log 1`ε
+                                                                      1´ε
+                                      ď log α ` log 2 `                   ` log C ` logp1 ` εq
+                                                               1´δ
+                                                         2 log C ` 2 logp1 ` εq ´ logp1 ´ εq
+                                      ď log α ` log 2 `
+                                                                        1´δ
+                                      ď 2 log α ` log 2.
+
+And confirm that eq. (7) is satisfied.
+     ´            ¯    ´                 ´   ¯¯     ´                ´         ¯¯
+   d wpj`1q , wpjq “ d wpj`1q , ϕ r j wpj`1q
+                                    2 ,ε
+                                                “ d   w pj`1q r
+                                                             , ϕ j`1
+                                                                2 ,ε
+                                                                       w pj`1q
+                                                                                  ` log 2 ď 2 log 2α.
+                       !                             )
+Therefore, W :“ wpjq : j P J :“ Z X rjmin , jmax s forms a 4α2 -approximate weight scheme. It
+remains to verify that the vector z in line 12 of algorithm 1 (see proposition 15 for details) is an
+Opn ¨ | jmax ´ jmin |q-overestimate with respect to W .
+   For every i P rms, note that
+
+                           1 ÿ ´ 1{2 ¯ ÿ ´ 1{2 ¯           1{2
+                   zi “       σi Wj A ě
+                              r         σi Wj A ě max σi pWj Aq,
+                          1´ε                     jPJ
+                                jPJ                  jPJ
+
+and
+                          ÿ   1 ÿ ÿ ´ 1{2 ¯ 1 ` ε ÿ ÿ ´ 1{2 ¯
+               ∥ z ∥1 “       zi “         σi Wj A ď
+                                           r                         σi Wj A
+                            1´ε                        1´ε
+                      iPrms      iPrms jPJ                 jPJ iPrms
+                      1`ε ÿ     1{2
+                                       ´       ¯`
+                                                   1{2        1`ε ÿ
+                    ď       TrpWj A AJ Wj A pWj AqJ q ď                 rankpAq
+                      1´ε                                     1´ε
+                               jPJ                                              jPJ
+                      1`ε
+                    ď      pj   ´ jmin qn.
+                      1 ´ ε max
+
+                                                      20
+C    Proof of theorem 9
+Proof of theorem 9. The construction follows the same three–step recipe as in the classical argument
+of Jambulapati et al. [2024]: (1) pick anchor points t̂i on each loss function; (2) use ModLevApprox to
+estimate leverage scores at those anchors and convert them into weights; (3) add a quadratic bump
+to every f i to obtain a better-behaved family F ˝ together with an approximate weight vector w˝ .
+    Step 1: Anchor Selection. Since each f i is pL, θ, cq-proper, we can efficiently search over t ą 0 to
+locate anchor points pti satisfying
+                                      1
+                                        s   ď f i ppti q ď smax ,         i P rms ,
+                                      2 max
+as detailed in proposition 19. Thus, a quantum oracle Ot to these anchors can be constructed using
+Op1q queries to OF .
+    Step 2: Quantum Leverage Score Approximation. Invoke ModLevApproxpO A , Oh , 12 q, where Oh
+queries the vector h “ ppt´2          p´2
+                          1 , . . . , tm q, constructed in Op1q time via Op1q queries to Ot . The quantum
+                                                            r
+                    ?                              ?                                       r ?mn ` nω ` nr2 q
+algorithm uses Opr
+                 r    mnq queries to O A , Op    r mnq queries to O , and runs in Opr
+                                                                         F
+time. It outputs an approximation r       σ satisfying 12 σpH 1{2 Aq ď r
+                                                                       σi ď 32 σpH 1{2 Aq for H “ diagphq. Set
+                                              wi˝ :“ δ{r
+                                                       σi ,      i P rms ,
+and define query access Ow˝ , where each query requires Oprq queries to O A , Op1q queries to OF ,
+and takes Oprq
+          r time.
+   Step 3: Modified Loss Definition. Define modified losses as:
+
+                                   f i˝ ptq “ f i ptq ` smax wi˝ ¨ t2 ,    @i P rms .
+
+    Following Jambulapati et al. [2024, Fact 2.10], each p f i˝ q1{2 is maxt1, Lu-auto-Lipschitz, θ-lower-
+homogeneous with constant c, making F ˝ a pmaxt1, Lu, θ, cq-proper family. The correctness of
+eq. (4) and that w˝ is β-approximate at scale smax directly follows from Jambulapati et al. [2024,
+Theorem 2.11], yielding CINIT “ 2p2L{cq2{θ .
+
+Proposition 19. Let O f be an oracle for a pL, θ, cq-proper function f : R Ñ R` . For any smax ą smin ą 0,
+there exists an algorithm FindSolpO f , smin , smax q that outputs x ą 0 such that smin ď f pxq ď smax , making
+               ´           ¯                                        ´         ¯
+                     smax                                                smax
+at most OL,θ,c log s         queries to O f , and running in OL,θ,c log s       time.
+                       min                                                min
+                                        a
+Proof of proposition 19. Let h “            f . Recall definition 2, h is L-auto-Lipschitz and lower θ-
+homogeneous with constant c ą 0. We implement oracle access to h via a single call to O f and
+                                                                                        ?                ?
+a square root, so the query complexity to Oh equals that to O f . Let hmin :“ smin , hmax :“ smax .
+Our goal is to find x ą 0 such that hmin ď hpxq ď hmax .
+    We first query hp1q. If hmin ď hp1q ď hmax , we are done. Otherwise, we use exponential search
+to find an interval ra, bs (with b “ 2a or a “ 2b) such that h crosses the range rhmin , hmax s within this
+bracket.
+
+Case 1: hp1q ă hmin .    By lower θ-homogeneity,
+
+                                        hp2 j q ě c ¨ 2 jθ hp1q,
+                                                             j ě 1.
+                 Q            U               ‹
+                        hmax                                                           hmax
+Thus, for j‹ “ 1θ log2 c¨hp1q  , we have hp2 j q ě hmax . Therefore, within Op 1θ log c¨hp1q q queries we
+                                                                           ‹      ‹
+either find x with hpxq P rhmin , hmax s or obtain a bracket r2 j ´1 , 2 j s.
+
+                                                           21
+Case 2: hp1q ą hmax .     For j ě 1, taking λ “ 2 j and x “ 2´j in the homogeneity property gives
+
+                           hp1q “ hp2 j ¨ 2´j q ě c ¨ 2 jθ hp2´j q           ñ        hp2´j q ď hp1qjθ .
+                                                                                                  c¨2
+                 Q               U                       ‹
+                             hp1q
+Hence for j‹ “       1
+                     θ log2 c¨hmin , we have hp2
+                                                 ´j
+                                                    q ď hmin , and again we either hit the target range or
+                          ‹     ‹
+                       ´j    ´pj ´1q
+obtain a bracket r2      ,2          s.
+
+Bisection step. Assume w.l.o.g. we have a bracket ra, bs with b “ 2a and hpaq ď hmin ă hmax ď hpbq
+(the mirrored case is analogous). Let ∆ :“ hmax ´ hmin ą 0 and let the half-length be δ0 :“ b´a       a
+                                                                                                 2 “ 2.
+                                                                t
+For t ě 0, let the half-length after t bisections be δt :“ δ0 {2 . By lower θ-homogeneity (applied with
+x “ δt`1 and λ “ 2),
+                                         1                         ´ 1 ¯t
+                            hpδt`1 q ď θ hpδt q ñ hpδt q ď                hpδ0 q.
+                                        c2                          c2θ
+Moreover, since b ´ a “ a and hpaq ď hmin , we have
+                                                       ´a¯        1                hmin
+                                          hpδ0 q “ h         ď            hpaq ď          .
+                                                        2        c2   θ
+                                                                                   c2θ
+Combining the two displays yields
+                                                             ´ 1 ¯t`1
+                                               Lhpδt q ď L                   hmin .
+                                                                 c2θ
+Choose                                         R                   ´ Lh ¯V
+                                                       1               min
+                                          tě                  log2         ´ 1.
+                                                   θ ` log2 c          ∆
+Then Lhpδt q ď ∆. Let m be the midpoint of the current bracket ra1 , b1 s (of length δt´1 ). By the
+L-auto-Lipschitz property,
+
+                                  hpmq ď hpa1 q ` Lhpδt q ď hmin ` ∆ “ hmax ,
+                                  hpmq ě hpb1 q ´ Lhpδt q ě hmax ´ ∆ “ hmin ,
+
+so hpmq P rhmin , hmax s and the midpoint succeeds.             ´         ¯
+                                                                    s
+    Overall, the total query complexity of FindSol is OL,θ,c log smax , under the assumption that
+                                                                      min
+f p1q is bounded by polypsmin , smax q. The time is linear in the number of queries.
+
+
+
+D     Proof of theorem 10
+Before proving theorem 10, we restate two quantum algorithms that are invoked as subroutines in
+our algorithm.
+
+Theorem 20 (Multiple Quantum State Preparation, Theorem 1 in Hamoudi [2022]). Let 1 ď k ď n.
+There exists a quantum algorithm MultiSamplepOw , kq that, given query access Ow to a nonnegative vector
+       n
+w P R`   , outputs with high probability a sample sequence ϑ P rnsk in which each element i is drawn with
+                                                       ?                                  ?
+                                                     r knq queries to O and runs in Op
+probability proportional to wi . The algorithm makes Op                                r knq time.
+                                                                         w
+
+
+
+                                                             22
+Theorem 21 (Quantum Sum Estimation, [Li et al., 2019, Lemma 3.1]). There exists a quantum
+                                                                                        n
+algorithm SumEstimatepOw , εq that, given query access Ow to a nonnegative vector w P R`  , outputs with
+                                                    ř                                ?
+                                                                                   r n{εq queries to O
+high probability an ε-approximation r
+                                    s to the sum s “ iPrns wi . The algorithm uses Op                  w
+                ?
+and runs in Op n{εq time.
+             r
+
+     We will use the following result from Jambulapati et al. [2024] in a black-box manner.
+                              řm
+Theorem 22. Let Fpxq :“ i“1         f i pxai , xyq be a total loss function defined by vectors a1 , . . . , am P Rn
+and a pL, θ, cq-proper loss functions family F “ t f 1 , . . . , f m u. Let 0 ď smin ă smax . Given any OL,θ,c p1q-
+approximate weight scheme W with respect            to matrix A (with rows ai ), loss family F , and interval
+J :“ rlog2 smin ´ 4 log m, log2 smax s Z, with high probability, importance sampling each function
+                                           Ş
+f i P F with probability
+                                                                   1{2
+                                                 pi ě max σi pWj Aq
+                                                           jPJ
+
+yields an s-sparse ε-approximate sparsifier of F over the range rsmin , smax s, where
+
+                                                s “ Op∥ p∥1 log3 m{ε2 q.
+
+                                                                                     r ?mn ` nω `
+Proof of theorem 10. According to theorem 9, we obtain query access to F ˝ and w˝ in Opr
+                                 r time. These satisfy the property that w˝ is an Opm4 s {pεs qq-
+nr2 q time, and each query costs Oprq                                                    max  min
+approximate weight at scale smax with respect to F ˝ , and moreover F ˝ satisfies the condition
+               m                                           m
+               ÿ                                           ÿ                                             CINIT εsmin
+                     f i pxai , xyq ď smax    ñ       0ď         f i˝ pxai , xyq ´ f i pxai , xyq ď                  .   (9)
+                                                                                                             m
+               i“1                                         i“1
+
+
+   Note that |J | “ jmax ´ jmin “ Oplogpmsmax {smin qq “ Oplogps
+                                                          r
+                                                                  max {smin qq. By applying theo-
+rem 8, we obtain query access to a multiscale
+                                    ´ ?       Opn logps    {s
+                                                        max min qq-overestimates
+                                                                        ¯          z with respect
+    ˝                                           ω      2
+to F . This construction requires Or pr mn ` n ` nr q logps {s q time, and each query
+                                                                                         max       min
+
+can be executed in Opr
+                    r logps {s qq time. Combining this with the multiple quantum state
+                              max min                                 ?
+preparation (theorem 20), we can generate a sequence ϑ P rms M in Op
+                                                                   r Mm ¨ logps {s qq “
+                                                                                  max min
+    ?
+Opr mn logpsmax {smin q{εq time. The quantum sum estimation procedure (theorem 21) then runs in
+ r
+ r ?m logps {s qq time, producing νr as a 0.1-approximation of ν “ ∥z∥ . Therefore, the overall
+Opr         max min ´                                                   1
+                   r pnω ` nr2 ` r?mn{εq ¨ logps {s q .
+                                                         ¯
+time complexity is O                                              max       min
+    It remains to show that
+                                                m
+                                                ÿ #tk P rMs : ϑ “ iu    k
+                                     Fpxq
+                                     r    :“                                      f i pxai , xyq
+                                                           1.1Mzi {νr
+                                                i“1
+
+                               2
+is an Oplogps
+      r
+              max {smin q ¨ n{ε q-sparse ε-approximate sparsifier of F over the range rrsmin , smax ss.
+    In each sampling round (out of M total rounds), the probability of selecting each f i P F can be
+expressed (after reweighting) as
+                                             ν                               1{2
+                                   1.1zi ¨      ě σims pA, W ˝ q ě max σpW ˝ j Aq,
+                                             νr                    jPJ
+
+
+where W ˝ is an Op1q-approximate weight scheme with respect to F ˝ . The inequalities follow from
+the bound νr ď 1.1ν and from definition 7.
+
+
+                                                             23
+   Applying theorem 22, we obtain that Fpxq
+                                          r    is an Op∥z∥1 log3 m{εq “ Opn   r logps {s q{ε2 q-
+                                                                                         max min
+                                    ˝
+sparse ε-approximate sparsifier of F over the range rsmin , smax s. Finally, by eq. (9), for all x such
+that smin ď Fpxq ď smax , we have
+
+                        Fpxq       r ´ F˝ pxq ` F˝ pxq ´ Fpxq
+                        r ´ Fpxq ď Fpxq
+                                         eq. (9)      C εs
+                                           ď εF˝ pxq ` INIT min
+                                                 ˆ        m        ˙
+                                         eq. (9)       CINIT εsmin    C εs
+                                           ď ε Fpxq `                ` INIT min
+                                                           m              m
+                                                     CINIT pε2 ` εq
+                                         ď εFpxq `                  Fpxq
+                                                           m
+                                         ď 2εFpxq.
+By setting ε Ð 2ε , we obtain we desired.
+
+
+E    Applications
+As a special case of ℓ p regression with p “ 2, the multiscale leverage score overestimates reduce
+to the leverage score overestimates. In this case, we can directly apply quantum leverage score
+approximation (theorem 4) with constant accuracy, without invoking QMLSO (algorithm 1). Com-
+bining the classical linear regression algorithm [Clarkson and Woodruff, 2017, Theorem 43] with
+our quantum sparsification framework yields the following corollary.
+Corollary 23 (Quantum Linear Regression). There exists a quantum algorithm that, given query access to
+a matrix A P Rmˆn (with row sparsity r ď n) and vector b P Rm , and ε ą 0, outputs with high probability
+                                                                 r ?mn{ε ` n3 q time.
+an x P Rn such that ∥ Ax ´ b∥2 ď p1 ` εq minxPRn ∥ Ax ´ b∥2 , in Opr
+                                               2
+   Note that the sparsifier size is m1 “ Opn{ε
+                                         r       q, which is smaller than the original size m, implying
+                                                                                                   2
+ε “ Ωp n{mq. Consequently, the classical runtime term Opmrq
+        a
+                                                               r                  r 1 rq “ Opnr{ε
+                                                                      reduces to Opm         r       q“
+    ?
+Opr mn{εq.
+ r
+   As discussed in section 4.2, multiple regression can be reformulated as linear regression through
+vectorization. Accordingly, we first apply quantum leverage score approximation (theorem 4) to
+the matrix A P Rmˆn and perform importance sampling to obtain a reduced matrix A1 , of size
+      2
+Opn{ε
+ r      q ˆ n. Finally, we apply the classical multiple regression algorithm (e.g., [Clarkson and
+Woodruff, 2017, Theorem 38]) to A1 to compute the solution.
+Corollary 24 (Quantum Multiple Regression). There exists a quantum algorithm that, given query
+access to a matrix A P Rmˆn (with row sparsity r ď n) and matrix B P RmˆN , and ε ą 0, out-
+puts
+  ´ ?with high probability an X P¯RnˆN such that ∥ AX ´ B∥ F ď p1 ` εq minxPRn ∥ AX ´ B∥ F , in
+r r mn{ε ` n2 pNn ` n{ε ` N{εq time.
+O
+
+   Ridge regression can be reduced to linear regression by augmenting with n additional data
+points (see section 4.2).
+Corollary 25 (Quantum Ridge Regression). Let λ ą 0 be a regularization parameter. There exists
+a quantum algorithm that, given query access to a matrix A P Rmˆn (with row sparsity r ď n) and
+vector b P Rm , and
+                ´ ε ą 0, outputs with
+                                   ¯ high ? probability an x P Rn such that ∥ Ax ´ b∥22 ` λ∥ x ∥22 ď
+p1 ` εq min n ∥ Ax ´ b∥2 ` λ∥ x ∥2 , in Opr
+           xPR             2         2
+                                         r     mn{ε ` n3 q time.
+
+                                                      24
+   As discussed in section 4.2, lasso regression can also be embedded into the quantum GLM
+sparsification by introducing n augmented data points and assigning suitable loss functions f i to
+them.
+
+Corollary 26 (Quantum Lasso Regression). Let λ ą 0 be a regularization parameter. There exists
+a quantum algorithm that, given query access to a matrix A P Rmˆn (with row sparsity r ď n) and
+vector b P Rm , and
+                ´ ε ą 0, outputs with  high probability an x P Rn such that ∥ Ax ´ b∥22 ` λ ∥ x ∥1 ď
+                                       r ?mn{ε ` n3 {ε2 q time.
+                                  ¯
+p1 ` εq min n ∥ Ax ´ b∥2 ` ∥ x ∥ , in Opr
+           xPR            2       1
+
+
+
+
+                                                25
+

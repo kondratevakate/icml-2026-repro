@@ -1,0 +1,19 @@
+{
+ "claim": 6,
+ "source": "Lemma B.3, Eq. (2)-(3)",
+ "seed": 20260803,
+ "n_instances": 300,
+ "min_ratio_eta1_over_eta3": 1.042084513075743,
+ "median_ratio": 1.3934795187023592,
+ "max_ratio": 4.180778034866572,
+ "violations_of_half": 0,
+ "max_lambda": 0.7826221210671689,
+ "lambda_le_2": true,
+ "max_dirichlet_identity_error": 8.881784197001252e-16,
+ "mutation_nonstationary_violations": 0,
+ "mutation_min_ratio": 0.6743199272367338,
+ "mutationB_drop_correction_violations": 200,
+ "mutationB_min_ratio": -2.8181310965930463e-13,
+ "tightness_max_constant_supported": 1.042084513075743,
+ "verdict": "verified"
+}

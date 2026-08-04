@@ -1,0 +1,44 @@
+{
+  "claim": 5,
+  "continuous_target_range": 0.8774299987242977,
+  "mutation": {
+    "error_plateaus": true,
+    "mutation_passes": true,
+    "sup_error": {
+      "128": 0.5925980112786746,
+      "16": 0.48305004856660183,
+      "256": 0.6170885791486409,
+      "32": 0.5214361677121815,
+      "64": 0.5341076168956018,
+      "8": 0.5188711484151729
+    },
+    "target": "indicator(mean degree > 3): DISCONTINUOUS in the DIDM metric",
+    "target_range": 1.0
+  },
+  "n_test": 120,
+  "n_train": 220,
+  "reason": "Universal approximation reproduced in the sense the theorem states -- UNIFORM (sup-norm) error on held-out bofop graphs, not RMSE. A random-feature MPNN driven purely by sparse message passing drives the sup error down with capacity to a small fraction of the target range for a target continuous on the DIDM space, while a target that is DISCONTINUOUS in the same metric plateaus -- confirming continuity (via Theorem 4.1) plus compactness (Corollary 5.3) is what the approximation rests on. Finite-capacity, finite-sample EVIDENCE, not proof; the paper states no numeric value.",
+  "rmax": 4,
+  "seed": 20260802,
+  "source": "Section 6.1 (universal approximation theorem)",
+  "sup_error_continuous_target": {
+    "128": 0.006744903436629736,
+    "16": 0.011268818407599746,
+    "256": 0.006843649725164002,
+    "32": 0.008263209405390326,
+    "64": 0.006270934580333398,
+    "8": 0.051574169256075664
+  },
+  "sup_error_decreases_with_capacity": true,
+  "sup_error_relative_final": 0.00779965323172679,
+  "uniformly_approximated": true,
+  "verdict": "verified",
+  "widths": [
+    8,
+    16,
+    32,
+    64,
+    128,
+    256
+  ]
+}

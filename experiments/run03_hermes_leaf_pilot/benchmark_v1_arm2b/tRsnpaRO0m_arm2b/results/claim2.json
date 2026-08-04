@@ -1,0 +1,45 @@
+{
+  "bofop_bounded": true,
+  "claim": 2,
+  "exponent_bofop": 1.6699625374407162e-16,
+  "exponent_dense_er": 0.9472044615249499,
+  "exponent_sqrtn_hub": 0.41342283917170786,
+  "fiber_sup_bofop": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+  ],
+  "fiber_sup_dense_er": [
+    39.0,
+    77.0,
+    144.0,
+    279.0,
+    546.0
+  ],
+  "fiber_sup_sqrtn_hub": [
+    14.0,
+    18.0,
+    24.0,
+    32.0,
+    44.0
+  ],
+  "mutation": {
+    "dense_er_exponent": 0.9472044615249499,
+    "mutation_passes": true,
+    "note": "removing the bounded-fiber hypothesis makes ess sup nu_x grow with n",
+    "sqrtn_hub_exponent": 0.41342283917170786
+  },
+  "n_sweep": [
+    100,
+    200,
+    400,
+    800,
+    1600
+  ],
+  "reason": "The bofop condition ess sup_x nu_x(Omega) < infinity is reproduced as a log-log growth exponent over an n-sweep: the bounded-degree (sparse) family has exponent ~0 with fiber sup pinned at 4 for every n, while dense ER (exponent ~1) and a single sqrt(n) hub (exponent ~0.5) are excluded. This shows the definition genuinely discriminates a sparse subclass inside the graphop class. No numeric value is stated in the paper to match.",
+  "seed": 20260802,
+  "source": "Definition 3.1 (bounded-fiber operators / bofops)",
+  "verdict": "verified"
+}

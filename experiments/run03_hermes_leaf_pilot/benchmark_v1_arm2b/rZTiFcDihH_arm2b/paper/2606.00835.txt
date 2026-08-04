@@ -1,0 +1,2092 @@
+                                                            Online Packet Scheduling with Deadlines and Learning
+
+
+                                                                          Gianmarco Genalti 1 Achraf Azize 2 Vianney Perchet 3
+
+
+                                                                  Abstract                                  introduced to model the behavior of buffers that store data
+                                              Network routers that enforce Quality-of-Service               packets in Quality-of-Service (QoS) networks (Karakus &
+                                              (QoS) guarantees must decide, at every clock cy-              Durresi, 2017). In QoS networks, it is crucial to enforce
+                                              cle, which expiring packet of information to trans-           service standards, especially on the performance as seen by
+arXiv:2606.00835v1 [cs.LG] 30 May 2026
+
+
+
+
+                                              mit, even when the value of the packet is unknown             the end-users. QoS plays a key role in the modern digital
+                                              until it is processed. We frame this problem as the           infrastructure, notable examples include sensor networks
+                                              Online Packet Scheduling with Deadlines (OPSD)                (Iyer & Kleinrock, 2003), cloud computing (Szigeti et al.,
+                                              problem under Partial Feedback: packets arrive at             2013) and Intelligent Transportation Systems (ITS) (Belamri
+                                              every clock cycle, with different deadlines, but the          et al., 2021).
+                                              weights are only observed after execution. Under              In its simpler version, the OPSD framework assumes that
+                                              a stochastic assumption on the unknown weights,               packets with unit processing cost arrive over time and are
+                                              we explore different variants of the OPSD prob-               stored in an unlimited buffer. In OPSD, the presence of
+                                              lem with bandit feedback. We establish a connec-              deadlines models the practical scenario of low-latency sys-
+                                              tion between our setting and the sleeping bandits             tems. In other words, it is not possible to keep a packet
+                                              problem, and set our learning goal to α-regret min-           idling in the buffer for too many clock cycles. Every packet
+                                              imization. We provide algorithms with provable                must then either be processed before its requested deadline
+                                              α-regret guarantees under different spans of slack-           or discarded from the buffer. The model is completed by
+                                              ness, distinguishing systems allowing for random-             including scores representing the importance of each packet,
+                                              ization and systems that do not. In every scenario,           called weights. Of course, any algorithm ALG has the goal
+                                              our algorithms
+                                                      √          achieve an α-regret upper bound            of maximizing its total score, or cumulative gain. Naturally,
+                                              of Õ ( KT ), matching the lower bound for the                the presence of the weights makes the problem non-trivial
+                                              standard bandit setting. In the practically relevant          and models the QoS property of the system. The arrival
+                                              case of 2-bounded deadline instances, where the               sequence defines an instance of the OPSD problem and can
+                                              deadline is set at most one clock cycle away from             be chosen in an arbitrary way by an adversary. As differ-
+                                              the arrival, our deterministic algorithm achieves             ent instances may present different opportunities to ALG, a
+                                              the provably tightest possible competitive ratio.             standard way to evaluate its performance is to compare it to
+                                              Remarkably, when the number of distinct packet                the best possible decision-maker for that instance—called
+                                              types K ≥ 2 is finite, it√is possible to break the            OPT—through the competitive ratio C, which is the ratio
+                                              well-established Φ = 1+2 5 competitive ratio bar-             between the gain of OPT and the gain of ALG.
+                                              rier and√  attain a tighter competitive ratio θK rang-        Over the last few years, there has been a surge in interest
+                                              ing in [ 2, Φ).                                               in learning-augmented online algorithms. The idea is to
+                                                                                                            include online learning techniques to deal with reduced
+                                                                                                            information or to boost the performance of online algo-
+                                         1   Introduction                                                   rithms. Examples of online optimization problems with
+                                         The Online Packet Scheduling with Deadlines (OPSD, for             predictions include OPSD (Liang et al., 2023), facility loca-
+                                         short) problem, also called bounded delay buffer problem           tion (Agrawal et al., 2022), and paging (Bansal et al., 2022).
+                                         or traffic shaping, is a theoretical framework that has been       Our work initiates the study of a variant of the OPSD prob-
+                                                                                                            lem, which we call Stochastic Online K-Packet Scheduling
+                                            1
+                                              Politecnico di Milano 2 FairPlay Joint Team, CREST, EN-       with Deadlines (K-OPSD, for short), where we include on-
+                                         SAE, IP Paris 3 FairPlay Joint Team, CREST, ENSAE, IP Paris,       line learning (and, in particular, bandit learning) into the
+                                         CRITEO AI Team. Correspondence to: Gianmarco Genalti <gian-
+                                         marco.genalti@polimi.it>.                                          standard OPSD problem. In the K-OPSD framework, we as-
+                                                                                                            sume that every packet belongs to one of K different types,
+                                         Proceedings of the 43 rd International Conference on Machine       which is known by the scheduler. However, the weight of
+                                         Learning, Seoul, South Korea. PMLR 306, 2026. Copyright 2026       a packet is not revealed until it is processed. We make a
+                                         by the author(s).
+
+                                                                                                        1
+                                   Online Packet Scheduling with Deadlines and Learning
+
+stochastic assumption, assuming that every packet type is           have received a click or not. Moreover, auctions have a
+associated with a probability distribution, and when a packet       limited lifespan and usually finish after a few seconds. This
+is processed, the weight is sampled from the corresponding          problem combines reward estimation and scheduling with
+distribution. Recently, this type of extension appeared in          deadlines, since a quick decision based on past observation
+(Merlis et al., 2023) in the context of preemptive scheduling       must be made. Moreover, as the lifespan of auctions is
+and in (Levy et al., 2024) for online paging.                       usually really short, it is even a stronger motivation for sce-
+The goal of a scheduler in the K-OPSD problem can be nat-           narios with short deadlines, such as the 2-bounded K-OPSD
+urally extended from the classic OPSD setting: a scheduling         problem.
+algorithm ALG wants to maximize its expected cumulative
+gain. In K-OPSD, a scheduling algorithm has less infor-             1.1   Existing Results and Summary of Contributions
+mation available than in OPSD. As learning becomes a                In Table 1, we summarize the existing results in the classic
+necessary component for a scheduler, a natural way to eval-         OPSD problem and compare them to our results. The K-
+uate its performance is α-regret. The notion of α-regret            OPSD setting is novel and unexplored in the literature, thus
+combines the competitive ratio with an additive regret w.r.t.       our bounds on the α-regret can only be compared in light
+an optimal decision-maker that knows the average weights            of the existing competitive ratios and upper bounds on the
+for every packet type and does not need to learn them.              regret. However, in the 2-bounded setting, we improve over
+The stochastic MAB problem (Lattimore & Szepesvári,                 existing results when K < ∞. As customary in this litera-
+2020) shares many similarities with the K-OPSD prob-                ture, we distinguish between deterministic and randomized
+lem. We show that the K-OPSD problem includes (and                  algorithms. In what follows, we report an overview of our
+generalizes) the Sleeping Bandit problem (Kleinberg et al.,         results. Through the paper, we use the O notation to hide
+                                                                    universal constants, and the O ̃ notation to hide universal
+2010), which is a generalization of the classic MAB prob-
+lem where an adversary can choose the subset of available           constants and logarithms.
+actions at every round. The OPSD setting is included in the         In the first part of this paper, we propose deterministic algo-
+K-OPSD setting, and even in the simpler scenarios, it is            rithms for the OPSD and the K-OPSD setting.
+possible to prove a lower bound on the competitive ratio of
+any algorithm. For example, even in 2-bounded instances                • In the 2-bounded and 3-bounded K-OPSD setting, we
+where the deadline of every packet is upper bounded by                   propose a deterministic algorithm
+                                                                                                       √      that suffers a Φ-
+                                                                         regret upper bounded as O  ̃ ( KT ) (Theorem 3.1).
+the arrival time √plus one, a lower bound on the competitive
+ratio is Φ = 1+2 5 ≈ 1.618, the so-called golden ratio. A                This upper bound is also provided in an instance-
+competitive ratio greater than one implies the impossibility             dependent version. In classic Sleeping MABs the best
+of obtaining a sub-linear standard regret in the K-OPSD                  attainable
+                                                                             √      bound on the the regret is in the order of
+                                                                         Õ ( KT ) as well, and the competitive ratio matches
+problem. In this paper, we address the following question:
+                                                                         the best existing one. This result highlights the con-
+  Is it possible to devise α-no-regret algorithms in some                nection between the K-OPSD setting and the Sleeping
+                     K-OPSD problems?                                    MAB setting, and the analysis provides insights into
+                                                                         how the learning procedure can be decomposed in a
+We answer this question positively. It turns out that in many            meaningful way from the traditional competitive ratio
+relevant scenarios this is possible, and with provably tight             analysis.
+regret rates and state-of-the-art competitive ratios. Inter-
+estingly, the K types assumption can even be leveraged to              • In the 2-bounded OPSD setting, when the number
+improve the existing competitive ratios.                                 of distinct weights is K < ∞, we provide a novel
+                                                                         deterministic algorithm called ALGθ that achieves a
+Motivating Example As previously discussed, the OPSD                     competitive ratio of θK (4.1) smaller than the best
+problem is well-motivated by several applications. We now                known √ competitive ratio of Φ (Hajek, 2001). Note that
+state a real-world scenario in which K-OPSD is a better fit,             θK ∈ [ 2, Φ) for K < ∞ and θ∞ = Φ. This upper
+which motivates the setting. We are in a digital advertising             bound on the competitive ratio is tight according to the
+scenario, in which there exist K ad publishers that, in a                lower bound proposed in (Hajek, 2001).
+really fast-paced manner, ask to participate in an auction             • In the 2-bounded K-OPSD setting, we adapt ALGθ
+to display an ad on their space. As an advertiser, you are               to deal with learning, resulting in ALGθ,U . This de-
+interested in participating in the auctions with the highest             terministic algorithm suffers a θK -regret bounded as
+                                                                             √
+possible probability of receiving a click, which is, how-                Õ ( KT ) (Theorem 4.2), and we prove that this is
+ever, unknown. However, the requests are often so large in               nearly tight with a lower bound (Theorem 4.3).
+number that not all of them can be processed. If you don’t
+participate in the auction, you will never know if you would        We dedicate the second part of this paper to randomized
+
+                                                                2
+                                         Online Packet Scheduling with Deadlines and Learning
+
+                   Algorithm                      OPSD                          K-OPSD
+ Setting
+                     Type                     Competitive Ratio                 α-regret
+                                                                                √
+ 1-bounded       Det. (upper)  1                                    R1,T ≤ O ̃ ( KT ) (Kleinberg et al., 2010)
+                                                                                √
+ (MAB)           Det. (lower)  1                                    R1,T ≥ Ω ( KT ) (Kleinberg et al., 2010)
+                                                                                 √
+                 Det. (upper)
+                                  K→∞
+                                                                              ̃ KT ), θK < Φ
+                               θK → Φ, (Φ (Kesselman et al., 2001)) RθK ,T ≤ O(
+                                  K→∞                                             √
+                 Det. (lower)  θK → Φ (Hajek, 2001)                 RθK ,T ≥ Ω ( T ) , θK−1 < Φ
+ 2-bounded                                                                       √
+                 Rand. (upper) 54 (Chin et al., 2006)                         ̃ ( KT )
+                                                                    R 54 ,T ≤ O
+                                     5
+                 Rand. (lower)       4
+                                          (Chin & Fung, 2003)                              N.A.
+                                                                                                       √
+                 Det. (upper)        Φ    (Kesselman et al., 2001)                         RΦ,T ≤ O ̃ ( KT )
+ 3-bounded                                                                                             √
+                 Det. (lower)        Φ                                                     RθK ,T ≥ Ω ( T ) , θK−1 < Φ
+           Det. (upper)  Φ (Veselỳ et al., 2022)                                          N.A.
+                                                                                                         √
+ Unbounded Det. (lower)  Φ                                                                 RθK ,T ≥ Ω ( T ) , θK−1 < Φ
+                                                                                                         √
+ Slackness                 e
+           Rand. (upper) e−1 (Chin et al., 2006)                                           R e−1
+                                                                                              e       ̃
+                                                                                                 ,T ≤ O ( KT )
+                         5
+           Rand. (lower) 4                                                                 N.A.
+Table 1. Comparison of existing results with ours. Results without citations are direct consequences of other entries. Results highlighted
+                                   ̃ notation hides universal constants and logarithmic factors. The Ω notation hides universal constants.
+in gray are our contributions. The O
+
+
+
+algorithms.                                                                 the packets arriving over time and, at every round t ∈ [T ],
+                                                                            has to decide which packet to schedule without observing
+    • In the 2-bounded K-OPSD setting, we propose ALGR2 ,                   the future. The packets not scheduled at time t are stored in
+      a randomized algorithm that suffers a 54 -regret upper
+                      √                                                     a set Bt called buffer, until their deadline.
+      bounded as O ̃ ( KT ) (Theorem 5.1).
+                                                                            Competitive Ratio We call GALG the total gain of ALG,
+    • In the K-OPSD setting with unbounded slackness, we
+                                                   e                        i.e. the total sum of the packets scheduled up to T . The stan-
+      propose ALGRs , an algorithm that suffers a e−1 -regret
+                           √                                                dard performance metric in the literature is the competitive
+                        ̃
+      upper bounded as O ( KT ) (Theorem 5.2).                              ratio, i.e., the ratio between the performance of a benchmark
+                                                                            decision-maker and GALG (Borodin & El-Yaniv, 2005). The
+In both cases, our bounds match the best existing competi-                  goal is to minimize the competitive ratio. The adversary ob-
+tive ratio as well as the tightest regret attainable in Sleeping            serves the algorithm and decides the input sequence. If the
+MABs.                                                                       algorithm is deterministic, the full sequence can be chosen
+                                                                            beforehand, as the behavior of the algorithm is completely
+2    Setting and Technical Tools                                            predictable. In the case of randomized algorithms, the ad-
+In Online Packet Scheduling with Deadlines (OPSD), an in-                   versary cannot observe its random bits during the execution,
+stance is a sequence of packets P = {(rp , dp , wp )}p , where              but can decide the next entry in the sequence based on the
+rp and dp ≥ rp are integers representing the arrival time and               past decisions of the algorithm. The benchmark is the best
+deadline of the packet p, respectively. wp ≥ 0 is a real num-               possible decision-maker that observes the whole sequence,
+ber that represents the weight of packet p. For the rest of this            called OPT. Thus, the competitive ratio C is defined by the
+paper, we will slightly abuse notation by calling wp simply                 inequality GOPT ≤ C ⋅ GALG .
+p. The time is discrete and divided into slots. A schedule
+assigns a subset of packets S ⊂ P to time slots such that (i)               2.1   Learning in Online Packet Scheduling with
+any packet p ∈ S is assigned to a slot in {rp , . . . , dp } and (ii)             Deadlines
+each slot has at most one packet assigned. The objective is                 We consider the Stochastic Bounded-Delay K-Packet
+to design a schedule that maximizes the total weight of the                 Scheduling problem, a variant of the problem where there
+packets in S. In the s-bounded variant of the problem, the                  exist K distinct classes of packets, and all packets belong-
+set of instances is constrained to those where dp ≤ rp + s − 1,             ing to the same class have their weights sampled from the
+i.e., every packet can be assigned in either the arrival slot or            same probability distribution with mean µk for k ∈ [K]. We
+one of the next s − 1 ones (for a total of s possibilities). We             then define an instance as P = {(rp , dp , Xp , cp )}p , where
+call T ∶= maxp∈P dp . An online algorithm ALG observes                      cp ∈ [K] indicates the class of the packet p and Xp is the
+
+                                                                        3
+                                     Online Packet Scheduling with Deadlines and Learning
+
+weight of packet p, which is sampled from the distribu-                result in every algorithm being, de facto, deterministic.
+tion Dcp with mean wp ∶= µcp . Without loss of generality,
+we order the expectations of the K types in a descending               Mean Estimation and Confidence Bounds Define µ           ̂i,t =
+order, i.e., µ1 > µ2 > . . . > µK . Moreover, we define                   1
+                                                                       Ni (t)  ∑
+                                                                                 t
+                                                                                 s=1  ri 1 p s =i to be the empirical mean of the  ob-
+∆i,j ∶= µi − µj for j ≥ i as the sub-optimality gap of j               served weights from packets of type i observed up to time
+w.r.t. i. We will slightly abuse the notation and indicate wp          t. Let LCBi,t (δ) and UCBi,t (δ) be lower and upper confi-
+simply as p for the rest of this paper. The scheduler does             dence bounds on the unknown mean weight from a packet
+not observe the distributions nor their means, and observes            of type i, with confidence level 1 − δ. Let βi,t (δ) ∶=
+Xp ∈ [0, 1] at time t ∈ [T ] only if the packet p is assigned          1
+                                                                         (UCBi,t (δ) − LCBi,t (δ)) be (half of) the width of the
+                                                                       2
+to slot t. The adversary is allowed to decide the type of the          confidence bound. We use the same procedure introduced
+packet injected, but not the realization of the weight (and            by (Levy et al., 2024) to construct our confidence bounds.
+does not observe it beforehand). This variant can be trivially         Specifically, the confidence width is chosen to be βi,t (δ) =
+extended to the s-bounded setting. As it will become handy             √
+                                                                           log(KT 2 /δ)
+in what follows, we introduce the set Vt ⊆ [K] as the set of                  2Ni (t)
+                                                                                         , where K is the number of bounds that must
+packet types such that at least one packet of the type is in           hold simultaneously (in our case, one per packet type).
+the buffer and has a deadline t. We call Bt ⊆ [K] the set              Then, UCBi,t (δ) ≜ min{UCBi,t−1 (δ), µ     ̂i,t + βi,t (δ)}, and
+of packet types that are not in Vt and such that at least one          similarly, LCBi,t (δ) ≜ max{LCBi,t−1 (δ), µ     ̂i,t − βi,t (δ)}.
+packet of the type is in the buffer and has a deadline greater         Lemma C.1 in (Levy et al., 2024) ensures that the true
+than t. Note that no reasonable ALG schedules a packet of              weight lies inside the confidence bound with probability at
+type i with deadline greater than t if i ∈ Vt .                        least 1 − KT
+                                                                                  1
+                                                                                      for a proper choice of δ, and that the UCBs and
+                                                                       LCBs are positive and monotonic. For clarity, we will omit
+α-Regret First, consider a deterministic algorithm ALG.                the dependence on δ (except when necessary) and assume
+Let GALG = ∑i∈S Xi be the total gain of ALG. We assume                 that δ ≤ T1 . δ is an algorithm parameter (it is necessary to
+that no adversary can observe the actual realizations of the           compute UCBs and LCBs), and additional details on the
+weights, and consider an OPT that does the best possible               choice of δ for every algorithm can be found in the proofs.
+scheduling in expectation, i.e. uses the weight’s expectation
+as the actual value. We call E[GOPT ] the expected total               2.2   Connection with Multi-Armed Bandits
+gain of OPT. Thus, a natural performance metric is the α-              In the Sleeping bandit problem (Kleinberg et al., 2010), a
+regret, defined as Rα,T = E[GOPT ] − αE[GALG ], where the              learner is sequentially faced with an adversarially chosen
+expectation is taken w.r.t. the weights’ randomization (that           set of actions At ⊂ [K] for T rounds. Each action is asso-
+is, in this case, the only possible source of randomness). If          ciated with a probability distribution that the learner does
+ALG is randomized, the expected total gain also accounts               not observe, and a sample (or reward) is received after the
+for the algorithm’s randomization. The definition of OPT               corresponding action is chosen. The cumulative reward
+is the same: OPT can always be assumed deterministic as                of the learner is given by the sum of all rewards obtained
+the provided sequence is fixed. Finally, we say that an                up to T . This problem, which is a generalization of the
+algorithm achieves α-no-regret if Rα,T  ALG
+                                             = o(T ), i.e. its         stochastic K-armed bandit problem, has been explored in
+α-regret is sublinear in T .                                           previous literature under the lens of regret minimization.
+                                                                       In regret minimization, the learner’s goal is to minimize
+Deterministic vs Randomized Algorithms in K-OPSD                       the performance gap w.r.t. the best possible learner, i.e.
+In K-OPSD we need to set a formal definition of a determin-            RT ∶= E[GOPT ] − E[GALG ] (Lattimore & Szepesvári, 2020).
+istic algorithm. Indeed, due to the stochastic nature of the           Note that regret minimization is a special case of α-regret
+weights, the algorithm’s decision is intrinsically stochastic.         minimization (α = 1). As the sleeping bandit problem in-
+Thus, as customary in the bandits literature, we say that              cludes the stochastic K-armed bandit problem, the lower
+an algorithm is deterministic if its decision at time t is pre-        bound on the regret that any algorithm√ can suffer is greater
+dictable w.r.t. the filtration up to time t − 1. In other words,       or equal, and it is in the order of Ω( KT ). Interestingly,
+the adversary can predict which packet is processed by ALG             the K-OPSD problem is a generalization of the K-armed
+at time t by just observing the history until t − 1. For in-           sleeping bandit learning problem.
+stance, the well-known UCB1 algorithm (Auer et al., 2002)              Lemma 2.1 (Sleeping Bandits are a special case of
+is deterministic in this sense. One can interpret the distinc-         K-OPSD). Every 1-bounded instance of the K-OPSD prob-
+tion between deterministic and randomized algorithms as                lem can be reduced to a K-armed Sleeping Bandit problem,
+a distinction between the strength of the adversary: while             and vice versa.
+competitive ratios are lower in randomized algorithms, it is
+also true that the adversary is less informed. An adversary            The AUER algorithm (Kleinberg et al., 2010), a gold stan-
+observing the actual random bits of the algorithm would                dard for regret minimization in sleeping bandits, employs
+
+                                                                   4
+                                         Online Packet Scheduling with Deadlines and Learning
+
+Algorithm 1 EDFL
+               Φ                                                         Algorithm 2 ALGθ
+ 1: for t ∈ [T ] do                                                      Require: Number of types K.
+ 2:   Receive new packets, identify ht = maxh∈Bt U CBh,t .                1: Solve the system (1), get (θK , x1 , . . . , xK−1 ), and set j ← 0
+ 3:   Schedule ft ∈ arg minf ∈Bt s. t. ΦU CBf,t ≥U CBh,t {df }            2: for t ∈ [T ] do
+ 4: end for                                                               3: Receive new packets and update Vt and Bt
+                                                                          4:   Identify bt and vt
+                                                                                         xj
+                                                                          5: if vt < xj+1    bt then
+                                                                          6:      Schedule bt
+the well-known optimism in the face of uncertainty principle              7:      j←0
+                                                                          8: else
+(Auer et al., 2002) to achieve no-regret.
+                                       √ AUER suffers an                  9:      Schedule vt
+expected regret upper bounded by O ̃ ( KT ).
+                                                                                          j + 1, if vt ≤ bt ,
+                                                                         10:       j←{
+                                                                                          0,       otherwise.
+3    Instance-Dependent Guarantees in 2 and                              11:    end if
+     3-bounded K-OPSD                                                    12: end for
+
+It is known that a greedy (w.r.t. to deadlines) algorithm
+can always obtain a competitive ratio of 2, for every s > 1              mulative Φ-regret bounded as
+(Hajek, 2001). However, it is possible to improve this value
+by slightly modifying the greedy algorithm. We recall the β-                                  ⎛                          ⎞
+Ratio Earliest Deadline First (EDFβ ) algorithm (Kesselman                                    ⎜ K−1 ln T           ln T ⎟
+                                                                                  EDFL        ⎜
+                                                                                          ≤ O ⎜K ∑        + ∑            ⎟,
+et al., 2001). If ht is the heaviest packet in Bt , this algorithm               RΦ,TΦ                                   ⎟
+                                                                                              ⎜ i=1 ∆i,i+1 i,j∈[K] ∆Φi,j ⎟
+schedules the packet ft with the earliest deadline s.t. βft ≥                                 ⎝            ∆i,j >0
+                                                                                                              Φ          ⎠
+ht . This family of algorithms is also called thresholding
+algorithms, since the decision is only taken by scanning the
+                                                                                i,j ∶= ∣µi − Φµj ∣. Alternatively, the Φ-regret can be
+                                                                         where ∆Φ
+packets in a deadline-ordered fashion until a threshold is
+                                                                         bounded as
+exceeded.                                                                                                 √
+                                                                                              EDFL
+                                                                                            RΦ,TΦ ≤ O ̃ ( KT ) .
+We show that a simple adaptation of EDFβ achieves Φ-no-
+regret in 2 and 3-bounded K-OPSD. In particular, we show
+                                                                         The first addendum of the instance-dependent bound is in the
+that combining the optimism in the face of the uncertainty
+                                                                         same order as the instance-dependent bound of AUER. The
+principle with the EDFΦ algorithm, it is possible to obtain
+                                                                         second addendum is a similar complexity term that features
+both instance-dependent and worst-case Φ-regret bounds.
+                                                                         a Φ-scaled version of the sub-optimality gaps between the
+We call EDFL  Φ the resulting algorithm, and we report its               types. The worst-case bound shows how EDFL    Φ achieves a
+pseudocode in Algorithm 1. At every round, the algorithm
+                                                                         Φ-regret which is bounded in the same order as the regret of
+identifies the packet type in the buffer with the largest UCB,
+                                                                         AUER.
+i.e., ht = maxh∈Bt U CBh,t , and then sends the smallest
+deadline packet ft s.t.
+                                                                         4     Improving the Φ Competitive Ratio in
+                                                                               2-Bounded K-OPSD
+             ft ∈            arg min                {df }.
+                    f ∈Bt s. t. ΦU CBf,t ≥U CBh,t                        In this section, we focus on 2-bounded instances. Our goal
+                                                                         is to provide an algorithm that improves the performance
+ In stochastic MABs, it is possible to provide instance-                 of EDFL Φ in 2-bounded K-OPSD instances. Thus, our focus
+
+dependent guarantees on the regret that depend on the                    will be on the competitive ratio. An idea that may naturally
+time horizon T and on the reward-generating distribu-                    arise is to exploit the fact that there are only K finite weight
+tions, in particular on the sub-optimality gaps. In Sleeping             types. In bounded-delay packet scheduling, the lower bound
+MABs, it is possible to upper bound the regret of AUER                   of Φ for the competitive ratio is proven using an instance
+                                                                         with infinitely many different packet weights. In our K-
+as O (∑K−1
+         i=1 ∆i,i+1 ), which is tight (Kleinberg et al., 2010).
+                ln T
+
+These types of guarantees are interesting because they pro-
+                                                                         OPSD learning setting, having K     √ = ∞ is unreasonable, as
+                                                                         the regret in bandits scales with K even in the classic set-
+vide additional insights on which situations are harder to               ting without deadlines, making the problem non-learnable.
+deal with for an algorithm. In the following proposition, we
+bound the Φ-regret of EDFL   Φ in both an instance-dependent             4.1   Breaking the Φ Barrier in 2-Bounded OPSD,
+and worst-case fashion.                                                        without learning.
+Proposition 3.1 (Φ-regret of EDFL
+                                Φ ). In 2-bounded and 3-                 We introduce ALGθ , an algorithm achieving θK -competitive
+bounded K-OPSD instances, EDFL  Φ suffers an expected cu-                ratio, breaking the Φ barrier for the competitive ratio when
+
+                                                                     5
+                                     Online Packet Scheduling with Deadlines and Learning
+
+only K types of packets are available. We start by introduc-         Algorithm 3 ALGθ,U
+ing the following system of equations, which will play a key         Require: Number of types K.
+role in the algorithm and its analysis. Let x0 = 1                    1: Solve the system (1), get (θK , x1 , . . . , xK−1 ), and initialize
+                                                                         x0 ← 1, xK ← xK−1 and j ← 0.
+        ⎧
+        ⎪ x0 = 1, x1 = θ−11
+                            ,                                         2: for t ∈ [T ] do
+        ⎪
+        ⎪
+        ⎪
+        ⎪
+        ⎪                                                             3:   if j = 0 then
+        ⎨ xj = θ+1 (xj−1 − xj−2 ),    2 ≤ j ≤ K − 1,       (1)        4:       Compute UCBs for every packet type, obtaining
+        ⎪
+        ⎪
+        ⎪
+               θ−1
+                                                                               {U CBi,t }i∈[K]
+        ⎪
+        ⎪
+        ⎪
+        ⎩ xK−1 = (θ + 1)xK−2                                          5:   end if
+                                                                      6:   Receive new packets and update Vt and Bt
+Equations (1) have been used in Hajek (2001) to prove                 7: Identify vt ∈ arg maxv∈Vt {UCBv,t }
+the Φ lower bound for the competitive ratio. Indeed, the              8: Identify bt ∈ arg maxb∈Bt {UCBb,t }
+                                                                                            xj
+author proves that there exists a unique nonnegative solution         9: if U CBvt ,t < xj+1   U CBbt ,t then
+(θK , x1 , . . . , xK−1 ), where θK → Φ as √
+                                           K goes to infinity.       10:       Schedule bt
+For example, when K = 2, we have θ2 = 2 ≈ 1.41, and for              11:       j←0
+                                                                     12: else
+K = 3 we have θ3 = 32 = 1.5. Then the value progressively            13:       Schedule vt
+increases approaching Φ ≈ 1.618.                                                      j + 1, if U CBvt ,t ≤ U CBbt ,t ,
+                                                                     14:       j←{
+In Algorithm 2 we report the pseudocode of ALGθ . As a                                0,      otherwise
+first step, given K, ALGθ solves the system (1) before the           15:    end if
+trial, then it operates in epochs. ALGθ keeps track of the           16: end for
+number of rounds j passed since the current epoch started.
+At time t, ALGθ receives new packets and identifies vt ∈ Vt          With the following result, we prove that ALGθ,U achieves a
+and bt ∈ Bt as the heaviest packets in the algorithm’s buffer        tight θK -regret bound w.r.t. to the lower bound presented in
+with deadlines t and t + 1, respectively. The scheduling             Theorem 4.3.
+                                xj
+rule is the following: if vt < xj+1 bt then schedule bt , else       Theorem 4.2 (Upper Bound on the θK -regret of ALGθ,U ).
+schedule vt . The epoch can terminate (setting j = 0) in two         For every instance of the stochastic K-types packet schedul-
+ways: either bt is scheduled, or vt is scheduled and vt ≥ bt .       ing problem, we have
+Note that ALGθ needs to know K, but not the actual values                                                        √
+                                                                               E[GOPT ] ≤ θK E[GALGθ,U ] + O  ̃ ( KT ) .
+of the K weights involved in advance. Also, vt+j is always
+guaranteed to exist in ALGθ buffer due to the epoch termi-
+nation condition. The following proposition upper bounds             Proof Idea. The proof builds on the proof of Proposition 4.1.
+the competitive ratio of ALGθ .                                      In fact, it can be conducted in almost the same way noticing
+                                                                     the the gain of OPT inside an epoch can be upper bounded
+Proposition 4.1 (θK - Competitive Ratio for ALGθ ). In 2-            by the UCB of the gain of ALG inside the same. Then, it
+bounded K-OPSD instances, ALGθ satisfies                             is only needed to upper bound the sum of the confidence
+                     GOPT ≤ θK GALGθ .                               bounds in the same way as the proof of Proposition 3.1. The
+                                                                     full proof can be found in Appendix B.
+Proposition 4.1 shows that, in the case of at most K dis-            This result closes the problem of learning in 2-bounded
+tinct types of packets, improving over the well-established          packet scheduling problems with deterministic algorithms,
+Φ competitive ratio is possible. This result is of indepen-          providing a matching θK -regret upper bound to the lower
+dent interest, as the scenario with K types has never been           bound of Theorem 4.3. Note that this result strictly improves
+explored in the literature of online packet scheduling with          the one in Proposition 3.1.
+bounded deadlines. Also, the lower bound construction
+from (Hajek, 2001) implies the tightness of this result.             4.3   Regret Lower Bound.
+                                                                     We provide a lower bound on the θK -regret for the stochastic
+4.2   θK -regret Upper Bound for 2-Bounded Delay
+                                                                     K-OPSD problem.
+      K-OPSD, with learning.
+                                                                     Theorem 4.3 (Lower Bound for θK -regret). In 2-bounded
+The algorithmic idea underlying ALGθ can be simply ex-               (K + 1)-OPSD instances, every ALG must satisfy
+tended to the learning scenario, i.e. by using UCBs in-                                                       √
+stead of the actual weights. We now define vt and bt ac-                        E[GOPT ] − θK E[GALG ] ≥ Ω ( T ) .
+cording to their UCBs, i.e. vt ∈ arg maxv∈Vt U CBv,t and
+bt ∈ arg maxb∈Bt U CBb,t . We call ALGθ,U the resulting al-          Theorem 4.3 implies that ALGθ is worst-case nearly-optimal
+gorithm, which operates as ALGθ using weights’ estimates.            in this scenario. This result is of particular interest be-
+In Algorithm 3, we report the pseudocode of ALGθ,U .                 cause there are few examples of lower bounds for α-regret.
+
+                                                                 6
+                                     Online Packet Scheduling with Deadlines and Learning
+
+The technical challenge mainly relies on deviating from                 Algorithm 4 ALGR2
+the lower bound construction for the competitive ratio: the              1: for t ∈ [T ] do
+instance used by (Hajek, 2001) is built in a way that, no mat-           2: Compute UCBs and LCBs for every packet type, obtaining
+ter what the algorithm does, the competitive ratio is always                  {U CBi,t }i∈[K] and {LCBi,t }i∈[K]
+exactly Φ. The construction can be adapted, via an early                 3: Receive new packets and update Bt and Vt
+stopping, to get a θK lower bound, but this competitive ratio            4: Identify at ∈ arg maxa∈Vt U CBa,t
+                                                                         5: Identify bt ∈ arg maxb∈Bt UCBb,t
+is always tightly achieved, no matter what the algorithm
+                                                                         6: if ∃i ∈ {at , bt } s.t. Ni ≤ 50 ln T then
+does. Any modification to the construction yields a situation            7:      Schedule it ∈ arg mini∈{at ,bt } {Ni,t }
+in which there exists a simple thresholding rule for which               8:   else
+the competitive ratio ends up being higher than θK . We                  9:      Compute p̂at bt ,t
+solved this problem by a signed-perturbation, that forces               10:       Schedule at with probability p̂at bt ,t , else schedule bt
+                                                                        11: end if
+any algorithm, even with adversarially chosen thresholding
+                                                                        12: end for
+logics, to θK -alpha regret.
+
+5     Randomized Algorithms for the K-OPSD                              1 − p̂at bt ,t ). The algorithm also performs a burn-in period,
+      Problem                                                           in which for the first 50 log T times a packet is selected as
+In this section, we focus on randomized algorithms. Ran-                at or bt , it is automatically scheduled.
+domized algorithms have been studied less than their de-                Finally, we state the main result of this section.
+terministic counterparts in the packet scheduling literature.           Theorem 5.1 (Upper Bound for the 54 -regret of ALGR2 ).
+However, these algorithms can achieve better worst-case the-            In 2-bounded K-OPSD instances where randomization is
+oretical guarantees in systems allowing for randomization.              allowed, ALGR2 satisfies
+Note that the performance of a randomized algorithm cannot
+really be compared to that of the deterministic algorithm,                                   5                √
+                                                                                                           ̃ ( KT ) .
+                                                                                   E[GOPT ] ≤ E[GALGR2 ] + O                            (2)
+because randomization makes the adversary weaker, as it re-                                  4
+moves the possibility of perfectly predicting the algorithm’s
+next move. Indeed, even if an algorithm takes random de-                This result shows that randomization can be effectively lever-
+cisions, an adversary that knows its random bits could, in              aged in the 2-bounded K-OPSD problem to attain α-no-
+principle, behave as if the algorithm is deterministic.                 regret guarantees with the best known competitive ratio of
+                                                                        5
+In the OPSD literature, no algorithm matches the 54 com-                4
+                                                                          . It remains an open question whether the K types as-
+petitive ratio lower bound for randomized algorithms. In                sumption can be exploited to obtain a further sharpened
+the 2-bounded case, the algorithm from (Chin et al., 2006)              bound with a competitive ratio smaller than 54 (as we did for
+achieves a tight 54 . When s is arbitrary, the known lower              deterministic algorithms in Section 4).
+bound for the competitive ratio in s-bounded instances is                                e
+still 54 (Chin & Fung, 2003), and the best known algorithm              5.2   Achieving e−1 -regret in s-bounded K-OPSD.
+               e
+can achieve e−1   for every s (Chin et al., 2006).                      We now extend our results on randomized algorithms
+                                                                                                                       e
+                                                                        by providing a randomized algorithm with e−1      -no-regret
+5.1   Achieving 54 -no-regret in 2-bounded K-OPSD.                      guarantees for the s-bounded K-OPSD problem (note,
+                                                                          e
+                                                                             ≈ 1.582 < Φ), for any arbitrary s ∈ N. We fol-
+We start by providing a randomized algorithm with 54 -no-               e−1
+                                                                        low the notation introduced in the previous sections. Let
+regret guarantees for 2-bounded K-OPSD. We use the same
+                                                                        ht ∈ arg maxh∈Bt LCBh,t be the packet having the largest
+notation as in the previous sections. For every time t ∈ [T ]
+                                                                        LCB in the buffer and h̄t ∈ arg maxh∈Bt U CBh,t be the
+and couple of types a, b ∈ [K], consider the following:
+                                                                        packet having the largest UCB. Our algorithm, namely
+          ⎧
+          ⎪       4U CBa,t 1                                            ALGRs , works as follows: at every round t ∈ [T ], it samples
+          ⎪
+          ⎪
+          ⎪ max {          , } , U CBa,t ≤ LCBb,t
+          ⎪
+          ⎪
+          ⎪       5LCBb,t 5
+                                                                                                   U CB          U CB
+                                                                        a number xt in [−1 + ln LCBhh̄t,t,t , ln LCBhh̄t,t,t ], uniformly at
+ p̂ab,t = ⎨ 4                                         .                                                   t               t
+          ⎪
+          ⎪
+          ⎪   , U CBa,t > LCBb,t and LCBa,t ≤ U CBb,t                   random. ALGRs sends the packet ft s.t.
+          ⎪
+          ⎪
+          ⎪ 5
+          ⎪
+          ⎩ 1, LCBa,t > U CBb,t
+                                                                                         ft ∈        arg min             df ,           (3)
+                                                                                                     f ∈Bt s. t.
+Our algorithm, namely ALGR2 , whose pseudocode is re-                                            U CBf,t ≥ext LCBht ,t
+ported in Algorithm 4, works as follows: at round t, it selects
+at ∈ arg maxa∈Vt U CBa,t and bt ∈ arg maxb∈Bt U CBb,t .                 i.e. the earliest-deadline packet s.t. its UCB is at least ext
+Then, send a packet of type at with probability p̂at bt ,t , oth-       times the LCB of the heaviest packet. This procedure is
+erwise send a packet of type bt (with probability q̂at bt ,t =          summarized in Algorithm 5.
+
+                                                                    7
+                                       Online Packet Scheduling with Deadlines and Learning
+
+Algorithm 5 ALGRs                                                          an algorithm in this setting. Bounding the α-regret in K-
+ 1: for t ∈ [T ] do                                                        OPSD requires a charging scheme as an intermediate step
+ 2: Compute UCBs and LCBs for every packet type, obtaining                 that maps a set of subsequent actions from the algorithm
+      {U CBi,t }i∈[K] and {LCBi,t }i∈[K]                                   to a set of actions in OPT schedule. This issue is particu-
+ 3:   Receive new packets                                                  larly critical in randomized algorithms, where the stochastic
+ 4: Identify ht ∈ arg maxh∈Bt LCBh,t and h̄t ∈                             structure exhibits an interplay between the randomness of
+      arg maxh∈Bt U CBh,t .
+                                            U CB         U CB
+                                                                           the environment and the one of the algorithm.
+ 5:    Sample a number xt from [−1 + ln LCB h̄t ,t , ln LCB h̄t ,t ]
+                                                 ht ,t        ht ,t
+ 6:   Schedule ft according to Equation (3)
+ 7: end for                                                                Breaking the Φ barrier for the competitive ratio In
+                                                                           the 2-bounded OPSD setting, when the number of distinct
+                                                                           weights is finite and equal to K, we provide an algorithm
+                                  e
+Theorem 5.2 (Upper Bound for the e−1 -regret of ALGRs ).                   that achieves a competitive
+                                                                                              √           ratio of θK < Φ. The values
+In s-bounded K-OPSD instances where randomization is                       of θK span from 2 to Φ as K grows from 2 to ∞. The
+allowed, ALGRs satisfies                                                   algorithm builds over the well-known family of β-Earliest
+                                          √                                Deadline First (β-EDF) algorithms. β-EDF uses a static
+                       e               ̃ ( KT ) ,
+         E[GOPT ] ≤       E[GALGRs ] + O                         (4)       threshold to decide how close to the expiration the next
+                      e−1                                                  packet to schedule must be. Our algorithm, ALGθ , uses a
+for every s > 1.                                                           dynamic threshold and a restart mechanism. The sequence
+                                                                           of thresholds is the solution to a system of K + 1 equa-
+                e
+The quantity e−1   is bigger than 54 , being the lower bound               tions that converge to the lower bound instance from (Ha-
+for the competitive ratio for randomized algorithms. How-                  jek, 2001). Using a dynamic threshold requires a carefully
+ever, it is an open question whether there exists an algo-                 crafted charging mechanism, where the schedule of ALGθ
+                                    e
+rithm achieving a smaller-than- e−1     upper bound for any                is divided in epochs. We write the competitive ratio as the
+s-bounded instance, with arbitrary s. Our result matches the               solution to a linear optimization problem, and search for the
+best existing upper bound while including learning, which                  worst possible vertex of the solution space.
+poses an additional difficulty. Future advancements in the
+packet scheduling literature may lead to algorithms with
+sharper upper bounds on the competitive ratio, paving the                  Providing a θK−1 -regret lower bound We provide a
+way for their learning counterparts. Note that, while de-                  lower bound for√the θK−1 -regret in 2-bounded K-OPSD
+terministic algorithms can achieve α-no-regret using the                   instances of Ω ( T ). Proving a lower bound on the regret
+optimism principle, randomized algorithms require a more                   in bandits usually requires two instances that are hard to
+complex estimation procedure. The involvement of random-                   distinguish (from a statistical perspective) but with different
+ization based on the ratio between unknown quantities leads                enough optimal strategies. On the other hand, proving a
+to the usage of LCBs, together with UCBs.                                  lower bound on the competitive ratio for OPSD requires a
+                                                                           carefully crafted instance where every decision always leads
+6     Final Remarks and Future Directions                                  to the same competitive ratio. The two objectives can easily
+                                                                           collide: two instances where every decision always leads to
+This is the first work exploring the interplay between bandit              the same outcome cannot be different enough to generate a
+learning and online packet scheduling with deadlines. We                   meaningful regret lower bound. We overcome this problem
+introduce the K-OPSD problem, a theoretical framework                      by proposing a three-instance construction where the arrival
+that is motivated by applications such as QoS buffer manage-               sequence is partitioned into gadgets that repeats.
+ment and digital advertising. We show that K-OPSD strictly
+generalizes the K-armed sleeping bandit problem, and de-
+velop a theory that naturally extends existing algorithms                  UCBs are not enough for randomized algorithms Our
+from sleeping bandits to K-OPSD.                                           algorithms highlight a crucial difference in the construction
+There are several criticalities that emerge when trying to                 of deterministic learning algorithms from randomized ones.
+combine techniques from the toolbox of regret minimization                 Deterministic learning algorithms only use the notion of
+in MABs and the analysis techniques for competitive ratio.                 upper confidence bound (UCB) to estimate the expected
+                                                                           value of a packet type. Being optimistic is enough to upper
+Buffer Divergence between ALG and OPT In MABs, an                          bound the α-regret in this case. Instead, our randomized
+algorithm can always choose the same action as OPT. This                   algorithms make use of both UCBs and lower confidence
+is not the case in K-OPSD. A single different decision leads               bounds (LCBs). Indeed, LCBs allow randomized algorithms
+to different buffers in the subsequent rounds. Thus, it is not             to deal with ratios of estimates in a more natural way. This
+possible, in general, to bound the instantaneous regret of                 emerges from the proofs of Theorems 5.1 and 5.2.
+
+                                                                       8
+                                    Online Packet Scheduling with Deadlines and Learning
+
+6.1   Future Directions                                              Acknowledgements
+Many interesting future directions can be explored. First,           VP’s research was supported in part by the French National
+for deterministic algorithms, providing tight Φ-regret for           Research Agency (ANR) in the framework of the PEPR IA
+general instances is a challenging problem. Also, combining          FOUNDRY project (ANR-23-PEIA-0003) and through the
+both randomized algorithms and the K-finite type assump-             grant DOOM ANR-23-CE23-0002. It was also funded by
+tions can be explored to have competitive ratios even closer         the European Union (ERC, Ocean, 101071601).
+to 1. We conjecture that the competitive ratio can be lowered
+below 54 , up to 76 = 1.16̄ when K = 2, employing a simi-            Impact Statement
+lar lower-bound matching algorithm over the construction
+Theorem 4 of (Chin & Fung, 2003). Finally, additional inter-         This paper presents work whose goal is to advance the field
+packet structure can be further explored, developing models          of Machine Learning. There are many potential societal
+resembling linear bandits and/or contextual bandits. All             consequences of our work, none which we feel must be
+these steps towards generalization are interesting and techni-       specifically highlighted here.
+cally challenging, but can be well-motivated by real-world
+applications.                                                        References
+                                                                     Agrawal, P., Balkanski, E., Gkatzelis, V., Ou, T., and Tan,
+                                                                      X. Learning-augmented mechanism design: Leveraging
+                                                                       predictions for facility location. In Proceedings of the
+                                                                      23rd ACM Conference on Economics and Computation,
+                                                                       pp. 497–528, 2022.
+                                                                     Auer, P., Cesa-Bianchi, N., and Fischer, P. Finite-time
+                                                                       analysis of the multiarmed bandit problem. Machine
+                                                                       learning, 47:235–256, 2002.
+                                                                     Bansal, N., Coester, C., Kumar, R., Purohit, M., and Vee, E.
+                                                                       Learning-augmented weighted paging. In Proceedings
+                                                                       of the 2022 Annual ACM-SIAM Symposium on Discrete
+                                                                       Algorithms (SODA), pp. 67–89. SIAM, 2022.
+                                                                     Belamri, F., Boulfekhar, S., and Aissani, D. A survey on
+                                                                       qos routing protocols in vehicular ad hoc network (vanet).
+                                                                       Telecommunication Systems, 78(1):117–153, 2021.
+                                                                     Bienkowski, M., Chrobak, M., and Jeż, Ł. Randomized
+                                                                       competitive algorithms for online buffer management in
+                                                                       the adaptive adversary model. Theoretical Computer
+                                                                       Science, 412(39):5121–5131, 2011.
+                                                                     Borodin, A. and El-Yaniv, R. Online computation and
+                                                                       competitive analysis. cambridge university press, 2005.
+                                                                     Chin, F. Y. and Fung, S. P. Online scheduling with partial
+                                                                       job values: Does timesharing or randomization help?
+                                                                       Algorithmica (New York), 2003.
+                                                                     Chin, F. Y., Chrobak, M., Fung, S. P., Jawor, W., Sgall, J.,
+                                                                       and Tichỳ, T. Online competitive algorithms for maximiz-
+                                                                       ing weighted throughput of unit jobs. Journal of Discrete
+                                                                       Algorithms, 4(2):255–276, 2006.
+                                                                     Gerchinovitz, S. and Lattimore, T. Refined lower bounds
+                                                                       for adversarial bandits. Advances in Neural Information
+                                                                       Processing Systems, 29, 2016.
+                                                                     Hajek, B. On the competitiveness of on-line scheduling of
+                                                                       unit-length packets with hard deadlines in slotted time.
+
+                                                                 9
+                                    Online Packet Scheduling with Deadlines and Learning
+
+  In Proceedings of the 2001 Conference on Information
+  Sciences and Systems, 2001.
+Iyer, R. and Kleinrock, L. Qos control for sensor networks.
+  In IEEE International Conference on Communications,
+  2003. ICC’03., volume 1, pp. 517–521. IEEE, 2003.
+Karakus, M. and Durresi, A. Quality of service (qos) in
+  software defined networking (sdn): A survey. Journal of
+  Network and Computer Applications, 80:200–218, 2017.
+Kesselman, A., Lotker, Z., Mansour, Y., Patt-Shamir, B.,
+  Schieber, B., and Sviridenko, M. Buffer overflow manage-
+  ment in qos switches. In Proceedings of the thirty-third
+  annual ACM symposium on Theory of computing, pp.
+  520–529, 2001.
+Kleinberg, R., Niculescu-Mizil, A., and Sharma, Y. Re-
+  gret bounds for sleeping experts and bandits. Machine
+  learning, 80(2):245–272, 2010.
+
+Lattimore, T. and Szepesvári, C. Bandit algorithms. Cam-
+  bridge University Press, 2020.
+Levy, O., Touitou, N., and Rosenberg, A. Online
+  weighted paging with unknown weights. arXiv preprint
+  arXiv:2410.21266, 2024.
+
+Liang, Y.-C., Stein, C., and Wei, H.-T. Learning-augmented
+  online packet scheduling with deadlines. arXiv preprint
+  arXiv:2305.07164, 2023.
+Merlis, N., Richard, H., Sentenac, F., Odic, C., Molina, M.,
+ and Perchet, V. On preemption and learning in stochastic
+ scheduling. In International Conference on Machine
+ Learning, pp. 24478–24516. PMLR, 2023.
+Szigeti, T., Hattingh, C., Barton, R., and Briley Jr, K. End-
+  to-End QoS network design: Quality of Service for rich-
+  media & cloud networks. Cisco press, 2013.
+
+Veselỳ, P., Chrobak, M., Jeż, Ł., and Sgall, J. A-competitive
+  algorithm for scheduling packets with deadlines. SIAM
+  Journal on Computing, 51(5):1626–1691, 2022.
+
+
+
+
+                                                                  10
+                                       Online Packet Scheduling with Deadlines and Learning
+
+A     Technical Lemmas
+Lemma A.1 ((Levy et al., 2024)). Let δ ∈ (0, 1). Let ti,n ∈ [T ] be the time at which packet type i ∈ [K] is selected for the
+n-th time. Let E(δ) be the good event under which:
+
+    • 0 < LCBi,ti,1 < . . . < LCBi,ti,n ≤ µi for every i ∈ [K] and n ∈ [T ].
+
+    • µi ≤ U CBi,ti,n < . . . < U CBi,ti,1 = 1 for every i ∈ [K] and n ∈ [T ].
+
+    • U CBi,ti,n − LCBi,ti,n ≤ 2βi,ti,n for every i ∈ [K] and n ∈ [T ].
+
+Then, we have P(E(δ)) ≥ 1 − δ.
+Lemma A.2. Let i, j ∈ [K] be packet types with means µi > µj and gap ∆i,j ∶= µi − µj > 0. Then, on the event E( T1 ), the
+event
+                          {UCBj,t > UCBi,t } ∩ {i, j ∈ Bt } ∩ {j is scheduled at time t}
+can occur at most
+                                                                     8 ln T
+                                                           Qi,j =
+                                                                      ∆2i,j
+times.
+
+Proof. We work under the event E( T1 ). Fix any round t for which i, j ∈ Bt and arm j is scheduled. Consider UCBj,t >
+UCBi,t . Unfolding the indices and adding and subtracting the true means,
+                       ¿                 ¿                                 ¿
+                       Á 2 ln T          Á 2 ln T                          Á 2 ln T
+                ̂j,t + Á
+                µ      À          ̂i,t + Á
+                                > µ      À                       ̂j,t )) + Á
+                                                  Ô⇒ (µj − (µj − µ         À
+                          Nj,t              Ni,t                              Nj,t
+                                                                                                         ¿
+                                                                                                         Á 2 ln T
+                                                                                               ̂i,t )) + Á
+                                                                                 > (µi − (µi − µ         À        .
+                                                                                                            Ni,t
+                       √                                    √
+            ̂j,t ) ≤
+Hence (µj − µ                                     ̂i,t ) ≥ − 2 ln T /Ni,t , so the previous display yields
+                           2 ln T /Nj,t and (µi − µ
+                                         ¿        ¿               ¿        ¿
+                                         Á 2 ln T Á 2 ln T        Á 2 ln T Á 2 ln T
+                                    µj − Á
+                                         À       +Á
+                                                  À        > µi − Á
+                                                                  À       +Á
+                                                                           À        ,
+                                            Nj,t     Nj,t            Ni,t     Ni,t
+
+that is,                                                          ¿
+                                                                  Á 2 ln T
+                                                      µi − µj ≤ 2 Á
+                                                                  À        .
+                                                                     Nj,t
+Equivalently,
+                                                                    8 ln T
+                                                          Nj,t ≤           .                                                  (5)
+                                                                     ∆2i,j
+
+Now observe that each time the event
+
+                                       {UCBj,t > UCBi,t } ∩ {i, j ∈ Bt } ∩ {j is scheduled}
+
+occurs, the counter Nj,t increases by one. Thus, if this event were to occur more than m times, then there would exist a
+                                                                 8 ln T
+round t with Nj,t > m at which it still occurs. Choosing any m ≥         contradicts (5). In particular, taking
+                                                                  ∆2i,j
+
+                                                                    8 ln T
+                                                            m =
+                                                                     ∆2i,j
+
+is valid (it is a looser threshold), and therefore the event in the statement can occur at most Qi,j = 8 ln T /∆2i,j times.
+
+                                                                  11
+                                     Online Packet Scheduling with Deadlines and Learning
+
+The following lemma includes some properties of p̂ab,t , which are crucial for the analysis of ALGR2 . Let E(δ) be the good
+event under which all confidence intervals hold simultaneously for every type i ∈ [K] and round t ∈ [T ].
+Lemma A.3 (Properties of p̂at bt ,t ). Let a∗t ∈ arg maxa∈Vt∗ wa and b∗t ∈ arg maxb∈Bt∗ wb , where Vt∗ is the set of pending
+packets with deadline t for OPT at time t, and Bt∗ is the set of the ones having deadline greater than t. Then, under the good
+event ET (δ), the followings hold for every t ∈ [T ]:
+
+                                                           pat bt ,t at ≥ 4a∗t − b∗t − 10βat ,t
+                                                          5̂                                                                     (6a)
+                                           pat bt ,t at + q̂at bt ,t bt ) ≥ 4b∗t − 10βat ,t − 8βbt ,t
+                                         5(̂                                                                                     (6b)
+                                           5̂               qat bt ,t bt ≥ 4a∗t − 10βat ,t
+                                            pat bt ,t at + 2̂                                                                    (6c)
+                                           5̂               qat bt ,t bt ≥ b∗t − 10βat ,t − 2βbt ,t
+                                            pat bt ,t at + 2̂                                                                    (6d)
+
+Proof. Under the good event, all confidence intervals contain the true mean. Thus LCBi,t ≤ µi ≤ U CBi,t and LCBi,t +
+2βi,t ≥ µi ≥ U CBi,t − 2βi,t for every i ∈ [K] and t ∈ [T ].
+    Proof of Equation (6a)
+                                               pat bt ,t at ≥ 5̂
+                                              5̂               pat bt ,t U CBat ,t − 10̂
+                                                                                       pat bt ,t βat ,t
+                                                           ≥ 4U CBat ,t − LCBbt ,t − 10βat ,t
+                                                           ≥ 4U CBa∗t ,t − LCBb∗t ,t − 10βat ,t
+                                                           ≥ 4a∗t − b∗t − 10βat ,t .
+    Proof of Equation (6b)
+                           pat bt ,t at + q̂at bt ,t bt ) ≥ 5(̂
+                         5(̂                                  pat bt ,t U CBat ,t + q̂at bt ,t LCBbt ,t ) − 10̂
+                                                                                                              pat bt ,t βat ,t
+                                                              pat bt ,t U CBat ,t + q̂at bt ,t LCBbt ,t ) − 10̂
+                                                          ≥ 5(̂                                               pat bt ,t βat ,t
+                                                       ≥ 4LCBbt ,t − 10βat ,t
+                                                       ≥ 4U CBbt ,t − 10βat ,t − 8βbt ,t
+                                                       ≥ 4b∗t − 10βat ,t − 8βbt ,t .
+    Proof of Equation (6c)
+                           pat bt ,t at + 2̂
+                          5̂               qat bt ,t bt ≥ 5̂
+                                                           pat bt ,t U CBat ,t + 2̂
+                                                                                  qat bt ,t LCBbt ,t − 10̂
+                                                                                                         pat bt ,t βat ,t
+                                                       ≥ 4U CBat ,t − 10̂
+                                                                        pat bt ,t βat ,t
+                                                       ≥ 4a∗t − 10βat ,t .
+    Proof of Equation (6d)
+                           pat bt ,t at + 2̂
+                          5̂               qat bt ,t bt ≥ 5̂
+                                                           pat bt ,t U CBat ,t + 2̂
+                                                                                  qat bt ,t LCBbt ,t − 10̂
+                                                                                                         pat bt ,t βat ,t
+                                                       ≥ LCBbt ,t − 10̂
+                                                                      pat bt ,t βat ,t
+                                                       ≥ U CBbt ,t − 10βat ,t − 2βbt ,t
+                                                       ≥ b∗t − 10βat ,t − 2βbt ,t .
+
+
+
+B    Omitted Proofs
+Lemma 2.1 (Sleeping Bandits are a special case of K-OPSD). Every 1-bounded instance of the K-OPSD problem can be
+reduced to a K-armed Sleeping Bandit problem, and vice versa.
+
+Proof. By the definition of K-armed sleeping bandits of (Kleinberg et al., 2010), there exist K types of actions and at every
+round t ∈ [T ] an adversary selects a subset At ⊆ [K] to propose to the learner. Actions selected in time t are only available
+in that round, and unless the adversary selects them again, are not available anymore after t, since at most one action can
+be played per round. In 1-bounded K-OPSD, we can just ignore packets with the same type except for one: the packets
+with the same type are indistinguishable and only one of them can eventually be played. For every action a ∈ At , we create
+a buffer Bt s.t. there exists at least one packet pa of type a ∈ Bt . Then, no matter how many copies of pa there are in the
+buffer, the decision space is always the same and is equivalent to the size of the minimal buffer, which is actually At .
+
+                                                                      12
+                                     Online Packet Scheduling with Deadlines and Learning
+
+B.1   Deterministic Algorithms
+Lemma 3.1 (Sleeping Bandits are a special case of K-OPSD). Every 1-bounded instance of the K-OPSD problem can be
+reduced to a K-armed Sleeping Bandit problem, and viceversa.
+
+Proof. By the definition of K-armed sleeping bandits of (Kleinberg et al., 2010), there exist K types of actions and at every
+round t ∈ [T ] an adversary selects a subset At ⊆ [K] to propose to the learner. Actions selected in time t are only available
+in that round, and unless the adversary selects them again, are not available anymore after t, since at most one action can
+be played per round. In 1-bounded K-OPSD, we can just ignore packets with the same type except for one: the packets
+with the same type are indistinguishable and only one of them can eventually be played. For every action a ∈ At , we create
+a buffer Bt s.t. there exists at least one packet pa of type a ∈ Bt . Then, no matter how many copies of pa there are in the
+buffer, the decision space is always the same and is equivalent to the size of the minimal buffer, which is actually At .
+
+Proposition 3.1 (Φ-regret of EDFL                                                    L
+                                Φ ). In 2-bounded and 3-bounded K-OPSD instances, EDFΦ suffers an expected cumulative
+Φ-regret bounded as
+                                                   ⎛                           ⎞
+                                                   ⎜ K−1 ln T             ln T ⎟
+                                       RΦ,T ≤ O ⎜                              ⎟,
+                                         EDFL
+                                            Φ
+                                                   ⎜K ∑ ∆        + ∑           ⎟
+                                                   ⎜ i=1 i,i+1 i,j∈[K] ∆i,j ⎟
+                                                                            Φ
+
+                                                   ⎝              ∆i,j >0
+                                                                   Φ           ⎠
+
+       i,j ∶= ∣µi − Φµj ∣. Alternatively, the Φ-regret can be bounded as
+where ∆Φ
+                                                                     √
+                                                           EDFL   ̃ ( KT ) .
+                                                          RΦ,TΦ ≤ O
+
+Proof. We call ft the packet sent by ALG in t, and jt the packet sent by OPT in t. We also call ht the packet in the buffer of
+ALG at time t such that ht ∈ arg maxh∈Bt U CBh,t . To lighten the notation, we let the name of the packet coincide with its
+type.
+We consider the charging scheme in which jt is charged to its copy in the ALG schedule up to t if it exists, otherwise it is
+charged to ft .
+For δ ∈ (0, 1), define the uniform “good” event
+                                                         ⎧               √           ⎫
+                                                      K  ⎪
+                                                         ⎪ T               2 ln δ −1 ⎪
+                                                                                     ⎪
+                                         E(δ) ∶= ⋂ ⋂ ⎨∣̂   µk,n − µk ∣ ≤             ⎬,
+                                                         ⎪
+                                                 k=1 n=1 ⎪                     n     ⎪
+                                                                                     ⎪
+                                                         ⎩                           ⎭
+      ̂k,n denotes the empirical mean of arm k after n samples. Lemma A.1 states that the good event holds with
+where µ
+probability at least 1 − δ. Let δ = T1 . Since
+
+                                 EDFL          EDFL                            EDFL
+                            E[RΦ,TΦ ] = E [RΦ,TΦ ∣E(δ)] P (E(δ)) + E [RΦ,TΦ ∣E(δ)C ] P (E(δ)C )
+                                               EDFL
+                                        ≤ E [RΦ,TΦ ∣E(δ)] P (E(δ)) + O(1),
+
+we focus on bounding the first addendum under the good event.
+We proceed by cases.
+
+Case 1: ft only receives one charge        Ideally, we want to show that ft receives a charge that is at most Φft .
+
+Case 1a: ft receives a charge from ft        Then the total charge is obviously ft . No Φ-regret is accrued in this case.
+
+Case 1b: ft receives a charge from jt Then, ALG hasn’t send jt before ft . This implies that jt ∈ Bt and that ΦU CBjt ,t <
+U CBht ,t ≤ ΦU CBft ,t , and U CBjt ,t < U CBft ,t . If jt ≤ ft , then the total charge is trivially bounded by ft . If jt > ft , the
+instantaneous Φ-regret can be bounded as
+
+                                   jt − Φft < U CBjt ,t − Φft < ΦU CBft ,t − Φft ≤ Φβft ,t .
+
+                                                                 13
+                                    Online Packet Scheduling with Deadlines and Learning
+
+Since U CBjt ,t < U CBft ,t can occur at most Qjt ,ft = ∆8 2ln T times (Lemma A.2), the total Φ-regret accrued in this case is
+                                                                  jt ,ft
+bounded as
+                                                       Qjt ,ft
+                                                                            8Φ ln T
+                                                   Φ ∑ βft ,t ≤                      .
+                                                            t=1              ∆jt ,ft
+
+Case 2: ft receives a charge from jt and a charge from ft In this case, jt ∈ Bt and OPT has scheduled ft after time t.
+Also, ΦU CBjt ,t < U CBht ,t ≤ ΦU CBft ,t . We have to distinguish two cases.
+
+Case 2a: dft = t + 2 In this case, we have U CBft ,t = U CBht ,t . If Φjt ≤ ft , we have jt + ft ≤ (1 + Φ−1 ) ft = Φft , and
+no Φ-regret is accrued. If Φjt > ft , we have that ΦU CBjt ,t ≤ U CBft ,t can occur at most QΦ
+                                                                                             jt ,t =
+                                                                                                     8 ln T
+                                                                                                            2 times (Lemma
+                                                                                                      Φ   (∆f ,j )
+                                                                                                             t   t
+
+             ft ,jt > 0. The instantaneous Φ-regret can be bounded as
+A.2), where ∆Φ
+
+                          (jt + ft ) − Φft < U CBjt ,t − Φ−1 ft < Φ−1 U CBft ,t − Φ−1 ft ≤ Φ−1 βft ,t .
+The total Φ-regret accrued in this case is bounded as
+                                                            QΦ
+                                                             jt ,ft
+                                                       −1                     8 ln T
+                                                   Φ          ∑ βft ,t ≤               ,
+                                                             t=1              ∆Φft ,jt
+
+
+      ft ,jt > 0.
+with ∆Φ
+
+Case 2b: dft < t + 2 In this case, we have dht = t + 2 and djt ≤ dft , since the schedule of OPT is ordered with ascending
+deadlines. Since ft is played by OPT after t, and of course before t + 2, it must be that dft = t + 1. So we consider the couple
+of packets scheduled by ALG in t and t + 1, a bound the Φ-regret accrued in these two rounds jointly. Note that ft+1 can
+receive a charge only from its copy, since OPT plays ft in t + 1 and is charged to ft itself. Moreover, ΦU CBft ,t ≥ U CBht ,t .
+If Φjt < ft , we have (jt + ft + ft+1 ) − Φ(ft + ft+1 ) < (Φ−1 ft + ft + ft+1 ) − Φ(ft + tt+1 ) < 0, and there is no Φ-regret. If
+Φjt ≥ ft , the instantaneous Φ-regret can be bounded as
+                     (jt + ft + ft+1 ) − Φ(ft + ft+1 ) < U CBjt ,t − Φ−1 (ft + ft+1 )
+                                                            1
+                                                       ≤ Φ−1 2U CBht ,t − Φ−1 (ft + ft+1 )
+                                                            2
+                                                          1
+                                                       ≤    Φ(U CBft ,t + U CBft+1 ,t ) − Φ−1 (ft + ft+1 )
+                                                         2Φ
+                                                         3
+                                                       ≤ (βft ,t + βft+1 ,t ).
+                                                         2
+Since jt ∈ B, this situation can occur until U CBjt ,t < U CBft ,t , thus at most Qjt ,ft times (Lemma A.2). The total Φ-regret
+accrued in this case is bounded as
+                                                      Q
+                                                   3 jt ,ft           8Φ ln T
+                                                        ∑ βft ,t ≤             .
+                                                   2 t=1               ∆jt ,ft
+Summing up all the possible regrets sources for every round, and recombining by packet type, yields the first result:
+
+                                           EDFL    ⎛T ⎛ 1          1 ⎞           ⎞
+                                          RΦ,TΦ ≤ O ∑            +          ln T
+                                                   ⎝t=1 ⎝ ∆jt ,ft ∆Φ
+                                                                   ft ,jt ⎠      ⎠
+                                                  ⎛                          ⎞
+                                                  ⎜ K−1 ln T            ln T ⎟
+                                               ≤ O⎜
+                                                  ⎜K ∑ ∆     + ∑             ⎟.
+                                                                             ⎟
+                                                  ⎜ i=1 i,i+1 i,j∈[K] ∆i,j ⎟
+                                                                          Φ
+
+                                                  ⎝           ∆Φ i,j >0
+                                                                             ⎠
+
+The second bound can be obtained by noting that, every time a packet ft is played, the instantaneous Φ-regret at round t can
+be bounded by βft ,t . Summing up for every packet type i ∈ [K], and for the number of times a packet of type i has been
+scheduled, we get
+                                        Ni,T
+                                                      ̃⎛ ∑
+                                                               √      ⎞ ̃ √
+                                   ∑ ∑ βi,ti,n ≤ O               Ni,T ≤ O     ( KT ) ,
+                                  i∈[K] n=1             ⎝i∈[K]        ⎠
+
+                                                                       14
+                                          Online Packet Scheduling with Deadlines and Learning
+
+where ti,n is the round in which a packet of type i has been scheduled for the n-th time.
+
+Proposition 4.1 (θK - Competitive Ratio for ALGθ ). In 2-bounded K-OPSD instances, ALGθ satisfies
+
+                                                           GOPT ≤ θK GALGθ .
+
+Proof. We analyze separately the two types of possible epochs, i.e. the ones ending with bt+ℓ (first type) and the ones ending
+with vt+ℓ (second type), where ℓ will be used to indicate the length of an epoch. Note that, by construction, any epoch can
+be at most K rounds long, i.e. ℓ ≤ K. We have to show two things: (1) every epoch starts with the buffer of OPT being
+entirely contained in the buffer of ALGθ , thus OPT has no advantage gained from previous epochs; (2) GE    OPT ≤ θK GALGθ for
+                                                                                                                      E
+
+every epoch E, where GE                                                        E                                θ
+                          OPT indicates the gain of OPT inside epoch E, and GALGθ indicates the gain of ALG inside epoch
+E. These two facts combined yield a global competitive ratio of θK .
+
+(1) ALGθ starts every epoch with a larger or equal buffer to OPT. We prove this fact by allowing for a stronger OPT.
+In particular, at the end of every epoch, we allow OPT to send additional packets until its buffer is entirely contained in the
+buffer of ALGθ .
+
+(1a) {vt , . . . , bt+ℓ }-type epochs.    Consider an epoch E starting in t and ending in t + ℓ of the first type, then we have:
+
+                                                                 ℓ−1
+                                                        GE
+                                                         ALGθ
+                                                              = ∑ vt+j + bt+ℓ .
+                                                                 j=0
+
+
+Assuming that OPT starts with a buffer that is smaller of equal than the one of ALGθ , we upper bound its gain inside epoch
+E as
+                                                                     ℓ
+                                                          OPT ≤ ∑ bt+j + vt+ℓ ,
+                                                         GE                                                                        (7)
+                                                                 j=0
+
+which is the best possible gain inside epoch E since bt+j > vt+j for every j < ℓ by construction, vt+ℓ + bt+ℓ ≥ bt+ℓ . We
+allowed OPT to schedule an extra packet w.r.t. to ALGθ , which is vt+ℓ . This way, when epoch E terminates, the following
+epoch starts with the buffer of OPT contained in the one of ALGθ .
+
+(2a) {vt , . . . , vt+ℓ }-type epochs     Consider an epoch E starting in t and ending in t + ℓ of the second type, then we have:
+
+                                                                              ℓ
+                                                           GE
+                                                            ALGθ
+                                                                 = ∑ vt+j .
+                                                                          j=0
+
+
+Assuming that OPT starts with a buffer that is smaller of equal than the one of ALGθ , we upper bound its gain inside epoch
+E as
+                                                                 ℓ−1
+                                                          OPT ≤ ∑ bt+j + vt+ℓ ,
+                                                         GE                                                                        (8)
+                                                                 j=0
+
+which is the best possible gain inside epoch E since bt+j > vt+j for every j < ℓ by construction, and vt+ℓ ≥ bt+ℓ . When
+epoch E terminates, the following epoch starts with the buffer of OPT contained in the one of ALGθ .
+
+(2) Bounding the competitive ratio of ALGθ in every epoch. We now prove that, given an epoch E of any type,
+GOPT ≤ θK GE
+           ALGθ
+                .
+
+(2a) {vt , . . . , bt+ℓ }-type epochs.    Consider an epoch E starting in t and ending in t + ℓ of the first type, then we have:
+
+                                                               ℓ−1                  ℓ
+                                        θK GE
+                                            ALGθ
+                                                 − GE
+                                                    OPT ≥ θK ∑ vt+j + θK bt+ℓ − ∑ bt+j − vt+ℓ ,                                    (9)
+                                                               j=0                 j=0
+
+which follows by Equation (7). Our goal is to prove that the RHS of Equation (9) is nonnegative for any choice of the
+sequences {vt+j }ℓj=0 and {bt+j }ℓj=0 . The epoch termination conditions of ALGθ , together with the definitions of vt+j and
+
+                                                                         15
+                                    Online Packet Scheduling with Deadlines and Learning
+
+bt+j , impose a set of constraints on these sequences:
+
+                                                 vt+j ≥ bt+j−1 , 1 ≤ j ≤ K − 1,                                           (10)
+                                                 bt+j ≥ vt+j , j ≥ 0,                                                     (11)
+                                                         xj
+                                                 vt+j ≥       bt+j , 0 ≤ j ≤ ℓ − 1,                                       (12)
+                                                        xj+1
+                                                         xℓ
+                                                 vt+ℓ ≤       bt+ℓ ,                                                      (13)
+                                                        xℓ+1
+
+where (10) follows from the definition of vt+j , (11) follows from the epoch termination conditions of ALGθ , and (12) and
+(13) follow from the decision rule of ALGθ (and with the notational convention that x0 = 1 and xK = xK−1 ). An important
+consequence of these conditions is that both vt+j and bt+j are strictly increasing sequences.
+Intuitively, to prove that under these constraints the RHS of Equation (9) is nonnegative, we look at it from the perspective
+of a constrained minimization problem, and show that the feasible minimum set the RHS to 0. In particular, note that both
+the objective function (9) and the constraints (10)-(13) are linear in the parameters vt+j and bt+j . Thus, the minimum must
+be in one of the edges of the decision space defined by the constraints. We now define an edge sequence ̃  vt+j and ̃
+                                                                                                                    bt+j where
+inequalities are tight and the RHS of (9) is 0. Let s > 0 be any scale parameter (the problem is homogeneous and the sign
+does not change with rescaling). Then, set
+
+                                                    ̃
+                                                    bt = s,                                                               (14)
+                                                    ̃
+                                                    vt = s(θK − 1),                                                       (15)
+                                                  vt+j = ̃
+                                                  ̃      bt+j−1 , j ≥ 1,                                                  (16)
+                                                           xj ̃
+                                                  ̃
+                                                  vt+j =      bt+j , 0 ≤ j ≤ ℓ.                                           (17)
+                                                         xj+1
+
+A direct implication of (14)-(17) is that
+                                                      xj           xj
+                                     vt+j = ̃
+                                     ̃      bt+j−1 =      ̃
+                                                          vt+j−1 = ̃  vt = s(θK − 1)xj ,
+                                                     xj−1          x0
+                                     ̃      xj+1        xj+1
+                                     bt+j =      ̃
+                                                 vt+j =      ̃
+                                                             vt = s(θK − 1)xj+1 .
+                                              xj         x0
+
+
+We rearrange (9), plug the edge sequence and write
+                        ℓ−1                  ℓ                  ℓ−1
+                         vt+j + θK̃
+                    θK ∑ ̃        bt+ℓ − ∑ ̃
+                                           bt+j − ̃            vt+j − ̃
+                                                  vt+ℓ = ∑ (θK ̃      bt+j ) + (θK − 1)̃
+                                                                                       bt+ℓ − ̃
+                                                                                              vt+ℓ
+                        j=0                 j=0                 j=0
+
+                                = s(θK − 1) [θK (1 + . . . + xℓ−1 + xℓ+1 ) − (x1 + . . . + 2xℓ + xℓ+1 )] = 0,
+
+which is a direct consequence of the definition of {xj }K−1j=0 as a solution to (1). We proved that the sequences {̃ vt+j }ℓj=0
+and {̃bt+j }j=0 are feasible and make all the constraints tight. This step of the proof can be concluded by noting that these
+            ℓ
+
+edge sequences are actually the minimizer of the RHS of (9): the objective is linear with a positive coefficient in {vt+j }ℓ−1
+                                                                                                                            j=0
+and bt+ℓ , and we set the minimum possible values for those (all lower bounds became equalities); the objective is linear
+with a negative coefficient in {bt+j }ℓ−1
+                                      j=0 and vt+ℓ , and we set the maximum possible values for those (all upper bounds
+became equalities). Thus, the term cannot be reduced anymore and it is nonnegative for any feasible sequence of values, and
+GEOPT ≤ θK GALGθ .
+              E
+
+
+
+(2b) {vt , . . . , vt+ℓ }-type epochs. We closely follow the argument developed in the previous step. Consider an epoch E
+starting in t and ending in t + ℓ of the first type, then we have:
+
+                                                                  ℓ         ℓ−1
+                                      θK GE
+                                          ALGθ
+                                               − GE
+                                                  OPT ≥ θK ∑ vt+j − ∑ bt+j − vt+ℓ ,                                       (18)
+                                                                 j=0        j=0
+
+
+                                                                16
+                                              Online Packet Scheduling with Deadlines and Learning
+
+which follows by Equation (8). Our goal is to prove that the RHS of Equation (18) is nonnegative for any choice of the
+sequences {vt+j }ℓj=0 and {bt+j }ℓj=0 . Constraints (10)-(12) still hold, in addition we have
+
+
+                                                                       vt+ℓ ≥ bt+ℓ , ,                                       (19)
+
+which follows from the epoch termination condition of ALGθ . As before, we need to prove that the RHS of (18) is
+nonnegative under any sequence satisfying the constraints.
+We use the same constrained optimization argument as before, and define and edge sequence which makes the constraints
+tight:
+                                                            ̃
+                                                            bt = s,                                                          (20)
+                                                            ̃
+                                                            vt = s(θK − 1),                                                  (21)
+                                                          vt+j = ̃
+                                                          ̃      bt+j−1 , j ≥ 1,                                             (22)
+                                                                   xj ̃
+                                                          ̃
+                                                          vt+j =        bt+j , 0 ≤ j ≤ ℓ − 1,                                (23)
+                                                                 xj+1
+                                                          vt+ℓ = ̃
+                                                          ̃      bt+ℓ , .                                                    (24)
+
+We now rewrite the RHS of (18) and plug the edge sequences to obtain:
+
+                                         ℓ          ℓ−1                   ℓ−1
+                                      vt+j − ∑ ̃
+                                 θK ∑ ̃        bt+j − ̃            vt+j − ̃
+                                                      vt+ℓ = ∑ (θK ̃      bt+j ) + (θK − 1)̃
+                                                                                           vt+ℓ
+                                        j=0         j=0                   j=0
+
+                                                  = s(θK − 1) [θK (1 + . . . + xℓ ) − (x1 + . . . + 2xℓ )] ≥ 0,
+
+which is a direct consequence of the definition of {xj }K−1
+                                                        j=0 as a solution to (1). We proved that the sequences {̃ vt+j }ℓj=0 and
+{̃
+ bt+j }j=0 are feasible and make all the constraints tight. This step of the proof can be concluded by noting that these edge
+       ℓ
+
+sequences are actually the minimizer of the RHS of (18): the objective is linear with a positive coefficient in {vt+j }ℓj=0 , and
+we set the minimum possible values for those (all lower bounds became equalities); the objective is linear with a negative
+coefficient in {bt+j }ℓ−1
+                      j=0 , and we set the maximum possible values for those (all upper bounds became equalities). Thus, the
+term cannot be reduced anymore, and it is nonnegative for any feasible sequence of values, and GE    OPT ≤ θK GALGθ .
+                                                                                                                 E
+
+Putting all together completes the proof.
+
+
+Theorem 4.2 (Upper Bound on the θK -regret of ALGθ,U ). For every instance of the stochastic K-types packet scheduling
+problem, we have
+                                                                      √
+                                     E[GOPT ] ≤ θK E[GALGθ,U ] + O ̃ ( KT ) .
+
+
+Proof. The proof follows the argument of the previous one with the addition of optimism. We work under the good event
+E(δ). Due to ALGθ,U epoch termination conditions, all the packets in OPT buffer at the start of an epoch must also be
+contained in ALGθ,U buffer. We already proved this in the proof of Proposition 4, and the same argument still holds. What
+we prove now is that the θK -regret accrued inside an epoch is bounded by the sum of the widths of the confidence intervals
+of the packets selected by ALGθ,U .
+
+(a) {vt , . . . , bt+ℓ }-type epochs.        Consider an epoch E starting in t and ending in t + ℓ of the first type. Then
+
+                                                                   ℓ
+                                                       OPT ] ≤ ∑ U CBbt+j ,t + U CBvt+ℓ ,t ,
+                                                    E[GE
+                                                                  j=0
+
+
+which is an overestimation of the total reward that any algorithm can achieve within the epoch, due to epoch termination
+conditions of ALGθ,U . Note that under the good event, all confidence intervals contain the true mean, for every packet type
+
+                                                                            17
+                                          Online Packet Scheduling with Deadlines and Learning
+
+and time t ∈ [T ]. We want to lower bound the following:
+                                                              ℓ−1                          ℓ
+                      θK E[GE
+                            ALGθ,U
+                                   ] − E[GE
+                                          OPT ] ≥ θK ∑ vt+j + θK bt+ℓ − ∑ U CBbt+j ,t − U CBvt+ℓ ,t
+                                                              j=0                         j=0
+                                                 ℓ−1                                            ℓ
+                                           ≥ θK ∑ U CBvt+j ,t + θK U CBbt+ℓ ,t − ∑ U CBbt+j ,t − U CBvt+ℓ ,t +             (25)
+                                                 j=0                                           j=0
+                                                        ℓ−1
+                                                − 2θK ∑ βvt+j ,t − 2θK βbt+ℓ ,t .
+                                                        j=0
+
+We show that (25) is lower bounded by 0. From the ALGθ,U perspective, the UCBs are equivalent to the actual weights.
+ALGθ,U behaves exactly like ALGθ , and the UCBs satisfy the same constraints. Minimizing (25) under the UCB constraints
+is exactly equivalent to minimize (9) under the set of constraints defined in (10)-(13). Thus, substituting the UCBs with the
+actual values and following the same argument of the proof of Proposition 4, step (2a), we get that (25) is nonnegative for
+every sequence of UCBs.
+Thus, in epoch E, we have
+                                                                                    ℓ−1
+                                        θK E[GE
+                                              ALGθ,U
+                                                     ] − E[GE
+                                                            OPT ] ≥ −2θK ∑ βvt+j ,t − 2θK βbt+ℓ ,t .                       (26)
+                                                                                    j=0
+
+
+(b) {vt , . . . , vt+ℓ }-type epochs.     Consider an epoch E starting in t and ending in t + ℓ of the second type. Then
+                                                              ℓ−1
+                                                    OPT ] ≤ ∑ U CBbt+j ,t + U CBvt+ℓ ,t ,
+                                                 E[GE
+                                                              j=0
+
+which is an overestimation of the total reward than any algorithm can achieve inside the epoch, due to epoch termination
+conditions of ALGθ,U . Note that under the good event all confidence intervals contain the true mean, for every packet type
+and time t ∈ [T ]. We want to lower bound the following:
+                                                                     ℓ              ℓ−1
+                               θK E[GE
+                                     ALGθ
+                                          ] − E[GE
+                                                 OPT ] ≥ θK ∑ vt+j − ∑ U CBbt+j ,t − U CBvt+ℓ ,t
+                                                                    j=0             j=0
+                                                        ℓ                     ℓ−1
+                                                 ≥ θK ∑ U CBvt+j ,t − ∑ U CBbt+j ,t − U CBvt+ℓ ,t +                        (27)
+                                                       j=0                    j=0
+                                                               ℓ
+                                                       − 2θK ∑ βvt+j ,t .
+                                                              j=0
+
+We show that (27) is lower bounded by 0. From the ALGθ,U perspective, the UCBs are equivalent to the actual weights.
+ALGθ,U behaves exactly like ALGθ , and the UCBs satisfy the same constraints. Minimizing (27) under the UCB constraints
+is exactly equivalent to minimize (18) under the set of constraints defined in (10)-(12) and (19). Thus, substituting the
+UCBs with the actual values and following the same argument of the proof of Proposition 4, step (2b), we get that (27) is
+nonnegative for every sequence of UCBs.
+Thus, in epoch E, we have
+                                                                                               ℓ
+                                              θK E[GE
+                                                    ALGθ,U
+                                                           ] − E[GE
+                                                                  OPT ] ≥ −2θK ∑ βvt+j ,t .                                (28)
+                                                                                           j=0
+
+Bounding the Confidence Intervals. We proved, through (26) and (28), that the per-epoch θK -regret is upper bounded by
+the sum of the widths of the confidence intervals of the packet types selected during that epoch. Let Ni,T be the number of
+times a packet of type i ∈ [K] has been selected up to time T , and KE be the set of packet types selected during epoch E.
+Also, let tE the starting time of epoch E.
+It is important to notice that, due to the constraints enforced on the UCBs of the selected packets, every packet type can only
+be selected at most once during an epoch. This is a consequence of the fact that the UCBs of the selected packets are strictly
+increasing during an epoch, and the UCBs are computed at the begin and kept fixed through E.
+
+                                                                         18
+                                                Online Packet Scheduling with Deadlines and Learning
+
+                     Instance A                                           Instance B                                     Instance C
+
+
+                                  ALG                                                  ALG                                            ALG
+                                schedules                                            schedules                                      schedules
+     Packet 1                                             Packet 1                                       Packet 1
+                                  1 or 2                                               1 or 2                                         1 or 2
+
+
+
+
+     Packet 2                                             Packet 2                                       Packet 2
+
+
+                                   ALG                                                  ALG                                            ALG
+                                schedules 3                                          schedules 3                                    schedules 3
+     Packet 3                                             Packet 3                                       Packet 3
+
+
+
+
+                Repeat this gadget T times                           Repeat this gadget T times                     Repeat this gadget T times
+
+
+Figure 1. Exemplification of the lower bounds instances. Each gadget (of length two) is repeated T times. What happens in the second
+round of a gadget depends on the action of ALG in the first.
+
+
+To complete the proof, we sum over the epochs:
+
+                                     E[GOPT ] − θK E[GALGθ,U ] = ∑ E[GE
+                                                                      OPT ] − θK E[GALGθ,U ]
+                                                                                    E
+
+                                                                          E
+                                                                       ≤ 2θK ∑ ∑ βi,tE
+                                                                                 E i∈KE
+                                                                                        Ni,T
+                                                                       ≤ 2θK ∑ ∑ βi,ti,j
+                                                                                i∈[K] j=1
+                                                                                       ¿
+                                                                                          Ni,T Á
+                                                                                           KT      √
+                                                                       ≤ 2cθK ∑ ∑ Á    À ln δ ≤ O
+                                                                                                ̃ ( KT ) ,
+                                                                             i∈[K] j=1     j
+
+          ̃ only hides universal constants and logarithmic terms.
+where the O
+Setting δ = T1 , the good event holds with probability at least 1 − T1 (Lemma A.1):
+                                              θ,U            θ,U                                   θ,U
+                                  E[RθALG
+                                       K ,T
+                                            ] = E[RθALG
+                                                     K ,T
+                                                            ∣E(δ)]P (E(δ)) + E[RθALG
+                                                                                  K ,T
+                                                                                       ∣E(δ)C ]P (E(δ)C )
+                                                        θ,U            1
+                                              ≤ E[RθALG
+                                                     K ,T
+                                                            ∣E(δ)] + T
+                                                                       T
+                                                   √
+                                              ≤Õ ( KT ) .
+
+
+
+Theorem 4.3 (Lower Bound for θK -regret). In 2-bounded (K + 1)-OPSD instances, every ALG must satisfy
+                                                                    √
+                                        E[GOPT ] − θK E[GALG ] ≥ Ω ( T ) .
+
+Proof. Through the whole proof, we will refer to θ, x1 , . . . , xK−1 as the solution to system 1. Note that θ < Φ for every
+finite K. As the construction
+                       √      is very complex, for the sake of clarity, we start by proving the lower bound on a smaller
+problem for θK = θ2 = 2. The full proof (generalized to an arbitrary K) can be found in the appendix.
+                                                                                             √
+Lower Bound for θ2 -regret. We start by introducing some quantities. Note that θ2 = 2. Then, let δ = √1T , ϵ = 2√1 T ,
+σ = θ24−1 , c = θ28−1 . Finally, let X0 ∼ N (1, σ) and X1 ∼ N (x1 , σ). Let ALG be an arbitrary, deterministic algorithm.
+We consider three instances. Each instance is constructed by repeating a gadget for T times. A gadget is a sub-problem that
+is self-contained; in our case, a gadget is composed of two subsequent rounds, starting from the first. Thus, the total number
+of rounds will be 2T . In Figure 1
+Instance A is constructed by repeating the following gadget T times: in the first round t of the gadget (i.e., the odd
+rounds) we have Bt = {(r1 = t, d1 = t, X0 , c1 = 1), (r2 = t, d2 = t, X0 − δ, c2 = 2), (r3 = t, d3 = t + 1, X1 , c3 = 3)}; in
+
+                                                                                19
+                                      Online Packet Scheduling with Deadlines and Learning
+
+the second round t + 1 of the gadget (i.e., the even rounds) we have Bt+1 = ∅ if ALG sent the packet of type 3 in t, and
+Bt+1 = {(r3 = t, d3 = t + 1, X1 , c3 = 3), (r3 = t, d3 = t + 1, X1 , c3 = 3)} if ALG sent a packet of type 1 or 2 in t. Intuitively,
+ALG is faced with two expiring packets (one having a slightly worse mean reward) and one packet that can also be sent in
+the following round. If ALG sends the latter, no more packets arrive, and the θ2 -regret w.r.t. to OPT would be r2A = 0 (by the
+definition of θ2 and x1 ). If ALG acts greedily and sends one of the former, then a copy of the third packet arrives and the
+expected θ2 -regret w.t. to OPT would be r1A = 0 by scheduling the first and ̃    r1A = δθK by scheduling the second.
+Instance B is analogous to A, with the difference that we flip type 1 and type 2. As a consequence, r1B = ̃
+                                                                                                          r1A and ̃
+                                                                                                                  r1B = 0.
+Instance C is constructed by repeating the following gadget T times: in the first round t of the gadget (i.e., the odd
+rounds) we have Bt = {(r1 = t, d1 = t, X0 , c1 = 1), (r2 = t, d2 = t, X0 , c2 = 2), (r3 = t, d3 = t + 1, X1 − ϵ, c3 = 3)}; in
+the second round t + 1 of the gadget (i.e., the even rounds) we have Bt+1 = ∅ if ALG sent the packet of type 3 in t, and
+Bt+1 = {(r3 = t, d3 = t + 1, X1 − ϵ, c3 = 3), (r3 = t, d3 = t + 1, X1 − ϵ, c3 = 3)} if ALG sent a packet of type 1 or 2 in t.
+Intuitively, ALG is faced with two identical expiring packets (even if ALG doesn’t know this) and one packet that can also
+be sent in the following round. If ALG sends the latter, no more packets arrive, and theθ2 -regret w.r.t. to OPT would be
+r2C = (θ2 − 1)ϵ (by the definitions of θ2 and x1 ). If ALG acts greedily and sends one of the former, then a copy of the third
+packet arrives and the expected θ2 -regret w.r.t. to OPT would be r1C = ̃  r1C = (θ2 − 2)ϵ < 0.
+                                                                                             √
+Now we show that, no matter what the algorithm does, it is not possible to achieve O ( T ) θ2 -regret in A and C without
+                √
+achieving Ω ( T ) θ2 -regret in B. We call N1,T , N  ̃1,T and N2,T the number of times ALG selected packet type 1, 2, and 3
+in the first step of a gadget, respectively. Let’s write the expected regrets for every instance:
+
+                                                      ̃1,T ],
+                               EA [Rθ2 ,T ] = θ2 δEA [N
+                               EB [Rθ2 ,T ] = θ2 δEB [N1,T ],
+                                                                  ̃1,T ] + (θ2 − 1)ϵEC [N2,T ].
+                               EC [Rθ2 ,T ] = (θ2 − 2)ϵEC [N1,T + N
+
+
+                                                     √
+We force both EA [Rθ2 ,T ] and EC [Rθ2 ,T ] to be O ( T ).
+
+                                                                  √
+                                                        ̃1,T ] ≤ c T ,
+                                 EA [Rθ2 ,T ] = θ2 δEA [N
+                                 EC [Rθ2 ,T ] = (θ2 − 2)ϵEC [N1,T + N ̃1,T ] + (θ2 − 1)ϵEC [N2,T ]
+                                                                              √
+                                              = ϵEC [N2,T ] + T (θ2 − 2)ϵ ≤ c T .
+
+These conditions yield an upper bound on the expected number of times that bad selections can be made in the respective
+instances. However, these selections are the good ones in Instance B.
+As is common in the bandit literature, we now show that the instances are close from a statistical point of view, and thus hard
+to distinguish, and then use these constraints to force the expected regret in Instance B to be above a certain threshold. We
+want to upper bound the KL divergence between the instances. We use Lemma 1 from (Gerchinovitz & Lattimore, 2016),
+which allows us to decompose the KL between two instances after T gadgets (2T rounds). Note that, in every gadget, packet
+type c3 is selected at most two times, while packets of types c1 and c2 can only be selected once and are mutually exclusive.
+
+                                                                     ̃1,T ]KL (N (1, σ), N (1 − δ, σ))
+            KLT (B, A) = EB [N1,T ]KL (N (1 − δ, σ), N (1, σ)) + EB [N
+                            δ2
+                          ≤ 2T ,
+                            σ2
+            KLT (B, C) = EB [N1,T ]KL (N (1 − δ, σ), N (1, σ)) + 2EB [N2,T ]KL (N (x1 , σ), N (x1 − ϵ, σ))
+                               δ 2 + 2ϵ2
+                          ≤T             ,
+                                   σ2
+
+where the upper bound for the KL between two normal random variables is actually tight, since they all share the same
+variance σ 2 .
+Now, we bound the expected number of pulls in B with their corresponding numbers in A and C, respectively. We make use
+
+                                                                20
+                                    Online Packet Scheduling with Deadlines and Learning
+
+of a classic Pinsker Inequality argument, plus the conditions previously derived.
+                                                                    √
+                                     EB [Ñ1,T ] ≤ EA [N ̃1,T ] + T 1 KLT (B, A)
+                                                                       2
+                                                               √
+                                                     c √           δ2 3
+                                                 ≤        T+          T ,
+                                                   θ2 δ            σ2
+                                                                    √
+                                                                       1
+                                     EB [N2,T ] ≤ EC [N2,T ] + T         KLT (B, C)
+                                                                       2
+                                                                          √
+                                                   c√                       δ 2 + 2ϵ2 3
+                                                 ≤      T + (2 − θ2 )T +             T .
+                                                   ϵ                           2σ 2
+Finally, we wrap up by explicitly lower bounding the regret in Instance B.
+
+                    EB [Rθ2 ,T ] = θ2 δEB [N1,T ]
+                                 = θ2 δ(T − EB [N ̃1,T ] − EB [N2,T ])
+                                                         √                              √
+                                       ⎛      c √           δ2 3 c √                      δ 2 + 2ϵ2 3 ⎞
+                                 ≥ θ2 δ T −         T+         T  −    T + (2 − θ2 )T +            T
+                                       ⎝     θ2 δ           σ2       ϵ                       2σ 2     ⎠
+                                   c √
+                                 =     T,
+                                   4
+where the last inequality is obtained by simply plugging in the values defined at the beginning√
+                                                                                               of the paragraph. To conclude,
+any algorithm ALG faced with Instances A, B, and C will have its regret lower bounded by 4c T in at least one of the three.
+Otherwise, we incur a contradiction.
+
+
+B.2   Randomized Algorithms
+Theorem 5.1 (Upper Bound for the 54 -regret of ALGR2 ). In 2-bounded K-OPSD instances where randomization is allowed,
+ALGR2 satisfies
+                                                   5                  √
+                                        E[GOPT ] ≤ E[GALGR2 ] + O  ̃ ( KT ) .                                     (2)
+                                                   4
+Proof. Assume that the good event E(δ ′ ) holds, for some δ ′ to be specified later. We follow similar steps as Theorem 4.1 of
+(Bienkowski et al., 2011). Without loss of generality, we assume that exactly one packet with deadline t and one packet with
+deadline t + 1 arrive at each round. All packets with deadline t can be ignored except for the one with the largest upper
+confidence bound, and if no packets arrive, we can imagine a fictitious one with zero weight. At round t, all packets with
+deadline t + 1 except for the one with the largest UCB can be ignored, and all of the others can just be considered in round
+t + 1 as new packets.
+We introduce a potential function F (⋅), a function that maps every state to a real (positive) number. This function, intuitively,
+quantifies the advantage of ALGR2 w.r.t. OPT. When the state is empty, i.e., both ALGR2 and OPT buffers are empty, the
+potential is F (∅) = 0. Thus, both at the start and at the end of the trial, the potential is null. Moreover, the potential is
+always nonnegative.
+Consider round t − 1, the heaviest packet with deadline t is x∗t−1 , and the packet with deadline t and largest UCB is xt−1 .
+                                                                       ∗
+Let σt−1 be the probability with which ALGR2 sends xt−1 . Let zt−1         ∈ {0, x∗t−1 } be a dummy variable s.t. zt−1
+                                                                                                                   ∗
+                                                                                                                       = 0 if OPT
+sends x∗t−1 during round t − 1 and zt−1   ∗
+                                             = x∗t−1 otherwise (i.e., x∗t−1 is still in OPT buffer at round t). We call the triple
+                ∗
+(xt−1 , σt−1 , zt−1 ) the state during round t − 1, and define the potential at round t − 1 as follows:
+                                                  ⎧
+                                                  ⎪                                       ∗
+                                             ∗     ⎪ 0,                                  zt−1 =0
+                           F (xt−1 , σt−1 , zt−1 )=⎨1                                                                        (29)
+                                                   ⎪
+                                                   ⎪  x max{5σt−1 − 1, 3σt−1 },           ∗
+                                                                                         zt−1 = x∗t−1 .
+                                                   ⎩ 4 t−1
+Similarly, we describe the state during round t. Let bt be the packet with the largest UCB during round t, and b∗t be the
+heaviest. Similarly, consider at and a∗t . Let vt = at if U CBat ,t ≥ U CBxt−1 ,t , and vt = xt−1 otherwise. Let σt be the
+
+                                                               21
+                                      Online Packet Scheduling with Deadlines and Learning
+
+                                                                                                       qvt ,bt . Moreover, zt∗ = 0
+probability with which ALGR2 sends bt at round t, then we observe that σt = σt−1 q̂at ,bt + (1 − σt−1 )̂
+               ∗              ∗    ∗                                                               ∗
+if OPT sends bt during t and zt = bt otherwise. The potential during round t is then F (bt , σt , zt ).
+To prove our statement, we first prove that for every round t ∈ [T ] the following holds:
+
+
+                                                         ∗
+                    1.25E[∆GtALGR2 ] + F (xt−1 , σt−1 , zt−1 ) − F (bt , σt , zt∗ ) ≥
+                                         ≥ E[∆GtOPT ] − c(σt−1 βat ,t + σt−1 βxt−1 ,t + (1 − σt−1 )βvt ,t + βbt ,t ),             (30)
+
+
+where ∆GtALGR2 and ∆GtOPT are the expected weights of the packets sent at time t by ALGR2 and OPT, respectively. We
+prove Equation (30) under every possible scenario. For this first section of the proof, we assume without loss of generality
+that the burn-in period
+                  √     has finished. The regret accrued during that time represents an O (log T ) additive factor which is
+dominated by O( T ).
+
+
+Case 1: OPT sends b∗t In this case, E[∆GtOPT ] = b∗t and zt∗ = 0. Thus, F (bt , σt , zt∗ ) = 0. As the potential is always
+nonnegative, we are left to prove that 1.25E[∆GtALGR2 ] ≥ b∗t − c(σt−1 βat ,t + (1 − σt−1 βvt ,t + βbt ,t ). This can be proven by
+observing that ALGR2 selects at with probability σt−1 p̂at bt ,t , at with probability (1 − σt−1 )̂
+                                                                                                  pvt bt ,t , and bt with probability
+σt . Thus
+
+                      5                 5                                    5
+                        E[∆GtALGR2 ] = σt−1 (̂pat ,bt ,t vt + q̂at ,bt bt ) + (1 − σt−1 )(̂
+                                                                                          pvt ,bt ,t vt + q̂vt ,bt bt )
+                      4                 4                                    4
+                                     (6b)            5                                          5
+                                      ≥ σt−1 (b∗t − βat ,t − 2βbt ,t ) + (1 − σt−1 ) (b∗t − βvt ,t − 2βbt ,t )
+                                                     3                                          3
+                                            5                5
+                                     = b∗t − σt−1 βat ,t − (1 − σt−1 )βvt ,t − 2βbt ,t .
+                                            3                3
+
+
+Case 2: OPT does not send b∗t         In this case, zt∗ = b∗t . Thus, F (bt , σt , zt∗ ) = 14 bt max{5σt − 1, 3σt−1 }. We have to prove
+that
+
+              5                1                    5                     5                                       ∗
+                E[∆GtALGR2 ] = min{bt , 2σt bt } + σt−1 p̂at bt ,t at + (1 − σt )̂
+                                                                                 pvt bt ,t vt + F (xt−1 , σt−1 , zt−1 )
+              4                4                    4                     4
+                             ≥ E[∆GtOPT ] − c(βat ,t + βvt ,t + βbt ,t ).
+
+
+Case 2a: OPT sends a∗t Let vt∗ ∶= max{a∗t , x∗t−1 }. In this case, E[∆GtOPT ] = a∗t ≤ vt∗ . Moreover, F (xt−1 , σt−1 , zt−1
+                                                                                                                        ∗
+                                                                                                                            ) ≥ 0.
+We first consider the case bt ≤ 2σt bt :
+
+
+          1     5                    5                       (6a)                          5             5
+                                                 pvt bt ,t vt ≥ σt−1 a∗t + (1 − σt−1 )vt∗ − σt−1 βat ,t − (1 − σt−1 )βvt ,t
+            bt + σt−1 p̂at bt ,t at + (1 − σt−q )̂
+          4     4                    4                                                     3             3
+                                                                     5             5
+                                                              ≥ a∗t − σt−1 βat ,t − (1 − σt−1 )βvt ,t .
+                                                                     3             3
+
+
+We then consider the case bt > 2σt bt :
+
+
+        1         5                    5                       (6c)                          5             5
+                                                   pvt bt ,t vt ≥ σt−1 a∗t + (1 − σt−1 )vt∗ − σt−1 βat ,t − (1 − σt−1 )βvt ,t
+          2σt bt + σt−1 p̂at bt ,t at + (1 − σt−q )̂
+        4         4                    4                                                     3             3
+                                                                       5             5
+                                                                ≥ a∗t − σt−1 βat ,t − (1 − σt−1 )βvt ,t .
+                                                                       3             3
+                                                                    22
+                                       Online Packet Scheduling with Deadlines and Learning
+
+Case 2a: OPT sends x∗t−1 In this case, E[∆GtOPT ] = x∗t−1 = vt∗ ≥ xt−1 . We first consider the case U CBbt ,t ≤ LCBvt ,t .
+                            ∗
+Note that F (xt−1 , σt−1 , zt−1 ) = F (xt−1 , σt−1 , x∗t−1 ) ≥ 41 (5σt−1 − 1)xt−1 and p̂vt bt ,t = 1, which implies
+
+                5                                ∗       5                                           ∗
+                  E[∆GtALG ] + F (xt−1 , σt−1 , zt−1 ) ≥ (1 − σt−1 )̂
+                                                                    pvt bt ,t vt + F (xt−1 , σt−1 , zt−1 )
+                4                                        4
+                                                         5                  5                      1
+                                                       ≥ (1 − σt−1 )vt∗ − (1 − σt−1 )βvt ,t + (5σt−1 − 1)xt−1
+                                                         4                  4                      4
+                                                           5 ∗ 1              5                ∗      5
+                                                       ≥ ( vt − xt−1 ) + σt−1 (xt−1 − vt ) − (1 − σt−1 )βvt ,t
+                                                           4    4             4                       4
+                                                          ∗    5                  ∗    5
+                                                       ≥ xt−1 + σt−1 (xt−1 − vt ) − (1 − σt−1 )βvt ,t
+                                                               4                       4
+                                                          ∗    5                  ∗      5
+                                                       = xt−1 + σt−1 (xt−1 − xt−1 ) − (1 − σt−1 )βvt ,t
+                                                               4                         4
+                                                          ∗    5                  5
+                                                       ≥ xt−1 − σt−1 βxt−1 ,t − (1 − σt−1 )βvt ,t .
+                                                               4                  4
+
+Second, consider the scenario U CBbt ,t > LCBvt ,t and LCBbt ,t < U CBvt ,t , then p̂vt bt ,t = 54 :
+
+       5                                ∗       5                             5                        ∗
+         E[∆GtALG ] + F (xt−1 , σt−1 , zt−1 ) ≥ (1 − σt−1 )̂  pvt bt ,t vt + σt bt + F (xt−1 , σt−1 , zt−1 )
+       4                                        4                             4
+                                                                                      5
+                                              ≥ (1 − σt−1 )vt∗ − (1 − σt−1 )βvt ,t + σt bt + F (xt−1 , σt−1 , zt−1
+                                                                                                               ∗
+                                                                                                                   )
+                                                                                      4
+                                                1                           5             4       1
+                                              ≥ (4vt∗ + bt − xt−1 ) + σt−1 (xt−1 − vt∗ − bt ) − (1 − σt−1 )βvt ,t
+                                                4                           4             5       5
+                                                1                     5                                       1
+                                              ≥ (5vt∗ − xt−1 ) + σt−1 (xt−1 − vt∗ ) − (1 − σt−1 )βvt ,t − (1 + σt−1 )βbt ,t
+                                                4                     4                                       4
+                                                       5                                       1
+                                              ≥ x∗t−1 − σt−1 βxt−1 ,t − (1 − σt−1 )βvt ,t − βbt ,t .
+                                                       4                                       2
+Finally, consider the scenario LCBbt ,t > U CBvt ,t . If bt ≤ 2σt bt we have:
+
+                                      5               1     5
+                                        E[∆GtALG ] ≥ bt + (1 − σt−1 )̂pvt bt ,t vt
+                                      4               4     4
+                                                   (6a) 1 ∗                  5
+                                                    ≥ bt + (1 − σt−1 )vt∗ − (1 − σt−1 )βvt ,t .
+                                                        4                    3
+If bt > 2σt bt we have:
+                     5               1       5                        5
+                       E[∆GtALG ] ≥ 2σt bt + σt−1 p̂at bt ,t at + (1 − σt−q )̂    pvt bt ,t vt
+                     4               4       4                        4
+                                     1                                      1
+                                  = σt−1 (5̂pat bt ,t at + 2̂
+                                                            qat bt ,t bt ) + (1 − σt−1 )(5̂   pvt bt ,t vt + 2̂
+                                                                                                              qvt bt ,t bt )
+                                     4                                      4
+                                  (6d) 1 ∗                     5                5
+                                   ≥ bt + (1 − σt−1 )vt∗ − σt−1 βat ,t − (1 − σt−1 )βvt ,t .
+                                       4                       3                3
+                              ∗
+Noting that F (xt−1 , σt−1 , zt−1 ) ≥ 43 σt−1 xt−1 , we have:
+
+          5                                ∗       1                     3               5         5
+            E[∆GtALG ] + F (xt−1 , σt−1 , zt−1 ) ≥ b∗t + (1 − σt−1 )vt∗ + σt−1 xt−1 − σt−1 βat ,t − (1 − σt−1 )βvt ,t
+          4                                        4                     4               3         3
+                                                     ∗    1 ∗ 1               5            5
+                                                 ≥ vt + ( bt − σt−1 xt−1 ) − σt−1 βat ,t − (1 − σt−1 )βvt ,t
+                                                          4    4              3            3
+                                                     ∗    1    1              5            5
+                                                 ≥ vt + ( bt − σt−1 xt−1 ) − σt−1 βat ,t − (1 − σt−1 )βvt ,t
+                                                          4    4              3            3
+                                                        5              5
+                                                 ≥ vt∗ − σt−1 βat ,t − (1 − σt−1 )βvt ,t .
+                                                        3              3
+
+
+                                                                      23
+                                            Online Packet Scheduling with Deadlines and Learning
+
+Bounding the Confidence Intervals                We have proven that, whatever OPT does, it holds
+                                                  ∗
+             1.25E[∆GtALGR2 ] + F (xt−1 , σt−1 , zt−1 ) − F (bt , σt , zt∗ ) ≥
+                        ≥ E[∆GtOPT ] − 2 (σt−1 βat ,t − σt−1 βxt−1 ,t − (1 − σt−1 )βvt ,t − βbt ,t 1{U CBbt ,t >LCBvt ,t } ) .
+
+We start by lower bounding (in high probability) the number of times every packet is sent up to time t. Let Ft−1 be the
+filtration up to time t − 1, i.e., the σ-algebra generated by the sequence of events observed by ALGR2 . We define an auxiliary
+random variable Bi,t which is conditionally Bernoulli s.t. P (Bi,t = 1 ∣ Ft−1 ) represents the probability that packet i is sent
+at time t. Let Ni,t be the (stochastic) number of times that packet i ∈ [K] was sent up to time t ∈ [T ], i.e. Ni,t = ∑tℓ=1 Bi,ℓ .
+
+(i) Bounding ∑Tt=1 σt−1 βat ,t           At time t, we have
+
+                                                                                               1
+                                                 P(Bat ,t = 1 ∣ Ft−1 ) ≥ σt−1 p̂at bt ,t ≥ σt−1 .
+                                                                                               5
+Fix i ∈ [K]. Let Gai,ℓ = 1{al =i} , and Ei,t
+                                         a
+                                             = {ℓ ∈ [t] ∶ Gai,ℓ = 1}. Gai,ℓ is Ft−1 -predictable for every ℓ ∈ [t]. Let Ni,t
+                                                                                                                         a
+                                                                                                                             =
+∑ℓ=1 Baℓ ,ℓ Gai,ℓ . By algorithm’s definition, for every i ∈ [K], we get that Bi,t′ Gai,t′ = 1 for every t′ s.t. ∑ℓ=1 Gai,ℓ < 2 log 1δ .
+                                                                                                                         ′
+  t                                                                                                               t
+
+             ′ ≥ 2 log                            P(Bi,t = 1 ∣ Ft−1 )Gai,t is a martingale difference sequence, we let δ ∈ (0, 1) and
+           a           1                      a
+Thus, Ni,t             δ
+                         . Then, noting that Ni,t
+t ≥ t′ , and by Azuma-Hoeffding Inequality with optional skipping we get
+                                                         t
+                                                  a
+                                                 Ni,t = ∑ Baℓ ,ℓ Gai,ℓ
+                                                        ℓ=1
+                                                                      ¿
+                                                         t
+                                                              1 a Á         t
+                                                                      À 1 ∑ Ga log 1
+                                                      ≥ ∑ σℓ−1 Gi,ℓ − Á
+                                                        ℓ=1   5         10 ℓ=1 i,ℓ δ
+                                                                    1 t
+                                                      ≥ Ni,t
+                                                         a
+                                                             ′ +
+                                                                              a
+                                                                      ∑ σℓ−1 Gi,ℓ−1
+                                                                   10 ℓ=t′
+                                                                1 1 t
+                                                      ≥ 2 log    +           a
+                                                                     ∑ σℓ−1 Gi,ℓ−1 .
+                                                                δ 10 ℓ=t′
+
+It follows that, for every i ∈ [K]:
+                                                   T
+                                                      σt−1 a                            σt−1
+                                                  ∑√        Gi,t ≤ t′ +      ∑         √ a
+                                                  t=1  Ni,t                 a ∩{t≥t′ }
+                                                                        t∈Ei,t           Ni,t
+                                                                          1 √
+                                                                 ≤ 2 log + 25Ei,t      a .
+                                                                          δ
+                        √ KT
+                         ln δ′
+Thus, since βat−1 ,t = c  Na
+                               , for some δ ′ ∈ (0, 1), we have that the following holds
+                               i,t
+
+                                                                  ¿
+                                     T                            Á ln KT
+                                 ∑ σt−1 βat−1 ,t ≤ ∑ ∑ cσt−1 Á    À     δ′
+                                                                        a
+                                 t=1                        a
+                                                   i∈[K] t∈Ei,T      N i,t
+                                                               √               √
+                                                             1    KT                a ln KT
+                                                 ≤ 2cK log      ln ′ + c ∑       25Ei,t
+                                                             δ     δ     i∈[K]           δ′
+                                                               √        √
+                                                             1    KT                KT
+                                                 ≤ 2cK log      ln ′ + c 25KT ln ′ ,
+                                                             δ     δ                 δ
+where the last inequality follows from the concavity of the square root.
+
+(ii) Bounding ∑Tt=1 βbt ,t 1{U CBbt ,t >LCBvt ,t }       At time t, we have
+
+                                                                              1
+                                              P(Bbt ,t = 1 ∣ Ft−1 ) ≥ σt ≥      1{U CBbt ,t >LCBvt ,t }
+                                                                              5
+                                                                         24
+                                             Online Packet Scheduling with Deadlines and Learning
+
+Let Gbi,ℓ = 1{bl =i}∩{U CBbt ,t >LCBvt ,t } and Ei,t
+                                                   b
+                                                      = {ℓ ∈ [t] ∶ Gbℓ = 1}. Gbi,ℓ is Ft−1 -predictable for every ℓ ∈ [t]. Note that
+Gt (Bi,t − P(Bi,t = 1 ∣ Ft−1 )) is a martingale difference sequence. By algorithm’s definition, for every i ∈ [K], we get
+  b
+
+that Bi,t′ Gbi,t′ = 1 for every t′ s.t. ∑tℓ=1 Gbi,ℓ < 50 log 1δ . Thus, Ni,t             . Let δ ∈ (0, 1) and t ≥ t′ , then we use the
+                                           ′
+                                                                            ′ ≥ 50 log
+                                                                          b            1
+                                                                                       δ
+Azuma-Hoeffding inequality with optional skipping to get that, with probability at least 1 − δ, it holds
+                                                                    ¿
+                                     t                              Á1 t
+                              b
+                            Ni,t ≥ ∑ Gbi,ℓ P (Bi,ℓ = 1 ∣ Fℓ−1 ) − Á À ∑ Gb P (Bi,ℓ = 1 ∣ Fℓ−1 ) log 1
+                                   ℓ=1                                  2 ℓ=1 i,ℓ                          δ
+                                                  ¿
+                                    1 t           Á1 t
+                                 ≥ ∑ Gbi,ℓ − Á    À ∑ Gb log 1
+                                    5 ℓ=1            2 ℓ=1 i,ℓ       δ
+                                                  ¿
+                                    1 t           Á1 t
+                                 ≥ ∑ Gbi,ℓ − Á    À ∑ Gb log 1
+                                    5 ℓ=1            2 ℓ=1 i,ℓ       δ
+                                                 1 1 t b
+                                      ≥ 50 log    +   ∑G .
+                                                 δ 10 ℓ=t′ i,ℓ
+
+It follows that, for every i ∈ [K]:
+                                                     T
+                                                           1                                 1
+                                                    ∑√          Gbi,t ≤ t′ +      ∑        √
+                                                    t=1    Ni,t                 b ∩{t≥t′ }
+                                                                             t∈Ei,t
+                                                                                               b
+                                                                                            Ni,t
+                                                                                1 √ b
+                                                                      ≤ 50 log + 2Ei,t      .
+                                                                                δ
+                      √ KT
+                       ln δ′
+Thus, since βbt ,t ≤ c  Nb
+                             , for some δ ′ ∈ (0, 1), we have that the following holds
+                            i,t
+
+                                                                    ¿
+                                                                    Á ln KT
+                                         T
+                                                                    Á
+                                        ∑ βbt ,t ≤ ∑ ∑ cσt−1 Á      À bδ
+                                                                           ′
+
+
+                                        t=1                 b
+                                                   i∈[K] t∈Ei,T        N i,t
+                                                                 √                 √
+                                                               1    KT                  b ln KT
+                                                 ≤ c50K log       ln ′ + c ∑         50Ei,t
+                                                               δ     δ       i∈[K]           δ′
+                                                                 √           √
+                                                               1    KT                  KT
+                                                 ≤ c50K log       ln ′ + c 50KT ln ′ .
+                                                               δ     δ                   δ
+where the last inequality follows from the concavity of the square root.
+
+(iii) Bounding ∑Tt=1 (1 − σt−1 )βvt ,t           At time t, we have
+                                                                                                       1
+                                             P(Bvt ,t = 1 ∣ Ft−1 ) ≥ (1 − σt−1 )̂
+                                                                                pvt bt ,t ≥ (1 − σt−1 ) .
+                                                                                                       5
+Following an analogous procedure as in paragraph (i), we get
+                                                                        ¿
+                                  T                                     Á ln KT
+                              ∑ (1 − σt−1 )βvt ,t ≤ ∑ ∑ c(1 − σt−1 )Á   À       δ′
+                                                                                v
+                              t=1                            v
+                                                    i∈[K] t∈Ei,T             N i,t
+                                                                √               √
+                                                              1     KT                v ln KT
+                                                  ≤ 2cK log       ln ′ + c ∑       25Ei,t
+                                                              δ      δ    i∈[K]            δ′
+                                                                √         √
+                                                              1     KT                KT
+                                                  ≤ 2cK log       ln ′ + c 25KT ln ′ .
+                                                              δ      δ                 δ
+
+(iv) Bounding ∑Tt=1 σt−1 βxt−1 ,t Fix i ∈ [K]. Let Gxi,ℓ−1 = 1{xl−1 =i} , and Ei,t
+                                                                                x
+                                                                                   = {ℓ ∈ [t] ∶ Gxi,ℓ−1 = 1}. Gxi,ℓ−1 is
+Ft−2 -predictable for every ℓ ∈ [t]. Also, Bxt−1 ,t−1 belongs to Ft−1 . Note that P(Bxt−1 ,t−1 = 1 ∣ Ft−2 ) = σt−1 . Let
+
+                                                                         25
+                                       Online Packet Scheduling with Deadlines and Learning
+
+ x
+Ni,t−1 = ∑tℓ=1 Bxt−1 ,ℓ−1 Gxi,ℓ−1 . By algorithm’s definition, for every i ∈ [K], we get that Bi,t′ Gxi,t′ = 1 for every t′ s.t.
+   ′
+∑ℓ=1 Gxi,ℓ < 2 log 1δ . Thus, Ni,t ′ ≥ 2 log                              − ∑tℓ=1 σℓ−1 Gxi,ℓ−1 is a martingale difference sequence,
+ t                              x            1                      x
+                                             δ
+                                               . Then, noting that Ni,t−1
+                            ′
+we let δ ∈ (0, 1) and t ≥ t , and by Azuma-Hoeffding Inequality with optional skipping we get
+
+                                                  t
+                                         x
+                                        Ni,t−1 = ∑ Bxℓ−1 ,ℓ−1 Gxi,ℓ−1
+                                                 ℓ=1
+                                                                  ¿
+                                                  t               Á1 t
+                                                                  À ∑ σℓ−1 Gx log 1
+                                               ≥ ∑ σℓ−1 Gxi,ℓ−1 − Á         i,ℓ−1
+                                                 ℓ=1                2 ℓ=1         δ
+                                                            1 t
+                                               ≥ Ni,t
+                                                  x
+                                                      ′ +
+                                                                      x
+                                                              ∑ σℓ−1 Gi,ℓ−1
+                                                            2 ℓ=t′
+                                                           1 1 t
+                                               ≥ 2 log      + ∑ σℓ−1 Gxi,ℓ−1 .
+                                                           δ 2 ℓ=t′
+
+It follows that, for every i ∈ [K]:
+                                             T
+                                                σt−1 x                              σt−1
+                                            ∑√        Gi,t−1 ≤ t′ +      ∑         √ x
+                                            t=1  Ni,t                   x ∩{t≥t′ }
+                                                                    t∈Ei,t            Ni,t
+                                                                      1    √
+                                                             ≤ 2 log + 2Ei,t      x .
+                                                                      δ
+                        √ KT
+                         ln δ′
+Thus, since βxt−1 ,t ≤ c  Nx
+                               , for some δ ′ ∈ (0, 1), we have that the following holds
+                             i,t
+
+
+                                                                     ¿
+                                   T                                 Á ln KT
+                                   ∑ σt−1 βxt−1 ,t ≤ ∑ ∑ cσt−1 Á     À     δ′
+                                                                           x
+                                   t=1                        x
+                                                     i∈[K] t∈Ei,T       N i,t
+                                                                 √                √
+                                                               1     KT               x ln KT
+                                                   ≤ 2cK log       ln ′ + c ∑       2Ei,t
+                                                               δ      δ     i∈[K]          δ′
+                                                                 √         √
+                                                               1     KT               KT
+                                                   ≤ 2cK log       ln ′ + c 2KT ln ′ ,
+                                                               δ      δ                δ
+
+where the last inequality follows from the concavity of the square root.
+Setting δ ′ = T1 we get that P(E(δ ′ )) ≥ 1 − T1 (Lemma A.1). Setting δ = KT 1
+                                                                               2 (to account for the K bounds to hold
+
+simultaneously at every round), and by a standard union bound argument, we get that all Azuma-Hoeffding bounds used
+in paragraphs (i)-(iv) hold simultaneously with probability greater than 1 − KT1                        ̃
+                                                                                 2 . We call this event E(δ) and we get
+   ̃ )) ≥ 1 −
+P(E(δ ′           1
+                      .
+                 KT 2
+
+                                          R2
+                                                  ALGR2         ̃              ̃
+                                                                       (E(δ) ∩ E(δ))
+                                      5
+                                       4,T ] = E[R 5 ,T ∣E(δ) ∩ E(δ)]P
+                                   E[RALG
+                                                       4
+                                                                                     +
+
+                                              + E[RALG
+                                                   5
+                                                       R2
+                                                                   ̃
+                                                          ∣(E(δ) ∩ E(δ)) C             ̃
+                                                                           ]P ((E(δ) ∩ E(δ)) C
+                                                                                               )
+                                                   4 ,T
+                                                  √
+                                               ̃ ( KT ) .
+                                              ≤O
+
+Putting all together completes the proof.
+
+                                  e
+Theorem 5.2 (Upper Bound for the e−1 -regret of ALGRs ). In s-bounded K-OPSD instances where randomization is
+            Rs
+allowed, ALG satisfies
+                                                 e                  √
+                                  E[GOPT ] ≤       E[GALGRs ] + Õ ( KT ) ,                               (4)
+                                               e−1
+for every s > 1.
+
+                                                                   26
+                                        Online Packet Scheduling with Deadlines and Learning
+
+Proof. Assume that the good event E(δ) holds, for some δ to be specified later. Without loss of generality, assume that OPT
+schedules its packets in an increasing order of deadline. We define the set BtOPT as the set of packets in the buffer of OPT at
+round t that OPT will schedule in the future rounds. We introduce a potential function F (⋅) defined as
+                                                            F (Bt , BtOPT ) =        ∑        w.
+                                                                                w∈BtOPT ∖Bt
+
+Incoming new packets and expirations do not modify F , and F only varies when ALGRs executes a packet. Let ft be the
+packet selected at time t by ALGRs , and jt be the packet selected at time t by OPT.
+
+Case 1: jt ∈ BtOPT ∖ Bt      In this case, F decreases by jt , and increases by ft , thus ∆t F = ft − jt . Thus jt − e−1
+                                                                                                                      e
+                                                                                                                         ft + ∆t F =
+− e−1
+   1
+      ft ≤ 0.
+
+Case 2: jt ∈ BtOPT ∩ Bt      In this case, F increases at most by ft , thus ∆t F ≤ ft .
+If U CBjt ,t ≥ e LCBht ,t , then ∆t F = 0. Indeed, if jt satisfies the ALGRs condition, it is either jt = ft or ft has a closer
+                xt
+
+deadline than jt . As OPT breaks ties in favor of the earliest deadline, then ft ∉ Bt+1
+                                                                                    OPT
+                                                                                        , and ∆t F = 0.
+                           U CB            U CB                                               U CB
+Let zt = max {−1 + ln LCBhh̄t,t,t , ln LCBhjt ,t,t }. Then, if xt ∈ [−1 + ln LCBhh̄t,t,t , zt ] we have ∆t F = 0. Else, we have
+                                  t                    t                                             t
+0 ≤ ∆t F ≤ ft . We can then take the expectation also w.r.t. to the randomization of xt and write:
+                    e                        1
+        Ext [jt −      ft + ∆ t F ] = j t −     Ex [ft ] − Ext [ft − ∆t F ]
+                   e−1                      e−1 t
+                     1
+             ≤ jt −     Ex [U CBft ,t − βft ,t ] − Ext [U CBft ,t − βft ,t − ∆t F ]
+                    e−1 t
+                                  U CB
+                                      h̄t ,t
+                      1    ln LCB                                z
+             ≤ jt −                          ex LCBht ,t dx − ∫                  ex LCBht ,t dx + 2Ext [βft ,t ]
+                                   ht ,t
+                         ∫
+                    e − 1 −1+ln LCB
+                                U CB                                  U CB
+                                                                           h̄ ,t
+                                      h̄t ,t
+                                                                −1+ln LCB t
+                                          ht ,t                           h ,t           t
+
+                      1    U CBh̄t ,t 1 U CBh̄t ,t                U CBjt ,t 1 U CBh̄t ,t
+             ≤ jt −      (           −             ) LCBht ,t − (          −             ) LCBht ,t + 2Ext [βft ,t ]
+                    e − 1 LCBht ,t e LCBht ,t                     LCBht ,t e LCBht ,t
+                                                         1 U CBh̄t ,t   1 U CBh̄t ,t
+             ≤ jt − U CBjt ,t − LCBht ,t (                            −              ) + 2Ext [βft ,t ]
+                                                       e − 1 LCBht ,t e − 1 LCBht ,t
+             ≤ 2Ext [βft ,t ].
+
+Bounding the Confidence Intervals                 The packet selected by ALGRs is random, thus, we rewrite
+                                                      T                T
+                                                      ∑ Ext [βft ,t ] = ∑ ∑ Pt (ft = i)βi,ti,j ,
+                                                  t=1                 t=1 i∈[K]
+
+where Pt (ft = i) is the probability that the selected packet is i at time t. Let Ni,t be the number of times a packet of type i
+has been selected up to time t. We consider a worst-case allocation, where we maximize the probability of the packet with
+the largest UCB to be selected. Then
+                                                  T                              T
+                                               ∑ ∑ Pt (ft = i)βi,t ≤ ∑ max βi,t
+                                               t=1 i∈[K]                         t=1 i∈[K]
+                                                                                        ¿
+                                                                                 T      Á ln KT
+                                                                            = ∑ c max Á À     δ
+                                                                              t=1 i∈[K]    N i,t
+                                                                                  ¿
+                                                                               T Á ln KT
+                                                                            ≤ ∑ cÁÀ      δ
+                                                                                               t
+                                                                                 t=1           K
+                                                                                √
+                                                                             ̃ ( KT ) ,
+                                                                            ≤O
+
+                                                                                           ̃ only hides universal constants
+where we used the fact that the worst-case allocation is performing round-robin, where the O
+and logarithmic terms.
+
+                                                                           27
+                                     Online Packet Scheduling with Deadlines and Learning
+
+Setting δ = T1 , the good event holds with probability at least 1 − T1 :
+                                   Rs             Rs                        Rs
+                           E[RALG
+                               e
+                              e−1 ,T
+                                     ] = E[RALG
+                                              e
+                                             e−1 ,T
+                                                    ∣E(δ)]P (E(δ)) + E[RALG
+                                                                         e
+                                                                        e−1 ,T
+                                                                               ∣E(δ)C ]P (E(δ)C )
+                                            √
+                                       ≤Õ ( KT ) .
+
+Putting all together completes the proof.
+
+
+
+
+                                                                28
+

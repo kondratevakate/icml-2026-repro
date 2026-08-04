@@ -1,0 +1,15 @@
+{
+ "orid": "ugjBMARbyt",
+ "title": "Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+ "openreview": "https://openreview.net/forum?id=ugjBMARbyt",
+ "arxiv": "2502.07397",
+ "area": "Theory",
+ "anchored_claims": [
+  "The EntUCB algorithm embeds transport plans into a Hilbert space via the Fourier isometry F on L²(ℝᵈ;ϱ), reducing the bandit optimal transport problem to linear bandit estimation in that space (Section 4.1, Equation 7).",
+  "Theorem 5.1 bounds the entropic regret as R_T^{H,ε}(A) ≤ σ√(2T log(2/δ)) + 2Cβ_T(δ)√(T log det(...)) with probability at least 1-δ (Theorem 5.1).",
+  "Theorem 5.2 shows that for Lipschitz costs with an entropy penalty decaying as ε_t = αt^{-α}, EntUCB achieves sublinear regret matching classical linear-bandit rates for the Kantorovich optimal transport problem (Theorem 5.2).",
+  "Corollary 5.3 establishes that in finite-dimensional/discrete settings with N basis coefficients, the algorithm attains Õ(√(NT)) regret, recovering the parametric OFUL-style rate (Corollary 5.3).",
+  "Corollary 5.4 shows that when basis coefficients decay at rate 1-n^{-q}, regret interpolates between Õ(√T) and Õ(T) depending on the decay exponent q (Corollary 5.4).",
+  "The confidence sets used by the algorithm are constructed via regularized least-squares in L²(ℝᵈ;ϱ), with width controlled by the log-determinant of the design operator, mirroring the classical OFUL confidence ellipsoid construction (Equations 11-12)."
+ ]
+}

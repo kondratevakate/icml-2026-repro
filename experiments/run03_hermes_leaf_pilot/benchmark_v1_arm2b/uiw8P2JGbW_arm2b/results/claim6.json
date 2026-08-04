@@ -1,0 +1,15 @@
+{
+  "claim": 6,
+  "source": "Theorem 5.11 (LP benchmark + lifting); Table 1 (three monotone settings)",
+  "seed": 20260809,
+  "n_instances_solved": 400,
+  "welfare_monotonicity_violations_LP_benchmark": 0,
+  "lift_infeasible_count": 0,
+  "max_abs_lift_value_error": 4.440892098500626e-16,
+  "max_budget_overshoot_of_lift": 3.3306690738754696e-16,
+  "mutation_miscalibrated_coarse_monotonicity_violations": 19,
+  "table1_three_settings_checked": false,
+  "table1_note": "Table 1's enumeration ('exactly three monotone settings') requires the paper text; the OpenReview PDF is JS-gated and could not be downloaded, so this conjunct is untested.",
+  "verdict": "inconclusive",
+  "verdict_reason": "LP-benchmark welfare monotonicity + lifting reproduced exactly (0 violations, lift value error ~1e-16, mutation breaks it); the conjoined Table 1 completeness claim could not be checked."
+}

@@ -120,7 +120,15 @@ def main():
 
     api.create_repo(space_id, repo_type="space", space_sdk="static", exist_ok=True,
                     private=False)
-    api.upload_folder(folder_path=trackio, repo_id=space_id, repo_type="space",
+    # The full trackio bundle (index.html, logbook.js/css, *.png, workspace.json,
+    # pages/<slug>/page.md) lives in .trackio/logbook/. Upload it to the Space ROOT
+    # so HF static renderer shows it (root index.html). Remove any stale nested
+    # logbook/ left by earlier broken publishes.
+    lb_root = os.path.join(trackio, "logbook")
+    if not os.path.isdir(lb_root):
+        raise SystemExit(f"no .trackio/logbook in {d}; run local_to_trackio.py first")
+    api.upload_folder(folder_path=lb_root, repo_id=space_id, repo_type="space",
+                      path_in_repo=None, delete_patterns=["logbook/*"],
                       commit_message=f"Reproduction logbook for {orid} (local pts={local_pts})")
     # tags
     tags = meta.get("tags") or ["icml2026-repro", f"paper-{orid}"]

@@ -1,0 +1,14 @@
+{
+  "claim": 2,
+  "source": "Theorem 5.1 proof / Section 5 (Jensen + convexity of f(p)=max_i t_i p_i)",
+  "seed": 20260805,
+  "convexity_violations_out_of_200000": 0,
+  "symbolic_convexity_witness_n2": true,
+  "max_abs_error_RevGap_minus_JensenGap": 1.609823385706477e-15,
+  "max_abs_mean_preservation_error": 3.3306690738754696e-16,
+  "instances_with_negative_jensen_gap": 0,
+  "mutation_concave_min_positive_gap_count": 0,
+  "mutation_concave_min_strictly_negative_gap_count": 4898,
+  "n_instances": 5000,
+  "verdict": "verified"
+}

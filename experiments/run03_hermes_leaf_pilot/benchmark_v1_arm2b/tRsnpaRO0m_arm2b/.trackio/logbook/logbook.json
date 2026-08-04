@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-tRsnpaRO0m"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "nature-of-the-task-and-its-epistemic-ceiling",
+        "title": "Nature of the task and its epistemic ceiling",
+        "file": "pages/nature-of-the-task-and-its-epistemic-ceiling/page.md",
+        "children": []
+      },
+      {
+        "slug": "summary-table",
+        "title": "Summary table",
+        "file": "pages/summary-table/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-graphops-are-self-adjoint-positivity-preserving-definition-3-1",
+        "title": "Claim 1 \u2014 graphops are self-adjoint, positivity-preserving (Definition 3.1)",
+        "file": "pages/claim-1-graphops-are-self-adjoint-positivity-preserving-definition-3-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-bofops-ess-sup-x-x-definition-3-1",
+        "title": "Claim 2 \u2014 bofops: `ess sup_x \u03bd_x(\u03a9) < \u221e` (Definition 3.1)",
+        "file": "pages/claim-2-bofops-ess-sup-x-x-definition-3-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-mpnn-lipschitz-continuity-in-the-action-metric-theorem-4-1",
+        "title": "Claim 3 \u2014 MPNN Lipschitz continuity in the action metric (Theorem 4.1)",
+        "file": "pages/claim-3-mpnn-lipschitz-continuity-in-the-action-metric-theorem-4-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-compactness-of-bofop-didms-under-the-mover-s-distance-corollary-5-3",
+        "title": "Claim 4 \u2014 compactness of bofop-DIDMs under the mover's distance (Corollary 5.3)",
+        "file": "pages/claim-4-compactness-of-bofop-didms-under-the-mover-s-distance-corollary-5-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-universal-approximation-on-sparse-graphs-section-6-1",
+        "title": "Claim 5 \u2014 universal approximation on sparse graphs (Section 6.1)",
+        "file": "pages/claim-5-universal-approximation-on-sparse-graphs-section-6-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-vanishing-generalization-error-section-6-2",
+        "title": "Claim 6 \u2014 vanishing generalization error (Section 6.2)",
+        "file": "pages/claim-6-vanishing-generalization-error-section-6-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "artifact-verification",
+        "title": "Artifact verification",
+        "file": "pages/artifact-verification/page.md",
+        "children": []
+      },
+      {
+        "slug": "files",
+        "title": "Files",
+        "file": "pages/files/page.md",
+        "children": []
+      },
+      {
+        "slug": "budget",
+        "title": "Budget",
+        "file": "pages/budget/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

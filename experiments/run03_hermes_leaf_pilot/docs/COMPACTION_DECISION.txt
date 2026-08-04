@@ -1,0 +1,39 @@
+COMPACTION DECISION — arm2 vs arm2b (context-compaction) pilot
+=================================================================
+Repo: icml-2026-repro (branch hermes-agentic-research)
+Dir:  experiments/run03_hermes_leaf_pilot/
+Rule: compaction = TOKEN-saving lever only (NOT speed/quality win).
+      Re-run ONE pilot paper in arm2+compaction (dir <orid>_arm2b); if compaction
+      verdicts are NOT worse -> use compaction for bundle; if worse -> original arm2.
+      (Protocol: skills/.../icml-repro-benchmark-pipeline/references/compaction_decision.md)
+
+PILOT 1 — CAffNet (20hdQQQrA4)  [CLEAN ablation: same prompt, compaction only]
+  arm2  (original):  claim1-4 verified, claim5 inconclusive.  full_evidence_rate=0.0, n_mutation=0
+  arm2b (compact):   claim1-3 verified, claim4 INCONCLUSIVE, claim5 inconclusive.
+                     full_evidence_rate=0.0, n_mutation=0
+  -> claim4 regressed verified -> inconclusive under context pressure
+     (agent wrote simpler verify_claim4.py: no per-seed verdict, no mutation test;
+      numbers real, rigor regressed).
+  VERDICT: COMPACTION_WORSE.
+
+PILOT 2 — TBSyYj4VV6 (Accelerating Regression Tasks with Quantum Algorithms)  [CONFOUNDED]
+  arm2  (original, bare TBSyYj4VV6/): 6/6 verified, full_evidence_rate=1.0, n_mutation=6.
+  arm2b (v2.1 prompt re-run + compaction): 6/6 verified (real Grover state-vector sim,
+        no 'toy' label), mutation tests M1/M2/M3 passed. full_evidence_rate implied 1.0.
+  -> compaction did NOT regress here, BUT the prompt ALSO changed (v2.1 "real verification",
+     no toy for math claims). NOT a clean compaction ablation — treat as confounded.
+  VERDICT: inconclusive for the compaction question alone (prompt covariate changed).
+
+DECISION (applied 2026-08-03): COMPACTION_WORSE on the clean pilot (CAffNet) ->
+  Bundle 2 launched on ORIGINAL arm2 (NO compaction). Prompts regenerated to remove the
+  compaction block.
+
+CAVEAT: the original decision file was a watchdog crash-log (score_run.py path bug writing
+  _score.json to the wrong dir; compare_runs.py arg-parse bug). The verdicts in the per-run
+  _score.json / _run_meta.json above confirm the conclusion independently. TBSyYj4VV6 was
+  not recorded in the original decision file — added here.
+
+NOTE ON "full_evidence_rate": several _score.json show 0.0 even when claims are verified.
+  This field appears to key off mutation-test presence/evidence-boundary flags rather than
+  raw verified count, so do not read full_evidence_rate=0.0 as "no evidence". Use
+  per_claim_verdict + n_mutation_tests for the real quality signal.

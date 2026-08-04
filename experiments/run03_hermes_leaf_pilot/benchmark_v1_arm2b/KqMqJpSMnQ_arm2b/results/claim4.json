@@ -1,0 +1,52 @@
+{
+ "claim": "Lemma 1: distribution-free marginal coverage >= phi - delta",
+ "source": "Lemma 1",
+ "seed": 20260803,
+ "n_cal": 50,
+ "trials": 4000,
+ "all_phi_covered": true,
+ "mutations_break": true,
+ "verdict": "verified",
+ "detail": [
+  {
+   "phi": 0.7,
+   "empirical_coverage": 0.73125,
+   "delta_binom": 0.013738308097251276,
+   "ok": true,
+   "mut_shift_coverage": 0.2475,
+   "mut_naive_quantile_coverage": 0.719
+  },
+  {
+   "phi": 0.75,
+   "empirical_coverage": 0.778,
+   "delta_binom": 0.012879303024620547,
+   "ok": true,
+   "mut_shift_coverage": 0.35475,
+   "mut_naive_quantile_coverage": 0.75025
+  },
+  {
+   "phi": 0.8,
+   "empirical_coverage": 0.80875,
+   "delta_binom": 0.012188042064868336,
+   "ok": true,
+   "mut_shift_coverage": 0.46975,
+   "mut_naive_quantile_coverage": 0.79125
+  },
+  {
+   "phi": 0.9,
+   "empirical_coverage": 0.8975,
+   "delta_binom": 0.009399510492573537,
+   "ok": true,
+   "mut_shift_coverage": 0.82875,
+   "mut_naive_quantile_coverage": 0.879
+  },
+  {
+   "phi": 0.95,
+   "empirical_coverage": 0.961,
+   "delta_binom": 0.005999569284540352,
+   "ok": true,
+   "mut_shift_coverage": 0.94325,
+   "mut_naive_quantile_coverage": 0.91875
+  }
+ ]
+}

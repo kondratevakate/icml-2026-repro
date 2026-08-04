@@ -1,0 +1,15 @@
+{
+ "claim": "Theorem 4: NP-hardness via clique reduction (reduction correctness)",
+ "source": "Theorem 4, Appendix B",
+ "seed": 20260803,
+ "exhaustive_n5_instances": 4092,
+ "exhaustive_n5_agreement": 1.0,
+ "random_n78_instances": 386,
+ "random_n78_agreement": 1.0,
+ "padded_constant_eps_instances": 40,
+ "padded_agreement": 0.95,
+ "mutation_slack1_instances": 4092,
+ "mutation_slack1_equivalence_broken": 637,
+ "note": "Executable evidence covers the correctness of the clique->conformal-subgraph reduction (hence NP-hardness given NP-hardness of CLIQUE); the complexity statement itself is not machine-checkable here.",
+ "verdict": "verified"
+}

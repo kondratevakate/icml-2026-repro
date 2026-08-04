@@ -1,0 +1,79 @@
+{'n': 50, 'mean_gap': 0.002740975027481212, 'mc_stderr': 0.0006722081008157971, 'abs_mean_gap': 0.002740975027481212, 'bound_rhs': 835.97954431853, 'bound_holds': True}
+{'n': 100, 'mean_gap': 0.0017280548807244174, 'mc_stderr': 0.0008158609556182965, 'abs_mean_gap': 0.0017280548807244174, 'bound_rhs': 417.989772159265, 'bound_holds': True}
+{'n': 200, 'mean_gap': 0.0006088137099770553, 'mc_stderr': 0.00017136427608649966, 'abs_mean_gap': 0.0006088137099770553, 'bound_rhs': 208.9948860796325, 'bound_holds': True}
+{'n': 400, 'mean_gap': 0.0002555535816231669, 'mc_stderr': 6.595720829317144e-05, 'abs_mean_gap': 0.0002555535816231669, 'bound_rhs': 104.49744303981625, 'bound_holds': True}
+{'n': 800, 'mean_gap': 0.00019016911846579361, 'mc_stderr': 0.00013416626501003008, 'abs_mean_gap': 0.00019016911846579361, 'bound_rhs': 52.24872151990812, 'bound_holds': True}
+[saved] /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/l35QweVxgn_arm2b/results/claim4.json
+{
+  "bound_holds_all_cells": true,
+  "claim": 4,
+  "config": {
+    "K": 3,
+    "T": 40,
+    "d": 12,
+    "eta_T": 72.0,
+    "k": 1,
+    "loss": "Huberised hinge (1-Lipschitz, 1-smooth), as the theorem assumes",
+    "m": 1152,
+    "n_test": 4000,
+    "reps_per_cell": 12
+  },
+  "decays_with_n": true,
+  "evidence_boundary": "The RHS of Thm 2.3 is an order bound with hidden constants; at these (feasible) widths it is numerically very loose, so 'bound holds' is a weak test and the informative evidence is the recovered 1/n exponent.",
+  "gap_loglog_slope_in_n": -1.0456119905699754,
+  "mutation_shrink_n_8x": {
+    "gap_n400": 0.0002555535816231669,
+    "gap_n50": 0.002740975027481212,
+    "prediction": "gap at n=50 is ~8x the gap at n=400 (1/n law), bound still holds",
+    "property_breaks": true,
+    "ratio": 10.725637301076794
+  },
+  "n_sweep": [
+    {
+      "abs_mean_gap": 0.002740975027481212,
+      "bound_holds": true,
+      "bound_rhs": 835.97954431853,
+      "mc_stderr": 0.0006722081008157971,
+      "mean_gap": 0.002740975027481212,
+      "n": 50
+    },
+    {
+      "abs_mean_gap": 0.0017280548807244174,
+      "bound_holds": true,
+      "bound_rhs": 417.989772159265,
+      "mc_stderr": 0.0008158609556182965,
+      "mean_gap": 0.0017280548807244174,
+      "n": 100
+    },
+    {
+      "abs_mean_gap": 0.0006088137099770553,
+      "bound_holds": true,
+      "bound_rhs": 208.9948860796325,
+      "mc_stderr": 0.00017136427608649966,
+      "mean_gap": 0.0006088137099770553,
+      "n": 200
+    },
+    {
+      "abs_mean_gap": 0.0002555535816231669,
+      "bound_holds": true,
+      "bound_rhs": 104.49744303981625,
+      "mc_stderr": 6.595720829317144e-05,
+      "mean_gap": 0.0002555535816231669,
+      "n": 400
+    },
+    {
+      "abs_mean_gap": 0.00019016911846579361,
+      "bound_holds": true,
+      "bound_rhs": 52.24872151990812,
+      "mc_stderr": 0.00013416626501003008,
+      "mean_gap": 0.00019016911846579361,
+      "n": 800
+    }
+  ],
+  "orid": "l35QweVxgn",
+  "predicted_slope": -1.0,
+  "route": "simulation of Algorithm 1 + Monte-Carlo over D_k; bound evaluated literally",
+  "seed": 20260803,
+  "source": "Theorem 2.3 (Sec 2.2); restated as Theorem B.6 (App. B)",
+  "verdict": "verified"
+}

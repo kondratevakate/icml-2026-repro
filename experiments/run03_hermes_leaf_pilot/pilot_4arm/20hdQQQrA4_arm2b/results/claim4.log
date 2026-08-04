@@ -1,0 +1,56 @@
+{'method': 'NN', 'seed': 0, 'test_mse': 0.000729856789123326, 'viol_max': 0.1333959099771358, 'viol_mean': 0.0006516323185225007, 'train_s': 162.76476097106934}
+{'method': 'NN', 'seed': 1, 'test_mse': 0.0006220259910473987, 'viol_max': 0.11572518944669641, 'viol_mean': 0.00032165808074417394, 'train_s': 410.7645170688629}
+{'method': 'NN', 'seed': 2, 'test_mse': 0.0005694207549899853, 'viol_max': 0.045782055136517785, 'viol_mean': 0.00028751096638383834, 'train_s': 303.8310821056366}
+{'method': 'NN', 'seed': 3, 'test_mse': 0.0011471232478005191, 'viol_max': 0.1997758174956923, 'viol_mean': 0.000984049099572436, 'train_s': 357.9832248687744}
+{'method': 'NN', 'seed': 4, 'test_mse': 0.00613070632643551, 'viol_max': 0.3581377173959712, 'viol_mean': 0.002230861937879401, 'train_s': 561.124085187912}
+{'method': 'CAffNet-FF', 'seed': 0, 'test_mse': 0.005998621349252429, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 200.7281563282013}
+{'method': 'CAffNet-FF', 'seed': 1, 'test_mse': 0.0016523684921303538, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 205.42450714111328}
+{'method': 'CAffNet-FF', 'seed': 2, 'test_mse': 0.0010628873599452466, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 240.78580403327942}
+{'method': 'CAffNet-FF', 'seed': 3, 'test_mse': 0.0024364412741179754, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 198.0152666568756}
+{'method': 'CAffNet-FF', 'seed': 4, 'test_mse': 0.0032724179320631425, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 154.59759283065796}
+{'method': 'CAffNet-TF', 'seed': 0, 'test_mse': 0.0005742375537635083, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 297.6461617946625}
+{'method': 'CAffNet-TF', 'seed': 1, 'test_mse': 0.0014527718535243027, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 285.22087049484253}
+{'method': 'CAffNet-TF', 'seed': 2, 'test_mse': 0.0005515198168631765, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 276.3658845424652}
+{'method': 'CAffNet-TF', 'seed': 3, 'test_mse': 0.0003671869641982052, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 317.2467691898346}
+{'method': 'CAffNet-TF', 'seed': 4, 'test_mse': 0.0015895356875660891, 'viol_max': 0.0, 'viol_mean': 0.0, 'train_s': 265.75153636932373}
+{
+  "claim": 4,
+  "source": "Section 4.1 / Table 2 (paper: NN 0.0045, CAffNet-FF 0.0020, CAffNet-TF 0.0012; 73.33% reduction)",
+  "command": "./.venv/bin/python verify_claim4.py --epochs 20000 --seeds 5",
+  "epochs": 20000,
+  "seeds": 5,
+  "paper_table2": {
+    "NN": 0.0045,
+    "HardNet": 0.0037,
+    "CAffNet-FF": 0.002,
+    "CAffNet-TF": 0.0012,
+    "reduction_TF_vs_NN_pct": 73.33
+  },
+  "aggregate": {
+    "NN": {
+      "mse_mean": 0.001839826621879348,
+      "mse_std": 0.0024093821342899414,
+      "viol_max_mean": 0.1705633378904027,
+      "viol_mean_mean": 0.00089514248062047,
+      "n_seeds_with_any_violation": 5
+    },
+    "CAffNet-FF": {
+      "mse_mean": 0.002884547281501829,
+      "mse_std": 0.0019290806990403236,
+      "viol_max_mean": 0.0,
+      "viol_mean_mean": 0.0,
+      "n_seeds_with_any_violation": 0
+    },
+    "CAffNet-TF": {
+      "mse_mean": 0.0009070503751830563,
+      "mse_std": 0.0005683786123839912,
+      "viol_max_mean": 0.0,
+      "viol_mean_mean": 0.0,
+      "n_seeds_with_any_violation": 0
+    }
+  },
+  "reproduced_reduction_TF_vs_NN_pct": 50.69913847335672,
+  "reproduced_reduction_FF_vs_NN_pct": -56.783647284944635,
+  "caffnet_zero_violations": true,
+  "nn_has_violations": true
+}

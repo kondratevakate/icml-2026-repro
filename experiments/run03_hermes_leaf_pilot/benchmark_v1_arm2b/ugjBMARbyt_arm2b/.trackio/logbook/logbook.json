@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-ugjBMARbyt"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-fourier-embedding-verify-claim1-py-results-claim1-json",
+        "title": "Claim 1 \u2014 Fourier embedding (`verify_claim1.py` \u2192 `results/claim1.json`)",
+        "file": "pages/claim-1-fourier-embedding-verify-claim1-py-results-claim1-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-trajectorial-regret-bound-verify-claim2-py-results-claim2-json",
+        "title": "Claim 2 \u2014 Trajectorial regret bound (`verify_claim2.py` \u2192 `results/claim2.json`)",
+        "file": "pages/claim-2-trajectorial-regret-bound-verify-claim2-py-results-claim2-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-entropic-penalty-t-t-is-lower-order-verify-claim3-py-results-claim3-json",
+        "title": "Claim 3 \u2014 Entropic penalty \u03b5_t = \u03b7t^{\u2212\u03b7} is lower order (`verify_claim3.py` \u2192 `results/claim3.json`)",
+        "file": "pages/claim-3-entropic-penalty-t-t-is-lower-order-verify-claim3-py-results-claim3-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-nt-parametric-rate-verify-claim4-py-results-claim4-json",
+        "title": "Claim 4 \u2014 \u00d5(\u221a(NT)) parametric rate (`verify_claim4.py` \u2192 `results/claim4.json`)",
+        "file": "pages/claim-4-nt-parametric-rate-verify-claim4-py-results-claim4-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-interpolation-between-t-and-t-verify-claim5-py-results-claim5-json",
+        "title": "Claim 5 \u2014 Interpolation between \u00d5(\u221aT) and \u00d5(T) (`verify_claim5.py` \u2192 `results/claim5.json`)",
+        "file": "pages/claim-5-interpolation-between-t-and-t-verify-claim5-py-results-claim5-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-rls-confidence-sets-with-log-det-width-verify-claim6-py-results-claim6-j",
+        "title": "Claim 6 \u2014 RLS confidence sets with log-det width (`verify_claim6.py` \u2192 `results/claim6.json`)",
+        "file": "pages/claim-6-rls-confidence-sets-with-log-det-width-verify-claim6-py-results-claim6-j/page.md",
+        "children": []
+      },
+      {
+        "slug": "overall-assessment",
+        "title": "Overall assessment",
+        "file": "pages/overall-assessment/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

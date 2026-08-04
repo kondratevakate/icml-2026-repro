@@ -1,0 +1,33 @@
+{
+ "orid": "omkG80XURl",
+ "paper": "Bridging the Gap Between Average and Discounted TD Learning (ICML 2026)",
+ "arm": "arm2",
+ "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+ "agent": "Hermes+K-Dense skills",
+ "model": "tencent/hy3:free via localhost:8319/v1",
+ "compaction": false,
+ "hardware": "CPU-only (WSL2), numpy 2.5.1 / scipy 1.18.0, python 3.12",
+ "skill_used": "paper-claim-reproduction",
+ "seed": 20260803,
+ "date": "2026-08-03",
+ "paper_source": "arXiv 2605.02103 PDF (OpenReview PDF returned 403)",
+ "claims_total": 6,
+ "verdicts": {
+  "1": "verified",
+  "2": "verified",
+  "3": "verified",
+  "4": "verified",
+  "5": "verified",
+  "6": "verified"
+ },
+ "deliverables": [
+  "common.py",
+  "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+  "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+  "results/claim1.json", "results/claim2.json", "results/claim3.json",
+  "results/claim4.json", "results/claim5.json", "results/claim6.json",
+  "logbook.md"
+ ],
+ "mutation_tests": "one or more per claim: coupled-chain double-sampling bias, unnormalized features, dropped (mu'Phi x)^2 correction term, single-chain vs double-chain exponent contrast",
+ "caveats": "No original code / no Gym environments; randomly generated MRPs with linear function approximation. Prior-work baselines of refs [11,17,21] not re-implemented; claim 4's quartic side uses the paper's own single-chain variant as the executable reference."
+}

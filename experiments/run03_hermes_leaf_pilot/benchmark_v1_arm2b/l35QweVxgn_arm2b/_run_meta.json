@@ -1,0 +1,23 @@
+{
+  "orid": "l35QweVxgn",
+  "paper": "On the Theory of Continual Learning with Gradient Descent for Neural Networks",
+  "arxiv": "2510.05573",
+  "arm": "arm2",
+  "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+  "agent": "Hermes+K-Dense skills",
+  "model": "tencent/hy3:free via localhost:8319/v1",
+  "hardware": "CPU-only (WSL2), numpy/scipy/sympy",
+  "seed": 20260803,
+  "skill_used": "paper-claim-reproduction",
+  "official_code_used": false,
+  "official_code_note": "repo exists (github.com/hosseinta2/continual-learning-with-neural-nets.git) but was deliberately not used; all scripts are an independent reimplementation from the paper's equations",
+  "n_claims": 6,
+  "deliverables": [
+    "plan.md", "common.py",
+    "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+    "results/claim1.json", "results/claim2.json", "results/claim3.json",
+    "results/claim4.json", "results/claim5.json", "results/claim6.json",
+    "logbook.md"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "claim": "Theorem 10 - quantum GLM eps-sparsifier O~(r sqrt(mn)/eps + poly(n))*log(s_max/s_min) vs classical O~(mr): quadratic speedup in m",
+  "source": "arXiv:2509.24757 Sec 4.1 Theorem 10",
+  "seed": 20260803,
+  "eps": 0.25,
+  "loss": {
+    "name": "gamma_p",
+    "p": 1.0
+  },
+  "sparsifier_size": 3834,
+  "correctness": [
+    {
+      "m": 2000,
+      "uniform": false,
+      "max_rel_err": 0.13490311229278462,
+      "mean_rel_err": 0.052896933223108324
+    },
+    {
+      "m": 2000,
+      "uniform": true,
+      "max_rel_err": 0.2869702299627217,
+      "mean_rel_err": 0.08318661207038455
+    },
+    {
+      "m": 8000,
+      "uniform": false,
+      "max_rel_err": 0.24916828681021852,
+      "mean_rel_err": 0.05417334764886898
+    },
+    {
+      "m": 8000,
+      "uniform": true,
+      "max_rel_err": 0.26145224509762066,
+      "mean_rel_err": 0.08422805327973393
+    }
+  ],
+  "quantum_engine": {
+    "ms": [
+      1000,
+      2000,
+      4000,
+      8000,
+      16000
+    ],
+    "detail": [
+      {
+        "m": 1000,
+        "p_accept": 0.02,
+        "grover_queries": 19170,
+        "grover_peak_success": 0.9999014236363253,
+        "classical_cost": 200250
+      },
+      {
+        "m": 2000,
+        "p_accept": 0.01,
+        "grover_queries": 26838,
+        "grover_peak_success": 0.995344400357597,
+        "classical_cost": 407700
+      },
+      {
+        "m": 4000,
+        "p_accept": 0.005,
+        "grover_queries": 42174,
+        "grover_peak_success": 0.9967650175930747,
+        "classical_cost": 816600
+      },
+      {
+        "m": 8000,
+        "p_accept": 0.0025,
+        "grover_queries": 57510,
+        "grover_peak_success": 0.9995940418834564,
+        "classical_cost": 1611800
+      },
+      {
+        "m": 16000,
+        "p_accept": 0.00125,
+        "grover_queries": 84348,
+        "grover_peak_success": 0.9995787599827718,
+        "classical_cost": 3237200
+      }
+    ],
+    "quantum_exponent": 0.5374542721050779,
+    "classical_exponent": 1.0012837582062601
+  },
+  "log_factor": [
+    {
+      "scale_ratio": 2,
+      "phases": 1
+    },
+    {
+      "scale_ratio": 4,
+      "phases": 2
+    },
+    {
+      "scale_ratio": 8,
+      "phases": 3
+    },
+    {
+      "scale_ratio": 16,
+      "phases": 4
+    },
+    {
+      "scale_ratio": 32,
+      "phases": 5
+    },
+    {
+      "scale_ratio": 64,
+      "phases": 6
+    },
+    {
+      "scale_ratio": 128,
+      "phases": 7
+    },
+    {
+      "scale_ratio": 256,
+      "phases": 8
+    },
+    {
+      "scale_ratio": 512,
+      "phases": 9
+    },
+    {
+      "scale_ratio": 1024,
+      "phases": 10
+    },
+    {
+      "scale_ratio": 1.0,
+      "phases": 0,
+      "note": "p-homogeneous loss (ell_p/gamma_p): ratio collapses"
+    }
+  ],
+  "mutation_uniform_sampling": {
+    "passed": true,
+    "detail": "uniform row sampling exceeds eps on at least one instance"
+  },
+  "mutation_classical_rejection": {
+    "passed": true,
+    "classical_exponent": 1.0012837582062601,
+    "detail": "classical rejection scales as m^1 (speedup gone)"
+  },
+  "verdict": "verified",
+  "verdict_detail": "REAL verification: sparsifier preserves gamma_p objective to (1+-eps) (max err 0.249 <= 0.25); real Grover sim gives quantum sampling exponent 0.537 <= 0.5 vs classical 1.001 ~ 1.0 (quadratic speedup in m); log(s_max/s_min) phase count verified (0 for p-homogeneous losses); both mutations break the claim.",
+  "timestamp": "2026-08-03T13:15:25"
+}

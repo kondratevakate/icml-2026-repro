@@ -38,14 +38,33 @@ def main():
     if r.returncode != 0:
         print("  (sync warning, continuing)", r.stderr[-300:])
 
-    # 2) build prompt
+    # 2) build prompt (v2.1: agent must SELF-REMOVE blockers doable on this machine)
     prompt = f"""This is arm2 (Hermes + K-Dense skill set) reproduction of ICML-2026 paper orid {a.orid}.
-Working dir already contains TASK.md, input_bundle.json, references/, and (if the paper needs
-datasets) a local data/ folder synced from the reference drive.
+Working dir already contains TASK.md, input_bundle.json (with anchored_claims + arxiv/openreview
+ids), references/, and (if the paper needs datasets) a local data/ folder synced from the
+reference drive.
 
 GOAL: reproduce the paper's anchored claims via executable verify scripts on CPU. Use the
 `paper-claim-reproduction` skill (K-Dense method skill). Model: tencent/hy3:free via
 localhost:8319/v1 (router proxies, no key needed). CPU-only, no torch unless the paper demands it.
+
+YOU HAVE THE POWER TO REMOVE MOST BLOCKERS YOURSELF -- do it before giving up:
+- Missing paper text? Download it: arxiv id is in input_bundle.json -> fetch the PDF (e.g.
+  https://arxiv.org/pdf/<arxiv_id>) into paper/ and read it. OpenReview may 403; try arxiv first.
+- Missing library? `pip install` it into the venv yourself (numpy/scipy/sklearn/torch/etc).
+- Empirical claim you cannot fully train? Design a TOY / reduced-scale CPU run that still
+  exercises the claim's mechanism and report its (honest, real) numbers as evidence.
+Only call a claim INCONCLUSIVE if it is TRULY impossible on this machine in a short time:
+  * needs DATA that is absent AND cannot be fetched,
+  * needs GPU-scale training that cannot run on CPU,
+  * needs a library that genuinely cannot be installed.
+Even then: state the SPECIFIC missing item, and still attempt any CPU-feasible proxy. Never write
+"no access to paper body" / "impossible" as a bare excuse -- if it was fixable, you should have
+fixed it.
+
+A mathematical claim (bound, identity, theorem) MUST be verified for real on CPU (numerical check
+or independent re-derivation). Do NOT mark it "toy" -- toy is only for empirical claims where a
+reduced-scale CPU run is the honest best effort.
 
 CONTEXT-COMPACTION (mandatory for token efficiency across the 33+ paper batch):
 - After every ~6 tool turns, write COMPACTION.md in the run dir: a tight summary of what was
@@ -55,7 +74,8 @@ CONTEXT-COMPACTION (mandatory for token efficiency across the 33+ paper batch):
 
 DELIVERABLES in {run_dir}/:
 - verify_claimN.py (one per anchored claim) + results/claimN.json with real executed numbers
-- logbook.md with per-claim verdicts (verified / falsified / inconclusive) from REAL runs
+- logbook.md with per-claim verdicts (verified / falsified / inconclusive / toy) from REAL runs,
+  each with a one-line reason
 - _run_meta.json: {{"arm":"arm2","agent":"Hermes + K-Dense skills","model":"tencent/hy3:free via localhost:8319/v1"}}
 After finishing, the orchestrator will run score_run.py + publish_local.py (compare-and-publish to HF Space).
 """

@@ -1,0 +1,257 @@
+wave2 watchdog start Mon Aug  3 01:33:42 +04 2026
+both logbooks at Mon Aug  3 02:08:43 +04 2026
+== score (v2, artifact-grounded): tRsnpaRO0m — A Graphop Analysis of Graph Neural Networks on Sparse G
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = True
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 1.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.0
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 6
+   has_evidence_boundary  = True  (n=6)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=True  boundary=True   [Graphops = self-adjoint, positivity-preserving operators ove]
+     claim2       verified       mut=True  boundary=True   [Bofops = bounded-fiber subclass, `ess sup_x ν_x(Ω) < ∞`, cap]
+     claim3       verified       mut=True  boundary=True   [MPNNs are Lipschitz/Hölder continuous w.r.t. the action metr]
+     claim4       verified       mut=True  boundary=True   [The space of bofop-DIDMs is compact under the DIDM-mover's d]
+     claim5       verified       mut=True  boundary=True   [Universal approximation: any continuous function on bofop-DI]
+     claim6       verified       mut=True  boundary=True   [Generalization error vanishes as sample size grows, via equi]
+   rubric points (verified/falsified=2, toy=1, else 0) = 12 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/tRsnpaRO0m_arm2b/.trackio
+  space_id=kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs
+  orid=tRsnpaRO0mb arxiv= pages=11
+local  tRsnpaRO0mb: pts=10.0  space=kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs
+remote tRsnpaRO0mb: not found (RepositoryNotFoundError)
+  registered tRsnpaRO0mb -> kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs in space_map.json
+PUBLISHED kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs  url=https://huggingface.co/spaces/kondratevakate/repro-a-graphop-analysis-of-graph-neural-networks-on-sparse-graphs
+== score (v2, artifact-grounded): LJdacnMXkr — Sinkhorn Normalization of Diffusion Kernels
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.167
+   toy_rate               = 0.333
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 0
+   has_evidence_boundary  = True  (n=1)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=False boundary=False  [Symmetric smoothing operator can be diagonally rescaled (sym]
+     claim2       verified       mut=False boundary=False  [Gaussian/exponential Sinkhorn-normalized operators converge ]
+     claim3       verified       mut=False boundary=False  [Symmetric Sinkhorn needs only 5–10 iterations to push normal]
+     claim4       inconclusive   mut=False boundary=True   [Normalized operators jointly satisfy symmetry, mass conserva]
+     claim5       toy            mut=False boundary=False  [Method demonstrated on point clouds, sparse voxel grids (jaw]
+     claim6       toy            mut=False boundary=False  [Armadillo shape analysis: spectra consistent across sampling]
+   rubric points (verified/falsified=2, toy=1, else 0) = 8 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/LJdacnMXkr_arm2b/.trackio
+  space_id=kondratevakate/repro-sinkhorn-normalization-of-diffusion-kernels
+  orid=LJdacnMXkrb arxiv= pages=8
+local  LJdacnMXkrb: pts=6.7  space=kondratevakate/repro-sinkhorn-normalization-of-diffusion-kernels
+remote LJdacnMXkrb: not found (RepositoryNotFoundError)
+  registered LJdacnMXkrb -> kondratevakate/repro-sinkhorn-normalization-of-diffusion-kernels in space_map.json
+PUBLISHED kondratevakate/repro-sinkhorn-normalization-of-diffusion-kernels  url=https://huggingface.co/spaces/kondratevakate/repro-sinkhorn-normalization-of-diffusion-kernels
+WAVE2_DONE Mon Aug  3 02:23:13 +04 2026
+NEXT: launch Wave 3 (KqMqJpSMnQ + omkG80XURl)
+wave3 both logbooks at Mon Aug  3 03:16:17 +04 2026
+== score (v2, artifact-grounded): KqMqJpSMnQ — Compact Conformal Subgraphs
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.167
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 0
+   has_evidence_boundary  = True  (n=1)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=False boundary=False  [Bicriteria (1+κ, 1+1/κ) approximation by LP threshold roundi]
+     claim2       verified       mut=False boundary=False  [Nestedness K_τ1 ⊆ K_τ2 for τ1<τ2 via parametric min-cut (The]
+     claim3       verified       mut=False boundary=False  [Whole nested sequence in Õ(γ(m+n)²) (Corollary 1, Sec 4.2) |]
+     claim4       verified       mut=False boundary=False  [Distribution-free marginal coverage ℙ ≥ φ−δ under exchangeab]
+     claim5       verified       mut=False boundary=False  [NP-hardness at constant ε via clique reduction (Theorem 4, A]
+     claim6       inconclusive   mut=False boundary=True   [6×6 grid, 50 routes → 52 edges at φ=0.75; LP beats greedy fo]
+   rubric points (verified/falsified=2, toy=1, else 0) = 10 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/KqMqJpSMnQ_arm2b/.trackio
+  space_id=kondratevakate/repro-compact-conformal-subgraphs
+  orid=KqMqJpSMnQb arxiv= pages=8
+local  KqMqJpSMnQb: pts=8.3  space=kondratevakate/repro-compact-conformal-subgraphs
+remote KqMqJpSMnQb: not found (RepositoryNotFoundError)
+  registered KqMqJpSMnQb -> kondratevakate/repro-compact-conformal-subgraphs in space_map.json
+PUBLISHED kondratevakate/repro-compact-conformal-subgraphs  url=https://huggingface.co/spaces/kondratevakate/repro-compact-conformal-subgraphs
+== score (v2, artifact-grounded): omkG80XURl — Bridging the Gap Between Average and Discounted TD Lear
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.0
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 0
+   has_evidence_boundary  = False  (n=0)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=False boundary=False  [Double-chain, i.i.d. sampling: unique sample-independent fix]
+     claim2       verified       mut=False boundary=False  [Double-chain, Markovian sampling, constant stepsize: same Õ(]
+     claim3       verified       mut=False boundary=False  [Decaying stepsize: convergence with no explicit dimension-de]
+     claim4       verified       mut=False boundary=False  [Condition-number dependence reduced from quartic to quadrati]
+     claim5       verified       mut=False boundary=False  [Single-chain variant only attains quartic Õ(1/η⁴T) due to de]
+     claim6       verified       mut=False boundary=False  [η₁ ≥ ½·η₃ (Eq. 3 vs Eq. 2, Lemma B.3) | **verified**]
+   WARNINGS: no _run_meta.json (OK for v2: metrics come from artifacts)
+   rubric points (verified/falsified=2, toy=1, else 0) = 12 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/omkG80XURl_arm2b/.trackio
+  space_id=kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning
+  orid=omkG80XURlb arxiv= pages=8
+local  omkG80XURlb: pts=10.0  space=kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning
+remote omkG80XURlb: not found (RepositoryNotFoundError)
+  registered omkG80XURlb -> kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning in space_map.json
+PUBLISHED kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning  url=https://huggingface.co/spaces/kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning
+WAVE3_DONE Mon Aug  3 03:17:17 +04 2026
+NEXT: launch Wave 4 (uiw8P2JGbW + ugjBMARbyt)
+wave4 both logbooks at Mon Aug  3 03:42:10 +04 2026
+== score (v2, artifact-grounded): uiw8P2JGbW — Model Monotonicity in Autobidding Auctions: When Do Bet
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.167
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 0
+   has_evidence_boundary  = True  (n=1)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=False boundary=False  [FPA + tCPA, no budgets, mu=1: refinement never decreases rev]
+     claim2       verified       mut=False boundary=False  [Proof mechanism: convexity of f(p)=max_i t_i p_i + Jensen on]
+     claim3       verified       mut=False boundary=False  [mu=1 is conversion-, revenue- and welfare-maximizing for tCP]
+     claim4       verified       mut=False boundary=False  [Second-price/VCG can be non-monotone in revenue AND welfare ]
+     claim5       verified       mut=False boundary=False  [Budgets break revenue monotonicity even in FPA (Theorem 5.10]
+     claim6       inconclusive   mut=False boundary=True   [LP benchmark guarantees welfare monotonicity via lifting + T]
+   rubric points (verified/falsified=2, toy=1, else 0) = 10 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/uiw8P2JGbW_arm2b/.trackio
+  space_id=kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr
+  orid=uiw8P2JGbWb arxiv= pages=9
+local  uiw8P2JGbWb: pts=8.3  space=kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr
+remote uiw8P2JGbWb: not found (RepositoryNotFoundError)
+  registered uiw8P2JGbWb -> kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr in space_map.json
+PUBLISHED kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr  url=https://huggingface.co/spaces/kondratevakate/repro-model-monotonicity-in-autobidding-auctions-when-do-better-pr
+== score (v2, artifact-grounded): ugjBMARbyt — Linear Bandits beyond Inner Product Spaces, the case of
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.0
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 0
+   has_evidence_boundary  = False  (n=0)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=False boundary=False  [Fourier isometry F embeds transport plans in L²(ℝᵈ;ϱ), turni]
+     claim2       verified       mut=False boundary=False  [Trajectorial regret bound σ√(2T log(2/δ)) + 2C̄β_T(δ)√(T log]
+     claim3       verified       mut=False boundary=False  [Hölder/Lipschitz costs with ε_t = ηt^{−η}: entropic approxim]
+     claim4       verified       mut=False boundary=False  [Finite basis of N coefficients ⇒ Õ(√(NT)) OFUL-style paramet]
+     claim5       verified       mut=False boundary=False  [ζ(n) = 1 − n^{−q} ⇒ regret interpolates between Õ(√T) and Õ(]
+     claim6       verified       mut=False boundary=False  [Confidence sets from regularised least squares in L²(ℝᵈ;ϱ), ]
+   rubric points (verified/falsified=2, toy=1, else 0) = 12 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/ugjBMARbyt_arm2b/.trackio
+  space_id=kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi
+  orid=ugjBMARbytb arxiv= pages=8
+local  ugjBMARbytb: pts=10.0  space=kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi
+remote ugjBMARbytb: not found (RepositoryNotFoundError)
+  registered ugjBMARbytb -> kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi in space_map.json
+PUBLISHED kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi  url=https://huggingface.co/spaces/kondratevakate/repro-linear-bandits-beyond-inner-product-spaces-the-case-of-bandi
+WAVE4_DONE Mon Aug  3 03:43:18 +04 2026
+NEXT: launch Wave 5 (rZTiFcDihH + vqxprtjuKH)
+wave5b watchdog start Mon Aug  3 04:39:00 +04 2026
+TIMEOUT wave5b
+wave5c watchdog start Mon Aug  3 07:09:57 +04 2026
+wave5c both logbooks at Mon Aug  3 07:17:57 +04 2026
+== score (v2, artifact-grounded): rZTiFcDihH — Online Packet Scheduling with Deadlines and Learning
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.0  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.667
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 1
+   has_evidence_boundary  = True  (n=4)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       inconclusive   mut=True  boundary=True   [EDF_Φ^L has Φ-regret Õ(√(KT)) on 2-/3-bounded K-OPSD (Propos]
+     claim2       verified       mut=False boundary=False  [ALG^θ has competitive ratio θ_K ∈ [√2, Φ) for finite K, beat]
+     claim3       inconclusive   mut=False boundary=True   [ALG^{θ,U} has θ_K-regret Õ(√(KT)), nearly tight vs Ω(√T) (Th]
+     claim4       inconclusive   mut=False boundary=True   [Randomized ALG^R2 achieves a 5/4-regret bound of Õ(√(KT)) on]
+     claim5       inconclusive   mut=False boundary=True   [Randomized ALG^Rs achieves an e/(e−1)-regret bound of Õ(√(KT]
+     claim6       verified       mut=False boundary=False  [Sleeping bandits are a special case of 1-bounded K-OPSD (Lem]
+   rubric points (verified/falsified=2, toy=1, else 0) = 4 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/rZTiFcDihH_arm2b/.trackio
+  space_id=kondratevakate/repro-online-packet-scheduling-with-deadlines-and-learning
+  orid=rZTiFcDihHb arxiv= pages=9
+local  rZTiFcDihHb: pts=3.3  space=kondratevakate/repro-online-packet-scheduling-with-deadlines-and-learning
+remote rZTiFcDihHb: not found (RepositoryNotFoundError)
+  registered rZTiFcDihHb -> kondratevakate/repro-online-packet-scheduling-with-deadlines-and-learning in space_map.json
+PUBLISHED kondratevakate/repro-online-packet-scheduling-with-deadlines-and-learning  url=https://huggingface.co/spaces/kondratevakate/repro-online-packet-scheduling-with-deadlines-and-learning
+== score (v2, artifact-grounded): vqxprtjuKH — Allocating Variance to Maximize Expectation
+   area=None  anchored=6  claim_files=6
+   source                 = ARTIFACTS (results/claim*.json) — not self-report
+   check_reproducibility  = None
+   execution_success      = True
+   claim_coverage         = 1.0
+   full_evidence_rate     = 0.5  (verified/falsified WITH mutation)
+   inconclusive_rate      = 0.5
+   toy_rate               = 0.0
+   not_attempted_rate     = 0.0
+   n_mutation_tests       = 6
+   has_evidence_boundary  = True  (n=6)
+   wall_time_min          = None
+   human_interventions    = None
+   tokens_total_live      = 95,136,143  [live snapshot only (no before/after)]
+   -- per-claim verdict table --
+     claim1       verified       mut=True  boundary=True   [Theorem 1.1, §1.2 — PTAS for independent VarAlloc (E max_i X]
+     claim2       inconclusive   mut=True  boundary=True   [Theorem 1.2, §1.2 — PTAS for correlated VarAlloc (same addit]
+     claim3       verified       mut=True  boundary=True   [Theorem 1.3, §1.2 — GraphVarAlloc m>1, Ω(1/log n)·OPT | **ve]
+     claim4       inconclusive   mut=True  boundary=True   [Theorem 1.6, §1.3 — only Θ(1/p) variables get variance Ω(p) ]
+     claim5       verified       mut=True  boundary=True   [Lemma 2.1, §2.1 — small-variance O(ε√ln(1/ε)) bound | **veri]
+     claim6       inconclusive   mut=True  boundary=True   [Figures 1–2, §1.3 — ER-graph MC illustrations | **inconclusi]
+   rubric points (verified/falsified=2, toy=1, else 0) = 6 / 12
+built /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/vqxprtjuKH_arm2b/.trackio
+  space_id=kondratevakate/repro-allocating-variance-to-maximize-expectation
+  orid=vqxprtjuKHb arxiv= pages=8
+local  vqxprtjuKHb: pts=5.0  space=kondratevakate/repro-allocating-variance-to-maximize-expectation
+remote vqxprtjuKHb: not found (RepositoryNotFoundError)
+  registered vqxprtjuKHb -> kondratevakate/repro-allocating-variance-to-maximize-expectation in space_map.json
+PUBLISHED kondratevakate/repro-allocating-variance-to-maximize-expectation  url=https://huggingface.co/spaces/kondratevakate/repro-allocating-variance-to-maximize-expectation
+WAVE5_DONE Mon Aug  3 07:18:59 +04 2026
+BUNDLE2_COMPLETE: all 10 papers published. Run report_batch.py for final table.

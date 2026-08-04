@@ -1,0 +1,41 @@
+{
+  "claim": 6,
+  "gap_bofop": [
+    0.00277620646888087,
+    0.001344470177191616,
+    0.0005325938243691892,
+    0.0004979691209060438,
+    0.00022314248194148668
+  ],
+  "gap_vanishes_with_m": true,
+  "label_noise_sigma": 0.05,
+  "m_sweep": [
+    25,
+    50,
+    100,
+    200,
+    400
+  ],
+  "mutation": {
+    "family": "unbounded fiber mass (dense ER p=0.3 / power-law): not a bofop",
+    "gap": [
+      0.04607100075484669,
+      0.015649640487605195,
+      0.007780598312062664,
+      0.002688721482104016,
+      0.0010338384861555928
+    ],
+    "mutation_degrades_asymptotic_rate": false,
+    "mutation_passes": true,
+    "mutation_raises_gap_level_at_every_m": true,
+    "slope": -1.3496689725363191
+  },
+  "rate_at_least_half": true,
+  "reason": "The generalization gap of a fixed-capacity MPNN on bofop graphs decays with training size at a fitted log-log rate near the m^{-1/2} that a covering-number argument over a compact, uniformly equicontinuous class predicts, with label noise sigma=0.05 (without noise the gap collapses to the float64 floor and the rate question is vacuous, not failing). CAVEAT recorded explicitly in the mutation block: the non-bofop mutation is reported as two SEPARATE named checks (gap level vs asymptotic rate) and whichever fails stays visible -- a finite-m experiment supports the vanishing-error claim but does not isolate compactness as strictly necessary for the rate. Evidence, not proof; no numeric value in the paper to match.",
+  "replicates": 6,
+  "seed": 20260802,
+  "slope_bofop": -0.8707065086916812,
+  "source": "Section 6.2 (generalization bounds)",
+  "verdict": "verified",
+  "width": 48
+}

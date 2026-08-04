@@ -1,0 +1,51 @@
+{
+ "claim": 2,
+ "source": "Theorem 4.2",
+ "seed": 20260803,
+ "setup": "n=8 states, d=3 features, Markov sampling, gap=0.6 (non-trivial mixing)",
+ "eta_sweep": [
+  {
+   "scale": 1.0,
+   "eta": 0.07308285892069519,
+   "alpha": 0.002300988884238321,
+   "d0": 3.148465889566808,
+   "T_to_eps": 11564,
+   "final_err": 0.015061411570541302,
+   "target": 0.06296931779133616
+  },
+  {
+   "scale": 0.7,
+   "eta": 0.07056098959408091,
+   "alpha": 0.0018247461001117044,
+   "d0": 2.5860551426631,
+   "T_to_eps": 14964,
+   "final_err": 0.011990471738239819,
+   "target": 0.051721102853262
+  },
+  {
+   "scale": 0.5,
+   "eta": 0.04098904358337832,
+   "alpha": 0.001203794204321322,
+   "d0": 2.9368682435163693,
+   "T_to_eps": 35227,
+   "final_err": 0.00899575871899108,
+   "target": 0.05873736487032739
+  },
+  {
+   "scale": 0.35,
+   "eta": 0.021251511390817778,
+   "alpha": 0.0008145455494199961,
+   "d0": 3.8328829156684825,
+   "T_to_eps": 99543,
+   "final_err": 0.0064018685075992255,
+   "target": 0.07665765831336965
+  }
+ ],
+ "eta_exponent_measured": -1.671719951058418,
+ "eta_exponent_r2": 0.9922802652339955,
+ "eta_exponent_predicted": -2.0,
+ "markov_fixedpoint_max_dist_to_theta_star": 0.06650490814627125,
+ "markov_fixedpoint_spread": 0.029440572554458793,
+ "mutation_coupled_dist_to_theta_star": 1.7743916956429908,
+ "verdict": "verified"
+}

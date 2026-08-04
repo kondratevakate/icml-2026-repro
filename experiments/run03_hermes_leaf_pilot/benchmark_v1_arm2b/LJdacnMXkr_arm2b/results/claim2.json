@@ -1,0 +1,124 @@
+{
+ "claim": 2,
+ "seed": 20260803,
+ "source": "Theorem 4.2",
+ "experiments": [
+  {
+   "tag": "gaussian_1d",
+   "dim": 1,
+   "eps": 0.1,
+   "Ns": [
+    32,
+    64,
+    128,
+    256
+   ],
+   "N_ref": 2048,
+   "sup_errors": [
+    0.0029149650160426033,
+    0.0007891839000313539,
+    0.00020471742902061774,
+    5.158909266744782e-05
+   ],
+   "observed_rates": [
+    1.8850451396553782,
+    1.946727589987201,
+    1.9884959561026945
+   ],
+   "monotone_decreasing": true,
+   "final_sup_error": 5.158909266744782e-05
+  },
+  {
+   "tag": "exponential_1d",
+   "dim": 1,
+   "eps": 0.1,
+   "Ns": [
+    32,
+    64,
+    128,
+    256
+   ],
+   "N_ref": 2048,
+   "sup_errors": [
+    0.0022017637875486606,
+    0.0005649800434328611,
+    0.00014203046644156725,
+    3.547351223665007e-05
+   ],
+   "observed_rates": [
+    1.9623878863485256,
+    1.99199947845977,
+    2.0013863463558605
+   ],
+   "monotone_decreasing": true,
+   "final_sup_error": 3.547351223665007e-05
+  },
+  {
+   "tag": "gaussian_2d",
+   "dim": 2,
+   "eps": 0.15,
+   "Ns": [
+    10,
+    16,
+    24,
+    32
+   ],
+   "N_ref": 56,
+   "sup_errors": [
+    0.01773728835403726,
+    0.007598369365135027,
+    0.0032514745877313955,
+    0.001570229277280677
+   ],
+   "observed_rates": [
+    0.9018392523944919,
+    1.0467300851963122,
+    1.2650892030884255
+   ],
+   "monotone_decreasing": true,
+   "final_sup_error": 0.001570229277280677
+  },
+  {
+   "tag": "exponential_2d",
+   "dim": 2,
+   "eps": 0.15,
+   "Ns": [
+    10,
+    16,
+    24,
+    32
+   ],
+   "N_ref": 56,
+   "sup_errors": [
+    0.018179645325451577,
+    0.006300801245594401,
+    0.002394558213866027,
+    0.0011207380408654322
+   ],
+   "observed_rates": [
+    1.1272527555345797,
+    1.1930472386004911,
+    1.3195318571342693
+   ],
+   "monotone_decreasing": true,
+   "final_sup_error": 0.0011207380408654322
+  }
+ ],
+ "mutation_eps_equals_2h_errors": [
+  0.004633748400891036,
+  0.0023315211565591576,
+  0.0011645259498791333,
+  0.0005758156874856313
+ ],
+ "mutation_eps_equals_2h_decays": true,
+ "mutation_oscillating_kernel_errors": [
+  NaN,
+  NaN,
+  NaN,
+  NaN
+ ],
+ "all_kernels_converge": true,
+ "mutation_positivity_required_breaks": true,
+ "verdict": "verified",
+ "note": "Convergence tested on bounded domains [0,1] and [0,1]^2 with fixed bandwidth; reference operator is a 2048-node (1D) / 3136-node (2D) quadrature of the same continuous Sinkhorn fixed point."
+}

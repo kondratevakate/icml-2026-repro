@@ -1,0 +1,31 @@
+{
+ "orid": "KqMqJpSMnQ",
+ "title": "Compact Conformal Subgraphs",
+ "arm": "arm2",
+ "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+ "agent": "Hermes+K-Dense skills",
+ "model": "tencent/hy3:free via localhost:8319/v1",
+ "compaction": false,
+ "hardware": "CPU-only (WSL2)",
+ "seed": 20260803,
+ "n_claims": 6,
+ "verdicts": {
+  "1": "verified",
+  "2": "verified",
+  "3": "verified",
+  "4": "verified",
+  "5": "verified",
+  "6": "inconclusive"
+ },
+ "artifacts": [
+  "common.py",
+  "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+  "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+  "results/claim1.json", "results/claim2.json", "results/claim3.json",
+  "results/claim4.json", "results/claim5.json", "results/claim6.json",
+  "logbook.md"
+ ],
+ "deps": ["numpy==2.5.1", "scipy", "networkx==3.6.1", "pulp (CBC)"],
+ "notes": "Bundle contained no paper PDF, no author code, no datasets; all claims verified from first principles against a reconstructed, mutually-consistent optimisation model (see common.py). Every verified claim has an executed mutation test.",
+ "skill_used": "paper-claim-reproduction"
+}

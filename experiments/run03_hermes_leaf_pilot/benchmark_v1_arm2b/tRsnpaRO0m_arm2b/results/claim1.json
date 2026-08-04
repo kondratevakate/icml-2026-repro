@@ -1,0 +1,36 @@
+{
+  "claim": 1,
+  "dense_graphon": {
+    "op_norm_inf_to_1": 0.5,
+    "positivity_violation": 0.0,
+    "selfadjoint_err": 3.469446951953614e-18
+  },
+  "dense_selfadjoint": true,
+  "mutation": {
+    "antisymmetric_kernel": {
+      "op_norm_inf_to_1": 0.026311220437856782,
+      "positivity_violation": 0.06918123037456453,
+      "selfadjoint_err": 0.012429452375490008
+    },
+    "breaks_positivity_only": true,
+    "breaks_selfadjointness": true,
+    "mutation_passes": true,
+    "symmetric_signed_kernel": {
+      "op_norm_inf_to_1": 0.027063728878744104,
+      "positivity_violation": 0.07458496183351535,
+      "selfadjoint_err": 3.469446951953614e-18
+    }
+  },
+  "n_atoms": 300,
+  "reason": "Definitional claim, checked on a faithful n-atom discretisation of the probability space. Both a dense graphon kernel and a sparse bounded-degree graph (W = n*Adj) satisfy self-adjointness (<f> error at machine precision) and positivity preservation, i.e. they are members of the SAME operator class -- which is the content of Definition 3.1. The paper states no numeric value to match; this is conclusive at the level of the finite model, not a formal proof in the infinite-dimensional setting.",
+  "seed": 20260802,
+  "source": "Definition 3.1",
+  "sparse_graph_as_graphop": {
+    "op_norm_inf_to_1": 4.0,
+    "positivity_violation": 0.0,
+    "selfadjoint_err": 2.220446049250313e-16
+  },
+  "sparse_selfadjoint": true,
+  "unified_same_class": true,
+  "verdict": "verified"
+}

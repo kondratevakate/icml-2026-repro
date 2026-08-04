@@ -1,0 +1,78 @@
+{
+  "claim": 5,
+  "source": "Theorem 5.10",
+  "seed": 20260808,
+  "instances_tested": 150,
+  "instances_with_revenue_drop_under_refinement": 93,
+  "max_revenue_loss_pct": 99.854,
+  "closest_random_loss_to_paper_16.8pct": 16.82,
+  "paper_reported_pct": 16.8,
+  "best_instance": {
+    "rev_fine": 0.0038222079994922253,
+    "rev_coarse": 2.617286371813534,
+    "mu_fine": [
+      0.0013681825423525926,
+      0.0013735316252985702,
+      0.0009148549510212425
+    ],
+    "mu_coarse": [
+      1.0,
+      0.9434302268062006,
+      0.9042155415489364
+    ],
+    "t": [
+      4.531365597334618,
+      2.840519686311698,
+      4.370258190266321
+    ],
+    "budgets": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "mass_fine": [
+      0.12497704164148365,
+      0.3140803439048169,
+      0.2538966522984219,
+      0.17036952702024966,
+      0.13667643513502795
+    ],
+    "p_fine": [
+      [
+        0.0001,
+        0.7258905686637283,
+        0.8434467546411574
+      ],
+      [
+        0.010607554464093148,
+        0.8176697697322746,
+        0.14994782454604336
+      ],
+      [
+        0.316582376228964,
+        0.991527928233949,
+        1.0
+      ],
+      [
+        0.744515881635721,
+        0.2640329719412699,
+        0.7334509887912396
+      ],
+      [
+        0.7048692659627834,
+        0.2730393983228241,
+        0.9582123605556481
+      ]
+    ],
+    "coarse_group": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "mutation_no_budget_revenue_drops": 0,
+  "verdict": "verified",
+  "note": "Budget-induced multiplier shift reproduces the qualitative failure; the paper's exact 16.8% instance is not recoverable (PDF not retrievable), but losses bracketing that magnitude occur."
+}

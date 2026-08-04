@@ -1,0 +1,33 @@
+{
+  "claim": 2,
+  "source": "Eq (8), Section 3.2 + Remark 3.6",
+  "command": "./.venv/bin/python verify_claim2.py",
+  "configs": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      6
+    ]
+  ],
+  "seeds_per_config": 40,
+  "n_instances": 120,
+  "T1_max_subconstraint_residual_over_all_w": 1.1834977442504169e-13,
+  "T1_n_checks": 360,
+  "T2_rank_deficient_cases": 86,
+  "T2_min_output_spread_over_w": 1.530619010628436,
+  "T2_mean_output_spread_over_w": 2.732280847454395,
+  "T2_full_rank_cases_with_zero_nullspace": 34,
+  "T3_mean_obj_trainable_w": 1.859256323957484,
+  "T3_mean_obj_w_zero_orthogonal_projection": 4.500871503391247,
+  "T3_median_gap": 0.11952442114037204,
+  "T3_max_gap": 26.87171091351931,
+  "T3_frac_instances_trainable_w_strictly_better": 0.6,
+  "MUTATION_w_forced_zero_is_never_better": true
+}

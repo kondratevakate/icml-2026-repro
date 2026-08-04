@@ -1,0 +1,64 @@
+{
+  "orid": "LJdacnMXkr",
+  "title": "Sinkhorn Normalization of Diffusion Kernels",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "rubric_points": 8,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 0.167,
+  "toy_rate": 0.333,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 1,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "inconclusive",
+    "claim5": "toy",
+    "claim6": "toy"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": true,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_note": {
+    "claim1": "Symmetric smoothing operator can be diagonally rescaled (sym",
+    "claim2": "Gaussian/exponential Sinkhorn-normalized operators converge ",
+    "claim3": "Symmetric Sinkhorn needs only 5–10 iterations to push normal",
+    "claim4": "Normalized operators jointly satisfy symmetry, mass conserva",
+    "claim5": "Method demonstrated on point clouds, sparse voxel grids (jaw",
+    "claim6": "Armadillo shape analysis: spectra consistent across sampling"
+  },
+  "warnings": [],
+  "_meta_crosscheck": {
+    "execution_success": null,
+    "claim_coverage_meta": null,
+    "per_claim_verdict_meta": null
+  },
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

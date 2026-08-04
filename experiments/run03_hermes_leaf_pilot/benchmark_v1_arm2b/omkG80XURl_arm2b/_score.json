@@ -1,0 +1,64 @@
+{
+  "orid": "omkG80XURl",
+  "title": "Bridging the Gap Between Average and Discounted TD Learning",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "rubric_points": 12,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 0.0,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": false,
+  "n_with_evidence_boundary": 0,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "verified",
+    "claim5": "verified",
+    "claim6": "verified"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_note": {
+    "claim1": "Double-chain, i.i.d. sampling: unique sample-independent fix",
+    "claim2": "Double-chain, Markovian sampling, constant stepsize: same Õ(",
+    "claim3": "Decaying stepsize: convergence with no explicit dimension-de",
+    "claim4": "Condition-number dependence reduced from quartic to quadrati",
+    "claim5": "Single-chain variant only attains quartic Õ(1/η⁴T) due to de",
+    "claim6": "η₁ ≥ ½·η₃ (Eq. 3 vs Eq. 2, Lemma B.3) | **verified**"
+  },
+  "warnings": [],
+  "_meta_crosscheck": {
+    "execution_success": null,
+    "claim_coverage_meta": null,
+    "per_claim_verdict_meta": null
+  },
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

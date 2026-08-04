@@ -1,0 +1,32 @@
+{
+  "orid": "uiw8P2JGbW",
+  "paper_title": "Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+  "arm": "arm2",
+  "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+  "agent": "Hermes+K-Dense skills",
+  "model": "tencent/hy3:free via localhost:8319/v1",
+  "compaction": false,
+  "hardware": "CPU-only (WSL2)",
+  "python": "3.12.3",
+  "libs": {"numpy": "2.5.1", "scipy": "1.18.0", "sympy": "1.14.0"},
+  "base_seed": 20260803,
+  "n_claims": 6,
+  "verdicts": {
+    "1": "verified",
+    "2": "verified",
+    "3": "verified",
+    "4": "verified",
+    "5": "verified",
+    "6": "inconclusive"
+  },
+  "artifacts": [
+    "common.py",
+    "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+    "results/claim1.json", "results/claim2.json", "results/claim3.json",
+    "results/claim4.json", "results/claim5.json", "results/claim6.json",
+    "logbook.md"
+  ],
+  "paper_access": "OpenReview PDF endpoint JS-gated; only abstract/metadata retrievable. All claims reproduced from first principles.",
+  "date": "2026-08-03"
+}

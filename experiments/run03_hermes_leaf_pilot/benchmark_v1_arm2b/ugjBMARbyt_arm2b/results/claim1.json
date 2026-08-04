@@ -1,0 +1,18 @@
+{
+  "claim": 1,
+  "source": "paper v2 Sec. 3.1, Eq. (4) (TASK cites 'Section 4.1, Eq. 7')",
+  "seed": 20260803,
+  "grid": 32,
+  "isometry_relative_error": 1.530559191652665e-16,
+  "norm_preservation_relative_error": 1.6224359302000702e-16,
+  "pairing_time_domain_random": 0.2509738933825768,
+  "pairing_freq_domain_random": 0.250973893382577,
+  "rel_gap_random": 6.635489112005569e-16,
+  "pairing_time_domain_coupling": -0.05839465248784993,
+  "pairing_freq_domain_coupling": -0.058394652487850016,
+  "rel_gap_coupling": 1.4259306854204141e-15,
+  "coupling_marginal_error": 1.3877787807814457e-17,
+  "mutation_nonunitary_rel_gap": 1032.3911848522737,
+  "mutation_unnormalised_dft_norm_rel_error": 6.999999999999999,
+  "verdict": "verified"
+}

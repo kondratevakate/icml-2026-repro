@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Compact Conformal Subgraphs",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-compact-conformal-subgraphs",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-KqMqJpSMnQ"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Compact Conformal Subgraphs",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary",
+        "title": "SUMMARY",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-1-section-4-1-verify-claim1-py-results-claim1-json",
+        "title": "Claim 1 \u2014 Theorem 1, Section 4.1 (`verify_claim1.py` \u2192 `results/claim1.json`)",
+        "file": "pages/claim-1-theorem-1-section-4-1-verify-claim1-py-results-claim1-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-2-section-4-2-verify-claim2-py-results-claim2-json",
+        "title": "Claim 2 \u2014 Theorem 2, Section 4.2 (`verify_claim2.py` \u2192 `results/claim2.json`)",
+        "file": "pages/claim-2-theorem-2-section-4-2-verify-claim2-py-results-claim2-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-corollary-1-section-4-2-verify-claim3-py-results-claim3-json",
+        "title": "Claim 3 \u2014 Corollary 1, Section 4.2 (`verify_claim3.py` \u2192 `results/claim3.json`)",
+        "file": "pages/claim-3-corollary-1-section-4-2-verify-claim3-py-results-claim3-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-lemma-1-verify-claim4-py-results-claim4-json",
+        "title": "Claim 4 \u2014 Lemma 1 (`verify_claim4.py` \u2192 `results/claim4.json`)",
+        "file": "pages/claim-4-lemma-1-verify-claim4-py-results-claim4-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-4-appendix-b-verify-claim5-py-results-claim5-json",
+        "title": "Claim 5 \u2014 Theorem 4, Appendix B (`verify_claim5.py` \u2192 `results/claim5.json`)",
+        "file": "pages/claim-5-theorem-4-appendix-b-verify-claim5-py-results-claim5-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-section-5-verify-claim6-py-results-claim6-json",
+        "title": "Claim 6 \u2014 Section 5 (`verify_claim6.py` \u2192 `results/claim6.json`)",
+        "file": "pages/claim-6-section-5-verify-claim6-py-results-claim6-json/page.md",
+        "children": []
+      },
+      {
+        "slug": "reproduce",
+        "title": "Reproduce",
+        "file": "pages/reproduce/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

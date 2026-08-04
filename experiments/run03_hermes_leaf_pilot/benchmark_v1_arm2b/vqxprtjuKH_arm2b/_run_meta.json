@@ -1,0 +1,15 @@
+{
+ "orid": "vqxprtjuKH",
+ "title": "Allocating Variance to Maximize Expectation",
+ "arxiv": "2502.18463",
+ "openreview": "https://openreview.net/forum?id=vqxprtjuKH",
+ "arm": "arm2",
+ "agent": "Hermes+K-Dense skills",
+ "model": "tencent/hy3:free",
+ "endpoint": "http://localhost:8319/v1",
+ "compaction": false,
+ "hardware": "CPU only (WSL2)",
+ "seed": 20260803,
+ "n_claims": 6,
+ "run_dir": "experiments/run03_hermes_leaf_pilot/vqxprtjuKH_arm2b"
+}

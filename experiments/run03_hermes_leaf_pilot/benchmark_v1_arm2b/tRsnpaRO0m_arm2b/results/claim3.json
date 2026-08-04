@@ -1,0 +1,46 @@
+{
+  "C_theory": 20.5,
+  "a": 0.5,
+  "b": 0.5,
+  "claim": 3,
+  "depth_D": 3,
+  "fiber_bound_r": 4,
+  "lipschitz_bound_holds": true,
+  "mutation": {
+    "exceeds_bofop_C_theory": true,
+    "family": "dense Erdos-Renyi p=0.3 (fiber mass ~0.3n >> r=4): not a bofop",
+    "max_ratio": 94.6344592943939,
+    "mutation_passes": true,
+    "per_scale": {
+      "0.02": 33.129186377139085,
+      "0.1": 94.6344592943939,
+      "0.5": 0.0008875496275498559,
+      "1.0": 16.394257535126215,
+      "2.0": 8.198159176390602,
+      "5.0": 3.924054173250384
+    }
+  },
+  "n_atoms": 200,
+  "probe1_per_scale": {
+    "0.02": 4.195002679680485,
+    "0.1": 3.658708347675364,
+    "0.5": 2.134793177235683,
+    "1.0": 1.1993815146759463,
+    "2.0": 0.7062544556832416,
+    "5.0": 0.3539892058936708
+  },
+  "probe1_signal_only_max_ratio": 4.195002679680485,
+  "probe2_joint_perturbation_max_ratio": 0.15697537654875013,
+  "probe2_per_scale": {
+    "0.02": 0.010246016253253417,
+    "0.1": 0.047037954169592035,
+    "0.5": 0.10595234248396383,
+    "1.0": 0.12250671738046358,
+    "2.0": 0.13915636435457898,
+    "5.0": 0.15697537654875013
+  },
+  "reason": "Theorem 4.1's inequality reproduced structurally on a faithful n-atom model. Across a scale sweep and 300 random bofop-signal pairs (signal-only and joint graph+signal perturbations) the empirical ratio never exceeds the layerwise constant C'_{D,r} built from the fiber bound r=4, while removing the bofop hypothesis (dense ER) violates that constant -- i.e. the bounded fiber mass is exactly what makes the Lipschitz constant finite. The paper gives no numeric value for C'_{D,r}, so only the FORM of the inequality is checkable and it holds with room. The ratio falls with signal scale because tanh saturates; Lipschitz requires boundedness, not scale-invariance.",
+  "seed": 20260802,
+  "source": "Theorem 4.1",
+  "verdict": "verified"
+}

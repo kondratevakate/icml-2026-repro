@@ -1,0 +1,55 @@
+{
+  "claim": 2,
+  "source": "paper v2 Theorem 4.1 (TASK cites 'Theorem 5.1')",
+  "seed": 20260803,
+  "m": 4,
+  "action_set": "Birkhoff extreme points (m! = 24)",
+  "d": 16,
+  "T": 400,
+  "runs": 60,
+  "lam": 1.0,
+  "sigma": 0.2,
+  "delta": 0.05,
+  "Cbar": 1.9729721186521565,
+  "embedding_pairing_max_error": 1.1102230246251565e-16,
+  "mean_realised_regret": 51.288405975123936,
+  "mean_theorem_bound": 836.0428441569136,
+  "bound_holds_fraction": 1.0,
+  "required": 0.95,
+  "ratio_regret_over_bound": 0.06134662396021635,
+  "mutation_heavy_tailed_cauchy_bound_holds_fraction": 1.0,
+  "mutation_heavy_tailed_cauchy_mean_regret": 78.51981572685875,
+  "uniform_confidence_coverage_gaussian": 1.0,
+  "mutation_heavy_tailed_cauchy_coverage": 0.0,
+  "loglog_slope_realised_regret_in_T": 0.7571573456829075,
+  "loglog_slope_certified_bound_in_T": 0.7616938759567037,
+  "scaling_table": {
+    "100": {
+      "regret": 15.629841482436966,
+      "bound": 249.26287250599864,
+      "per_step": 0.15629841482436965,
+      "regret_over_sqrtT_logT": 0.33939769544224574
+    },
+    "400": {
+      "regret": 52.603077894785734,
+      "bound": 838.7715304601128,
+      "per_step": 0.13150769473696433,
+      "regret_over_sqrtT_logT": 0.4389834695773732
+    },
+    "1600": {
+      "regret": 152.71978430540764,
+      "bound": 2388.219473456552,
+      "per_step": 0.09544986519087978,
+      "regret_over_sqrtT_logT": 0.5175005926768984
+    },
+    "6400": {
+      "regret": 362.38788868435574,
+      "bound": 5940.168603894621,
+      "per_step": 0.05662310760693059,
+      "regret_over_sqrtT_logT": 0.5168668502275736
+    }
+  },
+  "sublinear_per_step_regret": true,
+  "note": "Finite-dimensional discrete instantiation on the Birkhoff polytope; the entropic-approximation term of Thm 4.1 is absent because the action set is already inside Pi_H(mu,nu) (all plans have bounded density).",
+  "verdict": "verified"
+}

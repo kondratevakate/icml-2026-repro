@@ -1,0 +1,71 @@
+{
+  "claim": 4,
+  "source": "Theorem 5.8",
+  "seed": 20260807,
+  "instances_tested": 150,
+  "instances_with_simultaneous_revenue_and_welfare_drop": 22,
+  "best_simultaneous_drop_pct": {
+    "revenue_drop_pct": 73.9597,
+    "welfare_drop_pct": 70.4179
+  },
+  "best_instance_raw": {
+    "rev_fine": 8.307732281664471,
+    "rev_coarse": 31.903350057047867,
+    "welfare_fine": 0.6775127180850979,
+    "welfare_coarse": 2.290279129460415,
+    "t": [
+      0.5793518705369121,
+      4.477749751933422,
+      2.284002433503088
+    ],
+    "mass_fine": [
+      0.1399478239798994,
+      0.23983289684633677,
+      0.19585390605740746,
+      0.19568702804808444,
+      0.22867834506827198
+    ],
+    "p_fine": [
+      [
+        0.09926944700823707,
+        0.265105631997024,
+        0.07681799618933534
+      ],
+      [
+        0.79590525209467,
+        0.4839668628596081,
+        0.32644320293321744
+      ],
+      [
+        0.12145793486732663,
+        0.8603592038666105,
+        0.4189919502399079
+      ],
+      [
+        0.7647121017702327,
+        0.4285294945725709,
+        0.3703361171980556
+      ],
+      [
+        0.9561073009268074,
+        0.9344960334416141,
+        0.43241355960150274
+      ]
+    ],
+    "coarse_group": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "closest_random_instance_to_paper_6.2pct": {
+    "revenue_drop_pct": 9.51,
+    "welfare_drop_pct": 2.374
+  },
+  "paper_reported_pct": 6.2,
+  "mutation_first_price_mu1_revenue_drops": 0,
+  "verdict": "verified",
+  "note": "Existence of simultaneous revenue+welfare non-monotonicity under 2nd price is reproduced from first principles; the paper's exact 6.2%/6.2% instance is not recoverable without its numerical construction (PDF not retrievable)."
+}

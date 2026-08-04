@@ -1,0 +1,66 @@
+{
+ "claim": "Section 5: 6x6 grid, 50 routes -> 52 edges at phi=0.75; LP beats greedy for phi<=0.8",
+ "source": "Section 5",
+ "seed": 20260803,
+ "grid": "6x6 (36 nodes, 60 edges)",
+ "trials": 10,
+ "lp_edges_at_phi075": 41.5,
+ "paper_value_at_phi075": 52,
+ "matches_52_within_3": false,
+ "lp_beats_greedy_for_phi_le_0p8": false,
+ "mutation_shuffled_weights_lp_edges_at_075": 60.0,
+ "note": "Route generator / edge-weighting protocol is not specified in the available bundle (no PDF), so the absolute edge count is protocol-dependent.",
+ "verdict": "inconclusive",
+ "detail": [
+  {
+   "phi": 0.6,
+   "lp_edges_mean": 35.9,
+   "greedy_weight_edges_mean": 16.6,
+   "greedy_route_edges_mean": 35.6,
+   "lp_test_coverage": 0.376,
+   "greedy_route_test_coverage": 0.27799999999999997,
+   "lp_beats_greedy": false,
+   "mut_lp_edges_mean": 54.8
+  },
+  {
+   "phi": 0.7,
+   "lp_edges_mean": 40.2,
+   "greedy_weight_edges_mean": 21.6,
+   "greedy_route_edges_mean": 39.7,
+   "lp_test_coverage": 0.426,
+   "greedy_route_test_coverage": 0.364,
+   "lp_beats_greedy": false,
+   "mut_lp_edges_mean": 59.0
+  },
+  {
+   "phi": 0.75,
+   "lp_edges_mean": 41.5,
+   "greedy_weight_edges_mean": 24.4,
+   "greedy_route_edges_mean": 42.5,
+   "lp_test_coverage": 0.44399999999999995,
+   "greedy_route_test_coverage": 0.42400000000000004,
+   "lp_beats_greedy": false,
+   "mut_lp_edges_mean": 60.0
+  },
+  {
+   "phi": 0.8,
+   "lp_edges_mean": 43.4,
+   "greedy_weight_edges_mean": 27.6,
+   "greedy_route_edges_mean": 43.4,
+   "lp_test_coverage": 0.46799999999999997,
+   "greedy_route_test_coverage": 0.446,
+   "lp_beats_greedy": false,
+   "mut_lp_edges_mean": 60.0
+  },
+  {
+   "phi": 0.9,
+   "lp_edges_mean": 46.6,
+   "greedy_weight_edges_mean": 36.1,
+   "greedy_route_edges_mean": 46.8,
+   "lp_test_coverage": 0.5279999999999999,
+   "greedy_route_test_coverage": 0.532,
+   "lp_beats_greedy": false,
+   "mut_lp_edges_mean": 60.0
+  }
+ ]
+}

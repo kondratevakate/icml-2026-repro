@@ -1,0 +1,78 @@
+{
+ "claim": "Corollary 1: whole nested sequence in Otilde(gamma (m+n)^2)",
+ "source": "Corollary 1, Section 4.2",
+ "seed": 20260803,
+ "empirical_alpha_time_per_breakpoint": 0.8668330083465349,
+ "alpha_le_2": true,
+ "all_gamma_le_n_plus_1": true,
+ "max_calls_per_gamma": 24.666666666666668,
+ "mutation_gridscan_wasteful": true,
+ "verdict": "verified",
+ "detail": [
+  {
+   "n": 8,
+   "m": 9,
+   "gamma": 6,
+   "nested_chain": true,
+   "mincut_calls": 148,
+   "calls_per_gamma": 24.666666666666668,
+   "gamma_le_n_plus_1": true,
+   "seconds": 0.38722053699893877,
+   "mut_grid_calls": 200,
+   "mut_grid_distinct": 6,
+   "mut_grid_seconds": 0.3559266680094879
+  },
+  {
+   "n": 12,
+   "m": 16,
+   "gamma": 4,
+   "nested_chain": true,
+   "mincut_calls": 92,
+   "calls_per_gamma": 23.0,
+   "gamma_le_n_plus_1": true,
+   "seconds": 0.281005222001113,
+   "mut_grid_calls": 200,
+   "mut_grid_distinct": 4,
+   "mut_grid_seconds": 0.4749210940208286
+  },
+  {
+   "n": 16,
+   "m": 42,
+   "gamma": 3,
+   "nested_chain": true,
+   "mincut_calls": 67,
+   "calls_per_gamma": 22.333333333333332,
+   "gamma_le_n_plus_1": true,
+   "seconds": 0.4850439820147585,
+   "mut_grid_calls": 200,
+   "mut_grid_distinct": 3,
+   "mut_grid_seconds": 0.8819293029955588
+  },
+  {
+   "n": 20,
+   "m": 66,
+   "gamma": 3,
+   "nested_chain": true,
+   "mincut_calls": 65,
+   "calls_per_gamma": 21.666666666666668,
+   "gamma_le_n_plus_1": true,
+   "seconds": 0.6769165360019542,
+   "mut_grid_calls": 200,
+   "mut_grid_distinct": 3,
+   "mut_grid_seconds": 1.386082348995842
+  },
+  {
+   "n": 24,
+   "m": 98,
+   "gamma": 3,
+   "nested_chain": true,
+   "mincut_calls": 62,
+   "calls_per_gamma": 20.666666666666668,
+   "gamma_le_n_plus_1": true,
+   "seconds": 0.9710546709829941,
+   "mut_grid_calls": 200,
+   "mut_grid_distinct": 3,
+   "mut_grid_seconds": 2.2691613610077184
+  }
+ ]
+}

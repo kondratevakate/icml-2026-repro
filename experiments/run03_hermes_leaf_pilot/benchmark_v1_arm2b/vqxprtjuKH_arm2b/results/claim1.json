@@ -1,0 +1,456 @@
+{
+ "claim": 1,
+ "source": "Theorem 1.1, Section 1.2 (arXiv:2502.18463v1)",
+ "statement": "PTAS for VarAlloc: poly-time allocation with E max_i X_i >= OPT - eps",
+ "seed": 20260803,
+ "rows": [
+  {
+   "instance": "zero_means_n4",
+   "n": 4,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.5,
+   "grid_step": 0.25,
+   "alg": 0.5152932130606468,
+   "opt_ref": 0.5152932130606468,
+   "gap": 0.0,
+   "ok": true,
+   "alg_alloc": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ]
+  },
+  {
+   "instance": "zero_means_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.5,
+   "grid_step": 0.25,
+   "alg": 0.5228810822176766,
+   "opt_ref": 0.5230997451420317,
+   "gap": 0.00021866292435512857,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ]
+  },
+  {
+   "instance": "ramp_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+   ],
+   "eps": 0.5,
+   "grid_step": 0.25,
+   "alg": 1.3077208818588406,
+   "opt_ref": 1.3088346457543394,
+   "gap": 0.001113763895498776,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "instance": "one_big_n4",
+   "n": 4,
+   "mus": [
+    2.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.5,
+   "grid_step": 0.25,
+   "alg": 2.0094722163306935,
+   "opt_ref": 2.010108986410822,
+   "gap": 0.0006367700801286347,
+   "ok": true,
+   "alg_alloc": [
+    0.75,
+    0.0,
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "instance": "random_n5",
+   "n": 5,
+   "mus": [
+    1.134,
+    0.611,
+    0.844,
+    0.109,
+    0.629
+   ],
+   "eps": 0.5,
+   "grid_step": 0.25,
+   "alg": 1.4271891972587707,
+   "opt_ref": 1.4305720956018064,
+   "gap": 0.003382898343035734,
+   "ok": true,
+   "alg_alloc": [
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "instance": "zero_means_n4",
+   "n": 4,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.3,
+   "grid_step": 0.09,
+   "alg": 0.5150466848527947,
+   "opt_ref": 0.5152932130606468,
+   "gap": 0.0002465282078520925,
+   "ok": true,
+   "alg_alloc": [
+    0.1818,
+    0.2727,
+    0.2727,
+    0.2727
+   ]
+  },
+  {
+   "instance": "zero_means_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.3,
+   "grid_step": 0.09,
+   "alg": 0.5225341687456156,
+   "opt_ref": 0.5230997451420317,
+   "gap": 0.0005655763964160787,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.1818,
+    0.2727,
+    0.2727,
+    0.2727
+   ]
+  },
+  {
+   "instance": "ramp_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+   ],
+   "eps": 0.3,
+   "grid_step": 0.09,
+   "alg": 1.3082462236491568,
+   "opt_ref": 1.3088346457543394,
+   "gap": 0.0005884221051826177,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.0,
+    0.0,
+    0.4545,
+    0.5455
+   ]
+  },
+  {
+   "instance": "one_big_n4",
+   "n": 4,
+   "mus": [
+    2.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.3,
+   "grid_step": 0.09,
+   "alg": 2.0098924102122933,
+   "opt_ref": 2.010108986410822,
+   "gap": 0.00021657619852888388,
+   "ok": true,
+   "alg_alloc": [
+    0.9091,
+    0.0,
+    0.0,
+    0.0909
+   ]
+  },
+  {
+   "instance": "random_n5",
+   "n": 5,
+   "mus": [
+    1.134,
+    0.611,
+    0.844,
+    0.109,
+    0.629
+   ],
+   "eps": 0.3,
+   "grid_step": 0.09,
+   "alg": 1.4280296328527555,
+   "opt_ref": 1.4305720956018064,
+   "gap": 0.0025424627490509,
+   "ok": true,
+   "alg_alloc": [
+    0.5455,
+    0.0,
+    0.3636,
+    0.0,
+    0.0909
+   ]
+  },
+  {
+   "instance": "zero_means_n4",
+   "n": 4,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.2,
+   "grid_step": 0.04000000000000001,
+   "alg": 0.5152392814480862,
+   "opt_ref": 0.5152932130606468,
+   "gap": 5.39316125606204e-05,
+   "ok": true,
+   "alg_alloc": [
+    0.24,
+    0.24,
+    0.24,
+    0.28
+   ]
+  },
+  {
+   "instance": "zero_means_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.2,
+   "grid_step": 0.04000000000000001,
+   "alg": 0.5228121046702945,
+   "opt_ref": 0.5230997451420317,
+   "gap": 0.0002876404717372383,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.24,
+    0.24,
+    0.24,
+    0.28
+   ]
+  },
+  {
+   "instance": "ramp_n5",
+   "n": 5,
+   "mus": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+   ],
+   "eps": 0.2,
+   "grid_step": 0.04000000000000001,
+   "alg": 1.308359942698576,
+   "opt_ref": 1.3088346457543394,
+   "gap": 0.00047470305576347016,
+   "ok": true,
+   "alg_alloc": [
+    0.0,
+    0.0,
+    0.0,
+    0.4,
+    0.6
+   ]
+  },
+  {
+   "instance": "one_big_n4",
+   "n": 4,
+   "mus": [
+    2.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "eps": 0.2,
+   "grid_step": 0.04000000000000001,
+   "alg": 2.0100889514991795,
+   "opt_ref": 2.010108986410822,
+   "gap": 2.0034911642596853e-05,
+   "ok": true,
+   "alg_alloc": [
+    0.92,
+    0.0,
+    0.04,
+    0.04
+   ]
+  },
+  {
+   "instance": "random_n5",
+   "n": 5,
+   "mus": [
+    1.134,
+    0.611,
+    0.844,
+    0.109,
+    0.629
+   ],
+   "eps": 0.2,
+   "grid_step": 0.04000000000000001,
+   "alg": 1.4302659415335854,
+   "opt_ref": 1.4305720956018064,
+   "gap": 0.00030615406822098734,
+   "ok": true,
+   "alg_alloc": [
+    0.6,
+    0.0,
+    0.36,
+    0.0,
+    0.04
+   ]
+  }
+ ],
+ "worst_gap": 0.003382898343035734,
+ "all_within_eps": true,
+ "mutation": {
+  "description": "coarsen PTAS grid to step 0.5 (>> eps^2)",
+  "rows": [
+   {
+    "mutation": "M1_single_support_grid",
+    "instance": "zero_means_n4",
+    "eps": 0.05,
+    "alg": 0.39894560492597686,
+    "opt_ref": 0.5152932130606468,
+    "gap": 0.11634760813466993,
+    "still_within_eps": false
+   },
+   {
+    "mutation": "M2_half_budget",
+    "instance": "zero_means_n4",
+    "eps": 0.05,
+    "alg": 0.3645368879952501,
+    "opt_ref": 0.5152932130606468,
+    "gap": 0.1507563250653967,
+    "still_within_eps": false
+   },
+   {
+    "mutation": "M1_single_support_grid",
+    "instance": "zero_means_n5",
+    "eps": 0.05,
+    "alg": 0.39894560492597686,
+    "opt_ref": 0.5230997451420317,
+    "gap": 0.12415414021605486,
+    "still_within_eps": false
+   },
+   {
+    "mutation": "M2_half_budget",
+    "instance": "zero_means_n5",
+    "eps": 0.05,
+    "alg": 0.36993804906974415,
+    "opt_ref": 0.5230997451420317,
+    "gap": 0.15316169607228758,
+    "still_within_eps": false
+   },
+   {
+    "mutation": "M1_single_support_grid",
+    "instance": "ramp_n5",
+    "eps": 0.05,
+    "alg": 1.2843414520913363,
+    "opt_ref": 1.3088346457543394,
+    "gap": 0.024493193663003066,
+    "still_within_eps": true
+   },
+   {
+    "mutation": "M2_half_budget",
+    "instance": "ramp_n5",
+    "eps": 0.05,
+    "alg": 1.1828634744486348,
+    "opt_ref": 1.3088346457543394,
+    "gap": 0.12597117130570457,
+    "still_within_eps": false
+   },
+   {
+    "mutation": "M1_single_support_grid",
+    "instance": "one_big_n4",
+    "eps": 0.05,
+    "alg": 2.008491152539301,
+    "opt_ref": 2.010108986410822,
+    "gap": 0.001617833871521146,
+    "still_within_eps": true
+   },
+   {
+    "mutation": "M2_half_budget",
+    "instance": "one_big_n4",
+    "eps": 0.05,
+    "alg": 2.0005697297288587,
+    "opt_ref": 2.010108986410822,
+    "gap": 0.009539256681963426,
+    "still_within_eps": true
+   },
+   {
+    "mutation": "M1_single_support_grid",
+    "instance": "random_n5",
+    "eps": 0.05,
+    "alg": 1.4052139059785502,
+    "opt_ref": 1.4305720956018064,
+    "gap": 0.0253581896232562,
+    "still_within_eps": true
+   },
+   {
+    "mutation": "M2_half_budget",
+    "instance": "random_n5",
+    "eps": 0.05,
+    "alg": 1.3034452490313717,
+    "opt_ref": 1.4305720956018064,
+    "gap": 0.12712684657043472,
+    "still_within_eps": false
+   }
+  ],
+  "property_breaks": true
+ },
+ "verdict": "verified",
+ "runtime_s": 157.1
+}

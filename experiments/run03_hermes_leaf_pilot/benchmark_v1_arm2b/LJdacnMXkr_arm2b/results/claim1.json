@@ -1,0 +1,55 @@
+{
+ "claim": 1,
+ "seed": 20260803,
+ "source": "Theorem 4.1",
+ "cases": [
+  {
+   "name": "gaussian_2d",
+   "n": 120,
+   "dim": 2,
+   "eps": 0.8,
+   "sinkhorn_iters": 42,
+   "rowsum_err": 8.661121337635451e-13,
+   "mass_err": 8.661960038125471e-13,
+   "m_self_adjoint_rel_err": 2.217268503565861e-16,
+   "diagonal_rescaling_rel_err": 8.003837932553504e-17,
+   "d_min": 0.04144254489751338,
+   "d_max": 1.1284963917955408,
+   "mutation_nonsym_W_adj_err": 0.013076124745539123,
+   "mutation_rownorm_adj_err": 0.32467142688646294
+  },
+  {
+   "name": "exponential_3d",
+   "n": 100,
+   "dim": 3,
+   "eps": 0.8,
+   "sinkhorn_iters": 42,
+   "rowsum_err": 5.195011225587645e-13,
+   "mass_err": 5.195843755245733e-13,
+   "m_self_adjoint_rel_err": 0.0,
+   "diagonal_rescaling_rel_err": 9.778088549568672e-17,
+   "d_min": 0.06616085499541069,
+   "d_max": 1.2738677881996516,
+   "mutation_nonsym_W_adj_err": 0.0012924543883940122,
+   "mutation_rownorm_adj_err": 0.06071328948790856
+  },
+  {
+   "name": "gaussian_5d",
+   "n": 80,
+   "dim": 5,
+   "eps": 0.8,
+   "sinkhorn_iters": 42,
+   "rowsum_err": 5.079270242752255e-13,
+   "mass_err": 5.078160114635466e-13,
+   "m_self_adjoint_rel_err": 0.0,
+   "diagonal_rescaling_rel_err": 1.2738875022968108e-16,
+   "d_min": 0.10152809043593759,
+   "d_max": 1.4795830677315753,
+   "mutation_nonsym_W_adj_err": 0.028279616143501465,
+   "mutation_rownorm_adj_err": 0.1713628800974308
+  }
+ ],
+ "all_cases_self_adjoint": true,
+ "mutations_break_property": true,
+ "verdict": "verified"
+}

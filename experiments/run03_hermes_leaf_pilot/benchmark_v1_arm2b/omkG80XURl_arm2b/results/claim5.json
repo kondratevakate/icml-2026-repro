@@ -1,0 +1,63 @@
+{
+ "claim": 5,
+ "source": "Theorem 4.4 (single chain) vs Theorems 4.1-4.2",
+ "seed": 20260803,
+ "sweep": [
+  {
+   "scale": 1.0,
+   "eta": 0.07308285892069519,
+   "d0": 3.148465889566808,
+   "alpha_single": 0.0025392193285696326,
+   "alpha_double": 0.00406015882892751,
+   "T_single": 7548,
+   "T_double": 4595,
+   "final_err_single": 0.006700554085010062,
+   "final_err_double": 0.017808030516589923,
+   "target": 0.15742329447834041
+  },
+  {
+   "scale": 0.8,
+   "eta": 0.08309396799045822,
+   "d0": 2.5363812884571884,
+   "alpha_single": 0.0030066139906571396,
+   "alpha_double": 0.004616331555025457,
+   "T_single": 5690,
+   "T_double": 3618,
+   "final_err_single": 0.007697706980617329,
+   "final_err_double": 0.019561851171104053,
+   "target": 0.12681906442285942
+  },
+  {
+   "scale": 0.65,
+   "eta": 0.06334092305552404,
+   "d0": 2.63359130327842,
+   "alpha_single": 0.0013827898455928862,
+   "alpha_double": 0.0035189401697513353,
+   "T_single": 15140,
+   "T_double": 5609,
+   "final_err_single": 0.004233482178921386,
+   "final_err_double": 0.01369008110666838,
+   "target": 0.13167956516392101
+  },
+  {
+   "scale": 0.5,
+   "eta": 0.04098904358337832,
+   "d0": 2.9368682435163693,
+   "alpha_single": 0.0004178712152403482,
+   "alpha_double": 0.002277169087965462,
+   "T_single": 75826,
+   "T_double": 13935,
+   "final_err_single": 0.0007637506194755837,
+   "final_err_double": 0.00956059483796417,
+   "target": 0.14684341217581848
+  }
+ ],
+ "single_eta_exponent": -3.763270186816505,
+ "single_r2": 0.994449699775678,
+ "double_eta_exponent": -1.9127813091233927,
+ "double_r2": 0.9956536905681708,
+ "exponent_gap": -1.850488877693112,
+ "predicted_single": -4.0,
+ "predicted_double": -2.0,
+ "verdict": "verified"
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: On the Theory of Continual Learning with Gradient Descent for Neural Networks",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-on-the-theory-of-continual-learning-with-gradient-descent-fo",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-l35QweVxgn"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: On the Theory of Continual Learning with Gradient Descent for Neural Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary-table",
+        "title": "Summary table",
+        "file": "pages/summary-table/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-1-forgetting-bound-order-in-k-k-and-n",
+        "title": "Claim 1 \u2014 Theorem 1 forgetting bound (order in (K\u2212k) and n)",
+        "file": "pages/claim-1-theorem-1-forgetting-bound-order-in-k-k-and-n/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-parameter-regime-n-d-k-m-d-k-t-d",
+        "title": "Claim 2 \u2014 parameter regime `n=\u0398~(d\u00b2K)`, `m=\u03a9~(d\u2078K\u2074)`, `\u03b7T=\u0398(d\u00b2)`",
+        "file": "pages/claim-2-parameter-regime-n-d-k-m-d-k-t-d/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-2-uniformly-small-misclassification-error-over-all-k-tasks",
+        "title": "Claim 3 \u2014 Theorem 2, uniformly small misclassification error over all K tasks",
+        "file": "pages/claim-3-theorem-2-uniformly-small-misclassification-error-over-all-k-tasks/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-theorem-3-delayed-generalization-gap-t-exp-t-k-k-1-m-n",
+        "title": "Claim 4 \u2014 Theorem 3, delayed generalization gap `\u03b7T\u00b7exp(\u03b7T(K\u2212k+1)/\u221am)/n`",
+        "file": "pages/claim-4-theorem-3-delayed-generalization-gap-t-exp-t-k-k-1-m-n/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-4-poly-log-in-t-bound-for-self-bounded-losses",
+        "title": "Claim 5 \u2014 Theorem 4, poly-log-in-T bound for self-bounded losses",
+        "file": "pages/claim-5-theorem-4-poly-log-in-t-bound-for-self-bounded-losses/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-decomposition-f-ts-f-tr-f-gen-and-joint-control-by-width-samples",
+        "title": "Claim 6 \u2014 decomposition `F^ts = F^tr + F^gen`, and *joint* control by width + samples",
+        "file": "pages/claim-6-decomposition-f-ts-f-tr-f-gen-and-joint-control-by-width-samples/page.md",
+        "children": []
+      },
+      {
+        "slug": "overall-assessment",
+        "title": "Overall assessment",
+        "file": "pages/overall-assessment/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

@@ -1,0 +1,27 @@
+# Reproduction task — Sinkhorn Normalization of Diffusion Kernels
+
+OpenReview: https://openreview.net/forum?id=LJdacnMXkr
+Area: General Machine Learning
+Anchored claims (6):
+
+1. Theorem 4.1 shows a symmetric smoothing operator with positive coefficients can be rescaled by a diagonal matrix (via a symmetric Sinkhorn iteration) into a diffusion operator that is self-adjoint with respect to a mass-weighted inner product (Theorem 4.1).
+
+2. Theorem 4.2 proves that for Gaussian and exponential kernels, the Sinkhorn-normalized operators converge uniformly on bounded domains to continuous diffusion operators as sampling resolution increases (Theorem 4.2).
+
+3. The symmetric Sinkhorn algorithm empirically requires only 5 to 10 iterations to reduce normalization error below 0.1% (Section 4/5, empirical convergence results).
+
+4. The normalized operators simultaneously satisfy symmetry, mass conservation, entrywise positivity, and spectral damping (eigenvalues in [0,1]), properties not jointly satisfied by standard row- or symmetric-normalization schemes (Theorem 4.1).
+
+5. The method is demonstrated on point clouds, sparse voxel grids (jaw bone geometry), and Gaussian mixture models with covariance-aware kernels, showing Laplacian-like smoothing on each irregular data type (Section 5, experiments).
+
+6. Shape analysis experiments on the Armadillo mesh show spectral distributions remain consistent across sampling modalities, with eigenvalue divergence appearing only at scales matching sampling resolution, validating the Theorem 4.2 convergence guarantee (Section 5).
+
+## Your job (autonomous)
+Reproduce each anchored claim on CPU with numpy/scipy/sympy (no GPU). For every claim:
+- Write `verify_claim<N>.py` that computes the claim's quantity from first principles.
+- Save numeric result to `results/claim<N>.json`.
+- Run a MUTATION test (perturb the setup; the claimed property must break or shift) for every verified claim.
+- Write verdict: verified / falsified / toy / inconclusive (honest if data/GPU blocks full repro).
+- Record exact source (section/equation/theorem) and a reproducible seed.
+
+Hard budget: 8h total, 4h soft, 2h per claim. Write `logbook.md` when done.

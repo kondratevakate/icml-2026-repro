@@ -1,0 +1,26 @@
+{
+  "orid": "tRsnpaRO0m",
+  "title": "A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+  "arm": "arm2",
+  "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+  "agent": "Hermes+K-Dense skills",
+  "model": "tencent/hy3:free via localhost:8319/v1",
+  "compaction": false,
+  "hardware": "CPU-only (WSL2)",
+  "seed": 20260802,
+  "n_claims": 6,
+  "skills_used": [
+    "paper-claim-reproduction",
+    "theory-claim-reproduction",
+    "theory-claim-reproduction/references/structural_theory_repro.md",
+    "theory-claim-reproduction/scripts/structural_repro_common.py"
+  ],
+  "deliverables": [
+    "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+    "results/claim1.json", "results/claim2.json", "results/claim3.json",
+    "results/claim4.json", "results/claim5.json", "results/claim6.json",
+    "common.py", "check_reproducibility.py", "logbook.md"
+  ],
+  "notes": "No released code, dataset or GPU required or available; all claims are mathematical (definitions, a theorem, a corollary, two derived results) and were reproduced by faithful finite-dimensional discretisation on CPU with numpy/scipy. The paper states no numeric value to match for any anchored claim."
+}

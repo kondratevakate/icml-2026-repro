@@ -1,0 +1,4023 @@
+On the Theory of Continual Learning with Gradient Descent for
+Neural Networks
+Hossein Taheri∗,
+Avishek Ghosh†,
+and
+Arya Mazumdar‡
+April 21, 2026
+Abstract
+Continual learning, the ability of a model to adapt to an ongoing sequence of tasks without forgetting earlier ones,
+is a central goal of artificial intelligence. To better understand its underlying mechanisms, we study the limitations
+of continual learning in a tractable yet representative setting. Specifically, we analyze one-hidden-layer quadratic
+neural networks trained by gradient descent on a sequence of XOR-cluster datasets with Gaussian noise, where
+different tasks correspond to clusters with orthogonal means. Our analysis is based on a tight characterization of
+gradient descent dynamics for the training loss, which yields explicit bounds on the rate of train-time forgetting as
+functions of the number of iterations, sample size, number of tasks, and hidden-layer width. We then leverage an
+algorithmic stability framework to bound the generalization gap, leading to corresponding guarantees on test-time
+forgetting. Together, our results provide the first closed-form guarantees for forgetting in continual learning with
+neural networks and show how key problem parameters jointly govern forgetting dynamics. Numerical experiments
+corroborate our theoretical results.
+1
+Introduction
+1.1
+Motivation
+Gradient-based methods are the dominant paradigm for training neural networks, and recent advances in learning
+theory have shown that such models can efficiently learn a wide range of data distributions through empirical risk
+minimization (ERM). However, in many real-world applications, data are not presented all at once but arrive se-
+quentially in a non-stationary fashion, requiring the learner to maintain performance on past tasks while acquiring
+new capabilities. In such cases, a learning model must be continually learnable, meaning it should retain previously
+acquired knowledge when trained on new tasks. On the other hand, various learning systems, including deep learning
+architectures, can be prone to catastrophic forgetting, that is, updating a model on new data causes a dramatic drop
+in performance on previously learned tasks [McCloskey and Cohen, 1989, Goodfellow et al., 2013]. The goal of
+continual (lifelong) learning is to experience minimal forgetting when incorporating new information, even without
+retraining on old data.
+Despite the importance of continual learning for modern AI systems, the theoretical works studying the mech-
+anisms behind forgetting are limited. A growing body of recent works have developed guarantees for continual
+learning in linear models and generalized linear models, often under realizability conditions. In these settings, a sin-
+gle linear predictor can interpolate data from all tasks, and forgetting can be controlled either through implicit bias or
+exact closed-form ERM solutions [Evron et al., 2023,Evron et al., 2022,Banayeeanzade et al., 2024,Li et al., 2025b].
+While these results provide valuable insight into the mechanisms of forgetting, they rely on linear structure crucially -
+in particular on the fact that statistical and optimization properties of linear models are already very well-understood.
+Our work goes beyond linear models by providing the first closed-form forgetting guarantees for neural networks
+trained by gradient descent. Our analysis reveals that for neural networks, forgetting is governed by the interplay
+between sample size of subsequent tasks, hidden-layer width, and early stopping, and that none of these factors alone
+∗Department of Computer Science and Engineering, University of California, San Diego. Email: htaheri@ucsd.edu
+†Department of Computer Science and Engineering, IIT, Bombay. Email: avishek_ghosh@iitb.ac.in
+‡Halicioğlu Data Science Institute, University of California, San Diego. Email: arya@ucsd.edu
+1
+arXiv:2510.05573v2  [stat.ML]  20 Apr 2026
+
+is sufficient to eliminate forgetting, which does not have an analog in previous works. Our results explicitly track the
+evolution of the weights across tasks and show that, despite tasks being independent and orthogonal, learning later
+tasks can suppress forgetting depending on how their sample sizes and training horizons scale. This is verified by our
+empirical observations in several setups that increasing the dataset size of later tasks can significantly reduce or vanish
+forgetting of earlier ones. Moreover, unlike prior works, our framework yields guarantees for both train-time and
+test-time forgetting. We decompose test-time forgetting into a training-loss component and a delayed generalization
+gap induced by intermediate tasks. By combining a fine-grained analysis of gradient descent dynamics with an
+algorithmic stability argument tailored to continual learning, we derive explicit conditions under which both terms
+vanish. This decomposition reveals that forgetting may persist unless the network width, number of samples, and
+training horizon scale appropriately with the key problem parameters such as the number of tasks.
+While several recent works study the convergence and sample-complexity of gradient methods on neural networks
+under stylized data distributions, they are largely restricted to single-task settings, leaving the role of optimization dy-
+namics in continual learning poorly understood (for some examples see [Du et al., 2019,Bartlett et al., 2021,Damian
+et al., 2022, Abbe et al., 2022]). In this work, we present several results on the performance of gradient descent in
+neural networks in the kernel regime for scenarios where there is a stream of tasks on which the model is sequentially
+trained. Focusing on unregularized empirical risk minimization, we identify regimes in which gradient descent, with-
+out explicit continual-learning regularization, achieves arbitrarily small train-time and test-time forgetting. To this
+end, we study a representative data model based on XOR clusters, a canonical and non-linearly separable model that
+underlies multi-index and parity learning problems, and characterize the sample, iteration, and model-complexity
+requirements for successful continual learning. Although our focus is on the XOR cluster distribution, our approach
+is applicable to various data distributions, and we expect similar insights can be derived for various single- or multi-
+index models. We further show that in the kernel regime, the regularized continual learning algorithm does not
+mitigate forgetting, as it is equivalent to unregularized ERM with a rescaled step size. Consequently, our theoretical
+predictions continue to hold in the presence of regularization.
+To establish these results, we develop a principled analysis that integrates optimization dynamics with gener-
+alization arguments, allowing us to explicitly characterize how training, data, and model parameters jointly govern
+forgetting in continual learning.
+Techniques and Contributions.
+Our method is based on the decomposition of the test-time forgetting error into
+two terms based on forgetting in training loss and the delayed generalization gap caused by intermediate learning
+tasks. First, we bound the generalization gap by an argument based on algorithmic stability [Bousquet and Elisseeff,
+2002,Lei and Ying, 2020,Richards and Rabbat, 2021,Taheri et al., 2025] tailored to our set-up of continual learning
+with neural nets, which leads to conditions on the network width and the number of iterations and samples to achieve a
+small generalization error after learning independent intermediate tasks from distinct distributions. Our results reveal
+that generalization gap for continual learning with neural networks is impacted by the training loss of later tasks (as
+in Thm B.1) or number of tasks (as in Thm 2.3) which is new compared to single-task analyses. We then use a data-
+specific argument to formulate the evolution of the learned weights throughout the gradient descent steps to bound
+the training loss and forgetting in Theorems 2.1-2.2. In particular, we first consider an asymptotic regime where for
+both the sample size and network size 𝑚, 𝑛→∞. The critical observation here is that in this regime, for every task,
+the gradient at initialization is in the correct direction, and with sufficient number of GD steps, the train loss and
+the amount of forgetting(i.e., the increase in training loss caused by learning later tasks) are asymptotically zero. As
+a result of this and with concentration bounds for finite 𝑛and 𝑚, we are able to characterize the rate of forgetting
+based on these parameters. This differs from the existing analyses of neural nets for single-task classification setups
+in the lazy regime which are mainly based on class margin [Nitanda et al., 2019, Ji and Telgarsky, 2020, Taheri
+and Thrampoulidis, 2024]. To the best of our knowledge, our results are the first closed-form guarantees for the
+train and test performance of continual learning methods when using neural networks and they predict several of the
+empirical observations on the role of training-set size and over-parameterization. In summary, our contributions are
+the following:
+• We study the role of key problem parameters such as sample complexity and over-parameterization for continual
+learning with neural networks. Specifically, for the 𝑑-dimensional XOR-cluster dataset, we derive explicit bounds
+on train-time forgetting after learning 𝐾subsequent tasks, showing it scales as e
+𝑂(𝜂𝑇
+√
+𝐾
+𝑑√𝑛+ 𝜂𝑇
+√
+𝐾
+𝑑2polylog(𝑑) +
+𝜂2𝑇2 𝐾2
+√𝑚), where 𝑇and 𝑛denote the number of gradient descent iterations and samples per task, respectively, and
+2
+
+𝑚is the hidden-layer width.
+• We characterize the sample and computational requirements for successful continual learning. In particular, we
+show that choosing 𝑛= eΘ(𝑑2𝐾), 𝑚= Θ(𝑑8𝐾4),𝑇= eΘ(𝑑2) is sufficient to ensure uniformly small training loss
+across all 𝐾tasks, yielding vanishing train-time forgetting.
+• By decomposing test-time forgetting into a train-time forgetting term and a delayed generalization gap, and bound-
+ing the latter via an algorithmic-stability analysis tailored to continual learning, we show that the above scaling of
+𝑛, 𝑚, and 𝑇also leads to vanishing test-time forgetting.
+• We validate our theoretical predictions empirically. Numerical experiments on different losses, activation func-
+tions, datasets, and architectures corroborate our analysis and demonstrate that the identified roles of sample size,
+over-parameterization, and early stopping persist in different settings.
+Overall, our results identify a positive regime for continual learning with neural nets and provide first known explicit
+conditions for successful continual learning with plain gradient methods, going beyond the linear models considered
+in the literature.
+1.2
+Related Works
+Despite extensive empirical and algorithmic progress in continual learning, a principled theoretical understanding of
+catastrophic forgetting in neural networks trained by gradient descent is still largely missing. The main algorithms
+for continual learning are based on functional (or architectural) regularization [Li and Hoiem, 2017, Kirkpatrick
+et al., 2017, Sharif Razavian et al., 2014] or experience replaying [Schaul et al., 2016, Rolnick et al., 2019]. In
+order to mitigate forgetting, regularization-based methods enforce the new solutions to remain close to solutions to
+previous tasks. On the other hand, it has been hypothesized that the network width has a similar impact [Graldi
+et al., 2024], since increasing the width enables the network to operate in the lazy/kernel regime where it is known
+that the network’s weights do not travel a significant distance from their initialization point and the features remain
+constant during training [Jacot et al., 2018, Ghorbani et al., 2019]. It is therefore natural to ask to what extent the
+width helps continual learning. Few works have dealt with this question. In particular, the impact of the width of
+the network on continual learning was studied in [Guha and Lakshman, 2024, Graldi et al., 2024, Mirzadeh et al.,
+2022a, Mirzadeh et al., 2022b, Wenger et al., 2023]. For instance, [Mirzadeh et al., 2022a, Mirzadeh et al., 2022b]
+empirically observed the impact of width in improving catastrophic forgetting and noticed that increasing the width
+always mitigates forgetting. However, [Wenger et al., 2023] claimed that such improvements vanish when the network
+is trained for a sufficiently large number of iterations until convergence. More recently, [Graldi et al., 2024] attempted
+to resolve the issue claiming that improvements only happen in the kernel regime, where there is early stopping to
+avoid weights moving a significant distance from their initialization. Our theoretical and empirical results on the
+impact width also verify the benefits of width in the kernel regime with early stopping.
+[Guha and Lakshman, 2024] showed analytically through a general argument that increasing the width helps
+continual learning, although the improvements shrink as width grows. The dependence on width in their bound
+is not explicitly determined, and moreover, the bound does not depend on the underlying algorithm or number of
+samples. In contrast, our analysis is algorithm-dependent and yields closed-form bounds, explicitly highlighting the
+roles of different problem parameters such as over-parameterization in test-time forgetting.
+Perhaps the closest works to ours are [Doan et al., 2021,Bennani et al., 2020,Lee et al., 2021]; see also [Karakida
+and Akaho, 2021], which derived general expressions to characterize forgetting in neural networks in the lazy regime.
+A recent work by [Li et al., 2025a] focuses specifically on CNNs in a multi‐view data model and characterizes for-
+getting. [Benjamin et al., 2024] approach uses an “ensemble/NTK” perspective treating networks in the lazy regime
+and gives a reinterpretation of continual learning. [Cao et al., 2022] derived sample complexity of continually learn-
+ing linear models and GLMs. [Andle and Yasaei Sekeh, 2022] focus on layer‐wise information flow and develop
+a probabilistic theory for CL performance across layers. However, the prior works discussed above do not lead to
+closed-form bounds and are applicable for different models such as CNNs, while our results yield the first bounds
+for a multi-index model learned by neural nets.
+Another related line of work has focused on linear classification/regression in the realizable regime, where a
+single linear solution can interpolate data from all tasks [Goldfarb and Hand, 2023, Lin et al., 2023, Evron et al.,
+2023,Banayeeanzade et al., 2024]. In particular, [Evron et al., 2023] analyzed catastrophic forgetting through the lens
+3
+
+Algorithm 1: Continual Learning with Gradient Descent
+Input: Number of tasks 𝐾, number of steps per task 𝑇, learning rate 𝜂
+Output: Final model parameters 𝑤𝐾
+1 Initialize model parameters 𝑤(0)
+1
+∼N (0, 𝐼𝑝);
+2 for 𝑘= 1 to 𝐾do
+3
+Load task-specific dataset D𝑘;
+4
+for 𝑡= 0 to 𝑇−1 do
+5
+Sample mini-batch(or full-batch) B𝑡⊆D𝑘;
+6
+𝑤(𝑡+1)
+𝑘
+←𝑤(𝑡)
+𝑘
+−𝜂∇b𝐹(𝑤(𝑡)
+𝑘; B𝑡);
+7
+Set 𝑤(0)
+𝑘+1 ←𝑤𝑘:= 𝑤(𝑇)
+𝑘
+;
+8 return 𝑤𝐾:= 𝑤(𝑇)
+𝐾
+of implicit bias in linear classification across various setups, including cyclic and random task orderings. Since these
+approaches are distribution-independent, they do not reveal the role of sample complexity or over-parameterization.
+In contrast, we adopt a more practical perspective by examining sample complexity, early stopping, and the effects
+of over-parameterization in a stylized neural network setting.
+Notation
+We use the standard complexity notation ≲, 𝑜(·), 𝑂(·), Θ(·), Ω(·) and denote e𝑜(·), e
+𝑂(·), eΘ(·), eΩ(·) to hide poly-
+logarithmic factors in 𝑑. The subscripts in 𝑂𝑑(·), 𝑜𝑑(·) denote the dependence on the parameter 𝑑. We use ∥· ∥
+for the ℓ2 norm of vectors. We denote [𝑛] := {1, 2, · · · , 𝑛}. The expectation and probability with respect to the
+randomness in D are denoted by ED [·], PrD(·). The gradient of the model Φ : R𝑝×𝑑→R with respect to the first
+input (weights) is denoted by ∇Φ.
+2
+Main results
+2.1
+Problem Setup
+2.1.1
+Gradient-Based Continual Learning with Neural Networks
+We consider the problem of sequentially learning 𝐾independent tasks, where each task is trained in isolation. Specifi-
+cally, for the 𝑘-th task, we perform𝑇iterations of gradient descent using a dataset of 𝑛training samples. The objective
+of task 𝑘is defined as
+b𝐹(𝑤, D𝑘) = 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑓 𝑦𝑖Φ(𝑤, 𝑥𝑖),
+where D𝑘= {(𝑥𝑖, 𝑦𝑖)}𝑛
+𝑖=1 denotes the set of training examples for task 𝑘, and the mapping Φ represents a two-layer
+neural network with 𝑚hidden neurons and activation 𝜙, given by Φ(𝑤, 𝑥) =
+1
+√𝑚
+Í𝑚
+𝑖=1 𝑎𝑖𝜙(𝑥⊤𝑤𝑖). Throughout the
+paper, we assume that the output layer coefficients 𝑎𝑖∈{±1} are fixed, let 𝑓be the hinge-loss and we focus on the
+case of quadratic activation where 𝜙(𝑡) = 𝑡2/2. For convenience, we denote the empirical loss for task 𝑘by b𝐹𝑘(𝑤) :=
+b𝐹(𝑤, D𝑘), and the corresponding population (test) loss by 𝐹𝑘(𝑤) := 𝐹(𝑤, P𝑘) = E(𝑥,𝑦)∼P𝑘
+
+𝑓 𝑦Φ(𝑤, 𝑥)
+, where
+the expectation is taken over the test-set distribution P𝑘.
+The complete continual learning procedure is summarized in Algorithm 1. We initialize the parameter vector 𝑤(0)
+1
+from a standard Gaussian distribution, 𝑤(0)
+1
+∼N (0, 𝐼𝑝), where 𝑝= 𝑚𝑑is the total number of trainable parameters
+in the first layer. For each task 𝑘∈{1, . . . , 𝐾}, we train the network starting from initialization 𝑤(𝑇)
+𝑘−1 for 𝑇gradient
+descent updates on b𝐹𝑘. The resulting vector after finishing the training on task 𝑘is denoted by 𝑤𝑘:= 𝑤(𝑇)
+𝑘
+:= 𝑤(0)
+𝑘+1,
+and it serves as the initialization for the subsequent task 𝑘+1. After processing all 𝐾tasks, the algorithm outputs the
+final parameter vector 𝑤𝐾, which contains the accumulated knowledge obtained from the entire sequence of tasks.
+4
+
+2.1.2
+XOR cluster Dataset
+Consider data according to the XOR cluster distribution with Gaussian noise where 𝑥∈R𝑑, 𝑦∈{±1} and
+𝑥∼
+( 1
+2N (𝜇+, 𝜎2𝐼𝑑) + 1
+2N (−𝜇+, 𝜎2𝐼𝑑)
+if 𝑦= 1,
+1
+2N (𝜇−, 𝜎2𝐼𝑑) + 1
+2N (−𝜇−, 𝜎2𝐼𝑑)
+if 𝑦= −1,
+(1)
+where 𝜇+ ⊥𝜇−, and Pr[𝑦= 1] = Pr[𝑦= −1] = 1/2. The XOR cluster and its Boolean variant (known as
+parities) have been extensively studied in the deep learning theory literature [Wei et al., 2019,Refinetti et al., 2021,Xu
+et al., 2024, Telgarsky, 2023, Taheri and Thrampoulidis, 2024, Glasgow, 2024]. In particular, the XOR model is a
+representative instance of multi-index models, which have recently been used to investigate the sample complexity
+of neural network learning [Damian et al., 2022, Ba et al., 2022, Abbe et al., 2022]. For this distribution, we show
+that 𝑑2 samples and 𝑑4 neurons are sufficient to achieve near zero train and test loss (see Prop. A.1 in Appendix A).
+For the continual learning setup we consider a stream of 𝐾tasks, where each task is generated according to the
+XOR cluster dataset, that is, for task 𝑘:
+𝑥∼
+( 1
+2N (𝜇𝑘
++, 𝜎2𝐼𝑑) + 1
+2N (−𝜇𝑘
++, 𝜎2𝐼𝑑)
+if 𝑦= 1,
+1
+2N (𝜇𝑘
+−, 𝜎2𝐼𝑑) + 1
+2N (−𝜇𝑘
+−, 𝜎2𝐼𝑑)
+if 𝑦= −1.
+(2)
+This dataset serves as a representative example of a realizable problem that is well-suited for analyzing neural net-
+works, specially for continual learning where different tasks correspond to different clusters of Gaussian data. We
+assume that 𝜇𝑘
++ and 𝜇𝑘
+−are mutually orthogonal for all 𝑘∈[𝐾], with ∥𝜇𝑘
++∥= ∥𝜇𝑘
+−∥= Θ( 1
+√
+𝑑), balanced labels
+Pr[𝑦= 1] = Pr[𝑦= −1] = 1/2, and noise level 𝜎= Θ(
+1
+log𝑐(𝑑)
+√
+𝑑) for some universal positive constant 𝑐.
+The orthogonality assumption reflects the fact that tasks are uncorrelated. We note that our analysis can be ex-
+tended to the more general case where the mean vectors are not orthogonal between tasks, by introducing cross-task
+interactions that significantly complicate the bound. We further assume that the number of tasks grows at most
+poly-logarithmically with the data dimension, i.e., 𝐾= e
+𝑂𝑑(1).
+2.1.3
+A decomposition of Forgetting Error
+Let 𝑤𝑘denote the weights after training with data from task 𝑘for some 𝑘∈[𝐾]. Test-time forgetting is measured by
+the increase in test loss for the 𝑘th task after training on 𝐾−𝑘subsequent tasks:
+Test-time Forgetting: F ts
+𝑘,𝐾:= 𝐹𝑘(𝑤𝐾) −𝐹𝑘(𝑤𝑘).
+We can decompose the test-time forgetting as follows:
+F ts
+𝑘,𝐾= [𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝐾)] + [ b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)] + [ b𝐹𝑘(𝑤𝑘) −𝐹𝑘(𝑤𝑘)].
+In the interpolating regime where the network can achieve zero training loss, we can drop the last term and bound
+the test-time forgetting based on delayed generalization gap and training loss:
+F ts
+𝑘,𝐾≤
+h
+b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)
+i
+|                     {z                     }
+Train-time forgetting Ftr
+𝑘,𝐾
++
+h
+𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝐾)
+i
+|                     {z                     }
+Delayed generalization gap Fgen
+𝑘,𝐾
+.
+(3)
+In the following section, we discuss each term separately. When combined, these will give an upper bound on
+the expected test-time forgetting.
+2.2
+Train and test-time forgetting bounds
+The following theorem provides closed-form bounds on the train-time forgetting of task 𝑘after learning the subse-
+quent 𝐾−𝑘tasks (for a total of 𝐾tasks). We assume the hinge loss, 𝑓(𝑢) = max{1 −𝑢, 0}, and adopt the data
+distribution specified in Eq. 2. The proofs for the theorems in this section are deferred to the appendix.
+5
+
+Theorem 2.1 (Train-time forgetting). Consider the 𝑑-dimensional XOR cluster dataset with 𝐾tasks and assume
+gradient descent with 𝜂𝑇= Θ(𝑑2) iterations and 𝑛= eΘ(𝑑2𝐾) samples for each subsequent task trained by a neural
+net with 𝑚= eΩ(𝑑8𝐾4) hidden neurons. Then, with high probability, the train-time forgetting is F tr
+𝑘,𝐾= 𝑜𝑑(1). In
+particular, with probability 1 −𝛿, we have:
+|F tr
+𝑘,𝐾| := | b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)| = e
+𝑂
+ 
+𝜂𝑇
+√
+𝐾−𝑘
+𝑑√𝑛
++ 𝜂𝑇
+√
+𝐾−𝑘
+𝑑2 poly log(𝑑) + 𝜂2𝑇2 𝐾2
+√𝑚
+!
+,
+(4)
+where e
+𝑂(·) hides logarithmic factors in 𝑛,𝑇and 1/𝛿.
+The first and third terms in Eq. 4 capture the effects of sample size and hidden-layer width. Importantly, neither
+factor alone is sufficient to eliminate train-time forgetting. However, with sufficiently large 𝑛and 𝑚, as stated in
+the theorem, we obtain a forgetting rate F tr
+𝑘,𝐾= 𝑂(1/poly log(𝑑)) = 𝑜𝑑(1). Here, 𝑛denotes the sample size of
+datasets learned after task 𝑘. Although these subsequent tasks are independent of and orthogonal to task 𝑘(tasks
+are IID with orthogonal means), their larger training sets nevertheless reduce noise due to sampling and enhance the
+overall continual learning process. Our experiments in Section 3, conducted across different activation functions, loss
+functions, and datasets under various problem settings, empirically confirm the theoretical roles of network width,
+sample size, and the number of tasks.
+We note that the early-stopping choice 𝜂𝑇= eΘ(𝑛) is standard in the deep learning literature, particularly in the
+interpolation regime for single-task settings [Ji and Telgarsky, 2020,Lei and Ying, 2020]. As the following theorem
+demonstrates, under this choice the training loss remains uniformly small across all tasks.
+Theorem 2.2 (Train error in continual learning). Let the assumptions of Theorem 2.1 hold. Then, after 𝐾𝑇iterations
+of GD, with high probability, the misclassification train error and train loss are 𝑜𝑑(1) uniformly for all 𝐾tasks.
+The proofs of Theorems 2.1-2.2 are deferred to App. C. A combination of these theorems yields sufficient
+conditions for successful continual learning as measured by training performance. We remark that the proof of
+both theorems (up to calculations related to the model-output’s equations in the appendix in Eq.14 or forgetting
+equation in Eq.16) holds for a broad family of data distributions. The parts of the analysis that specialize to the
+XOR-cluster distribution primarily arise when deriving explicit closed-form expressions for the model output and
+for characterizing closed-form bounds for forgetting. Therefore, although our main theorems so far are stated for
+orthogonal xor-cluster tasks, the proof strategy is not tied exclusively to this setting. As mentioned in Section 2.1.2,
+this choice of data is motivated by the literature on single/multi-index models in deep learning theory. Specializing
+to this class of data also makes it possible to isolate the role of key problem parameters, such as width, sample
+size, number of tasks, and training horizon, in a transparent way. More generally, the train-time forgetting analysis
+suggests that for general data (cf. Eqs. 16-17 in the appendix):
+b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)
+ =
+
+1
+𝑛
+Õ
+𝑥𝑘
+𝜂𝑇𝑥⊤
+𝑘
+©­
+«
+𝐾
+Õ
+𝑗=𝑘+1
+𝐴𝑗ª®
+¬
+𝑥𝑘
+
++ 𝑂
+ ∥𝑤𝐾−𝑤0∥2
+√𝑚
+
+,
+where 𝐴𝑗:=
+1
+𝑛
+Í𝑛
+𝑣=1 𝑦𝑣
+𝑗𝑥𝑣
+𝑗
+
+𝑥𝑣
+𝑗
+⊤
+, and
+n
+𝑥𝑣
+𝑗, 𝑦𝑣
+𝑗
+o
+𝑣∈[𝑛] denotes the training data for task 𝑗. Theorem 2.1 is
+obtained by specializing this characterization to the XOR-cluster model with Gaussian noise, where orthogonality
+removes cross-task interference terms and yields a clean closed-form dependence on the problem parameters. For
+more general data distributions, additional correlation terms appear, and the resulting expressions become more
+cumbersome; nevertheless, we expect the same framework to provide similar qualitative insights into how width,
+sample size, data noise and task overlap affect forgetting.
+Our next result derives the delayed generalization gap (as defined in Eq.3) for almost any data distribution. In
+fact, it also shows that the derived scalings for 𝑚, 𝑛and 𝑇in Thm. 2.1 are also sufficient for good continual test-time
+performance for the XOR cluster dataset.
+Theorem 2.3 (Delayed generalization gap). Assume the loss function is 1-Lipschitz and 1-smooth. Then, the expected
+delayed generalization gap satisfies,
+6
+
+F gen
+𝑘,𝐾:= ED𝑘
+h
+𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝐾)
+i
+≲𝜂𝑇𝑒
+𝜂𝑇(𝐾−𝑘+1)
+√𝑚
+𝑛
+,
+where the expectation above is taken with respect to the randomness in the training examples of task 𝑘.
+Remark 2.4 (Test-time forgetting). The bound above holds on expectation over the choice of training set for task
+𝑘and it holds with probability 1 with respect to the randomness in the training set of subsequent tasks. Note that
+the bound decays with the rate 1/𝑛and given sufficiently large width, it is linearly proportional to the number of
+iterations. While the bound holds for almost any data distribution, for the XOR-cluster distribution with the training
+loss guarantees from Thms. 2.1-2.2, we find that with 𝑛= eΘ(𝑑2𝐾) = eΘ(𝜂𝑇) samples and with 𝑚= eΩ(𝑑8𝐾4), it
+holds F gen
+𝑘,𝐾= 𝑜𝑑(1) resulting in vanishing test-time forgetting in view of Eq. 3. Finally, we note – as the proof shows
+– training occurs within the linear region of the hinge loss, which allows us to combine the results of the previous
+theorems despite the smoothness assumption on the loss in Theorem 2.3.
+Remark 2.5. The results of Thms 2.1-2.3 provide the first closed-form characterization of forgetting for neural net-
+works trained sequentially in the kernel regime and identify an explicit regime in which continual learning is possible
+with plain sequential gradient descent. Particularly, the results so far show that unregularized sequential gradient de-
+scent can simultaneously achieve arbitrarily small forgetting and small test error across all tasks under a regime
+where the data noise is sufficiently small (i.e., 𝜎= 𝑂(
+1
+poly log(𝑑)
+√
+𝑑)) and the tasks are separated (orthogonal clus-
+ters’ means), providing sufficient conditions for successful continual learning with GD even without regularization
+or data-replay.
+Remark 2.6 (Improved rates). The proof of Theorem 2.3 is deferred to Appendix B. In particular, we first prove a
+specific version of this theorem (stated as Theorem B.1 in the appendix) under additional conditions on the loss.
+We note that while Theorem 2.3 is sufficient to ensure that test-time forgetting is asymptotically small under the
+parameter scalings considered above, its dependence on the training horizon 𝑇can become a bottleneck in more
+general settings. In particular, one typically expects the generalization gap to depend only weakly on the number
+of gradient-descent iterations. To address this limitation, we introduce additional assumptions on the loss function
+(satisfied, in particular, by the logistic loss) that yield a sharper control of the stability of the gradient-descent trajec-
+tory. Under these conditions, we establish an improved generalization bound in Theorem B.1 in the appendix, where
+the dependence on 𝑇is reduced to polylogarithmic. This refinement leads to improved conditions on the network
+width and yields a tighter bound on the delayed generalization gap based on 𝑇. We also note that, the qualitative
+trends predicted by the theory already appear at substantially smaller widths and different training horizons in our
+experiments in Section 3, suggesting that our results are valid beyond the derived scalings in the theorems.
+2.3
+Regularized continual learning
+It is natural to ask whether regularization can improve the scalings derived in the last section. We consider the
+regularized continual learning algorithm (e.g., [Aljundi et al., 2017, Kirkpatrick et al., 2017, Lewkowycz and Gur-
+Ari, 2020]) with parameter 𝜆where for each task 𝑘≥2, the objective is to minimize the following,
+min
+𝑤
+b𝐹𝑘(𝑤) + 𝜆
+2 ∥𝑤−𝑤𝑘−1∥2.
+(5)
+The regularization parameter 𝜆can be chosen to be fixed, time-varying or data-dependent [Evron et al., 2023,
+Lewkowycz and Gur-Ari, 2020, Kirkpatrick et al., 2017]. In the next proposition, we consider the fixed 𝜆in or-
+der to study the effects of regularization on the GD iterates. Our next result shows that in the linearized regime
+(i.e., the infinite-width regime) where the network output can be written as a first-order approximation around ini-
+tialization, the regularized continual learning problem is effectively equivalent to unregularized minimization with a
+time-varying step-size.
+Proposition 2.7 (Regularized continual learning). Consider the regularized continual learning problem Eq.5 in the
+linearized regime, with the same setup as Theorem 2.1. The iterates of this algorithm with step-size 𝜂are equivalent
+to unregularized continual learning with step-size e𝜂𝑇for any task 𝑘≥2, where we define e𝜂𝑇:=
+𝛼𝑇𝜂
+𝑇
+and 𝛼𝑇:=
+1−(1−𝜂𝜆)𝑇
+𝜂𝜆
+.
+7
+
+Hence, as 𝑇increases, the effective step-size decreases, preventing iterations from moving a significant distance
+from the solution of previous task. In particular, Prop. 2.7 shows that the considered 𝐿2-type regularization around
+the previous-task solution is equivalent to unregularized continual learning with a different effective step size. Con-
+sequently, within the kernel regime studied in the last section, such regularization does not fundamentally improve
+the forgetting and generalization scalings derived in our analysis. At the same time, this does not preclude the pos-
+sibility that other mechanisms (such as architectural modifications, or regularization under regimes with stronger
+feature learning) may significantly improve continual learning performance.
+3
+Experiments
+We demonstrate the impact of sample size, number of tasks, and network width on the performance of continual
+learning for different loss functions, activations functions, data distributions, architectures, step-sizes and training
+horizons. We include the implementation details for each figure and additional experiments, including experiments
+on the transformer architecture in Appendix E. The code for reproducing the results is publicly available online.1
+Impact of sample-size, training horizon and number of Tasks.
+The first data model we consider is the XOR
+cluster with orthogonal mean vectors. Fig. 1 shows how sample-size affects the train-loss forgetting for 𝐾= 3
+tasks using quadratic activation and linear loss. Here, we increase the sample size for each task from 𝑛= 2500 to
+𝑛= 5000, showing how the increase can diminish test-error forgetting. Fig. 8 in the appendix repeats this experiment
+for different problem parameters. The observations from both plots are in-line with our theoretical insights on the
+role of sample-size on train and test time forgetting.
+In order to verify the role of sample size of later tasks on train-time forgetting, we consider an experiment where
+the sample-size for task 1 is fixed, and for later tasks we increase the sample-size. The resulting training loss curves
+for different loss functions and activations are shown in Figs. 2,3, and 9 (in the appendix). In accordance with
+Theorem 2.1, it can be observed that increasing the sample-size on tasks 2,3 has a positive influence on the forgetting
+of task 1. This implies that increasing the sample-size not only stabilizes the per-task training loss, but also reduces
+the amount of forgetting for previous tasks. While we use linear loss with quadratic activation for Fig. 2, Figs. 3, 9
+indicate these observations extend to different losses and activations including the commonly used logistic loss and
+the ReLU and GELU activations.
+In Fig. 4, we consider 𝐾= 6 tasks of the XOR cluster dataset and increase 𝑇from 𝑇= 2000 to 𝑇= 4000 for each
+task with 𝑛= 200, 800, 2000 samples per each task. Note that increasing 𝑇, deteriorates the training loss for task 1 as
+training progresses. While increasing 𝑇helps with training loss for task 1 at the end of training of task 1, (the dashed
+lines are below the solid lines at 𝑘= 1 for any value of 𝑛), the amount of increase in the training loss for 𝑇= 4000
+is larger than 𝑇= 2000, eventually leading to larger training loss for task 1 as 𝐾increases. The right panel in Fig. 4
+shows the training loss for each task during learning these 6 tasks, illustrating that the train loss achieves near zero
+training loss for each task. On the other hand, increasing 𝑛for each task, helps with diminishing the training loss. To
+better see this impact, in Fig. 10 in the appendix, we increase the number of tasks and consider learning 𝐾= 15 and
+𝐾= 20 tasks of the XOR cluster dataset. These plots again verify our insights on the role of training-set size. The
+impact of increasing tasks is also visible in the Left figure while using GELU activation and the logistic loss.
+Impact of over-parameterization.
+In Fig. 5 we consider the XOR cluster dataset for 𝐾= 3 tasks with Quadratic
+activation and gradually increase 𝑚from 𝑚= 102 to 𝑚= 104. We find that increasing the width is generally
+beneficial for continual learning. However the benefits shrink as 𝑚increases, where increasing the width from
+𝑚= 103 to 𝑚= 104 has almost non-tangible impact on the overall performance of continual learning. Note that
+this is in line with Theorem 2.1, as we discussed the impact of width showing that width alone cannot reduce the
+train time forgetting to zero. We remark these insights also align with the diminishing returns of width phenomenon
+observed in previous works [Guha and Lakshman, 2024, Graldi et al., 2024] where the benefits of width decline as
+𝑚grows. In Fig. 11 in the appendix, we consider learning 𝐾= 6 tasks with the GELU activation and logistic loss
+for different choices of over-parameterization. The observations in this figure again verify our previous insights as
+increasing the width helps with continual learning, although it alone cannot lead to forget-less continual learning.
+1https://github.com/hosseinta2/continual-learning-with-neural-nets.git
+8
+
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+Figure 1: Classification test error for each task vs. iterations for the XOR cluster with 3 tasks trained on a quadratic
+network with 𝑛= 2500 (left) and 𝑛= 5000 (right) training samples per task. Increasing sample-size can lead to
+vanishing forgetting and test error on all tasks.
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=2500
+T
+ask 2
+n=1500
+T
+ask 3
+n=1500
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=2500
+T
+ask 2
+n=2500
+T
+ask 3
+n=2500
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=2500
+T
+ask 2
+n=5000
+T
+ask 3
+n=5000
+Figure 2: Classification train error for each task vs. iterations for the XOR cluster with 𝐾= 3 tasks trained on a
+quadratic network. We fix 𝑛= 2500 for the first task and increase the sample size of the second and third tasks across
+figures. Increasing the sample size stabilizes per-task training and decreases forgetting for previous tasks.
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=1000
+T
+ask 2
+n=500
+T
+ask 3
+n=500
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=1000
+T
+ask 2
+n=1000
+T
+ask 3
+n=1000
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=1000
+T
+ask 2
+n=2000
+T
+ask 3
+n=2000
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=1000
+T
+ask 2
+n=3000
+T
+ask 3
+n=3000
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=1000
+T
+ask 2
+n=6000
+T
+ask 3
+n=6000
+Figure 3: We repeat the experiment from Figure 2, this time using GELU activation and the logistic loss function,
+demonstrating that our findings remain valid across different settings.
+9
+
+1
+2
+3
+4
+5
+6
+Task
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+T
+rain Loss
+n=200,T=2000
+n=200, T=4000
+n=800, T=2000
+n=800, T=4000
+n=2000, T=2000
+n=2000, T=4000
+0
+5000
+10000
+15000
+20000
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+T
+rain Loss
+Figure 4: Left: Training loss of Task 1 versus task index (i.e., b𝐹1(𝑤𝑘) as a function of 𝑘) for 𝐾= 6 tasks for
+different sample-sizes and training horizons per task. Right: Training loss per task (b𝐹𝑘(𝑤(𝑡)
+𝑘)) versus iteration when
+𝑛= 2000,𝑇= 4000 for each task. We use GELU activations with logistic loss. Although each task individually
+reaches near-zero training loss, the training loss on the first task increases with both the number of tasks (𝐾) and the
+training horizon (𝑇), and decreases as the sample size (𝑛) grows.
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+𝑚= 100
+𝑚= 300
+𝑚= 1000
+𝑚= 3000
+𝑚= 6000
+𝑚= 10000
+Figure 5: Impact of network width (𝑚) on the test error for learning the XOR cluster distribution with 3 tasks using
+quadratic networks. Increasing width helps with continual learning; however, the benefits diminish as 𝑚grows,
+indicating that over-parameterization alone cannot eliminate forgetting.
+0
+10
+20
+30
+40
+50
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+T
+rain-time Forgetting
+ ̂F
+1
+(w
+2
+)
+−̂
+F
+1
+(w
+1
+)
+n=5
+n=20
+n=50
+n=200
+n=500
+0
+25
+50
+75
+100
+125
+150
+175
+200
+t
+0.000
+0.025
+0.050
+0.075
+0.100
+0.125
+0.150
+0.175
+0.200
+T
+rain-time Forgetting
+ ̂F
+1
+(w
+2
+)
+−̂
+F
+1
+(w
+1
+)
+n=20
+n=100
+n=200
+n=500
+n=1000
+0
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+8000
+Iteration
+10
+1
+100
+First Task Loss
+n = 2 × 102
+n = 2 × 103
+n = 8 × 103
+n = 2 × 105
+Figure 6: Left and middle panels: Train-time forgetting for task 1 while learning the second task versus iteration for
+the split-MNIST dataset, classifying labels ’0’/’1’ for task 1 and labels ’2’/’3’ for task 2 (left) and labels ’4’/’5’ for
+task 1 and labels ’6’/’7’ for task 2 (middle). We fix 𝑛= 50 samples for the first task, and change 𝑛for the second
+task. Right panel: First task’s training loss (b𝐹1(𝑤(𝑡))) vs 𝑡for learning 4 binary tasks from the split FashionMNIST
+dataset. We fix 𝑛= 200 for Task 1 and plot the training curves while increasing 𝑛for subsequent tasks. Similar to
+our theoretical insights increasing 𝑛reduces forgetting for previous tasks.
+Experiments with MNIST and FashionMNIST.
+In Fig. 6 (Left & Middle), we consider continual binary classi-
+fication of digits from the MNIST dataset with 𝐾= 2 tasks. The plots show the amount of increase in training loss of
+task 1, during learning task 2 versus iteration number. The results are averages over 15 independent experiments. For
+the left plot tasks are determined according to digits 0 to 3 and for the right plot the tasks are determined according
+to the data distribution formed by digits 4 to 7. The sample-size for the first task is fixed to 𝑛= 50 in all curves
+and different curves correspond to different sample sizes for the second task. The results of previous figures on the
+role of sample-size continue to hold for this distribution as well, since increasing the sample-size for the second task
+generally improves the continual learning of the first task.
+In Fig. 6 (Right), we consider a similar experiment
+but with the FashionMNIST dataset, choose logistic loss and ReLU activation, and set the total number of tasks to
+𝐾= 4, where different tasks correspond to data from different labels. Similar to the last experiment, we observe that
+10
+
+increasing the sample-size for subsequent tasks generally has a positive impact on the first task’s training loss.
+4
+Conclusions and Future Work
+We studied gradient-based continual learning in a neural network setup, highlighting how different problem parame-
+ters affect catastrophic forgetting. Our analysis provides the first closed-form bounds on train and test time forgetting
+in this setting and clarifies the roles of sample size, width, number of tasks, and training horizon. There are several
+promising directions for future work. An immediate next step is to analyze other training methodologies, such as
+(mini-batch) stochastic gradient descent, where additional noise may interact with forgetting. Another important di-
+rection is to move beyond the quadratic two-layer setting and explore whether analogous guarantees can be obtained
+for richer architectures, including transformers. Our preliminary experiments in Fig. 12 in the appendix show that
+some aspects of our results are observed, particularly for small transformers with Gaussian-Mixture data. Finally, our
+current analysis is limited to the lazy regime. Extending the theory to the feature-learning regime, where step-sizes
+are large, early stopping is avoided, and weights move significantly from their initialization, remains a challenging
+and exciting problem. While a recent work [Graldi et al., 2024] provides preliminary results on the drawbacks of
+feature learning for continual learning, more exploration in this regime could provide a more complete picture of
+continual learning in modern machine learning.
+Acknowledgment.
+This work was supported by NSF awards 2217058 and 2112665.
+References
+[Abbe et al., 2022] Abbe, E., Adsera, E. B., and Misiakiewicz, T. (2022). The merged-staircase property: a necessary
+and nearly sufficient condition for sgd learning of sparse functions on two-layer neural networks. In Conference
+on Learning Theory, pages 4782–4887. PMLR.
+[Aljundi et al., 2017] Aljundi, R., Babiloni, F., Elhoseiny, M., Rohrbach, M., and Tuytelaars, T. (2017). Memory
+aware synapses: Learning what (not) to forget. ArXiv, abs/1711.09601.
+[Andle and Yasaei Sekeh, 2022] Andle, J. and Yasaei Sekeh, S. (2022). Theoretical understanding of the information
+flow on continual learning performance. In Proceedings of the European Conference on Computer Vision (ECCV)
+2022, pages 86–101.
+[Ba et al., 2022] Ba, J., Erdogdu, M. A., Suzuki, T., Wang, Z., Wu, D., and Yang, G. (2022). High-dimensional
+asymptotics of feature learning: How one gradient step improves the representation. Advances in Neural Infor-
+mation Processing Systems, 35:37932–37946.
+[Banayeeanzade et al., 2024] Banayeeanzade, M., Soltanolkotabi, M., and Rostami, M. (2024). Theoretical insights
+into overparameterized models in multi-task and replay-based continual learning. Transactions on Machine Learn-
+ing Research.
+[Bartlett et al., 2021] Bartlett, P. L., Montanari, A., and Rakhlin, A. (2021). Deep learning: a statistical viewpoint.
+Acta Numerica, 30:87 – 201.
+[Benjamin et al., 2024] Benjamin, A. S., Pehle, C., and Daruwalla, K. (2024). Continual learning with the neural
+tangent ensemble. In Proceedings of the 37th Conference on Neural Information Processing Systems (NeurIPS
+2024), pages 58816–58840.
+[Bennani et al., 2020] Bennani, M. A., Doan, T., and Sugiyama, M. (2020). Generalisation guarantees for continual
+learning with orthogonal gradient descent. arXiv preprint arXiv:2006.11942.
+[Bousquet and Elisseeff, 2002] Bousquet, O. and Elisseeff, A. (2002).
+Stability and generalization.
+Journal of
+Machine Learning Research (JMLR), 2:499–526.
+11
+
+[Cao et al., 2022] Cao, X., Liu, W., and Vempala, S. S. (2022). Provable lifelong learning of representations. In
+Proceedings of the 25th International Conference on Artificial Intelligence and Statistics (AISTATS) 2022, volume
+151 of Proceedings of Machine Learning Research, pages 6334–6356. PMLR.
+[Damian et al., 2022] Damian, A., Lee, J., and Soltanolkotabi, M. (2022). Neural networks can learn representations
+with gradient descent. In Conference on Learning Theory, pages 5413–5452. PMLR.
+[Doan et al., 2021] Doan, T., Bennani, M. A., Mazoure, B., Rabusseau, G., and Alquier, P. (2021). A theoreti-
+cal analysis of catastrophic forgetting through the ntk overlap matrix. In International Conference on Artificial
+Intelligence and Statistics, pages 1072–1080. PMLR.
+[Du et al., 2019] Du, S., Lee, J., Li, H., Wang, L., and Zhai, X. (2019). Gradient descent finds global minima of
+deep neural networks. In International conference on machine learning, pages 1675–1685. PMLR.
+[Evron et al., 2023] Evron, I., Moroshko, E., Buzaglo, G., Khriesh, M., Marjieh, B., Srebro, N., and Soudry, D.
+(2023). Continual learning in linear classification on separable data. In International Conference on Machine
+Learning, pages 9440–9484. PMLR.
+[Evron et al., 2022] Evron, I., Moroshko, E., Ward, R., Srebro, N., and Soudry, D. (2022). How catastrophic can
+catastrophic forgetting be in linear regression? In Conference on Learning Theory, pages 4028–4079. PMLR.
+[Ghorbani et al., 2019] Ghorbani, B., Mei, S., Misiakiewicz, T., and Montanari, A. (2019). Limitations of lazy
+training of two-layers neural network. Advances in Neural Information Processing Systems, 32.
+[Glasgow, 2024] Glasgow, M. (2024). Sgd finds then tunes features in two-layer neural networks with near-optimal
+sample complexity: A case study in the xor problem. In International Conference on Learning Representations.
+[Goldfarb and Hand, 2023] Goldfarb, D. and Hand, P. (2023). Analysis of catastrophic forgetting for random orthog-
+onal transformation tasks in the overparameterized regime. In International Conference on Artificial Intelligence
+and Statistics, pages 2975–2993. PMLR.
+[Goodfellow et al., 2013] Goodfellow, I. J., Mirza, M., Xiao, D., Courville, A., and Bengio, Y. (2013). An empirical
+investigation of catastrophic forgetting in gradient-based neural networks. arXiv preprint arXiv:1312.6211.
+[Graldi et al., 2024] Graldi, J., Lanzillotta, G., Noci, L., Grewe, B. F., and Hofmann, T. (2024). To learn or not
+to learn: Exploring the limits of feature learning in continual learning. In NeurIPS 2024 Workshop on Scalable
+Continual Learning for Lifelong Foundation Models.
+[Guha and Lakshman, 2024] Guha, E. K. and Lakshman, V. (2024). On the diminishing returns of width for con-
+tinual learning. In International Conference on Machine Learning, pages 16706–16730. PMLR.
+[Jacot et al., 2018] Jacot, A., Gabriel, F., and Hongler, C. (2018). Neural tangent kernel: Convergence and general-
+ization in neural networks. In Neural Information Processing Systems (NeurIPS), volume 31.
+[Ji and Telgarsky, 2020] Ji, Z. and Telgarsky, M. (2020). Polylogarithmic width suffices for gradient descent to
+achieve arbitrarily small test error with shallow relu networks. International Conference on Learning Represen-
+tations.
+[Karakida and Akaho, 2021] Karakida, R. and Akaho, S. (2021). Learning curves for continual learning in neural
+networks: Self-knowledge transfer and forgetting. In International Conference on Learning Representations.
+[Kirkpatrick et al., 2017] Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A. A., Milan,
+K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D., and Hadsell, R.
+(2017). Overcoming catastrophic forgetting in neural networks. Proceedings of the National Academy of Sciences,
+114(13):3521–3526.
+[Lee et al., 2021] Lee, S., Goldt, S., and Saxe, A. (2021). Continual learning in the teacher-student setup: Impact of
+task similarity. In International Conference on Machine Learning, pages 6109–6119. PMLR.
+12
+
+[Lei and Ying, 2020] Lei, Y. and Ying, Y. (2020). Fine-grained analysis of stability and generalization for stochastic
+gradient descent. In International Conference on Machine Learning (ICML), volume 119, pages 5809–5819.
+[Lewkowycz and Gur-Ari, 2020] Lewkowycz, A. and Gur-Ari, G. (2020). On the training dynamics of deep net-
+works with l2 regularization. ArXiv, abs/2006.08643.
+[Li et al., 2025a] Li, B., Wang, Y., and Liu, W. (2025a). Towards understanding catastrophic forgetting in two-layer
+convolutional neural networks. In Singh, A., Fazel, M., Hsu, D., Lacoste-Julien, S., Berkenkamp, F., Maharaj, T.,
+Wagstaff, K., and Zhu, J., editors, Proceedings of the 42nd International Conference on Machine Learning (ICML
+2025), volume 267 of Proceedings of Machine Learning Research, pages 36057–36095. PMLR.
+[Li et al., 2025b] Li, H., Lin, S., Duan, L., Liang, Y., and Shroff, N. (2025b). Theory on mixture-of-experts in
+continual learning. In The Thirteenth International Conference on Learning Representations.
+[Li and Hoiem, 2017] Li, Z. and Hoiem, D. (2017). Learning without forgetting. IEEE transactions on pattern
+analysis and machine intelligence, 40(12):2935–2947.
+[Lin et al., 2023] Lin, S., Ju, P., Liang, Y., and Shroff, N. (2023). Theory on forgetting and generalization of continual
+learning. In International Conference on Machine Learning, pages 21078–21100. PMLR.
+[McCloskey and Cohen, 1989] McCloskey, M. and Cohen, N. J. (1989). Catastrophic interference in connectionist
+networks: The sequential learning problem. Academic Press, 24:109–165.
+[Mirzadeh et al., 2022a] Mirzadeh, S. I., Chaudhry, A., Yin, D., Hu, H., Pascanu, R., Gorur, D., and Farajtabar, M.
+(2022a). Wide neural networks forget less catastrophically. In International conference on machine learning,
+pages 15699–15717. PMLR.
+[Mirzadeh et al., 2022b] Mirzadeh, S. I., Chaudhry, A., Yin, D., Nguyen, T., Pascanu, R., Gorur, D., and Farajtabar,
+M. (2022b). Architecture matters in continual learning. arXiv preprint arXiv:2202.00275.
+[Nitanda et al., 2019] Nitanda, A., Chinot, G., and Suzuki, T. (2019).
+Gradient descent can learn less over-
+parameterized two-layer neural networks on classification problems. arXiv preprint arXiv:1905.09870.
+[Refinetti et al., 2021] Refinetti, M., Goldt, S., Krzakala, F., and Zdeborová, L. (2021). Classifying high-dimensional
+gaussian mixtures: Where kernel methods fail and neural networks succeed. In International Conference on
+Machine Learning, pages 8936–8947. PMLR.
+[Richards and Rabbat, 2021] Richards, D. and Rabbat, M. (2021). Learning with gradient descent and weakly con-
+vex losses. In International Conference on Artificial Intelligence and Statistics, pages 1990–1998. PMLR.
+[Rolnick et al., 2019] Rolnick, D., Ahuja, A., Schwarz, J., Lillicrap, T., and Wayne, G. (2019). Experience replay
+for continual learning. Advances in neural information processing systems, 32.
+[Schaul et al., 2016] Schaul, T., Quan, J., Antonoglou, I., and Silver, D. (2016). Prioritized experience replay. In-
+ternational Conference on Learning Representations.
+[Sharif Razavian et al., 2014] Sharif Razavian, A., Azizpour, H., Sullivan, J., and Carlsson, S. (2014). Cnn features
+off-the-shelf: an astounding baseline for recognition. In Proceedings of the IEEE conference on computer vision
+and pattern recognition workshops, pages 806–813.
+[Taheri and Thrampoulidis, 2024] Taheri, H. and Thrampoulidis, C. (2024). Generalization and stability of interpo-
+lating neural networks with minimal width. Journal of Machine Learning Research, 25(156):1–41.
+[Taheri et al., 2025] Taheri, H., Thrampoulidis, C., and Mazumdar, A. (2025). Sharper guarantees for learning
+neural network classifiers with gradient methods. In The Thirteenth International Conference on Learning Rep-
+resentations.
+[Telgarsky, 2023] Telgarsky, M. (2023). Feature selection and low test error in shallow low-rotation relu networks.
+In International Conference on Learning Representations.
+13
+
+[Wei et al., 2019] Wei, C., Lee, J. D., Liu, Q., and Ma, T. (2019). Regularization matters: Generalization and
+optimization of neural nets vs their induced kernel. Advances in Neural Information Processing Systems, 32.
+[Wenger et al., 2023] Wenger, J., Dangel, F., and Kristiadi, A. (2023). On the disconnect between theory and practice
+of neural networks: Limits of the ntk perspective. arXiv preprint arXiv:2310.00137.
+[Xu et al., 2024] Xu, Z., Wang, Y., Frei, S., Vardi, G., and Hu, W. (2024). Benign overfitting and grokking in relu
+networks for xor cluster data. In International Conference on Learning Representations.
+14
+
+Appendix
+A
+Single-task XOR cluster
+The next result derives the class margin for the single-task XOR cluster dataset and combined with standard results
+from the NTK literature it bounds the train and test loss for learning this dataset (as described by Eq. 1) with GD.
+Proposition A.1 (Single-task XOR). For the XOR cluster dataset for a given 𝑇, there exists target vector 𝑤★∈R𝑑𝑚
+such that ∥𝑤★−𝑤0∥= Θ(𝑑· log(𝑇)) and b𝐹(𝑤★) < 1/𝑇and gradient descent with logistic loss and on a network
+with quadratic activation with width 𝑚= Ω(∥𝑤★−𝑤0∥4), achieves the training loss b𝐹(𝑤𝑡) = 𝑂( ∥𝑤★−𝑤0∥2
+𝑡
+) and the
+expected test loss ED [𝐹(𝑤𝑡)] = 𝑂( ∥𝑤★−𝑤0∥2
+𝑛
+) after 𝑡= 𝑛GD iterations.
+Proof. Define four regions 𝑅1, 𝑅2, 𝑅3, 𝑅4 ∈R𝑑such that
+𝑅1 = {𝑥∈R𝑑: 𝑥⊤(𝜇+ + 𝜇−) > 0, 𝑥⊤(𝜇+ −𝜇−) > 0},
+𝑅2 = {𝑥∈R𝑑: 𝑥⊤(𝜇+ + 𝜇−) > 0, 𝑥⊤(𝜇+ −𝜇−) < 0},
+𝑅3 = {𝑥∈R𝑑: 𝑥⊤(𝜇+ + 𝜇−) < 0, 𝑥⊤(𝜇+ −𝜇−) > 0},
+𝑅4 = {𝑥∈R𝑑: 𝑥⊤(𝜇+ + 𝜇−) < 0, 𝑥⊤(𝜇+ −𝜇−) < 0}.
+Without loss of generality, assume 𝜇+ = [1/
+√
+𝑑, 1/
+√
+𝑑, 0, · · · , 0] and 𝜇−= [−1/
+√
+𝑑, 1/
+√
+𝑑, 0 · · · , 0]. Our goal is to
+derive the NTK margin [Ji and Telgarsky, 2020, Taheri and Thrampoulidis, 2024] denoted by 𝛾for infinitely wide
+neural networks with initialization variable 𝑧∈R𝑑, i.e., show that the equation below holds for all data points in the
+training set almost surely:
+𝑀(𝑥𝑖, 𝑦𝑖) := 𝑦𝑖
+∫
+𝑧∈R𝑑𝜙′(⟨𝑧, 𝑥𝑖⟩)⟨𝑤𝑧, 𝑥𝑖⟩𝑑𝜇N(𝑧) ≥𝛾
+where 𝜇𝑁is the standard Gaussian measure and 𝑤𝑧is an initialization dependent vector such that ∥𝑤𝑧∥≤1 for all
+𝑧∈R𝑑. We drop the subscript 𝑖and assume quadratic activation. Assume 𝑦= 1, 𝑥∼N (𝜇+, 𝜎𝐼𝑑) without loss of
+generality. Then,
+𝑀=
+∫
+𝑧∈𝑅1
+⟨𝑧, 𝑥⟩⟨𝑤𝑧, 𝑥⟩𝑑𝜇N(𝑧) +
+∫
+𝑧∈𝑅2
+⟨𝑧, 𝑥⟩⟨𝑤𝑧, 𝑥⟩𝑑𝜇N(𝑧)
++
+∫
+𝑧∈𝑅3
+⟨𝑧, 𝑥⟩⟨𝑤𝑧, 𝑥⟩𝑑𝜇N(𝑧) +
+∫
+𝑧∈𝑅4
+⟨𝑧, 𝑥⟩⟨𝑤𝑧, 𝑥⟩𝑑𝜇N(𝑧)
+Let
+𝑤𝑧= 𝜇+/∥𝜇+∥, −𝜇−/∥𝜇−∥, 𝜇−/∥𝜇−∥, −𝜇+/∥𝜇+∥if 𝑧∈𝑅1, 𝑅2, 𝑅3, 𝑅4, respectively.
+15
+
+Assume 𝑠∼N (0, 𝜎𝐼𝑑).
+⟨𝜇+/∥𝜇+∥, 𝜇+ + 𝑠⟩
+∫
+𝑧∈𝑅1
+⟨𝑧, 𝜇+ + 𝑠⟩d𝜇N(𝑧)
+= (∥𝜇+∥+ 𝜇⊤
++𝑠/∥𝜇+∥)
+
+( 1
+√
+𝑑
++ 𝑠(1))
+∫
+𝑧∈𝑅1
+𝑧(1)𝑑𝜇N(𝑧) + ( 1
+√
+𝑑
++ 𝑠(2))
+∫
+𝑧∈𝑅1
+𝑧(2)𝑑𝜇N(𝑧)
+
+= (∥𝜇+∥+ 𝜇⊤
++𝑠
+∥𝜇+∥)( 2
+√
+𝑑
++ 𝑠(1) + 𝑠(2))E[𝑧(1)1𝑧(1)>0]
+=
+ r
+2
+𝑑+
+√
+2
+2 (𝑠(1) + 𝑠(2))
+!  2
+√
+𝑑
++ 𝑠(1) + 𝑠(2)
+ 1
+√
+2
+≳( 1
+√
+𝑑
++ 𝑠(1) + 𝑠(2))2
+≳( 1
+√
+𝑑
++ 𝑂(
+1
+√
+𝑑· log𝑐(𝑑)
+))2
+≳1/𝑑.
+For the second integral we have,
+⟨−𝜇−/∥𝜇−∥, 𝜇+ + 𝑠⟩
+∫
+𝑧∈𝑅2
+⟨𝑧, 𝜇+ + 𝑠⟩d𝜇N(𝑧)
+= −𝜇⊤
+−𝑠
+∥𝜇−∥
+
+( 1
+√
+𝑑
++ 𝑠(1))
+∫
+𝑧∈𝑅2
+𝑧(1) d𝜇N(𝑧) + ( 1
+√
+𝑑
++ 𝑠(2))
+∫
+𝑧∈𝑅2
+𝑧(2) d𝜇N(𝑧)
+
+= −1
+2 (𝑠(2) −𝑠(1))2 = Θ(
+1
+𝑑· log2𝑐(𝑑)
+)
+For the third and fourth integral, due to symmetry, we reach the above final results again. Overall, we find that
+𝑀(𝑥𝑖, 𝑦𝑖) ≳1
+𝑑+ 𝑂(
+1
+𝑑· poly log(𝑑) ) = Ω(1/𝑑).
+For data points coming from other three clusters of the XOR distribution, we reach the same conclusion. Therefore
+the margin scales as 1/𝑑for every training sample. Using this margin result in [Taheri and Thrampoulidis, 2024,
+Corollary C.1.1 and Proposition C.1] completes the result.
+□
+B
+Delayed Generalization Gap: Proof of Thm. 2.3
+We state and prove a more general version of Theorem 2.3 in Theorem B.1 below, which requires smaller network
+width under additional assumptions. We then show that Theorem 2.3 follows as a consequence. Specifically, under
+additional conditions on continual learnability of each task and a self-bounded assumption for the loss function(i.e.,
+| 𝑓′(𝑢)| < 𝑓(𝑢)) that includes logistic loss 𝑓(𝑢) = log(1 + exp(−𝑢)), in the next theorem, we prove a tight general-
+ization bound, which has a noticeably milder dependence on 𝑇compared to Theorem 2.3.
+Theorem B.1 (Improved gen. gap). Assume the loss function is self-bounded, 1-Lipschitz and 1-smooth. Let the
+network’s width 𝑚be large enough so that √𝑚≳𝜂Í𝐾
+𝑗=𝑘+1
+Í𝑇−1
+𝑡=0 b𝐹𝑗(𝑤(𝑡)
+𝑗). Moreover, assume there exists 𝑤★
+𝑘
+achieving small training loss b𝐹𝑘(𝑤★
+𝑘) ≤∥𝑤★
+𝑘−𝑤(0)
+𝑘∥2/(𝜂𝑇) for task 𝑘, and satisfying 𝑚≳∥𝑤★
+𝑘−𝑤(0)
+𝑘∥4. Then,
+F gen
+𝑘,𝐾≲𝜂
+𝑛ED𝑘
+"
+𝑒
+𝜂
+√𝑚𝑐𝑘,𝐾
+𝑇−1
+Õ
+𝑡=0
+b𝐹𝑘(𝑤(𝑡)
+𝑘)
+#
+,
+(6)
+where 𝑐𝑘,𝐾= 𝑂
+Í𝐾
+𝑗=𝑘+1
+Í𝑇−1
+𝑡=0 b𝐹𝑗(𝑤(𝑡)
+𝑗)
+
+.
+16
+
+As the result shows, F gen
+𝑘,𝐾decays with both the cumulative training loss of the later tasks as in 𝑐𝑘,𝐾and the
+network width, and it is proportional to the cumulative training loss of task 𝑘. In particular, the cumulative training
+loss can be much smaller than 𝑇, potentially leading to tighter bounds compared to the results of previous theorem.
+Remark B.2. In words, the conditions on ∥𝑤★
+𝑘−𝑤(0)
+𝑘∥ensure that task 𝑘remains learnable in the kernel regime, i.e.,
+the initialization is sufficiently close to the task-specific optimum so that optimization can succeed. To better interpret
+this result, let us consider the case where 𝑘= 1, and we are interested in bounds on F gen
+1,𝐾for some 𝐾≥2. First,
+we note that for the XOR cluster dataset, there exists(see Proposition A.1 in App. A) 𝑤★
+1 such that ∥𝑤★
+1 −𝑤(0)
+1 ∥=
+Θ(𝑑· log(𝑇)) and b𝐹1(𝑤★
+1) ≤1
+𝑇, leading to train-loss b𝐹1(𝑤(𝑡)
+1 ) = 𝑂( 𝑑2 log2(𝑡)
+𝑡
+). Therefore, in view of Theorem B.1,
+if √𝑚≳𝜂Í𝐾
+𝑗=2
+Í𝑇−1
+𝑡=0 b𝐹𝑗(𝑤(𝑡)
+𝑗) and 𝑚≳𝑑4 log4(𝑇), the expected generalization gap after 𝑇iterations for each of
+𝐾tasks satisfies,
+F gen
+1,𝐾≲𝜂𝑑2 log3(𝑇)
+𝑛
+,
+where we can hide the exponential term in Eq. 6 for simplicity since the exponent is constant under the condition
+on 𝑚. This shows that Theorem B.1 may lead to bounds with significantly better dependence based on 𝑇compared
+to Theorem 2.3 (poly-logarithmic vs linear). Although this result cannot be combined directly with our setting for
+the training loss (since the hinge loss considered for the training-loss analysis is not self-bounded) it still provides
+valuable insight. In particular, it can be interpreted as a stronger extension of Theorem 2.3, highlighting how the
+training loss directly influences the generalization gap in continual learning as shown by Eq. 6.
+B.1
+Proof of Theorem B.1
+Recall the continual learning of 𝐾tasks for 𝑇iterations each i.e., at task 𝑘∈[𝐾] :
+𝑤𝑡= 𝑤𝑡−1 −𝜂∇b𝐹𝑘(𝑤𝑡) for (𝑘−1) · 𝑇< 𝑡≤𝑘𝑇
+Assume 𝑓(·, 𝑥) to be the sample loss which is 𝐿-Lipschitz with respect to its first input. Let D𝑘:= {𝑥1, · · · , 𝑥𝑛}
+be the training dataset of task 𝑘. Denote 𝑤¬𝑖
+ℓas the output of the continual learning algorithm after learning task ℓ
+(for some ℓ≤𝐾), when 𝑥𝑖is left out of the training samples from D𝑘. Similarly, we define 𝑤(𝑡),¬𝑖
+ℓ
+, as the output of
+continual learning at iteration 𝑡of task ℓwhen 𝑥𝑖is left out.
+The generalization gap associated with task 𝑘, after learning 𝐾tasks can be written as,
+ED𝑘[𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝐾)] = 1
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘,𝑥[ 𝑓(𝑤𝐾, 𝑥) −𝑓(𝑤𝐾, 𝑥𝑖)]
+= 1
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘,𝑥
+
+𝑓(𝑤𝐾, 𝑥) −𝑓(𝑤¬𝑖
+𝐾, 𝑥𝑖)
+
++ 1
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘
+
+𝑓(𝑤¬𝑖
+𝐾, 𝑥𝑖) −𝑓(𝑤𝐾, 𝑥𝑖)
+
+= 1
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘,𝑥
+
+𝑓(𝑤𝐾, 𝑥) −𝑓(𝑤¬𝑖
+𝐾, 𝑥)
+
++ 1
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘
+
+𝑓(𝑤¬𝑖
+𝐾, 𝑥𝑖) −𝑓(𝑤𝐾, 𝑥𝑖)
+
+≤𝐿
+𝑛
+𝑛
+Õ
+𝑖=1
+ED𝑘
+
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥
+
+.
+(7)
+Therefore, the samples from the subsequent distributions do not impact the delayed generalization gap in Task 𝑘, as
+we are taking the expectation over only D𝑘.
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥= ∥𝑤(𝑇−1)
+𝐾
+−𝜂∇ˆ𝐹𝐾(𝑤(𝑇−1)
+𝐾
+) −(𝑤(𝑇−1),¬𝑖
+𝐾
+−𝜂∇ˆ𝐹𝐾(𝑤(𝑇−1),¬𝑖
+𝐾
+))∥
+Note that the objectives are the same for both 𝑤(𝑇−1),¬𝑖
+𝐾
+and 𝑤(𝑇−1)
+𝐾
+. Therefore, by the non-expansive properties of
+one-hidden-layer neural nets [Taheri and Thrampoulidis, 2024, Lemma B.1]:
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤
+ 
+1 + 𝜂𝐿𝑅2
+√𝑚
+max
+𝑤𝛼∈[𝑤(𝑇−1)
+𝐾
+,𝑤(𝑇−1),¬𝑖
+𝐾
+]
+b𝐹′
+𝐾(𝑤𝛼)
+!
+∥𝑤(𝑇−1)
+𝐾
+−𝑤(𝑇−1),¬𝑖
+𝐾
+∥
+(8)
+17
+
+where we define:
+b𝐹′(𝑤) := 1
+𝑛
+𝑛
+Õ
+𝑖=1
+| 𝑓′(𝑤, 𝑥𝑖)|,
+with 𝑓′ denoting the derivative of the sample loss. For self-bounded losses assumed in this theorem, we have
+| 𝑓′(𝑤, 𝑥𝑖)| ≤𝑓(𝑤, 𝑥𝑖), therefore b𝐹′
+𝐾(𝑤𝛼) ≤b𝐹𝐾(𝑤𝛼), leading to:
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤
+ 
+1 + 𝜂𝐿𝑅2
+√𝑚
+max
+𝑤𝛼∈[𝑤(𝑇−1)
+𝐾
+,𝑤(𝑇−1),¬𝑖
+𝐾
+]
+b𝐹𝐾(𝑤𝛼)
+!
+∥𝑤(𝑇−1)
+𝐾
+−𝑤(𝑇−1),¬𝑖
+𝐾
+∥
+Repeating this step for 𝑇steps from 𝑇to 1:
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤
+𝑇−1
+Ö
+𝑡=0
+ 
+1 + 𝜂𝐿𝑅2
+√𝑚
+max
+𝑤𝛼𝑡∈[𝑤(𝑡)
+𝐾,𝑤(𝑡),¬𝑖
+𝐾
+]
+b𝐹𝐾(𝑤𝛼𝑡)
+! 𝑤(0)
+𝐾−𝑤(0),¬𝑖
+𝐾
+
+=
+𝑇−1
+Ö
+𝑡=0
+ 
+1 + 𝜂𝐿𝑅2
+√𝑚
+max
+𝑤𝛼𝑡∈[𝑤(𝑡)
+𝐾−1,𝑤(𝑡),¬𝑖
+𝐾
+]
+b𝐹𝐾(𝑤𝛼𝑡)
+!
+𝑤𝐾−𝑤¬𝑖
+𝐾
+
+≤exp
+ 
+𝜂𝐿𝑅2
+√𝑚
+𝑇−1
+Õ
+𝑡=0
+max
+𝑤𝛼𝑡∈[𝑤(𝑡)
+𝐾,𝑤(𝑡),¬𝑖
+𝐾
+]
+b𝐹𝐾(𝑤𝛼𝑡)
+!
+𝑤𝐾−𝑤¬𝑖
+𝐾
+ .
+where 𝑅is the max norm of data and 𝐿is the activation function’s Lipschitz parameter. We need an inductive
+argument here to prove that ∥𝑤𝑡−𝑤¬𝑖
+𝑡∥remains bounded for all 𝑡as it is used in the max over 𝑤𝛼𝑡term.
+Repeating this step for 𝐾−𝑘tasks, we derive the following,
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤exp ©­
+«
+𝜂𝐿𝑅2
+√𝑚
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+max
+𝑤𝛼𝑡∈[𝑤(𝑡)
+𝑗
+,𝑤(𝑡),¬𝑖
+𝑗
+]
+b𝐹𝑗(𝑤𝛼𝑡)ª®
+¬
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ .
+(9)
+This gives an expression for bounding the generalization gap based on the parameter stability of the 𝑘′th task,
+the width and training performance from task 𝑘+ 1 to task 𝐾. To bound the parameter stability term, note that,
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ ≤
+𝑤(𝑇−1)
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1)
+𝑘
+) −(𝑤(𝑇−1),¬𝑖
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1),¬𝑖
+𝑘
+))
+
++ 𝜂
+∇b𝐹𝑖
+𝑘(𝑤(𝑇−1),¬𝑖
+𝑘
+)
+
+Recall the 𝑖th data point is taken from the 𝑘th task data distribution. For tasks 𝑗where 𝑗< 𝑘, it holds that 𝑤𝑗= 𝑤¬𝑖
+𝑗.
+Therefore we can use the result from previous works [Taheri and Thrampoulidis, 2024, Thm B.2] on the stability
+error of neural networks in the NTK regime to bound
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ .
+Lemma B.3. If there exists 𝑤★
+𝑘such that ∥𝑤★
+𝑘−𝑤𝑘∥≥max
+q
+𝜂𝑇b𝐹𝑘(𝑤★
+𝑘),
+q
+𝜂b𝐹𝑘(𝑤𝑘−1)
+
+, and 𝑚≳∥𝑤★
+𝑘−𝑤𝑘∥4,
+then
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ ≲𝜂
+𝑛
+Í𝑇−1
+𝑡=0 b𝐹𝑖
+𝑘(𝑤(𝑡)
+𝑘), and consequently,
+ED𝑘
+"
+1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑤𝑘−𝑤¬𝑖
+𝑘
+
+#
+≲𝜂
+𝑛
+𝑇−1
+Õ
+𝑡=0
+ED𝑘
+h
+b𝐹𝑘(𝑤(𝑡)
+𝑘)
+i
+.
+Let us define 𝑐𝑘,𝐾:= max𝑖∈[𝑛]
+Í𝐾
+𝑗=𝑘+1
+Í𝑇−1
+𝑡=0 max𝑤𝛼𝑡∈[𝑤(𝑡)
+𝑗
+,𝑤(𝑡),¬𝑖
+𝑗
+] b𝐹𝑗(𝑤𝛼𝑡). Then by this lemma we have,
+ED𝑘
+"
+1
+𝑛
+𝑛
+Õ
+𝑖=1
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥
+#
+≤𝜂𝑒
+𝜂
+√𝑚𝑐𝑘,𝐾
+𝑛
+𝑇−1
+Õ
+𝑡=0
+ED𝑘
+h
+b𝐹𝑘(𝑤(𝑡)
+𝑘)
+i
+.
+18
+
+B.1.1
+Bounding 𝑐𝑘,𝐾
+In order to bound 𝑐𝑘,𝐾, we use the following result on the quasi-convexity properties of the two-layer neural net
+objective by [Taheri and Thrampoulidis, 2024, Prop. 5.1.].
+Lemma B.4. Suppose b𝐹: R𝑑′ →R satisfies the self-bounded weak convexity property with parameter 𝜅. Let
+𝑤1, 𝑤2 ∈R𝑑′ be two arbitrary points with distance ∥𝑤1 −𝑤2∥≤𝐷<
+p
+2/𝜅. Set 𝜏:=  1 −𝜅𝐷2/2−1. Then,
+max
+𝑣∈[𝑤1,𝑤2]
+b𝐹(𝑣) ≤𝜏· max
+n
+b𝐹(𝑤1) , b𝐹(𝑤2)
+o
+.
+For self-bounded losses 𝜅=
+1
+√𝑚, therefore if 𝑤, 𝑤′ are such that ∥𝑤−𝑤′∥≤𝐷≤𝑚1/4, then
+max
+𝑣∈[𝑤,𝑤′]
+b𝐹(𝑣) ≤
+1
+1 −𝐷2
+√𝑚
+· max
+n
+b𝐹(𝑤) , b𝐹(𝑤′)
+o
+.
+Recall,
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤exp ©­
+«
+𝜂
+√𝑚
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+max
+𝑤𝛼𝑡∈[𝑤(𝑡)
+𝑗
+,𝑤(𝑡),¬𝑖
+𝑗
+]
+b𝐹𝑗(𝑤𝛼𝑡)ª®
+¬
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ .
+Assume
+√𝑚≥8 max
+
+
+𝜂
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+( b𝐹𝑗(𝑤(𝑡)
+𝑗) + b𝐹𝑗(𝑤(𝑡),¬𝑖
+𝑗
+)), ∥𝑤𝑘−𝑤¬𝑖
+𝑘∥2
+
+
+.
+(10)
+Then, by induction ∥𝑤(𝑡)
+𝑗
+−𝑤(𝑡),¬𝑖
+𝑗
+∥≤2∥𝑤𝑘−𝑤¬𝑖
+𝑘∥for all 𝑡∈[𝑇], 𝑗∈[𝑘, 𝐾]. To see this:
+∥𝑤(𝑡)
+𝑗
+−𝑤(𝑡),¬𝑖
+𝑗
+∥
+≤exp ©­
+«
+𝜂
+√𝑚
+𝑗−1
+Õ
+𝑗′=𝑘+1
+𝑇−1
+Õ
+𝜏=0
+max
+𝑤𝛼𝜏∈[𝑤(𝜏)
+𝑗′ ,𝑤(𝜏),¬𝑖
+𝑗′
+]
+b𝐹𝑗′ (𝑤𝛼𝜏) +
+𝑡−1
+Õ
+𝜏=0
+max
+𝑤𝛼𝜏∈[𝑤(𝜏)
+𝑗
+,𝑤(𝜏),¬𝑖
+𝑗
+]
+b𝐹𝑗(𝑤𝛼𝜏)ª®
+¬
+×
+𝑤𝑘−𝑤¬𝑖
+𝑘
+
+By induction’s assumption √𝑚≥2∥𝑤(𝜏)
+𝑗′
+−𝑤(𝜏),¬𝑖
+𝑗′
+∥2. Therefore we can invoke Lemma B.4 for all the max b𝐹𝑗′ to
+find that,
+∥𝑤(𝑡)
+𝑗
+−𝑤(𝑡),¬𝑖
+𝑗
+∥≤exp(1/4) ·
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ ≤2
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ .
+Which proves the induction. Overall, we could bound 𝑐𝐾,𝑘based on the training objective. assuming b𝐹𝑗(𝑤(𝑡)
+𝑗) and
+b𝐹𝑗(𝑤(𝑡),¬𝑖
+𝑗
+) are of the same order(needs proof), then we find
+𝑐𝐾,𝑘≤2
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+( b𝐹𝑗(𝑤(𝑡)
+𝑗) + b𝐹𝑗(𝑤(𝑡),¬𝑖
+𝑗
+)) = 𝑂©­
+«
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+b𝐹𝑗(𝑤(𝑡)
+𝑗)ª®
+¬
+To simplify the statement of the lemma, we can assume b𝐹𝑗(𝑤(𝑡)
+𝑗) and b𝐹𝑗(𝑤(𝑡),¬𝑖
+𝑗
+) are of the same order as reducing
+the sample-size by 1 sample does not affect the training bounds.
+Lemma B.5. Let the assumptions of Lemma B.3 hold. Assume
+√𝑚≳𝜂
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+( b𝐹𝑗(𝑤(𝑡)
+𝑗) + b𝐹𝑗(𝑤(𝑡),¬𝑖
+𝑗
+)) ≍𝜂
+𝐾
+Õ
+𝑗=𝑘+1
+𝑇−1
+Õ
+𝑡=0
+b𝐹𝑗(𝑤(𝑡)
+𝑗).
+19
+
+Then,
+ED𝑘
+"
+1
+𝑛
+𝑛
+Õ
+𝑖=1
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥
+#
+≤𝜂
+𝑛ED𝑘
+"
+𝑒
+𝜂
+√𝑚𝑐𝑘,𝐾
+𝑇−1
+Õ
+𝑡=0
+b𝐹𝑘(𝑤(𝑡)
+𝑘)
+#
+where 𝑐𝑘,𝐾= 𝑂
+Í𝐾
+𝑗=𝑘+1
+Í𝑇−1
+𝑡=0 b𝐹𝑗(𝑤(𝑡)
+𝑗)
+
+.
+Proof. The proof essentially follows by the last two lemmas and noting that ∥𝑤𝑘−𝑤¬𝑖
+𝑘∥≤∥𝑤𝑘−𝑤𝑘−1∥+ ∥𝑤¬𝑖
+𝑘−
+𝑤𝑘−1∥= 𝑂(∥𝑤★
+𝑘−𝑤𝑘−1∥) by Lemma B.3. Therefore the condition we had in Eq. 10 on √𝑚≥∥𝑤𝑘−𝑤¬𝑖
+𝑘∥2 is
+absorbed in the condition from Lemma B.3.
+□
+This completes the proof of the Theorem. Having established Theorem B.1, we are now ready to prove our main
+result on generalization in Theorem 2.3.
+B.2
+Proof of Theorem 2.3
+Theorem B.6 (Restatement of Theorem 2.3). Assume the loss function is 1-Lipschitz and 1-smooth. Then, the
+expected delayed generalization gap satisfies,
+F gen
+𝑘,𝐾:= ED𝑘
+h
+𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝐾)
+i
+≲𝜂𝑇𝑒
+𝜂𝑇(𝐾−𝑘+1)
+√𝑚
+𝑛
+.
+Proof. The proof of Theorem 2.3 essentially follows from Theorem B.1. We outline the distinct steps. Note that
+since the objective is 1-Lipschitz, it holds b𝐹′(𝑤) ≤1 for any 𝑤.. Therefore Eq. 8 from the proof of Theorem 2.3
+changes into
+∥𝑤𝐾−𝑤¬𝑖
+𝐾∥≤
+
+1 + 𝜂𝐿𝑅2
+√𝑚
+ 𝑤(𝑇−1)
+𝐾
+−𝑤(𝑇−1),¬𝑖
+𝐾
+ .
+As a result, by unrolling the iterates and noting that 𝑅≤1:
+𝑤𝐾−𝑤¬𝑖
+𝐾
+ ≤exp
+𝜂𝐿(𝐾−𝑘)𝑇
+√𝑚
+ 𝑤𝑘−𝑤¬𝑖
+𝑘
+ .
+(11)
+Moreover, again using the Lipschitz loss function properties:
+𝑤𝑘−𝑤¬𝑖
+𝑘
+ ≤
+𝑤(𝑇−1)
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1)
+𝑘
+) −(𝑤(𝑇−1),¬𝑖
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1),¬𝑖
+𝑘
+))
+
++ 𝜂
+∇b𝐹𝑖
+𝑘(𝑤(𝑇−1),¬𝑖
+𝑘
+)
+
+≤
+𝑤(𝑇−1)
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1)
+𝑘
+) −(𝑤(𝑇−1),¬𝑖
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑇−1),¬𝑖
+𝑘
+))
+ + 𝜂𝐿
+𝑛
+≤exp( 𝜂𝐿
+√𝑚)∥𝑤(𝑇−1)
+𝑘
+−𝑤(𝑇−1),¬𝑖
+𝑘
+∥+ 𝜂𝐿
+𝑛
+≤exp( 2𝜂𝐿
+√𝑚)∥𝑤(𝑇−2)
+𝑘
+−𝑤(𝑇−2),¬𝑖
+𝑘
+∥+ (1 + exp( 𝜂𝐿
+√𝑚)) 𝜂𝐿
+𝑛
+≤(
+𝑇−1
+Õ
+𝑡=0
+exp( 𝜂𝐿𝑡
+√𝑚)) 𝜂𝐿
+𝑛
+≤exp( 𝜂𝐿𝑇
+√𝑚) 𝜂𝐿𝑇
+𝑛.
+where the last step is derived by repeating the procedure over all 𝑇iterations.
+Inserting this in Eq. 11, taking the expectation over D𝑘, using Eq. 7 and noting that 𝐿(the objective’s Lipschitz
+parameter) is constant for our setup, conclude the proof of the theorem.
+□
+20
+
+C
+Train-time Loss and Forgetting for XOR cluster data
+In this section, we prove Theorems 2.1-2.2. Below, is a restatement of these theorems.
+Theorem C.1 (Restatement of Theorems 2.1-2.2). Consider the 𝑑-dimensional XOR cluster dataset with 𝐾tasks and
+assume gradient descent with 𝜂𝑇= Θ(𝑑2) iterations and 𝑛= eΘ(𝑑2𝐾) samples for each subsequent task trained by
+a neural net with 𝑚= eΩ(𝑑8𝐾4) hidden neurons. Then, with high probability, the train-time forgetting and per-task
+train-time time error is F tr
+𝑘,𝐾= 𝑜𝑑(1). In particular, for the train-time forgetting with probability 1 −𝛿, we have:
+|F tr
+𝑘,𝐾| := | b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)| = e
+𝑂
+ 
+𝜂𝑇
+√
+𝐾−𝑘
+𝑑√𝑛
++ 𝜂𝑇
+√
+𝐾−𝑘
+𝑑2 poly log(𝑑) + 𝜂2𝑇2 𝐾2
+√𝑚
+!
+,
+where e
+𝑂(·) hides logarithmic factors in 𝑛and 𝛿.
+The proof strategy is as follows. First, we consider the 𝑚→∞and derive the weights for arbitraay number of GD
+steps for each task. We then show that for sufficiently large 𝑇and sufficiently large 𝑛, and by computing the network
+output via concentration bounds based on 𝑛for the considered XOR cluster dataset, the train-loss and forgetting are
+approximately zero. We then compute the error due to finite-width, showing that under sufficiently small 𝑇, and
+sufficiently large 𝑚, the derivations of the infinite-width regime are approximately correct. This leads to the desired
+quantities and train-time forgetting bounds based 𝑛,𝑇and 𝑚as stated in the theorem. We start by considering the
+infinite width regime.
+C.1
+Training error for an infinitely wide network
+First, we consider the 𝑚→∞regime and characterize the distribution of the final weights after 𝑇and 2𝑇iterations
+in this regime. We then discuss the general formula for arbitrary number of tasks. Recall, we considered the hinge-
+loss for training-time analysis. However, as mentioned in the main body of the paper and as it will become clear in
+the following analysis, we can simplify the arguments by noting that throughout the optimization process for all 𝐾
+tasks, only the linear part of the loss is used. Thus we can assume the loss function as 𝑓(𝑢) = 1 −𝑢without loss of
+generality.
+Let us simplify the notation by droping the task index from weights and instead denoting the vector entering the
+𝑖th neuron by 𝑤𝑖∈R𝑑. Note that by Taylor expansion around the Gaussian initialization 𝑤9, we have,
+Φ(𝑤, 𝑥) = Φ(𝑤0, 𝑥) +
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥⟩)⟨𝑥, 𝑤𝑖−𝑤𝑖
+0⟩+ 𝑂( ∥𝑤−𝑤0∥
+√𝑚
+).
+For 𝑤close to 𝑤0, and for large enough 𝑚we can use a linearized neural network model. In particular, in the 𝑚→∞
+regime, the updates of the continual learning algorithm are the following for sufficiently small 𝑇:
+𝑤𝑖
+1 = 𝑤𝑖
+0 + 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+𝑤𝑖
+𝑇= 𝑤𝑖
+0 + 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+𝑤𝑖
+2𝑇= 𝑤𝑖
+0 + 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗+ 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗
+We consider 𝑥𝑘
+𝑗, 𝑦𝑘
+𝑗for any 𝑗∈[𝑛] and 𝑘∈[𝐾] as fixed training points used for training task 𝑘. We consider
+randomness only with respect to the initialization 𝑤𝑖
+0 and characterize the distribution of weights in the infinite
+width regime. As 𝑚→∞given the IID initialization for 𝑤𝑖
+0 and the quadratic activation, we deduce the following
+convergence in distribution,
+𝑤𝑖
+𝑇= 𝑤𝑖
+0 + 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗→𝜔𝑧+ 𝜂𝑡
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑧⊤𝑥1
+𝑗𝑥1
+𝑗𝑦1
+𝑗
+(12)
+21
+
+where 𝜔∈{±1}, 𝑧∈R𝑑are Rademacher random variable and standard Gaussian random vector, respectively,
+and they represent first layer and second layer initialization.
+Let us briefly consider the matrix formulation,
+𝑅= 1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑦1
+𝑗𝑥1
+𝑗𝑧⊤𝑥1
+𝑗=: 𝐴𝑧
+then 𝑅∼N (0, 𝐴2) as 𝐶𝑜𝑣(𝑅) = E[𝐴𝑧𝑧⊤𝐴⊤] = 𝐴E[𝑧𝑧⊤]𝐴⊤= 𝐴𝐴⊤= 𝐴2. In the infinite 𝑛asymptotic, 𝐴→
+E[𝑦𝑗𝑥𝑗𝑥⊤
+𝑗] = 1
+2E[𝑥𝑥⊤|𝑦= 1] −1
+2E[𝑥𝑥⊤|𝑦= −1] = 1
+2 (𝜇1
++𝜇1⊤
++ −𝜇1
+−𝜇1⊤
+−), indicating that the GD updates learn the
+true vectors in the 𝑛→∞regime.
+A similar argument leads to the following update rule for the second task:
+𝑤𝑖
+2𝑇∼𝑧+ 𝜂𝑇
+√𝑚𝐴1𝜔𝑧+ 𝜂𝑇
+√𝑚𝐴2𝜔𝑧, 𝐴1 := 1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑦1
+𝑗𝑥1
+𝑗𝑥𝑗1⊤, 𝐴2 := 1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑦2
+𝑗𝑥2
+𝑗𝑥𝑗2⊤
+where again 𝑧∼N (0, 𝐼𝑑) and 𝜔is a Rademacher r.v. for representing the binary second layer weights 𝑎𝑖.
+Similarly, we find that after 𝐾tasks with 𝑇iterations for each task, the weight 𝑤𝑖
+𝐾𝑇takes the following form:
+𝑤𝑖
+𝐾𝑇∼𝑧+ 𝜂𝑇
+√𝑚
+𝐾
+Õ
+𝑗=1
+𝐴𝑗𝜔𝑧, 𝐴𝑗:= 1
+𝑛
+𝑛
+Õ
+𝑣=1
+𝑦𝑗
+𝑣𝑥𝑗
+𝑣𝑥𝑣𝑗⊤
+Recalling the expression for the neural network output, we can characterize the output of the network with this
+random variable in the infinitely wide regime:
+Φ(𝑤𝐾𝑇, 𝑥) =
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖
+ 
+𝑤𝑖
+𝐾𝑇, 𝑥
+2 ∼
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝜔𝑖
+ *
+𝑧𝑖+ 𝜂𝑇
+√𝑚
+𝐾
+Õ
+𝑗=1
+𝐴𝑗𝜔𝑖𝑧𝑖, 𝑥
++!2
+= 𝜂𝑇
+𝑚
+𝑚
+Õ
+𝑖=1
+⟨𝑧𝑖, 𝑥⟩
+*
+(
+𝐾
+Õ
+𝑗=1
+𝐴𝑗)𝑧𝑖, 𝑥
++
++
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝜔𝑖(𝑧⊤
+𝑖𝑥)2
++ 𝜂2𝑇2
+𝑚√𝑚
+𝑚
+Õ
+𝑖=1
+𝜔𝑖
+ *
+𝑧𝑖+ 𝜂𝑇
+√𝑚
+𝐾
+Õ
+𝑗=1
+𝐴𝑗𝜔𝑖𝑧𝑖, 𝑥
++!2
+when 𝑚→∞:
+−→𝜂𝑇E𝑧
+"
+⟨𝑧, 𝑥⟩
+*
+(
+𝐾
+Õ
+𝑗=1
+𝐴𝑗)𝑧, 𝑥
++#
++ 𝑁+ 0
+= 𝜂𝑇𝑥⊤(
+𝐾
+Õ
+𝑗=1
+𝐴𝑗)𝑥+ 𝑁
+(13)
+where the last step is by the law of large number and 𝑁denotes the asymptotic distribution of the second term. The
+last term vanishes by the law of large numbers. We derive the training loss by calculating the above for 𝑥coming
+from the training distribution.
+We discuss the role of each term in Eq. 13. First, considering the first term above, the training loss for task 𝐾
+w.r.t the first training sample is the following,
+𝜂𝑇
+𝑛𝑥1𝐾⊤
+𝐾
+Õ
+𝑘=1
+𝑛
+Õ
+𝑖=1
+𝑦𝑘
+𝑖𝑥𝑘
+𝑖𝑥𝑖𝑘⊤𝑥𝐾
+1
+(14)
+We split the summation into the relevant task 𝑘= 𝐾and other tasks when 𝑘≠𝐾.
+22
+
+Case I: 𝑘= 𝐾.
+Let us drop 𝐾in Eq. 14. we have
+1
+𝑛𝑥⊤
+1
+𝑛
+Õ
+𝑖=1
+𝑦𝑖𝑥𝑖𝑥⊤
+𝑖𝑥1 = 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2 = 1
+𝑛(𝑦1∥𝑥1∥4 +
+𝑛
+Õ
+𝑖=2
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2).
+Recall our data model:
+𝑥∼N (±𝜇𝐾
++ , 𝜎2𝐼𝑑)
+if 𝑦= +1,
+𝑥∼N (±𝜇𝐾
+−, 𝜎2𝐼𝑑)
+if 𝑦= −1,
+with the following assumptions:
+𝜇𝐾
++ ⊥𝜇𝐾
+−,
+∥𝜇𝐾
++ ∥= ∥𝜇𝐾
+−∥= 1
+√
+𝑑
+,
+𝜎= 𝑂
+
+1
+√
+𝑑poly log(𝑑)
+
+.
+Let
+𝑈:= 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2.
+Fix 𝑥1, 𝑦1. For any 𝑖≠1, we write
+𝑥1 = 𝜇𝐾
+𝑦1 + 𝜀1,
+𝑥𝑖= 𝜇𝐾
+𝑦𝑖+ 𝜀𝑖,
+with 𝜀1, 𝜀𝑖∼N (0, 𝜎2𝐼𝑑), independent. Then:
+𝑥⊤
+𝑖𝑥1 = 𝜇𝐾
+𝑦𝑖
+⊤𝜇𝐾
+𝑦1 + 𝜇𝐾
+𝑦𝑖
+⊤𝜀1 + 𝜇𝐾
+𝑦1
+⊤𝜀𝑖+ 𝜀⊤
+𝑖𝜀1.
+Note that (𝜇𝐾
+𝑦𝑖
+⊤𝜇𝐾
+𝑦1)2 =
+1
+𝑑2 if 𝑦𝑖= 𝑦1 and 0 otherwise.
+Hence,
+E
+
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2 | 𝑦𝑖
+
+=
+
+
+E[𝑦1(± 1
+𝑑± 𝜇𝐾
+𝑦1
+⊤𝜀1 + 𝜇𝐾
+𝑦1
+⊤𝜀𝑖+ 𝜀⊤
+𝑖𝜀1)2]
+if 𝑦𝑖= 𝑦1,
+E[−𝑦1(±𝜇𝐾
+−𝑦1
+⊤𝜀1 + 𝜇𝐾
+𝑦1
+⊤𝜀𝑖+ 𝜀⊤
+𝑖𝜀1)2]
+if 𝑦𝑖≠𝑦1.
+Assuming a balanced distribution, i.e., Pr[𝑦𝑖= 𝑦1] = Pr[𝑦𝑖≠𝑦1] = 1
+2, we get:
+E
+
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2
+= 𝑦1
+2𝑑2 + 𝑂
+
+1
+𝑑2 · poly log(𝑑)
+
+where in the above, we used 𝜇𝐾
+𝑦1
+⊤𝜀1 = 𝑂(
+1
+𝑑·poly log(𝑑) ) w.h.p. over the randomness in 𝜖1.
+Thus, the overall expectation is the following:
+E[𝑈] = 𝑦1
+2𝑑2 + 𝑂
+
+1
+𝑑2 · poly log(𝑑)
+
+which aligns with the true label 𝑦1.
+To compute the finite sample guarantees, note that each summand
+𝑍𝑖= 𝑦𝑖(𝑥⊤
+𝑖𝑥1)2
+is sub-exponential with scale parameter 𝑂(1/𝑑) as (𝜖⊤
+𝑖𝜖1)2 has standard deviation
+1
+𝑑poly log(𝑑) uniformly for all 𝑖> 1.
+By Bernstein’s inequality, for any 𝛿∈(0, 1), with probability at least 1 −𝛿over the randomness in {𝑥𝑖, 𝑦𝑖}𝑖∈[𝑛],
+|𝑈−E[𝑈]| ≤𝐶
+1/𝑑
+√𝑛
+p
+log(1/𝛿) + 1/𝑑
+𝑛
+log(1/𝛿)
+
+= 𝑂
+ 1
+𝑑√𝑛
+p
+log(1/𝛿)
+
+,
+for some absolute constant 𝐶> 0.
+Putting together, with probability at least 1 −𝛿
+𝑈= 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑦𝑖(𝑥⊤
+𝑖𝑥1)2 = 𝑦1
+2𝑑2 ± 𝑂
+
+1
+𝑑2 · poly log(𝑑) +
+1
+𝑑√𝑛
+p
+log(1/𝛿)
+
+.
+In particular, if 𝑛≫𝑑2 log(1/𝛿), then the error term is much smaller than the signal
+1
+2𝑑2 , and therefore sign(𝑇) =
+𝑦1. with a union bound over all training points which introduces an additional factor 𝑙𝑜𝑔(𝑛) in the above bound, we
+find that the train error is exactly zero.
+23
+
+Case II: 𝑘≠𝐾.
+Now we evaluate the other terms in the summation in Eq. 14
+𝑥⊤𝐴𝑗𝑥= 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑦𝑗
+𝑖(𝑥⊤𝑥𝑗
+𝑖)2
+for some 𝑗≠𝐾. drop 1 and note that
+𝑥𝑖∼N (±𝜇𝑗
++, 𝜎2𝐼𝑑)
+if 𝑦𝑖= +1,
+𝑥𝑖∼N (±𝜇𝑗
+−, 𝜎2𝐼𝑑)
+if 𝑦𝑖= −1,
+𝑥∼N (±𝜇𝐾
++ , 𝜎2𝐼𝑑)
+if 𝑦= +1,
+𝑥∼N (±𝜇𝐾
+−, 𝜎2𝐼𝑑)
+if 𝑦= −1,
+where 𝜇𝑗
++, 𝜇𝑗
+−, 𝜇𝐾
++ , 𝜇𝐾
++ are mutually orthogonal,
+∥𝜇𝑗
++∥= ∥𝜇𝑗
+−∥= ∥𝜇𝐾
++ ∥= ∥𝜇𝐾
+−∥=
+1
+√
+𝑑, and 𝜎= 𝑂
+
+1
+√
+𝑑poly log(𝑑)
+
+.
+Let
+𝑈′ = 1
+𝑛
+𝑛
+Õ
+𝑖=1
+𝑦𝑖(𝑥⊤
+𝑖𝑥)2.
+let 𝑥= 𝜇+ 𝜖, we have
+E
+
+𝑦𝑖(𝑥⊤
+𝑖𝑥)2 | 𝑦𝑖
+
+=
+
+
+E[(±𝜇𝐾
+𝑦𝑖
+⊤𝜀+ 𝜇⊤𝜀𝑖+ 𝜀⊤
+𝑖𝜀)2]
+if 𝑦𝑖= 1,
+E[−(±𝜇𝐾
+−𝑦𝑖
+⊤𝜀+ 𝜇⊤𝜀𝑖+ 𝜀⊤
+𝑖𝜀)2]
+if 𝑦𝑖= −1.
+Hence,
+E[𝑈′] = 𝑂(
+1
+𝑑2poly log(𝑑) ).
+Define
+𝑍𝑖= 𝑦𝑖(𝑥⊤
+𝑖𝑥)2.
+By expanding 𝑥𝑖= 𝜇𝑗
+𝑦𝑖+ 𝜀𝑖, 𝑥= 𝜇𝐾
+𝑦+ 𝜀′, and using 𝜎= 𝑂(1/
+√
+𝑑), one can verify that
+Var(𝑥⊤
+𝑖𝑥) = 𝑂
+ 1
+𝑑
+
+,
+and that (𝑥⊤
+𝑖𝑥)2 is sub-exponential with scale parameter 𝑂(1/𝑑). Thus each 𝑍𝑖is sub-exponential with parameter
+𝑂(1/𝑑).
+By Bernstein’s inequality for i.i.d. sub-exponential random variables, for any 𝛿∈(0, 1), with probability at least
+1 −𝛿,
+|𝑈′| =
+
+1
+𝑛
+𝑛
+Õ
+𝑖=1
+(𝑍𝑖−E[𝑍𝑖])
+ ≤𝐶
+1/𝑑
+√𝑛
+p
+log(1/𝛿) + 1/𝑑
+𝑛
+log(1/𝛿)
+
+= 𝑂
+ 1
+𝑑√𝑛
+p
+log(1/𝛿)
+
+,
+for some absolute constant 𝐶.
+Combining the two cases.
+Together with the two results above we find for any training data point (𝑥, 𝑦) from task
+𝐾:
+𝑥⊤(
+𝐾
+Õ
+𝑗=1
+𝐴𝑗)𝑥=
+𝑦
+2𝑑2 ± 𝑂
+ 
+√
+𝐾
+𝑑2 poly log(𝑑) +
+√
+𝐾
+𝑑√𝑛
+p
+log(1/𝛿)
+!
+This concludes the calculations of the first term in Eq. 13.
+Now let us consider the noise term (denoted by N) in Eq. 13:
+𝑁=
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝜔𝑖(𝑧⊤
+𝑖𝑥)2.
+24
+
+note that 𝜔𝑖(𝑧⊤
+𝑖𝑥)2 has variance 𝑂(
+1
+poly log(𝑑) ), therefore by CLT
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝜔𝑖(𝑧⊤
+𝑖𝑥)2 →N (0,
+1
+poly log(𝑑) ).
+Overall, in the infinite width limit, for some 𝑥, 𝑦from the 𝐾th task’s empirical distribution
+Φ(𝑤𝐾𝑇, 𝑥) = 𝜂𝑇𝑥⊤(
+𝐾
+Õ
+𝑗=1
+𝐴𝑗)𝑥+ N (0, 1)
+= 𝜂𝑇
+ 
+𝑦𝑘
+𝑑2 ± 𝑂(
+√
+𝐾
+𝑑2 poly log(𝑑) +
+√
+𝐾
+𝑑√𝑛
+p
+log(1/𝛿))
+!
++ 𝑂
+ p
+log(1/𝛿)
+poly log(𝑑)
+!
+.
+In particular, if 𝑛= Ω(𝑑2𝐾log(1/𝛿)), then the error term is smaller than the signal 𝑦𝑘
+𝑑2 , and if 𝜂𝑇= Θ(𝑑2) then
+the output aligns with 𝑦. With a union bound over all training points (which introduces an additional factor log(𝑛)
+in the above bound), we find that the train error (%) is exactly zero for all 𝑘∈[𝑛], leading to the zero train error.
+C.2
+Characterizing forgetting for infinitely wide nets
+We can directly compute b𝐹𝑘(𝑤𝐾𝑇) by computing Φ(𝑤𝐾𝑇, 𝑥𝑘
+1) where 𝑥𝑘
+1 is a sample (first sample w.l.o.g) from the
+training data for task 𝑘where 𝑘< 𝐾. Recall,
+𝑤𝑖
+𝐾𝑇∼𝑧+ 𝜂𝑇
+√𝑚
+𝐾
+Õ
+𝑗=1
+𝐴𝑗𝜔𝑧, 𝐴𝑗:= 1
+𝑛
+𝑛
+Õ
+𝑣=1
+𝑦𝑗
+𝑣𝑥𝑗
+𝑣𝑥𝑣𝑗⊤
+note that the above is symmetric with respect to the task index therefore lim𝑚→∞Φ(𝑤𝐾𝑇, 𝑥𝑘
+1) = lim𝑚→∞Φ(𝑤𝐾𝑇, 𝑥𝐾
+1 )
+in distribution. and we have in the 𝑚→∞limit for 𝑥𝑘:= 𝑥1
+𝑘:
+Φ(𝑤𝐾𝑇, 𝑥𝑘) = 𝜂𝑇𝑥⊤
+𝑘(
+Õ
+𝑗
+𝐴𝑗)𝑥𝑘+ N (0,
+1
+poly log(𝑑) )
+(15)
+= 𝜂𝑇
+ 
+𝑦𝑘
+𝑑2 ± 𝑂
+ 
+√
+𝐾
+𝑑2 poly log(𝑑) +
+√
+𝐾
+𝑑√𝑛
+p
+log(1/𝛿)
+!!
++ 𝑂
+ p
+log(1/𝛿)
+poly log(𝑑)
+!
+.
+Therefore, again if 𝑛= Ω(𝑑2𝐾log(1/𝛿)), then the error term is smaller than the signal 𝑦𝑘
+𝑑2 , and if 𝜂𝑇= Θ(𝑑2) then
+the output aligns with 𝑦𝑘. With a union bound over all training points 𝑘∈[𝑛], we find that the training error is
+exactly zero for all tasks.
+Now to characterize forgetting, recall it is defined as
+| b𝐹𝑘(𝑤𝐾) −b𝐹𝑘(𝑤𝑘)| = |
+Õ
+𝑥𝑘
+𝜂𝑇𝑥⊤
+𝑘(
+𝐾
+Õ
+𝑗=𝑘+1
+𝐴𝑗)𝑥𝑘|
+(16)
+= 𝜂𝑇· 𝑂
+ 
+√
+𝐾−𝑘
+𝑑2 poly log(𝑑) +
+√
+𝐾−𝑘
+𝑑√𝑛
+p
+log(1/𝛿)
+!
+.
+where the calculations are the same as before except that the impact of initialization noise is present in both b𝐹𝑘(𝑤𝐾), b𝐹𝑘(𝑤𝑘)
+and thus it is canceled.
+In the above expression, if 𝑛= eΩ(𝑑2(𝐾−𝑘)) and 𝜂𝑇≍𝑑2, the increase in forgetting is 𝑜𝑑(1).
+C.3
+Finite-width error
+The calculations above hold for the infinitely-wide network. In this section, we derive the error due to finite width.
+Recall,
+Φ(𝑤, 𝑥) = Φ(𝑤0, 𝑥) +
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥⟩)⟨𝑥, 𝑤𝑖−𝑤𝑖
+0⟩+ 𝑂( ∥𝑤−𝑤0∥2
+√𝑚
+)
+25
+
+for the infinite width limit we had,
+¯𝑤𝑖
+1 = 𝑤𝑖
+0 + 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+¯𝑤𝑖
+𝑡= 𝑤𝑖
+0 + 𝜂𝑡
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+¯𝑤𝑖
+2𝑡= 𝑤𝑖
+0 + 𝜂𝑡
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗+ 𝜂𝑡
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤𝑖
+0, 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗,
+and similarly, all tasks’ updates were derived. Let Φ(·, ·) be the infinite-width and Φ𝑚(·, ·) be the finite-width for-
+mulations of the network output. Then, we are interested in bounding |Φ( ¯𝑤𝑡, 𝑥) −Φ𝑚(𝑤𝑡, 𝑥)| which can be written
+as:
+|Φ( ¯𝑤𝑡, 𝑥) −Φ𝑚(𝑤𝑡, 𝑥)| ≤|Φ(𝑧, 𝑥) −Φ𝑚(𝑤0, 𝑥)|
++
+ 1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖⟨𝑤𝑖
+0, 𝑥⟩⟨𝑥, 𝑤𝑖
+𝑡−𝑤𝑖
+0⟩−𝜂𝑡E𝑧[⟨𝑧, 𝑥⟩⟨𝑥, 𝐴1𝑧⟩]
+
++ 𝑂( ∥𝑤𝑡−𝑤0∥2
+√𝑚
+)
+≤𝑂( 1
+√𝑚+ ∥𝑤𝑡−𝑤0∥2
+√𝑚
+)
++
+ 1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖⟨𝑤𝑖
+0, 𝑥⟩⟨𝑥, 𝑤𝑖
+𝑡−𝑤𝑖
+0⟩−𝜂𝑡E𝑧[⟨𝑧, 𝑥⟩⟨𝑥, 𝐴1𝑧⟩]
+
+where we used the fact that by LLN:
+1
+√𝑚
+Í𝑚
+𝑖=1 𝑎𝑖⟨𝑤𝑖
+0, 𝑥⟩⟨𝑥, 𝑤𝑖
+𝑡−𝑤𝑖
+0⟩→𝜂𝑡E𝑧[⟨𝑧, 𝑥⟩⟨𝑥, 𝐴1𝑧⟩].
+Note that 𝑤𝑖
+𝑡−𝑤𝑖
+0 =
+𝜂
+√𝑚𝑛
+Í𝑡−1
+𝜏=0
+Í𝑛
+𝑗=1 𝑎𝑖⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩𝑥𝑗𝑦𝑗, therefore when 𝑚→∞:
+1
+√𝑚
+𝑚
+Õ
+𝑖=1
+𝑎𝑖⟨𝑤𝑖
+0, 𝑥⟩⟨𝑥, 𝑤𝑖
+𝑡−𝑤𝑖
+0⟩= 𝜂
+𝑛
+𝑡−1
+Õ
+𝜏=0
+𝑛
+Õ
+𝑗=1
+⟨𝑥, 𝑥𝑗𝑦𝑗⟩1
+𝑚
+𝑚
+Õ
+𝑖=1
+⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩
+→𝜂
+𝑛
+𝑡−1
+Õ
+𝜏=0
+𝑛
+Õ
+𝑗=1
+⟨𝑥, 𝑥𝑗𝑦𝑗⟩E[⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩]
+⟨𝑤𝑖
+0.𝑥⟩is Gaussian with variance ∥𝑥∥2 and ⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩is bounded by 𝐷𝑖
+𝜏∥𝑥𝑗∥where 𝐷𝑖
+𝜏:= ∥𝑤𝑖
+𝜏−𝑤𝑖
+0∥, therefore
+⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩is bounded by ∥𝑥∥∥𝑥𝑗∥𝐷𝑖
+𝜏= 𝑂(𝐷𝑖
+𝜏). and by Hoeffding’s concentration inequality:
+ 1
+𝑚
+𝑚
+Õ
+𝑖=1
+⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩−E[⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩]
+ = 𝑂( 𝐷𝑖
+𝜏
+√𝑚)
+and hence w.h.p,
+𝜂
+𝑛
+𝑡−1
+Õ
+𝜏=0
+𝑛
+Õ
+𝑗=1
+⟨𝑥, 𝑥𝑗𝑦𝑗⟩1
+𝑚
+𝑚
+Õ
+𝑖=1
+⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩−𝜂
+𝑛
+𝑡−1
+Õ
+𝜏=0
+𝑛
+Õ
+𝑗=1
+⟨𝑥, 𝑥𝑗𝑦𝑗⟩E[⟨𝑤𝑖
+0, 𝑥⟩⟨𝑤𝑖
+𝜏, 𝑥𝑗⟩]
+
+= 𝑂( 𝜂
+√𝑚
+Õ
+𝜏
+max
+𝑖
+𝐷𝑖
+𝜏)
+= e
+𝑂( 𝜂
+√𝑚
+Õ
+𝜏
+𝐷1
+𝜏) = e
+𝑂( 𝜂𝑡𝐷1
+𝑡
+√𝑚)
+26
+
+where we used again 𝑥⊤𝑥𝑗≲1, the fact that due to symmetry we expect 𝐷𝑖
+𝜏to be of the same order for different 𝑖s
+and also 𝐷𝑖
+𝜏< 𝐷𝑖
+𝑡for all 𝜏≤𝑡. Putting these back to the inequality in the last page for the finite-width error of the
+network’s output:
+|Φ( ¯𝑤𝑡, 𝑥) −Φ𝑚(𝑤𝑡, 𝑥)| = e
+𝑂
+ 
+1
+√𝑚+ ∥𝑤𝑡−𝑤0∥2
+√𝑚
++ 𝜂𝑡∥𝑤1
+𝑡−𝑤1
+0∥
+√𝑚
+!
+.
+similarly
+|Φ( ¯𝑤𝐾𝑇, 𝑥) −Φ𝑚(𝑤𝐾𝑇, 𝑥)| = e
+𝑂
+ 
+1
+√𝑚+ ∥𝑤𝐾𝑇−𝑤0∥2
+√𝑚
++ 𝜂𝐾𝑇∥𝑤1
+𝐾𝑇−𝑤1
+0∥
+√𝑚
+!
+.
+(17)
+C.3.1
+Bounding the weights distance from initialization
+In order to complete the proof, we need to bound the distance from initialization i.e., ∥𝑤𝑡−𝑤0∥and ∥𝑤𝑖
+𝑡−𝑤𝑖
+0∥for
+every 𝑖and 𝑡. We do this by an iterative argument as follows. Note that for the XOR cluster dataset ∥𝑥∥= Θ𝑑(1).
+Then, by recalling the updates of GD, we find that,
+∥𝑤𝑖
+1 −𝑤𝑖
+0∥≤
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥≲
+𝜂
+√𝑚
+∥𝑤𝑖
+2 −𝑤𝑖
+0∥≤
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥+
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+1, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥
+≤
+2𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥+
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+1 −𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥
+≲2𝜂
+√𝑚+ 𝜂2
+𝑚= 𝑂( 2𝜂
+√𝑚)
+∥𝑤𝑖
+3 −𝑤𝑖
+0∥≤
+3𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥+
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+1 −𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥
++
+𝜂
+√𝑚𝑛
+𝑛
+Õ
+𝑖=1
+|⟨𝑤𝑖
+2 −𝑤𝑖
+0, 𝑥1
+𝑗⟩|∥𝑥1
+𝑗∥
+≲3𝜂
+√𝑚+ ( 𝜂
+√𝑚)2 + ( 𝜂
+√𝑚)3 = 𝑂( 3𝜂
+√𝑚)
+Therefore, ∥𝑤𝑖
+𝑡−𝑤𝑖
+0∥= 𝑂( 𝑡𝜂
+√𝑚) when 𝜂= 𝑂𝑚(1). We also have
+∥𝑤𝑡−𝑤0∥= 𝑂(𝑡𝜂).
+By Eq. 17:
+|Φ( ¯𝑤𝐾𝑇, 𝑥) −Φ𝑚(𝑤𝐾𝑇, 𝑥)| = e
+𝑂
+ 1
+√𝑚+ 𝜂2𝐾2𝑇2
+√𝑚
++ 𝜂2𝐾2𝑇2
+𝑚
+
+= e
+𝑂( 𝜂2𝐾2𝑇2
+√𝑚
+)
+(18)
+Recall that we had chosen 𝜂𝑇= Θ(𝑑2) to guarantee sign(Φ( ¯𝑤𝐾𝑇, 𝑥𝑘)) = 𝑦𝑘and |Φ( ¯𝑤𝐾𝑇, 𝑥𝑘)| ≳1, therefore if
+𝑚= eΩ(𝑑8𝐾4),
+the finite width error is small enough to conclude sign(Φ𝑚(𝑤𝐾𝑇, 𝑥𝐾)) = 𝑦𝐾for any 𝑥𝐾, 𝑦𝐾from the 𝐾th task data
+distribution. Similarly, we have sign(Φ𝑚(𝑤𝐾𝑇, 𝑥𝑘)) = 𝑦𝑘for any 𝑥𝑘, 𝑦𝑘from the 𝑘th task’s data distribution because
+the error terms defined above are independent of the data distribution. Thus, the characterization of forgetting we
+derived in Eq. 15 is accurate for the same width.
+27
+
+Finally, we note that with the given assumptions on 𝑛,𝑇, 𝑚, 𝐾it holds that Φ𝑚(𝑤𝐾𝑇, 𝑥) is always bounded by 1.
+To see this, recall by Eq. 15 and Eq. 18, the network output for any training point 𝑥is at most hte following:
+Φ𝑚(𝑤𝐾𝑇, 𝑥) ≤𝜂𝑇
+ 
+𝑦𝑘
+𝑑2 ± 𝑂
+ 
+√
+𝐾
+𝑑2 poly log(𝑑) +
+√
+𝐾
+𝑑√𝑛
+p
+log(1/𝛿)
+!!
++ 𝑂
+ p
+log(1/𝛿)
+poly log(𝑑)
+!
++ e
+𝑂
+𝜂2𝐾2𝑇2
+√𝑚
+
+Recall 𝐾= e
+𝑂𝑑(1), with the choice of 𝑚, 𝑛in the statement of the theorems, it holds with high probability that
+Φ𝑚(𝑤𝐾𝑇, 𝑥) ≤1. Thus, the network output always lies in the linear part of the hinge-loss for any 𝜂𝑇≤𝑑2 even at
+initialization where 𝑇= 0. Therefore, our assumption on the linearity of loss is valid throughout training.
+D
+Regularized continual learning: Proof of Proposition 2.7
+Proposition D.1 (Restatement of Prop. 2.7). Consider the regularized continual learning problem Eq.5 with same
+setup as Theorem 2.1 with 𝑚→∞. The iterates of this algorithm with step-size 𝜂are equivalent to unregularized
+continual learning with step-size e𝜂𝑇where e𝜂𝑇= 𝛼𝑇𝜂/𝑇and 𝛼𝑇= 1−(1−𝜂𝜆)𝑇
+𝜂𝜆
+.
+Proof. In regularized continual learning, the objective at task 𝑘≥2 is:
+min
+𝑤
+b𝐹𝑘(𝑤) + 𝜆
+2 ∥𝑤−𝑤𝑘−1∥2
+The GD update rule is the following:
+𝑤(𝑡+1)
+𝑘
+= 𝑤(𝑡)
+𝑘
+−𝜂∇b𝐹𝑘(𝑤(𝑡)
+𝑘) −𝜂𝜆(𝑤(𝑡)
+𝑘
+−𝑤𝑘−1)
+= (1 −𝜂𝜆)𝑤(𝑡)
+𝑘
+−𝜂∇b𝐹𝑘(𝑤𝑡
+𝑘) + 𝜂𝜆𝑤𝑘−1.
+For the first task, there is no regularization, therefore for neuron 𝑖(we drop 𝑖here for ease of notation):
+𝑤(1)
+1
+= 𝑤(0)
+1
++ 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+𝑤1 := 𝑤(0)
+2
+= 𝑤(𝑇)
+1
+= 𝑤(0)
+1
++ 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗
+For the second task, due to the regularization term 𝜆∥𝑤−𝑤1∥2/2, the first GD update takes the following shape:
+𝑤(1)
+2
+= (1 −𝜂𝜆)𝑤(0)
+2
++ 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗+ 𝜂𝜆𝑤1
+= 𝑤(0)
+2
++ 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗.
+Hence, the first step is identical to the unregularized update rule. For the second step,
+𝑤(2)
+2
+= (1 −𝜂𝜆)𝑤(1)
+2
++ 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗+ 𝜂𝜆𝑤1
+= 𝑤(0)
+2
++ ((1 −𝜂𝜆) + 1) 𝜂
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗.
+28
+
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+2.00
+λ
+10
+−2
+10
+−1
+10
+0
+α
+T
+/T
+0
+50
+100
+150
+200
+250
+300
+350
+400
+t
+0
+50
+100
+150
+200
+250
+300
+350
+α
+t
+λ
+=
+0.00025
+λ
+=
+0.0025
+λ
+=
+0.025
+λ
+=
+0.25
+Figure 7: Effective step-size for regularized continual learning 𝛼𝑡in Prop. 2.7 based on regularization parameter 𝜆
+(Left) and number of GD steps 𝑡(Right).
+Similarly,
+𝑤(3)
+2
+= (1 −𝜂𝜆)𝑤(2)
+2
++ 𝜂1
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗+ 𝜂𝜆𝑤1
+= 𝑤(0)
+2
++ ((1 −𝜂𝜆)((1 −𝜂𝜆) + 1) + 1) 𝜂
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗.
+Therefore for 𝑡≤𝑇:
+𝑤(𝑡)
+2
+= 𝑤(0)
+2
++ 𝛼𝑡
+𝜂
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗.
+The same steps can be repeated for every task to obtain:
+𝑤(𝑡)
+𝑘
+= 𝑤(0)
+𝑘
++ 𝛼𝑡
+𝜂
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥2
+𝑗⟩)𝑥2
+𝑗𝑦2
+𝑗,
+which leads to the following expression for any 𝑘≥2 :
+𝑤𝑘:= 𝑤(0)
+1
++ 𝜂𝑇
+√𝑚
+1
+𝑛
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥1
+𝑗⟩)𝑥1
+𝑗𝑦1
+𝑗+ 𝛼𝑇
+𝜂
+√𝑚
+1
+𝑛
+𝑘
+Õ
+𝜅=2
+𝑛
+Õ
+𝑗=1
+𝑎𝑖𝜙′(⟨𝑤(0)
+1 , 𝑥𝜅
+𝑗⟩)𝑥𝜅
+𝑗𝑦𝜅
+𝑗
+where
+𝛼1 = 1, 𝛼𝑡= (1 −𝜂𝜆)𝛼𝑡−1 + 1 for 𝑡> 1
+We can find the following closed form expression to the equations above: 𝛼𝑡=
+1−(1−𝜂𝜆)𝑡
+𝜂𝜆
+. This completes the
+proof.
+□
+With an accurate approximation, we have
+𝛼𝑡≈1 −𝑒−𝜂𝜆𝑡
+𝜂𝜆
+.
+For small 𝑡, we have 𝛼𝑡≈𝑡, whereas for large 𝑡≈𝑇, assuming 𝜆= 𝑐/𝑇: we have 𝛼𝑡= 𝑇(1−𝑒−𝜂𝑐)
+𝜂𝑐
+. Fig. 7 illustrates
+𝛼𝑇/𝑇versus regularization parameter 𝜆and 𝛼𝑡based on 𝑡for different regularization parameters. Note that larger
+values of 𝜆correspond to smaller values of 𝛼𝑡leading to weights moving shorter distances from their initialization
+points. As 𝜆→0, we have 𝛼𝑇/𝑇→1, as the step-size for regularized problem converges to the step-size for
+unregularized one.
+29
+
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+𝑛= 5000
+0
+100
+200
+300
+400
+500
+600
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+est Error
+T
+ask 1
+T
+ask 2
+T
+ask 3
+𝑛= 8000
+Figure 8: Classification test error for each task vs iterations for the XOR cluster with 𝐾= 3 tasks trained on a
+quadratic network with 𝑛= 5000(left) and 𝑛= 8000(right) training samples per task.
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=500
+T
+ask 2
+n=400
+T
+ask 3
+n=400
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=500
+T
+ask 2
+n=800
+T
+ask 3
+n=800
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=500
+T
+ask 2
+n=1000
+T
+ask 3
+n=1000
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=500
+T
+ask 2
+n=1500
+T
+ask 3
+n=1500
+0
+200
+400
+600
+800
+1000
+1200
+t
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+T
+rain Error
+T
+ask 1
+n=500
+T
+ask 2
+n=3000
+T
+ask 3
+n=3000
+Figure 9: Repeating the experiment of Fig. 3 but with ReLU activation and logistic loss.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Task
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+T
+rain Loss
+n=200
+n=400
+n=800
+n=1600
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+Task
+0.000
+0.025
+0.050
+0.075
+0.100
+0.125
+0.150
+0.175
+0.200
+T
+rain Loss
+n=300
+n=1000
+n=3000
+Figure 10: Train loss on task 1 as a function of the task index (i.e., b𝐹1(𝑤𝑘) vs. 𝑘) for 𝐾= 15 and 𝐾= 20 tasks with
+𝑛samples per task for the XOR cluster dataset. The left plot uses GELU activation with logistic loss, while the right
+plot uses quadratic activation with hinge loss.
+1
+2
+3
+4
+5
+6
+Task(k)
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+T
+rain-time Forgetting 
+ (̂F
+1
+(w
+k
+)
+−̂
+F
+1
+(w
+1
+))
+m
+=
+2
+×
+10
+3
+m
+=
+5
+×
+10
+3
+m
+=
+1
+×
+10
+4
+m
+=
+3
+×
+10
+4
+Figure 11: Train-time forgetting for task 1 vs task for 𝐾= 6 total tasks of the XOR cluster dataset for different
+over-parameterization choices. We use GELU activations with logistic loss and train for 𝑇= 103 iterations per task.
+The same trend observed in Fig. 5 appears here as well.
+30
+
+0
+20
+40
+60
+80
+100
+120
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+T
+rain-time Forgetting
+ ̂F
+1
+(w
+2
+)
+−̂
+F
+1
+(w
+1
+)
+n=10
+n=20
+n=30
+n=50
+n=100
+n=250
+n=500
+n=1000
+0
+20
+40
+60
+80
+100
+120
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+T
+rain-time Forgetting
+ ̂F
+1
+(w
+2
+)
+−̂
+F
+1
+(w
+1
+)
+n=20
+n=50
+n=200
+n=500
+n=1000
+n=2000
+Figure 12: Train-time forgetting for task 1 based on 𝑡for 𝐾= 2 tasks with attention-based transformers with large
+neural net for the encoder and decoder parts(Left plot), and with small neural net(Right plot). Here we consider a
+tokenized multi-task Gaussian-mixture data where the goal is to find the binary label used for each context window.
+We fix 𝑛= 50 for the first task and change 𝑛for the second task. Note that our insights from previous theoretical and
+empirical results partially hold for this setting, especially for the transformer with smaller FFN layer.
+E
+Additional Experiments and Implementation Details
+Experiments with transformers and GMM data.
+We also conduct experiments on attention-based architecture
+in Fig. 12. We plot the train-time forgetting for task 1 for 𝐾= 2 overall tasks for a transformer with feedforward
+neural networks in both the encoder and the decoder parts where we consider 𝑚𝑒𝑛𝑐𝑜𝑑𝑒𝑟= 60, 𝑚𝑑𝑒𝑐𝑜𝑑𝑒𝑟= 30 for
+the left plot and 𝑚𝑒𝑛𝑐𝑜𝑑𝑒𝑟= 𝑚𝑑𝑒𝑐𝑜𝑑𝑒𝑟= 10 for the right plot. Results shown are averaged over 10 independent
+experiments. We remark that for the transformer with smaller size, we observe the similar behavior we observed for
+neural network experiments, i.e, increasing the sample-size for the second task can noticeably help with train-time
+forgetting of the first task. On the other hand, for the larger network, the behavior is more complex: increasing 𝑛
+can help up to a certain threshold (𝑛≈250), while above this threshold increasing 𝑛hurts continual learning. While
+we hypothesize this behavior is due to the complex landscape of larger networks, a more thorough investigation is
+needed.
+Implementation Details for all experiments.
+We include the actual values for different problem parameters used
+in the numerical experiments:
+Fig. 1: 𝑛= 2500 (left), 𝑛= 5000(right), for both plots we set 𝑑= 50, 𝑚= 1000, 𝜂= 2,𝑇= 200, 𝜎= 0.1/
+√
+𝑑
+and use linear loss and quadratic activation.
+Fig. 2: 𝑑= 50, 𝑚= 1000, 𝜂= 2,𝑇= 200, 𝜎= 0.1/
+√
+𝑑.
+Fig. 3: GELU activation and logistic loss. 𝑑= 50, 𝑚= 400, 𝜂= 3,𝑇= 400, 𝜎= 0.1/
+√
+𝑑.
+Fig. 4: GELU activation, logisitc loss for both plots. We set 𝑑= 50, 𝑚= 2000, 𝜂= 30,𝑇= 2000, 𝜎= 0.2/
+√
+𝑑.
+Right: 𝑛= 2000,𝑇= 4000.
+Fig. 5: We set 𝑛= 5000, 𝑑= 75, 𝜂= 5,𝑇= 200, 𝜎= 0.15/
+√
+𝑑and vary 𝑚= 100, 300, 1000, 3000, 6000, 10000.
+Fig. 6: Left and middle: 𝑛= 50 samples for the first task, 𝑛varying for the second task, GELU activation, Hinge
+loss, 𝑑= 784, 𝑚= 500. For the left plot 𝜂= 0.0003,𝑇= 50 and for the right 𝜂= 0.001,𝑇= 200. The results are
+averages over 15 experiments.
+Right: 𝑇= 2000, 𝜂= 0.05, 𝑚= 2000, 𝐾= 4, ReLU activation and Logistic loss,
+Tasks are chosen from labels 1-4, 7-10 from the FMNIST dataset. Dataset is normalized to have ℓ2-norm at most 1.
+Fig. 11: GELU activation, Logistic loss, 𝑑= 50, 𝑛= 200, 𝜂= 20,𝑇= 1000, 𝜎= 0.2/
+√
+𝑑
+31
+
+Fig. 8: 𝑛= 5000(left),8000(right),𝑑= 75, 𝑚= 1000, 𝜂= 5,𝑇= 200, 𝜎= 0.15/
+√
+𝑑, linear loss, quadratic
+activation
+Fig.9: Using the same setup as Fig. 3 but with ReLU activation and logistic loss. 𝑑= 50, 𝑚= 1000, 𝜂= 0.3,𝑇=
+400, 𝜎= 0.1/
+√
+𝑑
+Fig. 10: GELU activation and logisitc loss, 𝜂= 30, 𝑚= 400 for the left plot, Quadratic activation and Hinge
+loss, 𝑚= 1000, 𝜂= 4 for the right plot. For both plots we set, 𝑑= 50,𝑇= 400, 𝜎= 0.1/
+√
+𝑑.
+Fig. 12: We use hinge-loss, ReLU activation, and the transformer is one-layer with one head, context length =
+10, the hidden-layer size of the feedforward neural is 60 and for the decoder is 30. In the right plot, both hidden-layer
+sizes are reduced to 10 𝜎= 0.1/
+√
+𝑑, 𝜇𝑘= e𝑘/
+√
+𝑑for 𝑘∈[2], 𝜂= 0.01.
+32

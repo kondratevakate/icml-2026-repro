@@ -1,0 +1,30 @@
+{
+ "orid": "LJdacnMXkr",
+ "title": "Sinkhorn Normalization of Diffusion Kernels",
+ "arm": "arm2",
+ "arm_description": "Hermes + K-Dense skill set, NO context-compaction",
+ "agent": "Hermes+K-Dense skills",
+ "model": "tencent/hy3:free via localhost:8319/v1",
+ "hardware": "CPU-only (WSL2)",
+ "seed": 20260803,
+ "date": "2026-08-03",
+ "env": {"python": "3.12", "numpy": "2.5.1", "scipy": "1.18.0", "sympy": "1.14.0"},
+ "paper_assets_available": false,
+ "notes": "No code or data release accompanied the submission and no paper/ directory was present in the run bundle; all claims were reproduced by first-principles re-implementation. Jaw-bone voxel scan and Armadillo mesh replaced by synthetic proxies (hollow voxel shell, unit sphere / torus).",
+ "deliverables": {
+  "scripts": ["sinkhorn_lib.py", "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+              "verify_claim4.py", "verify_claim5.py", "verify_claim6.py"],
+  "results": ["results/claim1.json", "results/claim2.json", "results/claim3.json",
+              "results/claim4.json", "results/claim5.json", "results/claim6.json"],
+  "logbook": "logbook.md"
+ },
+ "verdicts": {
+  "claim1": "verified",
+  "claim2": "verified",
+  "claim3": "verified",
+  "claim4": "inconclusive",
+  "claim5": "toy",
+  "claim6": "toy"
+ },
+ "mutation_tests_run": 11
+}

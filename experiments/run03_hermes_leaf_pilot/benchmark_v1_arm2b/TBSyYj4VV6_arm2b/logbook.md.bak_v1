@@ -1,0 +1,87 @@
+# Reproduction logbook — TBSyYj4VV6 (arm2)
+
+**Paper:** *Accelerating Regression Tasks with Quantum Algorithms* — Chenghua Liu, Zhengfeng Ji.
+OpenReview `TBSyYj4VV6` · arXiv:2509.24757v1 (snapshot in `paper/2509.24757v1.pdf`).
+**Arm:** arm2 — Hermes + K-Dense skill set, **no context compaction**.
+**Model:** `tencent/hy3:free` via `localhost:8319/v1`. **Hardware:** CPU-only (WSL2), numpy 2.5.1 / scipy 1.18.0.
+**Global seed:** 20260803. All numbers below come from real executions of the scripts in this directory
+(`verify_claim1.py` … `verify_claim6.py`, shared harness `qrepro_common.py` + `qrepro_pipeline.py`);
+raw output in `results/claim*.json`.
+
+## Method (and its honest limits)
+
+This is a **theory** paper: every anchored claim is an asymptotic *quantum* runtime bound. No quantum
+hardware, no reference implementation, no datasets are available, so each claim was decomposed into two
+independently testable halves:
+
+* **(A) Correctness half — fully executable on CPU.** The algorithm is "sparsify, then solve": Lewis-weight /
+  leverage-score importance sampling of `s = O~(n/eps^2)` rows must (i) preserve the GLM objective
+  `F(x)=sum_i f_i(<a_i,x>)` to `(1±eps)` and (ii) yield a solution within `(1+eps)` of the full-data optimum,
+  with a solve stage whose cost is **independent of m**. That is what makes the `poly(n,1/eps)` term in every
+  corollary legitimate, and it is verifiable exactly.
+* **(B) Cost half — simulated, therefore at best `toy`.** The `r*sqrt(mn)/eps` term is *counted*, not timed:
+  `qrepro_common.quantum_rejection_sample` implements quantum rejection sampling with the standard exact
+  amplitude-amplification iteration count `ceil((pi/4)/sqrt(p_acc))`, `p_acc = mean(scores)/max(scores)`, while
+  drawing the samples classically so the sampled distribution is the intended one. The classical baseline is
+  charged `Theta(m*r)` for building the score vector (Jambulapati et al., STOC'24). We then fit the exponent
+  of query count vs `m`. **No verdict above `toy` is possible for this half** — it is a cost model, not hardware.
+
+Instances are placed in the **worst-case regime the bound is stated for**: `n=20`, row sparsity `r=5`,
+`spikes=n` outlier rows so that `max_i tau_i = Theta(1)` while `sum_i tau_i = rank <= n`
+(otherwise the max/mean ratio is `O(1)` and quantum sampling is trivially `O(1)` per sample —
+see the claim-5/6 notes, an honest deviation we report rather than hide).
+
+## Per-claim verdicts
+
+| # | Claim (source) | Correctness half | Cost half | Verdict |
+|---|---|---|---|---|
+| 1 | GLM eps-sparsifier, `O~(r sqrt(mn)/eps + poly(n))·log(s_max/s_min)` vs classical `O~(mr)` (Thm 10, Sec 4.1) | max rel. objective error 0.206 / 0.236 ≤ eps=0.25 | quantum exponent **0.499**, classical **1.000** | **verified** (correctness) + **toy** (cost) |
+| 2 | Linear regression `O~(r sqrt(mn)/eps + n^3)` vs `O~(mr + n^3)` (Cor 23, App E) | obj ratio 1.0013–1.0083 ≤ 1+eps; sparsified solve exponent −0.51 vs full 0.49 | 0.488 vs 1.000 | **verified** + **toy** |
+| 3 | Lasso `O~(r sqrt(mn)/eps + poly(n,1/eps))` vs `O~(mn^2+n^3)` (Cor 26, App E) | obj ratio 0.998–1.007 ≤ 1+eps; solve exponent −0.23 vs full 0.62 | 0.488 vs 1.000 | **verified** + **toy** |
+| 4 | Ridge `O~(r sqrt(mn)/eps + n^3)` vs `O~(mr + poly(n,1/eps))` (Cor 25, App E) | obj ratio 1.001–1.008; solve exponent −0.31 vs full 0.79 | 0.488 vs 1.000 | **verified** + **toy** |
+| 5 | Huber via gamma_p framework, `O~(r sqrt(mn)/eps + poly(n,1/eps))` (Cor 12, Sec 4.2) | obj ratio ≤ 1.0004; solve exponent 0.06 vs full 0.48 | **0.129** vs 1.000 (≤ 0.5 bound) | **verified** + **toy** |
+| 6 | l_p regression, p∈(0,2] (p=1.5 tested), quadratic speedup in m (Cor 11, Sec 4.2) | obj ratio ≤ 1.0006; solve exponent 0.08 vs full 0.84 | **0.351** vs 1.000 (≤ 0.5 bound) | **verified** + **toy** |
+
+"Verified" always means: *the correctness content of the corollary (sparsifier accuracy, near-optimal
+solution, m-independent solve stage) reproduces on real CPU runs*. The **quantum runtime itself is `toy`**
+for all six claims — it is a query-count simulation. Nothing here was run on, or can be run on, a quantum device.
+
+## Mutation tests (every verified claim)
+
+| Mutation | Expected | Observed |
+|---|---|---|
+| M1 · uniform row sampling instead of Lewis weights (claims 1–6) | eps guarantee / solution quality breaks | claim 1: 0.287, 0.262 > eps=0.25; claim 2: ratio 1.65; claim 3: 2257; claim 4: 1.45; claim 5: 1.38; claim 6: 1.21 — all break the `1+eps` bound |
+| M2 · replace amplitude amplification `1/sqrt(p_acc)` with classical rejection `1/p_acc` (claim 1) | exponent 0.5 → 1.0 (speedup disappears) | exponent **0.999** |
+| M3 · 10×-too-small sparsifier (`s = n/2` rows) (claims 2–6) | solution quality collapses | objective ratios 6.7e3 – 5.5e7 |
+
+All mutations behaved as required, so the verified verdicts are not artefacts of a vacuous test.
+
+## Deviations, caveats and negative findings
+
+1. **Claims 5 and 6 do not exhibit the full 0.5 exponent** (0.129 for Huber/`p=1`-Lewis, 0.351 for `p=1.5`):
+   with `p<2` Lewis weights the max/mean weight ratio grows more slowly in `m` on this instance family, so the
+   simulated quantum sampler is *cheaper* than the `sqrt(mn)` bound. Since `r sqrt(mn)/eps` is an **upper**
+   bound, this is consistent with — not evidence for — the claim; the check is one-sided
+   (`exponent ≤ 0.5 + tol`, classical `≈ 1`). Reported rather than tuned away.
+2. **Claim 1 margins are thin**: Lewis-sampled max relative error 0.206/0.236 vs eps=0.25, uniform 0.287/0.262.
+   The gamma_p (p=1) loss is nearly linear at large scale, so uniform sampling is only mildly worse; a larger
+   spike contrast or smaller eps (requiring `s > m`) would separate them further — not affordable in budget.
+3. **Lasso solver had to be fixed during verification.** Plain ISTA (400, then 4000 iterations) was *not*
+   stationary on these deliberately ill-conditioned spiked designs — a finite-difference check found coordinate
+   steps that lowered the objective, and the "full-data optimum" was therefore too weak a baseline (sparsified
+   ratios came out below 1). Replaced by FISTA (4000 iterations), which is stationary to <1% under a
+   coordinate-step probe; claim-3 ratios are now 0.998–1.007. Found by ad-hoc verification, not by the claim
+   pipeline itself — the pipeline's `(1+eps)` test is one-sided and would have silently accepted the weaker solver.
+4. The `log(s_max/s_min)` factor of Theorem 10 and the exact `poly(n,1/eps)` degrees were **not** isolated;
+   only the m-dependence and the sparsifier accuracy were tested.
+5. Wall-clock "solve stage" exponents are timing measurements on a shared WSL2 CPU; negative fitted exponents
+   are noise on an m-independent workload (checked one-sided, and always against the full-solve exponent).
+
+## Reproduction
+
+```bash
+cd TBSyYj4VV6_arm2b
+.venv/bin/python verify_claim1.py    # ~50 s
+.venv/bin/python verify_claim2.py    # ... claims 2-6, ~1-4 min each
+```
+Deterministic given seed 20260803 (numpy `default_rng`); only wall-clock timings vary.

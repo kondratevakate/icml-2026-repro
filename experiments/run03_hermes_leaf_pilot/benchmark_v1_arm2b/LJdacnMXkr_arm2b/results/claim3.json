@@ -1,0 +1,386 @@
+{
+ "claim": 3,
+ "seed": 20260803,
+ "source": "Section 4/5 (empirical convergence)",
+ "tolerance": 0.001,
+ "configs": [
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.3,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0005911755394387708
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.3,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 11,
+   "final_err": 0.0005489622862252312
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.5,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0009550000226216104
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.5,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009744084566660209
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.8,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0007884036279595108
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 0.8,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009526798585031104
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 1.2,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 9,
+   "final_err": 0.0005941421141592018
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 1.2,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009480286013998821
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 2.0,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 9,
+   "final_err": 0.0009255906724383589
+  },
+  {
+   "dim": 2,
+   "kernel": "gaussian",
+   "eps": 2.0,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009884793648406369
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.3,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.00048144721461840234
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.3,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009248489697881023
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.5,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0006441289132306238
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.5,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.000905806452234773
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.8,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.00048078241234084107
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 0.8,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009107467945285733
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 1.2,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0008610706986975636
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 1.2,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 11,
+   "final_err": 0.0005316467735432098
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 2.0,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 9,
+   "final_err": 0.0005316691136521001
+  },
+  {
+   "dim": 2,
+   "kernel": "exponential",
+   "eps": 2.0,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009848448479094795
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.3,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0006822488631401669
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.3,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.000777725049731259
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.5,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0008489401294629051
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.5,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0008528124624326155
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.8,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0006227439863721873
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 0.8,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009588997094845988
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 1.2,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0007079575257957771
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 1.2,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 11,
+   "final_err": 0.0004954218377437615
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 2.0,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 9,
+   "final_err": 0.0008503567407047719
+  },
+  {
+   "dim": 3,
+   "kernel": "gaussian",
+   "eps": 2.0,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 11,
+   "final_err": 0.0005357623796384292
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.3,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 6,
+   "final_err": 0.0008028228127017201
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.3,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0005264754800677306
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.5,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 7,
+   "final_err": 0.0004679422356032026
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.5,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0008646051002995254
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.8,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0004486611148603048
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 0.8,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009713771300052863
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 1.2,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 8,
+   "final_err": 0.0008695141738708223
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 1.2,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.0009653643187913051
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 2.0,
+   "mass": "uniform",
+   "n": 200,
+   "iters": 9,
+   "final_err": 0.000737157405075406
+  },
+  {
+   "dim": 3,
+   "kernel": "exponential",
+   "eps": 2.0,
+   "mass": "nonuniform",
+   "n": 200,
+   "iters": 10,
+   "final_err": 0.000977908791672944
+  }
+ ],
+ "n_configs": 40,
+ "iters_min": 6,
+ "iters_max": 11,
+ "iters_median": 9.5,
+ "iters_mean": 9.0,
+ "frac_within_5_to_10": 0.9,
+ "frac_at_most_10": 0.9,
+ "mutation_clustered_tiny_eps": {
+  "iters": 9,
+  "final_err": 0.0007195675571759486
+ },
+ "mutation_extreme_mass_range": {
+  "iters": 14,
+  "final_err": 0.0008003511748319928
+ },
+ "mutations_increase_iterations": true,
+ "verdict": "verified",
+ "note": "Paper's '5-10 iterations' is an empirical claim without released code or the paper's exact datasets; reproduced on synthetic point clouds spanning kernel type, dimension, bandwidth and mass profile."
+}

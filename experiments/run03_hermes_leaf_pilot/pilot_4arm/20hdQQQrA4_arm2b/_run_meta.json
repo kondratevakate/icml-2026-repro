@@ -1,0 +1,22 @@
+{
+  "orid": "20hdQQQrA4",
+  "paper_title": "CAffNet: Hard Constraint-Affine Neural Networks",
+  "arm": "arm2",
+  "arm_variant": "arm2b",
+  "agent": "Hermes + K-Dense skills",
+  "skills_used": ["paper-claim-reproduction"],
+  "model": "tencent/hy3:free",
+  "endpoint": "http://localhost:8319/v1",
+  "hardware": "CPU only (WSL2), torch 2.13.0+cpu, numpy 2.5.1",
+  "context_compaction": true,
+  "compaction_file": "COMPACTION.md",
+  "claims_attempted": [1, 2, 3, 4, 5],
+  "deliverables": [
+    "plan.md", "notes_paper.md", "caffnet_core.py",
+    "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "verify_claim5.py",
+    "results/claim1.json", "results/claim2.json", "results/claim3.json",
+    "results/claim4.json", "results/claim5.json",
+    "logbook.md", "check_reproducibility.py", "COMPACTION.md"
+  ]
+}

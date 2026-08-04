@@ -1,0 +1,8 @@
+main n 3 eps 0.3 alg 0.5986 ref 0.5986 gap 0.0 se 0.00097 ok True
+main n 3 eps 0.2 alg 0.5986 ref 0.5986 gap 0.0 se 0.00097 ok True
+half_trace_budget n 3 eps 0.2 alg 0.4233 ref 0.5986 gap 0.1753 se 0.00097 ok True
+main n 4 eps 0.3 alg 0.5945 ref 0.5991 gap 0.0045 se 0.00097 ok True
+main n 4 eps 0.2 alg 0.5945 ref 0.5991 gap 0.0045 se 0.00097 ok True
+half_trace_budget n 4 eps 0.2 alg 0.4236 ref 0.5991 gap 0.1755 se 0.00097 ok True
+verdict inconclusive 3849.6 s
+claim2 exit=0 at Mon Aug  3 07:14:30 +04 2026

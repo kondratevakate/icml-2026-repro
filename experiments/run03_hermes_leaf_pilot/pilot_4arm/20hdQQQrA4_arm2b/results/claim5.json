@@ -1,0 +1,130 @@
+{
+  "claim": 5,
+  "source": "Section 4.3 + Appendix D.3 (Fig 6/7, Table 4)",
+  "command": "./.venv/bin/python verify_claim5.py --epochs 8 --ntrain 12 --seeds 3",
+  "epochs": 8,
+  "ntrain": 12,
+  "seeds": 3,
+  "n_gammas": 91,
+  "m_constraints": 13,
+  "n_out": 2,
+  "hardnet_not_reproduced_reason": "HardNet's projection needs A(x) with full row rank; here A(x) is 13x2 (rank 2 << 13), so the HardNet formula is undefined on this problem.",
+  "runs": [
+    {
+      "method": "NN-soft",
+      "seed": 0,
+      "n_eval_states": 49,
+      "collisions": 24,
+      "collision_rate": 0.4897959232330322,
+      "control_violations": 0,
+      "arrived_within_0.5m": 49,
+      "infeasible_steps": 0,
+      "final_cost": 11861639.289620254
+    },
+    {
+      "method": "NN-soft",
+      "seed": 1,
+      "n_eval_states": 49,
+      "collisions": 19,
+      "collision_rate": 0.3877550959587097,
+      "control_violations": 26,
+      "arrived_within_0.5m": 49,
+      "infeasible_steps": 0,
+      "final_cost": 9539934.002606027
+    },
+    {
+      "method": "NN-soft",
+      "seed": 2,
+      "n_eval_states": 49,
+      "collisions": 18,
+      "collision_rate": 0.36734694242477417,
+      "control_violations": 46,
+      "arrived_within_0.5m": 45,
+      "infeasible_steps": 0,
+      "final_cost": 33901404.85941248
+    },
+    {
+      "method": "CAffNet-FF",
+      "seed": 0,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 1,
+      "arrived_within_0.5m": 15,
+      "infeasible_steps": 4,
+      "final_cost": 237110043.94238225
+    },
+    {
+      "method": "CAffNet-FF",
+      "seed": 1,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 0,
+      "arrived_within_0.5m": 16,
+      "infeasible_steps": 4,
+      "final_cost": 244917515.20473218
+    },
+    {
+      "method": "CAffNet-FF",
+      "seed": 2,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 0,
+      "arrived_within_0.5m": 16,
+      "infeasible_steps": 4,
+      "final_cost": 235923118.29890132
+    },
+    {
+      "method": "CAffNet-FF-aposteriori",
+      "seed": 0,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 1,
+      "arrived_within_0.5m": 8,
+      "infeasible_steps": 0,
+      "final_cost": 243248810.67481437
+    },
+    {
+      "method": "CAffNet-FF-aposteriori",
+      "seed": 1,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 0,
+      "arrived_within_0.5m": 16,
+      "infeasible_steps": 0,
+      "final_cost": 247924957.66094983
+    },
+    {
+      "method": "CAffNet-FF-aposteriori",
+      "seed": 2,
+      "n_eval_states": 49,
+      "collisions": 1,
+      "collision_rate": 0.020408162847161293,
+      "control_violations": 0,
+      "arrived_within_0.5m": 16,
+      "infeasible_steps": 0,
+      "final_cost": 241805817.84594518
+    }
+  ],
+  "aggregate": {
+    "CAffNet-FF": {
+      "mean_collisions": 1.0,
+      "mean_control_violations": 0.3333333333333333,
+      "mean_arrived": 15.666666666666666
+    },
+    "CAffNet-FF-aposteriori": {
+      "mean_collisions": 1.0,
+      "mean_control_violations": 0.3333333333333333,
+      "mean_arrived": 13.333333333333334
+    },
+    "NN-soft": {
+      "mean_collisions": 20.333333333333332,
+      "mean_control_violations": 24.0,
+      "mean_arrived": 47.666666666666664
+    }
+  }
+}

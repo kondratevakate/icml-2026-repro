@@ -1,0 +1,64 @@
+{
+  "orid": "KqMqJpSMnQ",
+  "title": "Compact Conformal Subgraphs",
+  "area": null,
+  "n_anchored": 6,
+  "n_claim_files": 6,
+  "rubric_points": 10,
+  "source": "ARTIFACTS (results/claim*.json) — not self-report",
+  "check_reproducibility_pass": null,
+  "check_detail": "no check_reproducibility.py",
+  "execution_success": true,
+  "claim_coverage": 1.0,
+  "full_evidence_rate": 0.0,
+  "inconclusive_rate": 0.167,
+  "toy_rate": 0.0,
+  "not_attempted_rate": 0.0,
+  "n_mutation_tests": 0,
+  "has_evidence_boundary": true,
+  "n_with_evidence_boundary": 1,
+  "wall_time_min": null,
+  "human_interventions": null,
+  "per_claim_verdict": {
+    "claim1": "verified",
+    "claim2": "verified",
+    "claim3": "verified",
+    "claim4": "verified",
+    "claim5": "verified",
+    "claim6": "inconclusive"
+  },
+  "per_claim_mutation": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": false
+  },
+  "per_claim_boundary": {
+    "claim1": false,
+    "claim2": false,
+    "claim3": false,
+    "claim4": false,
+    "claim5": false,
+    "claim6": true
+  },
+  "per_claim_note": {
+    "claim1": "Bicriteria (1+κ, 1+1/κ) approximation by LP threshold roundi",
+    "claim2": "Nestedness K_τ1 ⊆ K_τ2 for τ1<τ2 via parametric min-cut (The",
+    "claim3": "Whole nested sequence in Õ(γ(m+n)²) (Corollary 1, Sec 4.2) |",
+    "claim4": "Distribution-free marginal coverage ℙ ≥ φ−δ under exchangeab",
+    "claim5": "NP-hardness at constant ε via clique reduction (Theorem 4, A",
+    "claim6": "6×6 grid, 50 routes → 52 edges at φ=0.75; LP beats greedy fo"
+  },
+  "warnings": [],
+  "_meta_crosscheck": {
+    "execution_success": null,
+    "claim_coverage_meta": null,
+    "per_claim_verdict_meta": null
+  },
+  "tokens": {
+    "tokens_total_live": 95136143,
+    "note": "live snapshot only (no before/after)"
+  }
+}

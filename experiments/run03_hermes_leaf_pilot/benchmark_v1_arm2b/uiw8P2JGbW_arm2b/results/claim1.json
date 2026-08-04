@@ -1,0 +1,14 @@
+{
+  "claim": 1,
+  "source": "Theorem 5.1",
+  "seed": 20260803,
+  "n_instances": 20000,
+  "violations_of_Rev_fine_ge_Rev_coarse": 0,
+  "mean_revenue_gain": 0.22394543521992435,
+  "min_revenue_gain": -8.881784197001252e-16,
+  "max_revenue_gain": 0.9953621224387108,
+  "frac_strict_gain": 0.9809,
+  "mutation_A_miscalibrated_violations": 3964,
+  "mutation_B_concave_min_aggregator_violations": 19626,
+  "verdict": "verified"
+}

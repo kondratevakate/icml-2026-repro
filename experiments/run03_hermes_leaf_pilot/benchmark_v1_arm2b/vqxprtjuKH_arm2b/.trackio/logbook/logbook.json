@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Allocating Variance to Maximize Expectation",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-allocating-variance-to-maximize-expectation",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-vqxprtjuKH"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Allocating Variance to Maximize Expectation",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-ptas-for-independent-varalloc-theorem-1-1-1-2",
+        "title": "Claim 1 \u2014 PTAS for independent VarAlloc (Theorem 1.1, \u00a71.2)",
+        "file": "pages/claim-1-ptas-for-independent-varalloc-theorem-1-1-1-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-ptas-for-correlated-varalloc-theorem-1-2-1-2",
+        "title": "Claim 2 \u2014 PTAS for correlated VarAlloc (Theorem 1.2, \u00a71.2)",
+        "file": "pages/claim-2-ptas-for-correlated-varalloc-theorem-1-2-1-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-graphvaralloc-with-m-1-1-log-n-opt-theorem-1-3-1-2",
+        "title": "Claim 3 \u2014 GraphVarAlloc with m>1, \u03a9(1/log n)\u00b7OPT (Theorem 1.3, \u00a71.2)",
+        "file": "pages/claim-3-graphvaralloc-with-m-1-1-log-n-opt-theorem-1-3-1-2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-1-p-variables-receive-variance-p-theorem-1-6-1-3",
+        "title": "Claim 4 \u2014 \u0398(1/p) variables receive variance \u03a9(p) (Theorem 1.6, \u00a71.3)",
+        "file": "pages/claim-4-1-p-variables-receive-variance-p-theorem-1-6-1-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-small-variance-contribution-o-ln-1-lemma-2-1-2-1",
+        "title": "Claim 5 \u2014 Small-variance contribution O(\u03b5\u221aln(1/\u03b5)) (Lemma 2.1, \u00a72.1)",
+        "file": "pages/claim-5-small-variance-contribution-o-ln-1-lemma-2-1-2-1/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-er-graph-monte-carlo-illustrations-figures-1-2-1-3",
+        "title": "Claim 6 \u2014 ER-graph Monte-Carlo illustrations (Figures 1\u20132, \u00a71.3)",
+        "file": "pages/claim-6-er-graph-monte-carlo-illustrations-figures-1-2-1-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "notes-limitations",
+        "title": "Notes & limitations",
+        "file": "pages/notes-limitations/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

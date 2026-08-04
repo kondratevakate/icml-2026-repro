@@ -1,0 +1,49 @@
+{
+  "N_sweep": [
+    10,
+    20,
+    40
+  ],
+  "bofop_net_saturates_1d": true,
+  "bofop_net_saturates_joint": true,
+  "claim": 4,
+  "eps_1d": 0.5,
+  "eps_joint": 0.15,
+  "eps_net_bofop_degree_marginal": {
+    "10": 1,
+    "20": 1,
+    "40": 1
+  },
+  "eps_net_bofop_joint_didm": {
+    "10": 2,
+    "20": 3,
+    "40": 3
+  },
+  "eps_net_unbounded_degree_marginal": {
+    "10": 9,
+    "20": 19,
+    "40": 35
+  },
+  "min_w1_dense_didm_to_bofop_family": 66.85000000000005,
+  "mutation": {
+    "eps_net_sizes": {
+      "10": 9,
+      "20": 19,
+      "40": 35
+    },
+    "family": "unbounded fiber mass (dense ER p=0.3 / power-law)",
+    "mutation_passes": true,
+    "net_fails_to_saturate": true
+  },
+  "n_values": [
+    60,
+    120,
+    240
+  ],
+  "proper_subset": true,
+  "reason": "Compactness reproduced via its testable surrogate, TOTAL BOUNDEDNESS: a greedy eps-net under the EXACT LP mover's distance saturates for the bofop-DIDM family as the sample count doubles, while the unbounded-fiber family needs ~one net point per sample. Properness of the inclusion is witnessed by a dense-graph DIDM at strictly positive distance from every sampled bofop-DIDM. This is EVIDENCE, NOT PROOF -- a finite eps-net is a surrogate for a topological statement, and the paper states no numeric value to match.",
+  "rmax": 4,
+  "seed": 20260802,
+  "source": "Corollary 5.3",
+  "verdict": "verified"
+}

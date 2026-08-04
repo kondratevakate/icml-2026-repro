@@ -1,0 +1,23 @@
+{
+  "orid": "ugjBMARbyt",
+  "paper": "Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+  "arxiv": "2502.07397v2",
+  "arm": "arm2",
+  "agent": "Hermes+K-Dense skills",
+  "compaction": "none",
+  "model": "tencent/hy3:free via localhost:8319/v1",
+  "hardware": "CPU-only (WSL2)",
+  "skills_used": ["paper-claim-reproduction"],
+  "seed": 20260803,
+  "python": "3.12 (.venv), numpy 2.5.1, scipy 1.18.0",
+  "claims_total": 6,
+  "verdicts": {"1": "verified", "2": "verified", "3": "verified", "4": "verified", "5": "verified", "6": "verified"},
+  "artifacts": [
+    "common.py", "verify_claim1.py", "verify_claim2.py", "verify_claim3.py",
+    "verify_claim4.py", "verify_claim5.py", "verify_claim6.py",
+    "results/claim1.json", "results/claim2.json", "results/claim3.json",
+    "results/claim4.json", "results/claim5.json", "results/claim6.json",
+    "logbook.md", "paper/paper.pdf", "paper/paper.txt"
+  ],
+  "date": "2026-08-03"
+}

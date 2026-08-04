@@ -1,0 +1,138 @@
+{
+ "claim": 5,
+ "seed": 20260803,
+ "source": "Section 5 (experiments)",
+ "modalities": {
+  "point_cloud_disk": {
+   "n": 900,
+   "eps": 0.15,
+   "sinkhorn_iters": 38,
+   "dirichlet_energies": [
+    842.9267214013163,
+    2.9778294636388654,
+    0.8241371395804267,
+    0.4007819650144911,
+    0.23734111795201485,
+    0.15529061037959752,
+    0.10820411089214989
+   ],
+   "energy_monotone_decreasing": true,
+   "top_eigs": [
+    1.0,
+    0.9680017784426903,
+    0.9623353076774369,
+    0.912727258976595,
+    0.9005218097651226,
+    0.8579037583458693,
+    0.8337098074219835,
+    0.8279337450590906
+   ],
+   "eig_min": -4.495284673853662e-17,
+   "eig_max": 1.0,
+   "damping_monotone_in_frequency": true,
+   "damping_index_corr": -0.9156401150234057,
+   "laplacian_fit_rel_residual": 0.16617595389457368,
+   "laplacian_fit_scale": 1.7888025802705791,
+   "constants_annihilated_maxabs": 2.190603254348389e-11,
+   "generator_psd": true,
+   "n_interior": 266,
+   "lam_gen_first5": [
+    0.0,
+    0.03199822155730969,
+    0.03766469232256309,
+    0.08727274102340499,
+    0.09947819023487736
+   ]
+  },
+  "sparse_voxel_grid_proxy": {
+   "n": 773,
+   "eps": 0.09,
+   "sinkhorn_iters": 38,
+   "dirichlet_energies": [
+    730.5733797407943,
+    2.11335448861959,
+    0.6444763300789955,
+    0.3263379401492603,
+    0.1854549354700041,
+    0.11337415314020119,
+    0.07398696038770242
+   ],
+   "energy_monotone_decreasing": true,
+   "top_eigs": [
+    1.0,
+    0.9765791083013197,
+    0.9523290142660327,
+    0.883216750640825,
+    0.808773286629853,
+    0.7528407679405622,
+    0.7364440640114659,
+    0.7211703644535425
+   ],
+   "eig_min": 5.584477495260861e-10,
+   "eig_max": 1.0,
+   "damping_monotone_in_frequency": true,
+   "damping_index_corr": -0.8774756666777452,
+   "laplacian_fit_rel_residual": 0.9992620479811621,
+   "laplacian_fit_scale": 0.06299708235939817,
+   "constants_annihilated_maxabs": 8.321097283436885e-11,
+   "generator_psd": true,
+   "n_interior": 316,
+   "lam_gen_first5": [
+    0.0,
+    0.023420891698680335,
+    0.04767098573396733,
+    0.11678324935917495,
+    0.19122671337014696
+   ],
+   "voxels_occupied": 773,
+   "grid": "24^3 synthetic hollow curved shell (proxy for jaw-bone scan; original not available)"
+  },
+  "gmm_covariance_aware": {
+   "n": 300,
+   "eps": 1.0,
+   "sinkhorn_iters": 39,
+   "dirichlet_energies": [
+    247.21537998516013,
+    2.2043834687840285,
+    0.6025782291313468,
+    0.23031719987192079,
+    0.1042611064801507,
+    0.05549354569934935,
+    0.03443910291521599
+   ],
+   "energy_monotone_decreasing": true,
+   "top_eigs": [
+    0.9999999999999999,
+    0.9999744869756232,
+    0.9893785396045148,
+    0.9126050519777799,
+    0.671916316158909,
+    0.6512192665407411,
+    0.6252670563506076,
+    0.5974099086824324
+   ],
+   "eig_min": -0.0036339577706707266,
+   "eig_max": 0.9999999999999999,
+   "damping_monotone_in_frequency": true,
+   "damping_index_corr": -0.9500217328976059,
+   "laplacian_fit_rel_residual": 0.7864370089873991,
+   "laplacian_fit_scale": -5.072837278575839,
+   "constants_annihilated_maxabs": 8.353318037279678e-13,
+   "generator_psd": true,
+   "n_interior": 151,
+   "lam_gen_first5": [
+    1.1102230246251565e-16,
+    2.551302437681091e-05,
+    0.010621460395485172,
+    0.08739494802222014,
+    0.328083683841091
+   ],
+   "kernel": "covariance-aware Mahalanobis (per-point GMM component covariance)"
+  }
+ },
+ "mutation_random_operator_lap_residual": 0.6017820242634694,
+ "all_modalities_show_laplacian_like_smoothing": true,
+ "mutation_breaks": true,
+ "verdict": "toy",
+ "note": "Verdict 'toy': the qualitative behaviour (Laplacian-like smoothing on point clouds, sparse voxels and covariance-aware GMM kernels) reproduces on all three data types, but the paper's actual assets (jaw-bone voxel scan) were not available, so a synthetic hollow-shell proxy was used; the specific figures of Section 5 cannot be matched numerically."
+}

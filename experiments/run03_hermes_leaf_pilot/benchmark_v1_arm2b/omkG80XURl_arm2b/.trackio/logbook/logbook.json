@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Bridging the Gap Between Average and Discounted TD Learning",
+  "emoji": "\ud83c\udfaf",
+  "space_id": "kondratevakate/repro-bridging-the-gap-between-average-and-discounted-td-learning",
+  "paper": {
+    "arxiv_id": ""
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-omkG80XURl"
+  ],
+  "updated_at": "2026-01-01T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Bridging the Gap Between Average and Discounted TD Learning",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "summary",
+        "title": "Summary",
+        "file": "pages/summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-4-1-double-chain-i-i-d",
+        "title": "Claim 1 \u2014 Theorem 4.1 (double-chain, i.i.d.)",
+        "file": "pages/claim-1-theorem-4-1-double-chain-i-i-d/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-4-2-double-chain-markov-sampling-constant-stepsize",
+        "title": "Claim 2 \u2014 Theorem 4.2 (double-chain, Markov sampling, constant stepsize)",
+        "file": "pages/claim-2-theorem-4-2-double-chain-markov-sampling-constant-stepsize/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-4-3-decaying-stepsize-no-explicit-dimension-dependence",
+        "title": "Claim 3 \u2014 Theorem 4.3 (decaying stepsize, no explicit dimension dependence)",
+        "file": "pages/claim-3-theorem-4-3-decaying-stepsize-no-explicit-dimension-dependence/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-section-1-table-1-quartic-quadratic",
+        "title": "Claim 4 \u2014 Section 1 / Table 1 (quartic \u2192 quadratic)",
+        "file": "pages/claim-4-section-1-table-1-quartic-quadratic/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-theorem-4-4-single-chain-is-quartic",
+        "title": "Claim 5 \u2014 Theorem 4.4 (single-chain is quartic)",
+        "file": "pages/claim-5-theorem-4-4-single-chain-is-quartic/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-lemma-b-3",
+        "title": "Claim 6 \u2014 Lemma B.3 (\u03b7\u2081 \u2265 \u00bd\u03b7\u2083)",
+        "file": "pages/claim-6-lemma-b-3/page.md",
+        "children": []
+      },
+      {
+        "slug": "limitations",
+        "title": "Limitations",
+        "file": "pages/limitations/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 0,
+  "trace_view_tokens": 0,
+  "workspace_view_tokens": 0,
+  "revision": "local"
+}

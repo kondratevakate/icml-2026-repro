@@ -1,0 +1,15 @@
+{
+ "orid": "TBSyYj4VV6",
+ "title": "Accelerating Regression Tasks with Quantum Algorithms",
+ "openreview": "https://openreview.net/forum?id=TBSyYj4VV6",
+ "arxiv": "2509.24757",
+ "area": "Theory",
+ "anchored_claims": [
+  "The proposed quantum algorithm constructs epsilon-approximate GLM sparsifiers in time O~(r*sqrt(mn)/epsilon + poly(n))*log(s_max/s_min), giving a quadratic speedup in sample count m over the classical O~(mr) algorithm (Theorem 10).",
+  "For linear regression, the quantum algorithm runs in O~(r*sqrt(mn)/epsilon + n^3) time versus O~(mr + n^3) classically (Corollary 23).",
+  "The paper gives the first quantum algorithm for Lasso regression, running in O~(r*sqrt(mn)/epsilon + poly(n,1/epsilon)) time versus O~(mn^2 + n^3) classically (Corollary 26).",
+  "Ridge regression is solved in O~(r*sqrt(mn)/epsilon + n^3) quantum time versus O~(mr + poly(n,1/epsilon)) classically (Corollary 25).",
+  "Huber regression is handled via a gamma_p-loss framework in O~(r*sqrt(mn)/epsilon + poly(n,1/epsilon)) quantum time (Corollary 12).",
+  "For l_p regression with p in (0,2], the algorithm achieves quadratic speedup in the sample parameter m, which the authors note dominates runtime when m >> n (Corollary 11)."
+ ]
+}

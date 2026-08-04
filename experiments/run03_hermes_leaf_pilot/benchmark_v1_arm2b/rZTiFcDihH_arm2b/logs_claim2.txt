@@ -1,0 +1,53 @@
+1 1.3 1.0 (1.0,) 0.4s
+2 1.62 1.6 (1.0, 1.6) 37.2s
+3 1.62 1.61538 (1.0, 1.6, 2.6) 367.5s
+4 1.32 1.59091 (1.0, 1.3, 1.7, 2.2) 537.6s
+{
+  "claim": 2,
+  "source": "Proposition 4.1",
+  "T_enum": 3,
+  "phi": 1.618033988749895,
+  "sqrt2": 1.4142135623730951,
+  "per_K": {
+    "1": {
+      "theta_star": 1.3,
+      "worst_case_ratio": 1.0,
+      "worst_value_set": [
+        1.0
+      ]
+    },
+    "2": {
+      "theta_star": 1.62,
+      "worst_case_ratio": 1.6,
+      "worst_value_set": [
+        1.0,
+        1.6
+      ]
+    },
+    "3": {
+      "theta_star": 1.62,
+      "worst_case_ratio": 1.6153846153846154,
+      "worst_value_set": [
+        1.0,
+        1.6,
+        2.6
+      ]
+    },
+    "4": {
+      "theta_star": 1.32,
+      "worst_case_ratio": 1.5909090909090908,
+      "worst_value_set": [
+        1.0,
+        1.3,
+        1.7,
+        2.2
+      ]
+    }
+  },
+  "monotone_in_K": false,
+  "all_below_phi": true,
+  "all_at_least_sqrt2_minus_tol": true,
+  "mutation_many_types_theta_phi": 1.618,
+  "mutation_breaks_gap": true,
+  "runtime_s": 1029.9880180358887
+}

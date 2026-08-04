@@ -1,0 +1,80 @@
+{'d': 8, 'n': 96, 'm': 512, 'eta_T': 32.0, 'abs_forgetting_task1_hinge': 0.008099416678143317, 'abs_forgetting_task1': 0.15652652737947723, 'mc_stderr': 0.03826554375886341, 'mc_stderr_hinge': 0.0020149578970904518}
+{'d': 12, 'n': 216, 'm': 1152, 'eta_T': 72.0, 'abs_forgetting_task1_hinge': 0.002496721798667929, 'abs_forgetting_task1': 0.029467489244489897, 'mc_stderr': 0.007156116659680658, 'mc_stderr_hinge': 0.0013831650433919216}
+{'d': 16, 'n': 384, 'm': 2048, 'eta_T': 128.0, 'abs_forgetting_task1_hinge': 0.00015939164763367053, 'abs_forgetting_task1': 0.013955975321768755, 'mc_stderr': 0.0034361473077047177, 'mc_stderr_hinge': 9.790709024136799e-05}
+{'d': 20, 'n': 600, 'm': 3200, 'eta_T': 200.0, 'abs_forgetting_task1_hinge': 0.0, 'abs_forgetting_task1': 0.007157140311013066, 'mc_stderr': 0.001780182396800927, 'mc_stderr_hinge': 0.0}
+{'d': 8, 'n': 24, 'm': 512, 'eta_T': 32.0, 'abs_forgetting_task1_hinge': 0.032807607234926324, 'abs_forgetting_task1': 0.16556195820448166, 'mc_stderr': 0.06545817192370713, 'mc_stderr_hinge': 0.020186889224706087}
+{'d': 12, 'n': 24, 'm': 1152, 'eta_T': 72.0, 'abs_forgetting_task1_hinge': 0.0, 'abs_forgetting_task1': 0.057069762412130666, 'mc_stderr': 0.007530499526168179, 'mc_stderr_hinge': 0.0}
+{'d': 16, 'n': 24, 'm': 2048, 'eta_T': 128.0, 'abs_forgetting_task1_hinge': 0.0, 'abs_forgetting_task1': 0.031535694126820245, 'mc_stderr': 0.013976629546862861, 'mc_stderr_hinge': 0.0}
+{'d': 20, 'n': 24, 'm': 3200, 'eta_T': 200.0, 'abs_forgetting_task1_hinge': 0.0, 'abs_forgetting_task1': 0.03212513872129943, 'mc_stderr': 0.002816539869199772, 'mc_stderr_hinge': 0.0}
+[saved] /home/kate/projects/02_academia/icml-2026-repro/experiments/run03_hermes_leaf_pilot/l35QweVxgn_arm2b/results/claim2.json
+{
+  "K": 3,
+  "T": 40,
+  "claim": 2,
+  "d_ladder": [
+    {
+      "abs_forgetting_task1": 0.15652652737947723,
+      "abs_forgetting_task1_hinge": 0.008099416678143317,
+      "d": 8,
+      "eta_T": 32.0,
+      "m": 512,
+      "mc_stderr": 0.03826554375886341,
+      "mc_stderr_hinge": 0.0020149578970904518,
+      "n": 96
+    },
+    {
+      "abs_forgetting_task1": 0.029467489244489897,
+      "abs_forgetting_task1_hinge": 0.002496721798667929,
+      "d": 12,
+      "eta_T": 72.0,
+      "m": 1152,
+      "mc_stderr": 0.007156116659680658,
+      "mc_stderr_hinge": 0.0013831650433919216,
+      "n": 216
+    },
+    {
+      "abs_forgetting_task1": 0.013955975321768755,
+      "abs_forgetting_task1_hinge": 0.00015939164763367053,
+      "d": 16,
+      "eta_T": 128.0,
+      "m": 2048,
+      "mc_stderr": 0.0034361473077047177,
+      "mc_stderr_hinge": 9.790709024136799e-05,
+      "n": 384
+    },
+    {
+      "abs_forgetting_task1": 0.007157140311013066,
+      "abs_forgetting_task1_hinge": 0.0,
+      "d": 20,
+      "eta_T": 200.0,
+      "m": 3200,
+      "mc_stderr": 0.001780182396800927,
+      "mc_stderr_hinge": 0.0,
+      "n": 600
+    }
+  ],
+  "forgetting_decreases_with_d": true,
+  "forgetting_metric": "F^tr measured with the linear surrogate f(u)=1-u that App. C states the Thm 2.1 derivation uses (the hinge saturates to exactly 0 here and makes the quantity trivially unmeasurable); hinge values retained as *_hinge",
+  "mutation_fixed_n": {
+    "first_attempt_note": "PREDICTION WRONG on the first mutant, recorded verbatim: fixing n at its d=8 value (n=96) still gave decreasing forgetting, because n=96 already exceeds what these small d need. The mutant was hardened to n=24 (P58: remove the slack absorbing the mutation), not the verdict weakened.",
+    "forgetting_decreases_with_d": true,
+    "mutation_n": 24,
+    "prediction": "holding n at 24 (<< \u0398\u0303(d\u00b2K)) breaks the sample scaling; forgetting must stay non-negligible instead of collapsing to 0",
+    "property_breaks": false,
+    "ratio_first_to_last": 5.153657378441504,
+    "rows": [
+      {
+        "abs_forgetting_task1": 0.16556195820448166,
+        "abs_forgetting_task1_hinge": 0.032807607234926324,
+        "d": 8,
+        "eta_T": 32.0,
+        "m": 512,
+        "mc_stderr": 0.06545817192370713,
+        "mc_stderr_hinge": 0.020186889224706087,
+        "n": 24
+      },
+      {
+        "abs_forgetting_task1": 0.057069762412130666,
+        "abs_forgetting_task1_hinge": 0.0,
+        "d": 12,
+        "eta_T":
