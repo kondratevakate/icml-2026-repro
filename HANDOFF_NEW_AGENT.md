@@ -31,7 +31,14 @@ against a **reusable ground-truth (GT) corpus** (Trackio logbooks + `audit_*.py`
 | `codex/medical-reproducibility-map` | SEPARATE checkout at `/mnt/d/projects/02_academia/icml-repro` (different machine path, no pilot runs) — do NOT confuse with this repo |
 | `gt-composition` | GT corpus composition work |
 | `hermes-run03-arm3-sakana-pilot` | Sakana arm3 pilot |
-| `master` | base |
+| `master` | **Opus 4.8 run** (origin attempt 1: "63/136 over 13 judged logbooks") |
+| `codex/medical-reproducibility-map` branch | **Codex Sonnet run** (attempt 2: "115/266 over 25 judged logbooks") |
+
+> **Experiment-design SPEC (provenance + locked 42-paper protocol)** lives in the paper repo:
+> `ai-scientist/protocol/icml-repro-benchmark-spec.md` (branch `main`).
+> Read it before any full-42 run — it pre-registers arms, model, compaction, prompt version,
+> judge, metrics, and analysis plan, and records how the design evolved
+> (Opus `master` → Codex branch → Hermes skills/AI-Scientist literature review → Hermes branch).
 
 Remote: `git@github.com:kondratevakate/icml-2026-repro.git`. **Never push without explicit
 permission; commit only after validation.** (`/mnt/d/...` is a Windows-mounted *separate*
