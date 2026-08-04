@@ -1,3 +1,7 @@
+> **▶ READ FIRST for the benchmark-method project:** `HANDOFF_NEW_AGENT.md` (English, current).
+> This file is the OLDER challenge-scoring lore (Russian, HF-leaderboard era, 2026-07-21) —
+> still useful for *scoring rules + Kate's profile*, but NOT the benchmark architecture work.
+
 # HANDOFF: ICML 2026 Reproduction Challenge (Kate)
 
 Обновлено 2026-07-21. Полностью переписан по её просьбе: все проблемы, с которыми столкнулись,
