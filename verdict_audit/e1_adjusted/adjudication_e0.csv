@@ -1,0 +1,8 @@
+item,label,reason
+40,clinical,"Abstract: 14 datasets, medical-centric; medicine is the main evaluation data, not one example"
+93,clinical,Only real-data evaluation is clinical cross-disease prediction with expert judgments
+101,no,Main task is Transformer sample efficiency; hippocampus is inspiration
+127,clinical,Only real dataset is paired fMRI and behavioural testing for autism
+142,clinical,Only real-data experiments are medical prediction tasks
+159,no,Single-cell named as an example domain; real datasets not specified as biological
+137,clinical,Survival model whose real-data application is kidney transplant data
