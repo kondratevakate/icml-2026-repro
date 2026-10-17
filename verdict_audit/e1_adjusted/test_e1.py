@@ -39,9 +39,9 @@ class ModelTests(unittest.TestCase):
         self.assertGreater(res["ci"][1], 0)
 
     def test_clogit_runs_and_sign(self):
-        res = E.clogit(synthetic(-0.15, seed=5), boot=30)
+        res = E.clogit(synthetic(-0.15, seed=5))
         self.assertLess(res["log_or"], 0)
-        self.assertGreater(res["successful_bootstraps"], 20)
+        self.assertTrue(res["converged"])
 
 
 class DictionaryTests(unittest.TestCase):

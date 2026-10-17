@@ -154,30 +154,20 @@ def lpm(df, med_col="medical", theory=True, weights=None):
                 theory_coef=round(float(fit.params["theory"]), 4) if theory else None)
 
 
-def clogit(df, theory=True, boot=B):
+def clogit(df, theory=True):
+    """Amendment 1: logit with reproducer fixed effects, two-way cluster-robust CI."""
     mixed = df.groupby("reproducer")["medical"].transform(lambda s: s.nunique() > 1)
     varying = df.groupby("reproducer")["verified"].transform(lambda s: s.nunique() > 1)
     d = df[mixed & varying].reset_index(drop=True)
     cols = ["medical"] + (["theory"] if theory else [])
-
-    def fit(x):
-        return ConditionalLogit(x["verified"].values, x[cols].values.astype(float), groups=x["reproducer"].values).fit(disp=0).params[0]
-
-    est = fit(d)
-    rng = np.random.default_rng(SEED)
-    papers = d["paper"].unique()
-    idx = {p: np.where(d["paper"].values == p)[0] for p in papers}
-    draws = []
-    for _ in range(boot):
-        pick = rng.choice(papers, len(papers))
-        sub = d.iloc[np.concatenate([idx[p] for p in pick])]
-        try:
-            draws.append(fit(sub))
-        except Exception:
-            continue
-    lo, hi = np.percentile(draws, [2.5, 97.5])
-    return dict(log_or=round(float(est), 4), odds_ratio=round(float(np.exp(est)), 4),
-                or_ci=[round(float(np.exp(lo)), 4), round(float(np.exp(hi)), 4)], successful_bootstraps=len(draws))
+    X = pd.concat([d[cols].astype(float), pd.get_dummies(d["reproducer"], drop_first=False, dtype=float)], axis=1)
+    groups = np.column_stack([pd.factorize(d["paper"])[0], pd.factorize(d["reproducer"])[0]])
+    fit = sm.Logit(d["verified"].astype(float), X).fit(disp=0, maxiter=200, cov_type="cluster", cov_kwds={"groups": groups})
+    lo, hi = fit.conf_int().loc["medical"].tolist()
+    return dict(model="fixed-effects logit (amendment 1)", log_or=round(float(fit.params["medical"]), 4),
+                odds_ratio=round(float(np.exp(fit.params["medical"])), 4),
+                or_ci=[round(float(np.exp(lo)), 4), round(float(np.exp(hi)), 4)], p=float(fit.pvalues["medical"]),
+                n_claims=int(len(d)), converged=bool(fit.mle_retvals.get("converged", False)))
 
 
 def reasons(df):

@@ -128,3 +128,18 @@ their number and coverage are reported.
   model coders, not expert ground truth. Kate may re-code a subset later; that
   would be reported as an additional check, not replace these codes.
 * Aggregates only; no participant other than Kate is named.
+
+## Amendment 1 (2026-10-17, before any model result was seen)
+
+The first `models` run stopped inside the secondary analysis with a
+RecursionError from statsmodels `ConditionalLogit`, whose exact conditional
+likelihood recursion cannot handle strata of several hundred claims. No result
+file was written and no estimate was printed. Changes:
+
+* Secondary analysis 1 becomes a logistic regression with reproducer fixed
+  effects (unconditional). With large strata the incidental-parameter bias is
+  small; this is a deviation and is labelled as such.
+* Its CI uses two-way cluster-robust variance (paper, reproducer) instead of a
+  paper-cluster bootstrap, because 2,000 refits of a model with several hundred
+  dummies are not feasible locally.
+* Everything else, including the primary model, is unchanged.
