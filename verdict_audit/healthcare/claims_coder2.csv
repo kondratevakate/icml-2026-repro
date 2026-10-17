@@ -1,0 +1,92 @@
+folder,claim_no,claim_type,score,max,outcome,blockers,primary_blocker,divergence,pointer
+3dmedagent,1,mechanism,2,2,full,,none,no,"C1: static routing checks, CLI help and CPU dry run verify released three-stage agent configuration."
+3dmedagent,2,data_protocol,2,2,full,,none,no,"C2: independent CSV parse confirms 1,020 rows, 892 scans, 17 subtypes."
+3dmedagent,3,headline_performance,0,2,none,raw_data_unavailable;derived_artifacts_missing;other,raw_data_unavailable,no,"C3-C6 block: CT volumes, masks, caches, predictions and credentials omitted; 40+ task gain not rerun."
+3dmedagent,4,headline_performance,0,2,none,raw_data_unavailable;derived_artifacts_missing;other,raw_data_unavailable,no,"C3-C6 block: model comparisons not rerun; release omits volumes, caches, canonical predictions, credentials."
+3dmedagent,5,secondary_empirical,0,2,none,raw_data_unavailable;derived_artifacts_missing;other,raw_data_unavailable,no,"C3-C6 block: staged ablations not rerun for lack of volumes, masks, caches and predictions."
+3dmedagent,6,secondary_empirical,0,2,none,raw_data_unavailable;derived_artifacts_missing;other,raw_data_unavailable,no,"C3-C6 block: radiologist agreement and per-turn gains need expert traces and matched outputs, not released."
+bayes_causal_meta,1,mechanism,1,2,partial,paper_code_divergence,paper_code_divergence,yes,"C1 row: code normalizes Wz to fixed fraction of global norm, unlike paper linear theta + Wz."
+bayes_causal_meta,2,theory,2,2,full,,none,no,C2 row: Gaussian TV/Pinsker bound and triangle decomposition check out for stated linear prior.
+bayes_causal_meta,3,theory,1,2,partial,other,other,no,C3 row: Appendix A.2 constant C=kappa_0/kappa fails on 2D diagonal counterexample; condition number needed.
+bayes_causal_meta,4,headline_performance,1,2,partial,code_missing_or_broken;compute_or_scale,code_missing_or_broken,no,C4 row: toy paths run after packaging workarounds; not canonical 30-run reproduction; training seed incomplete.
+bayes_causal_meta,5,headline_performance,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing,raw_data_unavailable,no,"C5 row: UK Biobank data, clinical outputs and checkpoints absent."
+came_grad,1,mechanism,2,2,full,,none,no,C1: independent NumPy implementation of Eqs 8-14 on 500 random problems verifies printed algebra.
+came_grad,2,theory,0,2,none,other,other,no,C2: trust-region identity does not guarantee convergence or flat minima; covariance counterexample.
+came_grad,3,headline_performance,0,2,none,code_missing_or_broken;weights_missing;derived_artifacts_missing,code_missing_or_broken,no,"C3 not rerun; optimizer module and dataset package absent, weights/splits/logs absent; table arithmetic only."
+came_grad,4,headline_performance,0,2,none,code_missing_or_broken;weights_missing;derived_artifacts_missing,code_missing_or_broken,no,C4 not rerun; core optimizer withheld and no matching trained artifacts released.
+came_grad,5,secondary_empirical,0,2,none,code_missing_or_broken;weights_missing;derived_artifacts_missing,code_missing_or_broken,no,C5 not rerun; optimizer source and ablation runner absent per official-release audit.
+caml,1,theory,0,2,none,other,other,no,C1: N(u)=u^2 counterexample; non-uniqueness alone does not give connected valley; proof adds unstated assumptions.
+caml,2,mechanism,2,2,full,,none,no,C2: official closed-form offset equals independent implementation exactly; delay/ramp schedule matches.
+caml,3,headline_performance,1,2,partial,paper_code_divergence;compute_or_scale,paper_code_divergence,yes,C3: Heat code uses boundary weight 1 and threshold 1e-3 vs paper 5 and 2e-3; full runs too long.
+caml,4,headline_performance,0,2,none,paper_code_divergence;derived_artifacts_missing,paper_code_divergence,yes,C4: five code/paper configuration mismatches across PDEs; no cached outputs released.
+caml,5,secondary_empirical,0,2,none,code_missing_or_broken,code_missing_or_broken,no,C5: entrypoints hardcoded to MLP; backbone-specific settings not applied; four of six baseline losses absent.
+caml,6,secondary_empirical,1,2,partial,code_missing_or_broken,code_missing_or_broken,no,"C6: core components verified, but no ablation, sensitivity or overhead runner released."
+dc_pnpdp,1,theory,2,2,full,,none,no,"C1 row: scalar quadratic satisfies consensus, ADMM fixed-point equations and stationarity below 4e-16."
+dc_pnpdp,2,theory,1,2,partial,other,other,no,"C2 row: loose fixed point is Moreau-envelope stationarity, not original objective; theorem scalings incompatible."
+dc_pnpdp,3,mechanism,1,2,partial,paper_code_divergence,paper_code_divergence,yes,C3 row: paper samples complementary amplitude with random phase; code scales full Gaussian FFT.
+dc_pnpdp,4,headline_performance,0,2,none,paper_code_divergence;raw_data_unavailable;derived_artifacts_missing,paper_code_divergence,yes,C4 row: no data or cached outputs; example runs DiffPIR with w_tik=0 versus paper LACT penalty.
+dc_pnpdp,5,headline_performance,0,2,none,code_missing_or_broken;raw_data_unavailable,code_missing_or_broken,no,C5 row: no MRI implementation or configuration in pinned repository; fastMRI not included.
+dc_pnpdp,6,secondary_empirical,1,2,partial,derived_artifacts_missing;compute_or_scale,derived_artifacts_missing,no,C6 row: components present; ablation and A100 timing results not cached or regenerable locally.
+dpsurv,1,data_protocol,1,2,partial,raw_data_unavailable;derived_artifacts_missing;other,raw_data_unavailable,no,"Row 1: folds disjoint, but WSI/UNI2/PANTHER inputs absent and rows without DSS endpoint filtered."
+dpsurv,2,mechanism,2,2,full,,none,no,"Row 2: synthetic dual-prototype forward, loss, backward and mixture execute finitely."
+dpsurv,3,mechanism,1,2,partial,paper_code_divergence,paper_code_divergence,yes,"Row 3: lambda interpolation implemented incorrectly; training uses lambda twice, evaluation reverses Bel and Pl."
+dpsurv,4,headline_performance,0,2,none,weights_missing;derived_artifacts_missing,weights_missing,no,"Row 4: no features, embeddings, checkpoints, predictions, metrics or logs for C-index values."
+dpsurv,5,secondary_empirical,0,2,none,paper_code_divergence;derived_artifacts_missing,paper_code_divergence,yes,Row 5: no calibration outputs; lambda mismatch invalidates released non-default-lambda path.
+dpsurv,6,secondary_empirical,0,2,none,code_missing_or_broken;derived_artifacts_missing,code_missing_or_broken,no,"Row 6: notebook encoder shadowed by broken definition (NameError); no ablation, clinician or runtime outputs."
+flow_density_ratio,1,mechanism,2,2,full,,none,no,"C1 row: released estimator recovers analytic Gaussian ratio, max error 1.07e-7; source matches Proposition 4.1."
+flow_density_ratio,2,headline_performance,1,2,partial,derived_artifacts_missing;compute_or_scale;other,derived_artifacts_missing,no,"C2 row: CSV favours scRatio, but three runs vs five stated; no paper-scale retraining or raw predictions."
+flow_density_ratio,3,headline_performance,1,2,partial,derived_artifacts_missing;other,derived_artifacts_missing,no,C3 row: notebook stochastic-0.25 MAEs do not match Table 1; ratio arrays external.
+flow_density_ratio,4,headline_performance,1,2,partial,derived_artifacts_missing,derived_artifacts_missing,no,C4 row: executed outputs reproduce Table 2; per-cell predictions remain external.
+flow_density_ratio,5,secondary_empirical,1,2,partial,derived_artifacts_missing,derived_artifacts_missing,no,"C5 row: LLR matrix shapes reconstructed, but NPZ arrays absent so magnitude decrease not recomputed."
+flow_density_ratio,6,secondary_empirical,1,2,partial,weights_missing;derived_artifacts_missing,weights_missing,no,"C6 row: ComboSciPlex correlation recomputed; PBMC lacks model, raw ratios and numeric summary."
+glean,1,theory,1,2,partial,other,other,no,C1: Appendix A bound substitutes 2*eps^2 where derivation supports 2*eps; stated bound falsified.
+glean,2,data_protocol,1,2,partial,derived_artifacts_missing,derived_artifacts_missing,no,"C2: MIMIC-IV-Ext CDM checksums and disease counts match; 4,000 trajectories, labels, judge outputs unreleased."
+glean,3,headline_performance,0,2,none,derived_artifacts_missing;underspecified_paper;other,derived_artifacts_missing,no,C3: no row-level outputs; aggregation convention unstated; prose conflicts with Table 1.
+glean,4,secondary_empirical,0,2,none,derived_artifacts_missing,derived_artifacts_missing,no,"C4: no triggered cases, retrieved guidelines, judge scores or per-ablation predictions released."
+glean,5,secondary_empirical,0,2,none,derived_artifacts_missing,derived_artifacts_missing,no,"C5: Best-of-N and compute display-only; no candidate groups, rankings, call traces or token logs."
+glean,6,secondary_empirical,0,2,none,code_missing_or_broken;derived_artifacts_missing,code_missing_or_broken,no,"C6: no anonymized ratings, labels, study instrument or analysis code released."
+globalhealthatlas,1,data_protocol,1,2,partial,raw_data_unavailable,raw_data_unavailable,no,"C1 row: 280,210-row corpus and 35,500-source inventory not in linked artifacts."
+globalhealthatlas,2,data_protocol,1,2,partial,raw_data_unavailable;derived_artifacts_missing,raw_data_unavailable,no,"C2 row: counts self-consistent; row-level corpus, 14,010 expert-audit rows and QC decisions absent."
+globalhealthatlas,3,secondary_empirical,0,2,none,derived_artifacts_missing,derived_artifacts_missing,no,"C3 row: adapter integrity only; 100 expert labels, evaluator predictions and repeated-run matrices absent."
+globalhealthatlas,4,headline_performance,2,2,full,,none,no,C4 row: 16 per-model CSVs reconstruct Table 5 values within rounding.
+globalhealthatlas,5,headline_performance,1,2,partial,paper_code_divergence;other,paper_code_divergence,yes,C5 row: 8B not above base; GPQA mismatch; CSV mislabels. Released train_lora.sh not the paper recipe.
+globalhealthatlas,6,secondary_empirical,1,2,partial,raw_data_unavailable;derived_artifacts_missing,raw_data_unavailable,no,"C6 row: cached values match Table 11; raw questions, perturbations, predictions and seeds not released."
+lvcg,1,mechanism,1,2,partial,code_missing_or_broken,code_missing_or_broken,no,"C1: independent geometry check passes, but official module cannot import; lvcg/data package absent."
+lvcg,2,mechanism,0,2,none,paper_code_divergence;code_missing_or_broken,paper_code_divergence,yes,C2: training entrypoint fails ModuleNotFoundError; config adds base_beat_loss absent from Equation 7.
+lvcg,3,headline_performance,1,2,partial,code_missing_or_broken;weights_missing;derived_artifacts_missing,code_missing_or_broken,no,C3: splits disjoint; no checkpoint/results; --checkpoint override ineffective; PTB-XL label columns misordered.
+lvcg,4,headline_performance,0,2,none,weights_missing;derived_artifacts_missing,weights_missing,no,"C4: no checkpoint, reconstruction predictions or metric files; Table 2 not regenerable."
+lvcg,5,secondary_empirical,0,2,none,code_missing_or_broken;weights_missing;derived_artifacts_missing,code_missing_or_broken,no,"C5: ablations only as paper tables; no configs, checkpoints, seeds or outputs."
+lvcg,6,secondary_empirical,0,2,none,code_missing_or_broken,code_missing_or_broken,no,"C6: no MIMIC-IV-ECG-Ext-ICD loader, labels, folds or config; repository configures AI-READI instead."
+ma_rag,1,mechanism,1,2,partial,paper_code_divergence,paper_code_divergence,yes,C1: evaluator branch ranks history ascending vs Equation 4 descending; no epsilon threshold parameter.
+ma_rag,2,data_protocol,1,2,partial,paper_code_divergence;other,paper_code_divergence,yes,"C2: sizes match, but runners score NEJM single-answer despite 41 multi-answer labels; duplicates found."
+ma_rag,3,headline_performance,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing;other,raw_data_unavailable,no,"C3-C6 block: MedCorp, index, evaluator checkpoint, predictions, requirements, credentials omitted; headline not rerun."
+ma_rag,4,headline_performance,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing;other,raw_data_unavailable,no,C3-C6 block: baseline margins not rerun; only table concordance (MA-RAG-ext minus TC-RAG 5.3).
+ma_rag,5,secondary_empirical,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing;other,raw_data_unavailable,no,C3-C6 block: cumulative ablations not rerun; evaluator data/checkpoint and predictions absent.
+ma_rag,6,secondary_empirical,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing;other,raw_data_unavailable,no,C3-C6 block: four-run variance and timing not rerun; hardware traces and credentials absent.
+medcrp_cl,1,mechanism,1,2,partial,derived_artifacts_missing;other,derived_artifacts_missing,no,C1 row: 1/5/1/7/2 partition present but not regenerated from unavailable prompt data; checkpoint alpha 2.0 vs 5.0.
+medcrp_cl,2,mechanism,2,2,full,,none,no,"C2 row: unit checks verify modality-isolated LoRA; EWC state holds aggregates, not examples."
+medcrp_cl,3,headline_performance,0,2,none,derived_artifacts_missing;other,derived_artifacts_missing,no,"C3 row: no processed splits, run-level outputs, seeds or metric tables; requirements not pip-installable."
+medcrp_cl,4,secondary_empirical,0,2,none,derived_artifacts_missing;other,derived_artifacts_missing,no,"C4 row: no order, perturbation, ablation, merge or baseline outputs released."
+medcrp_cl,5,secondary_empirical,1,2,partial,derived_artifacts_missing;other,derived_artifacts_missing,no,C5 row: 8.6M comparison not recomputed; no clinical predictions released.
+ophiuchus,1,mechanism,1,2,partial,paper_code_divergence;code_missing_or_broken,paper_code_divergence,yes,C1 row: paper tool_call syntax not parsed; duplicate calls do not early-stop contrary to paper; mask reset fails.
+ophiuchus,2,mechanism,1,2,partial,paper_code_divergence;code_missing_or_broken,paper_code_divergence,yes,"C2 row: preprocess crashes on placeholder, ATRL uses absent paths, KL setting conflicts with paper."
+ophiuchus,3,data_protocol,0,2,none,raw_data_unavailable,raw_data_unavailable,no,C3 row: only two SFT and two RL records released of 64k corpus.
+ophiuchus,4,headline_performance,0,2,none,code_missing_or_broken;weights_missing,code_missing_or_broken,no,C4 row: checkpoint and complete evaluation release absent.
+ophiuchus,5,secondary_empirical,0,2,none,raw_data_unavailable;weights_missing;derived_artifacts_missing,raw_data_unavailable,no,"C5 row: checkpoint, datasets, predictions and ablation outputs absent."
+spmind,1,mechanism,1,2,partial,other,other,no,"C1: 19 tools verified; loop delegated to Claude Agent SDK, no separate local ReAct state machine."
+spmind,2,headline_performance,0,2,none,code_missing_or_broken;derived_artifacts_missing;other,code_missing_or_broken,no,"C2: paper model retired, no API key, 306 traces unpublished, no automatic success judge."
+spmind,3,data_protocol,2,2,full,,none,no,"C3: independent parser confirms 102 queries, 18 categories, eight stages, tier counts."
+spmind,4,headline_performance,0,2,none,raw_data_unavailable;derived_artifacts_missing,raw_data_unavailable,no,"C4: CRC-CODEX source images, quantification outputs and ground truth not available as a bundle."
+spmind,5,headline_performance,0,2,none,derived_artifacts_missing;other,derived_artifacts_missing,no,C5: original predictions absent; evaluator aligns rows positionally (row-order robustness finding).
+sprout,1,mechanism,1,2,partial,code_missing_or_broken;raw_data_unavailable;weights_missing,code_missing_or_broken,no,"Row 1: POT raises missing attribute, SAM2 external, dataset link empty, default backbone unresolved."
+sprout,2,mechanism,2,2,full,,none,no,"Row 2: reference-mask branch runs on synthetic H&E image, precision 1.000, recall 0.607."
+sprout,3,theory,1,2,partial,paper_code_divergence;code_missing_or_broken;other,paper_code_divergence,yes,Row 3: solver AttributeError; plan mass 2.4 vs paper-normalized 0.6; convexity counterexample.
+sprout,4,mechanism,1,2,partial,code_missing_or_broken,code_missing_or_broken,no,Row 4: soft-NMS penalizes containing mask as claimed but crashes with IndexError on empty proposals.
+sprout,5,headline_performance,0,2,none,weights_missing;derived_artifacts_missing,weights_missing,no,"Row 5: no predictions, processed splits, checkpoints, metric tables or run outputs released."
+sprout,6,secondary_empirical,0,2,none,derived_artifacts_missing,derived_artifacts_missing,no,"Row 6: no three-repeat outputs, robustness artifacts or runtime traces released."
+xmae,1,mechanism,1,2,partial,paper_code_divergence,paper_code_divergence,yes,C1: paper specifies 80-90% loss-driven curriculum; config sets use_cl false and ladder never increments.
+xmae,2,mechanism,1,2,partial,code_missing_or_broken,code_missing_or_broken,no,C2: checkpoint strict-loads but gives all-NaN embeddings in eval; PVC notebook uses random encoder.
+xmae,3,headline_performance,0,2,none,raw_data_unavailable;weights_missing,raw_data_unavailable,no,C3: real pretrained weights and evaluated datasets explicitly unreleased.
+xmae,4,data_protocol,0,2,none,raw_data_unavailable;derived_artifacts_missing,raw_data_unavailable,no,C4: protected MIMIC waveform cohort and frozen manifest absent.
+xmae,5,secondary_empirical,0,2,none,raw_data_unavailable;weights_missing,raw_data_unavailable,no,C5: real weights and paired held-out analysis data absent.
+xmae,6,secondary_empirical,0,2,none,raw_data_unavailable;derived_artifacts_missing,raw_data_unavailable,no,C6: six evaluation datasets and canonical split/probe outputs absent.

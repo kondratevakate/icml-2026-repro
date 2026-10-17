@@ -1,0 +1,578 @@
+{
+  "agreement": {
+    "papers": 16,
+    "aligned_claims": 91,
+    "claim_count_mismatch": {},
+    "healthcare": {
+      "n": 16,
+      "po": 1.0,
+      "pe": 0.8828,
+      "kappa": 1.0
+    },
+    "code_release": {
+      "n": 16,
+      "po": 0.8125,
+      "pe": 0.4727,
+      "kappa": 0.6444
+    },
+    "claim_type": {
+      "n": 91,
+      "po": 0.9231,
+      "pe": 0.2372,
+      "kappa": 0.8992
+    },
+    "outcome": {
+      "n": 91,
+      "po": 1.0,
+      "pe": 0.3991,
+      "kappa": 1.0
+    },
+    "primary_blocker": {
+      "n": 91,
+      "po": 0.8901,
+      "pe": 0.1694,
+      "kappa": 0.8677
+    },
+    "divergence": {
+      "n": 91,
+      "po": 0.978,
+      "pe": 0.7099,
+      "kappa": 0.9242
+    },
+    "score_mismatches": [],
+    "paper_number_mismatches": {},
+    "primary_blocker_disagreements": [
+      {
+        "folder": "dpsurv",
+        "claim": "1",
+        "coder1": "derived_artifacts_missing",
+        "coder2": "raw_data_unavailable"
+      },
+      {
+        "folder": "flow_density_ratio",
+        "claim": "6",
+        "coder1": "derived_artifacts_missing",
+        "coder2": "weights_missing"
+      },
+      {
+        "folder": "glean",
+        "claim": "2",
+        "coder1": "code_missing_or_broken",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "glean",
+        "claim": "3",
+        "coder1": "code_missing_or_broken",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "glean",
+        "claim": "4",
+        "coder1": "code_missing_or_broken",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "glean",
+        "claim": "5",
+        "coder1": "code_missing_or_broken",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "globalhealthatlas",
+        "claim": "3",
+        "coder1": "raw_data_unavailable",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "lvcg",
+        "claim": "6",
+        "coder1": "paper_code_divergence",
+        "coder2": "code_missing_or_broken"
+      },
+      {
+        "folder": "medcrp_cl",
+        "claim": "1",
+        "coder1": "paper_code_divergence",
+        "coder2": "derived_artifacts_missing"
+      },
+      {
+        "folder": "ophiuchus",
+        "claim": "4",
+        "coder1": "weights_missing",
+        "coder2": "code_missing_or_broken"
+      }
+    ]
+  },
+  "taxonomy_reliable": true,
+  "coder1": {
+    "tag": "coder1",
+    "papers_healthcare": 15,
+    "claims_healthcare": 85,
+    "Q1": {
+      "eligible_claims": 68,
+      "papers": 14,
+      "share_artifact_blocked": 0.6176,
+      "ci": [
+        0.5,
+        0.7425
+      ],
+      "label_code_release_did_not_make_claims_checkable": true
+    },
+    "Q2_primary_blocker_by_claim_type": {
+      "data_protocol": {
+        "none": 2,
+        "derived_artifacts_missing": 1,
+        "code_missing_or_broken": 1,
+        "raw_data_unavailable": 4,
+        "paper_code_divergence": 1
+      },
+      "headline_performance": {
+        "raw_data_unavailable": 6,
+        "code_missing_or_broken": 4,
+        "paper_code_divergence": 1,
+        "weights_missing": 4,
+        "derived_artifacts_missing": 4,
+        "none": 1
+      },
+      "mechanism": {
+        "none": 5,
+        "paper_code_divergence": 9,
+        "code_missing_or_broken": 4,
+        "other": 1
+      },
+      "secondary_empirical": {
+        "raw_data_unavailable": 10,
+        "code_missing_or_broken": 9,
+        "derived_artifacts_missing": 7,
+        "paper_code_divergence": 3
+      },
+      "theory": {
+        "none": 3,
+        "other": 4,
+        "paper_code_divergence": 1
+      }
+    },
+    "Q2_any_blocker_counts": {
+      "raw_data_unavailable": 21,
+      "derived_artifacts_missing": 45,
+      "other": 18,
+      "paper_code_divergence": 15,
+      "code_missing_or_broken": 23,
+      "compute_or_scale": 4,
+      "weights_missing": 16
+    },
+    "Q2_outcome_by_claim_type": {
+      "data_protocol": {
+        "full": 2,
+        "partial": 5,
+        "none": 2
+      },
+      "headline_performance": {
+        "none": 15,
+        "partial": 4,
+        "full": 1
+      },
+      "mechanism": {
+        "full": 5,
+        "partial": 13,
+        "none": 1
+      },
+      "secondary_empirical": {
+        "none": 22,
+        "partial": 7
+      },
+      "theory": {
+        "full": 3,
+        "partial": 4,
+        "none": 1
+      }
+    },
+    "Q3": {
+      "papers_with_divergence": 11,
+      "of_papers": 16,
+      "healthcare_papers_with_divergence": 10,
+      "list": {
+        "bayes_causal_meta": [
+          "C1: Released prior normalizes Wz, unlike paper linear theta+Wz"
+        ],
+        "caml": [
+          "C3: Released Heat settings differ from paper (boundary weight, stop threshold)",
+          "C4: Five code/paper configuration mismatches; no cached outputs"
+        ],
+        "dc_pnpdp": [
+          "C3: Code scales full Gaussian FFT; paper samples fixed amplitude with random phase",
+          "C4: No data or reconstructions; example runs DiffPIR with w_tik=0 vs paper rho"
+        ],
+        "dpsurv": [
+          "C3: lambda*Bel+(1-lambda)*Pl implemented incorrectly; training uses lambda twice",
+          "C5: No calibration outputs; lambda mismatch invalidates non-default path"
+        ],
+        "globalhealthatlas": [
+          "C5: train_lora.sh not the paper recipe; GPQA value mismatch"
+        ],
+        "lvcg": [
+          "C2: Training entrypoint fails; config adds base_beat_loss not in Eq. 7",
+          "C6: No MIMIC-IV-ECG path; repository configures AI-READI instead"
+        ],
+        "ma_rag": [
+          "C1: History sorted ascending vs Eq. 4 descending; epsilon threshold absent",
+          "C2: Runner forces single_answer=True for multi-answer NEJM"
+        ],
+        "medcrp_cl": [
+          "C1: Released state uses CRP alpha 2.0, paper reports 5.0; prompts unavailable"
+        ],
+        "ophiuchus": [
+          "C1: Tool-call syntax not parsed; duplicate calls do not early-stop, contrary to paper",
+          "C2: Preprocess crashes; ATRL KL setting conflicts with paper"
+        ],
+        "sprout": [
+          "C3: Solver mass 2.4 vs paper-normalized 0.6; convexity counterexample"
+        ],
+        "xmae": [
+          "C1: Canonical config disables curriculum; ladder never advanced"
+        ]
+      }
+    },
+    "Q4": {
+      "mean_prepared_minus_forecast": -0.812,
+      "range": [
+        -3,
+        1
+      ],
+      "exact": 6,
+      "below": 9,
+      "above": 1,
+      "per_paper": {
+        "3dmedagent": 0,
+        "bayes_causal_meta": 0,
+        "came_grad": 0,
+        "caml": -3,
+        "dc_pnpdp": -1,
+        "dpsurv": -1,
+        "flow_density_ratio": 0,
+        "glean": 0,
+        "globalhealthatlas": 0,
+        "lvcg": -2,
+        "ma_rag": -2,
+        "medcrp_cl": -1,
+        "ophiuchus": -1,
+        "spmind": -1,
+        "sprout": 1,
+        "xmae": -2
+      }
+    }
+  },
+  "coder2": {
+    "tag": "coder2",
+    "papers_healthcare": 15,
+    "claims_healthcare": 85,
+    "Q1": {
+      "eligible_claims": 68,
+      "papers": 14,
+      "share_artifact_blocked": 0.6618,
+      "ci": [
+        0.5493,
+        0.7761
+      ],
+      "label_code_release_did_not_make_claims_checkable": true
+    },
+    "Q2_primary_blocker_by_claim_type": {
+      "data_protocol": {
+        "none": 2,
+        "raw_data_unavailable": 5,
+        "derived_artifacts_missing": 1,
+        "paper_code_divergence": 1
+      },
+      "headline_performance": {
+        "raw_data_unavailable": 7,
+        "code_missing_or_broken": 7,
+        "paper_code_divergence": 2,
+        "weights_missing": 3,
+        "derived_artifacts_missing": 6,
+        "none": 1
+      },
+      "mechanism": {
+        "none": 6,
+        "paper_code_divergence": 8,
+        "code_missing_or_broken": 4,
+        "derived_artifacts_missing": 1,
+        "other": 1
+      },
+      "secondary_empirical": {
+        "raw_data_unavailable": 8,
+        "code_missing_or_broken": 5,
+        "derived_artifacts_missing": 8,
+        "paper_code_divergence": 1,
+        "weights_missing": 1
+      },
+      "theory": {
+        "none": 2,
+        "other": 4,
+        "paper_code_divergence": 1
+      }
+    },
+    "Q2_any_blocker_counts": {
+      "raw_data_unavailable": 23,
+      "derived_artifacts_missing": 46,
+      "other": 26,
+      "paper_code_divergence": 13,
+      "code_missing_or_broken": 20,
+      "compute_or_scale": 3,
+      "weights_missing": 19,
+      "underspecified_paper": 1
+    },
+    "Q2_outcome_by_claim_type": {
+      "data_protocol": {
+        "full": 2,
+        "partial": 5,
+        "none": 2
+      },
+      "headline_performance": {
+        "none": 19,
+        "partial": 6,
+        "full": 1
+      },
+      "mechanism": {
+        "full": 6,
+        "partial": 13,
+        "none": 1
+      },
+      "secondary_empirical": {
+        "none": 18,
+        "partial": 5
+      },
+      "theory": {
+        "full": 2,
+        "partial": 4,
+        "none": 1
+      }
+    },
+    "Q3": {
+      "papers_with_divergence": 10,
+      "of_papers": 16,
+      "healthcare_papers_with_divergence": 9,
+      "list": {
+        "bayes_causal_meta": [
+          "C1: C1 row: code normalizes Wz to fixed fraction of global norm, unlike paper linear theta + Wz."
+        ],
+        "caml": [
+          "C3: C3: Heat code uses boundary weight 1 and threshold 1e-3 vs paper 5 and 2e-3; full runs too long.",
+          "C4: C4: five code/paper configuration mismatches across PDEs; no cached outputs released."
+        ],
+        "dc_pnpdp": [
+          "C3: C3 row: paper samples complementary amplitude with random phase; code scales full Gaussian FFT.",
+          "C4: C4 row: no data or cached outputs; example runs DiffPIR with w_tik=0 versus paper LACT penalty."
+        ],
+        "dpsurv": [
+          "C3: Row 3: lambda interpolation implemented incorrectly; training uses lambda twice, evaluation reverses Bel and Pl.",
+          "C5: Row 5: no calibration outputs; lambda mismatch invalidates released non-default-lambda path."
+        ],
+        "globalhealthatlas": [
+          "C5: C5 row: 8B not above base; GPQA mismatch; CSV mislabels. Released train_lora.sh not the paper recipe."
+        ],
+        "lvcg": [
+          "C2: C2: training entrypoint fails ModuleNotFoundError; config adds base_beat_loss absent from Equation 7."
+        ],
+        "ma_rag": [
+          "C1: C1: evaluator branch ranks history ascending vs Equation 4 descending; no epsilon threshold parameter.",
+          "C2: C2: sizes match, but runners score NEJM single-answer despite 41 multi-answer labels; duplicates found."
+        ],
+        "ophiuchus": [
+          "C1: C1 row: paper tool_call syntax not parsed; duplicate calls do not early-stop contrary to paper; mask reset fails.",
+          "C2: C2 row: preprocess crashes on placeholder, ATRL uses absent paths, KL setting conflicts with paper."
+        ],
+        "sprout": [
+          "C3: Row 3: solver AttributeError; plan mass 2.4 vs paper-normalized 0.6; convexity counterexample."
+        ],
+        "xmae": [
+          "C1: C1: paper specifies 80-90% loss-driven curriculum; config sets use_cl false and ladder never increments."
+        ]
+      }
+    },
+    "Q4": {
+      "mean_prepared_minus_forecast": -0.812,
+      "range": [
+        -3,
+        1
+      ],
+      "exact": 6,
+      "below": 9,
+      "above": 1,
+      "per_paper": {
+        "3dmedagent": 0,
+        "bayes_causal_meta": 0,
+        "came_grad": 0,
+        "caml": -3,
+        "dc_pnpdp": -1,
+        "dpsurv": -1,
+        "flow_density_ratio": 0,
+        "glean": 0,
+        "globalhealthatlas": 0,
+        "lvcg": -2,
+        "ma_rag": -2,
+        "medcrp_cl": -1,
+        "ophiuchus": -1,
+        "spmind": -1,
+        "sprout": 1,
+        "xmae": -2
+      }
+    }
+  },
+  "resolved": {
+    "tag": "resolved",
+    "papers_healthcare": 15,
+    "claims_healthcare": 85,
+    "Q1": {
+      "eligible_claims": 68,
+      "papers": 14,
+      "share_artifact_blocked": 0.6176,
+      "ci": [
+        0.5,
+        0.7425
+      ],
+      "label_code_release_did_not_make_claims_checkable": true
+    },
+    "Q2_primary_blocker_by_claim_type": {
+      "data_protocol": {
+        "none": 2,
+        "derived_artifacts_missing": 1,
+        "code_missing_or_broken": 1,
+        "raw_data_unavailable": 4,
+        "paper_code_divergence": 1
+      },
+      "headline_performance": {
+        "raw_data_unavailable": 6,
+        "code_missing_or_broken": 5,
+        "paper_code_divergence": 1,
+        "weights_missing": 3,
+        "derived_artifacts_missing": 4,
+        "none": 1
+      },
+      "mechanism": {
+        "none": 5,
+        "paper_code_divergence": 8,
+        "code_missing_or_broken": 4,
+        "derived_artifacts_missing": 1,
+        "other": 1
+      },
+      "secondary_empirical": {
+        "raw_data_unavailable": 10,
+        "code_missing_or_broken": 10,
+        "derived_artifacts_missing": 6,
+        "paper_code_divergence": 2,
+        "weights_missing": 1
+      },
+      "theory": {
+        "none": 3,
+        "other": 4,
+        "paper_code_divergence": 1
+      }
+    },
+    "Q2_any_blocker_counts": {
+      "raw_data_unavailable": 21,
+      "derived_artifacts_missing": 45,
+      "other": 19,
+      "paper_code_divergence": 13,
+      "code_missing_or_broken": 24,
+      "compute_or_scale": 4,
+      "weights_missing": 17
+    },
+    "Q2_outcome_by_claim_type": {
+      "data_protocol": {
+        "full": 2,
+        "partial": 5,
+        "none": 2
+      },
+      "headline_performance": {
+        "none": 15,
+        "partial": 4,
+        "full": 1
+      },
+      "mechanism": {
+        "full": 5,
+        "partial": 13,
+        "none": 1
+      },
+      "secondary_empirical": {
+        "none": 22,
+        "partial": 7
+      },
+      "theory": {
+        "full": 3,
+        "partial": 4,
+        "none": 1
+      }
+    },
+    "Q3": {
+      "papers_with_divergence": 10,
+      "of_papers": 16,
+      "healthcare_papers_with_divergence": 9,
+      "list": {
+        "bayes_causal_meta": [
+          "C1: Released prior normalizes Wz, unlike paper linear theta+Wz"
+        ],
+        "caml": [
+          "C3: Released Heat settings differ from paper (boundary weight, stop threshold)",
+          "C4: Five code/paper configuration mismatches; no cached outputs"
+        ],
+        "dc_pnpdp": [
+          "C3: Code scales full Gaussian FFT; paper samples fixed amplitude with random phase",
+          "C4: No data or reconstructions; example runs DiffPIR with w_tik=0 vs paper rho"
+        ],
+        "dpsurv": [
+          "C3: lambda*Bel+(1-lambda)*Pl implemented incorrectly; training uses lambda twice",
+          "C5: No calibration outputs; lambda mismatch invalidates non-default path"
+        ],
+        "globalhealthatlas": [
+          "C5: train_lora.sh not the paper recipe; GPQA value mismatch"
+        ],
+        "lvcg": [
+          "C2: Training entrypoint fails; config adds base_beat_loss not in Eq. 7"
+        ],
+        "ma_rag": [
+          "C1: History sorted ascending vs Eq. 4 descending; epsilon threshold absent",
+          "C2: Runner forces single_answer=True for multi-answer NEJM"
+        ],
+        "ophiuchus": [
+          "C1: Tool-call syntax not parsed; duplicate calls do not early-stop, contrary to paper",
+          "C2: Preprocess crashes; ATRL KL setting conflicts with paper"
+        ],
+        "sprout": [
+          "C3: Solver mass 2.4 vs paper-normalized 0.6; convexity counterexample"
+        ],
+        "xmae": [
+          "C1: Canonical config disables curriculum; ladder never advanced"
+        ]
+      }
+    },
+    "Q4": {
+      "mean_prepared_minus_forecast": -0.812,
+      "range": [
+        -3,
+        1
+      ],
+      "exact": 6,
+      "below": 9,
+      "above": 1,
+      "per_paper": {
+        "3dmedagent": 0,
+        "bayes_causal_meta": 0,
+        "came_grad": 0,
+        "caml": -3,
+        "dc_pnpdp": -1,
+        "dpsurv": -1,
+        "flow_density_ratio": 0,
+        "glean": 0,
+        "globalhealthatlas": 0,
+        "lvcg": -2,
+        "ma_rag": -2,
+        "medcrp_cl": -1,
+        "ophiuchus": -1,
+        "spmind": -1,
+        "sprout": 1,
+        "xmae": -2
+      }
+    }
+  }
+}
