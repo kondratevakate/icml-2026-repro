@@ -56,8 +56,15 @@ def main() -> None:
         C4_judge_retest=A.retest(disc, new, rng()),
     )
     c2, c3, c4 = results["C2_agreement"], results["C3_medical_gap"], results["C4_judge_retest"]
+    rejudged = sum(k in disc and r["sha"] == disc[k]["sha"] and r["judged_at"] != disc[k]["judged_at"]
+                   for k, r in new.items())
+    if c4.get("n_claims", 0) == 0:
+        results["C4_judge_retest"] = dict(evaluable=False, rejudged_same_sha_spaces=rejudged, paired_claims=0)
+    discovery = json.loads((A.HERE / "results/results.json").read_text(encoding="utf-8"))
+    disc_c4_ci = discovery["C4_judge_retest"]["kappa_ci"]
     results["prespecified_labels"] = dict(
-        substantial_reproducer_disagreement=bool(c2["kappa_ci"][1] < 0.60 and c2["kappa_ci"][1] < c4["kappa_ci"][0]),
+        reproducer_kappa_upper_below_060=bool(c2["kappa_ci"][1] < 0.60),
+        reproducer_kappa_below_discovery_judge_retest=bool(c2["kappa_ci"][1] < disc_c4_ci[0]),
         medical_gap_in_verified_share=bool((c3["diff_ci"]["verified"][0] > 0 or c3["diff_ci"]["verified"][1] < 0)
                                            and c3["perm_p_verified"] < 0.05),
     )

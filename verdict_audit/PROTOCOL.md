@@ -133,3 +133,19 @@ before this amendment and are not relabelled.
   discovery C4; the same logbook content may recur).
 * Confirmation succeeds for a label only if the same prespecified rule holds on
   the confirmation set. A failed confirmation is reported as such.
+
+## Amendment 2: C4 not evaluable in confirmation (2026-10-17, before any confirmation result was seen)
+
+The first confirmation run stopped with an error before writing results: all 238
+Spaces rejudged after 2026-07-28 with an unchanged `sha` were judged against a
+completely different claim list (no normalized claim text in common), so C4
+yielded zero claim pairs. Judge test-retest cannot be measured on the new
+snapshot. Changes, `confirm.py` only:
+
+* C4 is reported as not evaluable, with the count of rejudged Spaces.
+* The C2 label is split into its two prespecified conditions. Condition (a),
+  upper 95% bound of kappa below 0.60, is evaluated on the confirmation set.
+  Condition (b), C2 CI below the C4 CI, is evaluated against the discovery C4
+  interval and labelled as a cross-snapshot comparison, not an independent
+  confirmation of (b).
+* The C3 rule is unchanged.
