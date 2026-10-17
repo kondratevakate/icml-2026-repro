@@ -98,3 +98,6 @@ experiments/**/data/
 .DS_Store
 Thumbs.db
 *.swp
+
+# agent run virtualenv links (host-specific, dead off-host)
+**/.venv
