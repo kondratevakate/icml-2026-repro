@@ -1,0 +1,170 @@
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+C:\Users\kondr\AppData\Local\Programs\Python\Python311\Lib\site-packages\statsmodels\regression\linear_model.py:1884: RuntimeWarning: invalid value encountered in sqrt
+  return np.sqrt(np.diag(self.cov_params()))
+{
+  "theory_covariate_used": true,
+  "n_claims": 35166,
+  "n_reproducers": 372,
+  "H1_primary": {
+    "estimate": -0.0244,
+    "ci": [
+      -0.0644,
+      0.0156
+    ],
+    "p": 0.2322409540800704,
+    "n_claims": 31707,
+    "n_reproducers": 104,
+    "n_papers": 1915,
+    "medical_claims": 2624,
+    "theory_coef": 0.1606
+  },
+  "secondary_clogit": {
+    "model": "fixed-effects logit (amendment 1)",
+    "log_or": -0.1576,
+    "odds_ratio": 0.8542,
+    "or_ci": [
+      0.6601,
+      1.1053
+    ],
+    "p": 0.23069551893736073,
+    "n_claims": 31577,
+    "converged": true
+  },
+  "sens_no_theory": {
+    "estimate": -0.0417,
+    "ci": [
+      -0.087,
+      0.0037
+    ],
+    "p": 0.07188273020986861,
+    "n_claims": 31707,
+    "n_reproducers": 104,
+    "n_papers": 1915,
+    "medical_claims": 2624,
+    "theory_coef": null
+  },
+  "sens_exclude_organiser": {
+    "estimate": -0.0248,
+    "ci": [
+      -0.0651,
+      0.0156
+    ],
+    "p": 0.2294513310875138,
+    "n_claims": 31553,
+    "n_reproducers": 103,
+    "n_papers": 1903,
+    "medical_claims": 2594,
+    "theory_coef": 0.1605
+  },
+  "sens_narrow_label": {
+    "estimate": -0.0142,
+    "ci": [
+      -0.0928,
+      0.0645
+    ],
+    "p": 0.7243809554212972,
+    "n_claims": 19971,
+    "n_reproducers": 41,
+    "n_papers": 1436,
+    "medical_claims": 593,
+    "theory_coef": 0.1646
+  },
+  "sens_equal_paper_weight": {
+    "estimate": 0.0056,
+    "ci": [
+      -0.0212,
+      0.0324
+    ],
+    "p": 0.6811591732041407,
+    "n_claims": 31707,
+    "n_reproducers": 104,
+    "n_papers": 1915,
+    "medical_claims": 2624,
+    "theory_coef": 0.1569
+  },
+  "sens_discovery_period": {
+    "estimate": -0.0008,
+    "ci": [
+      -0.0463,
+      0.0446
+    ],
+    "p": 0.9709875591248421,
+    "n_claims": 16984,
+    "n_reproducers": 80,
+    "n_papers": 1406,
+    "medical_claims": 1389,
+    "theory_coef": 0.1545
+  },
+  "sens_after_discovery": {
+    "estimate": -0.0405,
+    "ci": [
+      -0.0866,
+      0.0056
+    ],
+    "p": 0.08508561128253672,
+    "n_claims": 13855,
+    "n_reproducers": 45,
+    "n_papers": 1120,
+    "medical_claims": 1206,
+    "theory_coef": 0.1611
+  },
+  "sens_label_corrected": {
+    "factor": 0.47,
+    "corrected_estimate": -0.0519,
+    "factor_uncertainty_interval": [
+      -0.0659,
+      -0.0428
+    ],
+    "note": "propagates E0 sampling error only, not the model CI"
+  },
+  "reasons_exploratory": {
+    "share_medical": {
+      "artifact_absent": 0.1044,
+      "not_attempted": 0.1543,
+      "reduced_scale": 0.2354,
+      "other": 0.5058
+    },
+    "share_other": {
+      "artifact_absent": 0.0532,
+      "not_attempted": 0.15,
+      "reduced_scale": 0.2337,
+      "other": 0.5631
+    },
+    "diff": {
+      "artifact_absent": 0.0513,
+      "not_attempted": 0.0044,
+      "reduced_scale": 0.0017,
+      "other": -0.0573
+    },
+    "diff_ci": {
+      "artifact_absent": [
+        0.0319,
+        0.0721
+      ],
+      "not_attempted": [
+        -0.0188,
+        0.0298
+      ],
+      "reduced_scale": [
+        -0.0284,
+        0.0318
+      ],
+      "other": [
+        -0.0933,
+        -0.0193
+      ]
+    },
+    "n_verdicts": 16610
+  },
+  "reasons_validated": false,
+  "decision_rule_medical_gap_headline": false
+}
