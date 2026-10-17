@@ -107,3 +107,29 @@ discovery result is not relabelled as confirmed.
   ranked in outputs, apart from the author's own logbooks.
 * Repository availability numbers from `audit/` are not used: only 50 of 129
   GitHub repositories were checked live because of rate limits.
+
+## Amendment 1: confirmation run (frozen 2026-10-17, after discovery, before confirmation)
+
+Kate approved downloading the current snapshot. Discovery results were committed
+before this amendment and are not relabelled.
+
+* Input: `data/verdicts_confirmation_2026-10-17/verdicts.json`, SHA-256
+  `652f1c162462d7ad142ff32e2bd13d5853e21c639681ef416971776fdd33c526`, downloaded
+  2026-10-17 from `ICML-2026-agent-repro/verdicts` (6,885 logbooks, judged up to
+  2026-08-03, one judge model). Not versioned; reproducible from the dataset
+  history.
+* Confirmation set: logbooks whose `space_id` appears in neither discovery
+  snapshot AND whose `judged_at` is later than 2026-07-28T12:51:33+00:00
+  (1,910 logbooks, 997 papers). The protocol says "first judged after"; the
+  snapshot keeps only the latest judgement per Space, so absence from both
+  earlier snapshots is the operational definition.
+* Deviation: `analyze.py` hard-codes the discovery inputs and refuses to overwrite
+  `results/`. `confirm.py` imports its analysis functions unchanged and applies
+  them to the confirmation set; deduplication, anchored texts (the frozen local
+  `claims_anchored.json`), medical labels, seeds, resamples and thresholds are
+  identical. Agreement (C2) uses only ratings from confirmation logbooks.
+* C4 replication: Spaces present in the 2026-07-28 snapshot and the new snapshot
+  with identical `sha` and a later `judged_at` (different judgement events from
+  discovery C4; the same logbook content may recur).
+* Confirmation succeeds for a label only if the same prespecified rule holds on
+  the confirmation set. A failed confirmation is reported as such.
