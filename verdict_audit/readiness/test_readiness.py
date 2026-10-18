@@ -26,3 +26,12 @@ def test_mh_rd_and_stratified():
             [dict(stratum="s1", g=0, y=1)] * 5 + [dict(stratum="s1", g=0, y=0)] * 5
     out = R.stratified(units, lambda u: u["g"], "y", ["s1"], np.random.default_rng(0))
     assert abs(out["rd"] - (-0.3)) < 1e-12 and out["negative_strata"] == 1
+
+
+def test_posthoc_mh_matches_risk_difference():
+    import posthoc_p8 as PH
+    stratum = lambda g: [dict(g=g, open=1, decided=int(i < 2)) for i in range(10)] + \
+                        [dict(g=g, open=0, decided=int(i < 5)) for i in range(10)]
+    assert abs(PH.mh(stratum("medical"), "open") - (-0.3)) < 1e-12
+    assert abs(PH.mh(stratum("medical") + stratum("other"), "open") - (-0.3)) < 1e-12
+    assert PH.mh([dict(g="medical", open=1, decided=1)], "open") is None

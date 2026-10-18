@@ -310,3 +310,45 @@ Agreement with the protocol 7 labels is reported; labels are not changed.
   on open data or schema-faithful synthetic data) is out of scope here and
   would be a separately frozen protocol.
 * Aggregates and per-item codes keyed by public ids only; no author named.
+
+## Note 8-1 (2026-10-19, after H8.5 coding, before any H8.1-H8.5 contrast was computed)
+
+H8.5 adjudication rules, fixed before `analyze_p8.py run`:
+
+* A release field (`synthetic_or_sample_release`, `weights_release`) coded
+  `no` by one coder and `unclear` by the other is adjudicated by the
+  excerpt length: an excerpt that reached the 6,000-character cap may have
+  lost later paragraphs, so the label is `unclear`; a shorter excerpt holds
+  every matching paragraph, so the label is `no`. 107 of 129 disagreements
+  were settled this way.
+* The other 22 disagreements (19 papers' field pairs, listed in
+  `codes/p8/adjudication_h85.csv` with reasons) were adjudicated from the
+  excerpt only, without outside knowledge of a dataset's access terms; a
+  named dataset without stated terms is `unclear`.
+* `synthetic_or_sample_release` follows the convention both coders applied
+  where they agreed (e.g. F0132): a code release that runs synthetic
+  experiments is not a stated synthetic-data release.
+* Agreement on the two release fields was low (kappa 0.12 and 0.40), and
+  most excerpts reached the cap, so their prevalences are reported as lower
+  bounds with this caveat. No label of protocol 8 depends on them.
+
+## Note 8-2 (2026-10-19, post hoc, after `results/p8.json` was seen)
+
+The H8.5 policy contrast came out negative (papers without an open-data
+experiment were decided more often). A likely reading is composition: the
+`no` cell holds theory papers and synthetic-only papers, whose claims are
+easy to decide. Three descriptive analyses, defined here before being
+computed, are reported as post hoc, with no label, in `results/p8_posthoc.json`
+(`posthoc_p8.py`):
+
+* PH8-a: per policy cell, the number of papers with `main_data_access` =
+  `synthetic_only` and the number with no empirical claim verdict (protocol 4
+  dictionary).
+* PH8-b: decided share by `main_data_access` within medical papers, open
+  versus restricted (`credentialed_or_request` or `private`), Wilson
+  intervals, and the difference restricted minus open with a paper bootstrap
+  CI (2000 resamples, seed 20261017). The same cells for other papers are
+  reported.
+* PH8-c: the H8.5 policy cells and Mantel-Haenszel difference recomputed
+  among papers with at least one empirical claim verdict and
+  `main_data_access` not `synthetic_only`.
