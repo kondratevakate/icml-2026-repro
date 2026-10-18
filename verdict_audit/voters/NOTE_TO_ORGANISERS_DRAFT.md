@@ -3,13 +3,21 @@
 To: ICML agent reproduction challenge organisers. From: [sender name].
 Status: draft for Kate's review; numbers are exploratory, from two protocols
 frozen before each analysis (`verdict_audit/voters/PROTOCOL.md`; protocol 1
-commits 7c83ea3 and fa7dd28, protocol 2 commit 9bde6ab). All verdicts come from
-the one LLM judge.
+commits 7c83ea3 and fa7dd28; protocol 2 commit 9bde6ab, amended in 82c3f51).
+All verdicts come from the one LLM judge.
 
 Thank you for the challenge and for publishing the verdicts. We used the public
 verdict snapshot (6,885 logbooks, downloaded 2026-10-17) and the logbook pages at
 each judged revision to ask one question: how well do claim-level votes add up
-to a reliable verdict? Six findings, then six suggestions.
+to a reliable verdict? Six findings, then seven suggestions.
+
+**Disclosure.** I took part in the challenge myself, with 53 judged logbooks,
+and my agent had access to other teams' logbooks while it worked. After the
+challenge I could not reconstruct which of my logbooks were influenced by what
+it read: the trace indexes in my local logbook folders are empty, and memory is
+not a record. I therefore treat all 53 as potentially exposed. Excluding them
+changes the main estimates by about 0.002 or less (collapsed kappa 0.191 versus
+0.193; exposure difference -0.0105 versus -0.0108).
 
 ## Findings
 
@@ -79,26 +87,34 @@ to a reliable verdict? Six findings, then six suggestions.
    which makes votes hard to pool.
 2. **Keep votes independent until close.** Hide verdicts until the challenge
    ends and allow private Spaces until then; publish only coverage (attempts per
-   claim) so teams can still go where checks are few. Ask each logbook to declare
-   whether it consulted other logbooks or verdicts, and which. Count declared
-   syntheses as their own category, not as independent votes. We found no
-   measurable herding in 2026 (finding 5), but the test had little power;
-   hiding verdicts is cheap and makes independence hold by design.
-3. **Record agent and model as structured fields** in `logbook.json`: agent tool,
+   claim) so teams can still go where checks are few. Let teams that deliberately
+   build on others' logbooks or verdicts label the logbook a synthesis, and count
+   syntheses as their own category, not as independent votes; suggestion 3 makes
+   everything else checkable. We found no measurable herding in 2026 (finding
+   5), but the test had little power; hiding verdicts is cheap and makes
+   independence hold by design.
+3. **Make access traces mandatory, not declared.** A declaration written from
+   memory is not reliable; I could not write one for my own logbooks
+   (Disclosure). Require each logbook to ship the agent's trace of what it read:
+   every URL and file accessed, with timestamps, including other teams' Spaces
+   and the verdict dataset. The logbook format already has a traces index; all
+   49 trace indexes in my working repository were empty, so an optional field
+   is not enough. With traces, exposure becomes measurable instead of inferred.
+4. **Record agent and model as structured fields** in `logbook.json`: agent tool,
    model and version, and how much a human intervened. Free text cannot recover
    this (finding 4), and without it no one can study agent effects or correlated
    errors.
-4. **Adjudicate contested claims instead of counting votes.** A falsification is
+5. **Adjudicate contested claims instead of counting votes.** A falsification is
    an existence claim: one checked counterexample is enough, and a majority of
    weaker "verified" runs cannot cancel it (finding 6: higher-rated dissenting
    falsifications lose the vote two times in three). Send every claim with at least one
    falsified vote to the adversarial re-verification you already ran, with an
    author response window, and publish it as "contested" until resolved.
-5. **Separate scale from validity.** Keep the rule that a toy-scale run cannot
+6. **Separate scale from validity.** Keep the rule that a toy-scale run cannot
    confirm an empirical claim. But a demonstrated error in the authors' released
    code, or an exact counterexample to a theorem, should be eligible for
    falsification at any scale.
-6. **Require artifacts that make a verdict checkable:** commit hash, seeds,
+7. **Require artifacts that make a verdict checkable:** commit hash, seeds,
    environment, raw outputs, and the exact claim-list version. Freeze the judged
    revision (you already store its `sha`) so that a later reader sees what the
    judge saw.
