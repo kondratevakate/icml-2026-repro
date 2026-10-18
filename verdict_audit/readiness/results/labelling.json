@@ -1,0 +1,54 @@
+{
+  "gate": {
+    "n": 1633,
+    "po": 0.9767299448867116,
+    "kappa": 0.958197509257594,
+    "threshold": 0.8,
+    "met": true
+  },
+  "agreement_non_candidates": {
+    "n": 200,
+    "po": 1.0,
+    "kappa": null
+  },
+  "agreement_reclaim": {
+    "n": 100,
+    "po": 1.0,
+    "kappa": 1.0
+  },
+  "n_items": {
+    "coder1": 6832,
+    "coder2": 1933,
+    "overlap": 1633,
+    "non_candidates": 200,
+    "reclaim": 100
+  },
+  "disagreements": 38,
+  "pending_adjudication": 0,
+  "prefilter_miss_rate": {
+    "medical_among_non_candidates": 0,
+    "n": 200,
+    "share": 0.0,
+    "wilson": [
+      0.0,
+      0.018846005918320894
+    ]
+  },
+  "label_counts": {
+    "cand": {
+      "no": 3926,
+      "clinical": 1258,
+      "life_science": 1348
+    },
+    "reclaim": {
+      "no": 94,
+      "clinical": 2,
+      "life_science": 4
+    }
+  },
+  "coder_model": {
+    "model": "claude-sonnet-5-5",
+    "transcripts": 36,
+    "source": "subagent transcripts of this session; both roles"
+  }
+}

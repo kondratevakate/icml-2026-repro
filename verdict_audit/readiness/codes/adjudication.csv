@@ -1,0 +1,39 @@
+item_id,label,reason
+P00130,clinical,main tasks are bio-electrical signal classification and ultrasound diagnosis with patient artifacts
+P00136,clinical,adaptive randomization for clinical trials using clinical notes is the main application
+P00255,no,medical imaging is one of three evaluation settings with synthetic and tabular data
+P00406,life_science,molecular relational learning for biochemical research is the main task
+P00723,life_science,conformer generation framed for drug discovery
+P01407,clinical,robustness is evaluated on medical question answering as the main setting
+P01424,no,planning theory; grid-cell theories are background only
+P01490,no,molecular design is one example of discrete optimization
+P01688,life_science,models of synaptic plasticity and credit assignment in neural processing
+P01809,clinical,EEG continual learning motivated by new patients in clinical settings
+P01886,clinical,the only real-world evaluation is fMRI and behavioural testing for autism
+P01991,life_science,"fMRI functional connectivity benchmarking for neuroscience, no disease task"
+P03182,life_science,theory of modular representations in biological neurons
+P03194,life_science,theory of hippocampal place-field gradients
+P03301,no,"survival method; real datasets not stated as clinical, patients only as framing"
+P03516,life_science,real evaluation on molecular and experimental protein data
+P03530,clinical,intracortical BCI decoding for individuals with paralysis
+P03638,life_science,the only real-world analysis is a gene regulatory network from single-cell RNA-seq
+P03657,life_science,RNNs on neuroscience tasks for mechanistic insight into neural systems
+P03685,life_science,spatial gene expression prediction; tissue images without a clinical decision
+P03870,life_science,results reported on drug-like molecules and peptides
+P03977,life_science,molecular understanding framed for drug discovery
+P04064,life_science,"fMRI cognition foundation model, no disease task"
+P04243,life_science,the only real data are primate brain recordings
+P04308,life_science,molecular structure generation for docking and protein folding
+P04514,no,position piece on NLP for human behavioural science broadly
+P04591,life_science,continuous attractors in theoretical neuroscience
+P04704,life_science,brain-signal foundation model; no patients or disease task stated
+P04810,life_science,cognitive neuroscience paradigm of associative learning
+P04834,life_science,the only real evaluation is gene perturbation data
+P04916,life_science,resting-state fMRI dynamics; no disease task stated
+P05123,no,benchmark covers general and surgical scenes; medicine is one of two domains
+P05178,life_science,theory of RNN learning for neuroscience tasks
+P05249,life_science,RNNs with biologically plausible synaptic weights; theoretical neuroscience
+P05278,life_science,position on brain recordings as training supervision
+P06255,life_science,RNNs as models of neural computation underlying behaviour
+P06399,life_science,"applications are small molecules, DNA and protein sequences"
+P06639,life_science,sampling of peptide molecular dynamics
