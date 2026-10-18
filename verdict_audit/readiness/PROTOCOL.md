@@ -172,3 +172,141 @@ NeurIPS 2026. No paper had been labelled and no readiness share computed.
   2026 strata, whose code links may still be added before or after the
   meeting).
 * All candidates are coded, as frozen (option b).
+
+# Protocol 8: hidden science — what a crowd can check without the data
+
+Frozen 2026-10-19, approved by Kate in chat, before any sample was drawn,
+any full text fetched or any contrast computed. Designed after the
+results of protocols 3, 4, 6 and 7 were seen. Every analysis below uses data
+already looked at in aggregate (ICML 2026 verdicts, medical labels); none of
+the contrasts below has been computed. Part of the PSE9 abstract
+"Unfalsifiable by default", extended towards hidden science (research whose
+evidence rests on data others cannot access) and synthetic or toy releases.
+
+## Questions
+
+H8.1 Within papers, is the medical decidability gap concentrated in empirical
+     claims rather than theoretical ones?
+H8.2 Does a restricted-data mention go with fewer decided papers, and does it
+     account for part of the medical gap?
+H8.3 What reasons does the judge give when it does not decide a claim, and
+     do they differ for medical papers?
+H8.4 Asymmetry at scale: are mechanism and theory claims of medical papers
+     decided as often as those of other papers, while headline and secondary
+     empirical claims are not?
+H8.5 Policy test: were papers with at least one experiment on open data
+     decided more often? How common are private-only evaluations ("hidden
+     science") and released synthetic, sample or toy data?
+H8.6 (optional) Expert check of the medical label.
+
+## Units, groups and outcomes
+
+* Papers: ICML 2026 papers in `readiness/data/papers.json` (stratum
+  `icml-2026`). Medical = protocol 7 label `clinical` or `life_science`;
+  other = protocol 7 non-candidates; candidates labelled `no` are excluded.
+  Secondary: clinical only. Sensitivity: protocol 6 label.
+* Logbooks: confirmation snapshot (`data/verdicts_confirmation_2026-10-17/verdicts.json`,
+  SHA-256 `652f1c16…`), deduplicated as in protocol 1, Kate's namespace
+  `kondratevakate` excluded. Attempted paper = at least one logbook.
+* Claim verdict: one claim in one logbook. Decisive = `verified` or
+  `falsified`. Paper decided = at least one decisive claim verdict.
+* Uncertainty: paper-cluster bootstrap (resampling papers within group),
+  2000 resamples, seed 20261017, percentile 95% intervals. Samples drawn with
+  seed 20261018.
+
+## H8.1 (primary): theory versus empirical claims within papers
+
+* Claim type by the protocol 4 dictionary (regex in `e1_adjusted/PROTOCOL.md`,
+  validated kappa 0.76): `theory` or `empirical`.
+* Gap(type) = decisive share, medical minus other, among claim verdicts of
+  that type in attempted papers. Estimate: DiD = Gap(empirical) minus
+  Gap(theory).
+* Label "the medical gap is concentrated in empirical claims" only if the DiD
+  CI upper bound is below 0. Reported with both gaps, their CIs and counts.
+
+## H8.2 (descriptive): restricted-data mentions
+
+* Restricted-data mention = protocol 7 outcome O3 (title or abstract regex).
+* Decided share among attempted papers in the four cells medical/other by O3;
+  medical minus other gap unadjusted and Mantel-Haenszel adjusted over O3.
+
+## H8.3 (descriptive): the judge's stated reasons
+
+* Sample: 150 `toy` or `inconclusive` claim verdicts from attempted medical
+  papers and 150 from attempted other papers, at most 3 per paper.
+* Two blind coders (Claude subagents) code all 300 from the claim text and the
+  judge's evidence text; paper titles are masked and the group is hidden.
+  Reason (one, the main one): `data_unavailable` (restricted, private or
+  unreleased data), `artifacts_missing` (weights, predictions, outputs or
+  derived data not released), `code_missing_or_broken`,
+  `reduced_scale_or_compute`, `not_attempted`, `underspecified_paper`,
+  `other`. Consensus by agreement, else adjudication by this session with a
+  written reason. Cohen's kappa reported.
+* Reported: share of each reason by group with Wilson intervals, and the
+  medical minus other difference for `data_unavailable` and
+  `artifacts_missing` with bootstrap CIs.
+
+## H8.4 (secondary): claim-type map and the asymmetry
+
+* Codebook: protocol 3 claim types (`theory`, `mechanism`, `data_protocol`,
+  `headline_performance`, `secondary_empirical`), from claim text only.
+* Items: every unique claim text of attempted medical papers, and a random
+  sample of the same number of unique claim texts from attempted other papers.
+* Coding as protocol 7 option (b): coder 1 codes all, coder 2 a random 25%,
+  gate kappa at least 0.80 (else coder 2 codes all and every disagreement is
+  adjudicated). Claude subagents; model recorded from transcripts.
+* Decisive share by group and type at the claim-verdict level. Contrast:
+  Gap({headline_performance, secondary_empirical}) minus
+  Gap({theory, mechanism}).
+* Label "checkable-without-data claims were decided as often, data-dependent
+  claims were not" only if the CI of Gap({theory, mechanism}) includes 0 AND
+  the contrast CI upper bound is below 0.
+
+## H8.5 (policy test and prevalence): open data, private data, synthetic releases
+
+* Papers: every attempted medical paper and a random equal-size sample of
+  attempted other papers.
+* Full text: arXiv HTML at `https://arxiv.org/html/<arxiv id>` (id from
+  `papers.json`), else the arXiv PDF parsed with `pypdf`; at most one request
+  per three seconds. Papers without full text are excluded and counted.
+* Excerpt: paragraphs matching, case-insensitive,
+  `dataset|data availab|publicly available|public|private|proprietary|in-house|institutional|IRB|ethic|consent|synthetic|simulated|toy|sample data|demo|download|access|PhysioNet|credential|request|licen|weights|checkpoint|code`,
+  in document order, capped at 6,000 characters, with the title.
+* Two blind coders (Claude subagents) code every paper (group hidden):
+  - `main_data_access`: `open` (downloadable without a data-use agreement),
+    `credentialed_or_request` (e.g. PhysioNet credentialing, UK Biobank
+    application, on request), `private` (not released), `synthetic_only`,
+    `unclear`;
+  - `open_data_experiment`: `yes` if at least one main experiment uses open
+    data, `no`, `unclear`;
+  - `synthetic_or_sample_release`: `yes` if the paper states a released
+    synthetic, sample, demo or toy dataset for running the code, `no`,
+    `unclear`;
+  - `weights_release`: `yes`, `no`, `unclear`.
+  Kappa per field; consensus by agreement, else adjudication with a reason.
+* Reported: prevalence of each field by group; hidden science = medical
+  papers with `main_data_access` = `private` and `open_data_experiment` = `no`.
+  Decided share by `open_data_experiment` within medical and within other
+  papers; Mantel-Haenszel difference (yes minus no) over the two groups.
+* Label "papers with an open-data experiment were decided more often" only if
+  the pooled CI lower bound is above 0. `unclear` is excluded and counted.
+
+## H8.6 (optional): expert check
+
+If Kate provides it: 60 ICML 2026 papers drawn at random (30 protocol 7
+medical, 30 non-candidates), coded blind by Kate with the E0 codebook.
+Agreement with the protocol 7 labels is reported; labels are not changed.
+
+## Evidence boundary
+
+* All verdicts come from one LLM judge. Decisive is the challenge's label.
+* Observational: teams chose papers and claims; the within-paper contrasts
+  (H8.1, H8.4) remove paper choice but not claim difficulty.
+* Excerpts can miss data statements; `unclear` is reported, not imputed.
+* Coders are language models; agreement is between model coders.
+* The policy test describes existing variation; it does not show what a
+  mandate would do.
+* A synthetic or transfer reproduction pilot (re-running private-data papers
+  on open data or schema-faithful synthetic data) is out of scope here and
+  would be a separately frozen protocol.
+* Aggregates and per-item codes keyed by public ids only; no author named.
