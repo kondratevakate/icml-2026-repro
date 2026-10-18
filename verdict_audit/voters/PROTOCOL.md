@@ -330,3 +330,26 @@ logbooks, with counts. No test.
 * H5 is not run. All 53 author logbooks are treated as potentially exposed; the
   prespecified "exclude author namespace" sensitivity analyses (Protocol 1 Q2,
   Protocol 2 H1) are the relevant checks.
+
+## Note 2-2: H1 estimator bias (2026-10-18, written after H1 results were seen)
+
+This note records a design flaw found after the H1 results were seen. It does
+not change any prespecified label; the H1 label stays "not met".
+
+* Within a stratum, `E = 1` is equivalent to `d > L_A` (time gap greater than
+  A's judge latency). Exposed pairs therefore have systematically larger gaps
+  than unexposed pairs in the same gap bin, and agreement falls with the gap
+  (Protocol 1 Q2). The stratified Mantel-Haenszel difference is biased
+  downward under no herding. The latency-permutation null shows the size of
+  this bias: its mean is -0.023 (`results/exposure.json`, H1.permutation), not 0.
+* The prespecified estimator should have been checked under a no-effect
+  simulation before freezing. It was not.
+* The permutation null, which keeps the timing structure, is the more valid
+  reference. Reported descriptively (post hoc): observed minus null mean =
+  -0.011 - (-0.023) = +0.012, one-sided permutation p = 0.03 (prespecified).
+  Reading: no clear evidence of herding; a small positive effect is possible
+  and the test cannot confirm or exclude it.
+* H2 shares this bias (both strata use the same estimator), so the negative
+  verified-reference difference there is not interpreted.
+* Any corrected estimator (for example matching on the exact gap) would be a
+  new, separately frozen analysis, labelled as designed after these results.

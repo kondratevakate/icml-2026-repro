@@ -3,7 +3,8 @@
 To: ICML agent reproduction challenge organisers. From: [sender name].
 Status: draft for Kate's review; numbers are exploratory, from two protocols
 frozen before each analysis (`verdict_audit/voters/PROTOCOL.md`; protocol 1
-commits 7c83ea3 and fa7dd28; protocol 2 commit 9bde6ab, amended in 82c3f51).
+commits 7c83ea3 and fa7dd28; protocol 2 commit 9bde6ab, amended in 82c3f51,
+with a post-hoc note on the H1 estimator).
 All verdicts come from the one LLM judge.
 
 Thank you for the challenge and for publishing the verdicts. We used the public
@@ -58,18 +59,23 @@ changes the main estimates by about 0.002 or less (collapsed kappa 0.191 versus
    mention a coding-agent name, and two blind coders judged only 25% of sampled
    mentions to name the producer. Model-family names are almost always the object
    of study (0% producer). None of 40 logbooks without a match names a producer.
-5. **Later teams did not measurably follow published verdicts.** We used the
-   judge's queue as a natural experiment: at the same time gap, a later logbook
-   either was or was not finished after the earlier logbook's verdict appeared.
-   Agreement with the earlier verdict was 50% when it had been published and 52%
-   when not; the stratified difference is -0.011 (95% CI -0.036 to 0.016), so
-   our prespecified "herding" label is not met. A permutation check puts the
-   observed difference slightly above what the timing structure alone produces
-   (p = 0.03), so a small effect cannot be ruled out. The test has little
-   leverage because the judge usually published within about an hour (median
-   1.2 h), and it cannot see teams that read logbook pages rather than verdicts.
-   The first logbook of a claim does not agree with the others more than later
-   ones do (difference -0.028, CI -0.058 to 0.000).
+5. **No clear evidence that later teams followed published verdicts.** We used
+   the judge's queue as a natural experiment: at the same time gap, a later
+   logbook either was or was not finished after the earlier logbook's verdict
+   appeared. Agreement with the earlier verdict was 50% when it had been
+   published and 52% when not; the stratified difference is -0.011 (95% CI
+   -0.036 to 0.016), so our prespecified "herding" label is not met. That
+   estimator turned out to be biased downward: exposed pairs sit further apart
+   in time even within a gap bin, and agreement falls with the gap. A
+   permutation of judge latencies, which keeps this timing structure, centres
+   at -0.023 instead of 0. Against that reference the observed difference is
+   +0.012 higher (one-sided p = 0.03). We found this bias after seeing the
+   result, so we read it as inconclusive: a small herding effect is possible,
+   and this test can neither confirm nor exclude it. It also has little leverage,
+   because the judge usually published within about an hour (median 1.2 h), and
+   it cannot see teams that read logbook pages rather than verdicts. The first
+   logbook of a claim does not agree with the others more than later ones do
+   (difference -0.028, CI -0.058 to 0.000).
 6. **Dissenting falsifications are rated higher but lose the vote.** In 834
    pairs where a later logbook says falsified against a different verdict from
    the first logbook, the judge rated the later logbook higher quality (+0.60 on
@@ -90,9 +96,9 @@ changes the main estimates by about 0.002 or less (collapsed kappa 0.191 versus
    claim) so teams can still go where checks are few. Let teams that deliberately
    build on others' logbooks or verdicts label the logbook a synthesis, and count
    syntheses as their own category, not as independent votes; suggestion 3 makes
-   everything else checkable. We found no measurable herding in 2026 (finding
-   5), but the test had little power; hiding verdicts is cheap and makes
-   independence hold by design.
+   everything else checkable. We found no clear evidence of herding in 2026
+   (finding 5), but the test was weak and possibly biased; hiding verdicts is
+   cheap and makes independence hold by design.
 3. **Make access traces mandatory, not declared.** A declaration written from
    memory is not reliable; I could not write one for my own logbooks
    (Disclosure). Require each logbook to ship the agent's trace of what it read:
@@ -121,6 +127,7 @@ changes the main estimates by about 0.002 or less (collapsed kappa 0.191 versus
 
 Every number above is in `verdict_audit/voters/results/` (`results.json`,
 `q3.json`, `posthoc_blog_logbooks.json`, `exposure.json`). The check of the
-blog-cited logbooks in finding 3 and the AC1 and category-specific agreement in
-finding 1 were added after results were seen. Happy to share code and
+blog-cited logbooks in finding 3, the AC1 and category-specific agreement in
+finding 1, and the permutation-referenced reading of finding 5 were added after
+results were seen. Happy to share code and
 aggregates.
