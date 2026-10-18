@@ -147,3 +147,28 @@ Mechanics only; definitions, outcomes, analyses and labels are unchanged.
   instances with the identical prompt, each instance coding one batch of at
   most 250 items. Batches follow the shuffled sheet order. Instances of one role
   never see the other role's files.
+
+## Amendment 2 (2026-10-18, before any labelling or readiness computation)
+
+Approved by Kate in chat. Scope extended to computer-vision venues and to
+NeurIPS 2026. No paper had been labelled and no readiness share computed.
+
+* Strata (12): ICLR 2025, ICLR 2026, NeurIPS 2024, NeurIPS 2025, NeurIPS 2026,
+  ICML 2025, ICML 2026 (machine learning); ICCV 2025, CVPR 2024, CVPR 2025,
+  ECCV 2024, ECCV 2026 (computer vision). Sources: the same virtual-site files
+  at `iccv.thecvf.com`, `cvpr.thecvf.com`, `eccv.ecva.net` and `neurips.cc`.
+  CVPR 2026 is excluded because its virtual-site file lists only 200 of its
+  papers (the CVF list has no code-link field). ICCV 2026 does not exist.
+* Abstracts for NeurIPS 2026 and ECCV 2026 (files without an `abstract` field)
+  come from each paper's virtual-site page, as for ICLR 2026 in Amendment 1.
+* Unit: accepted items with `eventtype` Poster, Oral or Spotlight (ECCV 2026
+  uses Spotlight). Computer-vision files have no OpenReview link, so the
+  deduplication key falls back to `sourceid`, else `id`. They have no
+  health or biology topics, so candidates there come from the regex only.
+* R-A1 label rule restated for 12 strata: the pooled CI upper bound below 0
+  AND a negative difference in at least 8 of the 12 strata (two thirds, as in
+  four of six). Added secondary analyses: machine-learning and
+  computer-vision venues separately; 2024-2025 strata only (excluding all
+  2026 strata, whose code links may still be added before or after the
+  meeting).
+* All candidates are coded, as frozen (option b).
