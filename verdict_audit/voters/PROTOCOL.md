@@ -191,3 +191,127 @@ Mechanics only; no analysis choice changes.
 * Some logbooks keep pages as flat files (`pages/<slug>.md`) instead of
   `pages/<slug>/page.md`. "Directory name starts with `claim`" is applied to the
   first path component under `pages/` in both layouts.
+
+# Protocol 2: first logbooks and exposure to published verdicts
+
+Frozen 2026-10-18, before commit histories are downloaded and before any
+analysis below is run. Approved by Kate in chat. Protocol 1 results are
+already known (`results/results.json`); in particular the descriptive drop in
+agreement with creation-time gap (Q2) has been seen, so H1 is not blind to
+that pattern. H1 differs from it: it compares pairs at the same time gap that
+differ only in whether the earlier verdict had already been published.
+
+## Questions
+
+H1. Do later logbooks agree more with an earlier logbook's verdict once that
+    verdict has been published? (informational cascades / social influence)
+H2. Is the effect different when the earlier verdict is verified versus
+    falsified?
+H3. Does the first logbook of a claim agree with the others more than a
+    non-first logbook does?
+H4. When a later logbook disagrees with the first, which one did the judge
+    rate higher, and whose verdict became the final plurality?
+H5. Kate's synthesis logbooks: did they follow the majority visible at the time?
+
+## Additional inputs
+
+| File | SHA-256 | Role |
+|---|---|---|
+| `verdicts_live.json` | `76eeb935cc0972ec5b0ef9464a43d0920e00af1328db5460a71b61971351d544` | Snapshot downloaded 2026-07-22 (judged up to 2026-07-22) |
+| `verdicts_latest_tmp.json` | `b4bae4eb8a333dc98c3edd6865452ff96009b5b1a6dd1685d96a61bdaf31c239` | Snapshot downloaded 2026-07-28 (judged up to 2026-07-28) |
+| `data/commits_manifest.json` | hash in results manifest | Commit ids and times per Space (download below) |
+| `synthesis_logbooks.csv` | hash in results manifest | Kate's list for H5, committed before H5 is run |
+
+Commit histories: `list_repo_commits` for each of the 5,333 Spaces of
+Protocol 1 (multi-rated logbooks), throttled as in Amendment 1. Only commit id
+and creation time are stored (no author names or messages). A Space whose
+judged `sha` is not in its current history (history rewritten) is
+`sha_not_in_history`: excluded from H1-H3 and counted.
+
+## Definitions
+
+* Logbooks, teams, claims, multi-rated anchored claims, verdict categories:
+  as in Protocol 1 (deduplicated confirmation snapshot).
+* `s_X`: time of the first commit of Space X (start of work).
+  `c_X`: commit time of the judged `sha` in the confirmation snapshot (the
+  revision whose verdict is used for X).
+* First-published verdict of X on a claim: among the three snapshots, the
+  record of X with the earliest `judged_at` whose claim list contains that
+  anchored text (normalized). Its verdict is `ref_X`, its time `v_X`, its
+  revision time `r_X` (commit time of that record's `sha`). Snapshots only
+  show the latest judgement at download time, so `v_X` can be later than the
+  true first publication; this misclassifies some exposed pairs as unexposed
+  and biases H1 toward zero.
+* Ordered pair (A, B): two logbooks of different teams rating the same
+  multi-rated anchored claim, with `s_A < s_B`. Copy pairs from Protocol 1
+  (Jaccard >= 0.5) are excluded from the primary analysis.
+* Exposure: `E = 1` if `c_B > v_A` (B's judged revision was committed after A's
+  verdict was published); `E = 0` if `c_B <= v_A`.
+* Outcome: B's verdict equals `ref_A` (exact, four categories plus other).
+* Strata: time gap `d = c_B - r_A` in days, bins [0, 0.5), [0.5, 1), [1, 2),
+  [2, 4), [4, 7), [7, inf); pairs with `d < 0` are excluded and counted. Crossed
+  with B's judging week (<= 2026-07-21, 2026-07-22 to 07-28, >= 07-29).
+  Within a stratum, exposure varies only through A's judge latency
+  `L_A = v_A - r_A`.
+
+## H1 (primary)
+
+* Estimate: Mantel-Haenszel risk difference in agreement, exposed minus
+  unexposed, over strata; weights `n_E * n_U / (n_E + n_U)`. Strata with only
+  one exposure level carry no weight.
+* CI: paper-cluster bootstrap, 2000 resamples, seed 20261017, percentile 95%.
+* Negative control (latency permutation): permute `L_A` across A logbooks whose
+  `r_A` falls on the same UTC date, recompute `v_A`, exposure and the estimate;
+  2000 permutations; one-sided p = (1 + #(null >= observed)) / 2001.
+* Label "herding on published verdicts" only if the CI lower bound is above 0
+  AND the permutation p is below 0.05. Otherwise report numbers without it.
+* Sensitivity (reported, never substituted): strict exposure `s_B > v_A`
+  versus `c_B <= v_A` (partly exposed pairs dropped); both A and B judged on or
+  after 2026-07-22; binary decisive-versus-not agreement; copy pairs included;
+  organiser namespace excluded; author namespace excluded.
+
+## H2 (descriptive)
+
+H1 estimate computed separately for `ref_A` = verified and `ref_A` = falsified,
+with bootstrap CIs and the CI of their difference. No label.
+
+## H3 (descriptive)
+
+Claims with at least three teams with known `s`. First = earliest `s`. For each
+logbook X of the claim, `agree_X` = 1 if X's verdict equals the unique plurality
+of the other teams' verdicts (claims where it is not unique are skipped for
+that X). Statistic: mean over claims of (`agree_first` minus mean `agree_X`
+over non-first X), paper-cluster bootstrap CI. Drift over time works against a
+positive value, so a positive value is conservative.
+
+## H4 (descriptive)
+
+Pairs (first F, later B) on the same claim with different verdicts. Judge
+quality coded low 0, medium 1, high 2 (logbook level). Reported: mean quality
+difference B minus F with paper-cluster CI; share of pairs where the final
+plurality of all teams equals B's verdict, equals F's verdict, or neither
+(ties). Separately for B = falsified. The four reference claims are listed.
+
+## H5 (descriptive, author only)
+
+Kate sends `synthesis_logbooks.csv` (space ids of her logbooks built from a
+meta-analysis of others' verdicts) before H5 is computed; it is committed
+first. For each of her logbooks K and anchored claim: visible plurality = the
+unique plurality of `ref_X` over other teams' logbooks with `v_X < c_K`.
+Reported: agreement with the visible plurality for synthesis versus her other
+logbooks, with counts. No test.
+
+## Exploratory (no labels)
+
+* H1 restricted to A in the organiser namespace (a central node).
+* Protocol 1 Q2 agreement re-expressed with prevalence-robust measures: Gwet's
+  multi-rater AC1 and category-specific agreement
+  `sum_i n_ik(n_ik - 1) / sum_i n_ik(n_i - 1)` for each category, especially
+  falsified. Added after Protocol 1 results were seen.
+
+## Evidence boundary
+
+* Exposure means the verdict was public, not that B read it.
+* Influence through reading A's logbook pages (public from `s_A`) cannot be
+  separated from verdict influence, except through the latency design.
+* All verdicts come from one LLM judge; agreement is among judged logbooks.
