@@ -1,0 +1,5 @@
+orid,short_name,mapped_claim_index,mapping_confidence,blog_claim,blog_finding,blog_teams,source_url
+ESa07RwpVr,paging,2,high,"robustness H_k + O(1)","additive term grows like log k; organisers extended sweep to k=1024",one logbook described,https://huggingface.co/blog/icml-2026-open-reproductions
+zrn7rRuvhW,frank_wolfe,0,low,"tokens collapse to origin when origin starts inside convex hull","counterexamples in exact arithmetic; authors confirmed",three independent teams,https://huggingface.co/blog/icml-2026-open-reproductions
+qA6FgH0nnZ,self_distillation,0,high,"central equation and theory use reverse KL","released code default computes forward KL",one logbook described,https://huggingface.co/blog/icml-2026-open-reproductions
+XGxBnVqK63,three_projections,0,high,"3.1% quality cost for 50% cache reduction","about 66% of label positions were EOS padding; corrected cost about 9.4%",one participant described,https://huggingface.co/blog/icml-2026-open-reproductions
