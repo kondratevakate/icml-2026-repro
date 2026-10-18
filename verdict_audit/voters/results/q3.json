@@ -1,0 +1,38 @@
+{
+  "agreement_A": {
+    "n": 120,
+    "po": 0.9916666666666667,
+    "kappa": 0.9641148325358853
+  },
+  "agreement_B": {
+    "n": 40,
+    "po": 1.0,
+    "kappa": null
+  },
+  "categories": {
+    "tool": {
+      "n_sampled": 60,
+      "both_producer": 15,
+      "precision": 0.25,
+      "gate_passed": false,
+      "raw_logbook_match_share": 0.03041385948026949,
+      "approx_producer_share": null,
+      "label": "not validated: raw match count only"
+    },
+    "model": {
+      "n_sampled": 60,
+      "both_producer": 0,
+      "precision": 0.0,
+      "gate_passed": false,
+      "raw_logbook_match_share": 0.2327237728585178,
+      "approx_producer_share": null,
+      "label": "not validated: raw match count only"
+    }
+  },
+  "miss_rate_B": {
+    "n": 40,
+    "both_named": 0,
+    "share": 0.0,
+    "no_match_share": 0.7588065447545718
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "paging": {
+    "orid": "ESa07RwpVr",
+    "judged_at": "2026-07-30T14:57:39+00:00",
+    "verdicts_by_anchored_index": {
+      "0": "verified",
+      "1": "verified",
+      "2": "falsified",
+      "3": "verified",
+      "4": "verified"
+    }
+  },
+  "frank_wolfe": {
+    "orid": "zrn7rRuvhW",
+    "judged_at": "2026-07-30T15:50:48+00:00",
+    "verdicts_by_anchored_index": {
+      "0": "falsified",
+      "1": "falsified",
+      "2": "verified",
+      "3": "verified",
+      "4": "verified"
+    }
+  },
+  "self_distillation": {
+    "orid": "qA6FgH0nnZ",
+    "judged_at": "2026-08-03T10:02:10+00:00",
+    "verdicts_by_anchored_index": {
+      "0": "falsified",
+      "1": "falsified",
+      "2": "inconclusive",
+      "3": "toy",
+      "4": "falsified"
+    }
+  },
+  "three_projections": {
+    "orid": "XGxBnVqK63",
+    "judged_at": "2026-07-25T18:29:43+00:00",
+    "verdicts_by_anchored_index": {
+      "0": "toy",
+      "1": "toy",
+      "2": "toy",
+      "3": "inconclusive",
+      "4": "toy",
+      "5": "inconclusive"
+    }
+  },
+  "note": "post hoc; descriptive; not a prespecified analysis"
+}
