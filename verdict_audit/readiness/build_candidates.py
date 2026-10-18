@@ -15,7 +15,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
-VENUES = [("iclr", 2025), ("iclr", 2026), ("neurips", 2024), ("neurips", 2025), ("icml", 2025), ("icml", 2026)]
+VENUES = [("iclr", 2025), ("iclr", 2026), ("neurips", 2024), ("neurips", 2025), ("neurips", 2026), ("icml", 2025),
+          ("icml", 2026), ("iccv", 2025), ("cvpr", 2024), ("cvpr", 2025), ("eccv", 2024), ("eccv", 2026)]
+PAGE_ABSTRACTS = ("iclr-2026", "neurips-2026", "eccv-2026")  # Amendments 1-2
 TOPICS = {
     "Applications->Health", "Applications->Health / Medicine", "Applications->Genetics, Cell Biology, Health, etc",
     "Applications->Genetics, Cell Biology, etc", "Applications->Neuroscience, Cognitive Science",
@@ -29,6 +31,7 @@ MEDICAL = re.compile(
     r"single-cell|scRNA\w*|DNA|RNA|molecul\w*|enzymes?|antibod\w*|peptides?|biolog\w*|neurons?|neuroscien\w*|brain)\b",
     re.IGNORECASE)
 SEED = 20261018
+PAPERS_JSON = HERE.parents[1] / "papers.json"
 
 
 def forum_id(item: dict) -> str:
@@ -46,14 +49,25 @@ def eventmedia(item: dict) -> list[dict]:
     return [m for m in em if isinstance(m, dict)]
 
 
+def extra_abstracts() -> dict[str, dict[str, str]]:
+    """Amendment 1: abstracts for the 2026 strata, keyed by forum id (ICML) or virtual-site path (ICLR)."""
+    papers = json.loads(PAPERS_JSON.read_text(encoding="utf-8-sig"))
+    out = {"icml-2026": {k: " ".join(str(v).split()) for k, v in papers["abstracts"].items() if v}}
+    for stratum in PAGE_ABSTRACTS:
+        pages = json.loads((DATA / f"{stratum}_abstracts.json").read_text(encoding="utf-8"))
+        out[stratum] = {k: v["abstract"] for k, v in pages.items() if v.get("status") == "ok" and v.get("abstract")}
+    return out
+
+
 def load_units() -> tuple[list[dict], Counter]:
     units, counts = [], Counter()
+    extra = extra_abstracts()
     for venue, year in VENUES:
         raw = json.loads((DATA / f"{venue}-{year}.json").read_text(encoding="utf-8"))
         items = raw["results"] if isinstance(raw, dict) else raw
         seen = set()
         for it in items:
-            if str(it.get("eventtype", "")).lower() not in ("poster", "oral"):
+            if str(it.get("eventtype", "")).lower() not in ("poster", "oral", "spotlight"):
                 counts["not_poster_or_oral"] += 1
                 continue
             fid = forum_id(it)
@@ -63,6 +77,10 @@ def load_units() -> tuple[list[dict], Counter]:
                 continue
             seen.add((stratum, fid))
             abstract = " ".join(str(it.get("abstract") or "").split())
+            if stratum == "icml-2026" and (not abstract or abstract == "None"):
+                abstract = extra["icml-2026"].get(fid, "")
+            if stratum in PAGE_ABSTRACTS and (not abstract or abstract == "None"):
+                abstract = extra[stratum].get(str(it.get("virtualsite_url")), "")
             if not abstract or abstract == "None":
                 counts["no_abstract"] += 1
                 continue
@@ -118,7 +136,11 @@ def main() -> None:
     write_sheet(sheets / "coder2_all.csv", sheet2)
     (DATA / "keys.json").write_text(json.dumps(keys), encoding="utf-8")
     (DATA / "papers.json").write_text(json.dumps(units), encoding="utf-8")
-    summary = dict(units=len(units), excluded=dict(counts), by_stratum=dict(Counter(u["stratum"] for u in units)),
+    import hashlib
+    summary = dict(papers_json_sha256=hashlib.sha256(PAPERS_JSON.read_bytes()).hexdigest(),
+                   page_abstracts_sha256={s: hashlib.sha256((DATA / f"{s}_abstracts.json").read_bytes()).hexdigest()
+                                          for s in PAGE_ABSTRACTS},
+                   units=len(units), excluded=dict(counts), by_stratum=dict(Counter(u["stratum"] for u in units)),
                    candidates=len(cand), candidates_by_stratum=dict(Counter(u["stratum"] for u in cand)),
                    candidates_by_topic_only=sum(u["by_topic"] and not u["by_regex"] for u in cand),
                    candidates_by_regex_only=sum(u["by_regex"] and not u["by_topic"] for u in cand),

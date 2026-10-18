@@ -34,7 +34,39 @@
       "sha256": "6f7fff1940d7d3ce5594fa936c62866aa5784ea4eb9307e9c004537b6cd34e93",
       "n": 100,
       "missing": []
+    },
+    "neurips-2026.json": {
+      "source": "https://neurips.cc/static/virtual/data/neurips-2026-orals-posters.json",
+      "sha256": "6f13a92d7ee9638946f1cbec103ed547f7f7ff495488827838931bfffa10547d"
+    },
+    "iccv-2025.json": {
+      "source": "https://iccv.thecvf.com/static/virtual/data/iccv-2025-orals-posters.json",
+      "sha256": "fd053190d29459bd3b47b3278a89c087bf62bbb39f692006001047ac63f6b886"
+    },
+    "cvpr-2024.json": {
+      "source": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2024-orals-posters.json",
+      "sha256": "e3c40179e8ccf6076f1da736409ba7060071d9d75b6eb34131c99b934d0c8d4c"
+    },
+    "cvpr-2025.json": {
+      "source": "https://cvpr.thecvf.com/static/virtual/data/cvpr-2025-orals-posters.json",
+      "sha256": "850cf956e56dd2731e5b9959f5194a3cad5d5add5308a9015a2b7acf5072c8cd"
+    },
+    "eccv-2024.json": {
+      "source": "https://eccv.ecva.net/static/virtual/data/eccv-2024-orals-posters.json",
+      "sha256": "be9944d9dd7342f8b9cd928655c91531b3045d8e19bc5a6f47ba0934c385ea17"
+    },
+    "eccv-2026.json": {
+      "source": "https://eccv.ecva.net/static/virtual/data/eccv-2026-orals-posters.json",
+      "sha256": "644a2aef85d819eb87e51df16d21b0745f4f5ac5128a3cc4dc4ea41a47e5df3a"
     }
   },
-  "reclaim_repo_head": "dd9b876ba6b6dfc67361d167af5110c24d6a2ee0"
+  "reclaim_repo_head": "dd9b876ba6b6dfc67361d167af5110c24d6a2ee0",
+  "downloaded_at_by_file": {
+    "neurips-2026.json": "2026-10-18T15:00:22Z",
+    "iccv-2025.json": "2026-10-18T15:00:33Z",
+    "cvpr-2024.json": "2026-10-18T15:00:43Z",
+    "cvpr-2025.json": "2026-10-18T15:00:52Z",
+    "eccv-2024.json": "2026-10-18T15:01:03Z",
+    "eccv-2026.json": "2026-10-18T15:01:10Z"
+  }
 }
