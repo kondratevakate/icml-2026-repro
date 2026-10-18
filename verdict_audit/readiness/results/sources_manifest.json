@@ -1,0 +1,40 @@
+{
+  "downloaded_at": "2026-10-18T14:46:37Z",
+  "files": {
+    "iclr-2025.json": {
+      "source": "https://iclr.cc/static/virtual/data/iclr-2025-orals-posters.json",
+      "sha256": "ebd6fa23d9ca54628eb715885756bf7e5addf72db134648dc683251678f86a70"
+    },
+    "iclr-2026.json": {
+      "source": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "sha256": "064c43404a720a56ae51831dd6db48bfb58ec79f300f29b8d7cc8f889fcf1aca"
+    },
+    "neurips-2024.json": {
+      "source": "https://neurips.cc/static/virtual/data/neurips-2024-orals-posters.json",
+      "sha256": "fe4cee02e95b1883f5ee2ddc121b3eb9e253dc67d9407f1aa9dfdedd298f0652"
+    },
+    "neurips-2025.json": {
+      "source": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "sha256": "73bbfc7fb9fbf4f52eae00cebe9cbc085f27493ee2294f2e29f326ef403986f8"
+    },
+    "icml-2025.json": {
+      "source": "https://icml.cc/static/virtual/data/icml-2025-orals-posters.json",
+      "sha256": "1e2ff498f2559b2a0e34504e84b5e6d41906dcd4a7fe868122514adaaba06c7b"
+    },
+    "icml-2026.json": {
+      "source": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "sha256": "aed3db4aa1a5c2b8d79af5f20fff230f0955b4b8c6f397324be1a9effec7ee66"
+    },
+    "reclaim_eval_100.jsonl": {
+      "source": "hf://datasets/Mithilss/reclaim@59099a8ececf954665dff90a41ad8541e3b21291/eval_100.jsonl",
+      "sha256": "79792c26b13b68f008a70450494404203bba25743e723a233119b55cf1b9353c"
+    },
+    "reclaim_arxiv_abstracts.json": {
+      "source": "arXiv API id_list",
+      "sha256": "6f7fff1940d7d3ce5594fa936c62866aa5784ea4eb9307e9c004537b6cd34e93",
+      "n": 100,
+      "missing": []
+    }
+  },
+  "reclaim_repo_head": "dd9b876ba6b6dfc67361d167af5110c24d6a2ee0"
+}

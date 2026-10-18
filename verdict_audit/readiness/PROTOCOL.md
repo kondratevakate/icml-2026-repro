@@ -127,3 +127,23 @@ venue-year), 2000 resamples, seed 20261017, percentile 95% intervals.
 * Observational and descriptive; no causal effect of being medical is claimed.
 * Only aggregates and per-paper labels keyed by public ids are committed; no
   author is named.
+
+## Amendment 1 (2026-10-18, after download, before any labelling or readiness computation)
+
+Mechanics only; definitions, outcomes, analyses and labels are unchanged.
+
+* The 2026 virtual-site files (ICLR 2026, ICML 2026) have no `abstract` field;
+  their link fields (`url`, `eventmedia`) are present. The first build of the
+  paper table therefore excluded both strata as "no abstract". Abstracts are
+  added as follows, and units whose abstract cannot be found are excluded and
+  counted:
+  - ICML 2026: from the local `papers.json` (key `abstracts`, keyed by
+    OpenReview id; SHA-256 recorded in the manifest), joined on the forum id.
+  - ICLR 2026: from each paper's virtual-site page
+    `https://iclr.cc{virtualsite_url}`, the text of the element whose id starts
+    with `abstract`, fetched at most two requests per second.
+* Coding in batches: no single subagent can read several thousand abstracts.
+  Coder 1 and coder 2 are each a role played by successive Claude subagent
+  instances with the identical prompt, each instance coding one batch of at
+  most 250 items. Batches follow the shuffled sheet order. Instances of one role
+  never see the other role's files.
