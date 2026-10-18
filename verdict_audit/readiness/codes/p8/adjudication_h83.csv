@@ -1,0 +1,26 @@
+item_id,field,label,reason
+R0116,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (weaker single-slice intervention)"
+R0221,label,artifacts_missing,the comparator model was not available
+R0046,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check"
+R0083,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (3 pairs instead of hundreds)"
+R0063,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (only table numbers extracted)"
+R0267,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (small discretized domain)"
+R0251,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (data generated from reported values)"
+R0003,label,data_unavailable,no comparison possible on the unreleased dataset
+R0093,label,underspecified_paper,meaning of 'handled correctly' unstated
+R0266,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (hard-coded functional forms)"
+R0200,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (small text-only proxy models)"
+R0136,label,not_attempted,no evidence for this claim in the logbook
+R0242,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (numpy simulation instead of Rosetta)"
+R0247,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (n=4 graphs)"
+R0179,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (formula checked on a toy MDP)"
+R0289,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (correlations constructed to match)"
+R0041,label,underspecified_paper,applicability depends on an unstated convention in the paper
+R0210,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (numbers stated without runs)"
+R0016,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (arithmetic on reported values)"
+R0032,label,not_attempted,not executed; infeasible within the time and compute available
+R0079,label,not_attempted,not executed; out of compute scope
+R0236,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (40-case proxy pool)"
+R0203,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (synthetic signals instead of the metric)"
+R0295,label,not_attempted,"no experiment on the claim: simulated, arithmetic-only or inspection-only check (code inspection only)"
+R0211,label,reduced_scale_or_compute,"real run at reduced scale, subset or toy proxy (synthetic toy task)"
