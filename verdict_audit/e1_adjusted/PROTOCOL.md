@@ -143,3 +143,20 @@ file was written and no estimate was printed. Changes:
   paper-cluster bootstrap, because 2,000 refits of a model with several hundred
   dummies are not feasible locally.
 * Everything else, including the primary model, is unchanged.
+
+## Amendment 2 (2026-10-18, before this analysis was run)
+
+Protocol 6 validated the narrow candidate list with two blind coders. H1 is
+re-estimated on that validated label, with the same model (linear probability,
+reproducer fixed effects, theory covariate, two-way cluster-robust variance).
+
+* Exposure `clinical`: consensus `clinical` papers of protocol 6 (92).
+* Comparison: protocol 6 group "other" (papers in neither candidate nor broad
+  list). All other papers are dropped from this analysis.
+* Secondary: the same with `life_science` (consensus, 115) as exposure.
+* Primary analysis excludes Kate's logbooks, as in protocol 6; with them is a
+  sensitivity analysis.
+* Decision rule unchanged: if the 95% CI for `clinical` includes zero, the
+  abstract may say clinical claims were not judged more severely within team and
+  claim type; if it excludes zero, that sentence is removed and the gap reported.
+* The original H1 result on the broad label is kept and reported unchanged.
