@@ -315,3 +315,18 @@ logbooks, with counts. No test.
 * Influence through reading A's logbook pages (public from `s_A`) cannot be
   separated from verdict influence, except through the latency design.
 * All verdicts come from one LLM judge; agreement is among judged logbooks.
+
+## Amendment 2-1: H5 not evaluable (2026-10-18, before any H5 computation)
+
+* Kate cannot reconstruct which of her logbooks were built from a
+  meta-analysis of other teams' verdicts. She reports that while she worked,
+  her agent had access to other teams' logbooks.
+* Local evidence, checked as counts only: the trackio trace indexes in the
+  working repository are empty (no sessions recorded). The working directory
+  holds three downloaded copies of other teams' Spaces (two for one paper) and
+  the verdict snapshots `verdicts_live.json` (present from 2026-07-22) and
+  `verdicts_latest_tmp.json` (from 2026-07-28). This is a lower bound on access
+  and gives no per-logbook timing.
+* H5 is not run. All 53 author logbooks are treated as potentially exposed; the
+  prespecified "exclude author namespace" sensitivity analyses (Protocol 1 Q2,
+  Protocol 2 H1) are the relevant checks.
