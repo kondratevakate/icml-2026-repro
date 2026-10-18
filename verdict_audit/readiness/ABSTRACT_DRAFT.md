@@ -1,8 +1,9 @@
 # Unfalsifiable by default: medical papers in the ICML 2026 agent reproduction challenge
 
-DRAFT abstract, 2026-10-19. Target: PSE9 (Copenhagen 2027), second abstract
-next to the voters study. The submission format is not yet known. Every number
-is traced to a file in Appendix A.
+DRAFT abstract, 2026-10-19, extended with protocol 8 (hidden science and
+synthetic releases). Target: PSE9 (Copenhagen 2027), second abstract next to
+the voters study. The submission format is not yet known. Every number is
+traced to a file in Appendix A.
 
 ## Abstract
 
@@ -14,42 +15,87 @@ attempted medical papers had a logbook verifying every claim, against 20.4% of
 other papers, and 61.8% received no decisive verdict at all, against 35.1%. The
 judge was not harsher on them: within the same team and claim type, clinical
 claims were verified 3.3 percentage points less often (95% CI −9.9 to +3.2).
-Missing code does not explain the gap. Across 50,185 papers at ICLR, NeurIPS,
-ICML, CVPR, ICCV and ECCV (2024–2026), medical papers declared a code link more
-often than other papers (24.5% versus 16.9%; within-venue difference +7.4
-percentage points, CI +5.8 to +9.0, positive in 11 of 12 venue-years). In ICML
-2026 the decidability gap stayed the same after adjusting for declared code
-(−18.6 versus −19.1 points). What differs is access. Medical abstracts
-mentioned restricted or private data seven times as often (7.6% versus 1.1%).
-In release audits of 14 medical papers that had released code, 62% of the
-claims that could not be fully checked lacked intermediate artifacts or
-weights. Releasing code is therefore not enough to make medical ML
-falsifiable: without data access and released artifacts, a crowd cannot decide
-these papers. Reproduction efforts should report the share of papers they
-could not decide, not only the share they verified. Venues should ask for
-checkable artifacts, not only code links.
 
-(about 290 words)
+Missing code does not explain the gap. Across 50,185 papers at six venues
+(2024–2026), medical papers declared a code link more often (24.5% versus
+16.9%; within-venue difference +7.4 points, CI +5.8 to +9.0), and adjusting for
+it left the ICML 2026 gap unchanged (−18.6 versus −19.1 points). Nor does
+hidden science, research resting on data that no one else can access. In the
+full texts of 176 attempted papers, 1 of 79 medical papers was evaluated on
+private data alone; 18% used credentialed or on-request data, against 1% of
+other papers. Medical papers on restricted data were decided about as often as
+medical papers on open data (47% versus 50%; difference −3 points, CI −34 to
++27). When the judge left a medical claim undecided, it gave unavailable data
+as the reason in 12% of cases (other papers 1.3%), and an experiment that was
+not run or was run at reduced scale in 66% (other papers 70%). The gap also
+reached claims that need no private data: claims that a method works as
+described were decided 22 points less often than in other papers (CI −38 to
+−1).
+
+Synthetic, sample or toy data for running the code were stated in only 2 of
+79 medical papers. Requiring such releases would start almost from zero, and
+might not by itself make these papers decidable: the judge already has a
+"toy" verdict, which is neither verified nor falsified. Venues that ask for
+synthetic or toy data should state which claims such data can settle (a
+method's mechanics, not its headline numbers). Reproduction efforts should
+report the share of papers they could not decide, not only the share they
+verified.
+
+(about 375 words)
 
 ## Notes for the authors (not part of the abstract)
 
 * "Unfalsifiable" rests on decidability in the challenge (protocol 6), not on
-  failed reproductions. Code links were tested as a mechanism and rejected:
-  the prespecified label "medical papers are less often released with code"
-  (protocol 7) is not met, and the difference runs the other way.
-* "Access" is supported by two indirect measures, not proven as a cause.
-  Restricted-data mentions in abstracts are a lower bound. The release audits
-  are the author's own, on papers chosen by interest and feasibility.
+  failed reproductions. Two mechanisms were tested and neither explains the
+  gap: code links (protocol 7; the prespecified label is not met and the
+  difference runs the other way) and data access (protocol 8).
+* No prespecified label of protocol 8 is met. H8.1: the gap is not
+  concentrated in empirical claims (difference in differences +0.8 points,
+  CI −14.0 to +19.9). H8.4: checkable claims were not decided as often as in
+  other papers (theory and mechanism together −24.1 points, CI −40.0 to −6.8).
+  H8.5: papers with an open-data experiment were not decided more often; the
+  pooled difference was −24.3 points (CI −39.4 to −9.6), the opposite
+  direction.
+* The H8.5 reversal is composition, shown post hoc (Note 8-2, PH8-a): in other
+  papers the no-open-data cell has 22 papers, of which 13 are synthetic-only
+  and 10 have no empirical claim (the two overlap). Among empirical, non-synthetic papers the difference is
+  −14.9 points (CI −39.6 to +10.9). The restricted versus open comparison in
+  the abstract (PH8-b) is also post hoc and has no label.
+* The two claim classifiers disagree on theory claims: the protocol 4
+  dictionary gives a theory gap of −18.5 points (CI −39.2 to −1.6), the H8.4
+  coders −2.2 points (CI −28.5 to +16.5). The abstract uses neither. Headline
+  performance claims: −14.5 points (CI −25.0 to −2.9).
+* Hidden science is counted among attempted papers only. Teams chose what to
+  attempt and may have avoided papers on private data; 43 of 220 sampled
+  papers had no arXiv id and 1 no usable excerpt. Excerpts were capped at
+  6,000 characters, so 27 of 79 medical papers have `unclear` data access.
+* The release fields (synthetic or sample data, weights) had low agreement
+  (kappa 0.12 and 0.40) and most excerpts reached the cap: "2 of 79" (and 4
+  of 79 for weights) are lower bounds. A code release that runs synthetic
+  experiments was not counted as a synthetic-data release (Note 8-1).
+* Medical papers on open data were decided in 50% of cases (95% Wilson
+  interval 34–66%), other papers on open data in 63% (50–74%); post hoc,
+  without a test.
+* Restricted-data mentions in abstracts are seven times as common in medical
+  papers (7.6% versus 1.1%); adjusting the ICML 2026 gap for them moves it
+  from −19.1 to −15.3 points (CI −25.8 to −4.9).
+* In the author's release audits of 14 medical papers with released code, 62%
+  of the claims that could not be fully checked lacked intermediate artifacts
+  or weights. These papers were chosen by interest and feasibility.
 * The code-link field is author-declared metadata, not working code. NeurIPS
   2026 and ECCV 2026 have few links filled in yet (3.5% and 4.7% of medical
   papers); the 2024–2025 strata alone give +9.1 points (CI +6.7 to +11.6).
 * RECLAIM (100 NeurIPS 2025 papers) contains only 6 medical papers: 2 of 6 were
-  reproduced clean by at least one agent, against 33 of 94 others. The sample
-  is too small for the abstract and is reported as context only.
-* All verdicts come from one LLM judge (`zai-org/GLM-5.2`). Medical labels come
-  from language-model coders: Claude subagents for protocol 6 (kappa 0.97)
-  and `claude-sonnet-5-5` for protocol 7 (kappa 0.96, gate 0.80). Analyses are
-  observational.
+  reproduced clean by at least one agent, against 33 of 94 others. Context
+  only.
+* Two medical labels are used. The 207-paper label (protocol 6) gives the
+  decidability figures; the protocol 7 label (110 attempted medical papers in
+  ICML 2026) gives the adjusted gaps and all protocol 8 figures.
+* All verdicts come from one LLM judge (`zai-org/GLM-5.2`). Labels and codes
+  come from language-model coders: Claude subagents for protocol 6 (kappa
+  0.97), `claude-sonnet-5-5` for protocol 7 (kappa 0.96, gate 0.80) and
+  protocol 8 (judge reasons kappa 0.89; claim types 0.90, gate 0.80; data
+  access 0.94; open-data experiment 0.92). Analyses are observational.
 * Disclosure: the author took part in the challenge and wrote the release
   audits. Challenge analyses exclude the author's logbooks.
 
@@ -68,6 +114,24 @@ checkable artifacts, not only code links.
 | NeurIPS 2026 3.5%, ECCV 2026 4.7% (medical) | `readiness/results/readiness.json` | `R_A1.per_stratum` |
 | Decidability gap −19.1 unadjusted, −18.6 adjusted | `readiness/results/readiness.json` | `R_A3.protocol7_label` |
 | Restricted-data mentions 7.6% vs 1.1% | `readiness/results/readiness.json` | `R_A2` |
+| Gap adjusted for restricted-data mention −15.3 (−25.8 to −4.9) | `readiness/results/p8.json` | `H8_2.adjusted`, `adjusted_ci` |
+| 110 attempted medical ICML 2026 papers | `readiness/results/p8.json` | `attempted.medical` |
+| 176 full texts; 79 medical, 97 other; 43 no arXiv id, 1 no excerpt | `readiness/results/p8.json` | `H8_5.prevalence.*.n`, `H8_5.fulltext_status` |
+| Private alone 1 of 79 | `readiness/results/p8.json` | `H8_5.hidden_science.n` |
+| Credentialed or on request 18% (14/79) vs 1% (1/97); unclear 27/79 | `readiness/results/p8.json` | `H8_5.prevalence.*.main_data_access` |
+| Restricted 47% (7/15) vs open 50% (18/36); −3 pp (−34 to +27) | `readiness/results/p8_posthoc.json` | `PH8_b` |
+| Open data: medical 50% (34–66), other 63% (50–74) | `readiness/results/p8_posthoc.json` | `PH8_b.cells` |
+| Data unavailable 12% vs 1.3%; not run or reduced scale 66% vs 70% | `readiness/results/p8.json` | `H8_3.shares` (`not_attempted` + `reduced_scale_or_compute`) |
+| Method works as described −22 pp (−38 to −1); headline −14.5 (−25.0 to −2.9) | `readiness/results/p8.json` | `H8_4.by_type.{mechanism,headline_performance}` |
+| Theory gap −18.5 (dictionary) vs −2.2 (coders) | `readiness/results/p8.json` | `H8_1.gap_theory`, `H8_4.by_type.theory` |
+| Synthetic or sample release 2 of 79; weights 4 of 79 | `readiness/results/p8.json` | `H8_5.prevalence.medical.{synthetic_or_sample_release,weights_release}` |
+| H8.1 DiD +0.8 (−14.0 to +19.9) | `readiness/results/p8.json` | `H8_1.did`, `did_ci` |
+| H8.4 checkable −24.1 (−40.0 to −6.8) | `readiness/results/p8.json` | `H8_4.gap_checkable`, `gap_checkable_ci` |
+| H8.5 policy −24.3 (−39.4 to −9.6) | `readiness/results/p8.json` | `H8_5.policy_mh_diff`, `policy_mh_ci` |
+| PH8-a 22 papers; 13 synthetic-only, 10 without empirical claim | `readiness/results/p8_posthoc.json` | `PH8_a.other_open_0` |
+| PH8-c −14.9 (−39.6 to +10.9) | `readiness/results/p8_posthoc.json` | `PH8_c.mh_diff`, `mh_ci` |
+| Protocol 8 kappas 0.89, 0.90, 0.94, 0.92, 0.12, 0.40 | `readiness/results/p8_coding.json` | `h83`, `h84`, `h85.agreement` |
+| "toy" verdict label | `../data/verdicts_confirmation_2026-10-17/verdicts.json` (repository root) | verdict categories: verified, falsified, toy, inconclusive |
 | 62% artifact-blocked; 14 papers | `healthcare/results.json` | `resolved.Q1` |
 | Label kappa 0.96 (protocol 7) | `readiness/results/labelling.json` | `gate.kappa` |
 | RECLAIM 6 medical; 2 of 6 vs 33 of 94 | `readiness/results/readiness.json` | `R_B1` |
