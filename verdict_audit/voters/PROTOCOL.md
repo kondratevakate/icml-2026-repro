@@ -353,3 +353,98 @@ not change any prespecified label; the H1 label stays "not met".
   verified-reference difference there is not interpreted.
 * Any corrected estimator (for example matching on the exact gap) would be a
   new, separately frozen analysis, labelled as designed after these results.
+
+# Protocol 3: resubmission after a published verdict
+
+Frozen 2026-10-18, approved by Kate in chat. Written after structure counts
+(event types, matched claims, team concentration) and before any verdict
+transition was computed or any file tree was downloaded.
+
+## Questions
+
+R1. After a team resubmits new content, do verdicts on the same claim move
+    toward verified more than when the judge re-scores unchanged content?
+R2. Is the shift present when only the write-up changed (no new committed
+    code, data or results)?
+R3. What changed in the judge's stated evidence when a verdict moved?
+R4. How much do Protocol 1 results depend on using final rather than
+    first-published verdicts?
+
+## Data
+
+* The three snapshots and commit histories of Protocols 1-2 (hashes as there).
+* New download (approved by Kate): recursive file tree (path, blob id, size; no
+  content) at both revisions of every new-revision event, about 2,600 API
+  calls, throttled as in Amendment 1, to `data/trees_manifest.json`.
+
+## Definitions
+
+* Event: two consecutive observed judgements of one Space, ordered by
+  `judged_at`. New-revision event if the `sha` differs, same-revision event if
+  not. Only up to three judgements per Space are observed; one event can hide
+  several real resubmissions.
+* Feedback-eligible: commit time of the later `sha` is after the earlier
+  `judged_at` (the team could have seen the first verdict). Primary analyses
+  use eligible new-revision events and all same-revision events.
+* Matched claim: normalized text present in both judgements and in the
+  anchored set of the paper. Unmatched claims are counted, not analysed.
+* Up = earlier not verified, later verified. Down = earlier verified, later
+  not. Net shift = mean(up - down) over matched claims.
+* Change type of a new-revision event, from the file trees: text-only if every
+  added, removed or changed path is `logbook.json`, `README.md` or under
+  `pages/`; artifact otherwise. Events with a missing tree are excluded and
+  counted.
+* Uncertainty: team-cluster bootstrap, 2000 resamples, seed 20261017.
+
+## R1 (primary)
+
+* Net shift for new-revision events, for same-revision events, and their
+  difference D = new minus same, each with a team-cluster CI.
+* Label "verdicts move toward verified after resubmission" only if the CI of
+  the new-revision net shift AND the CI of D both lie above 0.
+* Secondary, descriptive: the same for "toward decisive" (not decisive to
+  decisive) and "toward falsified".
+* Sensitivity: exclude the five teams with most events; leave-one-team-out
+  range of the new-revision net shift; non-eligible events added back.
+
+## R2
+
+* Net shift for text-only and for artifact events, and their difference, with
+  team-cluster CIs. Label "upgrades without new committed artifacts" only if
+  the text-only net shift CI lies above 0. A text-only change can still carry
+  results produced outside the repository; this is stated with the result.
+
+## R3 (descriptive, blind coding)
+
+* Sample (seed 20261017) from new-revision events: 100 upgraded claims
+  (50 text-only, 50 artifact; fewer if not available) and 50 claims whose
+  verdict did not change, shuffled together.
+* Each item shows the claim, the earlier and later judge evidence texts with
+  verdict words masked, and the change type. Team names, paper titles and
+  verdict labels are masked.
+* Two blind coders (Claude subagents, no access to each other, to keys or to
+  verdicts) label the main difference between the two evidence texts:
+  new_result, scale_change, reinterpretation (claim scope or success criterion
+  argued differently, no new result), presentation, no_visible_change,
+  unclear. Agreement: Cohen's kappa. A label counts only if both coders give it.
+* Reported: label distribution for upgrades versus unchanged claims, by
+  change type.
+
+## R4 (descriptive)
+
+Protocol 1 Q2 kappa and the Q4 majority and Dawid-Skene results recomputed
+with each logbook's first-published verdicts (Protocol 2 definition) instead
+of final verdicts. Differences reported.
+
+## Exploratory (no labels)
+
+Up rate when the earlier evidence names a fixable reason (regex fixed in
+advance: toy, small scale, subset, not run, missing, incomplete) versus not.
+
+## Evidence boundary
+
+* Moving toward verified can be the intended use of feedback (a toy run
+  replaced by a full run). R1 measures responsiveness to the judge, not
+  cheating. Only R3 speaks to what changed, and its coders are language models.
+* Results describe a few heavy resubmitters (top ten teams: 77% of events).
+* Only aggregates are committed; no team is named.
