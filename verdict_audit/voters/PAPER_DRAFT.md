@@ -2,6 +2,10 @@
 
 [Author name], [affiliation]
 
+Target: Perspectives on Scientific Error 9 (PSE9), Copenhagen, 2027. The
+submission format is not yet known (no PSE9 call found on 2026-10-18); this
+full draft will be cut to the required length once the call is out.
+
 DRAFT, 2026-10-18. Not peer reviewed. All numbers are traceable to files in
 `verdict_audit/voters/results/` (Appendix A).
 
@@ -352,8 +356,8 @@ snapshot is revision `f0c5a8b369d6d618ecc9fa060aa2e2f27f9e2602` of the public
 dataset `ICML-2026-agent-repro/verdicts` (file `verdicts.json`; its LFS
 SHA-256 matches our copy). Logbook pages, commit histories and file trees
 were read from public Spaces at their judged revisions; page contents and
-Space ids are not redistributed, but a digest of every download keyed by
-hashed Space id is (`results/download_manifests_hashed.json`).
+Space ids are not redistributed; aggregate digests of all downloads are
+(`results/download_manifests_hashed.json`).
 
 
 ## References

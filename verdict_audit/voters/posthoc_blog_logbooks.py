@@ -6,7 +6,7 @@ import json
 import common as C
 
 CITED = {  # SHA-256 of the Space ids the blog cites (https://huggingface.co/blog/icml-2026-open-reproductions,
-           # retrieved 2026-10-18); hashed so that no team is named in the repository
+           # retrieved 2026-10-18); hashed so names are not spelled out here (they are public in that blog post)
     "paging": "dced11c2cbe00d4f6d2417315edb265c967eadd17ba3b1b53b07bdd475f5cd71",
     "frank_wolfe": "d83077dc238d9bd7e8b5cc0951f78b06cf14e4e437f02accafbd50282a3458c7",
     "self_distillation": "395c33ea49679db261bb87c0b7e42a80f060d40e19b8e0b101a5ff74c66b2098",

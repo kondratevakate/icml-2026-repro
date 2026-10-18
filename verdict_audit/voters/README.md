@@ -1,7 +1,7 @@
 # Voters study: aggregating verdicts in the ICML 2026 agent reproduction challenge
 
 Protocols: `PROTOCOL.md` (Protocols 1-3, amendments, post hoc notes).
-Paper draft: `PAPER_DRAFT.md`. Draft note to organisers (not sent):
+Paper draft (target: PSE9, Copenhagen 2027): `PAPER_DRAFT.md`. Draft note to organisers (not sent):
 `NOTE_TO_ORGANISERS_DRAFT.md`.
 
 ## How this study was produced
@@ -27,7 +27,7 @@ Paper draft: `PAPER_DRAFT.md`. Draft note to organisers (not sent):
 | `verdicts_live.json`, `verdicts_latest_tmp.json` | Local snapshots saved 2026-07-22 and 2026-07-28 during the challenge | Hashes in `PROTOCOL.md`; not matched to a dataset revision |
 | `data/spaces_2026-10-17/spaces.json` | Space ids and `createdAt`, collected on 2026-10-17 by an earlier session | Hash in `PROTOCOL.md`; **collection script not recorded** |
 | `claims_anchored.json` | Anchored claim texts, local file dated 2026-07-18 | Hash in `PROTOCOL.md`; **origin not recorded in this folder** |
-| Logbook pages, commit histories, file trees | Public Spaces at the judged revision (`sha`), via `download*.py` | Per-file hashes in `data/*_manifest.json` (git-ignored); shareable digest in `results/download_manifests_hashed.json` |
+| Logbook pages, commit histories, file trees | Public Spaces at the judged revision (`sha`), via `download*.py` | Per-file hashes in `data/*_manifest.json` (git-ignored); aggregate digests (no per-Space entries) in `results/download_manifests_hashed.json` |
 
 Page contents and Space ids are not committed (they identify participants).
 
