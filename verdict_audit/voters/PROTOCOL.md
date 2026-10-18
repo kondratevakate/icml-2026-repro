@@ -448,3 +448,17 @@ advance: toy, small scale, subset, not run, missing, incomplete) versus not.
   cheating. Only R3 speaks to what changed, and its coders are language models.
 * Results describe a few heavy resubmitters (top ten teams: 77% of events).
 * Only aggregates are committed; no team is named.
+
+## Note: data provenance (2026-10-18, no analysis change)
+
+* The confirmation verdict snapshot equals revision
+  `f0c5a8b369d6d618ecc9fa060aa2e2f27f9e2602` of the dataset
+  `ICML-2026-agent-repro/verdicts`, file `verdicts.json` (LFS SHA-256
+  `652f1c16…`, identical to the hash frozen in Protocol 1).
+* `verdicts_live.json` and `verdicts_latest_tmp.json` did not match the LFS
+  hash of the three dataset revisions preceding their file dates; they are
+  local snapshots fixed by hash only.
+* The collection of `spaces.json` and the origin of `claims_anchored.json` are
+  not recorded in this folder; both are fixed by hash.
+* The Q3 coders ran `claude-opus-5-5` (subagent transcripts); see
+  `q3_codes/CODER_PROMPT.md`.

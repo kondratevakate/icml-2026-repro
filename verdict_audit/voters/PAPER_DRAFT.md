@@ -161,7 +161,7 @@ Mantel-Haenszel risk difference in agreement and compare it with a null in
 which judge latencies are permuted among logbooks judged on the same day.
 
 **Provenance.** Regular expressions for coding-agent names and model families
-were validated by two blind coders (Claude subagents) on 120 matches and 40
+were validated by two blind coders (Claude subagents, model `claude-opus-5-5`) on 120 matches and 40
 logbooks without matches; a category is reported only if at least 80% of its
 matches name the agent or model that produced the logbook.
 
@@ -329,11 +329,31 @@ reconstructed (all 49 local trace indexes are empty). Excluding the author's
 logbooks changes collapsed kappa from 0.193 to 0.191 and the exposure
 difference from -0.0108 to -0.0105.
 
+## Provenance of this study
+
+We apply our own recommendation to this study. The analysis code, the three
+protocols and this draft were written with Claude Code using the model
+`claude-opus-5-5`, directed and reviewed by the author, who approved each
+protocol freeze and each bulk download before it ran. The two blind coders
+were Claude subagents running the same model; their prompt is published with
+the code. An access log of the analysis session lists every web page fetched,
+every web search, the literature-database calls and the Hugging Face API
+methods used (`ACCESS_LOG.csv`). Two inputs lack a recorded origin: the list
+of Space creation dates and the anchored claim texts. Both are fixed by hash.
+No clean re-run from scratch has been performed; the analyses are
+deterministic by construction (fixed seeds, stable hashes), but this has not
+been confirmed by re-execution.
+
 ## Data and code availability
 
-Code, protocols and aggregate results: `verdict_audit/voters/`. Inputs are
-the public verdict dataset of the challenge and public Spaces at their judged
-revisions; page contents are not redistributed.
+Code, protocols, aggregate results, run order and environment:
+`verdict_audit/voters/` (`README.md`, `requirements.txt`). The verdict
+snapshot is revision `f0c5a8b369d6d618ecc9fa060aa2e2f27f9e2602` of the public
+dataset `ICML-2026-agent-repro/verdicts` (file `verdicts.json`; its LFS
+SHA-256 matches our copy). Logbook pages, commit histories and file trees
+were read from public Spaces at their judged revisions; page contents and
+Space ids are not redistributed, but a digest of every download keyed by
+hashed Space id is (`results/download_manifests_hashed.json`).
 
 
 ## References
