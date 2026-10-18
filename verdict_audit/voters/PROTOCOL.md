@@ -174,3 +174,20 @@ reported. No page content is committed; only aggregates are.
 * Shared agent templates produce similar text without copying; the template
   control and the containment sensitivity address this only partly.
 * Only aggregates are committed. No other team is named or ranked.
+
+## Amendment 1 (2026-10-18, during download, before any analysis was run)
+
+Mechanics only; no analysis choice changes.
+
+* `snapshot_download` failed on Windows because long page slugs exceed the path
+  length limit, and the first bulk run hit the Hugging Face API rate limit
+  (1,000 calls per 300 s). `download.py` now lists files with
+  `list_repo_files` at revision `sha` (throttled to 2.5 calls per second) and
+  fetches each file from its `resolve/<sha>/<path>` URL. Each file is stored
+  under `data/pages/<sha1(space_id)[:16]>/<sha1(path)[:16]>.txt`; the manifest
+  maps repository paths to stored files and their SHA-256, and readers verify
+  every hash. The set of files is the one prespecified: `logbook.json` and every
+  `pages/**.md`.
+* Some logbooks keep pages as flat files (`pages/<slug>.md`) instead of
+  `pages/<slug>/page.md`. "Directory name starts with `claim`" is applied to the
+  first path component under `pages/` in both layouts.
