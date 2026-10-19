@@ -1,0 +1,20 @@
+{
+  "protocol_sha256": "6526360fe78e5b5b006d6bd5db80dcd2299edfa1c5800c0f5ec931d464f96ae2",
+  "code_sha256": "15b4454294dec7acee4c8df55d780bd51ed5ca46ec4442348f6bfb6aaa4bbf52",
+  "analyze_sha256": "5d92908176bb1a21ea80b7dfd3a1fb2d3167daf35670aa391a046bf93d81f6c0",
+  "git_commit": "7916840c31f24ebda22e438cfee9b2313fff4197",
+  "inputs": {
+    "new_snapshot": "652f1c162462d7ad142ff32e2bd13d5853e21c639681ef416971776fdd33c526",
+    "verdicts_latest_tmp.json": "b4bae4eb8a333dc98c3edd6865452ff96009b5b1a6dd1685d96a61bdaf31c239",
+    "verdicts_live.json": "76eeb935cc0972ec5b0ef9464a43d0920e00af1328db5460a71b61971351d544",
+    "claims_anchored.json": "eb3f2d878646ca5c40da121741a613c1f9e1e10c14845f373db107e74a4ef439",
+    "claims.json": "af5ab2d62f786ae36861957cbd08b4188f6d4c86e67152becc661a9c5bbb9d57",
+    "audit/public_repro_audit.csv": "459ae5d58aaeae2c777870e664e49920eb2d9aa75052201a9d9ea85e51addcd8",
+    "medical_neuro_papers.csv": "92dc7e4cb51bef127428975c7372fd05f288df0566eff6454275887e68eeabe9"
+  },
+  "cutoff": "2026-07-28T12:51:33+00:00",
+  "seed": 20261017,
+  "resamples": 2000,
+  "seconds": 2.4,
+  "results_sha256": "51d0a02d3f9b1a5bc6f092251d4f90f568b717c6c602033f69a9acf25812f8a4"
+}

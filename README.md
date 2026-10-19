@@ -9,6 +9,14 @@ working notes, and the full methodology writeup behind them.
 cost in points (real judged scores, not guesses), the current queue, and the working rules this project
 follows.
 
+## Verdict audit (meta-research on the challenge)
+
+[`verdict_audit/`](verdict_audit/README.md) studies the challenge itself from its public verdicts:
+how verdicts from many teams were aggregated, and why medical and life-science papers were rarely
+decided. It holds frozen protocols, analysis code, coding sheets and aggregate results behind two
+abstracts for PSE9 (Perspectives on Scientific Error 9, Copenhagen 2027). Start with
+[`verdict_audit/README.md`](verdict_audit/README.md).
+
 ## Layout
 
 - One folder per paper (`calpro/`, `survfd/`, `kmarl/`, `mdrcp/`, `dcpnpdp/`, `confsleepnet/`,
@@ -66,3 +74,10 @@ Each paper's folder is self-contained: read the script's docstring for the trans
 run it directly (Python 3.11, numpy + torch CPU, no scipy/sklearn — see HANDOFF.md's environment
 section). Downloaded datasets and vendored external code are not included in this repo; HANDOFF.md
 documents where to get them.
+
+## Licence
+
+Code in this repository is MIT-licensed ([`LICENSE`](LICENSE)). Text, protocols, coding sheets and
+aggregate results are CC BY 4.0 ([`LICENSE-CC-BY-4.0`](LICENSE-CC-BY-4.0)). Third-party material keeps
+its own terms and is not redistributed here: the papers and their official code, the challenge's
+datasets, and other teams' logbooks.
