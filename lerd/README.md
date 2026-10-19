@@ -84,6 +84,11 @@ calibration: hedged verdicts score 0, so the verdict sentence stays unqualified)
   Scope: this verifies the "consistent with established AD biomarkers" content on
   the raw EEG; LERD's specific dLIF-inferred frequencies need the trained model.
 
+- **Claim 2 — REPRODUCED (numerical audit).** Theorem 4.1's IVP identity for the
+  event-prior KL (Eq 9) holds to machine precision (abs diff <= 1e-13) computed two
+  independent ways; Z_S normalization, KL>=0, and the Eq-10 limit check out; both
+  hypotheses shown load-bearing via controls. `thm41_audit.py` (numpy+scipy, CPU).
+
 - **Claim 5 — not evaluable.** Cohort B (Sadegh-Zadeh 2023) data is not public
   (paper Data Availability "Not applicable"; underlying EEG is private).
 

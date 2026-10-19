@@ -10,7 +10,7 @@
     "icml2026-repro",
     "paper-B5DAV1EA8Z"
   ],
-  "updated_at": "2026-07-22T12:50:23+00:00",
+  "updated_at": "2026-07-22T18:47:49+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: LERD: Latent Event-Relational Dynamics for Neurodegenerative Classification",
@@ -73,8 +73,8 @@
     "total_size": 0,
     "bucket_id": "kondratevakate/repro-lerd-latent-event-relational-dynamics-for-neurodegenerative-classification-artifacts"
   },
-  "agent_view_tokens": 3919,
+  "agent_view_tokens": 4445,
   "trace_view_tokens": 10,
   "workspace_view_tokens": 8,
-  "revision": "c6db038995048ef9b4d8"
+  "revision": "0e94da9a7c89d594dfe0"
 }

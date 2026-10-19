@@ -5,7 +5,10 @@
 <!-- trackio-cell
 {"type": "markdown", "id": "cell_01ff2f51b9c1", "created_at": "2026-07-22T12:42:40+00:00", "title": "Executive summary", "pinned": true, "pinned_at": "2026-07-22T12:42:40+00:00"}
 -->
-Two of LERD's claims reproduce independently on commodity CPU. **Claim 3 (toy):**
+Three of LERD's claims reproduce independently on commodity CPU. **Claim 2
+(Theorem 4.1):** the theorem's IVP identity for the event-prior KL (Eq 9) holds to
+machine precision (abs diff <= 1e-13) computed two independent ways, with both
+stated hypotheses shown load-bearing via controls. **Claim 3 (toy):**
 the reproduced latent event-rate estimate matches LERD's reported "Median Rate"
 within 2-3.4% (7.38 vs 7.53 at [5,10] Hz; 18.20 vs 18.84 at [15,20] Hz), and a
 trajectory-only neural-ODE baseline scores boundary IoU ~0 at high CS (~0.99),
@@ -26,7 +29,7 @@ about 20 min CPU analysis plus a one-time 19 min dataset download; $0.
 | Hardware | 8-core CPU (no GPU) | GPU (L4 sufficient) |
 | Compute time | ~20 min analysis + ~19 min download | ~20-40 min (No-prior) to ~2-8 h (full model) per cohort |
 | Cost | $0 | ~$2-16 (est. GPU-h x L4 rate) |
-| Outcome | Claims 3 and 6 reproduced; 4 GPU-bound; 5 data-unavailable | not attempted |
+| Outcome | Claims 2, 3, 6 reproduced; 4 GPU-bound; 5 data-unavailable | not attempted |
 
 
 ---
@@ -41,6 +44,10 @@ about 20 min CPU analysis plus a one-time 19 min dataset download; $0.
   </div>
 
   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+    <div style="flex:1;min-width:170px;background:#f0fff4;border:1px solid #9ae6b4;border-radius:8px;padding:10px">
+      <div style="font-weight:700;color:#22543d">Claim 2 (Theorem 4.1) — REPRODUCED</div>
+      <div style="font-size:13px;margin-top:4px">IVP KL identity (Eq 9) holds to machine precision (&le;1e-13), two independent ways.</div>
+    </div>
     <div style="flex:1;min-width:170px;background:#f0fff4;border:1px solid #9ae6b4;border-radius:8px;padding:10px">
       <div style="font-weight:700;color:#22543d">Claim 3 (toy) — REPRODUCED</div>
       <div style="font-size:13px;margin-top:4px">Latent rate recovered within 2-3.4%; baseline neural-ODE IoU ~0 at CS ~0.99.</div>

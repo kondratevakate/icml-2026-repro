@@ -5,9 +5,10 @@
 <!-- trackio-cell
 {"type": "markdown", "id": "cell_fd3ebd87917e", "created_at": "2026-07-22T12:46:43+00:00", "title": "Findings"}
 -->
-Two of LERD's six claims reproduce independently on CPU, and both hold.
+Three of LERD's six claims reproduce independently on CPU, and all hold.
 
 **Supported (reproduced).**
+- **Claim 2 (Theorem 4.1):** the IVP identity for the event-prior KL (Eq 9) holds to machine precision (abs diff <= 1e-13) computed two independent ways (direct KL integral vs the change-of-variables integral); normalization Z_S=1-e^-R(S), KL>=0, and the S->inf limit (Eq 10) all check out; both hypotheses (r bounded away from 0; the Z_S normalization) are shown load-bearing via controls. Numerical audit, not a proof replacement.
 - **Claim 3 (toy):** reproduced latent event-rate estimate matches LERD's reported Median Rate within 2-3.4%; a trajectory-only neural-ODE baseline scores boundary IoU ~0 at CS ~0.99, reproducing Table 1's high-CS/zero-IoU contrast. LERD's own IoU magnitudes (0.202-0.473) require the trained model and were not regenerated.
 - **Claim 6 (real data, ds004504):** the AD spectral-slowing signature the claim rests on holds on all 88 subjects - AD central frequency below HC in 19/19 channels, theta elevated, alpha reduced, FTD intermediate.
 
