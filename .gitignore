@@ -44,3 +44,31 @@ Thumbs.db
 
 # verbatim paper excerpts (copyright, like paper.txt)
 **/SPEC_notes.txt
+
+# Paper texts extracted for internal analysis (copyright), not redistributed
+/funcqnet_paper.txt
+onlinecox_colsa/paper_text.txt
+
+# Official code clones and released artefacts of reproduced papers (their own licences)
+*/official/
+ccd/official_*
+*/repo_ref/
+
+# Challenge verdict snapshots (public on the challenge's HF dataset)
+/verdicts_live.json
+/verdicts_latest_tmp.json
+
+# Scratch: drafts, copies of other teams' logbooks, large verdict dumps
+/tmp/
+
+# Local R libraries
+.rlib/
+
+# Separate repository with its own history
+/cox_subgroup/
+
+# Separate study; patient-level outputs must stay outside git
+/patient_trajectory/
+
+# Working note that names other teams and their scores; kept local
+/PEER_VERDICT_INTELLIGENCE.md
