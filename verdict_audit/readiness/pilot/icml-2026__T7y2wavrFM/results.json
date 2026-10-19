@@ -1,0 +1,66 @@
+{
+  "key": "icml-2026__T7y2wavrFM",
+  "status": "done",
+  "repo_url": "https://github.com/vpsg-research/CAME-Grad",
+  "commit": "79059e39060d13ef6b6cb2ea9ad7a5d8e2519c83",
+  "licence": "Apache-2.0 (LICENSE file is the Apache License 2.0 text; README also states Apache-2.0)",
+  "image": "p9pilot-t7y2wavrfm",
+  "time_to_running_pipeline_min": 17,
+  "container_seconds_total": 1170,
+  "claims": [
+    {
+      "claim_id": "C00516",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "check": "None planned (negative control): the 2.3% / 1.9% average CE gains are test-set scores of eight trained backbones on real MIMIC-CXR / IU X-Ray.",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "The claim is a measured effect size that depends on the real data distribution, on trained RRG checkpoints (weights not released) and on the optimizer source, which the README says is withheld. No property of it can be observed on random schema-faithful data, so no run was made.",
+      "log": null
+    },
+    {
+      "claim_id": "C00672",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "None planned (negative control): Table 3 compares CAME-Grad with seven MTL optimizers on REVTAF using real MIMIC-CXR test metrics.",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "The comparison is a table of real-data test scores; the repository has no code for UW, GradNorm, CAGrad, RotoGrad, FAMO, MMPareto or STGU, no REVTAF backbone and no comparison script. A synthetic-data comparison would not test what the claim asserts.",
+      "log": null
+    },
+    {
+      "claim_id": "C00858",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "check": "check_C00858.py in the container on synthetic data, using a PAPER-DERIVED reimplementation of Algorithm 1 / Eqs. 8-14 (the authors' optimizer is withheld) wrapped around torch AdamW with the repo's modules/optims.py scheduler and the call signature of modules/trainer.py. Sub-checks: A repo audit; B Stage 1 vs the stated max-min problem (dual by torch and SLSQP solvers, primal by SLSQP); C Stage 2 norm and direction; D Stage 3 interpolation and exact reduction to linear scalarisation; E non-redundancy of the three stages; F drop-in on MLP, CNN and Transformer backbones with K=1 and K=2 auxiliary tasks. Pre-registered rule in plan.json.",
+      "outcome": "consistent",
+      "rationale": "On 576 synthetic task-gradient sets all Stage 1-3 identities hold (log lines 'duality: pass 576/576', 'attain: pass 576/576', 's2_norm: pass 576/576', 's3_baseline: pass 576/576'), and switching off any single stage changes g_final in 172/172 conflicting sets, so the three cascaded stages are well defined and non-redundant. The wrapper trained all six backbone x K settings with only (losses, task_weights) and no model change (finite losses, LM loss decreasing), and with nu=1, kappa=1 it reproduces the linear-scalarisation AdamW path to 6.7e-14 in float64. This tests the paper's specification, not the authors' code: modules/CAME_Grad.py is absent ('ModuleNotFoundError: No module named modules.CAME_Grad'), so the result is silent on whether the released or trained optimizer matches it.",
+      "log": "work/logs/C00858.log"
+    },
+    {
+      "claim_id": "C00989",
+      "type": "data_protocol",
+      "checkable_on_synthetic": false,
+      "check": "None planned (negative control): the claim fixes the real MIMIC-CXR test-set size (3,858) and CheXbert labels.",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "The 3,858-sample test split and the CheXbert-labelled reports exist only in the real data; the CheXbert checkpoint path in the repository is the placeholder 'xxxxxxxx'. Random data cannot confirm or contradict either half of this conjunction.",
+      "log": null
+    },
+    {
+      "claim_id": "C01004",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "None planned (negative control): Table 4 reports real-data CE/NLG scores of stage-ablated PromptMRG and DDaTR.",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "Each stage's contribution to overall performance is a statement about trained models on MIMIC-CXR and cannot be observed on synthetic data. The structural non-redundancy of the stages was tested only under C00858 (sub-check E) and is not evidence for this claim.",
+      "log": null
+    }
+  ],
+  "blocked_reason": null,
+  "notes": [
+    "The authors' pipeline cannot run even with data: the README TODO withholds the core optimizer ('temporarily withheld'); modules/trainer.py imports a CAME_Grad module that is not shipped; also missing are the dataset package, models/med.py, configs/bert_config.json and data/mimic_cxr/base_probs.json, and the CheXbert checkpoint path is a placeholder. C00858 was therefore checked on a paper-derived reimplementation (checks/came_grad_from_paper.py), using repo code only for modules/optims.py and the call signature in modules/trainer.py.",
+    "Process disclosure: a --smoke run of check_C00858.py (8 steps, one repetition) was used to debug the harness and its output was seen; three implementation details were then changed and recorded under changed_after_run in plan.json (primal evaluator, float64 end-to-end test, G3 weight decay). The first full run (work/logs/C00858_run1_before_wrapper_fix.log) still failed sub-check D for K=1 (1.89e-5) because my wrapper gave zero-filled gradients to an unused head, so AdamW applied weight decay to it; this was a defect in the reimplementation, fixed (p.grad=None for parameters no task reaches), and the whole check was re-run (work/logs/C00858.log is run 2, the reported result). Pass/fail criteria were not changed.",
+    "Non-binding diagnostics from the final run: (G1) ||u_rect||/||g_joint|| has median 0.19 and is below 1 in every set, so the Stage 2 premise that rectification compresses magnitude holds for task weights [1,4,...]; (G2) at rho=0.5 on conflicting sets some task still has a negative inner product with u_rect in 20.5% of sets and with g_final in 34.9% (g_joint: 67.5%), so the geometric-validity property in Appendix C is a reduction, not a guarantee; (G3) the displacement ratio for kappa=1.5 vs 1.0 is 1.001 when the base optimizer is AdamW and 1.500 under SGD, so the effective-learning-rate argument of Appendix B.2 holds for SGD but Stage 2's magnitude gain is largely cancelled by AdamW normalisation if the unreleased wrapper steps AdamW on g_final.",
+    "Static repo observations, not executed checks: modules/trainer.py applies clip_grad_value_(0.1) only in the baseline branch, not in the CAME-Grad branch (AST scan, log section A); the ablation variants of Table 4 (S1 off, S2 off) are not defined in the paper, and with u_rect := g_joint the S2+S3 variant collapses to kappa*g_joint.",
+    "Container time: 1170 s total (image sanity 4 s, data generation 3 s, smoke run 139 s, full run 1 = 613 s, full run 2 = 411 s). Image build time (about 4 min, network on) is not counted. The first background build finished and created the image; a second foreground build attempt only reported 'already exists' (work/build.log).",
+    "Files: checks/plan.json, checks/gen_synthetic.py, checks/came_grad_from_paper.py, checks/synthetic_backbones.py, checks/check_C00858.py; work/data (synthetic), work/logs, work/time_log.csv, work/Dockerfile, work/run.sh."
+  ]
+}

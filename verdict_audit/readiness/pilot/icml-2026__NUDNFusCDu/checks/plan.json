@@ -1,0 +1,58 @@
+{
+  "key": "icml-2026__NUDNFusCDu",
+  "plan_written": "2026-10-19, before any claim-specific check was run (only image build / data generation / timing smoke test preceded it)",
+  "setup": {
+    "model": "repository's frozen pretrained MoDL (BestModel/checkpoint.pth, UnrolledNet(mu=0.1813, Unrolls=10)); weights never updated",
+    "data": "checks/gen_synthetic.py: random sum-of-ellipses complex phantoms, 15 smooth coils (sum |s|^2 = 1), equispaced R=4 mask with scaled ACS, Delta_1..3 = pattern shifted by 1..3 lines with ACS kept (paper Sec. 4.1); matrix size reduced from 332x320 to fit the CPU budget (value fixed in the check script header before it is run)",
+    "repo_code_used": "src/Utils.py (attack_generation, ABA_detect, noise_jiterring, CG_EEH, Cyclic_Mitigation, Reverse_PGD_Projection, schedulers), src/Unrolled_Network.py, DataLoader.py (subclassed only to glob several files). Matplotlib image dumping inside Cyclic_Mitigation is replaced by a no-op (no effect on the algorithm). The real sample slice data/kneePD.mat in the repository is never opened.",
+    "caveat_all_checks": "The checkpoint was trained on real fastMRI knee data and is applied to out-of-distribution synthetic phantoms; the checks therefore test properties of the procedure (consistency structure, norm ball, descent), not reconstruction quality.",
+    "matrix_size_fixed": "nc=15, kx=64 (phase-encode/sampled axis), ky=32; R=4, ACS=4 lines (scaled from 24 of 332); 19 of 64 lines acquired, Delta_1..3 each 19 lines. Chosen from smoke-test timing (single-thread forward 1.3 s; 4 CPU cores shared with other containers) - smaller than 332x320 only to fit the 2 h budget.",
+    "threads": "1 torch thread per process, cases run in parallel worker processes"
+  },
+  "claims": [
+    {
+      "claim_id": "C00048",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "None. 'Outperforming adversarial-training baselines at eps in {0.01, 0.02}' is a PSNR/SSIM comparison on fastMRI test slices between a mitigated MoDL and AT/SMUG networks trained on real data. The repository has no evaluation code for Fig. 4 and any synthetic-phantom number would reflect how weights trained on real knee data behave out of distribution, not the claim. Outcome would be not_checkable_on_synthetic (negative control)."
+    },
+    {
+      "claim_id": "C00134",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "check": "None. Table 1 PSNR/SSIM ranges on Cor-PD, Cor-PDFS and Ax-FLAIR fastMRI test sets are properties of the real data distribution and of trained networks; only one Cor-PD sample slice and no Cor-PDFS/Ax-FLAIR code or weights exist in the repository. Negative control."
+    },
+    {
+      "claim_id": "C00434",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "None. 'Blind mitigation (linear scheduler for eps and alpha) comparable to informed mitigation' is a statement about reconstruction PSNR/SSIM on real data (Table 9); the blind scheduler is not in the released code (README: more code to be added later) and its performance cannot be stated independent of the real data distribution. Negative control."
+    },
+    {
+      "claim_id": "C00689",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "check": "check_C00689.py. With the frozen repo MoDL and repo functions (attack_generation = unsupervised PGD, 10 iterations, alpha = eps/5; noise_jiterring; CG_EEH; ABA_detect), for N synthetic cases (N >= 8, fixed in script header) compute, under torch.no_grad and without any weight update, y_Omega = CG_EEH(FFT(z) * Omega) (as in Mitigation.py), zeta1 = ||y_Omega - E_Omega x_Omega||/||y_Omega|| (ABA_detect stage 0 k-space at Omega) and zeta2 = ||y_Omega - E_Omega x_Delta1||/||y_Omega|| (stage 1 k-space at Omega after re-undersampling with Delta_1 plus noise), for (a) clean inputs, (b) PGD-attacked inputs eps=0.01, (c) PGD-attacked inputs eps=0.02. Statistic s = zeta2 - zeta1. Parameter hash of the network is taken before and after.",
+      "consistent_if": "ALL of: (i) AUROC(s: attacked vs clean) >= 0.90 for both eps=0.01 and eps=0.02; (ii) some single threshold tau gives balanced accuracy >= 0.90 on clean-vs-attacked at each eps (the 'dataset-dependent threshold' exists on this synthetic dataset); (iii) median zeta2 > median zeta1 for attacked inputs at both eps; (iv) network parameter hash identical before/after and the whole detector executed under torch.no_grad (no retraining, no gradient needed).",
+      "inconsistent_if": "Any of (i)-(iv) fails; the rationale will state which criterion failed, by how much, and flag the out-of-distribution-network caveat. (Pre-stated rule: no third category.)",
+      "parameters_fixed_before_run": "N = 12 synthetic cases per condition (12 clean, 12 attacked at eps=0.01, the same 12 cases attacked at eps=0.02); Delta_1 for the primary statistic (Delta_2, Delta_3 reported as robustness); noise jitter std_scale=6 (Config.yaml) estimated from the tested input itself (defender view), not from the clean input",
+      "execution_notes": "A wiring dry run (P9_DRY=1: 2 cases, 1 attack iteration) was executed before the full run and its numbers were seen; the criteria above and the full-run parameters were not changed afterwards. Not changed after the full run."
+    },
+    {
+      "claim_id": "C00763",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "None. The claim concerns five architectures (MoDL, XPDNet, RIM, E2E-VarNet, Recurrent-VarNet) trained on real data; the repository contains only MoDL (plus an AT checkpoint) and no code or weights for the other four. Negative control."
+    },
+    {
+      "claim_id": "C00996",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "check": "check_C00996.py. Run the repository's Cyclic_Mitigation (Reverse PGD with defaults from Config.yaml: alpha=0.005, epsilon_proj=0.01, 3 Delta masks, cyclic_stages=2, noise_jittering_std=6, Linear alpha scheduler) on M synthetic PGD-attacked cases (M >= 3, eps=0.01; iterations fixed in script header, <= 100). Reverse_PGD_Projection and ABA_detect are wrapped by recording hooks (they still call the originals unchanged) to log, per iteration: the iterate z_t, the number of cyclic passes and the mask used in each. Also a control with the gradient sign flipped (ascent) and a short true-descent run, 10 iterations each, same start; plus the cyclic loss at the clean input (iteration 0) versus at the attacked input.",
+      "consistent_if": "ALL of: (a) ball: for every iteration t and case, max(|Re(z_t - z_pert)|, |Im(z_t - z_pert)|) <= epsilon_proj + 1e-6, and the iterate moves (max displacement > 0.5*epsilon_proj at some iteration); (b) multi-pattern: every iteration evaluates exactly K = 3 cyclic passes with 3 pairwise-distinct Delta masks, each different from Omega and containing at least one line of Omega^C, and the loss is the mean over them; (c) minimisation: min_t LOSS_t <= 0.95*LOSS_0 and LOSS_last < LOSS_0 in every case; (d) direction: after 10 iterations the descent run has lower cyclic loss than the start and the sign-flipped (ascent) control has higher cyclic loss than the start. Supporting, not gating: cyclic loss at the attacked input > cyclic loss at the clean input (premise of Sec. 3.1); CG-based (E_Omega^H)^dagger residual ||E^H y - z||/||z||; PSNR/SSIM trajectory against the synthetic reference.",
+      "inconsistent_if": "Any of (a)-(d) fails in any case; the rationale will state which criterion failed, by how much, and flag the out-of-distribution-network caveat. (Pre-stated rule: no third category.)",
+      "parameters_fixed_before_run": "M = 3 synthetic cases, eps=0.01; main run T = 20 iterations (paper/Config default is 100: reduced for CPU budget, Linear alpha scheduler over T); direction controls (descent and sign-flipped ascent) use T_c = 6 iterations so that LOSS[5] (loss after 5 updates) can be compared with LOSS[0]; this replaces the '10 iterations' wording in 'check' and criterion (d) 'after 10 iterations' now reads 'after 5 updates'. Revised before any C00996 run, for compute only. One-line CPU patch: recon_i = Recons_mit[:,:,0].detach().clone() (repo line fails on CPU only; values unchanged).",
+      "execution_notes": "A wiring dry run (P9_DRY=1: 1 case, 2 iterations) was executed before the full run and its numbers were seen; the criteria above and the full-run parameters were not changed afterwards. Not changed after the full run. Plan revision (T=20, T_c=6, 'after 5 updates') was made before any C00996 run, after the C00689 run, for compute only."
+    }
+  ]
+}

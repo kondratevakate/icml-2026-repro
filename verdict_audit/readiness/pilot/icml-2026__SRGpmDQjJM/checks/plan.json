@@ -1,0 +1,74 @@
+{
+ "key": "icml-2026__SRGpmDQjJM",
+ "written_before_any_claim_run": true,
+ "plan_notes": "All data are synthetic (checks/gen_synthetic.py). The 'pretrained LLM' is a tiny Qwen2-architecture model (2 layers, d=128, tied embeddings) that is first trained on the synthetic corpus so that it has a non-random latent space; its tokenizer is a byte-level BPE trained on the synthetic corpus (Qwen2-style pre-tokenizer). Repository code used unmodified: preprocessing/create_tpe_tokenizer.py, preprocessing/llm_fit_tpe_tokenizer.py, llm_sft.py (via run_fn/llm_sft_fn.py, with bitsandbytes Adam8bit replaced by torch AdamW only if Adam8bit cannot run on CPU), tpe/*.py, run_fn/set_embed_fn.py, dataset/map_fn.py. vLLM-based scripts (create_sft_QA.py, infer_llm.py) are not run (GPU); pseudo-labels are produced by sampling the tiny original model at temperature 0.7, mirroring LLMConfig.temperature. Hyper-parameters fixed in advance: M=200 new tokens on a 6000-token vocabulary (3.3 percent, the ratio the paper reports for M=5000 on Qwen2.5), max_n=2, SSFT lr=5e-5 (repo default), batch 2 x grad-accum 2, 10 epochs (the value in the repo's sh/llm_ssft.sh), max_length 512, 1000 train / 100 tuning / 100 held-out prompts, seed 1.",
+ "claims": [
+  {
+   "claim_id": "C00126",
+   "type": "mechanism",
+   "checkable_on_synthetic": true,
+   "planned_check": "check_C00126.py runs the repository pipeline on synthetic CMedQA2-schema data (stages: prep -> tokenizer -> fit -> clean -> sft -> measure) and tests the four components of the claim.\nS1 (TPE, lossless token-pair merge): with max_n=2 every entry of new_token_info must have exactly 2 sub_tokens whose concatenation is the new token; for the 600 held-out synthetic texts (test.json, disjoint seed) decode(encode(text)) == text under the MedTPE tokenizer (TPETokenizerFast) for every text, and mean compression rate CR = 1 - len(MedTPE ids)/len(base ids) > 0.\nS2 (dependency-aware replacement of roughly 3 percent least-common tokens): (i) |V*| == |V| and the id set of V* equals the id set of V; (ii) number of new tokens == M; (iii) E (evicted = base tokens absent from V*) contains no special token; (iv) E is disjoint from D_paper (all sub-tokens of the inserted tokens plus their recursive BPE merge-path components, recomputed independently from the base tokenizer.json merges) and from D_repo (same for all candidate n-grams with freq>=2, as the repo computes it); every sub-token of every new token is in V*; (v) E equals the M least frequent tokens among eligible tokens (non-special, len>1, not in D_repo): max corpus frequency over E <= min corpus frequency over retained eligible tokens (frequency recomputed with the repo function count_old_token_frequencies on the same digit-filtered corpus); (vi) integrity of the original tokenisation: for each held-out text, the MedTPE token strings with new tokens expanded to their sub_tokens equal the base tokenizer's token strings unless the base tokenisation of that text contains an evicted token or a retained token whose recursive BPE merge path passes through an evicted token (zero texts violate this implication; the numbers of texts explained directly and only via the merge path are reported separately); (vii) M/|V| of the synthetic setting and 5000/vocab_size from the public Qwen2.5-1.5B config.json (vocab_size 151936) lie in [2.5, 3.5] percent. Also reported (not pass/fail): number of retained tokens outside D_paper that are rarer than the rarest evicted token (paper-vs-repo protected-set difference).\nS3 (SSFT updates only new-token embeddings, 0.5-1.0 percent of parameters): after llm_sft.py, compare the saved SSFT checkpoint with the pre-SSFT MedTPE model (pre-SSFT tensors cast to the dtype of the SSFT checkpoint, because llm_sft.py loads in bfloat16): every tensor other than the new-token rows of embed_tokens (and lm_head if untied) is torch.equal; at least one new-token row changed; the numerator of the repo-printed '[Embedding] trainable params: X/Y' line equals M'*d (M' = number of new tokens, d = hidden size; the repo shares one trainable matrix between input and output rows), and the fraction X / (true parameter count of the model including the embedding matrix) is reported (the repo-printed denominator Y excludes the frozen embedding matrix, which SplitEmbedding stores as a buffer; this is noted, not pass/fail). Then, for the real Qwen2.5-1.5B architecture (public config.json, meta-device instantiation, no weights, M=5000), trainable fraction = M*d / (total parameters including the embedding matrix) must round to 0.1 percentage point into [0.5, 1.0] percent (the repo-style denominator that excludes the embedding matrix is also reported). Qwen2.5-7B (untied, public config.json) is computed with both counting conventions (M*d and 2*M*d) and reported as a qualification only; it does not enter the pass/fail rule.\nS4 (SSFT aligns the new embeddings with the pretrained latent space), on 100 held-out prompts (test.json[:100], pseudo-labels sampled from the original tiny model at temperature 0.7): primary measure = per-sequence bits per character of the pseudo-label text (response + '<|im_end|>\n'), each model scored with its own tokenisation of prompt and response (as sft_map_postfix_fn does): (a) original model with base tokenizer, (b) MedTPE model with mean-initialised embeddings before SSFT, (c) MedTPE model after SSFT; (b) and (c) are evaluated with weights rounded to bfloat16 and computed in float32, (a) the same. Secondary (reported, not pass/fail unless it contradicts, see rule) = cosine similarity of the final-layer post-norm hidden state at the last prompt position between (a)-on-base-tokens and (b)/(c)-on-MedTPE-tokens, plus gap closure (BPC_b-BPC_c)/(BPC_b-BPC_a).",
+   "consistent_if": "S1, S2, S3 and S4 all pass. S1: all round trips exact, all new tokens are 2-token merges, CR>0. S2: (i)-(vii) have zero violations. S3: frozen tensors equal, new rows changed, repo-printed numerator == M'*d, Qwen2.5-1.5B fraction (embedding matrix included in the denominator) rounds into [0.5,1.0] percent. S4: mean BPC(c) < mean BPC(b) with the 95 percent paired-bootstrap CI (10000 resamples) of the per-sequence difference excluding 0.",
+   "inconsistent_if": "the pipeline ran to completion and any of S1-S4 fails, e.g. a round-trip mismatch, a dependent or special token evicted, vocabulary size changed, a non-new parameter changed, Qwen2.5-1.5B trainable fraction outside [0.5,1.0] percent after rounding, or BPC after SSFT not lower than before (CI includes 0 or positive). If the cosine-similarity secondary shows a significant decrease after SSFT (95 percent CI of (c)-(b) entirely below 0) this is reported as a qualification in the rationale but does not by itself flip the outcome.",
+   "blocked_if": "the repository CLI scripts cannot be made to run on CPU on the synthetic fixtures within the time budget.",
+   "contingencies_declared_before_run": "(1) llm_sft.py is run as shipped first (CPU, bf16 weights, Adam8bit). If bitsandbytes Adam8bit cannot run on CPU, a wrapper (checks/run_sft_cpu_patched.py) injects torch.optim.AdamW under the name Adam8bit and runs llm_sft.py unchanged otherwise (deviation 1). (2) If the as-shipped dtype leaves all new rows bit-identical after SSFT (bf16 rounding swallows lr=5e-5 updates on the tiny model's embedding scale), the same wrapper additionally forces torch_dtype=float32 when loading (deviation 2) and S4 is judged on that run; the rationale then states that the shipped bf16 configuration did not move the rows. (3) Transformers-version API drift that breaks repo code is handled by the smallest compatible change inside the wrapper, never inside the repo, and listed in notes. (4) If the repository CLI scripts still cannot run within the budget the outcome is blocked. (5) llm_sft.py is run twice when possible: variant A as shipped (or with Adam8bit->AdamW only if required) and variant B with torch_dtype=float32; S3 must hold for every variant that completed; S4 is judged on A if A moved at least one new row, otherwise on B.",
+   "changed_after_run": [
+    {
+     "what": "SSFT scale and variant order (compute budget only; no S1-S4 outcome had been computed)",
+     "reason": "The first SSFT run, variant 'shipped' (bf16 weights + bf16 autocast, 10 epochs x 1000 samples = 5000 micro-steps), was killed after 701 s at about 590 logged micro-steps (about 0.85 micro-step/s on the shared CPU; projected 90+ min against a 2 h total container budget with about 42 min already used).",
+     "new_rule": "Variant 'adamw_fp32' (Adam8bit->AdamW, float32) is run at the pre-registered scale (10 epochs x 1000 samples), reduced only if its measured speed projects beyond about 25 min (the epoch count is then lowered and reported). Variant 'shipped' is run only at a small scale (first 100 train / 20 tuning samples, 1 epoch) and is used for S3 (which tensors the shipped code updates) and, if it moves rows, reported in S4 as a secondary variant. S4 is judged on the largest-scale variant that completed, i.e. 'adamw_fp32'."
+    },
+    {
+     "what": "Scale of the 'adamw_fp32' SSFT run: 3 epochs x 1000 samples and lr 5e-4 instead of 10 epochs and lr 5e-5 (changed after run; compute only, no S1-S4 outcome seen)",
+     "reason": "A second run (adamw_fp32, 10 epochs) was killed after about 90 s because the measured speed (about 0.8 micro-step/s on the shared CPU, the same as the bf16 run, so bf16 was not the bottleneck) projects about 100 min for 5000 micro-steps, versus about 74 min of container budget left. The affordable budget is about 1500 micro-steps (3 epochs); to keep the effective amount of embedding movement comparable the learning rate is raised 10x (5e-4, AdamW). The S4 pass rule is unchanged. The scale is still roughly two orders of magnitude below the hours of SSFT reported in the paper (Table 7), so a failure of S4 would be reported as under-powered rather than as evidence against alignment."
+    },
+    {
+     "what": "Scale of the 'adamw_fp32' SSFT run reduced again: 1 epoch x 1000 samples (500 micro-steps, 250 optimizer updates), lr 5e-4 (changed after run; compute only, no S1-S4 outcome seen)",
+     "reason": "The 3-epoch relaunch was killed after about 4 min: measured speed fell to about 0.52 micro-step/s (CPU shared with other pilot containers), projecting about 48 min for 1500 micro-steps against about 70 min of remaining container budget that must also cover the small 'shipped' run and the measure stage. S4 pass rule unchanged; an S4 failure at this scale would be reported as under-powered."
+    },
+    {
+     "what": "Size of the small 'shipped' (bf16, real Adam8bit) structural run reduced to 24 train / 10 tuning samples, 1 epoch",
+     "reason": "measured speed of about 0.25 micro-step/s (logged 'train_loss' strings count about 2 per step) leaves too little budget for 100 samples; this run is only used for the S3 'which tensors does the shipped code update' check, not for S4."
+    },
+    {
+     "what": "The SSFT used for S3/S4 is a minimal fp32 loop (checks/ssft_minimal.py) around the repository's embedding-split module instead of the repository's llm_sft.py trainer (changed after run; compute only, no S1-S4 outcome seen)",
+     "reason": "llm_sft.py (accelerate + bf16 autocast + gradient checkpointing) was started three times (bf16 shipped: killed at about 300 of 5000 micro-steps after 701 s; fp32/AdamW 10 epochs: killed after 139 s; fp32/AdamW 1 epoch x 1000 samples: killed after 2614 s at about step 250 of 500, i.e. about 0.1 micro-step/s on the shared CPU). With 26 min of container budget left a finished llm_sft.py run was impossible. Replacement: same repo functions (sft_map_postfix_fn, set_trainable_embeddings, restore_embeddings, TPETokenizerFast), fp32, AdamW lr 5e-4, 200 updates of 4 sequences (cap 330 s wall). S3 therefore tests the repo's embedding-split module, not llm_sft.py's trainer; S4 is judged on this checkpoint ('minimal_fp32'). The small 'shipped' bf16 run is dropped (not run)."
+    }
+   ]
+  },
+  {
+   "claim_id": "C00445",
+   "type": "headline_performance",
+   "checkable_on_synthetic": false,
+   "planned_check": "None. F1 on MIMIC-IV ICU Mortality / Phenotyping, and wall-clock inference minutes for Qwen2.5-1.5B, depend on the real MIMIC-IV event distribution, the real pretrained Qwen2.5-1.5B weights and the authors' GPU; the MIMIC-IV pipeline is not in the public repository. A synthetic run cannot be consistent or inconsistent with these numbers (negative control).",
+   "consistent_if": "n/a",
+   "inconsistent_if": "n/a"
+  },
+  {
+   "claim_id": "C00583",
+   "type": "data_protocol",
+   "checkable_on_synthetic": false,
+   "planned_check": "None. The claim states which real datasets (MIMIC-IV, EHRSHOT), tasks and backbones were evaluated; this is a statement about the authors' experimental protocol and cannot be observed from synthetic data (negative control).",
+   "consistent_if": "n/a",
+   "inconsistent_if": "n/a"
+  },
+  {
+   "claim_id": "C00590",
+   "type": "secondary_empirical",
+   "checkable_on_synthetic": false,
+   "planned_check": "None. Generalisation to ARC-Challenge, ECTSum and CMedQA2 is an empirical performance statement on real text with real LLM weights; synthetic random text carries no information about it (negative control).",
+   "consistent_if": "n/a",
+   "inconsistent_if": "n/a"
+  },
+  {
+   "claim_id": "C00959",
+   "type": "headline_performance",
+   "checkable_on_synthetic": false,
+   "planned_check": "None. The compression rates (22.8-32.4 percent), token-length reduction (up to 31 percent) and latency reduction (34-63 percent) are properties of the real EHR token distributions and of GPU inference; the compression rate of a synthetic corpus is set by how the synthetic corpus was generated, so no outcome on synthetic data bears on the claim (negative control).",
+   "consistent_if": "n/a",
+   "inconsistent_if": "n/a"
+  }
+ ],
+ "plan_version": 2,
+ "plan_revision_note": "Version 2 was written before any container run and before any claim-related execution; it refines version 1 after reading the repository code (SSFT tokenises the response with the MedTPE tokenizer, so per-position KL against the original model is not defined; the repo's protected set is larger than the paper's). Nothing was executed between version 1 and version 2 except fetching two public config.json files and starting the docker build. Amendment 2 (still before the measure stage and before the repo CLI stages had run; only fixture preparation had started): check (vi) additionally accepts divergences caused by retained tokens whose BPE merge path contains an evicted token, because the paper's guarantee concerns merge paths; both counts are reported."
+}

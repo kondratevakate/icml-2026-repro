@@ -1,0 +1,116 @@
+{
+  "key": "icml-2026__guBK9kwmEL",
+  "written_before_any_claim_check_was_run": true,
+  "bring_up_done_before_this_plan": "image build, offline stand-ins (checks/fasttext_stub.py replaces the 6.7 GB fastText word-vector model by a deterministic pseudo-random 300-d vector per string), synthetic-data generation (checks/gen_synthetic.py) and one 1-epoch smoke run of the UNCHANGED repo script pretraining.py (path strings only patched) at the paper's true image shape 11x10x128x128 (~37 s/step at batch 4 on CPU, too slow for multi-epoch runs). No claim-related measurement has been made.",
+  "global_design_notes": [
+    "Repository code used as is: RoVTL/dataset/MRContrastiveDatasetH5.py (+DataCollator), RoVTL/dataset/MRDownstreamDataset.py (+DownstreamCollator), RoVTL/models/imgtab_pretraining.py, RoVTL/models/fusion.py (MutlimodalFusionClassifier), RoVTL/utils/clip_loss.py, tarte_ai.TARTE_TablePreprocessor and the TARTE pretrained table-encoder checkpoint that the repo itself downloads (model weights, not a dataset; fetched at image build time).",
+    "Training/evaluation loops are re-implemented in checks/ (the repo scripts hard-code cluster paths, log to wandb and have no evaluation at several availability levels); the loop bodies mirror pretraining.py / train_multilabel.py line by line (CLIP loss summed over the 5 Matryoshka heads; unimodal losses + L_more + L_less + lambda*max(L_more-L_less,0)).",
+    "Because a 3D ResNet-50 on 11x10x128x128 costs ~9 s per sample (fwd+bwd) on 4 CPU cores, multi-epoch runs use synthetic scans of shape 11x10x16x16 (all other schema elements unchanged: 11 'channels'=slices, 10 frames, 160 metadata columns = eid, no_cad, 94 categorical + 64 numerical attributes of the repository's attribute lists, 4 multilabel CAD columns, NaN entries). The image-augmentation branch of the repo datasets (RandomResizedCrop(128)) is switched off with augmentation_rate=-1 for these runs. The full 128x128 shape is used only for the smoke test.",
+    "Synthetic generative model (checks/gen_synthetic.py): shared latent (6-d) visible in image and table, image-only latent (3-d), table-only latent (3-d); every table attribute is a noisy random mixture of shared+table latents (so any subset of attributes carries partial, redundant information), image = noisy mixture of shared+image latents, 4 CAD-like labels depend on all latents (table carries label information that the image does not).",
+    "One data seed (11) for the evaluation runs, one training seed per arm; single-seed results are reported as such. Calibration of lr/epochs (to reach a trained state) is done on a different synthetic seed (3) and does not use the contrast between arms; the frozen values are written into 'frozen_parameters' before the evaluation run.",
+    "Container-time budget 7200 s total, logged in work/time_log.csv."
+  ],
+  "claims": [
+    {
+      "claim_id": "C00066",
+      "type": "data_protocol",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. The claim is about which external datasets (a German cohort, a time-based tabular source) were used alongside UK Biobank in the paper's experimental protocol. A schema-faithful synthetic run cannot establish which datasets the authors used, and no real data may be used. Negative control: expected outcome not_checkable_on_synthetic."
+    },
+    {
+      "claim_id": "C00171",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. The claim is that a reported ablation (missingness augmentation vs standard contrastive pretraining; Table 6 in the claim text) quantifies an effect on downstream robustness. The size and sign of that effect on UK Biobank CMR/tabular data cannot be derived without the real data distribution. The on/off contrast of the augmentation on synthetic data is run under C00429 (mechanism), but it does not say anything about the reported table values, so it is not reused here. Negative control: expected outcome not_checkable_on_synthetic."
+    },
+    {
+      "claim_id": "C00531",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. The claim is a comparison of RoVTL against baseline vision-tabular methods on UK Biobank cardiac MRI across missingness rates (Table 3). The baselines are not in the repository and the numbers depend on the real UK Biobank distribution. Negative control: expected outcome not_checkable_on_synthetic."
+    },
+    {
+      "claim_id": "C00429",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "planned_check": "check_C00429.py with two parts, both through the repository classes.\nPart A (structural, repo dataset+collator+TARTE preprocessor on synthetic H5, 2000 draws): (A1) with simulate_missing=True every returned categorical/continuous value equals the stored ground-truth value (no corruption, no resampling from marginals, i.e. 'preserve the integrity of the true table'); (A2) the number of kept attributes varies widely (min >= 1 per group, reaches both the low end and the full set; not constant), whereas with simulate_missing=False all attributes are kept; (A3) after DataCollator + TARTE_TablePreprocessor the number of unmasked tokens equals 1 + number of kept non-NaN attributes, i.e. a dropped attribute is a masked token (missingness is really simulated at the encoder input). Part A is consistent if A1, A2 and A3 hold; inconsistent if any fails. Also recorded (not decisive): whether the code's size distribution matches the paper's text (subset size in [1,N_full]; the code samples the categorical and numerical groups separately).\nPart B (behavioural, the 'robust representation at test time' claim): pre-train the repo ImageTabularPretraining (CLIP loss over the 5 Matryoshka heads) on synthetic tiny16 data twice with identical seed/steps/data order: arm AUG = repo missingness augmentation on (simulate_missing=True, as in README --missing_tabular True), arm NOAUG = off (full tables only). On held-out synthetic test samples with only a random fraction f in {0.1,...,1.0} of the attributes available (same subset for both arms), compute (i) image->table and table->image top-1/top-5 retrieval within the test set and (ii) mean cosine similarity between the partial-table projection and the same sample's full-table projection. The claimed property (representation robust to missing tabular values at test time) is CONSISTENT if, in the informative regime, AUG beats NOAUG on low availability (mean over f in {0.1,0.2,0.3} of top-5 retrieval and of cosine-to-full) and AUG loses less than NOAUG when going from f=1.0 to f=0.1 (relative drop in top-5). INCONSISTENT if NOAUG is at least as good as AUG on the low-availability top-5 mean and cosine-to-full mean. 'Informative regime' = both arms reach full-table (f=1.0) top-5 retrieval >= 10x chance (chance top-5 = 5/128); otherwise the outcome is blocked (training did not reach a state where robustness can be assessed within budget). Mixed results (AUG better on one of the two low-availability metrics only) are reported as inconsistent with the stated reason 'mixed'. Overall outcome for C00429 = Part B outcome if Part A is consistent; inconsistent if Part A fails."
+    },
+    {
+      "claim_id": "C00657",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "planned_check": "check_C00657.py, repo MutlimodalFusionClassifier + MRDownstreamDatasetH5 + DownstreamCollator.\nPart A (range 0%-100% by construction, repo model with random weights): for tabular availability f in {0,0.1,...,1.0} (via the repo dataset's num_present switch) the forward pass runs and returns finite logits of the right shape, including f=0 (all tabular tokens masked); at f=0 the logits are invariant to the content of the (masked) tabular tensors (perturb x and edge_attr, max |diff| < 1e-5) i.e. an image-only fall-back; at f=1.0 the logits do depend on the tabular content (max |diff| > 1e-4). Consistent if all hold.\nPart B (behavioural robustness across the range, end to end): continue from the two pretraining checkpoints of C00429 and fine-tune the repo fusion classifier on the synthetic 4-label CAD-like task in two arms: ARM_ROVTL = missingness-augmented pretraining checkpoint + downstream tuning exactly as train_multilabel.py (random attribute subsets via simulate_missing=True, sample_more=0.3, nested second subset, TabMoFe loss with lambda=1); ARM_FULL = no-augmentation pretraining checkpoint + downstream tuning on full tables in both halves without TabMoFe (lambda=0). Evaluate macro AUROC on held-out test data at availability f in {0,0.1,...,1.0} (3 random subset draws per level, same draws for both arms). The claim 'robust across the full range from 0% to 100%' is CONSISTENT if (i) ARM_ROVTL AUC at f=0 >= 0.60, (ii) min over f of ARM_ROVTL AUC >= its AUC at f=0 minus 0.03 (no level falls below the image-only level), and (iii) the worst-level AUC of ARM_ROVTL exceeds the worst-level AUC of ARM_FULL. INCONSISTENT if the arm trained to a usable state (ARM_ROVTL AUC at f=1.0 >= 0.65) but (i), (ii) or (iii) fails. BLOCKED if ARM_ROVTL AUC at f=1.0 < 0.65 (not trained within budget). Overall outcome for C00657 = Part A and Part B jointly (consistent only if both consistent; inconsistent if either is inconsistent; blocked if Part A passes and Part B is blocked)."
+    }
+  ],
+  "plan_amendments_before_any_claim_run": [
+    "Timing bring-up after this plan was first written (probe_timing/probe_profile, no claim metric computed) showed ~15 s per pre-training step at batch 32 with 16x16 scans even with 40 attribute tokens (4 contended CPU cores, ~20 GFLOP/s effective). Consequences, all fixed BEFORE any claim run: (1) multi-epoch runs (C00429 Part B, C00657 Part B) use REDUCED attribute lists = every 3rd numerical (22) and every 2nd of the first 36 lifestyle categorical attributes (18) for pre-training (40 attributes), every 2nd classification-categorical (11) + every 3rd classification-numerical (22) = 33 attributes for down-stream; Part A (structural) uses the repository's full lists (158 / 86 attributes). (2) 16x16 scans require re-expressing ResNetTokens.forward without .squeeze() (repo version crashes when the last feature map has no spatial extent); numerically identical to the repo forward for 128x128 inputs (checked in check_C00657.py Part A). (3) 'Informative regime' threshold in C00429 Part B is relaxed from 10x chance to 3x chance: both arms must reach image->table top-5 retrieval >= 3 * (5/128) = 11.7% at f=1.0 on the 128 held-out test samples, because only ~128 optimisation steps are affordable.",
+    "Second bring-up finding (still before any claim metric was computed; the first C00429 Part B pre-training run was aborted by me after one epoch, no retrieval metric computed): the repo fusion model (models/fusion.py, which calls .squeeze() on image tokens) and ResNetTokens crash unless the 3D ResNet-50 final feature map has >= 2 positions; because conv1 and every stage stride 2 in all three dimensions (final size = ceil(size/32)), scans must have >= 33 'frames', or >= 33 pixels per side, to give >= 2 image tokens. Therefore amendment (2) above is superseded: the synthetic scans for the multi-epoch runs are 11 x 34 x 8 x 8 (34 frames, 8x8 pixels, giving 2 image tokens, and costing less than the 10 x 16 x 16 scans) instead of 11 x 10 x 16 x 16; the repo model code is used UNPATCHED (no ResNetTokens patch). The full paper shape 11x10x128x128 is used only in the smoke test of the unchanged pretraining.py. Part A of both mechanism checks is re-run on the new synthetic set.",
+    "Third bring-up finding (before any claim metric of Part B was computed): the host CPUs are shared with other jobs; the first real C00429 AUG pre-training epoch (16 steps, 256 samples) took 489 s (30 s/step) against the 8 s/step measured in the dry run, i.e. the planned 128 steps per arm would need ~1 h per arm, more than the whole remaining container budget. Run aborted after epoch 1 (loss 14.06 ~ chance level 5*ln16=13.86, no retrieval metric computed). Reduction fixed before re-launch: (a) in pre-training the random-init 3D ResNet-50 trunk is kept FROZEN (requires_grad=False; its 5 projection heads and the whole table tower, i.e. the part to which the missingness augmentation applies, are trained; BatchNorm still in train mode), so no backward pass through the trunk; (b) C00657 Part B fine-tuning uses 4 epochs (64 steps) instead of 6, and the AUC evaluation uses availability levels {0,0.1,0.2,0.3,0.5,0.7,1.0} with 2 random draws at intermediate levels instead of 11 levels x 3 draws (criteria (i)-(iii) unchanged, evaluated on these levels); (c) OMP_WAIT_POLICY=PASSIVE set inside the scripts. Pre-training stays at batch 16, 8 epochs, lr 3e-4, seed 5.",
+    "Parameters frozen (see frozen_parameters)."
+  ],
+  "frozen_parameters": {
+    "data": "work/data/tiny34x8 (checks/gen_synthetic.py out 256 64 128 8 seed 11 frames 34): train 256, val 64, test 128, scans 11x34x8x8 (replaces tiny16)",
+    "pretraining": {
+      "batch_size": 16,
+      "epochs": 8,
+      "lr": 0.0003,
+      "temperature": 0.1,
+      "weight_decay": 0.0001,
+      "training_seed": 5,
+      "image_augmentation_rate": -1,
+      "arms": {
+        "AUG": "simulate_missing=True",
+        "NOAUG": "simulate_missing=False"
+      },
+      "image_trunk": "frozen random-init ResNet-50-3D trunk (projection heads trainable)"
+    },
+    "retrieval_eval_fractions": [
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0
+    ],
+    "retrieval_eval_subset_seed": 1234,
+    "finetuning": {
+      "batch_size": 16,
+      "epochs": 4,
+      "lr": 0.0003,
+      "frozen_backbones": true,
+      "tabmofe_weight": {
+        "ARM_ROVTL": 1.0,
+        "ARM_FULL": 0.0
+      },
+      "training_seed": 5,
+      "image_augmentation_rate": -1
+    },
+    "auc_eval": {
+      "levels": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.5,
+        0.7,
+        1.0
+      ],
+      "draws_per_intermediate_level": 2,
+      "draw_seed_rule": "1000*index_in_full_11_level_list + draw"
+    },
+    "container_time_rule": "stop and report what is available when the 7200 s container budget is used"
+  },
+  "changed_after_run": [
+    {
+      "when": "after attempt 1 of C00429 Part B / before any robustness comparison between arms existed",
+      "attempt_1_result": "Configuration frozen in the plan (tiny34x8 data, frozen random trunk, lr 3e-4, batch 16, 8 epochs): AUG arm trained 8 epochs (work/logs/C00429_partB_AUG.log): loss 14.05, 13.89, 13.87, ... 13.867 = chance level 5*ln(16)=13.863 from epoch 2 on, and table embeddings are input-independent (cos(partial-table, full-table projection) = 0.99999 at every availability fraction; image->table top-5 retrieval 0.023-0.047 = chance 0.039). NOAUG arm not run (container aborted by me to save budget). Calibration on training loss only (AUG arm, 3 epochs each, work/logs/calib_pretrain.log): lr 1e-4 -> 13.88, lr 3e-5 -> 13.91, i.e. no learning either. Under the plan's rule this configuration is 'blocked' (not informative).",
+      "change": "Attempt 2 (decision criteria unchanged): easier synthetic regime work/data/easy34x8 (checks/gen_synthetic.py out 256 64 128 8 11 34 4 2 0.25 0.2: 4 shared latents, 2 table-only latents, table noise 0.25, image noise 0.2), lr 1e-4, 12 epochs (192 steps), same batch 16, seed 5, frozen random trunk. Abort rule fixed in advance: if the AUG training loss at epoch 4 is still > 13.6 the attempt is stopped and C00429 Part B / C00657 Part B are reported blocked. If the AUG arm learns, NOAUG is run with the identical configuration and the unchanged rules of the plan decide. C00657 Part B then continues from the attempt-2 checkpoints.",
+      "reason": "Both pre-training arms need the contrastive objective to leave the chance plateau for robustness to be measurable; the plan's rule for that case is 'blocked', but spare container budget allowed one documented second attempt."
+    },
+    {
+      "when": "after attempt 2 of C00429 Part B was aborted by the pre-registered abort rule and before any C00657 Part B number existed",
+      "attempt_2_result": "Easy-data attempt (work/logs/C00429_partB_AUG_a2.log): AUG loss 14.05, 13.92, 13.88, 13.87 after epochs 1-4 (> 13.6), so the abort rule fired; NOAUG never run. Diagnostic (checks/diag_init.py, work/logs/diag_init.log): at initialisation both towers give nearly input-independent projections (mean pairwise cosine between different samples 0.993-0.999 for the image tower and 0.998-0.999 for the table tower, cos(f=0.5 table, f=1.0 table of the same sample)=0.997), and after the attempt-1 run the table tower output is exactly constant (cosine 1.00000). So the repo's contrastive pre-training does not leave its chance plateau within the ~200 CPU-affordable steps. C00429 Part B is therefore recorded as BLOCKED (informative-regime gate of the plan not met), not as consistent/inconsistent.",
+      "change_for_C00657_part_B": "Because the pre-training checkpoints are unusable, C00657 Part B no longer continues from them. Both arms start from the same initial checkpoint (ImageTabularPretraining at seed 5: TARTE pretrained table encoder weights + random-init 3D ResNet; saved untrained and loaded through the repo's image_checkpoint/tabular_checkpoint arguments, which is also how the repo freezes the backbones) and only the down-stream tuning differs: ARM_ROVTL = repo train_multilabel.py scheme (random attribute subsets + nested subset, sample_more=0.3, TabMoFe lambda=1); ARM_FULL = complete table in both halves, lambda=0. Data: work/data/easy34x8; frozen backbones; batch 16, 4 epochs, lr 3e-4, seed 5. Added pre-registered gate: if both arms have AUC(0%) < 0.58 (image-only information not extracted by the frozen random-trunk image path in this budget) the outcome is blocked, not inconsistent. All other criteria of the plan entry unchanged (usable gate AUC(100%) >= 0.65; (i) AUC(0)>=0.60; (ii) min AUC >= AUC(0)-0.03; (iii) worst level of ARM_ROVTL > worst level of ARM_FULL). The claim part about contrastive pre-training is covered by C00429, not by this run."
+    }
+  ]
+}

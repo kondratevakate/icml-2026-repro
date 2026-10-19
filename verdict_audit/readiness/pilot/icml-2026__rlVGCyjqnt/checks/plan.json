@@ -1,0 +1,65 @@
+{
+  "key": "icml-2026__rlVGCyjqnt",
+  "written_before_any_check_run": true,
+  "plan_written_utc": "2026-10-19T07:59:14Z",
+  "paper": "arXiv:2603.00190 (HTML v2, 05 Jul 2026)",
+  "repo": "https://github.com/yang-ai-lab/OSF-Open-Sleep-FM @ d7e4edbc77f2b72713402234036c72b98b9b83ca (MIT)",
+  "general_notes": [
+    "The repository releases only the OSF (DINO-based) pre-training code, the 1D ViT backbones, the two-view augmentation registry, fine-tuning code and split ID lists. It does NOT release SleepFM, SimCLR, MAE, VQ-VAE or AR baseline code, pretrained baseline weights, or the NSRR preprocessing pipeline (README: 'We will open-source our preprocessing codes in later version').",
+    "No real data are used. Synthetic data follow the repo loader schema: 12 channels in train_config.TRAIN_EDF_COLS_UNI_ENC order, 64 Hz x 30 s = 1920 samples/epoch, 4-class stage label (0..3) and binary Arousal/Hypopnea/Oxygen Desaturation labels, parquet-per-epoch layout read by osf.datasets.pretrain_dataset.SleepEpochDataset.",
+    "None of the five claims is typed theory or mechanism. Per protocol, headline_performance / secondary_empirical / data_protocol claims get a check only if it can be stated without the real data distribution; otherwise not_checkable_on_synthetic (negative control)."
+  ],
+  "claims": [
+    {
+      "claim_id": "C00080",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": true,
+      "scope_note": "Only the MECHANISM part is checkable (does channel masking on top of time masking produce more channel-invariant / better linear-probe features than either alone, with the paper's SimCLR-style 2-view objective, repo backbone and repo augmentation registry). The literal numbers 94.8 -> 96.7 AUC are a real-data (MROS) quantity and are NOT checked. A synthetic result can only show the mechanism is operable on a synthetic dataset with cross-channel redundancy; it cannot confirm the real-data effect size.",
+      "planned_check": "checks/check_C00080.py. Step A (code fidelity): with repo osf.datasets.simclr_aug_registry, verify preset 'pc_span_mask_aligned' (time-only; per-channel span ratio in [0.3,0.6]), 'channel_dropout_aligned' (channel-only; per-channel drop prob 0.5, min_keep=1) and 'chan_then_pcspan' (both) behave as described in paper Sec 3.2 (measured span ratio range, channel-drop rate ~0.5, views differ in channel availability only when channel masking is on). Step B (synthetic ablation): pretrain a SimCLR-style model (NT-Xent, tau=0.2, 2-layer projection head; written in the check because the repo has no SimCLR class) on the repo backbone vit_nano (lead_wise=1, patch_size_ch=4, patch_size_time=128, seq_len=1920, 12 leads) with the three augmentation presets (time-only, channel-only, both), 3 seeds each, on synthetic epochs whose class signal is redundantly spread over the four channel groups (brain 4, resp 4, ECG 1, somatic 3) plus channel-specific nuisance. Frozen CLS embeddings -> standardised multinomial logistic-regression linear probe on a labelled synthetic train split -> macro one-vs-rest AUC on a held-out synthetic test split with full channels (primary metric, mirrors Table 1) and, secondary, with the four missing-channel zero-masking scenarios of Table 7 (brain only; resp+ECG; brain+ECG; resp only). A randomly initialised encoder gives a floor. A smoke test of the repo's DINOCLSModel.shared_step on a synthetic batch (pipeline-runs check, no outcome weight) and, only if budget remains, one-seed DINO pretraining with the same three presets are reported as secondary information.",
+      "consistent_if": "Mean (3 seeds) full-channel macro-AUC satisfies both > channel-only > time-only, and each adjacent gap exceeds the pooled seed SD of the two conditions.",
+      "inconsistent_if": "Mean full-channel AUC of 'both' <= channel-only, or channel-only <= time-only (ordering contradicted in the means).",
+      "otherwise": "If the ordering holds in the means but a gap is within pooled seed SD, or the best variant's full-channel AUC < 0.60 (nothing learned), outcome = not_checkable_on_synthetic (synthetic proxy cannot resolve the effect). If the pipeline cannot be run within budget, outcome = blocked.",
+      "changed_after_run": "changed after run (timing smoke tests only; no outcome-relevant result had been used): patch_size_time 128 -> 240 (24 tokens instead of 45), batch 128 -> 64, 600 steps, 1 torch thread per process with the 3 seeds run as 3 parallel processes inside one container, because the first 30-step smoke test took ~3 s/step on a CPU shared with other pilot containers and the 2-hour budget would not allow 9 runs. Decision rules unchanged. Generator signal gains were lowered (before any pre-training run) after a hand-crafted band-power baseline reached macro-AUC 0.95-1.0 on every channel group; this was a data-design sanity step, not tuned on the claim."
+    },
+    {
+      "claim_id": "C00096",
+      "type": "data_protocol",
+      "checkable_on_synthetic": true,
+      "scope_note": "PARTIAL and not based on synthetic data: uses only the split-ID lists shipped in the repository (osf/splits/*.csv; aggregate counts by ID family, no recordings, no download). It can check the 'over 21,000 sleep studies' and 'nine sources' parts only. The '166,500 hours' figure requires recording durations and is NOT checked.",
+      "planned_check": "checks/check_C00096.py. Read the six osf/splits/*.csv files; count unique patient_id values overall and per ID family (alphabetic prefix of the ID, e.g. shhs, mros, wsc, mesa, chat, ccshs, sof, cfs; IDs without alphabetic prefix form one 'numeric' family); check that splits are mutually disjoint and that every family maps to one of the nine datasets named in the claim (the numeric family is assumed, not verified, to be NCHSDB). Report implied hours per study as arithmetic only.",
+      "consistent_if": "21,000 < total unique IDs <= 22,000, at most nine ID families, all named-prefix families belong to {SHHS, CFS, CCSHS, WSC, MROS, MESA, CHAT, SOF} and no family outside the claim's nine sources (e.g. stages, hsp) appears.",
+      "inconsistent_if": "Total unique IDs <= 21,000 or > 22,000, or a family outside the nine named sources appears, or more than nine families.",
+      "otherwise": "Fewer than nine families or an unattributable family -> report as inconsistent only if a contradicting fact is found; otherwise consistent with the stated scope limit (hours unverified)."
+    },
+    {
+      "claim_id": "C00520",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "scope_note": "OSF-vs-SleepFM AUC/AUPRC on MROS under four missing-channel scenarios is a real-data comparison against a baseline whose code and weights are not in the repository. A synthetic proxy would compare different models (a DINO variant against a time-masked SimCLR variant I wrote), not OSF vs SleepFM, so it would not test the claim. Note for the record: in the fetched arXiv v2 the four-scenario comparison is Table 7; Table 6 is the ECG+respiratory pre-training comparison.",
+      "planned_check": "none",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a",
+      "otherwise": "outcome = not_checkable_on_synthetic"
+    },
+    {
+      "claim_id": "C00751",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "scope_note": "Performance scaling with pre-training data fraction (1%-100%) and encoder capacity (1M-85M) is a real-data result (MROS linear probing); a synthetic scaling curve reflects the synthetic generator, not the claim. Pre-registered side observation only (does not set the outcome): instantiate the repo's vit_nano / vit_tiny / vit_small / vit_middle / vit_base (12 leads, seq_len 1920, patch_size_time 128, lead_wise=1, patch_size_ch=4) and report encoder parameter counts, to see whether the '1M to 85M' ladder exists in the released code.",
+      "planned_check": "none for the claim; side observation in checks/check_C00751.py (parameter counts only)",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a",
+      "otherwise": "outcome = not_checkable_on_synthetic"
+    },
+    {
+      "claim_id": "C00870",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "scope_note": "MROS AUCs (OSF 97.3 / 92.8, SleepFM 96.4 / 90.3, supervised ViT 96.9 / 88.4) are real-data numbers; no synthetic quantity corresponds to them, and SleepFM / supervised-ViT baseline code is not in the repository.",
+      "planned_check": "none",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a",
+      "otherwise": "outcome = not_checkable_on_synthetic"
+    }
+  ]
+}

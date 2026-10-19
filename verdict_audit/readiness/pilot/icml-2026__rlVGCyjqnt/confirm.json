@@ -1,0 +1,16 @@
+{
+  "claims": [
+    {
+      "claim_id": "C00080",
+      "rerun_matches": true,
+      "check_tests_claim": false,
+      "note": "Rerun in the same image (data regenerated from gen_synthetic.py is bit-identical to work/data; 3 seeds x 3 variants x 600 steps) reproduces the recorded numbers exactly (max abs per-run AUC difference 0.0): full-channel AUC time_only 0.7352, channel_only 0.9049, both 0.8969; check_C00080.decide returns 'inconsistent' under the pre-registered rule. So the output supports the recorded label mechanically, but the check does not test the claim as worded. The claim is a real-data MROS statement (94.8 -> 96.7 AUC, SimCLR, Table 1); the check is a synthetic proxy (own generator, 12-channel redundant-signal design, nano ViT, 600 steps, 4000 pre-training epochs) that does not measure the claimed real-data effect. The 'both' vs channel_only gap is -0.008, about half the pooled SD (0.0175), n=3 seeds; the same plan.json rule would have labelled the mirror-image within-noise result (both > channel_only by <1 SD) 'not_checkable_on_synthetic', so the reversal-in-the-means branch is asymmetric and over-reaches. 'both' is also the harder pretext task (final NT-Xent loss ~3.3 vs ~2.3 for channel_only and still falling at step 600), so under-training confounds the comparison, and Step A shows 'both' removes channels exactly like channel_only, so on this generator extra time masking can only add noise. Recommended label: not_checkable_on_synthetic (or at most a weak mechanism-level non-replication on a proxy), not 'inconsistent' with the paper's claim. The 'channel masking >> time masking alone' half is supported on the proxy (+0.170, gap > pooled SD)."
+    },
+    {
+      "claim_id": "C00096",
+      "rerun_matches": true,
+      "check_tests_claim": true,
+      "note": "Rerun (2 s, same image) output is identical to work/logs/C00096.log: six repo split-ID files are mutually disjoint, 21,482 unique study IDs, 9 ID families (shhs 8276, numeric 3889, mros 3867, wsc 1773, mesa 1721, chat 664, ccshs 515, sof 448, cfs 329), none outside the named sources; rule outputs 'consistent'. The check tests the 'over 21,000 studies' and 'nine sources' parts of the wording and is a sound metadata count, so I accept 'consistent' for those parts. Limits that the label should carry: (i) the 166,500-hour figure is not tested at all (the 7.75 h/study line is arithmetic, not evidence); (ii) the 3,889 numeric-pattern IDs are assumed, not verified, to be NCHSDB, so 'nine named sources' is partly an assumption from ID shape; (iii) the evidence comes from the authors' own split lists, so it checks paper-repo agreement, not the underlying data. check_tests_claim is therefore true only in the partial sense (two of three quantitative components)."
+    }
+  ]
+}

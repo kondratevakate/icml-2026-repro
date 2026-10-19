@@ -1,0 +1,421 @@
+{
+ "wave": 1,
+ "papers": [
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "status": "done",
+   "licence": "Apache-2.0 stated by the README licence badge (shields.io 'license-Apache--2.0' linking to a '#License' anchor that has no section) and by the Apache header of RoVTL/models/fusion.py; the repository has no LICENSE/COPYING file. Treated as permitting use.",
+   "commit": "4ca629ffd335f2b165d0e4ab8077bcf0f7d111fc",
+   "time_to_running_pipeline_min": 36,
+   "container_seconds": 5764,
+   "blocked_reason": null
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "status": "done",
+   "licence": "MIT (LICENSE file, Copyright 2026 Mahdi Saberi)",
+   "commit": "637a45619e9deb6ac780923fe06425a03ff5d746",
+   "time_to_running_pipeline_min": 25,
+   "container_seconds": 3702,
+   "blocked_reason": null
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "status": "done",
+   "licence": "MIT (LICENSE file, Copyright (c) 2026 Health Intelligence Lab @ UCLA)",
+   "commit": "d7e4edbc77f2b72713402234036c72b98b9b83ca",
+   "time_to_running_pipeline_min": 14.5,
+   "container_seconds": 5070,
+   "blocked_reason": null
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "status": "done",
+   "licence": "Apache-2.0 (LICENSE file in repository root)",
+   "commit": "59d64313d52698c2ebd62f9ceb255ad30d638012",
+   "time_to_running_pipeline_min": 45,
+   "container_seconds": 6150,
+   "blocked_reason": null
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "status": "done",
+   "licence": "Apache-2.0 (LICENSE file is the Apache License 2.0 text; README also states Apache-2.0)",
+   "commit": "79059e39060d13ef6b6cb2ea9ad7a5d8e2519c83",
+   "time_to_running_pipeline_min": 17,
+   "container_seconds": 1170,
+   "blocked_reason": null
+  }
+ ],
+ "claims": [
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00066",
+   "type": "data_protocol",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00171",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1,
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00429",
+   "type": "mechanism",
+   "outcome": "blocked",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 2
+   }
+  },
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00531",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1,
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00657",
+   "type": "mechanism",
+   "outcome": "blocked",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 2
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00048",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00134",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 1,
+    "toy": 1
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00434",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00689",
+   "type": "mechanism",
+   "outcome": "consistent",
+   "rerun_matches": true,
+   "check_tests_claim": true,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00763",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 1,
+    "toy": 1
+   }
+  },
+  {
+   "paper": "icml-2026__NUDNFusCDu",
+   "claim_id": "C00996",
+   "type": "mechanism",
+   "outcome": "consistent",
+   "rerun_matches": true,
+   "check_tests_claim": true,
+   "challenge_verdicts": {
+    "inconclusive": 1,
+    "toy": 1
+   }
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00080",
+   "type": "secondary_empirical",
+   "outcome": "inconsistent",
+   "rerun_matches": true,
+   "check_tests_claim": false,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00096",
+   "type": "data_protocol",
+   "outcome": "consistent",
+   "rerun_matches": true,
+   "check_tests_claim": true,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00520",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1,
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00751",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00870",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "claim_id": "C00126",
+   "type": "mechanism",
+   "outcome": "consistent",
+   "rerun_matches": true,
+   "check_tests_claim": true,
+   "challenge_verdicts": {
+    "verified": 1
+   }
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "claim_id": "C00445",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "claim_id": "C00583",
+   "type": "data_protocol",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "verified": 1
+   }
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "claim_id": "C00590",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1
+   }
+  },
+  {
+   "paper": "icml-2026__SRGpmDQjJM",
+   "claim_id": "C00959",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "claim_id": "C00516",
+   "type": "headline_performance",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1,
+    "inconclusive": 1
+   }
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "claim_id": "C00672",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "claim_id": "C00858",
+   "type": "mechanism",
+   "outcome": "consistent",
+   "rerun_matches": true,
+   "check_tests_claim": true,
+   "challenge_verdicts": {
+    "toy": 2
+   }
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "claim_id": "C00989",
+   "type": "data_protocol",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   }
+  },
+  {
+   "paper": "icml-2026__T7y2wavrFM",
+   "claim_id": "C01004",
+   "type": "secondary_empirical",
+   "outcome": "not_checkable_on_synthetic",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 1,
+    "inconclusive": 1
+   }
+  }
+ ],
+ "theory_mechanism": {
+  "n": 6,
+  "outcomes": {
+   "blocked": 2,
+   "consistent": 4
+  },
+  "checkable": 4,
+  "share": 0.6666666666666666,
+  "wilson": [
+   0.29998832134152864,
+   0.9032306674407831
+  ]
+ },
+ "negative_control": {
+  "n": 20,
+  "outcomes": {
+   "not_checkable_on_synthetic": 18,
+   "inconsistent": 1,
+   "consistent": 1
+  }
+ },
+ "confirmations": {
+  "n": 6,
+  "rerun_matches": 6,
+  "check_tests_claim": 5
+ },
+ "time_to_running_pipeline_min": {
+  "median": 25,
+  "range": [
+   14.5,
+   45
+  ]
+ },
+ "container_minutes_total": 364.3,
+ "inconsistent": [
+  {
+   "paper": "icml-2026__rlVGCyjqnt",
+   "claim_id": "C00080",
+   "type": "secondary_empirical",
+   "outcome": "inconsistent",
+   "rerun_matches": true,
+   "check_tests_claim": false,
+   "challenge_verdicts": {
+    "inconclusive": 2
+   },
+   "claim": "Combining time masking with channel masking during pre-training raises sleep-staging AUC from 94.8 (channel masking alone with SimCLR) to 96.7, supporting the claim that channel-invariant feature learning is essential for pre-training (Table 1 ablation).",
+   "rationale": "In work/logs/C00080.log the decision line gives mean full-channel AUC time_only 0.735, channel_only 0.905, both 0.897 (3 seeds); the pre-registered rule needs both > channel_only > time_only, and 'both' is 0.008 below channel_only (pooled SD 0.0175, i.e. statistically indistinguishable), so the 'adding time masking raises AUC over channel-only' half is not reproduced on this synthetic data, while the 'channel masking >> time-only' half is (gap +0.170; missing-channel mean AUC 0.577 / 0.703 / 0.692). This speaks only to a synthetic proxy (600-step nano ViT, cross-channel-redundant generator I designed) and not to the real MROS values; the secondary DINO run with the repo's DINOCLSModel (300 steps) stayed near chance (full AUC 0.529-0.537) and carries no weight."
+  }
+ ],
+ "blocked": [
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00429",
+   "type": "mechanism",
+   "outcome": "blocked",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 2
+   },
+   "rationale": "Part A is consistent: 0 mismatches vs ground truth in 161444 kept entries (no corruption), kept-set size ranges 2..157 with 154 distinct sizes while simulate_missing=False keeps all 95+63 attributes, and unmasked TARTE tokens equal 1 + kept attributes for 64/64 rows (C00429.log, 'PART A RESULT ... CONSISTENT'). Part B is blocked: the AUG arm's CLIP loss stays at chance (13.867 vs 5*ln16=13.863 from epoch 2 to 8), image->table top-5 is 0.023-0.047 vs chance 0.039 and cosine(partial,full table)=1.000 at every availability, so the informative-regime gate of the plan failed; lr 1e-4/3e-5 calibration and an easier-data attempt (loss 13.87 at epoch 4) did not leave the plateau, and a diagnostic shows both towers give near-input-independent projections at init (pairwise cosine 0.993-0.999). The NOAUG arm was never run, so no robustness contrast exists."
+  },
+  {
+   "paper": "icml-2026__guBK9kwmEL",
+   "claim_id": "C00657",
+   "type": "mechanism",
+   "outcome": "blocked",
+   "rerun_matches": null,
+   "check_tests_claim": null,
+   "challenge_verdicts": {
+    "toy": 2
+   },
+   "rationale": "Part A is consistent: logits are finite at all 11 availability levels incl. 0 (0/85 attributes present); at 0% max |logit change| is 0.00e+00 when the masked tabular tensors are replaced by noise (image-only fall-back by construction) and 1.26e-01 at 100% when present values are perturbed; gradients are finite with fully-masked rows (C00657.log, 'PART A RESULT ... CONSISTENT'). Part B is blocked by the pre-registered image-path gate: both arms have AUC(0%)=0.507/0.506 (chance) because the frozen random-trunk image path extracted no information in the affordable 64 steps, so the 0% end of the range cannot be assessed; AUC rises monotonically 0.61->0.74 (ROVTL) and 0.64->0.77 (FULL) from 10% to 100%, with no advantage of the ROVTL scheme at low availability in this tiny run (summary line 'C00657 OUTCOME: blocked')."
+  }
+ ]
+}

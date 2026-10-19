@@ -1,0 +1,60 @@
+{
+  "key": "icml-2026__T7y2wavrFM",
+  "plan_written_before_any_claim_run": true,
+  "pre_run_observations": [
+    "Repository https://github.com/vpsg-research/CAME-Grad (Apache-2.0). README TODO states the core optimizer source is withheld; modules/trainer.py imports 'from .CAME_Grad import CAME_Grad' but no CAME_Grad.py is shipped (git ls-files). Also missing: dataset package, models/med.py, configs/bert_config.json, data/mimic_cxr/base_probs.json; CheXbert checkpoint path is the placeholder 'xxxxxxxx'. The authors' training pipeline therefore cannot run, with or without data.",
+    "Consequence: checks that need the optimizer use a PAPER-DERIVED reimplementation of Algorithm 1 / Eqs. 8-14 (checks/came_grad_from_paper.py), with the call signature taken from modules/trainer.py. They test the paper's specification, not the authors' unreleased code. Repository code that does exist (modules/optims.py scheduler, modules/trainer.py call sites) is used where possible."
+  ],
+  "claims": [
+    {
+      "claim_id": "C00516",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. The 2.3% (MIMIC-CXR) and 1.9% (IU X-Ray) average clinical-efficacy gains are measured test-set CheXbert scores of eight trained RRG backbones on the real datasets; they depend on the real data distribution, on trained checkpoints (model weights are not released) and on the withheld optimizer. No statement of this claim can be made on random synthetic data. Negative control.",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a"
+    },
+    {
+      "claim_id": "C00672",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. Table 3 reports REVTAF test-set metrics on real MIMIC-CXR for CAME-Grad and seven MTL optimizers (UW, GradNorm, CAGrad, RotoGrad, FAMO, MMPareto, STGU). The repository contains no code for the seven comparison optimizers and no REVTAF backbone; any numerical comparison on synthetic data would not be a test of this claim. Negative control.",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a"
+    },
+    {
+      "claim_id": "C00858",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "planned_check": "check_C00858.py (run in container, synthetic data from gen_synthetic.py, torch CPU). Implementation under test: paper-derived reimplementation of Algorithm 1 (checks/came_grad_from_paper.py); authors' optimizer is not released. Sub-checks: (A) Repository audit by static AST scan and import attempt: is a CAME_Grad implementation present; extract constructor/step call signature from modules/trainer.py; confirm repo's modules/optims.LinearWarmupCosineLRScheduler drives the wrapper's param_groups. (B) Stage 1 correctness against the stated problem: on synthetic task-gradient sets (K+1 in {2,3,4}, d in {5,50}, rho in {0.1,0.2,0.5,0.9}, conflict level swept from 0 to ~100% negative pairwise cosines, task weights [1,4,...]) solve the dual Eq. 9 with (i) a torch simplex solver (GPU-style tensorised) and (ii) scipy SLSQP, and the primal Eq. 8 directly with SLSQP in epigraph form; compare values, check strong duality, check ||u_rect - mu|| = rho*||mu|| (Eq. 10 on boundary), check min_i g_i^T u_rect >= min_i g_i^T mu (conflict-averse improvement over the centre). (C) Stage 2: ||u_en|| = kappa*||g_joint|| and u_en parallel to u_rect (Eqs. 11-12). (D) Stage 3: g_final = (1-nu)*u_en + nu*kappa*g_joint (Eq. 13), boundary nu=0 gives u_en, and nu=1,kappa=1 gives exactly the linear-scalarisation update; an end-to-end run of the wrapper with nu=1,kappa=1 and AdamW must reproduce the trainer's baseline path (sum_i w_i L_i, same seed, same batches, no clipping) to 1e-6. (E) Stage separability: with all three stages on, switching off any one stage (S1 off: u_rect := g_joint; S2 off: u_en := u_rect; S3 off: nu = 0; these ablation conventions are mine because the paper does not define them) changes g_final by relative L2 > 1e-3 on conflicting gradient sets. (F) Backbone-agnostic drop-in: three synthetic backbones (MLP encoder + GRU decoder; small CNN encoder + GRU decoder; tiny Transformer encoder-decoder) x K in {1,2} auxiliary-task settings (K=1: 14x4 multi-label classification head with CrossEntropy as in the repo; K=2 adds an image-text alignment loss), each trained 30 steps with the wrapper around torch AdamW and the repo scheduler, with only (losses, task_weights) passed and no change to the model. Non-binding diagnostics reported but NOT used for the outcome: G1 ratio ||u_rect||/||g_joint|| (the Stage-2 premise that rectification compresses magnitude); G2 whether min_i <g_i,u_rect> >= 0 and min_i <g_i,g_final> >= 0 (geometric-validity statement in Appendix C) holds at rho=0.5; G3 displacement ratio of parameters for kappa=1.5 vs kappa=1.0 under AdamW versus SGD base optimiser (Appendix B.2 'effective learning rate' argument).",
+      "consistent_if": "ALL of: (B) dual solvers agree and primal value equals dual value within rel 1e-3 and boundary/improvement conditions hold in >= 99% of cases; (C) holds in every case within rel 1e-4; (D) holds in every case within 1e-5 (end-to-end baseline equivalence within 1e-5 max abs param diff); (E) all single-stage ablations differ by > 1e-3 in >= 95% of conflicting cases; (F) all 6 backbone x K runs execute without exception, with finite losses, and primary LM loss lower at step 30 than step 0.",
+      "inconsistent_if": "ANY of B-E fails the stated tolerance in more than 1% of cases (more than 5% for E), or the specification is not realisable as a drop-in optimizer (e.g. needs access to model internals beyond per-task losses and weights, or backbone runs diverge to non-finite values in the CAME-Grad arm only).",
+      "blocked_if": "the reimplementation cannot be made to run in the container within the time budget. Note: absence of the authors' optimizer is recorded as a repository finding in sub-check A and does not by itself determine the outcome, because the claim concerns the algorithm described in Section 3.3.",
+      "changed_after_run": {
+        "note": "changed after run. A first execution of check_C00858.py with --smoke (8 training steps instead of 32, one repetition of the gradient-set sweep; output not saved as a claim log) was used to debug the harness; its results were seen. Pass/fail criteria (consistent_if / inconsistent_if) are UNCHANGED; only the following implementation details were changed, each for a harness reason:",
+        "changes": [
+          "Sub-check B primal evaluator: the independent SLSQP primal solve flagged non-convergence in 67 of 288 smoke cases (ftol 1e-14 unreachable), and those cases had been excluded from the strong-duality test. Now every SLSQP iterate (ftol 1e-12) is projected onto the trust-region ball and its value min_i g_i^T u is used as a feasible primal value regardless of the success flag; strong duality is tested as |P - F(alpha*)| <= 1e-3*max(1,|F|), and a weak-duality sanity test (P <= F + tol) was added to condition B.",
+          "Sub-check D end-to-end baseline equivalence: in float32 the smoke run gave max abs parameter differences of 1.8e-6 to 3.4e-5 (three of four configurations above the 1e-5 criterion, parameter movement about 3e-3). The cause is float32 rounding amplified by Adam's g/(sqrt(v)+eps) for near-zero gradient elements, not a wiring difference. The end-to-end equivalence is now run in float64 (model and data cast to double); the 1e-5 criterion is unchanged.",
+          "Diagnostic G3: with SGD and weight decay 0.05 the displacement was dominated by decoupled weight decay on the N(0,1) embedding (ratio 1.000 for kappa 1.5 vs 1.0), so G3 is now run with weight decay 0. G3 is non-binding and does not enter the outcome.",
+          "Wrapper fix after the first full run (log kept as work/logs/C00858_run1_before_wrapper_fix.log): the float64 end-to-end equivalence (sub-check D) still failed for the three K=1 configurations (max abs diff 1.89e-5, identical across backbones) while K=2 matched to 7e-15. Cause: in the K=1 setting the unused 'align' head received a zero-filled gradient from the reimplemented wrapper, so AdamW applied decoupled weight decay to it, whereas the plain backward() path leaves p.grad = None and AdamW skips it. This is a defect of the reimplementation, not of the specification; the wrapper now leaves p.grad = None for parameters that no task reaches. The 1e-5 criterion is unchanged and the whole check was re-run from scratch (run 2 = reported result)."
+        ]
+      }
+    },
+    {
+      "claim_id": "C00989",
+      "type": "data_protocol",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. The claim fixes the real MIMIC-CXR test-set size (3,858 samples) and CheXbert-derived labels; neither is observable on random synthetic data (CheXbert weights are also not supplied: checkpoint path is the placeholder 'xxxxxxxx'). The metric formulas in modules/metrics_clinical.py could be unit-tested on random label matrices, but that would test only half of a conjunction whose other half is the real data count, so it is not planned as a check of this claim. Negative control.",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a"
+    },
+    {
+      "claim_id": "C01004",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "planned_check": "None. Table 4 reports CE/NLG scores of PromptMRG and DDaTR on real MIMIC-CXR for stage-ablated variants; the claim is about each stage's contribution to overall performance, which depends on the real data and trained models. The structural question whether the three stages are non-redundant is examined only under C00858 (sub-check E) and is not evidence for this claim. Negative control.",
+      "consistent_if": "n/a",
+      "inconsistent_if": "n/a"
+    }
+  ]
+}

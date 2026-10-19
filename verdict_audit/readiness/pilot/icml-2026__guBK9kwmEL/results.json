@@ -1,0 +1,66 @@
+{
+ "key": "icml-2026__guBK9kwmEL",
+ "status": "done",
+ "repo_url": "https://github.com/marteczkah/RoVTL",
+ "commit": "4ca629ffd335f2b165d0e4ab8077bcf0f7d111fc",
+ "licence": "Apache-2.0 stated by the README licence badge (shields.io 'license-Apache--2.0' linking to a '#License' anchor that has no section) and by the Apache header of RoVTL/models/fusion.py; the repository has no LICENSE/COPYING file. Treated as permitting use.",
+ "image": "p9pilot-gubk9kwmel (python:3.12-slim, torch 2.7.0 CPU, tarte-ai 0.0.6, monai 1.4.0; TARTE pretrained table-encoder checkpoint cached at build time; runs with --network none)",
+ "time_to_running_pipeline_min": 36,
+ "container_seconds_total": 5764,
+ "claims": [
+  {
+   "claim_id": "C00066",
+   "type": "data_protocol",
+   "checkable_on_synthetic": false,
+   "check": "none (negative control): which external datasets were used in the paper's experimental protocol cannot be established by a synthetic run",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "The claim is about the paper's dataset protocol (extra German and time-based tabular datasets alongside UK Biobank). No schema-faithful synthetic run can show which datasets the authors used, so no check was planned (checks/plan.json) or run (work/logs/C00066.log).",
+   "log": "work/logs/C00066.log"
+  },
+  {
+   "claim_id": "C00171",
+   "type": "secondary_empirical",
+   "checkable_on_synthetic": false,
+   "check": "none (negative control): size/sign of the reported augmentation ablation depends on the real UK Biobank distribution; the synthetic on/off contrast was attempted under C00429 and does not speak to the reported table",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "The claim is that a reported ablation of missingness augmentation vs standard contrastive pretraining quantifies an effect on downstream robustness; that effect cannot be derived without the real data distribution. Nothing was run for it (work/logs/C00171.log); the only synthetic pre-training attempt with the augmentation (work/logs/C00429.log) never left the chance plateau and is not evidence about the reported table.",
+   "log": "work/logs/C00171.log"
+  },
+  {
+   "claim_id": "C00429",
+   "type": "mechanism",
+   "checkable_on_synthetic": true,
+   "check": "Part A (structural, repo MRContrastiveDatasetH5 + DataCollator + TARTE preprocessor, full 158-attribute lists, 2000 draws): value integrity, size variability, masked tokens. Part B (behavioural, repo ImageTabularPretraining + CLIPLoss): pre-train with vs without missingness augmentation on synthetic data and compare image-table retrieval / cosine-to-full-table at 10-100% attribute availability.",
+   "outcome": "blocked",
+   "rationale": "Part A is consistent: 0 mismatches vs ground truth in 161444 kept entries (no corruption), kept-set size ranges 2..157 with 154 distinct sizes while simulate_missing=False keeps all 95+63 attributes, and unmasked TARTE tokens equal 1 + kept attributes for 64/64 rows (C00429.log, 'PART A RESULT ... CONSISTENT'). Part B is blocked: the AUG arm's CLIP loss stays at chance (13.867 vs 5*ln16=13.863 from epoch 2 to 8), image->table top-5 is 0.023-0.047 vs chance 0.039 and cosine(partial,full table)=1.000 at every availability, so the informative-regime gate of the plan failed; lr 1e-4/3e-5 calibration and an easier-data attempt (loss 13.87 at epoch 4) did not leave the plateau, and a diagnostic shows both towers give near-input-independent projections at init (pairwise cosine 0.993-0.999). The NOAUG arm was never run, so no robustness contrast exists.",
+   "log": "work/logs/C00429.log"
+  },
+  {
+   "claim_id": "C00531",
+   "type": "headline_performance",
+   "checkable_on_synthetic": false,
+   "check": "none (negative control): comparison with baseline vision-tabular methods on UK Biobank cardiac MRI depends on the real data and on baselines that are not in the repository",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "The claim is a performance comparison against baseline methods on real UK Biobank CMR data across missingness rates. The baselines are not in the repository and the numbers depend on the real distribution, so no data-independent check exists and nothing was run (work/logs/C00531.log).",
+   "log": "work/logs/C00531.log"
+  },
+  {
+   "claim_id": "C00657",
+   "type": "mechanism",
+   "checkable_on_synthetic": true,
+   "check": "Part A (repo MutlimodalFusionClassifier with random weights + MRDownstreamDatasetH5 num_present switch): forward at availability 0..100%, output invariance to tabular content at 0%, dependence at 100%, finite gradients with fully-masked rows. Part B (behavioural): fine-tune ARM_ROVTL (random attribute subsets + nested subset + TabMoFe lambda=1, as train_multilabel.py) vs ARM_FULL (complete tables, lambda=0) from the same initial checkpoint and measure macro AUC at availability 0-100%.",
+   "outcome": "blocked",
+   "rationale": "Part A is consistent: logits are finite at all 11 availability levels incl. 0 (0/85 attributes present); at 0% max |logit change| is 0.00e+00 when the masked tabular tensors are replaced by noise (image-only fall-back by construction) and 1.26e-01 at 100% when present values are perturbed; gradients are finite with fully-masked rows (C00657.log, 'PART A RESULT ... CONSISTENT'). Part B is blocked by the pre-registered image-path gate: both arms have AUC(0%)=0.507/0.506 (chance) because the frozen random-trunk image path extracted no information in the affordable 64 steps, so the 0% end of the range cannot be assessed; AUC rises monotonically 0.61->0.74 (ROVTL) and 0.64->0.77 (FULL) from 10% to 100%, with no advantage of the ROVTL scheme at low availability in this tiny run (summary line 'C00657 OUTCOME: blocked').",
+   "log": "work/logs/C00657.log"
+  }
+ ],
+ "blocked_reason": null,
+ "notes": [
+  "status 'done': pipeline ran; C00429 and C00657 are blocked at claim level for Part B only (their Part A structural checks are consistent). Three claims (C00066, C00171, C00531) are the negative controls, not checkable.",
+  "Licence: README badge says Apache-2.0, no LICENSE file. Pipeline running (unchanged repo pretraining.py, only the cluster data-path strings patched, true 11x10x128x128 scan shape, 1 epoch, work/logs/smoke_pretrain.log) at about 36 min after start.",
+  "Offline stand-ins / deviations (all documented in checks/plan.json): (1) the 6.7 GB fastText word-vector model that tarte_ai.TARTE_TablePreprocessor loads is replaced by deterministic pseudo-random 300-d vectors (checks/fasttext_stub.py); (2) the TARTE pretrained table-encoder checkpoint (model weights, not a dataset) was fetched at image build time because the repo downloads it at run time; (3) multi-epoch runs use synthetic scans 11x34x8x8 instead of 11x10x128x128 because the repo fusion model/ResNetTokens crash when the final 3D-ResNet feature map has fewer than 2 positions (needs >=33 frames or >=33 pixels per side; 3D ResNet-50 on the true shape costs ~9 s per sample on 4 shared CPU cores); (4) reduced attribute lists (40 pre-training / 33 down-stream attributes instead of 158 / 86) for Part B; Part A uses the full lists; (5) pre-training with a frozen random-init ResNet trunk; image augmentation off; (6) single seed, tiny sets (256/64/128 samples), 8-12 epochs at most. The plan was amended three times before any Part B claim metric existed and changed twice after the first Part B result (plan.json: plan_amendments_before_any_claim_run, changed_after_run).",
+  "Repository observations (not used for outcomes): the missingness augmentation samples the categorical and numerical groups separately (k_cat~U[1,N_cat], k_num~U[1,N_num]), so the smallest kept set has 2 attributes, whereas the paper text says a subset of size in [1,N_full]; scripts hard-code /lustre cluster paths and a Hugging Face cache path; train_multilabel.py nulls fusion gradients with the misspelled layer name 'mutlimodal' (no effect, since the fusion path receives detached features); the README arXiv badge label reads 2407.07582 while its link is 2512.19602.",
+  "Paper-text observations from reading the arXiv HTML (do not change any outcome): Section 4.1 lists UK Biobank, M&Ms and DVM as datasets; the German National Cohort (GNC Consortium 2014) and Dugdale et al. 1999 appear only in the Introduction; in the paper Table 3 is the M&Ms transfer table, Table 2 the augmentation comparison, Table 4 the ablation and Table 6 the M&Ms attribute list, so the table numbers quoted in claims C00171 and C00531 do not match the paper's tables.",
+  "Container time: 5764 s of the 7200 s budget (sum of work/time_log.csv), including aborted runs and bring-up; entries of two killed containers are approximate."
+ ]
+}

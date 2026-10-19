@@ -1,0 +1,16 @@
+{
+  "claims": [
+    {
+      "claim_id": "C00689",
+      "rerun_matches": true,
+      "check_tests_claim": true,
+      "note": "Re-ran check_C00689.py in p9pilot-nudnfuscdu (synthetic data in work/data first verified to regenerate bit-identically from gen_synthetic.py --kx 64 --ky 32; rc=0, log work/logs/C00689.confirm.log). The full summary dict (medians, AUROC, thresholds, criteria, outcome) is identical to the original run: s=zeta2-zeta1 clean median 0.0309, attacked 0.200 (eps 0.01) and 0.251 (eps 0.02), AUROC 1.0 and balanced accuracy 1.0 at both strengths, tau 0.1785/0.2304, criteria i-iv true, outcome consistent. The check tests the mechanism as worded: zeta1/zeta2 from the repo's two-stage cyclic ABA_detect pass, a threshold on zeta2-zeta1, frozen network (hash before/after identical). Weaknesses that do not change the verdict: only one synthetic dataset, so 'dataset-dependent threshold' is not tested and the best threshold is picked in-sample on N=12 vs 12; the attack is extremely effective on these out-of-distribution phantoms (recon PSNR 34 -> 10 dB at eps 0.01), which makes separation easy; the 'no gradient' half of criterion iv is partly tautological because the check itself wraps the detector in torch.no_grad (the detector only demonstrably runs without gradients); zeta1 also grows under attack, unlike Appendix C's description. Outcome 'consistent' is supported, as consistency of the procedure on synthetic data rather than a reproduction of the paper's real-data detection performance."
+    },
+    {
+      "claim_id": "C00996",
+      "rerun_matches": true,
+      "check_tests_claim": true,
+      "note": "Re-ran check_C00996.py in p9pilot-nudnfuscdu (rc=0, log work/logs/C00996.confirm.log). The summary (per-case values, criteria a-d, outcome) is identical to the original run: criteria a_ball, b_multi_pattern, c_minimisation, d_direction all true in 3/3 cases; cyclic loss 0.167/0.152/0.171 -> 0.046/0.050/0.053 over 20 iterations; after 5 updates descent 0.084/0.085/0.095 versus sign-flipped ascent 0.482/0.379/0.487. The check tests the claim as worded: the displacement trace (0.005 after the first step, then pinned at exactly 0.01 for all later iterations while alpha decays) shows that the recorded quantity is distance from the ball centre and that the projection is active; 3 cyclic passes with 3 distinct Delta masks differing from Omega are logged per iteration; the sign-flip control shows the update direction is descent on the repo's cyclic loss. Weaknesses that do not change the verdict: 20 iterations rather than 100 and eps=0.01 only; out-of-distribution phantoms with a real-data checkpoint; 'loss averaged over the K patterns' is verified by code reading only (not numerically); the loss minimised is the repo's relative-L2 cyclic loss, not Eq. 10 as written; the 1-line CPU patch (.detach().clone()) is value-neutral. Outcome 'consistent' is supported for the mechanism."
+    }
+  ]
+}

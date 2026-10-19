@@ -1,0 +1,76 @@
+{
+  "key": "icml-2026__NUDNFusCDu",
+  "status": "done",
+  "repo_url": "https://github.com/MahdiSaberii/CycMit-MRI",
+  "commit": "637a45619e9deb6ac780923fe06425a03ff5d746",
+  "licence": "MIT (LICENSE file, Copyright 2026 Mahdi Saberi)",
+  "image": "p9pilot-nudnfuscdu (python:3.11-slim, torch 2.2.1 CPU wheel, numpy 1.26.4, scipy 1.15.3, scikit-image 0.25.2, matplotlib 3.10.8)",
+  "time_to_running_pipeline_min": 25,
+  "container_seconds_total": 3702,
+  "claims": [
+    {
+      "claim_id": "C00048",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "none planned",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "Outperforming adversarially trained baselines at eps 0.01 and 0.02 is a PSNR/SSIM comparison on fastMRI test slices against AT/SMUG networks trained on real data. No data-independent statement of it could be written, and the repository has no evaluation code for Figure 4. Any synthetic-phantom number would only reflect how weights trained on real knee data behave out of distribution.",
+      "log": null
+    },
+    {
+      "claim_id": "C00134",
+      "type": "headline_performance",
+      "checkable_on_synthetic": false,
+      "check": "none planned",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "Table 1 PSNR/SSIM ranges for Cor-PD, Cor-PDFS and Ax-FLAIR are properties of the real fastMRI test distributions and trained networks. The repository ships one Cor-PD sample slice and one checkpoint, and no Cor-PDFS or Ax-FLAIR code or weights. Negative control.",
+      "log": null
+    },
+    {
+      "claim_id": "C00434",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "none planned",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "Blind (linear-scheduler) versus informed mitigation 'comparable performance' is a statement about reconstruction PSNR/SSIM on real data (Table 9). The blind eps/alpha scheduler is not in the released code (README says more code will be added later), and no data-independent statement of the comparison could be written.",
+      "log": null
+    },
+    {
+      "claim_id": "C00689",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "check": "check_C00689.py: frozen repo MoDL checkpoint, repo attack_generation (unsupervised PGD, 10 it, alpha=eps/5), noise_jiterring, CG_EEH and ABA_detect on 12 synthetic phantoms (64x32, 15 coils, R=4). zeta1/zeta2 from ABA_detect stage 0 / stage 1 k-space at Omega vs y_Omega=CG(E z), statistic s=zeta2-zeta1 for clean, eps=0.01 and eps=0.02 PGD-attacked inputs; AUROC, best threshold, parameter hash before/after, detector run under torch.no_grad.",
+      "outcome": "consistent",
+      "rationale": "All four pre-registered criteria hold (C00689.log: criteria i-iv true, outcome consistent). s=zeta2-zeta1 has clean median 0.0309 and attacked medians 0.200 (eps 0.01) and 0.251 (eps 0.02), with AUROC 1.0 and balanced accuracy 1.0 at both strengths (single thresholds tau=0.1785 and 0.2304 separate all 12 vs 12; attacked zeta2 medians 0.284/0.490 exceed zeta1 medians 0.078/0.231); network hashes were identical before and after and no gradient was enabled in the detector. Caveats: zeta1 also grows under attack here (clean median 0.0132 vs 0.078 and 0.231), unlike the 'zeta1 small with or without attack' statement in Appendix C; only one synthetic dataset, so 'dataset-dependent' thresholds were not tested; the checkpoint was trained on real knee data and applied to out-of-distribution phantoms.",
+      "log": "work/logs/C00689.log"
+    },
+    {
+      "claim_id": "C00763",
+      "type": "secondary_empirical",
+      "checkable_on_synthetic": false,
+      "check": "none planned",
+      "outcome": "not_checkable_on_synthetic",
+      "rationale": "Generalisation across MoDL, XPDNet, RIM, E2E-VarNet and Recurrent-VarNet concerns trained networks and real-data artefact reduction (Figure 5, Table 3). The repository contains only the MoDL demo (plus an AT checkpoint) and no code or weights for the other four architectures, so nothing data-independent could be stated or run.",
+      "log": null
+    },
+    {
+      "claim_id": "C00996",
+      "type": "mechanism",
+      "checkable_on_synthetic": true,
+      "check": "check_C00996.py: repo Cyclic_Mitigation (Config.yaml defaults: alpha=0.005, epsilon_proj=0.01, 3 Delta masks, 2 cyclic stages, jitter std 6, Linear scheduler) on 3 synthetic PGD-attacked phantoms (eps=0.01, T=20 instead of 100 for CPU budget), with recording hooks around ABA_detect and Reverse_PGD_Projection (originals called unchanged); 6-iteration descent and sign-flipped ascent controls; cyclic loss at the clean input; CG pseudo-inverse residual.",
+      "outcome": "consistent",
+      "rationale": "All four pre-registered criteria hold in all 3 cases (C00996.log: criteria a_ball, b_multi_pattern, c_minimisation, d_direction true). Iterates never leave the eps-ball (a_ball_max_disp=0.0100000054 <= 0.01+1e-6, and they reach the boundary), every iteration runs exactly 3 cyclic passes with 3 distinct Delta masks containing Omega^C lines, and the cyclic loss falls from 0.167/0.152/0.171 to 0.046/0.050/0.053 over 20 iterations. After 5 updates the loss is 0.084/0.085/0.095 under reverse PGD (descent) but 0.482/0.379/0.487 with the gradient sign flipped, and the attacked-input loss (0.167 in case 0) exceeds the clean-input loss (0.048), supporting the premise. Caveats: 20 iterations rather than 100, eps=0.01 only, out-of-distribution phantoms, and the mean over the K masks is confirmed by code reading (loss += loss_1/len(mask_list)) rather than by a separate numerical test.",
+      "log": "work/logs/C00996.log"
+    }
+  ],
+  "blocked_reason": null,
+  "notes": [
+    "Synthetic data only: checks/gen_synthetic.py (random sum-of-ellipses phantoms, 15 smooth coils with sum |s|^2=1, equispaced R=4 mask with scaled ACS, Delta_1..3 = pattern shifted by 1..3 lines). Matrix size 64x32 instead of 332x320 (Config.yaml) to fit the CPU budget (one forward of the 10-unroll ResNet-MoDL took 1.3 s single-threaded at 64x32). The repository's real sample slice data/kneePD.mat was never opened; the repository masks were not used (synthetic masks generated). The shipped pretrained checkpoint BestModel/checkpoint.pth (trained on real fastMRI knee data) was loaded as frozen weights with weights_only=True.",
+    "Repository code is run unchanged except one runtime patch applied to an in-memory copy of src/Utils.py (repo files untouched): in Cyclic_Mitigation 'recon_i = Recons_mit[:,:,0]' raises 'A view was created in no_grad mode ... modified inplace' on CPU (best_recon.cpu() is a no-op on CPU, a copy on the CUDA device the authors used); it was replaced by '.detach().clone()' (same values). Imshow_Custom plotting was replaced by a no-op. Mitigation.py itself is not importable as a function, so its zero-filled/label/normalisation/noise-jitter/attack glue was replicated line by line in checks/_common.py. Config device 'cuda:1' and torch.load without map_location also need CPU overrides.",
+    "Claim numbering mismatch: the C00689/C00996 texts name detection as Section 3.2/Algorithm 1 and mitigation as Section 3.3/Algorithm 2, whereas arXiv v4 (12 Jun 2026) has mitigation in Section 3.2 as Algorithm 1 and detection in Appendix C as Algorithm 2. The mechanism described in each claim was matched by content.",
+    "Detection (Algorithm 2: zeta1, zeta2, threshold) is not released as such: the repository only contains ABA_detect, the two-stage cyclic pass, whose masked k-space outputs I turned into zeta1/zeta2. README states only the image-domain attack demo is released; AT/SMUG baselines, other architectures, blind scheduler, adaptive attacks, other attack types and evaluation code are not in the repo.",
+    "Implementation observations (not gating): attack and Reverse_PGD use torch complex sgn (unit-modulus per pixel) rather than a componentwise sign, but the projection is a per-component box so the eps-ball property holds as measured; the loss is the relative L2 ||a-b||/||b|| (normalised by the cyclic output) averaged over masks, whereas Eq. 10 is unnormalised; the repo's noise jitter for mitigation is computed from the clean input (Mitigation.py), which a real defender would not have (the detection check estimated it from the tested input).",
+    "Attack was effective on the synthetic data (C00689.log psnr_recon_median: clean 34.2 dB, eps 0.01 10.2 dB, eps 0.02 4.7 dB), and in C00996 mitigation raised PSNR against the synthetic reference from about 11-12 dB to 23-26 dB in 20 iterations; these PSNR values are informational only and are not evidence for the headline performance claims.",
+    "Process: a wiring dry run of each check (small N, few iterations) was run and its numbers were seen before the full run; pre-registered criteria and full-run parameters were not changed afterwards (see checks/plan.json execution_notes). Plan parameters for C00996 (T=20, T_c=6) were set before any C00996 run, for compute only. The first smoke test at 128x96 failed (rc=1, CPU view/in-place error) and was far too slow with 4 torch threads under CPU contention from other containers, so the matrix was reduced and torch set to 1 thread per process with parallel worker processes. time_log.csv includes one estimated 15 s line for unlogged diagnostic docker runs (container listing, thread benchmark). Total container time 3702 s of the 7200 s budget (image build excluded; network used only during build)."
+  ]
+}

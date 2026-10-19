@@ -1,0 +1,66 @@
+{
+ "key": "icml-2026__rlVGCyjqnt",
+ "status": "done",
+ "repo_url": "https://github.com/yang-ai-lab/OSF-Open-Sleep-FM",
+ "commit": "d7e4edbc77f2b72713402234036c72b98b9b83ca",
+ "licence": "MIT (LICENSE file, Copyright (c) 2026 Health Intelligence Lab @ UCLA)",
+ "image": "p9pilot-rlvgcyjqnt",
+ "time_to_running_pipeline_min": 14.5,
+ "container_seconds_total": 5070,
+ "claims": [
+  {
+   "claim_id": "C00080",
+   "type": "secondary_empirical",
+   "checkable_on_synthetic": true,
+   "check": "checks/check_C00080.py (+ decide_C00080.py, run_C00080.sh): repo augmentation presets (time-only pc_span_mask_aligned, channel-only channel_dropout_aligned, both chan_then_pcspan) + repo vit_nano backbone, SimCLR-style NT-Xent written in the check (repo has no SimCLR class), 3 variants x 3 seeds x 600 steps on synthetic 12x1920 epochs with cross-channel redundant class signal; frozen-CLS linear probe, macro OvR AUC on held-out synthetic epochs (full channels = primary; 4 missing-channel zero-masking scenarios = secondary). Real-data numbers 94.8 -> 96.7 are not checked.",
+   "outcome": "inconsistent",
+   "rationale": "In work/logs/C00080.log the decision line gives mean full-channel AUC time_only 0.735, channel_only 0.905, both 0.897 (3 seeds); the pre-registered rule needs both > channel_only > time_only, and 'both' is 0.008 below channel_only (pooled SD 0.0175, i.e. statistically indistinguishable), so the 'adding time masking raises AUC over channel-only' half is not reproduced on this synthetic data, while the 'channel masking >> time-only' half is (gap +0.170; missing-channel mean AUC 0.577 / 0.703 / 0.692). This speaks only to a synthetic proxy (600-step nano ViT, cross-channel-redundant generator I designed) and not to the real MROS values; the secondary DINO run with the repo's DINOCLSModel (300 steps) stayed near chance (full AUC 0.529-0.537) and carries no weight.",
+   "log": "work/logs/C00080.log"
+  },
+  {
+   "claim_id": "C00096",
+   "type": "data_protocol",
+   "checkable_on_synthetic": true,
+   "check": "checks/check_C00096.py: metadata-only check on the split-ID lists shipped in the repo (osf/splits/*.csv; aggregate counts by ID family; no recordings, no synthetic data, no download). Covers 'over 21,000 studies' and 'nine sources' only; the 166,500-hour figure is not checked.",
+   "outcome": "consistent",
+   "rationale": "work/logs/C00096.log: the six split files are mutually disjoint and hold 21,482 unique study IDs in 9 ID families (shhs 8276, mros 3867, wsc 1773, mesa 1721, chat 664, ccshs 515, sof 448, cfs 329, plus 3889 numeric-pattern IDs presumably NCHSDB), satisfying 21,000 < N <= 22,000 with no family outside the claim's nine sources. This supports only the study-count and source-count part; the 166,500-hour total cannot be verified from ID lists (the log's 7.75 h/study is arithmetic, not a check) and the numeric family being NCHSDB is an assumption from ID shape.",
+   "log": "work/logs/C00096.log"
+  },
+  {
+   "claim_id": "C00520",
+   "type": "secondary_empirical",
+   "checkable_on_synthetic": false,
+   "check": "none",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "The claim is an OSF-vs-SleepFM AUC/AUPRC comparison on real MROS under four missing-channel scenarios; the repository contains no SleepFM code or weights, so a synthetic run would compare different models and not test the claim. Note: in the fetched arXiv v2 the four-scenario comparison is Table 7 (Table 6 is the ECG+respiratory pre-training comparison).",
+   "log": null
+  },
+  {
+   "claim_id": "C00751",
+   "type": "secondary_empirical",
+   "checkable_on_synthetic": false,
+   "check": "none for the claim; side observation only in checks/check_C00751.py (parameter counts of the repo's ViT ladder)",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "Performance scaling with pre-training data fraction (1%-100%) and encoder size is a real-data MROS result; a synthetic scaling curve would reflect the generator I wrote, not the claim. Side observation (work/logs/C00751.log): the released code has encoders of 1.66 M (vit_nano), 5.45 M (vit_tiny) and 85.49 M (vit_base) parameters at patch_t=128/lead_wise=1, so the 1M-85M ladder exists, but this says nothing about whether performance scales.",
+   "log": "work/logs/C00751.log"
+  },
+  {
+   "claim_id": "C00870",
+   "type": "headline_performance",
+   "checkable_on_synthetic": false,
+   "check": "none",
+   "outcome": "not_checkable_on_synthetic",
+   "rationale": "The MROS AUCs (OSF 97.3 / 92.8, SleepFM 96.4 / 90.3, supervised ViT 96.9 / 88.4) are real-data numbers with no synthetic counterpart, and the SleepFM and supervised-ViT baselines are not in the repository.",
+   "log": null
+  }
+ ],
+ "blocked_reason": null,
+ "notes": [
+  "None of the five claims is typed theory or mechanism; C00080 got a mechanism-level synthetic proxy because a data-independent check could be stated, C00096 got a metadata-only check, the other three are the negative control.",
+  "The repo releases only OSF (DINO) pre-training, backbones, augmentation registry, fine-tuning code and split ID lists; no SleepFM/SimCLR/MAE/VQ-VAE/AR baseline code and no preprocessing pipeline (README says it will be released later). The repo's SleepEpochDataset and DINOCLSModel ran on synthetic data in the container (work/logs/smoke_pipeline.log).",
+  "plan.json for C00080 carries 'changed_after_run': patch_size_time 128->240, batch 128->64, 600 steps, 3 seeds as 3 single-thread parallel processes in one container, because timing smoke tests on a CPU shared with other pilot containers were too slow; decision rules were unchanged. Synthetic signal gains were lowered once, before any pre-training run, after a band-power baseline reached AUC 0.95-1.0 on every channel group. Timing smoke logs were deleted; their container time stays in time_log.csv.",
+  "The synthetic generator (checks/gen_synthetic.py) is my own construction with class information redundantly present in brain/respiratory/other groups plus channel-specific nuisance; the C00080 ordering depends on it. Headband(brain-only) and brain+other probe AUC stayed ~0.5 for all variants, i.e. the small encoders did not learn the brain-band signal in 600 steps.",
+  "Observation, not tied to a claim: osf/models/dino_model_cls.py _momentum(step, max_steps) with trainer.max_steps=-1 (Lightning default; main_pretrain.py sets only max_epochs) yields EMA momentum alternating 0.996 / 1.0 (work/logs/C00080.log, DINO section). My DINO secondary set max_steps explicitly, so it was not affected.",
+  "The three seeds of the main run shared one container (summed wall time 3195 s); other containers on the host used ~4 cores concurrently."
+ ]
+}
