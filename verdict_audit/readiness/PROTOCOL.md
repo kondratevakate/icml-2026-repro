@@ -581,3 +581,7 @@ By Kate's decision the pilot counts only as aggregate numbers in the overall tes
 ## Note 9-3 (2026-10-19)
 
 After the first two coder batches (recoded, not used), the excerpt also takes up to 1,500 characters of paragraphs and table captions on seeds, spread and repeated runs, right after the introduction, because the variance field was otherwise mostly `unclear`.
+
+## Note 9-4 (2026-10-19)
+
+The coders of batches 080 and 083 ran at the same time and both wrote a helper script to the same shared path (`/tmp/show.py`); one coder reported a read that returned another batch's excerpt. Both batches are recoded by fresh coders (the earlier codes are set aside, not used). From these recodes and batch 108 on, the prompt ends with one more sentence: "Do not write helper files to shared temporary paths such as /tmp; read the sheet with inline Python instead." The coding instructions are unchanged.
