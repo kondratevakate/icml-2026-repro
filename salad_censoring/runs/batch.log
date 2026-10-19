@@ -1,0 +1,65 @@
+### SUPPORT ###
+
+=== N-MTLR on SUPPORT (5 splits) ===
+  [N-MTLR] split 0 seed=0: C=0.6868 IBS=0.1665 MAEh=364.810 (51.0s)
+  [N-MTLR] split 1 seed=1: C=0.6809 IBS=0.1629 MAEh=356.468 (62.2s)
+  [N-MTLR] split 2 seed=2: C=0.6952 IBS=0.1415 MAEh=327.115 (33.4s)
+  [N-MTLR] split 3 seed=3: C=0.6872 IBS=0.1588 MAEh=360.901 (43.6s)
+  [N-MTLR] split 4 seed=4: C=0.6926 IBS=0.1645 MAEh=364.371 (36.6s)
+
+=== N-MTLR-2B on SUPPORT (5 splits) ===
+  [N-MTLR-2B] split 0 seed=0: C=0.6860 IBS=0.1662 MAEh=354.009 (49.9s)
+  [N-MTLR-2B] split 1 seed=1: C=0.6865 IBS=0.1584 MAEh=344.912 (74.9s)
+  [N-MTLR-2B] split 2 seed=2: C=0.6969 IBS=0.1392 MAEh=321.848 (75.8s)
+  [N-MTLR-2B] split 3 seed=3: C=0.6928 IBS=0.1550 MAEh=346.369 (60.8s)
+  [N-MTLR-2B] split 4 seed=4: C=0.6983 IBS=0.1645 MAEh=350.568 (92.0s)
+
+=== N-MTLR-salad on SUPPORT (5 splits) ===
+  [N-MTLR-salad] split 0 seed=0: C=0.6770 IBS=0.1724 MAEh=405.597 (303.1s)
+  [N-MTLR-salad] split 1 seed=1: C=0.6793 IBS=0.1613 MAEh=380.021 (401.5s)
+  [N-MTLR-salad] split 2 seed=2: C=0.6886 IBS=0.1462 MAEh=372.406 (379.1s)
+  [N-MTLR-salad] split 3 seed=3: C=0.6855 IBS=0.1593 MAEh=379.794 (518.9s)
+  [N-MTLR-salad] split 4 seed=4: C=0.6861 IBS=0.1687 MAEh=403.041 (419.4s)
+
+================ SUMMARY ================
+model                           C-index              IBS        MAE-Hinge
+N-MTLR                 0.6885+-0.0050   0.1589+-0.0090   354.733+-14.130
+N-MTLR-2B              0.6921+-0.0051   0.1567+-0.0096   343.541+-11.309
+N-MTLR-salad           0.6833+-0.0044   0.1616+-0.0090   388.172+-13.490
+
+SALaD vs baseline: dC-index=-0.0052 (higher better), dIBS=+0.0027 (lower better)
+
+saved runs/support_nmtlr.json
+### semi-SUPPORT ###
+
+=== N-MTLR on semi-SUPPORT (5 splits) ===
+  [N-MTLR] split 0 seed=0: C=0.7479 IBS=0.0063 MAEh=76.445 (50.8s)
+  [N-MTLR] split 1 seed=1: C=0.7505 IBS=0.0072 MAEh=94.483 (41.9s)
+  [N-MTLR] split 2 seed=2: C=0.7304 IBS=0.0035 MAEh=44.116 (84.5s)
+  [N-MTLR] split 3 seed=3: C=0.7512 IBS=0.0024 MAEh=73.446 (67.5s)
+  [N-MTLR] split 4 seed=4: C=0.7480 IBS=0.0050 MAEh=66.508 (61.4s)
+
+=== N-MTLR-2B on semi-SUPPORT (5 splits) ===
+  [N-MTLR-2B] split 0 seed=0: C=0.7453 IBS=0.0063 MAEh=76.414 (124.0s)
+  [N-MTLR-2B] split 1 seed=1: C=0.7477 IBS=0.0072 MAEh=94.436 (130.2s)
+  [N-MTLR-2B] split 2 seed=2: C=0.7347 IBS=0.0035 MAEh=44.106 (100.4s)
+  [N-MTLR-2B] split 3 seed=3: C=0.7456 IBS=0.0024 MAEh=73.445 (135.7s)
+  [N-MTLR-2B] split 4 seed=4: C=0.7476 IBS=0.0050 MAEh=66.484 (99.8s)
+
+=== N-MTLR-salad on semi-SUPPORT (5 splits) ===
+  [N-MTLR-salad] split 0 seed=0: C=0.7420 IBS=0.0063 MAEh=76.487 (415.4s)
+  [N-MTLR-salad] split 1 seed=1: C=0.7474 IBS=0.0072 MAEh=94.533 (312.5s)
+  [N-MTLR-salad] split 2 seed=2: C=0.7366 IBS=0.0035 MAEh=44.198 (341.4s)
+  [N-MTLR-salad] split 3 seed=3: C=0.7466 IBS=0.0024 MAEh=73.469 (403.4s)
+  [N-MTLR-salad] split 4 seed=4: C=0.7456 IBS=0.0050 MAEh=66.532 (459.4s)
+
+================ SUMMARY ================
+model                           C-index              IBS        MAE-Hinge
+N-MTLR                 0.7456+-0.0077   0.0049+-0.0017   70.999+-16.310
+N-MTLR-2B              0.7442+-0.0048   0.0049+-0.0017   70.977+-16.299
+N-MTLR-salad           0.7437+-0.0040   0.0049+-0.0017   71.044+-16.299
+
+SALaD vs baseline: dC-index=-0.0019 (higher better), dIBS=+0.0000 (lower better)
+
+saved runs/semisupport_nmtlr.json
+### ALL DONE ###
