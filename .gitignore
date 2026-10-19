@@ -18,7 +18,7 @@ venv/
 .claude/
 
 # Third-party clones (external repos checked out for inspection, not our content)
-confsleepnet/repo/
+reproductions/confsleepnet/repo/
 
 # Superseded local drafts from earlier non-canonical logbook attempts
 .trackio_noncanonical_bak/
@@ -47,12 +47,12 @@ Thumbs.db
 
 # Paper texts extracted for internal analysis (copyright), not redistributed
 /funcqnet_paper.txt
-onlinecox_colsa/paper_text.txt
+reproductions/onlinecox_colsa/paper_text.txt
 
 # Official code clones and released artefacts of reproduced papers (their own licences)
-*/official/
-ccd/official_*
-*/repo_ref/
+reproductions/*/official/
+reproductions/ccd/official_*
+reproductions/*/repo_ref/
 
 # Challenge verdict snapshots (public on the challenge's HF dataset)
 /verdicts_live.json

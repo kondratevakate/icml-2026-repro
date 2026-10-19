@@ -11,7 +11,7 @@ cd "$(dirname "$0")"
 
 # Path to the extracted sleep-cassette dir (39 PSG = edf20 subset locally; the
 # edf78 step below needs the FULL cassette extraction, subjects 00-82).
-SRC="${SRC:-../../data/sleepedf/sleep-edf-database-expanded-1.0.0/sleep-cassette}"
+SRC="${SRC:-../../../data/sleepedf/sleep-edf-database-expanded-1.0.0/sleep-cassette}"
 
 # --- torch (skip if the image already ships a CUDA build) --------------------
 # Comment this block out on HF Jobs / Colab / GCP DL images that preinstall torch.

@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]  # repository root (script lives in tools/)
 OUT_DIR = ROOT / "audit"
 
 SPACES_URL = (
@@ -223,7 +223,7 @@ def score_claims(claims: list[dict[str, Any]] | None) -> Counter:
 
 def load_candidates() -> dict[str, dict[str, Any]]:
     candidates: dict[str, dict[str, Any]] = {}
-    for path in [ROOT / "medical_neuro_papers.csv", ROOT / "medical_throughput_shortlist.csv"]:
+    for path in [ROOT / "medical_neuro_papers.csv", ROOT / "notes" / "medical_throughput_shortlist.csv"]:
         if not path.exists():
             continue
         with path.open(newline="", encoding="utf-8") as handle:

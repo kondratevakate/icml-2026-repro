@@ -12,7 +12,7 @@ from audit_glean import (
 )
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]  # repository root
 CLINICAL = ROOT / "data" / "mimic-iv-ext-cdm-1.1"
 
 

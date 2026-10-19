@@ -13,11 +13,11 @@ from collections import Counter
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]  # repository root (script lives in tools/)
 PAPERS_PATH = ROOT / "papers.json"
 CLAIMS_PATH = ROOT / "claims_anchored.json"
-CSV_PATH = ROOT / "medical_throughput_shortlist.csv"
-MD_PATH = ROOT / "MEDICAL_THROUGHPUT_SHORTLIST.md"
+CSV_PATH = ROOT / "notes" / "medical_throughput_shortlist.csv"
+MD_PATH = ROOT / "notes" / "MEDICAL_THROUGHPUT_SHORTLIST.md"
 
 
 MEDICAL = {
