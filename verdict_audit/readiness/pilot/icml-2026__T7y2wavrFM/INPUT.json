@@ -1,0 +1,34 @@
+{
+ "key": "icml-2026__T7y2wavrFM",
+ "forum_id": "T7y2wavrFM",
+ "title": "The Double Dilemma in Multi-Task Radiology Report Generation: A Gradient Dynamics Analysis and Solution",
+ "arxiv": "2605.22635",
+ "repo_url": "https://github.com/vpsg-research/CAME-Grad",
+ "claims": [
+  {
+   "claim_id": "C00516",
+   "text": "Applied to eight diverse radiology report generation methods (WCL, XProNet, DCL, PromptMRG, CAMANet, DDaTR, TGRG, REVTAF), CAME-Grad yields an average clinical-efficacy improvement of 2.3% on MIMIC-CXR (Table 1) and 1.9% on IU X-Ray (Table 2).",
+   "type": "headline_performance"
+  },
+  {
+   "claim_id": "C00672",
+   "text": "CAME-Grad is compared against seven multi-task-learning optimizers—UW, GradNorm, CAGrad, RotoGrad, FAMO, MMPareto, and STGU—in a dedicated comparison (Table 3).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00858",
+   "text": "CAME-Grad (Conflict-Averse Magnitude-Enhanced Gradient Descent) is a backbone-agnostic optimizer with three cascaded stages: conflict-averse direction rectification, magnitude-enhanced energy injection, and adaptive gradient fusion (Section 3.3).",
+   "type": "mechanism"
+  },
+  {
+   "claim_id": "C00989",
+   "text": "Clinical efficacy is measured via CheXbert-labeled precision, recall, and F1 across 14 observation categories, evaluated on a MIMIC-CXR test set of 3,858 samples (Table 1).",
+   "type": "data_protocol"
+  },
+  {
+   "claim_id": "C01004",
+   "text": "An ablation study on PromptMRG and DDaTR isolates the contribution of each of CAME-Grad's three stages to overall performance (Table 4).",
+   "type": "secondary_empirical"
+  }
+ ]
+}

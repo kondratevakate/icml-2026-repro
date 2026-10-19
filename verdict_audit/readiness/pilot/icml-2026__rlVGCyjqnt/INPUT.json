@@ -1,0 +1,34 @@
+{
+ "key": "icml-2026__rlVGCyjqnt",
+ "forum_id": "rlVGCyjqnt",
+ "title": "OSF: On Pre-training and Scaling of Sleep Foundation Models",
+ "arxiv": "2603.00190",
+ "repo_url": "https://github.com/yang-ai-lab/OSF-Open-Sleep-FM",
+ "claims": [
+  {
+   "claim_id": "C00080",
+   "text": "Combining time masking with channel masking during pre-training raises sleep-staging AUC from 94.8 (channel masking alone with SimCLR) to 96.7, supporting the claim that channel-invariant feature learning is essential for pre-training (Table 1 ablation).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00096",
+   "text": "SleepBench aggregates 166,500 hours of sleep recordings from over 21,000 sleep studies across nine public National Sleep Research Resource sources (SHHS, NCHSDB, CFS, CCSHS, WSC, MROS, MESA, CHAT, SOF) (Section on SleepBench dataset).",
+   "type": "data_protocol"
+  },
+  {
+   "claim_id": "C00520",
+   "text": "OSF outperforms baseline SleepFM across four missing-channel inference scenarios -- headband-only, respiratory+cardiac, brain+cardiac, and respiratory-only -- demonstrating that existing sleep foundation models fail to generalize when channels are missing at inference (Table 6).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00751",
+   "text": "Performance scales consistently with pre-training data fraction from 1% to 100% of the corpus and with encoder capacity from 1M to 85M parameters (scaling analysis section).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00870",
+   "text": "On MROS, OSF achieves 97.3 AUC for sleep staging and 92.8 AUC for arousal detection, outperforming SleepFM (96.4 and 90.3 AUC respectively) and a supervised ViT (96.9 and 88.4 AUC) (Table 2).",
+   "type": "headline_performance"
+  }
+ ]
+}

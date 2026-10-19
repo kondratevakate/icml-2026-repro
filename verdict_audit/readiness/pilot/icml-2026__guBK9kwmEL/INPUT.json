@@ -1,0 +1,34 @@
+{
+ "key": "icml-2026__guBK9kwmEL",
+ "forum_id": "guBK9kwmEL",
+ "title": "No Data? No Problem: Robust Vision-Tabular Learning with Missing Values",
+ "arxiv": "2512.19602",
+ "repo_url": "https://github.com/marteczkah/RoVTL",
+ "claims": [
+  {
+   "claim_id": "C00066",
+   "text": "Additional experiments on the German and time-based tabular datasets (cited as German et al. 2014 and Dugdale et al. 1999) are used alongside UK Biobank to assess generalization of RoVTL's robustness to missing tabular data (Section 4, Section 5).",
+   "type": "data_protocol"
+  },
+  {
+   "claim_id": "C00171",
+   "text": "An ablation isolating the contribution of the missingness-augmentation strategy versus standard contrastive pretraining is reported, evaluating its effect on downstream robustness (Table 6).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00429",
+   "text": "RoVTL introduces random masking of tabular attributes -- simulating attribute-level missingness as a data augmentation during contrastive pretraining -- to make the learned joint representation robust to missing tabular values at test time (Section 3).",
+   "type": "mechanism"
+  },
+  {
+   "claim_id": "C00531",
+   "text": "Section 5 evaluates RoVTL against baseline vision-tabular methods on UK Biobank cardiac MRI data, reporting comparisons in Table 3 across varying rates of tabular missingness (Section 5, Table 3).",
+   "type": "headline_performance"
+  },
+  {
+   "claim_id": "C00657",
+   "text": "RoVTL (Robust Vision-Tabular Learning) is proposed in Section 3 as a contrastive vision-tabular pretraining method designed to remain robust across the full range of tabular data availability, from 0% to 100% of tabular attributes present (Section 3).",
+   "type": "mechanism"
+  }
+ ]
+}

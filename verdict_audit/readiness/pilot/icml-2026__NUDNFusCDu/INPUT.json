@@ -1,0 +1,39 @@
+{
+ "key": "icml-2026__NUDNFusCDu",
+ "forum_id": "NUDNFusCDu",
+ "title": "Training-Free Adversarial Robustness in Computational MRI",
+ "arxiv": "2501.01908",
+ "repo_url": "https://github.com/MahdiSaberii/CycMit-MRI",
+ "claims": [
+  {
+   "claim_id": "C00048",
+   "text": "The approach remains effective across attack strengths ε∈{0.01, 0.02}, outperforming adversarial training baselines at each strength (Section 4.4, Figure 4)",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00134",
+   "text": "On three fastMRI datasets (Cor-PD knee, Cor-PDFS knee, Ax-FLAIR brain), the mitigation raises PSNR to 33.23-36.17 dB and SSIM to 0.92-0.94 (Cor-PD), 34.03-34.32 dB and 0.81-0.83 SSIM (Cor-PDFS), and 34.89-35.71 dB and 0.92-0.93 SSIM (Ax-FLAIR) (Table 1)",
+   "type": "headline_performance"
+  },
+  {
+   "claim_id": "C00434",
+   "text": "In a blind setting with unknown attack type/strength, a linear-scheduler estimation of ε and α achieves mitigation performance comparable to the informed (known-attack) setting (Section 4.4, Figure 6, Table 9)",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00689",
+   "text": "The method detects adversarial attacks on MRI reconstruction by comparing normalized k-space errors ζ1 and ζ2 from cyclic re-undersampling, flagging an attack when ζ2−ζ1 exceeds a dataset-dependent threshold, without any model retraining (Section 3.2, Algorithm 1)",
+   "type": "mechanism"
+  },
+  {
+   "claim_id": "C00763",
+   "text": "The method generalizes across five reconstruction architectures (MoDL, XPDNet, RIM, E2E-VarNet, Recurrent-VarNet), consistently reducing adversarial artifacts (Figure 5, Table 3)",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00996",
+   "text": "Mitigation is performed via reverse projected gradient descent within an ε-ball that minimizes a cyclic measurement-consistency loss across multiple undersampling patterns (Section 3.3, Algorithm 2)",
+   "type": "mechanism"
+  }
+ ]
+}
