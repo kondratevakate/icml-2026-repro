@@ -1,35 +1,47 @@
-# LERD — handoff (черновик для подхвата в другом чате)
+# LERD: handoff (draft for picking up in another chat)
 
-## Что за таргет
-- **Статья:** LERD (нейродегенерация / Alzheimer EEG)
+Translated from Russian on 2026-10-19; the original is in the git history of this file. Paths follow the
+2026-10-19 layout (`reproductions/`, `notes/`).
+
+## Target
+- **Paper:** LERD (neurodegeneration / Alzheimer EEG)
 - **OpenReview id:** `B5DAV1EA8Z` · **arXiv:** 2602.18195
-- **Очки:** 12 · **Fit-tier:** A (топ под профиль Kate)
-- **Данные:** OpenNeuro **ds004504** — открыт без регистрации/credentialing.
-- Источник наводки: `PAPERS.md:41`, `PAPERS.md:114`, `HANDOFF.md:228`.
+- **Points:** 12 · **Fit tier:** A (top fit for Kate's profile)
+- **Data:** OpenNeuro **ds004504**, open without registration or credentialing.
+- Where the lead came from: `notes/PAPERS.md` (lines 41 and 114) and `notes/HANDOFF.md`
+  ("Nearest datasets for the targets already planned").
 
-## Статус на момент этого чата
-- Папка `lerd/` только что создана — **воспроизведение с нуля**, кода/paper.txt ещё нет.
-- Датасет ds004504 **ещё не скачан** (в `data/` его нет — только cifar100n, mfiddr_sample, mimic3demo, sleepedf).
-- Из `HANDOFF.md`: «Claim 1 включает синтетические бенчмарки → часть воспроизводима **без загрузок**». Реальные данные = ds004504.
+## Status at the time of that chat
+- The folder `lerd/` had just been created: **reproduction from scratch**, no code or paper.txt yet.
+- Dataset ds004504 **not downloaded yet** (not in `data/`, which held only cifar100n, mfiddr_sample,
+  mimic3demo, sleepedf).
+- From `HANDOFF.md`: "the synthetic part of claim 1 is reproducible **without downloads**". The real data are
+  ds004504.
 
-## Открытые вопросы к пользователю (ждут ответа) — про MCP к OpenNeuro
-1. **Транспорт файлов:** S3 (`s3fs`/`boto3`, быстро) vs чистый HTTPS (0 зависимостей, медленнее).
-2. **Порог подтверждения на скачивание:** качать молча vs спрашивать при > ~2 ГБ.
-- Ещё контекст: пользователь просил посмотреть, как сделан MCP у NIH Imaging Data Commons
-  (mcpmarket.com/tools/skills/imaging-data-commons-access — при заходе отдаёт HTTP 429, надо повторить)
-  и у других проектов с похожими данными, чтобы «понабраться опыта». Опорный пакет IDC: `idc-index`.
+## Open questions to the user (awaiting an answer), about an MCP server for OpenNeuro
+1. **File transport:** S3 (`s3fs`/`boto3`, fast) versus plain HTTPS (no dependencies, slower).
+2. **Confirmation threshold for downloads:** download silently versus ask above about 2 GB.
+- Further context: the user asked to look at how the MCP for the NIH Imaging Data Commons is built
+  (mcpmarket.com/tools/skills/imaging-data-commons-access; it returned HTTP 429, retry needed) and at other
+  projects with similar data, to "pick up experience". The reference IDC package: `idc-index`.
 
-## План (следующему чату)
-1. **Скачать paper:** arXiv 2602.18195 → `lerd/paper.txt` (PyMuPDF, НЕ из LLM-summary — см. память `feedback-never-reproduce-from-llm-summary`).
-2. **Извлечь claims_anchored** для LERD (section-anchored, 5-6 точных) — не брать vague claims.json.
-3. **Синтетическая часть claim 1** — воспроизводима без загрузок, начать с неё.
-4. **Скачать ds004504** с OpenNeuro (S3: `s3://openneuro.org/ds004504` или https). Это EEG (Alzheimer / FTD / здоровые), формат BIDS + .set/.fdt.
-5. **MCP к OpenNeuro** — поднять скелет сервера параллельно; определиться по вопросам 1-2 выше.
+## Plan (for the next chat)
+1. **Get the paper:** arXiv 2602.18195 → `lerd/paper.txt` (PyMuPDF, NOT from an LLM summary; see the memory
+   `feedback-never-reproduce-from-llm-summary`).
+2. **Extract the anchored claims** for LERD (section-anchored, 5-6 precise ones); do not use the vague
+   claims.json.
+3. **The synthetic part of claim 1** is reproducible without downloads; start with it.
+4. **Download ds004504** from OpenNeuro (S3: `s3://openneuro.org/ds004504`, or HTTPS). It is EEG (Alzheimer,
+   FTD, healthy controls), BIDS format with .set/.fdt files.
+5. **MCP for OpenNeuro**: set up a server skeleton in parallel; settle questions 1-2 above.
 
-## Рабочие правила (из памяти)
-- Русский; без тире и плюсов в тексте; ничего не публиковать в logbook без слова Kate; .py верифицировать перед таргетингом.
-- Воспроизводить по реальной спецификации статьи, не выдумывать proxy.
-- Вердикты писать чисто/бинарно (refute=confirm=2 очка); scope-оговорки — отдельно, не в вердикт.
+## Working rules (from memory)
+- At the time: logbooks in Russian; no dashes or plus signs in the text; nothing published to a logbook
+  without Kate's word; verify the .py before targeting.
+- Reproduce from the paper's real specification; do not invent a proxy.
+- Write verdicts cleanly and in binary form (refute = confirm = 2 points); scope caveats go separately, not in
+  the verdict.
 
-## Репозиторий
-`C:\Projects\02_academia\icml-repro` (ветка master). Датасеты — в `data/`.
+## Repository
+At the time `C:\Projects\02_academia\icml-repro` (branch master); datasets in `data/`. Now
+`reproductions/lerd/` in this repository.
