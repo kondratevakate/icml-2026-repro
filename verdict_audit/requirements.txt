@@ -1,0 +1,10 @@
+# Pinned environment for verdict_audit (Python 3.11). voters/requirements.txt pins the voters study alone.
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.15.3
+statsmodels==0.14.6
+pypdf==6.11.0
+huggingface_hub==1.24.0
+httpx==0.28.1
+requests==2.32.5
+pytest==8.4.2

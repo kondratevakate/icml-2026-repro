@@ -47,18 +47,27 @@ Third-party content (paper texts, other teams' logbooks) is not redistributed.
 |---|---|---|
 | Challenge verdicts | Hugging Face dataset `ICML-2026-agent-repro/verdicts`, revision `f0c5a8b369d6d618ecc9fa060aa2e2f27f9e2602`, file `verdicts.json` (SHA-256 `652f1c16…`) | `../data/verdicts_confirmation_2026-10-17/verdicts.json` (repository root) |
 | Logbook pages, commit histories, file trees of public Spaces | Hugging Face Spaces at the judged revision, via `voters/download*.py` | `voters/data/` (git-ignored); aggregate digests in `voters/results/` |
-| Conference paper lists (ICLR, NeurIPS, ICML, CVPR, ICCV, ECCV 2024–2026) | Conference virtual sites, via `readiness/download_sources.py` and `readiness/fetch_abstracts.py` | `readiness/data/` (git-ignored); hashes in `readiness/results/manifest.json` |
+| Conference paper lists (ICLR, NeurIPS, ICML, CVPR, ICCV, ECCV 2024–2026) | Conference virtual sites, via `readiness/download_sources.py` and `readiness/fetch_abstracts.py` | `readiness/data/` (git-ignored); hashes in `readiness/results/sources_manifest.json` |
 | Full texts, protocol 8 | arXiv HTML or PDF, via `readiness/fetch_p8_fulltext.py` | `readiness/data/p8/` (git-ignored) |
 | Full texts, protocol 9 | arXiv, PMLR and CVF open access, via `readiness/fetch_p9.py` | `DATA_ROOT` (default `C:\Projects\data`), `datasets/literature/ml-venue-fulltext/2025-2026-v1/` |
 
 ## Rerunning
 
-* Python 3.11 with numpy 1.26, pandas 2.3, scipy 1.15, statsmodels 0.14,
-  pypdf 6, huggingface_hub 1.24, httpx, requests and pytest (versions used:
-  `voters/requirements.txt` pins the voters study).
-* Run scripts from their folder without `python -I`; they import local modules.
-* Tests: `python -m pytest` in this folder, in `voters/`, in `e1_adjusted/`
-  and in `readiness/`.
+* Environment: Python 3.11 and [`requirements.txt`](requirements.txt) (pinned; `voters/requirements.txt` pins
+  the voters study alone).
+* One command reruns every analysis and checks it against the committed results:
+  `python reproduce.py` (`--list` shows the steps). It sets the committed outputs aside, reruns each script,
+  compares the new JSON with the committed JSON, puts the committed files back, and writes
+  `logs/reproduce_<UTC time>.json` with the environment, the git commit and a status per step. Keys that are
+  known to differ for a documented reason (a machine-dependent counter, a provenance field added by hand) are
+  listed in `reproduce.py` and reported in the log instead of being compared.
+* Last full run: [`logs/reproduce_20261019T074627Z.json`](logs/reproduce_20261019T074627Z.json), 15 of 15
+  steps match, 41 minutes on CPU. It ran the analysis code of commit `0d87130`, with `reproduce.py` and this
+  documentation not yet committed.
+* Language-model coding is not rerun: prompts and codes are committed and the analyses start from them.
+* Run individual scripts from their folder without `python -I`; they import local modules. The study cards
+  ([`STUDIES.md`](STUDIES.md) and each folder's README) give the order.
+* Tests: `python -m pytest` in this folder, in `voters/`, in `e1_adjusted/` and in `readiness/`.
 
 ## Who did what
 
