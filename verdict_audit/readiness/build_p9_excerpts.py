@@ -25,7 +25,9 @@ from fetch_p9 import DS, MANIFEST
 
 HERE = Path(__file__).resolve().parent
 OUT = DS / "derived" / "excerpts-v1"
-CAP, INTRO_TAIL, SECTION_CAP = 15000, 3000, 2000
+CAP, INTRO_TAIL, SECTION_CAP, VAR_CAP = 15000, 3000, 2000, 1500
+VAR_RE = re.compile(r"\bseeds?\b|±|standard deviations?|\bstd\b|standard errors?|error bars?|confidence intervals?|"
+                    r"averaged over|mean (?:and|±)|independent runs|random (?:seeds|initiali[sz]ations)", re.IGNORECASE)
 # Note 9-1: order of matched sections (release and access statements first, then compute and scale, then
 # setup, then data descriptions, then limitations); each contributes at most SECTION_CAP characters.
 PRIORITY = ("availab", "reproducib", "ethic", "compute", "resources", "implementation", "training details",
@@ -50,9 +52,9 @@ def blocks_html(raw: bytes) -> list[tuple[str, str, str]]:
     for t in soup.find_all(["script", "style", "nav", "header", "footer"]):
         t.decompose()
     out, section, nearest = [], "abstract", "abstract"
-    for el in soup.find_all(["h2", "h3", "h4", "h5", "h6", "p"]):
+    for el in soup.find_all(["h2", "h3", "h4", "h5", "h6", "p", "figcaption"]):  # captions: Note 9-3
         text = " ".join(el.get_text(" ").split())
-        if el.name == "p":
+        if el.name in ("p", "figcaption"):
             if len(text) > 40 or text.startswith("Answer:"):  # checklist answers are short paragraphs
                 out.append((section, nearest, text))
         elif "ltx_title" in (el.get("class") or []):
@@ -106,6 +108,14 @@ def build(blocks: list[tuple[str, str, str]]) -> dict:
     if intro_text:
         pieces.append("[Introduction, last part]\n" + intro_text)
         used.update(intro)
+    # Note 9-3: seeds, spread and repeated runs sit in result sections and table captions, outside the matched
+    # sections; up to VAR_CAP characters of such paragraphs and captions come right after the introduction.
+    var = [p for s, h, p in blocks if VAR_RE.search(p) and not SKIP_RE.search(h) and not CHECKLIST_RE.search(s)
+           and p not in used]
+    if var:
+        text = "\n".join(var)
+        pieces.append("[Seeds, variance and repeated runs]\n" + (text if len(text) <= VAR_CAP else text[:VAR_CAP] + " [...]"))
+        used.update(var)
     headings = []
     for s, h, p in blocks:
         if (SECTION_RE.search(h) or SECTION_RE.search(s)) and not SKIP_RE.search(h) and not CHECKLIST_RE.search(s) \

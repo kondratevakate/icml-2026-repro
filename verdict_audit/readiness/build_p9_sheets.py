@@ -6,7 +6,7 @@ results/p9_coding_manifest.json. `wave` assigns papers that have an excerpt and 
 for coder 1 and, for the coder-2 sample, to new coder-2 batches, in item-id order; earlier batches never change.
 `status` lists batches and whether their codes exist and are complete.
 
-Usage: python build_p9_sheets.py init | wave | status
+Usage: python build_p9_sheets.py init | wave | rebuild | status
 """
 from __future__ import annotations
 
@@ -95,6 +95,25 @@ def wave() -> None:
     print("new batches:", {r: (v[0], v[-1], len(v)) for r, v in new.items()} or "none")
 
 
+def rebuild() -> None:
+    """Rewrite the sheets of existing batches from the current excerpts (same items, Note 9-3)."""
+    keys = json.loads(KEYS.read_text(encoding="utf-8"))
+    batches = json.loads(BATCHES.read_text(encoding="utf-8"))
+    ex = excerpts()
+    for role in ("coder1", "coder2"):
+        for b in batches[role]:
+            if (CODES / f"p9_{role}_batch_{b['batch']:03d}.csv").exists():
+                raise SystemExit(f"{role} batch {b['batch']} is already coded; not rewriting its sheet")
+            with (SHEETS / f"p9_{role}_batch_{b['batch']:03d}.csv").open("w", newline="", encoding="utf-8") as fh:
+                w = csv.DictWriter(fh, ["item_id", "title", "truncated", "excerpt"])
+                w.writeheader()
+                for i in b["items"]:
+                    r = ex[keys[i]["key"]]
+                    w.writerow(dict(item_id=i, title=keys[i]["title"], truncated="yes" if r["truncated"] else "no",
+                                    excerpt=r["excerpt"]))
+    print("rewrote", sum(len(v) for v in batches.values()), "sheets")
+
+
 def status() -> None:
     batches = json.loads(BATCHES.read_text(encoding="utf-8"))
     for role in ("coder1", "coder2"):
@@ -113,4 +132,4 @@ def status() -> None:
 
 
 if __name__ == "__main__":
-    {"init": init, "wave": wave, "status": status}[sys.argv[1] if len(sys.argv) > 1 else "status"]()
+    {"init": init, "wave": wave, "rebuild": rebuild, "status": status}[sys.argv[1] if len(sys.argv) > 1 else "status"]()

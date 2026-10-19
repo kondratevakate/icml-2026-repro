@@ -577,3 +577,7 @@ Implementation choices left open by the protocol, fixed before coding (`build_p9
 ## Note 9-2 (2026-10-19)
 
 By Kate's decision the pilot counts only as aggregate numbers in the overall test totals: no paper is named with an outcome, the authors are not contacted, and per-paper pilot files are not published.
+
+## Note 9-3 (2026-10-19)
+
+After the first two coder batches (recoded, not used), the excerpt also takes up to 1,500 characters of paragraphs and table captions on seeds, spread and repeated runs, right after the introduction, because the variance field was otherwise mostly `unclear`.
