@@ -1,0 +1,6 @@
+official/
+evidence/pdf_pages/
+repro_ophiuchus/evidence/
+.trackio/
+__pycache__/
+.pytest_cache/
