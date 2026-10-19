@@ -1,12 +1,14 @@
 # Reproduction: Conditional Coverage Diagnostics for Conformal Prediction
 
-[OpenReview paper](https://openreview.net/forum?id=vaApZm6MKM)
-
 ## Pages
 
 | Page |
 | --- |
 | [Executive summary](#/executive-summary) |
-| [Claim 1: ERT metrics with modern classifiers have higher statistical power than simple classifiers behind metrics like CovGap](#/claim-1-ert-metrics-with-modern-classifiers-have-higher-statistical-power-than-simple-classifiers-behind-metrics-like-covgap) |
-| [Claim 2: The metrics can separate the effects of over- and under-coverage](#/claim-2-the-metrics-can-separate-the-effects-of-over-and-under-coverage) |
+| [Claim 1: ERT metric family](#/claim-1-ert-metric-family) |
+| [Claim 2: LightGBM statistical power](#/claim-2-lightgbm-statistical-power) |
+| [Claim 3: Synthetic convergence](#/claim-3-synthetic-convergence) |
+| [Claim 4: Asymmetric decomposition](#/claim-4-asymmetric-decomposition) |
+| [Claim 5: Classification decomposition](#/claim-5-classification-decomposition) |
+| [Claim 6: Algorithm 1 cross-fitting](#/claim-6-algorithm-1-cross-fitting) |
 | [Conclusion](#/conclusion) |

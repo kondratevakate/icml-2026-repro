@@ -11,10 +11,15 @@
     "arxiv_id": "2512.11779"
   },
   "private": false,
-  "autosync": true,
   "local_artifacts": [
     "repro-conditional-coverage-diagnostics-for-conformal-prediction/repro-bundle:v0"
   ],
   "local_dashboards": {},
-  "artifacts_bucket": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction-artifacts"
+  "artifacts_bucket": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction-artifacts",
+  "repos_public": true,
+  "embed_content": true,
+  "trace_dataset": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction-traces",
+  "workspace_bucket": "kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction-artifacts",
+  "trace_publication": "public",
+  "workspace_publication": "public"
 }

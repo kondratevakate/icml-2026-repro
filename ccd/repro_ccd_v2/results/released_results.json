@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "official_commit": "39a99dcad92205a15d93f2c5fec40c76540abf1c",
+  "sha256": {
+    "classifier_results.csv": "070257695f54bd4f2c0d2a8911a765ad49582dc776ed6b235723d4cd43a1230b",
+    "classification_results.csv": "e6261f6f8c26b5af98bf0b6297e38460829f46086e58d9773d7e415e55871b83"
+  },
+  "table2_classifier_power": {
+    "rows": 5600,
+    "datasets": 8,
+    "experiments": 10,
+    "methods": 7,
+    "lightgbm_relative_l1_power_percent": 68.92900479082505,
+    "partitionwise_relative_l1_power_percent": 33.670548352764385,
+    "power_ratio": 2.047160149239622,
+    "matches_official_notebook": true
+  },
+  "table4_classification_decomposition": {
+    "rows": 80,
+    "datasets": [
+      "CIFAR10",
+      "CIFAR100",
+      "FashionMNIST",
+      "MNIST"
+    ],
+    "methods": [
+      "cumulative",
+      "likelihood"
+    ],
+    "groups": {
+      "CIFAR10/cumulative": {
+        "kl_under_mean": -0.02951636482503982,
+        "kl_over_mean": 0.01221973485697023,
+        "absolute_difference": 0.04173609968201005,
+        "repetitions": 10
+      },
+      "CIFAR10/likelihood": {
+        "kl_under_mean": 0.00676627394822383,
+        "kl_over_mean": 0.02156181978604231,
+        "absolute_difference": 0.014795545837818481,
+        "repetitions": 10
+      },
+      "CIFAR100/cumulative": {
+        "kl_under_mean": 0.016023607273191902,
+        "kl_over_mean": 0.1745270594703445,
+        "absolute_difference": 0.1585034521971526,
+        "repetitions": 10
+      },
+      "CIFAR100/likelihood": {
+        "kl_under_mean": 0.08522980659590908,
+        "kl_over_mean": 0.3234126213317108,
+        "absolute_difference": 0.23818281473580172,
+        "repetitions": 10
+      },
+      "FashionMNIST/cumulative": {
+        "kl_under_mean": -0.18529993444681164,
+        "kl_over_mean": -0.07480641230940815,
+        "absolute_difference": 0.11049352213740349,
+        "repetitions": 10
+      },
+      "FashionMNIST/likelihood": {
+        "kl_under_mean": -0.04212642349302763,
+        "kl_over_mean": -0.02598746716976159,
+        "absolute_difference": 0.01613895632326604,
+        "repetitions": 10
+      },
+      "MNIST/cumulative": {
+        "kl_under_mean": -0.15939179494622036,
+        "kl_over_mean": -0.05685761234871077,
+        "absolute_difference": 0.10253418259750958,
+        "repetitions": 10
+      },
+      "MNIST/likelihood": {
+        "kl_under_mean": -0.12831058113152882,
+        "kl_over_mean": -0.05879531943273254,
+        "absolute_difference": 0.06951526169879628,
+        "repetitions": 10
+      }
+    },
+    "groups_with_absolute_difference_above_0_01": 8,
+    "maximum_additive_identity_residual": 8.940696716308594e-08
+  },
+  "interpretation": "The official released rows independently reproduce the notebook's LightGBM versus PartitionWise relative-power aggregation and show distinct directional KL components in every dataset/method group."
+}

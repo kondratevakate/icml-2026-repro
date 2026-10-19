@@ -11,6 +11,7 @@ tags:
  - open-experiment
  - icml2026-repro
  - paper-vaApZm6MKM
+ - arxiv:2512.11779
 ---
 
 # Reproduction: Conditional Coverage Diagnostics for Conformal Prediction

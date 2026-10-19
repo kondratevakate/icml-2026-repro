@@ -3,30 +3,20 @@
 
 ---
 <!-- trackio-cell
-{"type": "markdown", "id": "cell_e93d9760790c", "created_at": "2026-07-19T08:18:56+00:00", "title": "Reproduction bundle"}
+{"type": "markdown", "id": "cell_ccd_v2_conclusion", "created_at": "2026-07-29T09:00:00+00:00", "title": "Conclusion"}
 -->
-**Reproduction bundle** (the experiment script) is attached as the artifact cell below.
+All six judge-anchored claims have direct evidence. C1, C3, C4, and C6 use
+independent calculations or experiments. C2 and C5 use exact, hash-pinned
+released outputs and reproduce the authors' aggregation without claiming a
+fresh model-training run.
 
-**Rerun:**
+The main practical finding remains unchanged: marginal coverage can conceal
+large local errors. On the paper's heteroscedastic model, learned ERT recovers
+92% of the analytic violation while an unaligned grouping recovers only 5%.
 
-    python verify_ert.py
+Rerun:
 
-Needs numpy + torch (CPU only). No GPU, no external data — the paper's own synthetic model with analytic ground-truth conditional coverage.
-
-
----
-<!-- trackio-cell
-{"type": "artifact", "id": "cell_7e030056f2f2", "created_at": "2026-07-19T08:20:09+00:00", "title": "Reproduction bundle", "artifact": "repro-conditional-coverage-diagnostics-for-conformal-prediction/repro-bundle:v0", "artifact_type": "dataset"}
--->
-**📦 Artifact** `repro-conditional-coverage-diagnostics-for-conformal-prediction/repro-bundle:v0` · dataset
-
-https://huggingface.co/buckets/kondratevakate/repro-conditional-coverage-diagnostics-for-conformal-prediction-artifacts#repro-conditional-coverage-diagnostics-for-conformal-prediction/repro-bundle:v0
-
-
----
-<!-- trackio-cell
-{"type": "dashboard", "id": "cell_85972c2bef23", "created_at": "2026-07-19T08:20:12+00:00", "title": "Dashboard: repro-conditional-coverage-diagnostics-for-conformal-prediction", "dashboard_project": "repro-conditional-coverage-diagnostics-for-conformal-prediction"}
--->
-**🎯 Trackio dashboard** `repro-conditional-coverage-diagnostics-for-conformal-prediction`
-
-trackio-local-dashboard://repro-conditional-coverage-diagnostics-for-conformal-prediction
+```powershell
+cd repro_ccd_v2
+python run_all.py
+```
