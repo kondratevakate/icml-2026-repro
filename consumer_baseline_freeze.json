@@ -1,0 +1,16 @@
+{
+  "protocol": "best-effort-consumer-subscription-baseline",
+  "version": "2026-07-29",
+  "frozen_at": "2026-07-29",
+  "files": {
+    "CONSUMER_SUBSCRIPTION_BASELINE.md": {
+      "sha256": "9C75E96BDB6B3E0E399AD02190D6286045F103CDA4FE15ADF7887EDB95834402"
+    },
+    "CONSUMER_BASELINE_PROMPT_V1.md": {
+      "sha256": "D616D76FEAC36347E9259910FC28F09A920C52C00B6D5BE7F5E22A7B91630A63"
+    },
+    "consumer_baseline_historical_claude.csv": {
+      "sha256": "573B433BE2C826F2DB9A5A308C41280C6F6185D112BBD8BEF0C0F10E0AA6C21E"
+    }
+  }
+}
