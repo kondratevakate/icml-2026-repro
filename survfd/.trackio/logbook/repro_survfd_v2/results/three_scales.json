@@ -1,0 +1,393 @@
+{
+  "status": "passed",
+  "paper_anchor": "Section 3; Theorems 3.2-3.3; Corollary 3.4; Proposition 3.5",
+  "measure": "uniform counting measure on a 5^3 Cartesian feature grid",
+  "feature_grid_points": 125,
+  "time_points": [
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "maximum_reconstruction_error": 8.881784197001252e-16,
+  "checks": {
+    "additive_log_hazard_has_no_higher_order_effects": true,
+    "hazard_link_creates_higher_order_effects": true,
+    "survival_scale_has_time_dependent_higher_order_effects": true,
+    "explicit_log_hazard_pair_is_time_dependent": true
+  },
+  "scenarios": {
+    "additive_time_independent": {
+      "log_hazard": {
+        "maximum_reconstruction_error": 4.440892098500626e-16,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 2.5257286443082543,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.4242640687119288,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.28284271247461923,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.21213203435596437,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 1.3550179913572753e-15,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": false
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 1.3411200035432723e-15,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": false
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 1.4954667051798808e-15,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": false
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 1.3717972479213989e-15,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": false
+          }
+        }
+      },
+      "hazard": {
+        "maximum_reconstruction_error": 5.551115123125783e-17,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 0.09297976626214861,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.03856678888035633,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.026031758561967083,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.019610505737450677,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 0.010797632399001828,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 0.008134180854799233,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 0.0054903983001644285,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 0.002277345282999591,
+            "maximum_time_spread": 0.0,
+            "time_dependent": false,
+            "nonzero": true
+          }
+        }
+      },
+      "survival": {
+        "maximum_reconstruction_error": 2.220446049250313e-16,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 0.7998511754955118,
+            "maximum_time_spread": 0.44245504215566134,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.08179920123349681,
+            "maximum_time_spread": 0.16768001055341875,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.05414696776542914,
+            "maximum_time_spread": 0.10898164918520259,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.04050522756881297,
+            "maximum_time_spread": 0.08102468473480406,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 0.011877051910831854,
+            "maximum_time_spread": 0.02597819157404102,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 0.008809103174795605,
+            "maximum_time_spread": 0.018757061498869576,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 0.005689237234171759,
+            "maximum_time_spread": 0.012168221808051438,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 0.002543844291475923,
+            "maximum_time_spread": 0.025272399197598272,
+            "time_dependent": true,
+            "nonzero": true
+          }
+        }
+      }
+    },
+    "time_dependent_pair": {
+      "log_hazard": {
+        "maximum_reconstruction_error": 8.881784197001252e-16,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 2.5257286443082556,
+            "maximum_time_spread": 4.440892098500626e-16,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.4242640687119285,
+            "maximum_time_spread": 8.881784197001252e-16,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.28284271247461906,
+            "maximum_time_spread": 8.881784197001252e-16,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.21213203435596434,
+            "maximum_time_spread": 1.3322676295501878e-15,
+            "time_dependent": false,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 0.34040215491853365,
+            "maximum_time_spread": 0.8958797346140281,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 5.91155970123713e-16,
+            "maximum_time_spread": 1.7763568394002505e-15,
+            "time_dependent": false,
+            "nonzero": false
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 6.082563312853015e-16,
+            "maximum_time_spread": 1.7763568394002505e-15,
+            "time_dependent": false,
+            "nonzero": false
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 7.139208855771735e-16,
+            "maximum_time_spread": 2.6645352591003757e-15,
+            "time_dependent": false,
+            "nonzero": false
+          }
+        }
+      },
+      "hazard": {
+        "maximum_reconstruction_error": 5.551115123125783e-17,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 0.09579357381729868,
+            "maximum_time_spread": 0.010304078956984625,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.03461221939866989,
+            "maximum_time_spread": 0.015029886790931625,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.01786637481948192,
+            "maximum_time_spread": 0.028873832961072002,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.020203970223570986,
+            "maximum_time_spread": 0.0032969921696707483,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 0.028771127645854155,
+            "maximum_time_spread": 0.13114498931147395,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 0.0073001165134122005,
+            "maximum_time_spread": 0.004809107079594942,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 0.003768224636283338,
+            "maximum_time_spread": 0.009238749196162507,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 0.006068162853638375,
+            "maximum_time_spread": 0.04196241164848556,
+            "time_dependent": true,
+            "nonzero": true
+          }
+        }
+      },
+      "survival": {
+        "maximum_reconstruction_error": 3.3306690738754696e-16,
+        "subsets": {
+          "empty": {
+            "order": 0,
+            "rms_magnitude": 0.7971717839076053,
+            "maximum_time_spread": 0.45583806821523304,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0": {
+            "order": 1,
+            "rms_magnitude": 0.07544204609429064,
+            "maximum_time_spread": 0.16296636515782265,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1": {
+            "order": 1,
+            "rms_magnitude": 0.04550599851325249,
+            "maximum_time_spread": 0.10431262585041845,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "2": {
+            "order": 1,
+            "rms_magnitude": 0.04081209610915166,
+            "maximum_time_spread": 0.08071512530341035,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1": {
+            "order": 2,
+            "rms_magnitude": 0.050575822576245995,
+            "maximum_time_spread": 0.23605214107719202,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,2": {
+            "order": 2,
+            "rms_magnitude": 0.008796786193731027,
+            "maximum_time_spread": 0.01842199872472372,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "1,2": {
+            "order": 2,
+            "rms_magnitude": 0.006419568209005187,
+            "maximum_time_spread": 0.01571821231118048,
+            "time_dependent": true,
+            "nonzero": true
+          },
+          "0,1,2": {
+            "order": 3,
+            "rms_magnitude": 0.0046341061855034804,
+            "maximum_time_spread": 0.02340867695499954,
+            "time_dependent": true,
+            "nonzero": true
+          }
+        }
+      }
+    }
+  },
+  "interpretation": "The exact decomposition reconstructs every target on log-hazard, hazard, and survival scales. The nonlinear links create higher-order effects even when the log-risk is additive, and an explicit time-dependent pair is correctly classified."
+}

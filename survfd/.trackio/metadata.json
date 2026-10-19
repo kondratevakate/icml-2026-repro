@@ -11,11 +11,16 @@
     "arxiv_id": "2602.16505"
   },
   "private": false,
-  "autosync": true,
   "local_artifacts": [
     "repro-functional-decomposition-and-shapley-interactions-for-interpre/repro-bundle:v0",
     "repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode/repro-bundle:v0"
   ],
   "local_dashboards": {},
-  "artifacts_bucket": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode-artifacts"
+  "artifacts_bucket": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode-artifacts",
+  "repos_public": true,
+  "embed_content": true,
+  "trace_dataset": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode-traces",
+  "workspace_bucket": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode-artifacts",
+  "trace_publication": "public",
+  "workspace_publication": "public"
 }

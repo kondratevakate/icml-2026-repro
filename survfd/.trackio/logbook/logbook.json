@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Reproduction: Functional Decomposition and Shapley Interactions for Interpreting Survival Models",
   "emoji": "🎯",
   "space_id": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode",
@@ -10,7 +10,7 @@
     "icml2026-repro",
     "paper-SldP4LGjdz"
   ],
-  "updated_at": "2026-07-20T14:28:47+00:00",
+  "updated_at": "2026-07-29T08:51:43+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Functional Decomposition and Shapley Interactions for Interpreting Survival Models",
@@ -20,6 +20,12 @@
         "slug": "executive-summary",
         "title": "Executive summary",
         "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-three-scale-functional-anova-audit",
+        "title": "Claim 1 repair: exact decomposition on log-hazard, hazard, and survival scales",
+        "file": "pages/claim-1-three-scale-functional-anova-audit/page.md",
         "children": []
       },
       {
@@ -47,6 +53,12 @@
         "children": []
       },
       {
+        "slug": "claim-6-regression-based-shapley-approximators-improve-fidelity-as-feature-count-grows",
+        "title": "Claim 6: regression-based Shapley approximators improve fidelity as feature count grows",
+        "file": "pages/claim-6-regression-based-shapley-approximators-improve-fidelity-as-feature-count-grows/page.md",
+        "children": []
+      },
+      {
         "slug": "conclusion",
         "title": "Conclusion",
         "file": "pages/conclusion/page.md",
@@ -54,6 +66,15 @@
       }
     ]
   },
-  "agent_view_tokens": 5868,
-  "revision": "1784557727436481700"
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-functional-decomposition-and-shapley-interactions-for-interpreting-survival-mode-artifacts"
+  },
+  "agent_view_tokens": 7280,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "92cd6b932eb0a2848474"
 }

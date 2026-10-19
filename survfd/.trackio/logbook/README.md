@@ -11,6 +11,7 @@ tags:
  - open-experiment
  - icml2026-repro
  - paper-SldP4LGjdz
+ - arxiv:2602.16505
 ---
 
 # Reproduction: Functional Decomposition and Shapley Interactions for Interpreting Survival Models
