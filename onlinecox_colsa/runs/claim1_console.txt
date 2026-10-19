@@ -1,0 +1,42 @@
+﻿== Data ==
+rows: 6000  groups: 1500/1500/1500/500/500/500  events: 1965 
+
+AIC over 1..5 basis: 618.48 -153.22 -193.73 -196.4 -195.11  -> best n_basis = 4 
+
+== COLSA sequential estimate (final, after 6 batches) ==
+        coef exp(coef)      se        z       p
+x1   0.15663   1.16957 0.01016 15.42388 0.00000
+x2  -0.17255   0.84152 0.02231 -7.73329 0.00000
+x31  0.38273   1.46629 0.05782  6.61921 0.00000
+x42  0.27510   1.31666 0.09094  3.02504 0.00249
+x43  0.29164   1.33862 0.08329  3.50164 0.00046
+x44  0.17682   1.19341 0.08220  2.15106 0.03147
+
+fit object size after each batch (bytes): 9544 10088 10104 10104 10120 10120 
+constant-memory check: max/min object.size ratio = 1.06 
+
+== Pooled coxph (all 6000 rows, Breslow) ==
+        coef se(coef)        z
+x1   0.15634  0.01011 15.45859
+x2  -0.17103  0.02215 -7.72218
+x31  0.38461  0.05881  6.53983
+x42  0.27695  0.08985  3.08242
+x43  0.29373  0.08190  3.58631
+x44  0.17854  0.08049  2.21829
+
+== Claim 1 comparison (COLSA vs pooled partial likelihood vs truth) ==
+  var  true colsa_coef pooled_coef colsa_se pooled_se coef_absdiff se_ratio
+1  x1  0.15     0.1566      0.1563  0.01016   0.01011    0.0002959   1.0041
+2  x2 -0.15    -0.1726     -0.1710  0.02231   0.02215    0.0015216   1.0074
+3 x31  0.30     0.3827      0.3846  0.05782   0.05881    0.0018747   0.9832
+4 x42  0.30     0.2751      0.2769  0.09094   0.08985    0.0018477   1.0122
+5 x43  0.30     0.2916      0.2937  0.08329   0.08190    0.0020910   1.0169
+6 x44  0.30     0.1768      0.1785  0.08220   0.08049    0.0017282   1.0213
+
+== Summary metrics ==
+max |COLSA - pooled| coef diff : 0.0021 
+SE ratio (COLSA/pooled) range  : 0.983 - 1.021 
+RMSE COLSA vs true             : 0.0623 
+RMSE pooled vs true            : 0.0619 
+
+Saved runs/claim1_result.rds

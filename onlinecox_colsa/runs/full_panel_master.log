@@ -1,0 +1,45 @@
+﻿===== K=6 REPS=200 =====
+== Claim 2 FULL, K= 6 , 200 reps ==
+       method    Abias    RMSE  AvgCP
+1      Oracle 0.006337 0.10255 0.9608
+2       COLSA 0.005465 0.10206 0.9592
+3        Meta 0.007082 0.10746 0.9517
+4      Online 0.008729 0.09859 0.9625
+5         SGD 0.206360 0.31323     NA
+6 SGD_Offline 0.058382 0.11148     NA
+Ranking RMSE: Online < COLSA < Oracle < Meta < SGD_Offline < SGD 
+Saved runs/claim2full_K6.rds
+===== K=20 REPS=120 =====
+== Claim 2 FULL, K= 20 , 120 reps ==
+       method    Abias    RMSE  AvgCP
+1      Oracle 0.006590 0.07187 0.9514
+2       COLSA 0.005249 0.07215 0.9556
+3        Meta 0.018519 0.07565 0.9458
+4      Online 0.008482 0.06885 0.9583
+5         SGD 0.136989 0.23978     NA
+6 SGD_Offline 0.018582 0.06923     NA
+Ranking RMSE: Online < SGD_Offline < Oracle < COLSA < Meta < SGD 
+Saved runs/claim2full_K20.rds
+===== K=50 REPS=60 =====
+== Claim 2 FULL, K= 50 , 60 reps ==
+       method    Abias    RMSE  AvgCP
+1      Oracle 0.004226 0.05274 0.9278
+2       COLSA 0.006132 0.05293 0.9224
+3        Meta 0.032087 0.06785 0.8750
+4      Online 0.019153 0.05397 0.8944
+5         SGD 0.113982 0.18552     NA
+6 SGD_Offline 0.012282 0.05406     NA
+Ranking RMSE: Oracle < COLSA < Online < SGD_Offline < Meta < SGD 
+Saved runs/claim2full_K50.rds
+===== K=200 REPS=25 =====
+== Claim 2 FULL, K= 200 , 25 reps ==
+       method    Abias    RMSE  AvgCP
+1      Oracle 0.002405 0.02524 0.9533
+2       COLSA 0.001934 0.02450 0.9603
+3        Meta 0.028833 0.04447 0.7933
+4      Online 0.015045 0.02820 0.8400
+5         SGD 0.089925 0.13161     NA
+6 SGD_Offline 0.002393 0.02722     NA
+Ranking RMSE: COLSA < Oracle < SGD_Offline < Online < Meta < SGD 
+Saved runs/claim2full_K200.rds
+ALL DONE
