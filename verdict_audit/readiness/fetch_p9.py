@@ -34,6 +34,9 @@ RAW, META = DS / "raw", DS / "metadata"
 MANIFEST = META / "manifest.jsonl"
 HEADERS = {"User-Agent": "Mozilla/5.0 (research audit of reproducibility practice; 1 request per 3 s per host)"}
 DELAY, SEED, MIN_TEXT, RATIO = 3.0, 20261019, 2000, 0.95
+# arXiv answered 429 at one request per 3 s on 2026-10-19 after ~3,000 papers; it gets 6 s (still within the
+# protocol's 'at most one request per 3 s per host').
+DELAY_BY_FAMILY = {"arxiv": 6.0}
 FINAL = ("ok", "no_match", "ambiguous", "no_fulltext")
 VENUE_INDEX = {
     "icml-2025": ("pmlr", "https://proceedings.mlr.press/v267/"),
@@ -52,7 +55,7 @@ def family(url: str) -> str:
 def get(url: str) -> tuple[bytes, str] | None:
     """GET with per-host-family spacing; None on 404; retries 429/5xx three times, then raises."""
     for attempt in range(4):
-        wait = DELAY - (time.monotonic() - _last.get(family(url), 0.0))
+        wait = DELAY_BY_FAMILY.get(family(url), DELAY) - (time.monotonic() - _last.get(family(url), 0.0))
         if wait > 0:
             time.sleep(wait)
         _last[family(url)] = time.monotonic()
@@ -63,7 +66,7 @@ def get(url: str) -> tuple[bytes, str] | None:
             if e.code == 404:
                 return None
             if e.code in (429, 500, 502, 503, 504) and attempt < 3:
-                time.sleep(30 * (attempt + 1))
+                time.sleep(60 * 2 ** attempt)  # 60, 120, 240 s
                 continue
             raise
     raise RuntimeError("unreachable")
