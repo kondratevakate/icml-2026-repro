@@ -385,3 +385,169 @@ the population. One descriptive check, no label, in
   distinct team namespaces among attempted medical papers with O3 = 1, to
   see whether one team drives the difference. Descriptive, key
   `PH8_d.teams_o3_1`.
+
+# Protocol 9: a 2025–2026 baseline of reproducibility practice in life-science ML
+
+Frozen 2026-10-19, approved by Kate in chat, before the frame was drawn, any
+full text was fetched or any pilot run. Designed after the results of
+protocols 6–8 were seen.
+Purpose: a re-runnable baseline of what authors of life-science papers at
+top ML venues stated and released in 2025–2026, compared with other papers,
+anchored on the ICML 2026 agent reproductions, with a pilot of toy
+(synthetic-data) checks for restricted-data papers. Built to be repeated
+with the same frame and codebook in later years.
+
+## Questions
+Q9.1 (descriptive) Papers, life-science papers and declared code links per
+     venue-year (protocol 7 data; no new download).
+Q9.2 (descriptive) ICML 2026 funnel: papers, attempted, decided, fully
+     verified; life science versus other (protocols 6–8 results).
+Q9.3 (primary) Prevalence of reproducibility practices in full texts.
+Q9.4 (secondary) Do stated practices match what reproducers found
+     (ICML 2026 logbooks as reference standard)?
+Q9.5 (secondary) Do compute and data scale account for the ICML 2026
+     decidability gap?
+Q9.6 (descriptive) Share of claims in restricted-data life-science papers
+     that are checkable without the data (theory or mechanism).
+Q9.7 (pilot) Can released code plus schema-faithful synthetic data decide
+     mechanism claims of restricted-data papers?
+
+## Frame
+* Venue-years: CVPR 2025, ICCV 2025, ECCV 2026, ICLR 2025, ICLR 2026,
+  ICML 2025, ICML 2026, NeurIPS 2025, NeurIPS 2026 (protocol 7 sources;
+  CVPR 2026 is not among them).
+* Life science = protocol 7 label clinical or life_science: all 2,170.
+  Other = non-candidates: random sample of equal size, allocated to
+  venue-years in proportion to life-science counts, seed 20261019.
+  Candidates labelled `no` are excluded.
+* Frame (ids, group, venue-year, seed) written to results/p9_frame.json
+  and hashed before any full text is fetched.
+
+## Full text
+* Order: arXiv HTML, arXiv PDF (id by arXiv API title search; accepted if
+  normalised titles are identical or similarity >= 0.95 and the arXiv year
+  is at least venue year - 1; ambiguous matches excluded), then the open
+  proceedings PDF (CVF open access, ECVA, PMLR, proceedings.neurips.cc).
+  No OpenReview scraping. At most one request per 3 s per host. Papers
+  without full text are counted by group and venue-year, not imputed.
+* Storage: C:\Projects\data\datasets\literature\ml-venue-fulltext\
+  2025-2026-v1\raw\, registered in _registry/datasets.json with retrieval
+  date and SHA-256 manifest. Full texts never enter git.
+* Excerpt, cap 15,000 characters, filled in this order: last 3,000
+  characters of the Introduction; sections whose heading matches
+  availab|reproducib|ethic|data|experimental setup|implementation|training
+  details|compute|resources|limitation; NeurIPS checklist items 4-8 and 13
+  when present; then paragraphs matching the protocol 8 regex. A truncation
+  flag is stored per paper.
+
+## Codebook (per paper; `unclear` allowed in every field)
+1  claims: listed_and_linked (main claims enumerated and each tied to a
+   table, figure or theorem), listed, none
+2  code: released (link given), promised, no
+3  main_data_access: open, credentialed_or_request, private,
+   synthetic_only (protocol 8)
+4  open_data_experiment: yes, no
+5  synthetic_or_sample_release: yes, no (protocol 8 and Note 8-1)
+6  weights_release: yes, no
+7  outputs_release: yes (predictions, raw outputs or logs), no
+8  variance: yes (several seeds, error bars or intervals on main results), no
+9  environment: yes (versions, requirements file or container), no
+10 compute: amount (hardware and time or GPU-hours), hardware_only, none
+11 compute_tier: low (<= 1 GPU-day or CPU only), medium (1-30 GPU-days),
+   high (> 30), not_stated
+12 data_scale: largest training set < 10^4, 10^4-10^6, > 10^6 samples,
+   not_stated
+Rules fixed now (from Note 8-1): stated text only, no outside knowledge of
+a dataset's terms; a named dataset without stated terms is `unclear`; on a
+release field, `no` versus `unclear` follows the truncation flag.
+
+## Coding and agreement
+* Claude subagents, claude-sonnet-5-5, 20 papers per batch, group hidden.
+  Coder 1 all; coder 2 a random 25% (seed 20261019).
+* Gate: Cohen's kappa >= 0.80 on each primary field (code,
+  main_data_access, weights_release, variance, compute). Below the gate,
+  coder 2 codes all papers for that field and every disagreement is
+  adjudicated. Other fields are descriptive, reported with their kappa.
+* Adjudication by this session from the excerpt only, with a reason.
+
+## Reference standard (Q9.4)
+* ICML 2026 papers in the frame with at least one logbook (author's
+  namespace excluded). From logbook claims and the judge's evidence text,
+  two blind coders label what reproducers found: code_used (authors' code
+  obtained and run), data_obtained (main data obtained), weights_used;
+  each yes, no, unclear.
+* Reported: agreement of full-text fields with these (sensitivity,
+  specificity, kappa).
+* NeurIPS 2025/2026: agreement of `code` with checklist item 5 where
+  present (self-report; consistency only).
+
+## Analyses
+A9.1 Counts and shares per venue-year (aggregation of protocol 7 results).
+A9.2 Funnel from protocols 6-8, each number with its source file.
+A9.3 Prevalence by group and venue-year, Wilson intervals; life science
+     minus other, Mantel-Haenszel over venue-years, paper bootstrap within
+     strata (2000 resamples, seed 20261017; inputs in sorted id order,
+     checked under two hash seeds). 2025 versus 2026 descriptive.
+     Labels only if the MH CI excludes 0 in the stated direction:
+     L9.1 life-science papers report open main data less often;
+     L9.2 life-science papers release weights less often;
+     L9.3 life-science papers report variance less often.
+     `unclear` excluded and counted per field.
+A9.4 Agreement tables for Q9.4.
+A9.5 ICML 2026 attempted papers in the frame: decided share by group; MH
+     gap adjusted for compute_tier, for data_scale, and for both (strata
+     with both groups only). Label "scale accounts for the gap" only if the
+     both-adjusted CI includes 0 and its point estimate is less than half
+     the unadjusted gap.
+A9.6 Share of challenge claims typed theory or mechanism (H8.4 codes) in
+     ICML 2026 attempted life-science papers with restricted main data
+     (protocol 8 codes), Wilson interval; same for open-data papers.
+
+## Toy pilot (Q9.7)
+* Wave 1 (now): ICML 2026 attempted life-science papers coded restricted
+  (credentialed_or_request or private) in protocol 8 that state a code
+  release: 5 papers. Wave 2 (after A9.3): up to 5 more, random (seed
+  20261019) among census life-science papers with restricted main data and
+  code `released`, ICML 2026 first.
+* Per paper, from the paper and its repository only. No real restricted
+  data is downloaded or requested; credentialed datasets are never touched.
+  1 Clone the repository; record commit hash and licence; skip if no
+    licence permits use.
+  2 CPU-only Docker container; network off after dependency installation;
+    no host mounts except a per-paper work directory; 8 GB memory; 2 hours
+    wall time per paper.
+  3 Write a schema-faithful synthetic dataset (shapes, field names, types
+    and label space from the paper and the data loader; random values;
+    small size).
+  4 For each challenge claim with H8.4 type theory or mechanism, decide
+    before running whether it can be observed on synthetic data, write the
+    check, run it, and record consistent, inconsistent,
+    not_checkable_on_synthetic, or blocked (no running pipeline within
+    budget). Headline and secondary claims are recorded as
+    not_checkable_on_synthetic unless a check is stated (negative control).
+  5 The executor is blind to challenge verdicts.
+* Executor: one Claude subagent per paper (claude-sonnet-5-5); a second
+  subagent re-runs the scripts and confirms each consistent or
+  inconsistent outcome from the logs.
+* Reported: share of theory/mechanism claims that were checkable
+  (consistent or inconsistent), Wilson interval; time to a running
+  pipeline; reasons for blocked; every inconsistent outcome in full,
+  offered to the authors before publication; descriptive comparison with
+  the challenge verdicts for the same claims. No label (feasibility, not
+  prevalence).
+
+## Rerun as a baseline
+Frame procedure, codebook, extraction code, prompts and model id are
+frozen here. A later rerun applies them to new venue-years and re-codes a
+random 10% of the 2025-2026 papers with its new coder model to measure
+instrument drift.
+
+## Evidence boundary
+* Full texts show what authors state, not working artifacts; Q9.4 measures
+  that gap for ICML 2026 only.
+* Coders and executors are language models; the reference standard is
+  coded by language models from logbooks judged by an LLM.
+* ICLR full texts depend on arXiv; papers without full text are excluded
+  and counted.
+* Aggregates and per-paper codes keyed by public ids; no author named;
+  repository code is not redistributed.
