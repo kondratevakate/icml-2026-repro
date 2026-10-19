@@ -35,3 +35,14 @@ def test_posthoc_mh_matches_risk_difference():
     assert abs(PH.mh(stratum("medical"), "open") - (-0.3)) < 1e-12
     assert abs(PH.mh(stratum("medical") + stratum("other"), "open") - (-0.3)) < 1e-12
     assert PH.mh([dict(g="medical", open=1, decided=1)], "open") is None
+
+
+def test_consensus_order_does_not_depend_on_hash_seed():
+    """Note 8-4: bootstrap input order must not follow set iteration order."""
+    import pytest
+    import p8_common as P
+    if not (P.P8 / "keys.json").exists():
+        pytest.skip("protocol 8 keys not present locally")
+    import analyze_p8 as A8
+    final, _, _ = A8.consensus("h85", tuple(A8.H85), A8.H85, False)
+    assert list(final) == sorted(final)

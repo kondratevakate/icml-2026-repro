@@ -352,3 +352,36 @@ computed, are reported as post hoc, with no label, in `results/p8_posthoc.json`
 * PH8-c: the H8.5 policy cells and Mantel-Haenszel difference recomputed
   among papers with at least one empirical claim verdict and
   `main_data_access` not `synthetic_only`.
+
+## Note 8-3 (2026-10-19, post hoc, before being computed)
+
+H8.5 counts hidden science among attempted papers only. If teams avoided
+medical papers that rely on restricted data, that count says little about
+the population. One descriptive check, no label, in
+`results/p8_posthoc.json` (`posthoc_p8.py`, key `PH8_d`):
+
+* PH8-d: among all ICML 2026 papers in the protocol 8 groups, the attempt
+  rate (at least one logbook outside the author's namespace) by protocol 7
+  outcome O3 (restricted-data mention in title or abstract), within medical
+  and within other papers, with Wilson intervals; within medical papers the
+  difference O3 = 1 minus O3 = 0 with a paper bootstrap CI (resampling within
+  O3 cells, 2000 resamples, seed 20261017).
+* O3 is an abstract-level regex and a lower bound on restricted data; a
+  paper whose abstract does not mention its data is counted as O3 = 0.
+
+## Note 8-4 (2026-10-19, correction, after PH8-d was computed)
+
+* Bug: `consensus()` in `analyze_p8.py` iterated a Python `set` of item ids,
+  whose order depends on the per-process string hash seed. The order of
+  papers entering the H8.3, H8.5 and PH8 bootstraps therefore changed between
+  runs, so their percentile intervals were not reproducible (point estimates
+  were). Found when a rerun of `posthoc_p8.py` moved the PH8-b interval from
+  −34.4…+27.2 to −31.7…+27.2 points. Fix: iterate the ids in sorted order.
+  `results/p8.json` and `results/p8_posthoc.json` are recomputed and checked
+  to be identical under two hash seeds; the values committed in 0e5ccb7 are
+  superseded. H8.1, H8.2 and H8.4 do not depend on this order.
+* Sanity check defined after PH8-d was seen (it showed medical papers with a
+  restricted-data mention attempted more often, not less): the number of
+  distinct team namespaces among attempted medical papers with O3 = 1, to
+  see whether one team drives the difference. Descriptive, key
+  `PH8_d.teams_o3_1`.

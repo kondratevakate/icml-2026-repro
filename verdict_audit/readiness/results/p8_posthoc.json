@@ -58,21 +58,21 @@
     },
     "medical_restricted_minus_open": -0.033333333333333326,
     "medical_restricted_minus_open_ci": [
-      -0.3444444444444445,
-      0.2723611111111104
+      -0.3277777777777778,
+      0.26666666666666666
     ],
     "access_counts": {
       "medical": {
-        "unclear": 27,
         "open": 36,
         "credentialed_or_request": 14,
-        "private": 1,
-        "synthetic_only": 1
+        "unclear": 27,
+        "synthetic_only": 1,
+        "private": 1
       },
       "other": {
+        "unclear": 26,
         "open": 57,
         "synthetic_only": 13,
-        "unclear": 26,
         "credentialed_or_request": 1
       }
     }
@@ -114,8 +114,58 @@
     },
     "mh_diff": -0.14890906195254022,
     "mh_ci": [
-      -0.3964166268514095,
-      0.10911371237458183
+      -0.40215400541487495,
+      0.09469660774008547
     ]
+  },
+  "PH8_d": {
+    "cells": {
+      "medical_o3_1": {
+        "n": 25,
+        "attempted": 20,
+        "rate": 0.8,
+        "wilson": [
+          0.6086866446346177,
+          0.9113954589934752
+        ]
+      },
+      "medical_o3_0": {
+        "n": 303,
+        "attempted": 90,
+        "rate": 0.297029702970297,
+        "wilson": [
+          0.248378734326636,
+          0.350762972664854
+        ]
+      },
+      "other_o3_1": {
+        "n": 56,
+        "attempted": 12,
+        "rate": 0.21428571428571427,
+        "wilson": [
+          0.127057803147445,
+          0.33819713656004946
+        ]
+      },
+      "other_o3_0": {
+        "n": 5335,
+        "attempted": 1809,
+        "rate": 0.33908153701968136,
+        "wilson": [
+          0.3264981194673918,
+          0.35189653453395553
+        ]
+      }
+    },
+    "medical_o3_minus_no_o3": 0.502970297029703,
+    "medical_o3_minus_no_o3_ci": [
+      0.32646864686468646,
+      0.6592739273927393
+    ],
+    "teams_o3_1": {
+      "papers_with_claims": 20,
+      "distinct_teams": 16,
+      "max_papers_one_team": 11
+    }
   }
 }

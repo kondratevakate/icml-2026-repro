@@ -231,15 +231,15 @@
     "diff_data_unavailable": {
       "diff": 0.10666666666666666,
       "ci": [
-        0.051721300989382185,
-        0.1699446445244764
+        0.0516004410153653,
+        0.16538826902929726
       ]
     },
     "diff_artifacts_missing": {
       "diff": 0.019999999999999997,
       "ci": [
-        -0.029909787155451378,
-        0.07427685687367912
+        -0.03198081508300953,
+        0.07108794281762508
       ]
     }
   },
@@ -350,44 +350,44 @@
     "prevalence": {
       "medical": {
         "main_data_access": {
-          "unclear": 27,
           "open": 36,
           "credentialed_or_request": 14,
-          "private": 1,
-          "synthetic_only": 1
+          "unclear": 27,
+          "synthetic_only": 1,
+          "private": 1
         },
         "open_data_experiment": {
-          "unclear": 28,
           "yes": 39,
-          "no": 12
+          "no": 12,
+          "unclear": 28
         },
         "synthetic_or_sample_release": {
-          "unclear": 40,
           "no": 37,
+          "unclear": 40,
           "yes": 2
         },
         "weights_release": {
-          "unclear": 37,
+          "no": 38,
           "yes": 4,
-          "no": 38
+          "unclear": 37
         },
         "n": 79
       },
       "other": {
         "main_data_access": {
-          "open": 57,
           "unclear": 26,
+          "open": 57,
           "synthetic_only": 13,
           "credentialed_or_request": 1
         },
         "open_data_experiment": {
+          "no": 22,
           "yes": 59,
-          "unclear": 16,
-          "no": 22
+          "unclear": 16
         },
         "synthetic_or_sample_release": {
-          "unclear": 41,
           "no": 55,
+          "unclear": 41,
           "yes": 1
         },
         "weights_release": {
@@ -442,8 +442,8 @@
     },
     "policy_mh_diff": -0.24321364762837877,
     "policy_mh_ci": [
-      -0.39404068929744684,
-      -0.09626606535646383
+      -0.39136937352313994,
+      -0.09292908189729704
     ],
     "unclear_excluded": 44,
     "label_open_data_experiment_decided_more_often": false

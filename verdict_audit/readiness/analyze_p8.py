@@ -89,7 +89,7 @@ def consensus(task: str, fields, cats_by_field, overlap_only: bool) -> tuple[dic
         if bad:
             raise SystemExit(f"{task}.{f}: unknown labels {bad}")
         agreement[f] = kappa([c1[i][f] for i in shared], [c2[i][f] for i in shared], cats_by_field[f])
-    for i in keys:
+    for i in sorted(keys):  # sorted: set order depends on the hash seed (Note 8-4)
         final[i] = {}
         for f in fields:
             if i in c2 and c1[i][f] != c2[i][f]:

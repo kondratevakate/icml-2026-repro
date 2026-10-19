@@ -1,4 +1,5 @@
-"""Protocol 8 post hoc analyses PH8-a, PH8-b, PH8-c (Note 8-2): composition of the H8.5 policy cells.
+"""Protocol 8 post hoc analyses: PH8-a to PH8-c (Note 8-2), composition of the H8.5 policy cells;
+PH8-d (Note 8-3), attempt rate by restricted-data mention.
 
 Usage: python posthoc_p8.py   -> results/p8_posthoc.json
 """
@@ -10,6 +11,7 @@ from collections import Counter, defaultdict
 import numpy as np
 
 import p8_common as P
+from p8_common import A
 from analyze_p8 import H85, THEORY_RE, consensus, wilson
 
 RESTRICTED = ("credentialed_or_request", "private")
@@ -88,6 +90,26 @@ def main() -> dict:
     res["PH8_c"] = dict(cells={f"{g}_open_{v}": cell([p["decided"] for p in pol if p["g"] == g and p["open"] == v])
                                for g in ("medical", "other") for v in (1, 0)},
                         mh_diff=mh(pol, "open"), mh_ci=boot(pol, lambda p: (p["g"], p["open"]), lambda s: mh(s, "open")))
+    # PH8-d: attempt rate by restricted-data mention (protocol 7 O3), all ICML 2026 papers in the groups
+    from analyze_readiness import outcomes
+    units = {u["forum_id"]: u for u in json.loads((P.DATA / "papers.json").read_text(encoding="utf-8"))
+             if u["stratum"] == "icml-2026"}
+    allp = [dict(g=g, o3=outcomes(units[o])["o3"], attempted=int(o in cv)) for o, g in grp.items()]
+
+    def att_diff(s):
+        a, b = [p["attempted"] for p in s if p["o3"]], [p["attempted"] for p in s if not p["o3"]]
+        return (sum(a) / len(a) - sum(b) / len(b)) if a and b else None
+    medp = [p for p in allp if p["g"] == "medical"]
+    o3_teams = [{A.namespace(c["space"]) for c in cv[o]} for o, g in grp.items()
+                if g == "medical" and o in cv and cv[o] and outcomes(units[o])["o3"]]
+    res["PH8_d"] = dict(cells={f"{g}_o3_{v}": dict(n=len(s), attempted=sum(s), rate=sum(s) / len(s) if s else None,
+                                                   wilson=wilson(sum(s), len(s)))
+                               for g in ("medical", "other") for v in (1, 0)
+                               for s in [[p["attempted"] for p in allp if p["g"] == g and p["o3"] == v]]},
+                        medical_o3_minus_no_o3=att_diff(medp),
+                        medical_o3_minus_no_o3_ci=boot(medp, lambda p: p["o3"], att_diff),
+                        teams_o3_1=dict(papers_with_claims=len(o3_teams), distinct_teams=len(set().union(*o3_teams)) if o3_teams else 0,
+                                        max_papers_one_team=max(Counter(t for s in o3_teams for t in s).values()) if o3_teams else 0))
     (P.HERE / "results" / "p8_posthoc.json").write_text(json.dumps(res, indent=2), encoding="utf-8")
     return res
 

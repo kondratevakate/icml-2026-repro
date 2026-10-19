@@ -19,13 +19,17 @@ claims were verified 3.3 percentage points less often (95% CI −9.9 to +3.2).
 Missing code does not explain the gap. Across 50,185 papers at six venues
 (2024–2026), medical papers declared a code link more often (24.5% versus
 16.9%; within-venue difference +7.4 points, CI +5.8 to +9.0), and adjusting for
-it left the ICML 2026 gap unchanged (−18.6 versus −19.1 points). Nor does
-hidden science, research resting on data that no one else can access. In the
-full texts of 176 attempted papers, 1 of 79 medical papers was evaluated on
-private data alone; 18% used credentialed or on-request data, against 1% of
-other papers. Medical papers on restricted data were decided about as often as
-medical papers on open data (47% versus 50%; difference −3 points, CI −34 to
-+27). When the judge left a medical claim undecided, it gave unavailable data
+it left the ICML 2026 gap unchanged (−18.6 versus −19.1 points). Hidden
+science, research resting on data that no one else can access, does not
+appear to explain it either, although our data cannot rule it out. Such papers
+were not avoided: medical papers whose abstract mentioned restricted data were
+attempted more often than other medical papers (20 of 25 versus 30%), although
+one team took 11 of the 20. In the full texts of 176 attempted papers, only 1
+of 79 medical papers was clearly evaluated on private data alone (27 were
+unclear); 18% used credentialed or on-request data, against 1% of other papers.
+We found no detectable difference in how often medical papers on restricted
+and on open data were decided (47% versus 50%), but the comparison is small
+(15 versus 36 papers; CI of the difference −33 to +27 points). When the judge left a medical claim undecided, it gave unavailable data
 as the reason in 12% of cases (other papers 1.3%), and an experiment that was
 not run or was run at reduced scale in 66% (other papers 70%). The gap also
 reached claims that need no private data: claims that a method works as
@@ -41,7 +45,7 @@ method's mechanics, not its headline numbers). Reproduction efforts should
 report the share of papers they could not decide, not only the share they
 verified.
 
-(about 375 words)
+(about 435 words)
 
 ## Notes for the authors (not part of the abstract)
 
@@ -54,21 +58,31 @@ verified.
   CI −14.0 to +19.9). H8.4: checkable claims were not decided as often as in
   other papers (theory and mechanism together −24.1 points, CI −40.0 to −6.8).
   H8.5: papers with an open-data experiment were not decided more often; the
-  pooled difference was −24.3 points (CI −39.4 to −9.6), the opposite
+  pooled difference was −24.3 points (CI −39.1 to −9.3), the opposite
   direction.
 * The H8.5 reversal is composition, shown post hoc (Note 8-2, PH8-a): in other
   papers the no-open-data cell has 22 papers, of which 13 are synthetic-only
-  and 10 have no empirical claim (the two overlap). Among empirical, non-synthetic papers the difference is
-  −14.9 points (CI −39.6 to +10.9). The restricted versus open comparison in
-  the abstract (PH8-b) is also post hoc and has no label.
+  and 10 have no empirical claim (the two overlap). Among empirical,
+  non-synthetic papers the difference is −14.9 points (CI −40.2 to +9.5). The
+  restricted versus open comparison (PH8-b) and the attempt rates (PH8-d,
+  Note 8-3) in the abstract are also post hoc and have no label.
 * The two claim classifiers disagree on theory claims: the protocol 4
   dictionary gives a theory gap of −18.5 points (CI −39.2 to −1.6), the H8.4
   coders −2.2 points (CI −28.5 to +16.5). The abstract uses neither. Headline
   performance claims: −14.5 points (CI −25.0 to −2.9).
-* Hidden science is counted among attempted papers only. Teams chose what to
-  attempt and may have avoided papers on private data; 43 of 220 sampled
-  papers had no arXiv id and 1 no usable excerpt. Excerpts were capped at
-  6,000 characters, so 27 of 79 medical papers have `unclear` data access.
+* Hidden science is counted among attempted papers only. PH8-d argues against
+  avoidance: medical papers whose abstract mentions restricted data were
+  attempted in 20 of 25 cases against 90 of 303 (+50 points, CI +33 to +66),
+  but one of 16 teams took 11 of the 20, and the abstract regex (O3) misses
+  papers that do not name their data. 43 of 220 sampled papers had no arXiv
+  id and 1 no usable excerpt.
+* "1 of 79" is a lower bound. Excerpts were capped at 6,000 characters, and
+  adjudication used the excerpt only, so a named institutional dataset without
+  stated access terms (e.g. a hospital dataset) was coded `unclear`, not
+  `private`; 27 of 79 medical papers have `unclear` data access.
+* Bootstrap intervals for H8.3, H8.5 and PH8 were recomputed after a
+  hash-order bug (Note 8-4); the values first committed in 0e5ccb7 are
+  superseded. Point estimates did not change.
 * The release fields (synthetic or sample data, weights) had low agreement
   (kappa 0.12 and 0.40) and most excerpts reached the cap: "2 of 79" (and 4
   of 79 for weights) are lower bounds. A code release that runs synthetic
@@ -119,17 +133,18 @@ verified.
 | 176 full texts; 79 medical, 97 other; 43 no arXiv id, 1 no excerpt | `readiness/results/p8.json` | `H8_5.prevalence.*.n`, `H8_5.fulltext_status` |
 | Private alone 1 of 79 | `readiness/results/p8.json` | `H8_5.hidden_science.n` |
 | Credentialed or on request 18% (14/79) vs 1% (1/97); unclear 27/79 | `readiness/results/p8.json` | `H8_5.prevalence.*.main_data_access` |
-| Restricted 47% (7/15) vs open 50% (18/36); −3 pp (−34 to +27) | `readiness/results/p8_posthoc.json` | `PH8_b` |
+| Restricted 47% (7/15) vs open 50% (18/36); −3 pp (−33 to +27) | `readiness/results/p8_posthoc.json` | `PH8_b` |
 | Open data: medical 50% (34–66), other 63% (50–74) | `readiness/results/p8_posthoc.json` | `PH8_b.cells` |
+| Attempted 20 of 25 (O3) vs 90 of 303 (30%); +50 (+33 to +66); 16 teams, one with 11 | `readiness/results/p8_posthoc.json` | `PH8_d` |
 | Data unavailable 12% vs 1.3%; not run or reduced scale 66% vs 70% | `readiness/results/p8.json` | `H8_3.shares` (`not_attempted` + `reduced_scale_or_compute`) |
 | Method works as described −22 pp (−38 to −1); headline −14.5 (−25.0 to −2.9) | `readiness/results/p8.json` | `H8_4.by_type.{mechanism,headline_performance}` |
 | Theory gap −18.5 (dictionary) vs −2.2 (coders) | `readiness/results/p8.json` | `H8_1.gap_theory`, `H8_4.by_type.theory` |
 | Synthetic or sample release 2 of 79; weights 4 of 79 | `readiness/results/p8.json` | `H8_5.prevalence.medical.{synthetic_or_sample_release,weights_release}` |
 | H8.1 DiD +0.8 (−14.0 to +19.9) | `readiness/results/p8.json` | `H8_1.did`, `did_ci` |
 | H8.4 checkable −24.1 (−40.0 to −6.8) | `readiness/results/p8.json` | `H8_4.gap_checkable`, `gap_checkable_ci` |
-| H8.5 policy −24.3 (−39.4 to −9.6) | `readiness/results/p8.json` | `H8_5.policy_mh_diff`, `policy_mh_ci` |
+| H8.5 policy −24.3 (−39.1 to −9.3) | `readiness/results/p8.json` | `H8_5.policy_mh_diff`, `policy_mh_ci` |
 | PH8-a 22 papers; 13 synthetic-only, 10 without empirical claim | `readiness/results/p8_posthoc.json` | `PH8_a.other_open_0` |
-| PH8-c −14.9 (−39.6 to +10.9) | `readiness/results/p8_posthoc.json` | `PH8_c.mh_diff`, `mh_ci` |
+| PH8-c −14.9 (−40.2 to +9.5) | `readiness/results/p8_posthoc.json` | `PH8_c.mh_diff`, `mh_ci` |
 | Protocol 8 kappas 0.89, 0.90, 0.94, 0.92, 0.12, 0.40 | `readiness/results/p8_coding.json` | `h83`, `h84`, `h85.agreement` |
 | "toy" verdict label | `../data/verdicts_confirmation_2026-10-17/verdicts.json` (repository root) | verdict categories: verified, falsified, toy, inconclusive |
 | 62% artifact-blocked; 14 papers | `healthcare/results.json` | `resolved.Q1` |
