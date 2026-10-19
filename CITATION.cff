@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: >-
+  If you use this repository, please cite it using these metadata. Code is MIT-licensed; text, protocols,
+  coding sheets and aggregate results are CC BY 4.0 (see LICENSE and LICENSE-CC-BY-4.0).
+title: "ICML 2026 agent reproduction challenge: reproductions and verdict audit"
+type: software
+authors:
+  - family-names: Kondrateva
+    given-names: Ekaterina
+    orcid: "https://orcid.org/0000-0003-3623-6106"
+    affiliation: Maastricht University
+    alias: kondratevakate
+repository-code: "https://github.com/kondratevakate/icml-2026-repro"
+abstract: >-
+  Reproductions of ICML 2026 papers submitted to the ICML 2026 agent reproduction challenge, and a
+  meta-research audit of the challenge's public verdicts (how verdicts were aggregated, and why medical and
+  life-science papers were rarely decided), with frozen protocols, analysis code, coding sheets and results.
+keywords:
+  - reproducibility
+  - meta-research
+  - machine learning
+  - crowd reproduction
+  - medical machine learning
+  - ICML 2026
