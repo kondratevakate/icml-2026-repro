@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Released multi-round MA-RAG architecture",
+    "verdict": "PARTIAL_CODE_PRESENT_RANKING_AND_GATE_SPEC_MISMATCH",
+    "score": 1
+  },
+  {
+    "id": "C2",
+    "title": "Seven released medical QA benchmarks",
+    "verdict": "PARTIAL_COUNTS_MATCH_SINGLE_ANSWER_RUNNER_INCOMPATIBILITY",
+    "score": 1
+  },
+  {
+    "id": "C3",
+    "title": "Average 62.2 accuracy and 6.8-point gain",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C4",
+    "title": "Superiority over RAG and scaling baselines",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C5",
+    "title": "Cumulative component ablations",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C6",
+    "title": "Sampling robustness and inference efficiency",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  }
+]
