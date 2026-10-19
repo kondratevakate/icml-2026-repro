@@ -11,10 +11,15 @@
     "arxiv_id": "2605.18798"
   },
   "private": false,
-  "autosync": true,
   "local_artifacts": [
-    "repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-survival-analysis/repro-bundle:v0"
+    "repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-survival-analysis/repro-bundle:v1"
   ],
   "local_dashboards": {},
-  "artifacts_bucket": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-artifacts"
+  "artifacts_bucket": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-artifacts",
+  "repos_public": true,
+  "embed_content": true,
+  "trace_dataset": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-traces",
+  "workspace_bucket": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-artifacts",
+  "trace_publication": "public",
+  "workspace_publication": "public"
 }

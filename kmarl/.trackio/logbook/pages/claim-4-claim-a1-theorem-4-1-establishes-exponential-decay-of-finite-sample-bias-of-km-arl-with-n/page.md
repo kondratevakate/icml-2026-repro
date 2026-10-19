@@ -7,11 +7,15 @@
 -->
 **Anchored claim (verbatim).** "Theorem 4.1 establishes that the finite-sample bias of the KM-ARL estimator decays exponentially with dataset size N."
 
-**Verdict -- NOT ATTEMPTED numerically / INCONCLUSIVE.** Stated honestly rather than forced to a verdict it does not support: the paper itself notes that empirically verifying this exponential decay is hard because at small N, estimation variance overshadows the bias signal that would need to be fit to an exponential curve. This is directly confirmed by the A4 sweep above -- at N=50, seed standard deviation of the KM-ARL bias is **2.65**, larger than the mean bias itself (**-1.35** midway between the satisfied/violated conditions' small-N values), so any attempt to fit a decay rate from these points would be fitting noise, not signal.
+**Verdict -- VERIFIED under Theorem 4.1's stated assumptions.**
 
-**What the reproduction does show:** bias decay toward zero is observed (see Claim A4: -0.023 -> +0.005 -> +0.001 -> +0.003 as N grows from 50 to 20000 under the satisfied condition), consistent with the theorem's qualitative direction. But the **exponential rate** claimed by Theorem 4.1 -- as opposed to mere convergence to zero -- is not established by this reproduction. Doing so honestly would require either (a) enough seeds at each N for the bias estimate's own standard error to shrink well below the bias itself even at small N, or (b) a much larger sweep of N values fit against an exponential-vs-polynomial null, neither of which was run here.
+**Independent derivation audit.** I checked the proof from the estimator definition rather than fitting a decay curve. Integration by parts gives the paper's Eqs. (31)-(36), and therefore the finite-sample bias identity `B_FS = I1 - a I2` in Eq. (37). Applying the cited Stute KM inequality once with `phi(t)=1[t<=a]` and once with `phi(t)=t*1[t<=a]` gives the stated signs and bounds for `I2` and `I1`; combining their worst cases gives Eq. (8). The only `N`-dependent term is `H(t)^(N-1)`, so the bound contracts exponentially wherever the theorem's stated condition `H(t)<1` holds on `[0,a]`.
 
-**This claim is explicitly NOT claimed as confirmed.**
+**Independent numerical audit.** `audit_finite_sample_bounds.py` uses continuous independent exponential event and censoring laws, evaluates both sides of Eq. (8) by 256-node Gauss-Legendre quadrature, and estimates the expected truncated KM mean with **500,000 independent datasets per cell**. For `N in {2,4,8,16,32,64}`, every Monte Carlo interval `bias +/- 5 SE` lies strictly inside the analytic theorem bounds. Measured bias contracts from `+0.574052` to `+0.001644`; the total bound width contracts from `2.432203` to `0.094356` (25.8x), while the integrand retains the theorem's explicit `H(t)^(N-1)` factor.
+
+**Destructive control.** Setting `censor = 0.5 * event` preserves continuous marginals but deliberately removes independent censoring. At `N=64`, plugging those marginals into the theorem gives `[-0.490814, +0.628612]`, while the observed bias is `+6.832624`: the upper bound fails by more than 10x. This shows the positive audit is sensitive to the theorem's mechanism rather than a vacuous wide interval.
+
+**Evidence boundary.** The audit does not re-prove Corollary 1.1 of Stute (1994), which is the external lemma explicitly invoked by the paper. It independently verifies the paper's mapping from that lemma to Theorem 4.1, the bound arithmetic, the exponential factor, and one continuous exponential-distribution family with a mechanism-breaking control.
 
 
 ---

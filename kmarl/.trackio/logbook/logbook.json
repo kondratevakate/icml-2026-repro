@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Reproduction: Accurate Evaluation of Quickest Changepoint Detectors via Non-parametric Survival Analysis",
   "emoji": "🎯",
   "space_id": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva",
@@ -10,7 +10,7 @@
     "icml2026-repro",
     "paper-LhGxRnGmGJ"
   ],
-  "updated_at": "2026-07-20T14:07:02+00:00",
+  "updated_at": "2026-07-28T19:28:16+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Accurate Evaluation of Quickest Changepoint Detectors via Non-parametric Survival Analysis",
@@ -47,6 +47,12 @@
         "children": []
       },
       {
+        "slug": "claim-5-theorem-4-2-km-add-bounds",
+        "title": "Claim 5: Claim A2: theorem 4.2 establishes finite-sample bias bounds for KM-ADD",
+        "file": "pages/claim-5-theorem-4-2-km-add-bounds/page.md",
+        "children": []
+      },
+      {
         "slug": "conclusion",
         "title": "Conclusion",
         "file": "pages/conclusion/page.md",
@@ -54,6 +60,15 @@
       }
     ]
   },
-  "agent_view_tokens": 4630,
-  "revision": "1784556422518046900"
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-accurate-evaluation-of-quickest-changepoint-detectors-via-non-parametric-surviva-artifacts"
+  },
+  "agent_view_tokens": 5715,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "04287007a53d92cd5e02"
 }

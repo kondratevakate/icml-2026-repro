@@ -165,7 +165,9 @@ def estimators(tau, nu, T):
     out['KM_ARL'] = km_integral(tau, C)
     # ---- ADD ----
     cp = np.isfinite(nu)
-    dtau = np.where(cp & np.isfinite(tau), tau - nu, np.inf)
+    dtau = np.full_like(tau, np.inf)
+    finite_delay = cp & np.isfinite(tau)
+    dtau[finite_delay] = tau[finite_delay] - nu[finite_delay]
     dT = np.where(cp, T - nu, np.nan)
     keep = cp & ((~np.isfinite(dtau)) | (dtau >= 0))
     m = keep & np.isfinite(dtau) & (dtau <= dT)

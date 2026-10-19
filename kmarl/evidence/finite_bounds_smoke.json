@@ -1,0 +1,129 @@
+{
+  "protocol": {
+    "seed": 20260728,
+    "trials_per_cell": 100000,
+    "sample_sizes": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "arl": {
+      "event_rate": 1.0,
+      "censor_rate": 0.8,
+      "upper": 0.6
+    },
+    "add": {
+      "event_rate": 0.7,
+      "censor_rate": 1.3,
+      "upper": 0.75
+    },
+    "destructive_control": {
+      "event_rate": 1.0,
+      "censor_fraction": 0.5,
+      "upper": 0.6,
+      "n": 6
+    }
+  },
+  "protocol_sha256": "021071d793acef3704b19a459cfa7f8c156de20f336478f45b1fe53226d7ca44",
+  "rows": [
+    {
+      "label": "ARL / Theorem 4.1",
+      "n": 2,
+      "lower": -0.01647089735416578,
+      "bias": 0.005629215659390507,
+      "upper": 0.02367557301304605,
+      "standard_error": 0.0004789414187346755,
+      "inside_5se": true
+    },
+    {
+      "label": "ARL / Theorem 4.1",
+      "n": 3,
+      "lower": -0.009083932365108974,
+      "bias": 0.0016263016747193881,
+      "upper": 0.012192719818090574,
+      "standard_error": 0.0003956426945514378,
+      "inside_5se": true
+    },
+    {
+      "label": "ARL / Theorem 4.1",
+      "n": 4,
+      "lower": -0.005161406548538737,
+      "bias": 0.0010892623067554341,
+      "upper": 0.006619668804595967,
+      "standard_error": 0.00034376428335604933,
+      "inside_5se": true
+    },
+    {
+      "label": "ARL / Theorem 4.1",
+      "n": 5,
+      "lower": -0.00299492252447642,
+      "bias": 0.0003527262871042547,
+      "upper": 0.003717542495398373,
+      "standard_error": 0.0003071871886563528,
+      "inside_5se": true
+    },
+    {
+      "label": "ARL / Theorem 4.1",
+      "n": 6,
+      "lower": -0.0017652725441087472,
+      "bias": 0.0002632827981436381,
+      "upper": 0.002137620087020176,
+      "standard_error": 0.00027923721984424095,
+      "inside_5se": true
+    },
+    {
+      "label": "ADD / Theorem 4.2",
+      "n": 2,
+      "lower": -0.039800349009475516,
+      "bias": 0.01593005451433782,
+      "upper": 0.058341616104869695,
+      "standard_error": 0.0006061211157799896,
+      "inside_5se": true
+    },
+    {
+      "label": "ADD / Theorem 4.2",
+      "n": 3,
+      "lower": -0.02636447295844814,
+      "bias": 0.00785478567953557,
+      "upper": 0.036162423756009324,
+      "standard_error": 0.0005143501854934121,
+      "inside_5se": true
+    },
+    {
+      "label": "ADD / Theorem 4.2",
+      "n": 4,
+      "lower": -0.017909090289545074,
+      "bias": 0.00387490715444172,
+      "upper": 0.023486627398189814,
+      "standard_error": 0.000451501241516512,
+      "inside_5se": true
+    },
+    {
+      "label": "ADD / Theorem 4.2",
+      "n": 5,
+      "lower": -0.012384773333911164,
+      "bias": 0.0023917913997951734,
+      "upper": 0.01571866745185558,
+      "standard_error": 0.00040409038377319114,
+      "inside_5se": true
+    },
+    {
+      "label": "ADD / Theorem 4.2",
+      "n": 6,
+      "lower": -0.00868030127289273,
+      "bias": 0.00020500164316195058,
+      "upper": 0.010743597562879662,
+      "standard_error": 0.00036953650259626117,
+      "inside_5se": true
+    }
+  ],
+  "destructive_control": {
+    "lower": -0.00462167317487701,
+    "bias": 0.14881163609402648,
+    "upper": 0.005666788433503007,
+    "bound_violated": true
+  },
+  "passed": true
+}

@@ -11,6 +11,7 @@ tags:
  - open-experiment
  - icml2026-repro
  - paper-LhGxRnGmGJ
+ - arxiv:2605.18798
 ---
 
 # Reproduction: Accurate Evaluation of Quickest Changepoint Detectors via Non-parametric Survival Analysis
