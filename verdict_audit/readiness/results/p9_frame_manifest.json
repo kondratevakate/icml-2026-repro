@@ -1,0 +1,39 @@
+{
+ "seed": 20261019,
+ "strata": [
+  "cvpr-2025",
+  "iccv-2025",
+  "eccv-2026",
+  "iclr-2025",
+  "iclr-2026",
+  "icml-2025",
+  "icml-2026",
+  "neurips-2025",
+  "neurips-2026"
+ ],
+ "n": 4340,
+ "counts": {
+  "cvpr-2025:life_science": 108,
+  "cvpr-2025:other": 108,
+  "eccv-2026:life_science": 129,
+  "eccv-2026:other": 129,
+  "iccv-2025:life_science": 104,
+  "iccv-2025:other": 104,
+  "iclr-2025:life_science": 222,
+  "iclr-2025:other": 222,
+  "iclr-2026:life_science": 309,
+  "iclr-2026:other": 309,
+  "icml-2025:life_science": 166,
+  "icml-2025:other": 166,
+  "icml-2026:life_science": 328,
+  "icml-2026:other": 328,
+  "neurips-2025:life_science": 373,
+  "neurips-2025:other": 373,
+  "neurips-2026:life_science": 431,
+  "neurips-2026:other": 431
+ },
+ "frame_sha256": "12cafb512a2f7777268e8dc969c393034072cf46f4cf4b5ff9d48abf711bf601",
+ "papers_json_sha256": "fbff09a068393db51d06240260566651a12bdb324b19551cd894d82578946dfc",
+ "labels_csv_sha256": "170087ae2d7fedb01a4cbffaca20d627e25699bcf62b275a312a172e081d6ee1",
+ "code_sha256": "f1e231ad5828d3984fc5199d019da46c7fd3a6d8f0a78c0551480fcace73e3a6"
+}
