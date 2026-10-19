@@ -35,3 +35,13 @@ def test_parse_pmlr_and_cvf():
 
 def test_key_is_path_safe():
     assert F.key_of(dict(stratum="cvpr-2025", forum_id="src:10379")) == "cvpr-2025__src-10379"
+
+
+def test_p9_label_set_matches_the_coder_prompt():
+    import build_p9_sheets as S
+    prompt = (S.CODES / "CODER_PROMPT.md").read_text(encoding="utf-8")
+    header = "item_id," + ",".join(S.FIELDS)
+    assert header in prompt
+    for field, labels in S.LABELS.items():
+        for lab in labels:
+            assert lab in prompt, (field, lab)

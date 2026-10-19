@@ -1,0 +1,9 @@
+{
+ "seed": 20261019,
+ "batch_size": 20,
+ "coder2_share": 0.25,
+ "items": 4340,
+ "coder2_items": 1085,
+ "keys_sha256": "6378838d51e233e23001e208fd76b9211672a622d0fa72a4582373fab7c54191",
+ "prompt_sha256": "c67681c02b6d16db1eb96037a1c0a7b7a836cf79f8dbd545276bc5231abbd2bb"
+}

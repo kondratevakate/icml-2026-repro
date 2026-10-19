@@ -134,7 +134,10 @@ def build(blocks: list[tuple[str, str, str]]) -> dict:
 def main(limit: int | None) -> dict:
     recs = {}
     for line in MANIFEST.read_text(encoding="utf-8").splitlines():
-        r = json.loads(line)
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:  # a line still being written by a running fetch_p9.py
+            continue
         recs[r["key"]] = r
     ok = [r for r in recs.values() if r["status"] == "ok"][:limit]
     OUT.mkdir(parents=True, exist_ok=True)
