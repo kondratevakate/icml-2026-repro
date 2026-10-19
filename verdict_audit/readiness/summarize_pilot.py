@@ -70,11 +70,22 @@ def main() -> dict:
                                         if c["claim_id"] == r["claim_id"]))
                  for r in rows if r["outcome"] == "blocked"],
     )
-    (P.HERE / "results" / "p9_pilot_wave1.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
-    return out
+    # Note 9-2: per-paper material stays private (data/ is git-ignored); the public file holds aggregates only.
+    private = P.DATA / "p9" / "pilot_private"
+    private.mkdir(parents=True, exist_ok=True)
+    (private / "p9_pilot_wave1_per_paper.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+    public = dict(
+        wave=1, papers=len(papers), claims=len(rows), note="aggregate counts only (protocol 9, Note 9-2)",
+        all_claims=dict(Counter(r["outcome"] for r in rows)),
+        theory_mechanism=out["theory_mechanism"], other_claim_types=out["negative_control"],
+        confirmations=out["confirmations"], time_to_running_pipeline_min=out["time_to_running_pipeline_min"],
+        container_minutes_total=out["container_minutes_total"],
+        # No cross-tabulation with the public challenge verdicts: with the public pilot inputs it can point at a
+        # single claim (Note 9-2). It stays in the private per-paper file.
+        blocked_reasons_summary="training-dependent behaviour did not leave chance level within the CPU budget")
+    (P.HERE / "results" / "p9_pilot_wave1.json").write_text(json.dumps(public, indent=1), encoding="utf-8")
+    return public
 
 
 if __name__ == "__main__":
-    s = main()
-    print(json.dumps({k: s[k] for k in ("theory_mechanism", "negative_control", "confirmations",
-                                        "time_to_running_pipeline_min", "container_minutes_total")}, indent=1))
+    print(json.dumps(main(), indent=1))

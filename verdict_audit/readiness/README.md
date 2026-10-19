@@ -28,7 +28,8 @@ in its Appendix A.
 * Protocol 8: prompts in [`codes/p8/CODER_PROMPTS.md`](codes/p8/CODER_PROMPTS.md); codes and adjudications in
   [`codes/p8/`](codes/p8/).
 * Protocol 9: frame [`results/p9_frame.json`](results/p9_frame.json); pilot prompts in
-  [`codes/p9/PILOT_PROMPTS.md`](codes/p9/PILOT_PROMPTS.md); pilot inputs and results in [`pilot/`](pilot/).
+  [`codes/p9/PILOT_PROMPTS.md`](codes/p9/PILOT_PROMPTS.md); pilot inputs in [`pilot/`](pilot/); aggregate
+  outcomes in [`results/p9_pilot_wave1.json`](results/p9_pilot_wave1.json) (Note 9-2).
 
 ## Run
 

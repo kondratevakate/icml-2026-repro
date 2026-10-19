@@ -573,3 +573,7 @@ Implementation choices left open by the protocol, fixed before coding (`build_p9
   flag, and a release field with no statement is `unclear` when the excerpt was truncated and `no` when not.
 * Coders: 20 papers per batch, title and excerpt only (venue, year and group hidden); prompt in
   `codes/p9/CODER_PROMPT.md`.
+
+## Note 9-2 (2026-10-19)
+
+By Kate's decision the pilot counts only as aggregate numbers in the overall test totals: no paper is named with an outcome, the authors are not contacted, and per-paper pilot files are not published.
