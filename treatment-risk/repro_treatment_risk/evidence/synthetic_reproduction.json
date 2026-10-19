@@ -1,0 +1,494 @@
+{
+  "claim": "Section 5.1 synthetic treatment-risk control",
+  "protocol": {
+    "paper": "arXiv:2505.08378v1",
+    "equations": [
+      "10",
+      "12",
+      "14",
+      "15",
+      "21",
+      "22",
+      "23",
+      "24"
+    ],
+    "seed": 20260728,
+    "runs_per_arm": 1000,
+    "train_size": 1000,
+    "validation_size": 1000,
+    "t_grid": {
+      "points": 200,
+      "range": "(0, 0.5]"
+    },
+    "tau_grid": [
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.25,
+      0.3,
+      0.35000000000000003,
+      0.4
+    ],
+    "bins_per_feature": 200,
+    "candidate_count": 804,
+    "alpha": 0.1,
+    "p_pi": {
+      "policy_learning": "empirical analogue on D_m, as in Equation (12)",
+      "certificate": "exact analytic population treated mass, independent of D_n"
+    },
+    "v_max": "tight analytic upper bound over each policy's treated region",
+    "policy_search": "all depth-one binned thresholds, both features and orientations",
+    "true_risk_evaluation": "closed form under the interventional DGP"
+  },
+  "protocol_sha256": "0f63020d04730202184324e417d50887728c5fc9eaf65418be80e81a1acdd97d",
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "self_test": {
+    "gamma2_low_branch_max_error": 8.881784197001252e-16,
+    "gamma2_high_branch_max_error": 3.3306690738754696e-16,
+    "treat_all_unconfounded": 0.25,
+    "treat_all_confounded": 0.275,
+    "bentkus_coverage_n200_p03": 0.9640521795644593,
+    "raw_mean_coverage_n200_p03": 0.5266525406340707,
+    "passed": true
+  },
+  "arms": {
+    "unconfounded_gamma1": {
+      "name": "unconfounded_gamma1",
+      "gamma": 1.0,
+      "confounded": false,
+      "gamma_valid": true,
+      "description": "Exact nominal propensity.",
+      "rows": [
+        {
+          "tau": 0.05,
+          "coverage": 0.997,
+          "controlled": true,
+          "mean_population_risk": 0.7939789312500001,
+          "mean_treatment_risk": 0.00195625,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.0,
+          "mean_treated_fraction": 0.007824999999999999,
+          "fraction_treat_none": 0.929
+        },
+        {
+          "tau": 0.1,
+          "coverage": 0.993,
+          "controlled": true,
+          "mean_population_risk": 0.7423815375000001,
+          "mean_treatment_risk": 0.019365,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.061250000000000006,
+          "mean_treated_fraction": 0.07746,
+          "fraction_treat_none": 0.558
+        },
+        {
+          "tau": 0.15000000000000002,
+          "coverage": 0.989,
+          "controlled": true,
+          "mean_population_risk": 0.60500605,
+          "mean_treatment_risk": 0.0696675,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.08124999999999999,
+          "treatment_risk_q90": 0.12375000000000001,
+          "mean_treated_fraction": 0.27867,
+          "fraction_treat_none": 0.217
+        },
+        {
+          "tau": 0.2,
+          "coverage": 0.988,
+          "controlled": true,
+          "mean_population_risk": 0.46644824374999994,
+          "mean_treatment_risk": 0.12842625,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.14250000000000002,
+          "treatment_risk_q90": 0.17625000000000002,
+          "mean_treated_fraction": 0.513705,
+          "fraction_treat_none": 0.116
+        },
+        {
+          "tau": 0.25,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.37121068125,
+          "mean_treatment_risk": 0.17840125,
+          "treatment_risk_q10": 0.13487500000000002,
+          "treatment_risk_q50": 0.19374999999999998,
+          "treatment_risk_q90": 0.225,
+          "mean_treated_fraction": 0.713585,
+          "fraction_treat_none": 0.087
+        },
+        {
+          "tau": 0.3,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.31505690625,
+          "mean_treatment_risk": 0.21505375000000002,
+          "treatment_risk_q10": 0.18850000000000003,
+          "treatment_risk_q50": 0.23750000000000002,
+          "treatment_risk_q90": 0.25,
+          "mean_treated_fraction": 0.8590099999999999,
+          "fraction_treat_none": 0.079
+        },
+        {
+          "tau": 0.35000000000000003,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.29954539375,
+          "mean_treatment_risk": 0.22609875,
+          "treatment_risk_q10": 0.225,
+          "treatment_risk_q50": 0.24750000000000003,
+          "treatment_risk_q90": 0.25000000000000006,
+          "mean_treated_fraction": 0.90226,
+          "fraction_treat_none": 0.075
+        },
+        {
+          "tau": 0.4,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.29210325625,
+          "mean_treatment_risk": 0.22955375,
+          "treatment_risk_q10": 0.23,
+          "treatment_risk_q50": 0.24750000000000003,
+          "treatment_risk_q90": 0.25000000000000006,
+          "mean_treated_fraction": 0.916115,
+          "fraction_treat_none": 0.062
+        }
+      ],
+      "controlled_tolerances": 8,
+      "minimum_coverage": 0.988
+    },
+    "unconfounded_gamma2": {
+      "name": "unconfounded_gamma2",
+      "gamma": 2.0,
+      "confounded": false,
+      "gamma_valid": true,
+      "description": "Valid but deliberately conservative.",
+      "rows": [
+        {
+          "tau": 0.05,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.7988703437500001,
+          "mean_treatment_risk": 0.00036875000000000005,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.0,
+          "mean_treated_fraction": 0.0014750000000000002,
+          "fraction_treat_none": 0.989
+        },
+        {
+          "tau": 0.1,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.7776214562500001,
+          "mean_treatment_risk": 0.00732625,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.03125,
+          "mean_treated_fraction": 0.029305,
+          "fraction_treat_none": 0.756
+        },
+        {
+          "tau": 0.15000000000000002,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.7236052937500002,
+          "mean_treatment_risk": 0.025791249999999998,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.01375,
+          "treatment_risk_q90": 0.06874999999999999,
+          "mean_treated_fraction": 0.10316499999999999,
+          "fraction_treat_none": 0.466
+        },
+        {
+          "tau": 0.2,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.64057265625,
+          "mean_treatment_risk": 0.05610375,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.06375,
+          "treatment_risk_q90": 0.10875,
+          "mean_treated_fraction": 0.224415,
+          "fraction_treat_none": 0.286
+        },
+        {
+          "tau": 0.25,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.5394254500000001,
+          "mean_treatment_risk": 0.09597499999999999,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.11,
+          "treatment_risk_q90": 0.14500000000000002,
+          "mean_treated_fraction": 0.38389999999999996,
+          "fraction_treat_none": 0.16
+        },
+        {
+          "tau": 0.3,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.45880058125,
+          "mean_treatment_risk": 0.13161125,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.14625000000000005,
+          "treatment_risk_q90": 0.17500000000000002,
+          "mean_treated_fraction": 0.526445,
+          "fraction_treat_none": 0.112
+        },
+        {
+          "tau": 0.35000000000000003,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.39522800625000004,
+          "mean_treatment_risk": 0.16372375,
+          "treatment_risk_q10": 0.12999999999999998,
+          "treatment_risk_q50": 0.17750000000000002,
+          "treatment_risk_q90": 0.20387500000000003,
+          "mean_treated_fraction": 0.654895,
+          "fraction_treat_none": 0.085
+        },
+        {
+          "tau": 0.4,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.35113029375000004,
+          "mean_treatment_risk": 0.18973375,
+          "treatment_risk_q10": 0.16249999999999998,
+          "treatment_risk_q50": 0.20500000000000002,
+          "treatment_risk_q90": 0.23124999999999998,
+          "mean_treated_fraction": 0.75881,
+          "fraction_treat_none": 0.078
+        }
+      ],
+      "controlled_tolerances": 8,
+      "minimum_coverage": 1.0
+    },
+    "confounded_gamma1": {
+      "name": "confounded_gamma1",
+      "gamma": 1.0,
+      "confounded": true,
+      "gamma_valid": false,
+      "description": "Destructive control: true odds distortion is 2.",
+      "rows": [
+        {
+          "tau": 0.05,
+          "coverage": 0.993,
+          "controlled": true,
+          "mean_population_risk": 0.7929489150000002,
+          "mean_treatment_risk": 0.0025382499999999997,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.0,
+          "mean_treated_fraction": 0.00923,
+          "fraction_treat_none": 0.921
+        },
+        {
+          "tau": 0.1,
+          "coverage": 0.948,
+          "controlled": true,
+          "mean_population_risk": 0.7194799156250001,
+          "mean_treatment_risk": 0.030512625,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.012375,
+          "treatment_risk_q90": 0.086625,
+          "mean_treated_fraction": 0.11095500000000001,
+          "fraction_treat_none": 0.472
+        },
+        {
+          "tau": 0.15000000000000002,
+          "coverage": 0.754,
+          "controlled": false,
+          "mean_population_risk": 0.5414374212499999,
+          "mean_treatment_risk": 0.107899,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.125125,
+          "treatment_risk_q90": 0.17049999999999998,
+          "mean_treated_fraction": 0.39236,
+          "fraction_treat_none": 0.171
+        },
+        {
+          "tau": 0.2,
+          "coverage": 0.451,
+          "controlled": false,
+          "mean_population_risk": 0.40060553,
+          "mean_treatment_risk": 0.1867525,
+          "treatment_risk_q10": 0.09102500000000013,
+          "treatment_risk_q50": 0.204875,
+          "treatment_risk_q90": 0.24475,
+          "mean_treated_fraction": 0.67845,
+          "fraction_treat_none": 0.087
+        },
+        {
+          "tau": 0.25,
+          "coverage": 0.257,
+          "controlled": false,
+          "mean_population_risk": 0.32646297125,
+          "mean_treatment_risk": 0.24311375,
+          "treatment_risk_q10": 0.21161249999999998,
+          "treatment_risk_q50": 0.270875,
+          "treatment_risk_q90": 0.275,
+          "mean_treated_fraction": 0.8824399999999999,
+          "fraction_treat_none": 0.068
+        },
+        {
+          "tau": 0.3,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.31513828312500003,
+          "mean_treatment_risk": 0.25330112499999996,
+          "treatment_risk_q10": 0.26125,
+          "treatment_risk_q50": 0.27499999999999997,
+          "treatment_risk_q90": 0.275,
+          "mean_treated_fraction": 0.919115,
+          "fraction_treat_none": 0.066
+        },
+        {
+          "tau": 0.35000000000000003,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.3110816125,
+          "mean_treatment_risk": 0.25549975,
+          "treatment_risk_q10": 0.262625,
+          "treatment_risk_q50": 0.27499999999999997,
+          "treatment_risk_q90": 0.275,
+          "mean_treated_fraction": 0.9270849999999999,
+          "fraction_treat_none": 0.06
+        },
+        {
+          "tau": 0.4,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.3069757675,
+          "mean_treatment_risk": 0.2576695,
+          "treatment_risk_q10": 0.264,
+          "treatment_risk_q50": 0.27499999999999997,
+          "treatment_risk_q90": 0.275,
+          "mean_treated_fraction": 0.934955,
+          "fraction_treat_none": 0.054
+        }
+      ],
+      "controlled_tolerances": 5,
+      "minimum_coverage": 0.257
+    },
+    "confounded_gamma2": {
+      "name": "confounded_gamma2",
+      "gamma": 2.0,
+      "confounded": true,
+      "gamma_valid": true,
+      "description": "True odds distortion is exactly bounded by 2.",
+      "rows": [
+        {
+          "tau": 0.05,
+          "coverage": 0.999,
+          "controlled": true,
+          "mean_population_risk": 0.7972979181250001,
+          "mean_treatment_risk": 0.000974875,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.0,
+          "mean_treated_fraction": 0.003545,
+          "fraction_treat_none": 0.973
+        },
+        {
+          "tau": 0.1,
+          "coverage": 0.998,
+          "controlled": true,
+          "mean_population_risk": 0.768401065,
+          "mean_treatment_risk": 0.01158025,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.0,
+          "treatment_risk_q90": 0.044,
+          "mean_treated_fraction": 0.04211,
+          "fraction_treat_none": 0.7
+        },
+        {
+          "tau": 0.15000000000000002,
+          "coverage": 0.998,
+          "controlled": true,
+          "mean_population_risk": 0.6918723250000001,
+          "mean_treatment_risk": 0.04130775,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.038499999999999986,
+          "treatment_risk_q90": 0.09501250000000003,
+          "mean_treated_fraction": 0.15020999999999998,
+          "fraction_treat_none": 0.375
+        },
+        {
+          "tau": 0.2,
+          "coverage": 0.999,
+          "controlled": true,
+          "mean_population_risk": 0.5922355731250001,
+          "mean_treatment_risk": 0.08429712500000001,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.10175000000000001,
+          "treatment_risk_q90": 0.14987499999999998,
+          "mean_treated_fraction": 0.30653499999999995,
+          "fraction_treat_none": 0.234
+        },
+        {
+          "tau": 0.25,
+          "coverage": 0.999,
+          "controlled": true,
+          "mean_population_risk": 0.489908661875,
+          "mean_treatment_risk": 0.134539625,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.15262499999999998,
+          "treatment_risk_q90": 0.19524999999999998,
+          "mean_treated_fraction": 0.48923500000000003,
+          "fraction_treat_none": 0.15
+        },
+        {
+          "tau": 0.3,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.41103981875,
+          "mean_treatment_risk": 0.18074099999999999,
+          "treatment_risk_q10": 0.0,
+          "treatment_risk_q50": 0.199375,
+          "treatment_risk_q90": 0.23787499999999998,
+          "mean_treated_fraction": 0.65724,
+          "fraction_treat_none": 0.114
+        },
+        {
+          "tau": 0.35000000000000003,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.35139615874999997,
+          "mean_treatment_risk": 0.2227555,
+          "treatment_risk_q10": 0.188375,
+          "treatment_risk_q50": 0.242,
+          "treatment_risk_q90": 0.273625,
+          "mean_treated_fraction": 0.809495,
+          "fraction_treat_none": 0.084
+        },
+        {
+          "tau": 0.4,
+          "coverage": 1.0,
+          "controlled": true,
+          "mean_population_risk": 0.32369056875,
+          "mean_treatment_risk": 0.24615249999999997,
+          "treatment_risk_q10": 0.2308625,
+          "treatment_risk_q50": 0.270875,
+          "treatment_risk_q90": 0.275,
+          "mean_treated_fraction": 0.893755,
+          "fraction_treat_none": 0.075
+        }
+      ],
+      "controlled_tolerances": 8,
+      "minimum_coverage": 0.998
+    }
+  },
+  "valid_arms_pass": true,
+  "invalid_gamma_destructive_control_pass": true,
+  "elapsed_seconds": 237.32878169999458,
+  "passed": true
+}

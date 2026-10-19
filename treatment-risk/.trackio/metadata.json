@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability",
+  "emoji": "🎯",
+  "created_at": "2026-07-28T16:28:29+00:00",
+  "last_page": "claim-5-the-method-yields-treatment-allocation-results-on-the-international-stroke-trial",
+  "tags": [
+    "icml2026-repro",
+    "paper-9kWVQtpvJi"
+  ],
+  "paper": {
+    "arxiv_id": "2505.08378"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": true,
+  "trace_dataset": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability-traces",
+  "artifacts_bucket": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability-artifacts",
+  "workspace_bucket": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability-artifacts",
+  "trace_publication": "public",
+  "workspace_publication": "public",
+  "local_dashboards": {}
+}
