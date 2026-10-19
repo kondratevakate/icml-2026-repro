@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "paper_anchor": "Theorem 2; Section 3.1; Eqs. (4)-(5)",
+  "seed": 260102998,
+  "n_instances": 500,
+  "n_sources": 3,
+  "n_outcomes": 24,
+  "alpha": 0.1,
+  "maximum_primal_dual_gap": 2.233632656611917e-08,
+  "minimum_coverage_margin": -5.551115123125783e-16,
+  "maximum_complementarity_error": 2.2336331507337483e-08,
+  "maximum_superlevel_structure_violation": 1.2578616814806765e-08,
+  "instances_with_at_least_one_active_source": 500,
+  "uniform_direction_strictly_suboptimal_instances": 500,
+  "boundary_outcomes": {
+    "minimum": 2,
+    "median": 3.0,
+    "maximum": 3
+  },
+  "interpretation": "The independently solved primal and paper dual agree; h_lambda > 1 selects included outcomes, h_lambda < 1 excludes them, and only the h_lambda = 1 boundary can be randomized. Active source constraints satisfy complementary slackness."
+}

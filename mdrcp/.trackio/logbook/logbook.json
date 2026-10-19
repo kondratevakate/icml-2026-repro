@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Reproduction: Multi-Distribution Robust Conformal Prediction",
   "emoji": "🎯",
   "space_id": "kondratevakate/repro-multi-distribution-robust-conformal-prediction",
@@ -10,7 +10,7 @@
     "icml2026-repro",
     "paper-Vv4XRZDMM0"
   ],
-  "updated_at": "2026-07-20T14:08:04+00:00",
+  "updated_at": "2026-07-29T08:16:15+00:00",
   "root": {
     "slug": "index",
     "title": "Reproduction: Multi-Distribution Robust Conformal Prediction",
@@ -35,6 +35,36 @@
         "children": []
       },
       {
+        "slug": "claim-2-theorem-2-dual-optimality",
+        "title": "Claim 2: Theorem 2 dual optimality",
+        "file": "pages/claim-2-theorem-2-dual-optimality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-theorem-3-asymptotic-optimality",
+        "title": "Claim 3: Theorem 3 asymptotic optimality",
+        "file": "pages/claim-3-theorem-3-asymptotic-optimality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-linear-classification-simulation",
+        "title": "Claim 4: Linear classification simulation",
+        "file": "pages/claim-4-linear-classification-simulation/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-linear-regression-simulation",
+        "title": "Claim 5: Linear regression simulation",
+        "file": "pages/claim-5-linear-regression-simulation/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-fmow-evaluation",
+        "title": "Claim 6: FMoW evaluation",
+        "file": "pages/claim-6-fmow-evaluation/page.md",
+        "children": []
+      },
+      {
         "slug": "conclusion",
         "title": "Conclusion",
         "file": "pages/conclusion/page.md",
@@ -42,6 +72,15 @@
       }
     ]
   },
-  "agent_view_tokens": 4354,
-  "revision": "1784556484871147500"
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-multi-distribution-robust-conformal-prediction-artifacts"
+  },
+  "agent_view_tokens": 5519,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "cad5a785718af5b17209"
 }
