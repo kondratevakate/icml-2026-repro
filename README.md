@@ -23,7 +23,7 @@ This repository has two parts.
 | [`verdict_audit/`](verdict_audit/) | Protocols 1–9 with code, coding sheets, results and the drafts of two PSE9 abstracts | [`verdict_audit/README.md`](verdict_audit/README.md), then [`verdict_audit/STUDIES.md`](verdict_audit/STUDIES.md) |
 | [`notes/`](notes/) | Working notes: lessons learned and judged scores, target selection, model and subscription baselines | [`notes/HANDOFF.md`](notes/HANDOFF.md) |
 | [`tools/`](tools/) | Logbook scaffold and validator, medical target scan, the pipeline of the project page, the index builder | the docstring of each script |
-| [`audit/`](audit/), [`docs/`](docs/) | Tables, source and a static render of the medical reproducibility map | [the map section](#medical-reproducibility-map) |
+| [`audit/`](audit/), [`docs/`](docs/) | Tables, source and a static render of the medical reproducibility map | [the map section](#medical-reproducibility-map) and the [live page](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html) |
 
 ## Papers built on this repository
 
@@ -59,11 +59,10 @@ paper texts are not included; [`notes/HANDOFF.md`](notes/HANDOFF.md) and, where 
 
 ## Medical reproducibility map
 
-The interactive map is a single self-contained page, [`docs/medical-reproducibility.html`](docs/medical-reproducibility.html):
-download it and open it in a browser, then click any cell to inspect an area, a data type or a paper. Once GitHub
-Pages is enabled for the `docs/` folder it is served at
-[`kondratevakate.github.io/icml-2026-repro/`](https://kondratevakate.github.io/icml-2026-repro/)
-([`docs/index.html`](docs/index.html) redirects there). The picture at the top of this README is a static render
+Interactive version: [`kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html`](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html)
+(GitHub Pages, served from `docs/` of this branch; click any cell to inspect an area, a data type or a paper).
+The page is one self-contained file, [`docs/medical-reproducibility.html`](docs/medical-reproducibility.html),
+which also works when downloaded and opened locally. The picture at the top of this README is a static render
 of the same page.
 
 The page is a public audit of how reproducible medical and life-science ICML papers look from the challenge
@@ -84,8 +83,7 @@ medical data-type carpet above the heatmap instead of being hidden inside the op
 is intentionally excluded until a dedicated artifact-size audit is run.
 
 The generated audit tables are in [`audit/`](audit/), and the pipeline is
-[`tools/audit_medical_repro.py`](tools/audit_medical_repro.py). To publish the page on GitHub, enable Pages
-for this repository from the `docs/` folder on the default branch.
+[`tools/audit_medical_repro.py`](tools/audit_medical_repro.py).
 
 Note: the page selects medical papers from the challenge's area tags and a title scan
 (`medical_neuro_papers.csv`, [`notes/medical_throughput_shortlist.csv`](notes/medical_throughput_shortlist.csv));
