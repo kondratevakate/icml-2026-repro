@@ -551,3 +551,25 @@ instrument drift.
   and counted.
 * Aggregates and per-paper codes keyed by public ids; no author named;
   repository code is not redistributed.
+
+## Note 9-1 (2026-10-19, before any protocol 9 coding)
+
+Implementation choices left open by the protocol, fixed before coding (`build_p9_excerpts.py`, `fetch_p9.py`):
+
+* Full-text sources: the open proceedings exist for ICML 2025 and 2026 (PMLR v267, v306) and CVPR and ICCV 2025
+  (CVF). ECVA lists ECCV only up to 2024, and the NeurIPS 2025 proceedings site listed 64 papers on 2026-10-19,
+  so ICLR, ECCV 2026 and NeurIPS 2025 and 2026 rely on arXiv alone. Missing full texts are counted per group
+  and venue-year.
+* PDF text is read with PyMuPDF text blocks (the protocol 8 excerpts used pypdf); headings in PDFs are
+  detected from numbered or known section titles. arXiv HTML headings come from its LaTeXML section titles.
+* Within the matched sections, the order is by the first keyword found in the heading: availab, reproducib,
+  ethic, compute, resources, implementation, training details, experimental setup, data, limitation
+  (release and access statements first, then compute and scale, then setup, then data descriptions, then
+  limitations); document order within a level. Each matched section contributes at most 2,000 characters,
+  so that long data sections do not crowd out the others before the 15,000-character cap.
+* NeurIPS checklist items are counted by their "Question:" paragraphs; for items 4-8 and 13 the question, answer
+  and justification are kept and the checklist's guideline text is left out.
+* The truncation rule for release fields is applied by the coders: each sheet row carries the truncation
+  flag, and a release field with no statement is `unclear` when the excerpt was truncated and `no` when not.
+* Coders: 20 papers per batch, title and excerpt only (venue, year and group hidden); prompt in
+  `codes/p9/CODER_PROMPT.md`.
