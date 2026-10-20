@@ -37,6 +37,25 @@ def test_key_is_path_safe():
     assert F.key_of(dict(stratum="cvpr-2025", forum_id="src:10379")) == "cvpr-2025__src-10379"
 
 
+def test_wave_holds_partial_batches_until_final(tmp_path, monkeypatch):
+    import json
+    import build_p9_sheets as S
+    keys = {f"P{i:04d}": dict(key=f"k{i}", title=f"t{i}", coder2=i < 3) for i in range(45)}
+    (tmp_path / "keys.json").write_text(json.dumps(keys))
+    (tmp_path / "batches.json").write_text(json.dumps(dict(coder1=[], coder2=[])))
+    monkeypatch.setattr(S, "KEYS", tmp_path / "keys.json")
+    monkeypatch.setattr(S, "BATCHES", tmp_path / "batches.json")
+    monkeypatch.setattr(S, "SHEETS", tmp_path / "sheets")
+    monkeypatch.setattr(S, "excerpts", lambda: {f"k{i}": dict(truncated=False, excerpt="x") for i in range(45)})
+    S.wave()
+    b = json.loads((tmp_path / "batches.json").read_text())
+    assert [len(x["items"]) for x in b["coder1"]] == [20, 20] and b["coder2"] == []
+    S.wave(final=True)
+    b = json.loads((tmp_path / "batches.json").read_text())
+    assert [len(x["items"]) for x in b["coder1"]] == [20, 20, 5] and [len(x["items"]) for x in b["coder2"]] == [3]
+    assert len({i for x in b["coder1"] for i in x["items"]}) == 45
+
+
 def test_p9_label_set_matches_the_coder_prompt():
     import build_p9_sheets as S
     prompt = (S.CODES / "CODER_PROMPT.md").read_text(encoding="utf-8")

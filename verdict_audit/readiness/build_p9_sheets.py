@@ -6,7 +6,9 @@ results/p9_coding_manifest.json. `wave` assigns papers that have an excerpt and 
 for coder 1 and, for the coder-2 sample, to new coder-2 batches, in item-id order; earlier batches never change.
 `status` lists batches and whether their codes exist and are complete.
 
-Usage: python build_p9_sheets.py init | wave | rebuild | status
+`final`, once the download is complete, is `wave` that also adds the last partial batch of each role.
+
+Usage: python build_p9_sheets.py init | wave | final | rebuild | status
 """
 from __future__ import annotations
 
@@ -68,7 +70,8 @@ def excerpts() -> dict:
     return out
 
 
-def wave() -> None:
+def wave(final: bool = False) -> None:
+    """final: the download is complete, so the last partial batch of each role is added too."""
     keys = json.loads(KEYS.read_text(encoding="utf-8"))
     batches = json.loads(BATCHES.read_text(encoding="utf-8"))
     ex = excerpts()
@@ -77,7 +80,7 @@ def wave() -> None:
     for role, want in (("coder1", lambda v: True), ("coder2", lambda v: v["coder2"])):
         done = {i for b in batches[role] for i in b["items"]}
         todo = sorted(i for i, v in keys.items() if v["key"] in ex and want(v) and i not in done)
-        full = len(todo) - len(todo) % BATCH  # partial batches wait for the next wave
+        full = len(todo) if final else len(todo) - len(todo) % BATCH  # partial batches wait for the next wave
         for start in range(0, full, BATCH):
             items = todo[start:start + BATCH]
             n = len(batches[role])
@@ -132,4 +135,5 @@ def status() -> None:
 
 
 if __name__ == "__main__":
-    {"init": init, "wave": wave, "rebuild": rebuild, "status": status}[sys.argv[1] if len(sys.argv) > 1 else "status"]()
+    {"init": init, "wave": wave, "final": lambda: wave(final=True), "rebuild": rebuild,
+     "status": status}[sys.argv[1] if len(sys.argv) > 1 else "status"]()
