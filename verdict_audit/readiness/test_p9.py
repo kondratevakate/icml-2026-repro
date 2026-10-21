@@ -56,6 +56,14 @@ def test_wave_holds_partial_batches_until_final(tmp_path, monkeypatch):
     assert len({i for x in b["coder1"] for i in x["items"]}) == 45
 
 
+def test_mh_rd_matches_hand_computation():
+    from analyze_p9 import mh_rd
+    rows = [("a", True, 1)] * 3 + [("a", True, 0)] + [("a", False, 1)] + [("a", False, 0)] * 3 \
+        + [("b", True, 1)] * 2 + [("b", False, 0)] * 2 + [("c", True, 1)]  # stratum c has one group only
+    # a: 0.75 - 0.25, weight 4*4/8 = 2; b: 1.0 - 0.0, weight 2*2/4 = 1 -> (2*0.5 + 1*1.0) / 3
+    assert abs(mh_rd(rows) - 2 / 3) < 1e-12
+
+
 def test_p9_label_set_matches_the_coder_prompt():
     import build_p9_sheets as S
     prompt = (S.CODES / "CODER_PROMPT.md").read_text(encoding="utf-8")

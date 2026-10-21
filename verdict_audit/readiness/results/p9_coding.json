@@ -1,0 +1,89 @@
+{
+ "n_coder1": 3278,
+ "n_coder2": 813,
+ "n_shared": 813,
+ "agreement": {
+  "claims": {
+   "n": 813,
+   "po": 0.9446494464944649,
+   "kappa": 0.8596442094844221
+  },
+  "code": {
+   "n": 813,
+   "po": 0.9126691266912669,
+   "kappa": 0.8536104749804087
+  },
+  "main_data_access": {
+   "n": 813,
+   "po": 0.9052890528905289,
+   "kappa": 0.8339372685504493
+  },
+  "open_data_experiment": {
+   "n": 813,
+   "po": 0.8068880688806888,
+   "kappa": 0.664905975411579
+  },
+  "synthetic_or_sample_release": {
+   "n": 813,
+   "po": 0.980319803198032,
+   "kappa": 0.9344321790412825
+  },
+  "weights_release": {
+   "n": 813,
+   "po": 0.986469864698647,
+   "kappa": 0.961286384651348
+  },
+  "outputs_release": {
+   "n": 813,
+   "po": 0.996309963099631,
+   "kappa": 0.9871366865496892
+  },
+  "variance": {
+   "n": 813,
+   "po": 0.8118081180811808,
+   "kappa": 0.7097553235674318
+  },
+  "environment": {
+   "n": 813,
+   "po": 0.6420664206642066,
+   "kappa": 0.3485648673355875
+  },
+  "compute": {
+   "n": 813,
+   "po": 0.7835178351783518,
+   "kappa": 0.7021792069934437
+  },
+  "compute_tier": {
+   "n": 813,
+   "po": 0.9790897908979089,
+   "kappa": 0.9081929535551065
+  },
+  "data_scale": {
+   "n": 813,
+   "po": 0.9298892988929889,
+   "kappa": 0.902168956519536
+  }
+ },
+ "gate": {
+  "code": true,
+  "main_data_access": true,
+  "weights_release": true,
+  "variance": false,
+  "compute": false
+ },
+ "disagreements": {
+  "claims": 45,
+  "compute_tier": 17,
+  "code": 71,
+  "environment": 291,
+  "main_data_access": 77,
+  "open_data_experiment": 157,
+  "compute": 176,
+  "variance": 153,
+  "weights_release": 11,
+  "data_scale": 57,
+  "synthetic_or_sample_release": 16,
+  "outputs_release": 3
+ },
+ "adjudicated": 0
+}

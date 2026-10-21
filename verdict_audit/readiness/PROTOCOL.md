@@ -585,3 +585,24 @@ After the first two coder batches (recoded, not used), the excerpt also takes up
 ## Note 9-4 (2026-10-19)
 
 The coders of batches 080 and 083 ran at the same time and both wrote a helper script to the same shared path (`/tmp/show.py`); one coder reported a read that returned another batch's excerpt. Both batches are recoded by fresh coders (the earlier codes are set aside, not used). From these recodes and batch 108 on, the prompt ends with one more sentence: "Do not write helper files to shared temporary paths such as /tmp; read the sheet with inline Python instead." The coding instructions are unchanged.
+
+## Note 9-5 (2026-10-21, after the agreement scores, before any comparison was computed)
+
+Coder agreement on the 813 double-coded papers: the gate is met for code (kappa 0.85), main_data_access (0.83)
+and weights_release (0.96) and not met for variance (0.71) and compute (0.70). Choices for the analysis, fixed now:
+
+* Fields that meet the gate use coder 1's code for every paper; coder 2 is the reliability sample and
+  disagreements on these fields are not adjudicated.
+* Variance and compute do not meet the gate. Until coder 2 has coded them for all papers and every
+  disagreement is adjudicated (the protocol's rule), their results, including L9.3, are reported from coder 1
+  as provisional and no label is assigned.
+* A9.3 indicators (positive category versus the other non-`unclear` categories): claims listed_and_linked,
+  code released, main_data_access open, open_data_experiment yes, synthetic_or_sample_release yes,
+  weights_release yes, outputs_release yes, variance yes, environment yes, compute amount. compute_tier and
+  data_scale are reported as distributions only. Mantel-Haenszel risk differences over the nine venue-years.
+* A9.5: attempted = at least one logbook in the protocol 8 verdict snapshot (author's namespace excluded);
+  decided = at least one claim verified or falsified. Strata are the coded categories, `not_stated` included;
+  papers coded `unclear` on a stratifying field are left out of that adjusted estimate and counted.
+* A9.6 uses the protocol 8 final codes (claim types from H8.4, main data access from H8.5) for ICML 2026
+  attempted life-science papers; Wilson intervals over claims, as written, without a cluster correction.
+* A9.4 needs the reference-standard coding of ICML 2026 logbooks, which has not been done; it is not reported.
