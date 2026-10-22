@@ -643,3 +643,21 @@ The coder2full file for batch 093 has one label outside the codebook (compute_ti
 the batch fails the completeness check. The batch is recoded by a fresh coder with the same prompt; the earlier
 file is set aside, not used. Coder instances that stopped on a usage limit before writing their file are rerun
 with the same prompt; a file written before an instance stopped is used if it passes the check.
+
+## Note 9-9 (2026-10-22, post hoc, frozen before computing)
+
+Question raised after the final A9.3 and A9.5 results: life-science papers state more reproducibility practices yet
+are decided less often in ICML 2026; is the gap carried by the papers' claims or by how far reproducers got? Post
+hoc and descriptive; reported as such. Units: the A9.5 papers (ICML 2026 frame, at least one logbook, author's
+namespace excluded; decided = at least one verified or falsified claim verdict). Script `posthoc_p9.py`, output
+`results/p9_posthoc.json`; MH risk differences and bootstrap as in A9.5.
+
+* PH9-a, decomposition. Unadjusted decided difference (life science minus other), then MH-adjusted for (i) number
+  of distinct teams (1, 2, 3 or more), (ii) number of distinct claim texts, in tertiles of the pooled distribution,
+  (iii) both. Claim-level decided share per group (verdict rows), with a paper bootstrap within group.
+* PH9-b, claim linkage. Decided difference MH-adjusted for the P9 `claims` code (listed_and_linked, listed, none;
+  unclear excluded); the code's distribution by group among these papers.
+* Reading rule, as A9.5: an adjustment "accounts for the gap" if its CI includes 0 and its point estimate is less
+  than half the unadjusted one in absolute value. If (iii) accounts for the gap while the claim-level shares do not
+  differ, the gap is attributed to how many claims and teams papers had; if PH9-b accounts for it, to claim
+  linkage; otherwise neither explains it. No claim texts are coded in this note.
