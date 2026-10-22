@@ -20,31 +20,71 @@ from build_p9_sheets import CODES, FIELDS, KEYS, LABELS
 
 HERE = Path(__file__).resolve().parent
 PRIMARY = ("code", "main_data_access", "weights_release", "variance", "compute")
+BELOW_GATE = ("variance", "compute")  # Note 9-5; coder 2 completes them for all papers (Note 9-6)
+REF_FIELDS = ("code_used", "data_obtained", "weights_used")
+REF_LABELS = {f: ("yes", "no", "unclear") for f in REF_FIELDS}
 GATE, B, SEED_BOOT = 0.80, 2000, 20261017
 ADJ = CODES / "adjudication.csv"
 
 
-def read(role: str) -> dict:
+def read(role: str, fields=FIELDS) -> dict:
     out = {}
     for f in sorted(CODES.glob(f"p9_{role}_batch_*.csv")):
         with f.open(newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 if r["item_id"] in out:
                     raise SystemExit(f"{f.name}: duplicate {r['item_id']}")
-                out[r["item_id"]] = {k: r[k].strip() for k in FIELDS}
+                out[r["item_id"]] = {k: r[k].strip() for k in fields}
     return out
 
 
 def adjudications() -> dict:
     out = {}
+    cats = {**LABELS, **REF_LABELS}
     if ADJ.exists():
         with ADJ.open(newline="", encoding="utf-8") as fh:
             for r in csv.DictReader(fh):
                 if not r.get("reason", "").strip():
                     raise SystemExit(f"adjudication without reason: {r['item_id']} {r['field']}")
-                if r["label"] not in LABELS[r["field"]]:
+                if r["label"] not in cats[r["field"]]:
                     raise SystemExit(f"adjudication label not in codebook: {r}")
                 out[(r["item_id"], r["field"])] = r["label"]
+    return out
+
+
+def read_complete(role: str) -> dict:
+    """Codes from batch files that cover their batch exactly with valid labels (skips files still being written)."""
+    from build_p9_sheets import BATCHES
+    out = {}
+    for b in json.loads(BATCHES.read_text(encoding="utf-8")).get(role, []):
+        f = CODES / f"p9_{role}_batch_{b['batch']:03d}.csv"
+        if not f.exists():
+            continue
+        with f.open(newline="", encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        if sorted(r["item_id"] for r in rows) == sorted(b["items"]) and all(
+                (r.get(k) or "").strip() in LABELS[k] for r in rows for k in FIELDS):
+            out.update({r["item_id"]: {k: r[k].strip() for k in FIELDS} for r in rows})
+    return out
+
+
+def coder2_all() -> dict:
+    """Coder 2 on every coded paper: its 25% sample plus the Note 9-6 completion (role coder2full)."""
+    c2, full = read("coder2"), read_complete("coder2full")
+    if set(c2) & set(full):
+        raise SystemExit("coder2 and coder2full overlap")
+    return {**c2, **full}
+
+
+def pending_items() -> list[tuple]:
+    """Disagreements still to adjudicate: variance and compute over all papers, reference fields over all units."""
+    c1, c2 = read("coder1"), coder2_all()
+    r1, r2 = read("ref1", REF_FIELDS), read("ref2", REF_FIELDS)
+    adj = adjudications()
+    out = [(i, f, c1[i][f], c2[i][f]) for i in sorted(set(c1) & set(c2)) for f in BELOW_GATE
+           if c1[i][f] != c2[i][f] and (i, f) not in adj]
+    out += [(i, f, r1[i][f], r2[i][f]) for i in sorted(set(r1) & set(r2)) for f in REF_FIELDS
+            if r1[i][f] != r2[i][f] and (i, f) not in adj]
     return out
 
 
@@ -53,16 +93,49 @@ def score() -> dict:
     shared = sorted(set(c1) & set(c2))
     agreement = {f: kappa([c1[i][f] for i in shared], [c2[i][f] for i in shared], LABELS[f]) for f in FIELDS}
     gate = {f: (agreement[f]["kappa"] or 0) >= GATE for f in PRIMARY}
-    adj = adjudications()
-    pending = [(i, f, c1[i][f], c2[i][f]) for i in shared for f in FIELDS
-               if c1[i][f] != c2[i][f] and (i, f) not in adj]
+    c2a = coder2_all()
+    shared_all = sorted(set(c1) & set(c2a))
+    agreement_all = {f: kappa([c1[i][f] for i in shared_all], [c2a[i][f] for i in shared_all], LABELS[f])
+                     for f in BELOW_GATE}
+    r1, r2 = read("ref1", REF_FIELDS), read("ref2", REF_FIELDS)
+    rs = sorted(set(r1) & set(r2))
+    agreement_ref = {f: kappa([r1[i][f] for i in rs], [r2[i][f] for i in rs], REF_LABELS[f]) for f in REF_FIELDS}
+    pending = pending_items()
     with (CODES / "to_adjudicate.csv").open("w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(["item_id", "field", "coder1", "coder2"])
+        w.writerow(["item_id", "field", "label_a", "label_b"])
         w.writerows(pending)
     out = dict(n_coder1=len(c1), n_coder2=len(c2), n_shared=len(shared), agreement=agreement, gate=gate,
-               disagreements=dict(Counter(f for _, f, _, _ in pending)), adjudicated=len(adj))
+               n_coder2_all=len(c2a), agreement_all_below_gate=agreement_all, n_reference=len(rs),
+               agreement_reference=agreement_ref, pending=dict(Counter(f for _, f, _, _ in pending)),
+               adjudicated=len(adjudications()))
     (HERE / "results" / "p9_coding.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    return out
+
+
+def final_codes() -> dict:
+    """Coder 1 for fields above the gate; for variance and compute coder 1 where coders agree, else adjudicated."""
+    c1, c2a, adj = read("coder1"), coder2_all(), adjudications()
+    if set(c1) - set(c2a):
+        raise SystemExit(f"coder 2 has not coded {len(set(c1) - set(c2a))} papers yet (Note 9-6)")
+    out = {}
+    for i in sorted(c1):
+        out[i] = dict(c1[i])
+        for f in BELOW_GATE:
+            if c1[i][f] != c2a[i][f]:
+                if (i, f) not in adj:
+                    raise SystemExit(f"not adjudicated: {i} {f}")
+                out[i][f] = adj[(i, f)]
+    return out
+
+
+def reference_codes() -> dict:
+    r1, r2, adj = read("ref1", REF_FIELDS), read("ref2", REF_FIELDS), adjudications()
+    out = {}
+    for i in sorted(set(r1) | set(r2)):
+        if i not in r1 or i not in r2:
+            raise SystemExit(f"reference coding incomplete: {i}")
+        out[i] = {f: r1[i][f] if r1[i][f] == r2[i][f] else adj[(i, f)] for f in REF_FIELDS}
     return out
 
 
@@ -173,26 +246,76 @@ def a96() -> dict:
     return out
 
 
+def binary_agreement(pairs) -> dict:
+    """pairs of (full-text positive, reference positive) booleans: sensitivity, specificity, kappa."""
+    tp = sum(a and b for a, b in pairs); fn = sum((not a) and b for a, b in pairs)
+    tn = sum((not a) and (not b) for a, b in pairs); fp = sum(a and (not b) for a, b in pairs)
+    k = kappa(["y" if a else "n" for a, _ in pairs], ["y" if b else "n" for _, b in pairs], ("y", "n"))
+    return dict(n=len(pairs), tp=tp, fp=fp, fn=fn, tn=tn,
+                sensitivity=tp / (tp + fn) if tp + fn else None, specificity=tn / (tn + fp) if tn + fp else None,
+                kappa=k["kappa"])
+
+
+def a94(papers: list[dict]) -> dict:
+    ref = reference_codes()
+    by = {p["item"]: p for p in papers}
+    out = dict(units=len(ref), reference_distribution={f: dict(Counter(v[f] for v in ref.values())) for f in REF_FIELDS})
+    for ft, pos, rf in (("code", "released", "code_used"), ("main_data_access", "open", "data_obtained"),
+                        ("weights_release", "yes", "weights_used")):
+        pairs = [(by[i][ft] == pos, r[rf] == "yes") for i, r in sorted(ref.items())
+                 if by[i][ft] != "unclear" and r[rf] != "unclear"]
+        out[f"{ft}_vs_{rf}"] = binary_agreement(pairs)
+    return out
+
+
+
+
+def checklist_item5(papers: list[dict]) -> dict:
+    """NeurIPS 2025/2026: checklist item 5 answer in the excerpt versus code `released` (Note 9-7)."""
+    import re
+    from build_p9_sheets import excerpts
+    keys = json.loads(KEYS.read_text(encoding="utf-8"))
+    ex = excerpts()
+    pat = re.compile(r"\(item 5\) Question:.*?Answer:\s*\[?\s*(yes|no|n/?a)\b", re.IGNORECASE | re.DOTALL)
+    pairs, answers = [], Counter()
+    for p in papers:
+        if not p["stratum"].startswith("neurips"):
+            continue
+        r = ex.get(keys[p["item"]]["key"])
+        m = pat.search(r["excerpt"]) if r else None
+        if not m:
+            answers["absent"] += 1
+            continue
+        a = m.group(1).lower().replace("/", "")
+        answers[a] += 1
+        if a in ("yes", "no") and p["code"] != "unclear":
+            pairs.append((p["code"] == "released", a == "yes"))
+    return dict(answers=dict(answers), **binary_agreement(pairs))
+
+
 def run() -> dict:
     sc = score()
     keys = json.loads(KEYS.read_text(encoding="utf-8"))
-    c1 = read("coder1")
-    papers = [dict(item=i, group=keys[i]["group"], stratum=keys[i]["stratum"], forum_id=keys[i]["forum_id"], **c1[i])
-              for i in sorted(c1)]
+    final = final_codes()
+    papers = [dict(item=i, group=keys[i]["group"], stratum=keys[i]["stratum"], forum_id=keys[i]["forum_id"], **final[i])
+              for i in sorted(final)]
     coverage = defaultdict(lambda: dict(frame=0, coded=0))
     for i, v in keys.items():
         coverage[f"{v['group']}|{v['stratum']}"]["frame"] += 1
         coverage[f"{v['group']}|{v['stratum']}"]["coded"] += i in c1
-    res = dict(agreement=sc["agreement"], gate=sc["gate"], coverage=dict(sorted(coverage.items())),
-               coded=dict(Counter(p["group"] for p in papers)), A9_3={})
+    res = dict(agreement=sc["agreement"], gate=sc["gate"], agreement_all_below_gate=sc["agreement_all_below_gate"],
+               agreement_reference=sc["agreement_reference"], adjudicated=sc["adjudicated"],
+               coverage=dict(sorted(coverage.items())), coded=dict(Counter(p["group"] for p in papers)), A9_3={})
     for f in FIELDS:
         res["A9_3"][f] = prevalence(papers, f)
-        res["A9_3"][f]["provisional"] = f in PRIMARY and not sc["gate"][f]
+        res["A9_3"][f]["provisional"] = False  # below-gate fields are adjudicated in final_codes (Note 9-6)
     res["labels"] = {}
     for lab, f in LABELS_A93.items():
         ci = res["A9_3"][f]["mh_ci"]
         res["labels"][lab] = dict(field=f, rd=res["A9_3"][f]["mh_rd"], ci=ci,
                                   met=None if res["A9_3"][f]["provisional"] else bool(ci and ci[1] < 0))
+    res["A9_4"] = a94(papers)
+    res["A9_4"]["neurips_checklist_item5_vs_code"] = checklist_item5(papers)
     res["A9_5"] = a95(papers)
     res["A9_6"] = a96()
     out = HERE / "results" / "p9.json"

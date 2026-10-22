@@ -98,6 +98,31 @@ def wave(final: bool = False) -> None:
     print("new batches:", {r: (v[0], v[-1], len(v)) for r, v in new.items()} or "none")
 
 
+def full2() -> None:
+    """Note 9-6: coder 2 codes every remaining coded paper (fields below the gate), role coder2full, same prompt."""
+    keys = json.loads(KEYS.read_text(encoding="utf-8"))
+    batches = json.loads(BATCHES.read_text(encoding="utf-8"))
+    if batches.get("coder2full"):
+        raise SystemExit("coder2full batches exist")
+    ex = excerpts()
+    in1 = {i for b in batches["coder1"] for i in b["items"]}
+    in2 = {i for b in batches["coder2"] for i in b["items"]}
+    todo = sorted(in1 - in2)
+    batches["coder2full"] = []
+    for n, start in enumerate(range(0, len(todo), BATCH)):
+        items = todo[start:start + BATCH]
+        with (SHEETS / f"p9_coder2full_batch_{n:03d}.csv").open("w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, ["item_id", "title", "truncated", "excerpt"])
+            w.writeheader()
+            for i in items:
+                r = ex[keys[i]["key"]]
+                w.writerow(dict(item_id=i, title=keys[i]["title"], truncated="yes" if r["truncated"] else "no",
+                                excerpt=r["excerpt"]))
+        batches["coder2full"].append(dict(batch=n, items=items))
+    BATCHES.write_text(json.dumps(batches), encoding="utf-8")
+    print("coder2full batches:", len(batches["coder2full"]), "items:", len(todo))
+
+
 def rebuild() -> None:
     """Rewrite the sheets of existing batches from the current excerpts (same items, Note 9-3)."""
     keys = json.loads(KEYS.read_text(encoding="utf-8"))
@@ -119,7 +144,7 @@ def rebuild() -> None:
 
 def status() -> None:
     batches = json.loads(BATCHES.read_text(encoding="utf-8"))
-    for role in ("coder1", "coder2"):
+    for role in [r for r in ("coder1", "coder2", "coder2full") if r in batches]:
         missing, bad = [], []
         for b in batches[role]:
             f = CODES / f"p9_{role}_batch_{b['batch']:03d}.csv"
@@ -135,5 +160,5 @@ def status() -> None:
 
 
 if __name__ == "__main__":
-    {"init": init, "wave": wave, "final": lambda: wave(final=True), "rebuild": rebuild,
+    {"init": init, "wave": wave, "final": lambda: wave(final=True), "full2": full2, "rebuild": rebuild,
      "status": status}[sys.argv[1] if len(sys.argv) > 1 else "status"]()

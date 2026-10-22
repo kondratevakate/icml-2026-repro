@@ -606,3 +606,33 @@ and weights_release (0.96) and not met for variance (0.71) and compute (0.70). C
 * A9.6 uses the protocol 8 final codes (claim types from H8.4, main data access from H8.5) for ICML 2026
   attempted life-science papers; Wilson intervals over claims, as written, without a cluster correction.
 * A9.4 needs the reference-standard coding of ICML 2026 logbooks, which has not been done; it is not reported.
+
+## Note 9-6 (2026-10-21, before coder 2 completes the fields below the gate)
+
+Kate approved completing the gate rule for variance and compute. Choices:
+
+* Coder 2 codes the 2,465 coded papers outside its 25% sample with the unchanged prompt (`codes/p9/CODER_PROMPT.md`,
+  role `coder2full`, 20 papers per batch, the Note 9-4 sentence appended). It labels all twelve fields; only
+  variance and compute are used. The other fields keep coder 1's codes (Note 9-5).
+* Every coder 1 versus coder 2 disagreement on variance or compute, over all coded papers, is adjudicated from
+  the excerpt only, with a reason. Deviation from "adjudication by this session": about 1,300 items exceed what
+  one session can read, so adjudication is done by Claude subagents (claude-opus-5-5, this session's model), 20
+  items per batch. Each adjudicator sees the title, truncation flag, excerpt, the field definition from the
+  coder prompt and the two labels in random order (seed 20261019), not which coder gave which.
+* Agreement for variance and compute is reported on the 813-paper sample (the gate) and on all coded papers.
+
+## Note 9-7 (2026-10-21, before the reference standard for Q9.4 is built)
+
+* Units: the 222 ICML 2026 frame papers with at least one logbook in the protocol 8 verdict snapshot
+  (deduplicated, author's namespace excluded); all have full-text codes.
+* Sheet per paper: title, then each logbook's claims with the judge's verdict and evidence text, in snapshot
+  order, capped at 15,000 characters with a truncation flag. Group and full-text codes hidden.
+* Two blind coders (claude-sonnet-5-5, roles ref1 and ref2) code every paper; prompt in
+  `codes/p9/REF_PROMPT.md`. Paper level: `yes` if any logbook states it was done, `no` if the evidence shows it
+  was not (for example code reimplemented or unavailable, data substituted or not obtained), `unclear` otherwise.
+  Disagreements are adjudicated as in Note 9-6.
+* Agreement with full-text fields, `unclear` excluded on either side: code `released` versus code_used,
+  main_data_access `open` versus data_obtained, weights_release `yes` versus weights_used. Sensitivity,
+  specificity and Cohen's kappa.
+* NeurIPS 2025 and 2026: checklist item 5 answer parsed from the excerpt ("Answer: [Yes]" or "[No]"; `[NA]`
+  left out) versus code `released` (`unclear` excluded); kappa and raw agreement.

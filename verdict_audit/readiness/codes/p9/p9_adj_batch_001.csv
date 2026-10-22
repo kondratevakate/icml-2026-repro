@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0081,compute,none,"The visible implementation details give training and inference hyperparameters but state no hardware, runtime or GPU-hours."
+P0091,variance,no,"Main results are reported as single MAE/RMSE values (e.g. MAE 0.212, RMSE 0.375) with no seeds, standard deviations or intervals."
+P0091,compute,none,"The text says nothing about hardware, training time or GPU-hours."
+P0092,compute,none,The text describes the NMF/SCA analyses but says nothing about hardware or compute time.
+P0096,compute,none,The text says nothing about hardware or compute time; the reproducibility statement only defers architecture and hyperparameter details to Appendix C.
+P0098,compute,unclear,"Throughput and timing figures are given (single-core samples/sec, 30 s warm-up plus 120 s measurement, 58 days per epoch for the baseline) but no hardware is specified."
+P0104,variance,no,"Main results are single point values (e.g. F1 from 0.589 to 0.607, average CE gains) with no seeds, standard deviations or intervals mentioned."
+P0105,variance,no,"Results are single DSC values per method; 5-fold cross-validation is mentioned but no spread, standard deviation or interval is reported."
+P0106,variance,no,"Main results are single accuracy percentages per model with no repeated runs, standard deviations or intervals mentioned."
+P0109,variance,no,"Results are point values averaged over 4 subjects (e.g. SSIM 33.9%, CLIP 97.8%) with no seeds, standard deviations or intervals."
+P0149,compute,amount,The text states a single RTX4090 GPU (24GB) for all experiments and a time of about 100 hours for constructing the CDR-like database.
+P0151,variance,no,"The only reported experiment (Figure 4) gives accuracy averaged over trees, with no seeds, error bars or standard deviations mentioned."
+P0151,compute,none,"The text says nothing about hardware, runtime or GPU-hours."
+P0153,compute,unclear,"The text says a computational cost analysis is in Table 6, but no hardware or time is visible."
+P0155,variance,no,"Main results are single average scores (e.g. GPT-4o 76.02%, Qwen3-4B 67.04%) with no repeated runs or spread reported."
+P0155,compute,none,The text says nothing about hardware or compute time used for the evaluations.
+P0162,compute,unclear,"The text mentions computational cost and defers efficiency and cost-accuracy analysis to Appendix C, but states no hardware or time."
+P0169,variance,no,"The text reports AUROC/AUPRC/F1max results with no mention of seeds, repeated runs, standard deviations or intervals."
+P0169,compute,none,The text says nothing about hardware or compute time; it only notes that the latent space increases computational efficiency.
+P0170,compute,unclear,"The efficiency analysis gives GPU memory (10.5MB) and training time relative to TimeXer (about 30%), but names no hardware and gives no absolute time."
