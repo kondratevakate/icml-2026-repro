@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1978,variance,no,"Results are reported as single accuracy figures (e.g. 12.3% higher than GPT-4o) and the excerpts mention no seeds, error bars or intervals."
+P1984,variance,no,"The seeds/variance excerpt gives only training settings and results are averages over structures, with no seeds, error bars or standard deviations reported."
+P1985,variance,no,"The excerpt describes single training runs evaluated on AlpacaEval2/Arena-Hard/WildBench with no seeds, error bars or intervals for the main results."
+P1991,compute,unclear,Only a CPU node time for offline preprocessing is given; the training hardware and time are not visible in the truncated text.
+P1993,variance,no,"Figures report averages over sampled data and trajectories, with no seeds, error bars or standard deviations mentioned for the main results."
+P1994,variance,no,"The excerpts report docking success rates with no mention of multiple seeds, error bars or standard deviations."
+P1999,variance,no,Repeated LLM queries are collapsed to a majority answer and balanced accuracies are reported without any standard deviation or interval.
+P2000,compute,none,The visible text names no hardware or training time for any experiment.
+P2002,variance,no,"The excerpts report AUROC and other benchmark metrics with no seeds, error bars, standard deviations or intervals."
+P2003,variance,no,"Seed dependence is discussed only for training failures, and the main benchmark results are given without standard deviations or intervals."
+P2003,compute,none,The visible text gives no hardware or training time.
+P2008,compute,none,The implementation details give architecture and optimizer settings but no hardware or training time.
+P2017,variance,no,"The only standard deviation mentioned is a dataset length statistic; main results carry no seeds, error bars or intervals."
+P2038,variance,no,"The excerpts report FID, TopoFD and count errors with no repeated seeds, error bars or standard deviations."
+P2040,compute,none,The visible text gives no hardware or training time.
+P2041,variance,no,"Results are given as mean/median localization errors over test samples with no seeds, error bars or intervals across runs."
+P2041,compute,none,The visible text gives no hardware or training time.
+P2043,compute,none,The visible text gives no hardware or training time for pretraining or fine-tuning.
+P2045,compute,none,"The visible text, including the reproducibility appendix excerpt, gives no hardware or training time."
+P2047,compute,none,The visible text gives hyperparameters but no hardware or training time.

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2158,compute,none,"The excerpts describe methods, datasets and a code link but state no hardware or training time."
+P2162,compute,none,The excerpts give pretraining data and hyperparameters but name no hardware or compute time.
+P2164,variance,no,"Results are described without any mention of multiple seeds, error bars or standard deviations for the main comparisons."
+P2165,compute,none,Models are queried via APIs or Hugging Face weights and no hardware or compute time is stated.
+P2170,variance,no,"Implementation and results sections mention no seeds, standard deviations or intervals for the main results."
+P2170,compute,none,Implementation details give architectures and epochs but no hardware or compute time.
+P2172,variance,yes,"Accuracy is pass@1 over 8 independent responses and throughput/latency are averaged across 3 independent runs, i.e. repeated runs for the main results."
+P2175,compute,none,The excerpts list models and baselines but state no hardware or compute time.
+P2178,variance,no,"Results are reported as single Dice/IoU/HD95 values; the 10-sample ensemble is fused, not used to report variability."
+P2179,variance,no,"No seeds, error bars or intervals are mentioned for the reported prediction results."
+P2179,compute,none,"The text only says LDSR and DeepWAS used similar computational resources, without naming hardware or time."
+P2192,compute,none,"The excerpts describe datasets, VAE/LDM configuration and baselines but no hardware or compute time."
+P2208,compute,none,The excerpts give SAE hyperparameters and checkpoints but no hardware or compute time.
+P2226,variance,no,"Training details and benchmark tables are described with no seeds, standard deviations or error bars."
+P2231,variance,no,"No repeated runs, seeds or variability measures are mentioned for the main ProteinGym or generation results."
+P2236,variance,no,"Main tables report metrics averaged over scenes with no standard deviations, seeds or intervals stated."
+P2237,variance,no,"The five random seeds serve a circular-evaluation correctness filter, not reporting of variability for the main results."
+P2239,variance,no,"Quantitative tables report best PSNR/SSIM values with no seeds, standard deviations or intervals mentioned."
+P2240,variance,no,"Benchmark results are described without any seeds, error bars or variability measures."
+P2250,variance,no,The only error bars show diversity ranges in an analysis figure; main benchmark results have no seeds or intervals stated.

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2778,variance,no,"The experiments report single timings averaged over test examples and models, and no seeds, error bars or standard deviations appear for the main results."
+P2779,variance,unclear,"The excerpts give the training setup but not the results tables, and they say nothing about seeds or variability; the text is truncated."
+P2781,variance,no,"The main accuracy results (Fig. 3) are given as single bars per model, with no seeds, error bars or intervals mentioned."
+P2782,variance,unclear,"The text stops at the experimental setup, before the results, and the seeds section only covers a theoretical sampling bound."
+P2782,compute,unclear,"No hardware or runtime appears in the excerpts, but the text is cut off at the experimental section where such details would be."
+P2784,variance,no,"Results are compared as single metric values with no seeds, repeated runs or error bars, and the seeds section only concerns point-cloud initialisation."
+P2785,variance,unclear,The excerpts describe datasets and limitations but contain no results or any mention of seeds or variability.
+P2787,variance,unclear,"The Table 1 caption is cut off at ""All r[...]"", so the text cannot show whether results are averaged over runs with deviations."
+P2789,variance,unclear,Only the averaging of metrics over edit requests is described; the results are not shown and seeds or intervals are never mentioned.
+P2804,compute,unclear,"The excerpts state no hardware or training time and send training details to the supplementary material, which is not shown."
+P2808,compute,unclear,"No implementation or hardware section appears in the excerpts, and the text is truncated."
+P2814,variance,no,"Results and ablations are reported as single accuracy differences, with no seeds, standard deviations or error bars."
+P2819,compute,none,"The Training Details section gives epochs, batch sizes and optimiser but only says PyTorch in a Linux environment, with no hardware or time."
+P2863,variance,no,"Results come from single greedy-decoding runs in Table 1, with no seeds, standard deviations or intervals mentioned."
+P2865,variance,no,"The experimental setup and results (e.g. Table 10 gains in pp) give single values, with no seeds or variability reported."
+P2865,compute,none,"The Training Configuration paragraph lists clients, rounds, batch sizes and LoRA settings but no hardware or compute time."
+P2868,variance,no,"The main results are single values (e.g. TCS 0.9690), with no seeds, error bars or standard deviations mentioned."
+P2872,compute,unclear,"The excerpts mention only limited computational resources, give no hardware or training time, and do not show the pre-training details."
+P2873,compute,unclear,"No hardware or compute is stated, and the text is cut off in the checklist before any compute item."
+P2874,variance,no,"Accuracy and latency results are given as single percentages and speedups, with no seeds, error bars or deviations."

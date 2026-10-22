@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0778,variance,no,"The excerpts report effects and positive rates as single values with no seeds, standard deviations, error bars or intervals mentioned."
+P0786,variance,no,"The only mean/standard deviation mentioned is of the VAE latent space, and no seeds, error bars or intervals for the main results appear."
+P0786,compute,none,"The excerpts name no GPUs, hardware or training time."
+P0788,compute,none,Models are run through provider APIs in Docker containers and no hardware or compute time is stated.
+P0798,compute,hardware_only,Training details state eight NVIDIA V100 GPUs but give no training time or GPU-hours.
+P0839,compute,unclear,"Only a wall-clock time (70 minutes with 10 parallel processes for API runs) is given with no hardware, which fits neither amount nor hardware_only cleanly."
+P0868,variance,no,"Results are described as success rates and average lengths with no seeds, standard deviations or error bars mentioned."
+P0868,compute,none,"The excerpts mention no hardware, GPUs or training time."
+P0869,variance,no,"Evaluation relies on user studies and GPT ratings with correlation/kappa values; no seeds, error bars or intervals for main results are reported."
+P0870,variance,no,"The only mean plus/minus standard deviation is for generated length distributions in a length-control figure, not variability of the main results across seeds."
+P0872,variance,no,"The excerpts give no seeds, standard deviations, error bars or intervals for the main results."
+P0884,variance,no,"The only standard deviation mentioned is a blur-kernel setting, and no seeds or error bars for results are reported."
+P0891,variance,no,"The seed mentioned is a seed dataset of exemplars; no repeated runs, standard deviations or error bars for results are reported."
+P0894,variance,no,"The excerpts contain no mention of seeds, repeated runs, standard deviations or error bars."
+P0900,compute,unclear,"The text says runtime and GPU memory limits are in Table 1 based on their hardware configuration, but no hardware type or table values are shown."
+P0903,variance,no,"Seed only refers to instruction templates; no repeated runs, standard deviations or error bars are reported."
+P0903,compute,none,"The excerpts mention no hardware, GPUs or compute time."
+P0910,variance,no,"Benchmark scores are reported as single values with no seeds, standard deviations or error bars."
+P0913,compute,none,"The excerpts mention no hardware, GPUs or compute time."
+P0935,variance,no,"Results are reported as single scores with no seeds, standard deviations or error bars mentioned."

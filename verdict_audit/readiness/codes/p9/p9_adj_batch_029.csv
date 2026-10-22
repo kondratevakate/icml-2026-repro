@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0976,compute,unclear,"Per-epoch training times (76.22s to 114.62s) are given but no hardware is named, so it fits neither amount nor hardware_only and the truncated text leaves it ambiguous."
+P0980,compute,none,The excerpts describe training setup and learning rates but state no hardware or compute time.
+P0982,variance,unclear,"Figure 3 shows results for the top 10 optimization individuals as dots, but no seeds, error bars or intervals for the main results are stated, so dispersion reporting is ambiguous."
+P0985,variance,no,"The setup and results sections report single perplexity/loss values with no seeds, standard deviations or intervals mentioned."
+P0991,compute,none,"Only generic ""datacenter GPUs"" are mentioned in the environmental impact note, with no specific hardware or run time."
+P0992,variance,no,"Results are reported as accuracies and the only standard deviation mentioned is within GRPO reward normalization, not across runs."
+P1022,variance,yes,"The volume curves are computed by averaging 100 independent experiments, i.e. results over many repeated runs."
+P1042,variance,no,"Main and ablation Dice scores are reported as single values with no seeds, standard deviations or intervals."
+P1050,compute,none,"The excerpts describe code, data and setup but give no hardware or compute time."
+P1051,variance,no,Implementation and results sections give single ROC-AUC values with no mention of multiple seeds or error bars.
+P1053,variance,no,"Training and evaluation details report no seeds, standard deviations or intervals for results."
+P1054,compute,none,The excerpts give MCTS and LLM configuration but no hardware or compute time.
+P1069,compute,unclear,"The checklist says open-weight models ran on local GPU nodes and points to Section 3.6 for the serving regime, but no specific hardware or time is visible in the truncated text."
+P1070,variance,no,"Results are reported as single FID and error values with no mention of repeated runs, seeds or intervals."
+P1070,compute,none,Implementation details give hyperparameters but no hardware or training time.
+P1071,variance,no,"The text states fixed random seeds are used for reproducibility, with no multiple seeds or variance reported."
+P1071,compute,none,The excerpts describe fine-tuning and evaluation but give no hardware or compute time.
+P1073,compute,none,The excerpts describe dataset construction and simulation but give no hardware or compute time.
+P1074,variance,no,"The setup describes a single train/test split per trial with no seeds, standard deviations or intervals for results."
+P1074,compute,none,The excerpts describe capture hardware and model architecture but no compute hardware or training time.

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3805,variance,no,"Results are reported as single point values (e.g., AbsRel 0.138 vs 0.129) with no seeds, standard deviations or error bars mentioned."
+P3805,compute,none,The only compute-related statement is inference speed (37.6 FPS on unspecified mobile platforms); no training hardware or time is given.
+P3808,compute,amount,Appendix B.1 states a single NVIDIA A6000 GPU and training times of just under one day and one day.
+P3810,compute,hardware_only,"Experiments were run on 1 NVIDIA RTX A6000 GPU, with training given only in steps and no time stated."
+P3811,variance,no,"The checklist answers No to error bars, stating all experiments were run deterministically with a single fixed seed of 0."
+P3825,variance,yes,The text states the random seed was sampled for noise and initialization and the model always converged to 3D color vision across these variations and cone ratios.
+P3829,compute,hardware_only,"Training is stated on 8 H100 GPUs for 200k steps, with no training time or GPU-hours given."
+P3830,variance,yes,The text states all experiments are run with multiple seeds and mean and standard deviation across runs are reported in the tables.
+P3830,compute,amount,Experiments ran on an Nvidia L40S 48GB GPU and Table 11 reports total training time for all models.
+P3870,compute,none,"The excerpts give architecture, training steps and hyperparameters but no hardware or compute time."
+P3887,variance,no,"Ablation results are averaged over 5-fold cross-validation without any reported standard deviation, error bars or intervals."
+P3908,variance,unclear,"Three independent runs are used only to score candidates during evolution, while the main results (e.g., circle packing) are single solutions and no spread is reported in the excerpts."
+P3909,variance,no,"Results tables only highlight best and second-best methods, with no seeds, standard deviations or intervals mentioned."
+P3910,variance,no,Main results come from a single 200-epoch run per model and Table 1 reports mean correlations without any seed-level variance; the only standard deviation is a data noise calibration.
+P3914,variance,no,"Results are given as averages over VQA tasks and percentage-point gains, with no seeds, standard deviations or error bars mentioned."
+P3914,compute,none,No training hardware or time is stated; the only cost given is 500 dollars of GPT-4o API calls for data generation.
+P3917,variance,no,"Table 7 and other results are single accuracy values with no seeds, standard deviations or error bars."
+P3917,compute,hardware_only,The text says training runs on a single consumer-grade GPU (peak memory about 5GB) but gives no training time.
+P3918,variance,no,"No seeds, standard deviations or intervals are mentioned anywhere in the excerpts for the reported results."
+P3920,compute,none,"The excerpts describe seeds, temperatures and dataset construction but state no hardware or compute time."

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2110,variance,no,"Main preference-accuracy results are reported as single numbers; the only variance mention is Var(r) of rewards across timesteps, not seeds or error bars for results."
+P2111,compute,none,The text describes LLM queries and released artifacts but states no hardware or compute time.
+P2114,compute,none,"Hardware is mentioned only for prior works (8xH100, 8xA100); nothing is stated about the compute used for Raptor."
+P2117,compute,unclear,"Training configuration is deferred to Table 6 whose contents are not shown, and inference times are given without hardware."
+P2122,compute,none,"The shown text gives datasets, splits and results but no hardware or runtime."
+P2125,variance,no,"No seeds, standard deviations or intervals are mentioned for any reported result in the text."
+P2125,compute,none,No hardware or compute time is stated in the text.
+P2130,variance,no,"Main evaluations are single-run scores on 400 samples; the only 95% CI shade is on a regression plot of SFT metrics, not the main results."
+P2130,compute,none,"Only vague references to 'our hardware' and 'available resources' appear, with no hardware type or time."
+P2131,compute,none,The text describes simulation and datasets but states no hardware or compute time.
+P2132,compute,none,No hardware or training time is mentioned in the text.
+P2133,variance,no,Only the mean and variance of pair distances are tabulated; no seeds or error bars are given for the main clustering/retrieval results.
+P2133,compute,none,No hardware or compute time is stated in the text.
+P2137,variance,no,"No seeds, error bars or standard deviations are mentioned for the reported results."
+P2137,compute,none,Implementation details give architecture and signal settings but no hardware or training time.
+P2139,variance,no,"The text mentions no seeds, repeated runs or error bars; the seeds section only contains an entropy analysis."
+P2147,compute,none,Training steps and data are described but no hardware or compute time is stated.
+P2151,compute,none,No hardware or compute time appears in the text.
+P2155,compute,none,Reproducibility statement and implementation specifics give architecture details but no hardware or runtime.
+P2158,variance,no,"The only 'Seed' match is the ByteDance Seed affiliation; no seeds, error bars or intervals are mentioned for results."

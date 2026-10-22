@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1602,compute,none,"Shown setup gives architecture, optimizer and learning rate but no hardware or training time."
+P1605,variance,no,"Results are described and tabled with no mention of seeds, standard deviations or intervals."
+P1606,compute,none,Text describes small simulations and MNIST experiments with no hardware or runtime stated.
+P1607,variance,no,"Results tables report average W1/W2 distances only; the only variance mention is a probability-path variance, not run variability."
+P1609,compute,unclear,Text says the appendix details hardware and training time (App. I) but no hardware or time values are shown.
+P1612,variance,no,"Main results are single scores (e.g. average 0.754) with no seeds, standard deviations or intervals mentioned."
+P1612,compute,none,"Training details section lists learning rates, epochs, DeepSpeed and BF16 but no GPUs or training time."
+P1614,variance,no,Generation used a single fixed random seed (12) and no error bars or standard deviations are reported.
+P1614,compute,none,Implementation and metric sections give no hardware or compute time.
+P1617,variance,unclear,Excerpts cover only datasets and introduction; no results or repeated-run information is visible in the truncated text.
+P1617,compute,unclear,Excerpts cover only datasets and introduction; no implementation or hardware section is visible in the truncated text.
+P1625,variance,unclear,Truncated text covers dataset construction and methods only; no results or variance information is visible.
+P1631,variance,no,"Experimental setup and metrics are described with no seeds, standard deviations or intervals; the only variance mention is a VAE feature alignment term."
+P1636,compute,none,Methods and data sections describe analyses of 600+ models with no hardware or compute time stated.
+P1642,compute,none,Text mentions seeds and setup but no hardware or training time anywhere in the excerpts.
+P1653,compute,none,Excerpts discuss model scales and compute allocations conceptually but state no hardware or GPU time.
+P1656,compute,none,Simulation and TCGA experiment sections state no hardware or runtime.
+P1663,compute,none,"Experimental setup mentions bfloat16, FSDP and FLOPs but no hardware or GPU hours."
+P1665,compute,none,"Only inference time in milliseconds is mentioned, with no hardware or training compute stated."
+P1677,variance,no,"Results (Table 1, SOTA claims) are given with no seeds, standard deviations or error bars."

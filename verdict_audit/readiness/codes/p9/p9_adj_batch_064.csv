@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3632,variance,no,"Main ASR and ranking results are reported as single averages with no seeds, standard deviations or intervals mentioned."
+P3632,compute,none,The implementation uses GPT-3.5/GPT-4o and no hardware or compute time is stated anywhere in the text.
+P3633,variance,no,"Implementation and setup describe single training runs evaluated by macro F1 with no mention of seeds, error bars or intervals."
+P3637,compute,none,The datasets and setup text gives models and iterations but never states hardware or compute time.
+P3648,variance,yes,"Results are described as statistically surpassing the S4 baseline, indicating uncertainty estimates for the main comparisons."
+P3654,compute,none,Only FLOPs and parameter counts are reported; no hardware or training time is stated.
+P3656,compute,none,Solution times in seconds are reported but no hardware is stated.
+P3660,variance,no,Main results use a single fixed support image; mean and variance over five support images appear only in an additional ablation.
+P3668,compute,none,Data pipeline and architecture are described but no hardware or compute time is stated.
+P3669,compute,none,Evaluation uses API models in a containerized environment with no hardware or compute time stated.
+P3725,compute,amount,"A single NVIDIA A6000 GPU with 32 CPU cores is stated together with timing (real-time factor 1.2, 25 ms frame in 30 ms)."
+P3726,compute,amount,Experiments run on NVIDIA A100 GPUs and end-to-end wall-clock training time in minutes is reported (Table 5).
+P3733,variance,no,"Only latency/throughput are averaged over multiple runs; main accuracy results have no seeds, error bars or intervals."
+P3739,compute,hardware_only,The text says generation runs in real time on a single GPU but gives no training time or GPU-hours.
+P3742,variance,no,"FID results are reported as single values with no seeds, standard deviations or intervals mentioned."
+P3742,compute,none,Architecture and training sections state model size and iterations but no hardware or compute time.
+P3743,variance,no,"Results are single scores (baselines copied from prior work) with no seeds, error bars or intervals mentioned."
+P3747,variance,no,"Results are mean PCC/RMSE over genes from 5-fold CV with no standard deviations, error bars or intervals stated."
+P3749,variance,no,"The text reports accuracies without any seeds, standard deviations or intervals for the model results."
+P3749,compute,none,No hardware or compute time is stated anywhere in the text.

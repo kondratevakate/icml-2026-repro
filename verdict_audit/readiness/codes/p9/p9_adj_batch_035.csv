@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1476,variance,unclear,"Visible text mentions significant differences but never states seeds, repeated runs or error bars, and the results sections are truncated."
+P1476,compute,none,"No hardware, runtime or GPU-hours appear anywhere in the visible text, including the implementation details."
+P1493,variance,no,"The only variance-related passage concerns data-generation noise (std 0.1), and no repeated runs, seeds or error bars are reported for results."
+P1493,compute,none,"No hardware or compute time is mentioned anywhere in the visible text, including experimental settings."
+P1500,variance,no,"Main results are single numbers and the 12 runs are optimization configurations, not seeds; no error bars or std are stated."
+P1501,compute,unclear,No compute is visible but the implementation-details section is cut off mid-paragraph where hardware would typically appear.
+P1503,variance,unclear,No seeds or variance are visible and the sentence describing what is reported in evaluation is cut off.
+P1503,compute,none,The visible setup lists evaluated models and evaluator but states no hardware or compute time.
+P1504,compute,unclear,No hardware is visible but the implementation paragraph is cut off mid-sentence right after model details.
+P1505,variance,no,"Results are reported as single recall percentages with no seeds, repeated runs or intervals mentioned."
+P1505,compute,none,"No hardware, runtime or GPU-hours are mentioned in the visible text."
+P1508,variance,no,"Results are reported as single accuracy gains with no seeds, repeated runs or error bars mentioned."
+P1508,compute,none,No hardware or compute time appears in the visible text.
+P1511,variance,no,"The only seed mention refers to seeding dialogues with scenarios; no repeated runs, error bars or intervals are reported."
+P1511,compute,none,No hardware or compute time is stated in the visible text.
+P1512,variance,no,"Table 1 averages over evaluation sets and Table 8 gives single numbers; no seeds, std or intervals are reported."
+P1513,variance,no,"Results are given as single perplexity/accuracy values with no seeds, error bars or std mentioned."
+P1513,compute,none,"Training setup gives model sizes, tokens and relative FLOPs but no hardware or compute time."
+P1531,compute,unclear,Only the checklist claims Appendix C and D give compute times and resources; no actual hardware or time is visible in the text.
+P1537,variance,no,"Experiments are described as single runs with no seeds, repeated runs, error bars or std reported."

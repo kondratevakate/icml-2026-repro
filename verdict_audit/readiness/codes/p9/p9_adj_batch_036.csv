@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1537,compute,none,"The excerpts describe FFHQ experiments, a camera dataset and a code link but state no GPU hardware or training time."
+P1545,variance,no,"Results are reported as single averaged MSE/MAE values with no seeds, standard deviations or error bars; RevIN normalization is unrelated to run variance."
+P1567,compute,none,The excerpts describe five random seeds and dataset sizes but mention no hardware or compute time.
+P1569,variance,no,"The standard deviations reported quantify disparity between quality scores across scoring models, not variability of the main results across runs."
+P1570,variance,no,"Only a fixed sampling seed list is mentioned; no repeated runs, standard deviations or intervals are reported for the detection results."
+P1576,variance,no,"Implementation details give a single training setup with no mention of seeds, repeated runs, standard deviations or error bars."
+P1577,compute,none,The excerpts report seeds and confidence intervals but say nothing about hardware or compute time.
+P1580,variance,unclear,"Two independent motion seeds are drawn per simulated severity level, but the text does not say that spread across seeds is reported for the main results."
+P1580,compute,none,"The excerpts describe the scanner, dataset and baselines but give no compute hardware or run time."
+P1581,variance,no,"Decoding temperature is set to 0 and no seeds, repeated runs or error bars are reported for the benchmark scores."
+P1586,variance,no,"The text reports single-run metrics and user studies with no seeds, standard deviations or intervals."
+P1587,variance,no,The only occurrence of Seed in the excerpt is the ByteDance Seed affiliation; no repeated runs or error bars are reported.
+P1587,compute,none,The excerpts discuss context parallelism and modern accelerators but state no specific hardware or compute amount.
+P1595,compute,none,The excerpts describe five seeds and 660 training runs but give no hardware or compute time.
+P1597,variance,no,"The text gives training details on two A100 GPUs but reports no seeds, repeated runs or error bars for the main results."
+P1599,variance,no,"The excerpts report single accuracy@k results with no seeds, standard deviations or intervals; the GPT-4 temperature is noted but no repeated runs."
+P1600,variance,no,"A fixed seed of 42 is used only to shuffle the RL data, and no repeated runs, standard deviations or intervals are reported."
+P1600,compute,none,The excerpts name the models used but state no training hardware or compute time.
+P1601,variance,no,"The text reports single NoC/mIoU results with no seeds, standard deviations or error bars."
+P1602,variance,no,"The excerpts report single top-k accuracies with no seeds, repeated runs or error bars."

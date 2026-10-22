@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1076,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals for any result."
+P1076,compute,none,The implementation details and appendix excerpts name no hardware or training time.
+P1100,compute,none,Only a vague remark about a 4x increase in computational cost appears; no hardware or time is stated.
+P1101,compute,none,The implementation paragraph gives optimizer and batch settings but no hardware or time.
+P1102,compute,none,The implementation details name models and vLLM but no GPUs or compute time.
+P1103,variance,no,"Main results are quoted as single scores with no seeds, repeated runs or intervals mentioned."
+P1103,compute,none,"Implementation details refer to verl and a hyperparameter table, and no hardware or time is stated."
+P1110,variance,no,The confidence intervals belong to the auditing method itself; nothing reports seeds or variability for the experimental results.
+P1144,variance,no,95% intervals appear only for the motion-spectral analysis figure; main FID/FVD results have no seeds or error bars.
+P1150,variance,no,"Results are given as convergence curves and improvements with no mention of seeds, repeated runs or error bars."
+P1153,compute,none,"Training details state epochs, learning rate and seeds but no hardware or time."
+P1162,compute,none,The setup and appendix excerpts state no GPU or training time.
+P1169,variance,no,Evaluation uses 256 samples from shared seeds with single residual/MMD values; no error bars or intervals are reported.
+P1169,compute,none,"Only software versions (Python, PyTorch) are given; no hardware or time is stated."
+P1170,variance,no,FVD/FID and other metrics are reported as single values with no seeds or intervals.
+P1172,compute,none,The excerpt lists evaluated models and protocols but no hardware or compute time.
+P1176,variance,no,"Ablation and comparison tables give single values with no std, seeds or intervals."
+P1177,variance,no,"No seeds, repeated runs, error bars or intervals are reported for the results."
+P1182,variance,no,Results such as averaged Pearson scores are single values with no seeds or variability reported.
+P1183,compute,none,"Training settings and five seeds are stated, but no hardware or training time."

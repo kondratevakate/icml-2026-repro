@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0935,compute,unclear,"No hardware or training time appears in the visible excerpts and no implementation section is shown, while the text is truncated."
+P0939,variance,no,"Main results (Table 1) are reported with best/second-best marking only; the 'seeds' excerpt concerns seed instructions, not repeated runs or error bars."
+P0939,compute,unclear,"Implementation details defer settings to Sec. A.5, which is not shown, and no hardware or time is visible in the truncated text."
+P0943,variance,unclear,"The checklist claims error bars are reported but its justification does not describe any, and the visible results give only point accuracies."
+P0944,compute,unclear,No hardware or runtime is stated in the visible text; hyperparameters and setup are deferred to appendices not shown in the truncated text.
+P0946,variance,no,"Results and ablations are reported as single scores with no mention of seeds, standard deviations or intervals."
+P0948,compute,unclear,"Training details are deferred to Appendix F, which is not shown, and no hardware or time appears in the truncated text."
+P0949,variance,no,"Results are reported as single values (e.g., 98% human agreement) with no seeds, standard deviations or intervals mentioned."
+P0950,variance,no,"Comparison tables mark best/second-best performance only, with no mention of multiple seeds, standard deviations or error bars."
+P0951,compute,unclear,"Pretraining steps are given but no hardware or time is visible; detailed settings are in Appendix D, not shown in the truncated text."
+P0952,variance,no,"DISCO is deterministic and results are single CVI scores; no repeated runs, standard deviations or intervals are reported for the main results."
+P0952,compute,unclear,"Setup and implementation details are deferred to Appendix C, which is not shown, and no hardware or time appears in the truncated text."
+P0953,variance,no,Zero-shot and benchmark results are reported as single AUC values with best/second-best marking and no standard deviations or seeds.
+P0954,variance,no,"Main results report accuracies with no mention of seeds, standard deviations or error bars."
+P0954,compute,none,"The visible experimental setup gives encoders, optimizer and learning rate schedule but no hardware or training time."
+P0955,compute,unclear,"No hardware or compute time appears in the visible excerpts, and the text is truncated before full experimental details."
+P0968,variance,no,"Results are reported as single BLEU/SPICE/accuracy values with no seeds, standard deviations or intervals."
+P0968,compute,none,The Implementation Details section describes models and optimizer but states no hardware or training time.
+P0972,variance,no,Results are single success numbers; seeds are only promised for a future release and no standard deviations or intervals are reported.
+P0976,variance,no,"Accuracy tables report single values per method and corruption with no standard deviations, seeds or intervals."

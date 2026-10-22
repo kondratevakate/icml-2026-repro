@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2543,compute,none,"The excerpts describe tasks, training and figures but state no hardware, runtime or GPU-hours."
+P2547,variance,no,"Retrieval accuracy is averaged over random pairs and results are reported without seeds, standard deviations or intervals."
+P2547,compute,none,No hardware or training time of the authors' own experiments is stated (the 76GB figure refers to other methods).
+P2549,compute,none,The text reports mean (std) results and data setup but gives no hardware or compute time.
+P2550,compute,none,The appendix excerpts give hyperparameters and batch sizes but no hardware or runtime.
+P2551,compute,none,Seeds and reproducibility settings are given but no hardware or compute time is mentioned.
+P2552,variance,no,"Benchmark accuracies are reported as single values with no seeds, standard deviations or intervals mentioned."
+P2552,compute,none,The excerpts discuss model sizes and parameters but state no hardware or training time.
+P2553,compute,none,"Only says open models were feasible on available hardware, with no specific hardware or time stated."
+P2560,variance,unclear,"Three seeds and standard deviations are used only for benchmark sample-size convergence, and the text does not say whether main results carry variance."
+P2569,compute,hardware_only,"An A100 GPU is named for runtime comparison and training cost is given only as a relative 34% GPU-day reduction, with no absolute training time."
+P2590,compute,unclear,"Only a generic CPU is mentioned for a throughput comparison and the text is cut off at the throughput section, so hardware and time are not identifiable."
+P2591,variance,no,"Results are reported as single values to four significant digits with no seeds, standard deviations or intervals."
+P2594,variance,no,The only interval mentioned is a 3-sigma Gaussian truncation radius; main PSNR results are given as single values.
+P2598,variance,no,"The excerpts give training configuration and hardware but no seeds, repeated runs or variance for results."
+P2603,variance,no,"The visible text reports dataset construction and results without any seeds, standard deviations or intervals."
+P2609,variance,no,"Five-fold cross-validation is used but no standard deviations, error bars or intervals are reported for the main results."
+P2615,variance,unclear,"Main accuracies are given as averages, but the note that statistical analysis was not done for MEG implies some for EEG that is not shown."
+P2617,variance,no,"The excerpts describe datasets and methods with no seeds, standard deviations or intervals."
+P2619,variance,no,"Training configuration and results comparison are given with no mention of seeds, standard deviations or intervals."

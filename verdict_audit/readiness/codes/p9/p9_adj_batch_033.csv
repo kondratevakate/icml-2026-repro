@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1312,variance,no,"Main VITON-HD/DressCode results are reported as single values (e.g. SSIM/PSNR 0.913/27.827) with no seeds, standard deviations or intervals mentioned."
+P1316,compute,none,"The text gives training/evaluation details (batch size, epochs, 10 seeds for linear probing) but states no hardware or training time."
+P1317,compute,unclear,"Runtimes are stated (about 40 seconds vs 23 minutes) but no hardware is named, so neither amount nor hardware_only applies cleanly."
+P1322,compute,none,"Training procedure and hyperparameters are described but no hardware, GPU type or training time is stated."
+P1327,compute,amount,"Training is reported to take about 8 hours (inference 31/81 minutes) with GPU tensor parallelism up to 8, giving both hardware and time."
+P1329,compute,none,"Implementation appendices describe models, steps and hyperparameters but never state hardware or compute time."
+P1331,compute,none,"The benchmark evaluates LLMs and describes data curation, with no statement of hardware or compute time."
+P1334,variance,no,"Main benchmark results are given as single scores and average gains (e.g. +4.2%) with no seeds, standard deviations or intervals."
+P1336,variance,no,"Results are theory curves checked against numerical simulations with no seeds, error bars or intervals reported for the main results."
+P1337,variance,no,Only a secondary CellProfiler table reports mean and 95% CI; the main FID/KID/MoA results show no variance or repeated runs.
+P1349,variance,no,"The excerpt reports benchmark construction and splits with no mention of seeds, repeated runs, standard deviations or intervals."
+P1350,variance,no,"Main PACS/Digits5 comparisons are reported as single accuracies and gains with no seeds, standard deviations or intervals."
+P1350,compute,none,Only training time per epoch versus data size is mentioned (Table 12) with no hardware and no stated amount.
+P1352,variance,no,"5-fold cross-validation is described but no standard deviations, intervals or repeated-run variance are reported for the main results."
+P1355,variance,no,"The only standard deviations concern dataset statistics; no seeds, error bars or intervals are given for main results."
+P1358,compute,amount,"Compute ran on 8 A40 GPUs and wall-clock sampling time is benchmarked on a single A40 (rapid scans finish in minutes), giving hardware with time."
+P1360,variance,no,"Standard deviations refer to strain-energy distributions of generated molecules and fixed seeds are for docking, not variance of main results over runs."
+P1361,variance,no,"Loss and downstream results are reported as single values (e.g. 0.0306 lower loss) with no seeds, error bars or intervals."
+P1365,compute,none,Implementation details and results tables are given but no hardware or compute time is stated.
+P1371,compute,none,"The text covers method, toy experiments and reproducibility with no hardware or compute time stated."

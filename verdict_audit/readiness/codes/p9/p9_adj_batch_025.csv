@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0531,variance,no,"The excerpts, including the seeds section, describe multiple pose samples and epinet uncertainty but report no seeds, error bars or intervals for the main benchmark results."
+P0534,compute,none,The implementation and experimental setup appendices are shown and state no hardware or training time.
+P0535,variance,no,"The text presents theoretical complexity bounds and a code link with no repeated runs, error bars or intervals for results."
+P0535,compute,none,"The excerpts state only a code link and theory, with no hardware or runtime information."
+P0537,compute,none,"The training settings give learning rates, epochs, batch sizes and seeds but no hardware or compute time."
+P0539,compute,none,The text describes dataset generation and model training without naming any hardware or compute time.
+P0540,variance,no,"The excerpts describe 2400+ training runs as a sweep but report no seeds, error bars or intervals for the main results."
+P0541,compute,none,"Training details give epochs, batch sizes and learning rates but no hardware or compute time."
+P0543,variance,no,"The setup, reproducibility and limitations sections mention no repeated seeds, error bars or intervals for the main results."
+P0544,compute,none,The implementation and baseline sections give hyperparameters and models but state no hardware or compute time.
+P0545,variance,no,"The experiment details and results describe single mAP values with no seeds, error bars or intervals."
+P0545,compute,none,The FPGA accelerator is the evaluated deployment target; no hardware or time used to run the quantization experiments is stated.
+P0546,variance,no,"The seeds section only discusses seeding potential wells and dataset statistics; no seeds, error bars or intervals are reported for main results."
+P0553,variance,no,"Training details and results report single MSE/MAE values with no seeds, error bars or intervals."
+P0553,compute,unclear,"Table 5 gives training time in hours per dataset, but no hardware is named in the text, so neither amount nor hardware_only fits cleanly."
+P0558,variance,no,"Results report single Acc/Comp values and percentage gains; a passing mention of experimental variance gives no seeds, error bars or intervals."
+P0558,compute,none,The implementation details and limitations state no hardware or training time.
+P0599,variance,no,"The checklist justifies error bars only with p-values for identified TFs; no seeds, error bars or intervals are reported for the main benchmark results."
+P0611,variance,no,"Results tables give single JSD and property values with no seeds, error bars or intervals."
+P0615,compute,unclear,"The text says only that each inference takes a few seconds on a consumer-grade GPU, with details deferred to Sec. 9.2 which is not shown, so hardware is not specifically stated."

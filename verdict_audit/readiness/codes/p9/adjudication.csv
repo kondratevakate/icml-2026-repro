@@ -1,0 +1,1405 @@
+item_id,field,label,reason
+P0027,compute,amount,"States a single T4 GPU runs the 10-billion-compound top-k search in about 30 seconds, giving hardware and time."
+P0029,variance,no,"Only a single re-run of the evaluator with a different seed on one task as a robustness check; no seeds, error bars or intervals for main results."
+P0038,variance,unclear,"No seeds, error bars or deviations appear in the excerpts and the checklist is cut off before the statistical-significance item."
+P0038,compute,unclear,No hardware or compute time appears and the text is truncated before the checklist compute-resources item.
+P0039,compute,none,"The excerpts describe data, model and evaluation but never mention GPUs, hardware or compute time."
+P0041,compute,none,"The method uses LLM agents and the text names no hardware, GPUs or compute time."
+P0042,variance,no,"Only an algorithm for mean and best scores over generated samples is mentioned; no seeds, standard deviations or error bars for main results."
+P0045,variance,no,"The only seed mention is theoretical (shared initialization); experiments report no repeated runs, deviations or intervals."
+P0045,compute,none,The text gives complexity analysis and millisecond unlearning claims but names no hardware or compute time.
+P0047,compute,unclear,"The Implementation Details paragraph is cut off right after naming the backbone, so any hardware statement is not visible."
+P0048,variance,no,"Detailed setup and compute sections are shown but there is no mention of seeds, standard deviations, error bars or intervals."
+P0049,compute,none,All LLM agents are accessed through OpenRouter and no hardware or compute time is stated.
+P0062,compute,none,Only retrieval timing with standard errors and Diamond thread count are mentioned; no GPU or hardware for training/evaluation is named in the text.
+P0066,variance,no,"The seeds section contains only an intensity-filtering note and no repeated runs, deviations or intervals are reported for main results."
+P0069,compute,none,No hardware or GPU-hours are stated; only API use and a self-hosting throughput remark appear.
+P0071,compute,none,"Only an acknowledgement of unspecified GPU access appears, with no hardware type or compute time."
+P0072,compute,none,"The text describes datasets, architecture and results but states no hardware or compute time."
+P0074,compute,none,"Training scale is given in samples only; no hardware, GPUs or compute time are stated."
+P0076,compute,none,The text covers theory and the inference algorithm but names no hardware or compute time.
+P0078,compute,none,Training epochs are given and details are deferred to an appendix not shown; no hardware or compute time is stated.
+P0081,compute,none,"The visible implementation details give training and inference hyperparameters but state no hardware, runtime or GPU-hours."
+P0091,variance,no,"Main results are reported as single MAE/RMSE values (e.g. MAE 0.212, RMSE 0.375) with no seeds, standard deviations or intervals."
+P0091,compute,none,"The text says nothing about hardware, training time or GPU-hours."
+P0092,compute,none,The text describes the NMF/SCA analyses but says nothing about hardware or compute time.
+P0096,compute,none,The text says nothing about hardware or compute time; the reproducibility statement only defers architecture and hyperparameter details to Appendix C.
+P0098,compute,unclear,"Throughput and timing figures are given (single-core samples/sec, 30 s warm-up plus 120 s measurement, 58 days per epoch for the baseline) but no hardware is specified."
+P0104,variance,no,"Main results are single point values (e.g. F1 from 0.589 to 0.607, average CE gains) with no seeds, standard deviations or intervals mentioned."
+P0105,variance,no,"Results are single DSC values per method; 5-fold cross-validation is mentioned but no spread, standard deviation or interval is reported."
+P0106,variance,no,"Main results are single accuracy percentages per model with no repeated runs, standard deviations or intervals mentioned."
+P0109,variance,no,"Results are point values averaged over 4 subjects (e.g. SSIM 33.9%, CLIP 97.8%) with no seeds, standard deviations or intervals."
+P0149,compute,amount,The text states a single RTX4090 GPU (24GB) for all experiments and a time of about 100 hours for constructing the CDR-like database.
+P0151,variance,no,"The only reported experiment (Figure 4) gives accuracy averaged over trees, with no seeds, error bars or standard deviations mentioned."
+P0151,compute,none,"The text says nothing about hardware, runtime or GPU-hours."
+P0153,compute,unclear,"The text says a computational cost analysis is in Table 6, but no hardware or time is visible."
+P0155,variance,no,"Main results are single average scores (e.g. GPT-4o 76.02%, Qwen3-4B 67.04%) with no repeated runs or spread reported."
+P0155,compute,none,The text says nothing about hardware or compute time used for the evaluations.
+P0162,compute,unclear,"The text mentions computational cost and defers efficiency and cost-accuracy analysis to Appendix C, but states no hardware or time."
+P0169,variance,no,"The text reports AUROC/AUPRC/F1max results with no mention of seeds, repeated runs, standard deviations or intervals."
+P0169,compute,none,The text says nothing about hardware or compute time; it only notes that the latent space increases computational efficiency.
+P0170,compute,unclear,"The efficiency analysis gives GPU memory (10.5MB) and training time relative to TimeXer (about 30%), but names no hardware and gives no absolute time."
+P0172,variance,no,"The only std terms are in the GRPO advantage formula and Table 1 main results are described with no seeds, std or intervals."
+P0172,compute,none,The excerpts give implementation and training details but state no hardware or training time.
+P0175,variance,no,"Main results (Tables 1-3) are described as average Pearson correlations with no seeds, std or error bars."
+P0175,compute,none,No hardware or training time is mentioned anywhere in the excerpts.
+P0176,variance,no,The only std terms are in the GRPO formula; main benchmark results give no seeds or variance.
+P0177,compute,none,The text mentions NVIDIA IsaacLab as software and prior GPU ray tracing but states no hardware or training time for its experiments.
+P0178,compute,none,The excerpts describe the benchmark and models but state no hardware or runtime.
+P0179,variance,no,"Table 1 main results are described with no seeds, standard deviations or intervals."
+P0180,variance,unclear,Three random seeds are stated only for the IRIS baseline reproduction; the number of seeds or variance for the main ResDreamer results is not stated.
+P0182,compute,unclear,"The text says computational and monetary costs are in Appendix C, but that appendix is not in the excerpts."
+P0190,variance,no,Main ScanNet200/ScanNetv2 results are reported as single mIoU values with no seeds or variance.
+P0201,variance,no,"Main benchmark results (Tables 2-3) are reported as accuracy/ppl with no seeds, std or intervals."
+P0206,compute,none,"The excerpts give architecture, data and generation details but state no hardware or training time."
+P0208,variance,no,"Results are described without seeds, std or intervals; only the compute-resource section and dataset construction are given."
+P0217,variance,no,Std is used only for an instruction-sensitivity analysis; main Table 4 results report CR without seeds or variance.
+P0220,compute,none,The excerpts give implementation and dataset details but state no hardware or training time.
+P0222,variance,no,The only ± is a patient age statistic; main Table 1/3/4 results give no seeds or variance.
+P0222,compute,none,"Experiments use GPT-4o and specialist models, with no hardware or training time stated."
+P0224,compute,none,Only a mention of skipped experiments due to excessive runtime; no hardware or training time is stated.
+P0225,variance,no,"Main benchmark accuracies are reported without seeds, std or intervals."
+P0225,compute,none,The experimental setup and reproducibility details describe inference settings and models but state no hardware or run time.
+P0227,variance,no,"Main results are single point accuracies (e.g. 69.90% vs 62.26%) with no seeds, error bars or spread; the only standard deviations mentioned are GRPO reward normalisation terms."
+P0227,compute,none,"Implementation details give data and PRPO hyperparameters but no hardware, GPU type or training time."
+P0230,compute,none,The text describes experimental protocols and an attack budget in FLOPs but states no hardware or compute time.
+P0231,compute,none,"Training details give iterations, batch size and learning rates but no hardware or training time."
+P0233,compute,none,Implementation details give zero-shot settings and slice sampling but state no hardware or run time.
+P0235,compute,amount,"Appendix B has a pretraining compute requirements table whose caption says PopT needs smaller hardware and shorter training time, so hardware and train times are reported."
+P0236,variance,no,"The only seeds mentioned are fixed seeds for conformer embedding and docking, and the standard deviations describe the spread of strain energies across generated molecules, not repeated runs of the main results."
+P0239,variance,unclear,"A standard deviation is mentioned only for the secondary grounding mIoU analysis without saying what it is computed over, and nothing is said about seeds or spread for the main VQA accuracy results."
+P0245,variance,no,"The untruncated text reports 1000 samples per structure but mentions no repeated runs, seeds, error bars or standard deviations for the results."
+P0246,variance,no,"Main accuracy is the mean correctness over K=8 samples per problem with no reported spread, and standard deviation or confidence intervals are mentioned only as optional for the Gini analysis."
+P0252,variance,yes,The simulation results are Monte Carlo summaries over repeated simulated datasets that report each estimator's standard deviation (bias as 125%-203% of SD) together with type I error and power.
+P0258,compute,amount,"The text states that the pipeline generates a new task in under 2 hours for less than USD 4 in model API cost, which quantifies the compute for this API-only pipeline."
+P0265,variance,no,"Main results are averaged over unseen subjects with no standard deviations or error bars, and the 30 repeated NSD test draws are reported only as averages."
+P0265,compute,none,"Implementation details give optimizer, batch size, learning rate and epochs but no hardware or training time."
+P0269,compute,none,"The text gives datasets, architecture and hyperparameter references but states no hardware or training time; the only compute mention is a baseline running out of memory."
+P0270,compute,none,"Training details give epochs, early stopping and optimizer, and cite computational constraints, but state no hardware or training time."
+P0275,variance,no,"The text reports results in figures of predictions and PEHE across privacy budgets but mentions no repeated runs, seeds, error bars or standard deviations."
+P0275,compute,none,"Implementation details give the models, optimizer and solver but state no hardware or run time."
+P0278,variance,no,"The text describes datasets, preprocessing and method but mentions no repeated runs, seeds, error bars or standard deviations for the segmentation results."
+P0297,variance,unclear,"The only seed statement is that hyperparameter constants were tuned on average performance over 10 seeds, and the passage is cut before saying whether the main results report variance."
+P0301,variance,no,"The excerpts describe the main rate-distortion comparisons and implementation without any mention of seeds, repeated runs, error bars or standard deviations."
+P0309,variance,unclear,"The seed and variance passage is a figure caption cut off at ""The 5-fold"", so whether the main results carry repeated runs or error bars cannot be determined."
+P0318,compute,none,"The experimental setup and other excerpts give no hardware, runtime or GPU-hours, only referring to Appendix D for parameter settings."
+P0324,variance,no,"Results are reported as single accuracy scores across noise ratios with no mention of seeds, repeated runs, error bars or standard deviations."
+P0325,compute,unclear,"Table 1 reports times in minutes but no hardware is stated in the visible text, and the implementation details are cut off, so no defined compute label clearly applies."
+P0329,variance,no,"The only standard deviation mentioned concerns anatomical angular offsets in the data, and the main Table 2 results are reported as best values in bold with no seeds or error bars."
+P0333,variance,no,"Main results are given as single average AUROC and C-index values with no mention of seeds, repeated runs or intervals."
+P0336,variance,no,"Benchmark results are reported as single CMC-R1 accuracies with no mention of seeds, repeated runs, error bars or standard deviations."
+P0337,variance,no,"The flagged passage concerns initialization standard deviation, and the main benchmark results are reported without seeds, repeated runs or error bars."
+P0338,variance,no,"Seeds refer to question templates and the ANOVA decomposes performance variance by question features, while no error bars or intervals are reported for the main model results."
+P0341,variance,no,"Reconstruction and FID results are described without any mention of seeds, repeated runs, error bars or standard deviations."
+P0343,variance,no,"Worst-group and average accuracies are reported with best results bolded and no mention of seeds, repeated runs, error bars or standard deviations."
+P0348,variance,no,"Forecasting results are RMSE and MAE averaged over prediction lengths with no mention of seeds, repeated runs or error bars."
+P0353,variance,no,"Attribution results are reported as averages over data points with no mention of seeds, repeated runs, error bars or standard deviations."
+P0354,variance,no,"The flagged passage only says the ablation is averaged over 6 scenes, and the main Table 1 results are averages without seeds, repeated runs or error bars."
+P0370,compute,unclear,"Compute is described only as about 180 simulations and 50 to 100 dollars of API fees per run, with no hardware or time, which fits none of the defined categories cleanly."
+P0384,compute,amount,Appendix D states each experiment used an NVIDIA A100-SXM4-40GB GPU and Table 2 reports offline calibration times in minutes and online times in seconds.
+P0387,variance,no,"Quantitative results in Table 2 are single values with best results highlighted and no mention of seeds, repeated runs, error bars or standard deviations."
+P0387,compute,none,"The excerpts state no hardware, runtime or GPU-hours, only noting in the limitations that iterative diffusion sampling is slower at inference."
+P0390,variance,no,"The excerpts give training details (4 A100s, 500 epochs) and results discussion but mention no seeds, repeated runs, error bars or intervals for the main results."
+P0391,compute,none,"Implementation and setup sections give hyperparameters, epochs and seeds but no hardware or training time anywhere in the text."
+P0393,compute,none,"The pre-training and evaluation setup sections describe model size, epochs and optimizer but state no hardware or compute time."
+P0394,variance,no,"Results are reported as single quantitative comparisons across datasets with no mention of seeds, standard deviations or error bars."
+P0394,compute,none,"The training paragraph gives optimizer, samples, epochs and batch size but no hardware or training time."
+P0397,compute,none,"Model, training and probing details are given (epochs, learning rate, seeds) but no GPUs or compute time are stated."
+P0402,variance,no,The only std/variance mentions concern the GRPO advantage normalization; main results tables report single exact-match and accuracy scores without seeds or error bars.
+P0404,compute,none,"The text includes training, data and reproducibility sections but never states hardware or compute time."
+P0406,compute,unclear,"The text is truncated in the middle of the Implementation Details paragraph, before any hardware statement could appear, so whether compute is reported cannot be determined."
+P0409,variance,no,The seeds/variance excerpt only gives training hyperparameters and normalization standard deviations; results are single-number comparisons with no seeds or error bars.
+P0410,variance,no,"Main results are single-number comparisons; the only mean scores are for the human validation of the benchmark, not seeds or intervals for main results."
+P0433,variance,no,"Each configuration is run once for a fixed 10-second duration per QPS level with no repeated runs, error bars or intervals reported."
+P0439,variance,no,"Results such as Table 7 report single Spearman/Recall/nDCG values per model and learning rate with no seeds, standard deviations or intervals."
+P0463,variance,no,"Averaging over 10 runs appears only for the MFOS-vs-MAOS theorem-validation figure without any spread, and the main experiments report no seeds, error bars or intervals."
+P0470,variance,no,"Main results report a single average AUC (88.86%) with no mention of seeds, standard deviations or error bars."
+P0470,compute,none,"Implementation details give backbone, optimizer, learning rate and batch sizes but no hardware or training time."
+P0471,compute,none,"Experimental setup describes architecture, optimizer and inference, and only says clustering takes seconds, with no hardware stated."
+P0475,variance,no,"Quantitative results are single-value metric comparisons; variance appears only as a Laplacian-variance filtering criterion, not seeds or error bars."
+P0478,variance,no,"The seeds/variance excerpt concerns diffusion noise standard deviation and a failed variant; accuracy results are reported without seeds, error bars or intervals."
+P0480,variance,no,"Table 1 reports single average accuracies per LLM with greedy decoding and no seeds, standard deviations or intervals."
+P0485,variance,no,"The excerpts report generation and segmentation tables with no seeds, error bars, standard deviations or intervals."
+P0490,variance,no,"The excerpts report accuracies for VCWorld and baselines with no seeds, error bars, standard deviations or intervals."
+P0490,compute,none,The excerpts give no hardware or compute time for training or inference.
+P0492,variance,yes,"Each model was queried 10 times per case at temperature 1.0, and model priorities are compared to physicians with significance and inter-physician variation ranges."
+P0496,variance,no,"Results are a best-checkpoint average over 32 test repetitions, with no seeds, error bars or standard deviations reported for main results."
+P0496,compute,none,"The excerpts state no GPUs, hardware or training time."
+P0497,compute,none,The excerpts state no hardware or compute time; only hyperparameter tuning and seeds are described.
+P0502,variance,yes,Table 1 main results are annotated as mean plus or minus standard deviation (over seven SpaRED datasets).
+P0508,variance,no,"Results are qualitative image samples with a fixed seed and no error bars, standard deviations or intervals."
+P0508,compute,none,The excerpts state no hardware or compute time.
+P0512,variance,no,"Vulnerability rates and attack success rates are given as point values with no intervals, seeds or error bars."
+P0512,compute,none,"Only relative computational overhead reductions are given, with no hardware or compute time."
+P0515,variance,no,"Standard deviations appear only for comparing eff@k estimators in Table 11, not for the main LLM benchmark results."
+P0521,variance,no,"QCAI AUCs are reported as single point values with no seeds, error bars or intervals."
+P0521,compute,none,The excerpts state no hardware or compute time.
+P0523,compute,none,The excerpts state no hardware or compute time.
+P0526,variance,no,"Performance is avg@10 averaged over generations with no standard deviations, error bars or intervals for main results."
+P0526,compute,none,"Only a 600ms batch latency on an unspecified standard inference setup is given, with no hardware stated."
+P0527,variance,no,"The excerpts report no seeds, error bars, standard deviations or intervals for the main results."
+P0528,variance,no,"Benchmark results in Tables 3-4 are reported without seeds, error bars, standard deviations or intervals."
+P0528,compute,none,"The excerpts describe data collection, fine-tuning splits and benchmarks but never state GPUs, hardware or training time."
+P0530,variance,no,"Experiments use greedy decoding on fixed setups and no seeds, error bars, standard deviations or intervals are reported for the benchmark results."
+P0533,variance,unclear,"Standard deviations are mentioned only for per-model similarity scores in an appendix, while the main SFT benchmark results show no seeds or error bars, so variance reporting for the main results cannot be determined."
+P0562,compute,none,"The text gives datasets, backbones and setup but no hardware or runtime; the limitations only mention computational overhead in general terms."
+P0563,variance,no,"The excerpts describe dataset construction and model training with no mention of seeds, repeated runs, error bars or standard deviations."
+P0563,compute,none,"No GPUs, hardware or training time are stated anywhere in the excerpts."
+P0570,variance,no,"Main results are single best or average scores from search and RL with no seeds, error bars or intervals reported."
+P0572,variance,no,"Confidence intervals are mentioned only for the user-study preference rates, while the main quantitative results (Table 1 speed and quality) show no seeds or variability."
+P0573,compute,none,The text reports results with standard deviations and data splits but states no hardware or training time.
+P0574,compute,unclear,"No hardware is stated, but the text is cut off inside the Implementation Details paragraph where compute would be described."
+P0575,variance,unclear,"The text says differences are statistically significant for most metrics but does not show seeds, error bars, standard deviations or intervals for the main Table 1 results, and is truncated there."
+P0576,compute,unclear,"Inference time is reported and measured on idle GPU and CPU systems, but the text is cut off before naming the hardware."
+P0577,variance,no,"The only standard-deviation language is an effect size derived from the judge error rate; main results have no seeds, error bars or intervals."
+P0577,compute,none,"Implementation details give frameworks and hyperparameters but no GPUs, hardware or training time."
+P0578,variance,no,"Table 1 Tractometer results are single values with no seeds, repeated runs, error bars or standard deviations reported."
+P0580,compute,none,The text reports three-seed standard deviations and implementation details but no hardware or runtime.
+P0581,variance,no,"Main MCC results in Tables 1 and 2 are reported as single values without seeds, error bars or standard deviations."
+P0581,compute,none,"Training details give epochs, optimizer and input size but no GPUs, hardware or training time."
+P0582,compute,none,"Experimental setup and appendices describe models, sampling and hyperparameters but state no hardware or compute time."
+P0583,compute,none,"The text describes dataset acquisition hardware (camera, EEG headset) and five-seed results but no computing hardware or training time."
+P0584,variance,no,"Only the method's predicted per-voxel standard deviations are discussed; no seeds, repeated runs or error bars are given for the main registration results."
+P0584,compute,none,Implementation details and appendices are shown but name no training hardware or time; the 24h on a 64-core desktop refers only to NiftyReg data preprocessing.
+P0585,compute,none,Implementation details (Section 5 and Appendix D.1) give hyperparameters and epochs but no hardware or training time.
+P0586,compute,unclear,A runtime analysis measuring wall-clock time per batch is mentioned but cut off before any hardware or totals are stated.
+P0588,variance,no,"Decoders were retrained 50 times only to average their parameters; no spread, error bars or intervals are reported for the main results."
+P0590,variance,unclear,Only an ablation figure compares seeds and the checklist claims error bars without pointing to them; the main result tables are not shown with any spread.
+P0591,compute,unclear,"The excerpt contains no implementation or compute section and is truncated, so whether hardware or time is reported cannot be determined."
+P0594,compute,none,A theory paper with a small 2D Gaussian-mixture simulation; nothing in the text states hardware or runtime.
+P0616,compute,unclear,"Training time (10 minutes for 500,000 steps) and sampling time are stated but no hardware, so neither amount nor hardware_only fits cleanly."
+P0639,compute,none,Experimental setup and additional implementation details are shown with hyperparameters only; no hardware or training time is stated.
+P0671,compute,unclear,"GPU memory use and inference latency are reported but no GPU type or training time, and the implementation details section is cut off."
+P0672,compute,none,A theory paper with simulation figures; no hardware or runtime is stated anywhere in the text.
+P0677,compute,unclear,"Appendix E is said to report the average computational cost of each method class, but that content is cut off, so hardware and time cannot be checked."
+P0681,compute,unclear,"The excerpt has no implementation or training details section and is truncated, so compute reporting cannot be determined."
+P0693,compute,unclear,"Implementation details defer to Appendix E.2, which is not shown; the visible text names backbones and seeds but no hardware or time."
+P0720,variance,no,"Results tables show single values without spread, and the setup and appendix mention no seeds or repeated runs."
+P0825,variance,no,"The full (untruncated) text describes small synthetic experiments with no seeds, repeated runs, error bars or intervals."
+P0888,variance,no,"The only standard deviation is for solver iteration counts in Table 5; the main BER results are reported with no seeds, repeats or error bars."
+P0907,variance,no,"Implementation details and results claims give point values only; nothing mentions seeds, repeated runs, standard deviations or intervals."
+P0932,variance,no,The seeds excerpt only refers to the absence of a seed dataset; main results are reported as point scores with no repeated runs or spread.
+P0932,compute,none,"The excerpts, including training details and the reproducibility statement, name no hardware, GPU type or training time."
+P0945,variance,no,"Main results are single macro/micro accuracies per VLM with no seeds, error bars, standard deviations or intervals mentioned."
+P0978,compute,none,The text discusses relative inference cost (25x sampling) but never states hardware or GPU-hours.
+P1021,variance,unclear,The text only notes that the standard deviation of predictions decreases with context size in Fig. 6 and does not say whether the main comparisons report spread.
+P1031,variance,no,"Standard error is reported only for the human-study comparison, while the main detection tables report no seeds, deviations or intervals."
+P1083,variance,no,"Main Table 1 results are reported as single scores with no repeated runs, deviations or intervals mentioned."
+P1093,variance,no,"The method is training-free and the results are reported as single benchmark scores with no seeds, deviations or intervals mentioned."
+P1093,compute,none,"Inference latency is measured with CUDA timing, but no hardware model or training compute is stated anywhere in the text."
+P1094,variance,unclear,"The text mentions significant in-vivo effects and model instances that differ only in initial weights, but does not say whether the main results show error bars or spread."
+P1094,compute,none,Training hyperparameters are given but no hardware or compute time is stated.
+P1099,variance,unclear,"Results are averaged over five test folds, but the text does not say whether standard deviations or intervals across folds are reported."
+P1099,compute,none,The backbone and pretraining sections give architecture and data size but no hardware or training time.
+P1111,variance,unclear,The text says random seeds were used for splits but does not say whether several runs or spread are reported for the main results.
+P1112,variance,no,"The only plus/minus values are pLDDT spreads over generated sequences in a side out-of-distribution analysis, and the main tables report no seeds or deviations."
+P1114,compute,unclear,"The sentence on hardware is cut off (""All experiments are done on a sing [...]""), so the hardware is not visible in the text."
+P1179,compute,none,The experimental setup and appendix excerpts state no hardware or compute time.
+P1184,compute,none,"The text reports mean and standard deviation over runs but states no hardware or compute time, only similar resource consumption."
+P1232,variance,no,"The benchmark results are given without any repeated runs, standard deviations or intervals mentioned."
+P1238,variance,no,"The main predictor and design results are reported as averaged correlations and median ratios with no seeds or spread mentioned, and the three MD replicas are only the data source."
+P1242,variance,no,"The main zero-shot screening results are reported without any seeds, standard deviations or intervals mentioned."
+P1271,compute,amount,"Implementation details state a single NVIDIA RTX 3090 GPU and Table 5 reports per-sample inference time (2.93 s) and memory, so hardware and time are both given."
+P1301,variance,no,No seeds or repeated-runs passage is extracted and the results are reported as single recall numbers without standard deviations or intervals.
+P1301,compute,none,"The implementation details list models and hyperparameters but no hardware or compute time, and the limitations only say costs are comparable to other methods."
+P1303,variance,no,"The seeds passage contains only methodological uses of standard deviation and Monte Carlo sampling, with no seeds, error bars or intervals for the main results."
+P1303,compute,unclear,"No hardware or training time appears in the shown text, but the pre-training settings section is cut off mid-sentence, so whether compute is reported cannot be determined."
+P1305,variance,no,No seeds or repeated-runs passage is extracted and the main results are single scores and rates without spread.
+P1305,compute,none,"The experimental setup names ComfyUI and Gemini 2.5 Flash as an API engine and reports tokens, but states no hardware or compute time."
+P1321,compute,hardware_only,"Appendix C gives NVIDIA H200 GPUs and GPU counts (16, 48, 1008) plus FLOPs, but no wall-clock time or GPU-hours."
+P1330,variance,no,"The seeds passage is about sub-slice construction and contains no seeds, error bars or standard deviations for the results."
+P1330,compute,unclear,"No training or implementation details section appears in the truncated text, so whether hardware or compute is reported cannot be seen."
+P1335,compute,unclear,"The truncated text shows no implementation or training details section and mentions no hardware, so compute reporting cannot be determined."
+P1342,variance,no,"The seeds passage only defines a Gaussian shape token, and the main results (e.g., 72.29%, mIoU 38.1) are reported without spread."
+P1342,compute,unclear,"The truncated text contains no implementation details section or hardware statement, so compute reporting cannot be determined."
+P1343,compute,none,"The implementation detail sections (3.3, A.6) and setup describe features, splits and three seeds but no hardware or compute time."
+P1344,compute,none,"The implementation details give batch size, epochs and iterations but no GPU type or training time."
+P1347,compute,none,The implementation sections give epochs and models trained but state no hardware or compute time.
+P1354,variance,no,No seeds or repeated-runs passage is extracted and no error bars or standard deviations for the main results appear in the text.
+P1406,compute,unclear,"The implementation details excerpt starts mid-paragraph and mentions no hardware, so whether compute is stated in the cut part cannot be determined."
+P1432,variance,no,No seeds or repeated-runs passage is extracted and results are given as single Macro-F1 values without spread.
+P1433,variance,no,No seeds or repeated-runs passage is extracted and results are single terminal losses without error bars or multiple seeds.
+P1451,variance,no,"The excerpts show only theoretical results and proofs with no seeds, repeated runs, error bars or intervals for any results."
+P1451,compute,none,The excerpts are theoretical and state no hardware or run time.
+P1453,compute,none,The text describes averaged runs and released code but states no hardware or compute time.
+P1481,compute,hardware_only,"The acknowledgements say TPUs from Google TPU Research Cloud were used and the JAX/TPU implementation is mentioned, but no training time is given."
+P1490,variance,no,"The only std values are for training-reward curves across steps, and no seeds, error bars or intervals are reported for the main results."
+P1516,compute,amount,"The text names an RTX 3080 GPU workstation, and the checklist says Table 1 reports wall-clock training time."
+P1540,variance,no,"The only standard deviations describe dataset sequence lengths; no seeds, repeated runs or error bars are reported for the results."
+P1603,compute,none,"The implementation details give the architecture, steps and hyperparameters but no hardware or training time."
+P1622,compute,none,"The excerpts state no hardware, GPU or run time."
+P1629,compute,none,"The excerpts state no hardware, GPU or run time."
+P1635,compute,none,The experimental setup describes environments and models but states no hardware or run time.
+P1637,compute,none,"The implementation details give the optimizer, epochs and rounds but no hardware or run time."
+P1649,compute,unclear,"The reproducibility statement says the computational platform is described in Section B, but that section is not in the text."
+P1693,compute,none,The excerpts describe the dataset and feature extraction but state no training hardware or run time.
+P1730,compute,none,The fine-tuning details give steps and hyperparameters but no hardware or run time.
+P1740,variance,no,"Standard deviation appears only as a data-filtering hyperparameter; no seeds, repeated runs or error bars are reported for the results."
+P1861,variance,no,"The excerpts are theoretical bounds with no seeds, repeated runs, error bars or intervals."
+P1861,compute,none,The excerpts are theoretical and state no hardware or run time.
+P1888,variance,no,"The standard deviations describe similarity-score distributions, not variation across seeds or runs for the main results."
+P1915,variance,no,"The text reports single training runs with hardware and times but no seeds, repeated runs, error bars or intervals."
+P1928,variance,no,"Results are reported as single accuracy figures and the seeds/variance excerpt mentions only seed problems for augmentation, with no seeds, standard deviations or error bars."
+P1928,compute,none,The experimental setup and other excerpts mention no hardware or training time; only use of the Azure OpenAI service is noted.
+P1929,compute,none,"No GPU, hardware or runtime information appears anywhere in the excerpts."
+P1930,variance,no,"Main and ablation tables report single accuracy values with no seeds, standard deviations or error bars."
+P1971,compute,amount,"States all experiments run on CPU and reports measured runtimes per method (e.g. SPVI 59 to 7,933 s) with a 10-hour wall-clock limit."
+P1986,compute,none,Only says GMM resource consumption remains modest; no hardware or runtime is given.
+P1988,compute,none,Reports MACs and parameter counts only; no hardware or training time is stated.
+P2004,compute,amount,States experiments ran on an Apple MacBook Air M4 with 24 GB RAM and reports running times (percentiles in Figure 4) with a 60-second cutoff.
+P2027,compute,none,"The data, model and training details give no hardware or training time."
+P2053,variance,no,"Table 1 caption and results describe single metric values with no seeds, standard deviations or error bars."
+P2053,compute,unclear,"The implementation details section is cut off mid-appendix before any hardware or time could appear, so the excerpt cannot settle it."
+P2056,variance,no,"Standard deviations appear only for loss normalization; results are reported without seeds, repeated runs or error bars."
+P2065,variance,no,"Benchmark scores in Tables 3 and 4 are single values with no seeds, standard deviations or intervals."
+P2098,compute,none,Tuning budget and training settings are given but no hardware or compute time is stated.
+P2100,compute,none,The excerpts on experiments and datasets give no hardware or compute time.
+P2101,compute,none,"Datasets, splits and predictors are described without any hardware or runtime information."
+P2118,compute,none,"Implementation details (kernels, grids, Nystrom approximation) give no hardware or compute time."
+P2148,compute,none,"Software, data and training descriptions give no hardware or compute time."
+P2166,compute,none,"The excerpts on method, data and reproducibility give no hardware or compute time."
+P2168,variance,no,"Table 1 and the reported improvements are single values with no seeds, standard deviations or error bars mentioned."
+P2171,compute,unclear,"Text was cut at its length cap and the shown excerpts state no hardware or training time, so compute reporting cannot be determined."
+P2176,variance,no,"Full text shown; standard deviations are only per-design structure-prediction confidence filters, with no seeds, error bars or intervals for the main success results."
+P2180,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or standard deviations for the main results."
+P2185,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time; only training details without hardware appear.
+P2188,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.
+P2195,variance,unclear,Text was cut at its length cap and the shown excerpts state no repeated runs or error bars for the main RMSE results; MCMC standard deviation is used only as a prediction-uncertainty score.
+P2201,compute,hardware_only,Full text shown; it states experiments use 4 to 8 GPU cores but gives no total compute time or GPU-hours.
+P2203,variance,unclear,Text was cut at its length cap and the shown excerpts state no seeds or error bars for main results; the Gaussian noise standard deviation is a perturbation setting.
+P2234,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results; standard deviation appears only in the advantage normalisation."
+P2238,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results."
+P2243,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main benchmark results."
+P2248,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results."
+P2251,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main evaluation results."
+P2253,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or training time; only optimiser settings and epochs appear.
+P2299,compute,unclear,"Text was cut at its length cap and the shown excerpts state no hardware or compute time, although experiments with 100 seeds are described."
+P2309,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals; 'variance' appears only as a model component."
+P2309,compute,unclear,Text was cut at its length cap and the shown excerpts state no training hardware or time; only on-device inference latency on a phone is given.
+P2316,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.
+P2318,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results; single accuracy values are reported."
+P2318,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.
+P2321,compute,unclear,"The shown text contains no hardware or training-time statement and is cut before any implementation/experimental-setup section, so compute cannot be judged."
+P2322,variance,no,"The excerpts, including implementation details, mention no seeds, repeated runs, error bars or standard deviations for the main results."
+P2322,compute,unclear,"The implementation paragraph is truncated mid-sentence before any hardware or time is stated, so compute reporting cannot be determined."
+P2326,variance,no,"No seeds, repeated runs, error bars or intervals are reported for the main results in the shown setup, ablation and appendix text."
+P2327,variance,no,"The reproducibility, training, inference and cost sections give no seeds, repeated runs or error bars for the main results."
+P2333,variance,no,"The only seed mention is a random seed spot for batching, and no repeated runs, error bars or standard deviations are reported for results."
+P2333,compute,unclear,"The reproducibility statement says computational resources are documented in Section 4.1 and Appendix A.3.1, but those sections are not in the shown text."
+P2349,variance,no,"Results are averages over 8 logos and same-seed visual comparisons, with no error bars, standard deviations or repeated-seed runs for main results."
+P2356,variance,no,"The implementation details and results discussion report single average scores with no seeds, repeated runs or error bars."
+P2407,variance,no,"Seeds are said to be documented, but no repeated runs, standard deviations or error bars are reported for the main Table 1 results."
+P2439,variance,no,"Variance appears only as part of the uncertainty method and runtime averaging, not as seeds or error bars on the main correlation results."
+P2445,compute,none,The full implementation details section and reproducibility statement give no hardware or training time.
+P2476,variance,no,"The text mentions no seeds, repeated runs, standard deviations or intervals for the main results."
+P2476,compute,unclear,"No implementation or experimental-setup section is shown, so whether hardware or time is reported cannot be determined from the text."
+P2511,variance,no,"The experimental setup sections mention no seeds, repeated runs, error bars or standard deviations for the results."
+P2511,compute,unclear,"The training-details paragraph in Appendix A.3 is truncated before any hardware or time could appear, so compute cannot be judged."
+P2521,variance,no,"The implementation, evaluation and results text report single mAP values with no seeds, repeated runs or error bars."
+P2531,variance,no,"Variance refers only to the GP predictive uncertainty of the method, not to seeds, repeated runs or error bars on the main results."
+P2531,compute,unclear,"Training details are deferred to Section B.1/B.2, which are not shown, so compute reporting cannot be determined."
+P2534,variance,no,"The text only notes minimal fluctuation across evaluations without reporting seeds, standard deviations or error bars for the main results."
+P2535,variance,unclear,"The excerpt shows only method, dataset and EditStream sections with no main results tables, so whether variance is reported cannot be determined."
+P2535,compute,unclear,"No implementation or training details are included in the truncated excerpt, so hardware and time cannot be judged."
+P2555,compute,unclear,"The implementation details section is cut off and the text refers to a reported training time that is not shown, so compute cannot be determined."
+P2570,compute,none,The implementation details section (B.1) is shown in full and gives architectures and hyperparameters but no hardware or time.
+P2578,compute,none,"The training section (5.1) is shown in full with optimizer, batch size and learning rate but no hardware or time."
+P2592,compute,none,"The proxy and SILO training sections (B.2, B.5) are shown in full with hyperparameters but no hardware or time."
+P2593,compute,unclear,"The implementation details section (D.4) is truncated mid training protocol, so any hardware statement may be in the omitted part."
+P2597,variance,no,"Main results in Table 1 are presented as single values and no seeds, error bars or standard deviations are mentioned."
+P2614,compute,unclear,"The implementation details sections (A.2, D.2) are cut off and show no hardware, so compute cannot be determined from the excerpt."
+P2624,compute,none,"The implementation details give architecture and training settings (VAE, MLP, EDM settings) with no hardware or time stated."
+P2636,compute,unclear,"The experimental setup states only PyTorch and the architecture section (C.3) is truncated, so hardware and time cannot be determined."
+P2660,compute,unclear,"The text reports memory savings and a training time of hours per epoch but never names the hardware, and the excerpt is truncated."
+P2672,variance,no,"Main findings are reported as single values (e.g. CTAR above 50%, 44% detection accuracy) with no seeds, intervals or standard deviations mentioned."
+P2672,compute,unclear,"The truncated excerpt contains no implementation or experimental setup section, so compute cannot be judged."
+P2674,variance,no,"Main results are given as single success rates (41.07%, 38.39%, 34.82%, 14.29%) with no repeated runs or intervals mentioned."
+P2674,compute,unclear,"The truncated excerpt covers only the introduction and framework description with no experimental setup, so compute cannot be judged."
+P2676,variance,no,"Results in Tables 1-3 are reported as Dice scores with no mention of seeds, error bars or standard deviations."
+P2677,variance,no,"Quantitative results in Tables 1-2 and ablations are reported without any seeds, error bars or standard deviations; the seeds section only concerns the diffusion model variance."
+P2677,compute,none,"The models and parameters paragraph gives training settings and only mentions sampling steps contingent upon the available GPU, without naming hardware or time."
+P2682,compute,unclear,"The text gives per-sample latency in seconds but names no hardware, and no implementation setup section is included in the truncated excerpt."
+P2697,variance,no,"Mean and standard deviation are reported only for Loihi 2 power and time measurements; the main detection mAP results show no seeds, error bars or intervals."
+P2722,variance,no,"The only repeated-run figure is the RMSD of five projection runs for stability; main benchmark results in Tables 1-3 are reported without seeds, error bars or intervals."
+P2724,variance,no,"The excerpts describe single training runs and result tables with no mention of seeds, standard deviations, error bars or intervals."
+P2724,compute,none,"The excerpts state no training hardware, GPU type or training time."
+P2733,compute,amount,Training takes a total of 18 hours on 3 x L40S GPUs.
+P2738,compute,none,The excerpts state no hardware or training time.
+P2739,variance,no,"The text reports results without any mention of seeds, standard deviations, error bars or intervals."
+P2755,variance,no,"The excerpts report detection AP results with no mention of seeds, standard deviations, error bars or intervals."
+P2755,compute,none,The excerpts state no hardware or training time.
+P2802,variance,no,"Results in Table 2 and the analyses are reported without seeds, standard deviations, error bars or intervals."
+P2802,compute,none,The excerpts state no hardware or training time.
+P2859,compute,none,"The excerpts, including implementation details, state no hardware or run time."
+P2867,variance,no,"The excerpts report results with no mention of seeds, standard deviations, error bars or intervals."
+P2867,compute,none,Only motion-capture sensor hardware is described; no compute hardware or training time is stated.
+P2880,compute,none,The excerpts describe optimizers and epochs but state no compute hardware or training time.
+P2940,compute,unclear,Only a passing mention of data-parallel training across 4 GPUs without GPU type or time; detailed configurations are deferred to an appendix not shown.
+P2970,variance,no,"Results are reported without any mention of seeds, standard deviations, error bars or intervals."
+P2970,compute,none,"Implementation details give model, optimizer and epochs but no hardware or training time."
+P2989,compute,none,The excerpts describe training setup but state no compute hardware or run time; training details are deferred to Appendix B.
+P3000,variance,no,"Benchmark results are reported as single scores with no mention of seeds, standard deviations, error bars or intervals."
+P3030,compute,none,"The excerpts describe datasets, seeds and decoders but state no hardware or training time."
+P3039,variance,no,"The seeds section only holds the abstract (seed prompts) and no seeds, error bars or intervals are reported for the main results."
+P3039,compute,none,Only Gemini API cost (about 50 dollars per evaluation) and generation settings are given; no hardware or compute time is stated.
+P3041,compute,none,The excerpts on data curation and multi-dataset training state no hardware or compute time.
+P3047,compute,none,The setup excerpts report seeds and datasets but state no hardware or training time.
+P3056,variance,no,"The excerpts mention no seeds, repeated runs, error bars or standard deviations for the results."
+P3056,compute,none,Only memory constraints for elastic inference are mentioned; no hardware or compute time is stated.
+P3073,compute,none,Only general computational limitations of spectral operators are discussed; no hardware or time is stated.
+P3090,compute,amount,"A single NVIDIA RTX 3090 GPU is stated together with training time per iteration (0.15 s/it) and total steps (138,400)."
+P3132,compute,none,The excerpts describe the pretraining dataset and architecture but state no hardware or compute time.
+P3135,compute,none,The implementation and reproducibility excerpts state no hardware or compute time.
+P3165,variance,no,"The seeds section is only acknowledgements and no seeds, error bars or deviations are reported for the main results."
+P3175,compute,amount,"Appendix B Table 5 gives pretraining compute requirements comparing hardware and training times, per its caption."
+P3197,variance,no,"The only standard deviation is a smoothing kernel width; no seeds, repeated runs or error bars for results are reported."
+P3197,compute,none,Training time is only called efficient with no hardware or time values stated.
+P3206,compute,none,"Only sampling times in seconds are given, with no hardware stated and no training compute budget."
+P3210,variance,no,"The excerpts report no seeds, repeated runs, error bars or standard deviations."
+P3210,compute,none,The excerpts discuss GED computation cost conceptually but state no hardware or compute time.
+P3215,compute,amount,Eight Nvidia V100 GPUs are stated and training time in seconds is reported per method in the result tables.
+P3238,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals."
+P3328,compute,hardware_only,The text names NVIDIA A100 and H200 (and other) platforms used for training and evaluation but gives no training time or GPU-hours.
+P3331,variance,no,"Main results are single values; the only standard deviation shown is for a noise-injection robustness analysis, not seeds or error bars on main results."
+P3349,compute,unclear,"Training time of 7.6-14.2 hours is stated but only 'on our hardware' with no hardware named in the excerpt, so the amount cannot be fully determined."
+P3366,variance,no,"The excerpt shows results averaged over images with no seeds, standard deviations, error bars or intervals for main results."
+P3366,compute,none,"The implementation section names software (gsplat, tiny-cuda-nn) and FPS but no hardware or training time."
+P3369,compute,none,Only computational cost in general is mentioned; no hardware or training time is stated in the text.
+P3371,variance,unclear,"The text says the optimizer shows no particular seed sensitivity in RL but does not state that main results report several seeds, error bars or intervals."
+P3372,compute,none,No hardware or compute time is stated; only the test-time update budget is described.
+P3375,variance,no,"Main results are single values with paired t-test significance markers; no seeds, standard deviations, error bars or intervals are reported."
+P3379,variance,no,"No repeated runs, seeds, standard deviations or intervals are described for the reported results."
+P3381,compute,none,No hardware or compute time is given; only the computational cost of oracles is discussed qualitatively.
+P3384,variance,no,"Main training runs use the same random seed, with seed consistency shown only in an appendix figure, so main results lack seed variance."
+P3415,compute,none,Only 'computational constraints' are mentioned; no hardware or compute time is stated.
+P3430,variance,no,"No seeds, standard deviations, error bars or intervals are reported for the results in the excerpt."
+P3430,compute,none,"Training details give tokens, batch sizes and epochs but no hardware or compute time."
+P3483,variance,no,"Result tables report single mIoU values without seeds, standard deviations or intervals."
+P3572,variance,unclear,Three seeds with standard deviations are reported only for the perturbation robustness experiment; the excerpt does not say whether main results include variance.
+P3584,variance,no,"Seeds are mentioned only for building the Deep Ensemble baseline, not for reporting variance of main results."
+P3613,compute,none,Models are evaluated with default/API settings and no hardware or compute time is stated.
+P3619,compute,none,No hardware or training time is stated in the excerpt.
+P3649,compute,none,"The excerpts describe environments, methods and seeds but state no hardware or training time."
+P3663,variance,no,"The excerpts report per-condition scatter plots and fixed-step checkpoint selection but no seeds, error bars or standard deviations for the main benchmark results."
+P3678,compute,none,The excerpts describe MuJoCo experiments averaged over three seeds and code release but state no hardware or run time.
+P3698,compute,none,"The excerpts cover data, seeds and code release but mention no hardware or compute time used for training."
+P3706,compute,unclear,"Tables report total runtime for embedding and SVM steps but no hardware is stated, which fits neither amount nor hardware_only cleanly."
+P3708,variance,no,"The excerpts give training setup and point results across scenes with no seeds, error bars or standard deviations."
+P3717,variance,no,Results are compared to baseline numbers cited from original papers and reported as single values with no seeds or error bars mentioned.
+P3720,variance,no,"Tables report results averaged across scenes and exposure times only, with no seeds, standard deviations or intervals over repeated runs."
+P3723,variance,no,"The excerpts describe k-fold cross-validation and accuracy/MF1 but report no standard deviations, error bars or repeated-seed variability for the main results."
+P3727,compute,none,The excerpts describe synthetic and wet-lab experiments and Adam optimization but state no hardware or compute time.
+P3762,variance,no,"Standard deviation over 10 runs is reported only for scoring latency, not for the main retrieval accuracy results."
+P3779,compute,none,The excerpts describe simulations and order-parameter runs but state no hardware or compute time.
+P3793,compute,none,"The excerpts describe the method, related work and limitations but give no hardware or training time."
+P3800,compute,none,The excerpts list the evaluated VLMs and annotation counts but state no hardware or inference time.
+P3823,variance,no,"Main results in Table 1 are single values from deterministic decoding with no seeds, standard deviations or intervals; the only standard deviation is in the GRPO advantage formula."
+P3826,compute,none,"The excerpts describe datasets, preprocessing and fine-tuning epochs but state no hardware or training time."
+P3827,variance,no,The method is training-free and results are reported as single accuracies averaged over datasets with no seeds or error bars.
+P3841,variance,no,"Benchmark results are reported as single pass/resolved rates per model with no repeated runs, error bars or intervals mentioned."
+P3841,compute,none,The excerpts describe the benchmark pipeline and Docker environments but state no hardware or compute time.
+P3846,variance,no,"The excerpts report single benchmark scores and training details with no seeds, standard deviations or intervals."
+P3855,compute,none,"The excerpts name only the Gemini 2.5 Flash API backbone and give no hardware, runtime or GPU-hours."
+P3872,compute,none,"The setup and complexity sections give datasets, models and communication volume but no hardware or training time."
+P3873,compute,none,"The excerpts describe datasets, preprocessing and model adaptations but name no hardware or compute time."
+P3902,compute,none,"Only throughput (10/25 FPS) and a 2GB GPU memory footprint are given, with no named hardware or training time."
+P3904,variance,no,"The main results are reported as single aggregated scores with no seeds, error bars or standard deviations mentioned."
+P3904,compute,none,"The excerpts name models and datasets but give no hardware, training time or GPU-hours."
+P3916,compute,none,"Running times are compared in Table 4, but no hardware is stated and no compute budget is given."
+P3919,compute,none,The setup and reproducibility statement list frameworks and data scales but no hardware or compute time.
+P3922,variance,no,"Results are reported as single correction rates with no seeds, error bars or standard deviations for the main results."
+P3922,compute,none,The text describes LLM APIs and the data pipeline but gives no hardware or compute amounts.
+P3928,variance,no,"Metrics are averaged over 100 classification trials, but no standard deviations, error bars or intervals are reported for the main Table 1 results."
+P3928,compute,none,Only a 10-second inference time per video is given; no hardware or training compute is stated.
+P3950,variance,unclear,Mean plus or minus std appears only for the layer-permutation robustness analysis (Table 5); the excerpt does not show whether the main results carry variance.
+P3956,variance,no,"The main DSC/ASD results are given as single values with no seeds, std or error bars mentioned."
+P3963,compute,unclear,"Only the checklist claims GPU usage and approximate duration are given, and the only hardware named is 'cluster GPUs'; no actual hardware type or time appears in the excerpts."
+P3971,variance,no,"Table 1 reports single values per metric with no seeds, std or error bars indicated."
+P3971,compute,none,"The excerpts give no hardware, training time or GPU-hours."
+P3976,compute,amount,Appendix F explicitly states that Section F.2 describes the hardware and the wall-clock budget under which the Table 2 and 3 experiments ran.
+P3994,variance,no,"The setup and results excerpts report no seeds, error bars or standard deviations for the main metrics."
+P3995,variance,no,"Three images per prompt are generated, but Table 1 metrics are reported without std, error bars or intervals."
+P4028,variance,no,"The excerpts give implementation, data and training details but report no seeds, standard deviations, error bars or intervals for the main results."
+P4029,compute,none,"The excerpts name no hardware, run time or GPU-hours anywhere."
+P4041,compute,none,Only GFLOPs and parameter counts are given (Table 6); no hardware or training time is stated.
+P4064,variance,no,"Speedup and MAT results are reported as single values on a single A6000 setup with no seeds, standard deviations or intervals mentioned."
+P4065,variance,no,"Main results (Table 1, FPR) are single point values with no seeds, error bars or standard deviations reported."
+P4080,compute,hardware_only,"The only compute statement is that a baseline (JT-VAE) was trained and sampled on an NVIDIA GeForce RTX 2080 Ti, with no time or GPU-hours given."
+P4084,compute,none,"The excerpts mention no hardware, run time or GPU-hours."
+P4102,variance,no,"Results are reported as average accuracies with no seeds, standard deviations or error bars; the only seed remark concerns optional data splits."
+P4102,compute,none,The text only says running all configurations is computationally prohibitive and names no hardware or time.
+P4135,variance,yes,The main comparison table reports FID and CLIP-Score with plus-minus standard deviations for all methods.
+P4154,variance,no,"Main results report pass@k and token savings without seeds, error bars or standard deviations; the violin plots show per-task token spread, not run-to-run variance."
+P4154,compute,none,"Experiments use API/foundation models and the excerpts state no hardware, run time or GPU-hours."
+P4158,variance,unclear,The only mean plus-minus sd over five runs is for the compute-overhead timing table; the excerpts do not show whether the main regret results carry variance.
+P4158,compute,amount,Appendix C.13 states an NVIDIA A6000 GPU and per-iteration wall-clock times (e.g. 28.3 s per iteration on HDBO-200D).
+P4179,compute,none,"The excerpts state no hardware, run time or GPU-hours (only model sizes and an inference-efficiency table)."
+P4181,variance,no,"No seeds, standard deviations, error bars or intervals are reported for the quality-diversity or human-evaluation results in the excerpts."
+P4181,compute,none,"The excerpts mention no hardware, run time or GPU-hours."
+P4207,variance,no,"Main FID results are single values; the only variability mention is a plus-minus 0.01 run-to-run figure for toy 2D sliced-W2, not the main results."
+P4207,compute,none,"The excerpts give no hardware, training time or GPU-hours."
+P4208,compute,unclear,"Training and inference times and GPU memory are reported (e.g. 6.55 s inference) but no hardware is named, which fits neither amount nor hardware_only cleanly."
+P4211,variance,no,"The excerpts report BD-rate tables and setup with no mention of seeds, standard deviations or intervals."
+P4223,variance,no,"Main probing and patching results are reported without seeds or error bars; the only standard deviation is of probe-weight cosine similarity, not run-to-run variance."
+P4223,compute,none,No hardware or training time is stated in the excerpts.
+P4226,variance,no,"Classifier and CLIP results are given as single numbers with no seeds, error bars or intervals mentioned."
+P4234,variance,no,"Ensemble spread and IC perturbations are forecast properties, not repeated runs or error bars on main results, and no seeds or intervals are reported."
+P4234,compute,none,"Only epochs, batch sizes and a speed ratio are given; no hardware or GPU time is stated."
+P4244,variance,no,"Continual anomaly detection tables report single values with no seeds, standard deviations or intervals; the only std mentioned is image normalization."
+P4244,compute,none,Memory consumption figures are given but no hardware type or training time is stated.
+P4282,variance,no,"Results tables for synthetic and real-data ablations are described with no seeds, error bars or intervals."
+P4282,compute,none,The excerpts state no hardware or compute time.
+P4283,variance,no,"Table 3 reports single metric values per method without seeds, standard deviations or intervals."
+P4283,compute,none,Only training epochs and learning rate are given; no hardware or time is stated.
+P4284,variance,no,"Throughput results are averages over steps without seeds, standard deviations or intervals reported."
+P4293,compute,none,The excerpts describe synthetic setups with no hardware or compute time.
+P4301,compute,none,The excerpts describe probing over seeds but state no hardware or compute time.
+P0040,weights_used,unclear,"Logbook 1 ran the pre-existing Sybil model being audited, but the text does not attribute those weights to the paper authors and their own diffusion-bridge model was never used."
+P0309,weights_used,no,"The evidence states the trained FINDR network and intermediates needed are absent from the public release, and the Connector checkpoint was trained in the logbook itself."
+P0310,code_used,unclear,"No logbook mentions obtaining or running the authors code, nor explicitly states it was unavailable or reimplemented."
+P0440,code_used,unclear,The independent GPU run trained the paper models but the text does not say whether the authors code was used; only released result TSVs are explicitly the authors.
+P0707,code_used,unclear,Logbook 1 read official result CSVs from the repo and the judge says it is unclear whether code was run; Logbook 2 does not say whose code it ran.
+P1175,data_obtained,yes,"The judge states the reproduction ran on real AG News data, so the evaluation dataset was obtained even though the model was a small proxy."
+P1301,weights_used,unclear,The text only mentions a frozen off-the-shelf Qwen2.5-VL-3B in a training-free setup and says nothing about authors' trained weights or checkpoints.
+P1357,code_used,yes,"Logbooks report code inspection of the NT-SSM implementation with type-specific alphas and full LightGCN runs on ML-1M reproducing 0.3216 exactly, indicating the authors' code was obtained and run."
+P1514,data_obtained,yes,"Logbook 3 used the paper's adjudicated examples, released config files and downloaded the 4 NCAA PDB targets from RCSB, so the evaluation data was obtained."
+P1551,code_used,unclear,"The logbook ran only prompt-only inference on Qwen3-0.6B and table transcription, and the text never mentions whether the authors' code was obtained."
+P1594,code_used,no,"The mechanism was re-exercised only on synthetic activations and stand-in models rather than the authors' SegFormer/U-Net pipeline, indicating a reimplementation rather than running the authors' code."
+P1608,code_used,yes,"The logbook ran the authors' released W1.58A2 and W1.58A4 checkpoints with packed-layer loading to generate images, which means the authors' release was obtained and executed."
+P1656,data_obtained,no,"The real datasets were explicitly not obtained (TCGA-BRCA needed Kaggle API and UNI2-h; ACTG download not done), with work done only on synthetic scenarios."
+P1745,weights_used,unclear,This is a theory/simulation bandit paper and the text says nothing about any authors' trained weights or checkpoints.
+P1755,data_obtained,yes,"MedCoG-Meta and the CoT baseline were evaluated on samples from the five hard medical benchmark subsets, and the CoT match is said to validate the benchmark, so the evaluation data was obtained."
+P1860,data_obtained,yes,"The reproduction used genuine NQ/HotpotQA state-action pairs, indicating the evaluation datasets were obtained."
+P2092,data_obtained,unclear,"No experiments were run and only a Hub artifact search is reported, so the text says nothing about obtaining EPHNOGRAM or PhysioNet data."
+P2268,data_obtained,unclear,"Only source inspection and arithmetic were done, and the text never mentions whether the training/evaluation data was obtained."
+P2278,weights_used,unclear,"This is a theory paper with empty or not-assessed logbook pages, and nothing in the text mentions trained weights or checkpoints."
+P2535,data_obtained,unclear,The logbook only performed textual and arithmetic checks of the paper's tables and never states whether MagicBrush or other evaluation data was obtained.
+P2695,weights_used,unclear,This is a theoretical distribution-estimation paper and the text says nothing about authors' trained weights or checkpoints.
+P2709,data_obtained,yes,"Training-free TCS and pruning were evaluated on real DeiT/Swin models on a 1000-image subset with reported accuracies, indicating the classification evaluation data was obtained."
+P2828,data_obtained,no,The judge states the official EngDesign benchmark is unreleased and a 12-task EngDesign-lite substitute was used for the main evaluation.
+P3138,data_obtained,unclear,"The logbook used a 200,000-molecule thymidylate-kinase library, and the text does not establish whether this is one of the paper's evaluation datasets or a substitute."
+P3208,data_obtained,no,"Only a reduced wave demo was run instead of the full benchmark, and no BAIR or CLEVRER data was used, so the main evaluation data was replaced by toy-scale data."
+P3418,data_obtained,no,"The main CT-RATE-Report data was gated and not obtained, and the only other data use was a 20-study AMOS-MM proxy run judged a simplified setup."
+P3628,code_used,unclear,"The official repo was obtained and audited, but the text does not show the actual TPE pipeline being run (the compression run used a simplified proxy), so whether the authors code was executed is not established."
+P4067,weights_used,unclear,"The logbooks evaluate public Bio-FMs such as ESM-2 and CryoDRGN, but the text says nothing about obtaining or using the authors own trained weights or checkpoints."
+P4130,code_used,unclear,"The logbook mentions the released repository with evaluation code pending but shows no runs, so it is not stated whether any authors code was run."
+P4258,weights_used,no,"The logbooks used public Qwen/Llama models or their own trained checkpoints, and the paper merged model was never obtained (merge not rerun or attempted with own models)."
+P4313,code_used,unclear,"Logbook 1 only statically inspected the pipeline code while executing released task environments, and Logbook 2 states no code was run, so running the authors code is not clearly established."
+P4329,weights_used,unclear,"Runs used public SD v1.5 and SDXL Turbo with the authors code, but the text says nothing about authors own trained weights or checkpoints."
+P0531,variance,no,"The excerpts, including the seeds section, describe multiple pose samples and epinet uncertainty but report no seeds, error bars or intervals for the main benchmark results."
+P0534,compute,none,The implementation and experimental setup appendices are shown and state no hardware or training time.
+P0535,variance,no,"The text presents theoretical complexity bounds and a code link with no repeated runs, error bars or intervals for results."
+P0535,compute,none,"The excerpts state only a code link and theory, with no hardware or runtime information."
+P0537,compute,none,"The training settings give learning rates, epochs, batch sizes and seeds but no hardware or compute time."
+P0539,compute,none,The text describes dataset generation and model training without naming any hardware or compute time.
+P0540,variance,no,"The excerpts describe 2400+ training runs as a sweep but report no seeds, error bars or intervals for the main results."
+P0541,compute,none,"Training details give epochs, batch sizes and learning rates but no hardware or compute time."
+P0543,variance,no,"The setup, reproducibility and limitations sections mention no repeated seeds, error bars or intervals for the main results."
+P0544,compute,none,The implementation and baseline sections give hyperparameters and models but state no hardware or compute time.
+P0545,variance,no,"The experiment details and results describe single mAP values with no seeds, error bars or intervals."
+P0545,compute,none,The FPGA accelerator is the evaluated deployment target; no hardware or time used to run the quantization experiments is stated.
+P0546,variance,no,"The seeds section only discusses seeding potential wells and dataset statistics; no seeds, error bars or intervals are reported for main results."
+P0553,variance,no,"Training details and results report single MSE/MAE values with no seeds, error bars or intervals."
+P0553,compute,unclear,"Table 5 gives training time in hours per dataset, but no hardware is named in the text, so neither amount nor hardware_only fits cleanly."
+P0558,variance,no,"Results report single Acc/Comp values and percentage gains; a passing mention of experimental variance gives no seeds, error bars or intervals."
+P0558,compute,none,The implementation details and limitations state no hardware or training time.
+P0599,variance,no,"The checklist justifies error bars only with p-values for identified TFs; no seeds, error bars or intervals are reported for the main benchmark results."
+P0611,variance,no,"Results tables give single JSD and property values with no seeds, error bars or intervals."
+P0615,compute,unclear,"The text says only that each inference takes a few seconds on a consumer-grade GPU, with details deferred to Sec. 9.2 which is not shown, so hardware is not specifically stated."
+P0623,variance,no,"Evaluation uses a single fixed seed 0 and results are reported without repeated runs, standard deviations or intervals."
+P0667,variance,no,"Main results are single point scores (e.g. BLEU-1 0.437) with no mention of seeds, repeated runs or error bars."
+P0701,variance,no,"Results are single scores with temperature 0 decoding and no seeds, repeated runs or error bars are reported."
+P0702,variance,no,"The closed-form mapper results are reported as single retention values with no seeds, repeated runs or intervals."
+P0702,compute,none,The excerpts report latency speedups and mapper sizes but name no GPU or other hardware and no compute time.
+P0703,compute,none,The excerpts give training details and hyperparameters but state no hardware or compute time.
+P0704,compute,none,"The excerpts describe datasets, sweeps and seeds but state no hardware or compute time."
+P0708,variance,no,"Results are described without any mention of multiple seeds, standard deviations or error bars."
+P0709,variance,no,"The excerpts contain prompts and method description with no mention of seeds, repeated runs or error bars for results."
+P0709,compute,none,The excerpts state no hardware or compute time for training or inference.
+P0721,compute,none,"The excerpts describe datasets, baselines and the evolutionary loop but state no hardware or compute time."
+P0724,variance,no,"Main results are reported as average improvements with no mention of seeds, repeated runs or standard deviations."
+P0724,compute,none,The excerpts describe data and preprocessing but state no hardware or compute time.
+P0725,compute,none,The excerpts give LoRA and training details but name no hardware or compute time.
+P0733,compute,hardware_only,The text names an NVIDIA A100-80GB GPU (and FlashMVPA reaching 20 TFlops on an A100) but gives no training time or GPU-hours.
+P0735,variance,no,"Table 1 reports single accuracy values for all methods with no seeds, standard deviations or intervals."
+P0739,variance,no,"The excerpts give implementation details and results with no mention of seeds, repeated runs or error bars."
+P0739,compute,none,"Implementation details give batch size, optimizer and iterations but no hardware or compute time."
+P0741,variance,no,"Reconstruction results are reported as averaged PSNR/SSIM/LPIPS with no seeds, repeated runs or error bars."
+P0741,compute,none,"Only a generic GPU versus CPU fitting module is mentioned, with no specific hardware or compute time stated."
+P0778,variance,no,"The excerpts report effects and positive rates as single values with no seeds, standard deviations, error bars or intervals mentioned."
+P0786,variance,no,"The only mean/standard deviation mentioned is of the VAE latent space, and no seeds, error bars or intervals for the main results appear."
+P0786,compute,none,"The excerpts name no GPUs, hardware or training time."
+P0788,compute,none,Models are run through provider APIs in Docker containers and no hardware or compute time is stated.
+P0798,compute,hardware_only,Training details state eight NVIDIA V100 GPUs but give no training time or GPU-hours.
+P0839,compute,unclear,"Only a wall-clock time (70 minutes with 10 parallel processes for API runs) is given with no hardware, which fits neither amount nor hardware_only cleanly."
+P0868,variance,no,"Results are described as success rates and average lengths with no seeds, standard deviations or error bars mentioned."
+P0868,compute,none,"The excerpts mention no hardware, GPUs or training time."
+P0869,variance,no,"Evaluation relies on user studies and GPT ratings with correlation/kappa values; no seeds, error bars or intervals for main results are reported."
+P0870,variance,no,"The only mean plus/minus standard deviation is for generated length distributions in a length-control figure, not variability of the main results across seeds."
+P0872,variance,no,"The excerpts give no seeds, standard deviations, error bars or intervals for the main results."
+P0884,variance,no,"The only standard deviation mentioned is a blur-kernel setting, and no seeds or error bars for results are reported."
+P0891,variance,no,"The seed mentioned is a seed dataset of exemplars; no repeated runs, standard deviations or error bars for results are reported."
+P0894,variance,no,"The excerpts contain no mention of seeds, repeated runs, standard deviations or error bars."
+P0900,compute,unclear,"The text says runtime and GPU memory limits are in Table 1 based on their hardware configuration, but no hardware type or table values are shown."
+P0903,variance,no,"Seed only refers to instruction templates; no repeated runs, standard deviations or error bars are reported."
+P0903,compute,none,"The excerpts mention no hardware, GPUs or compute time."
+P0910,variance,no,"Benchmark scores are reported as single values with no seeds, standard deviations or error bars."
+P0913,compute,none,"The excerpts mention no hardware, GPUs or compute time."
+P0935,variance,no,"Results are reported as single scores with no seeds, standard deviations or error bars mentioned."
+P0935,compute,unclear,"No hardware or training time appears in the visible excerpts and no implementation section is shown, while the text is truncated."
+P0939,variance,no,"Main results (Table 1) are reported with best/second-best marking only; the 'seeds' excerpt concerns seed instructions, not repeated runs or error bars."
+P0939,compute,unclear,"Implementation details defer settings to Sec. A.5, which is not shown, and no hardware or time is visible in the truncated text."
+P0943,variance,unclear,"The checklist claims error bars are reported but its justification does not describe any, and the visible results give only point accuracies."
+P0944,compute,unclear,No hardware or runtime is stated in the visible text; hyperparameters and setup are deferred to appendices not shown in the truncated text.
+P0946,variance,no,"Results and ablations are reported as single scores with no mention of seeds, standard deviations or intervals."
+P0948,compute,unclear,"Training details are deferred to Appendix F, which is not shown, and no hardware or time appears in the truncated text."
+P0949,variance,no,"Results are reported as single values (e.g., 98% human agreement) with no seeds, standard deviations or intervals mentioned."
+P0950,variance,no,"Comparison tables mark best/second-best performance only, with no mention of multiple seeds, standard deviations or error bars."
+P0951,compute,unclear,"Pretraining steps are given but no hardware or time is visible; detailed settings are in Appendix D, not shown in the truncated text."
+P0952,variance,no,"DISCO is deterministic and results are single CVI scores; no repeated runs, standard deviations or intervals are reported for the main results."
+P0952,compute,unclear,"Setup and implementation details are deferred to Appendix C, which is not shown, and no hardware or time appears in the truncated text."
+P0953,variance,no,Zero-shot and benchmark results are reported as single AUC values with best/second-best marking and no standard deviations or seeds.
+P0954,variance,no,"Main results report accuracies with no mention of seeds, standard deviations or error bars."
+P0954,compute,none,"The visible experimental setup gives encoders, optimizer and learning rate schedule but no hardware or training time."
+P0955,compute,unclear,"No hardware or compute time appears in the visible excerpts, and the text is truncated before full experimental details."
+P0968,variance,no,"Results are reported as single BLEU/SPICE/accuracy values with no seeds, standard deviations or intervals."
+P0968,compute,none,The Implementation Details section describes models and optimizer but states no hardware or training time.
+P0972,variance,no,Results are single success numbers; seeds are only promised for a future release and no standard deviations or intervals are reported.
+P0976,variance,no,"Accuracy tables report single values per method and corruption with no standard deviations, seeds or intervals."
+P0976,compute,unclear,"Per-epoch training times (76.22s to 114.62s) are given but no hardware is named, so it fits neither amount nor hardware_only and the truncated text leaves it ambiguous."
+P0980,compute,none,The excerpts describe training setup and learning rates but state no hardware or compute time.
+P0982,variance,unclear,"Figure 3 shows results for the top 10 optimization individuals as dots, but no seeds, error bars or intervals for the main results are stated, so dispersion reporting is ambiguous."
+P0985,variance,no,"The setup and results sections report single perplexity/loss values with no seeds, standard deviations or intervals mentioned."
+P0991,compute,none,"Only generic ""datacenter GPUs"" are mentioned in the environmental impact note, with no specific hardware or run time."
+P0992,variance,no,"Results are reported as accuracies and the only standard deviation mentioned is within GRPO reward normalization, not across runs."
+P1022,variance,yes,"The volume curves are computed by averaging 100 independent experiments, i.e. results over many repeated runs."
+P1042,variance,no,"Main and ablation Dice scores are reported as single values with no seeds, standard deviations or intervals."
+P1050,compute,none,"The excerpts describe code, data and setup but give no hardware or compute time."
+P1051,variance,no,Implementation and results sections give single ROC-AUC values with no mention of multiple seeds or error bars.
+P1053,variance,no,"Training and evaluation details report no seeds, standard deviations or intervals for results."
+P1054,compute,none,The excerpts give MCTS and LLM configuration but no hardware or compute time.
+P1069,compute,unclear,"The checklist says open-weight models ran on local GPU nodes and points to Section 3.6 for the serving regime, but no specific hardware or time is visible in the truncated text."
+P1070,variance,no,"Results are reported as single FID and error values with no mention of repeated runs, seeds or intervals."
+P1070,compute,none,Implementation details give hyperparameters but no hardware or training time.
+P1071,variance,no,"The text states fixed random seeds are used for reproducibility, with no multiple seeds or variance reported."
+P1071,compute,none,The excerpts describe fine-tuning and evaluation but give no hardware or compute time.
+P1073,compute,none,The excerpts describe dataset construction and simulation but give no hardware or compute time.
+P1074,variance,no,"The setup describes a single train/test split per trial with no seeds, standard deviations or intervals for results."
+P1074,compute,none,The excerpts describe capture hardware and model architecture but no compute hardware or training time.
+P1076,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals for any result."
+P1076,compute,none,The implementation details and appendix excerpts name no hardware or training time.
+P1100,compute,none,Only a vague remark about a 4x increase in computational cost appears; no hardware or time is stated.
+P1101,compute,none,The implementation paragraph gives optimizer and batch settings but no hardware or time.
+P1102,compute,none,The implementation details name models and vLLM but no GPUs or compute time.
+P1103,variance,no,"Main results are quoted as single scores with no seeds, repeated runs or intervals mentioned."
+P1103,compute,none,"Implementation details refer to verl and a hyperparameter table, and no hardware or time is stated."
+P1110,variance,no,The confidence intervals belong to the auditing method itself; nothing reports seeds or variability for the experimental results.
+P1144,variance,no,95% intervals appear only for the motion-spectral analysis figure; main FID/FVD results have no seeds or error bars.
+P1150,variance,no,"Results are given as convergence curves and improvements with no mention of seeds, repeated runs or error bars."
+P1153,compute,none,"Training details state epochs, learning rate and seeds but no hardware or time."
+P1162,compute,none,The setup and appendix excerpts state no GPU or training time.
+P1169,variance,no,Evaluation uses 256 samples from shared seeds with single residual/MMD values; no error bars or intervals are reported.
+P1169,compute,none,"Only software versions (Python, PyTorch) are given; no hardware or time is stated."
+P1170,variance,no,FVD/FID and other metrics are reported as single values with no seeds or intervals.
+P1172,compute,none,The excerpt lists evaluated models and protocols but no hardware or compute time.
+P1176,variance,no,"Ablation and comparison tables give single values with no std, seeds or intervals."
+P1177,variance,no,"No seeds, repeated runs, error bars or intervals are reported for the results."
+P1182,variance,no,Results such as averaged Pearson scores are single values with no seeds or variability reported.
+P1183,compute,none,"Training settings and five seeds are stated, but no hardware or training time."
+P1185,variance,no,"Seed 42 is used only for cohort sampling and no standard deviations, intervals or repeated runs are shown for the main Table 2 results."
+P1186,variance,no,"The text notes SimPO has large variance across runs but reports no seeds, standard deviations or intervals for the main Table 1 results."
+P1187,variance,no,The only standard deviations are of portfolio sparsity across trading periods in an appendix table; main cumulative-wealth results show no seeds or intervals.
+P1188,variance,no,"The excerpts describe data, models and hyperparameters but report no seeds, error bars or standard deviations for main results."
+P1188,compute,none,No hardware or training time is stated; only a relative training-time comparison to MoELoRA (67%) is given.
+P1191,variance,no,"Main results (GenEval, reward metrics) are given as single numbers with no seeds, error bars or intervals mentioned."
+P1191,compute,none,Compute is described only relatively (370x less training compute than FLUX); no hardware or time is stated.
+P1192,variance,no,"The benchmark results are described without any repeated runs, seeds, standard deviations or intervals; only a McNemar test for prompt design is mentioned."
+P1192,compute,none,The excerpts state no hardware or run time for the evaluations.
+P1196,variance,yes,"The paper says only for the 10M-point dataset it reports RMSE of one execution due to resource limits, implying repeated executions are reported for the other main results."
+P1197,variance,no,"Results are reported as single rates per model with no seeds, repeated runs or intervals mentioned."
+P1197,compute,none,"No hardware, GPU or runtime information appears in the excerpts."
+P1198,compute,none,Hyperparameters and iterations are given but no hardware or training time is stated.
+P1212,compute,none,Optimizer settings are given but no hardware or training time appears in the excerpts.
+P1217,compute,unclear,"The text says hardware details are in App. C, but that appendix content is not shown, so hardware and time cannot be confirmed."
+P1221,variance,no,"Main results are described as point metrics (MSE, MAE, PCC, RVD) with no seeds, error bars or standard deviations mentioned."
+P1221,compute,none,"No hardware, GPU or training time is stated in the excerpts."
+P1244,compute,amount,Experiments ran on NVIDIA RTX 4090 GPUs and a Compute resources table gives approximate compute accounting for reproducing the reported experiments.
+P1245,variance,no,"LLM scores are reported as single averages with default sampling and no seeds, repeated runs or intervals; the Std. Dev. cited is judge score spread, not result variance."
+P1247,compute,none,Implementation details give architectures and learning rates but no hardware or training time.
+P1252,compute,none,"The excerpts give no hardware, GPU type or training time anywhere."
+P1254,variance,no,"Results come from a single train/validation/test split with no seeds, error bars or intervals reported."
+P1258,variance,no,"The excerpts report single-run relative improvements with no seeds, standard deviations or intervals."
+P1259,compute,none,No hardware or compute time is stated in the excerpts.
+P1260,variance,no,"The excerpts report single throughput and functionality numbers with no repeated runs, error bars or intervals."
+P1264,compute,unclear,"The checklist says compute resources and simulation time are in Supp. C, but the shown Supp. C excerpt is cut before any hardware or time appears."
+P1265,compute,none,"The 4-hour/48 GB limits are benchmark task constraints, and no hardware or time used for the experiments is stated."
+P1269,variance,no,"Main Countdown and code results use greedy decoding or pass@k with no seeds, error bars or intervals reported."
+P1272,variance,no,Models are run at temperature 0 with single success-rate numbers and no repeated runs or intervals.
+P1272,compute,none,"Only API and open models are named, with no hardware or compute time stated."
+P1275,compute,none,No hardware or compute time appears in the excerpts.
+P1276,variance,no,"The excerpts show no seeds, standard deviations or intervals for the experimental results."
+P1276,compute,none,No hardware or compute time appears in the excerpts.
+P1282,compute,none,"Table 1 gives mean and std over 5 runs, but no hardware or search/training time is stated in the visible text."
+P1298,variance,unclear,"95% confidence intervals are given only for the covariate-shift analysis, and the main SWE-bench resolution rates show no variance in the truncated text."
+P1299,variance,no,"Only hardware (4xA100) is given, and benchmark accuracies show no seeds, error bars or intervals."
+P1302,variance,no,"Results are max/average similarities across subjects with no repeated runs, error bars or intervals for model results."
+P1304,variance,no,"The ± values describe dataset morphometrics, while the main Table 2 comparisons have no seeds or error bars."
+P1309,variance,no,"WildBench and AlpacaEval2 gains are single numbers per iteration with no seeds, error bars or intervals."
+P1311,variance,no,"Benchmark accuracies are single values with no repeated runs, error bars or intervals reported."
+P1312,variance,no,"Main VITON-HD/DressCode results are reported as single values (e.g. SSIM/PSNR 0.913/27.827) with no seeds, standard deviations or intervals mentioned."
+P1316,compute,none,"The text gives training/evaluation details (batch size, epochs, 10 seeds for linear probing) but states no hardware or training time."
+P1317,compute,unclear,"Runtimes are stated (about 40 seconds vs 23 minutes) but no hardware is named, so neither amount nor hardware_only applies cleanly."
+P1322,compute,none,"Training procedure and hyperparameters are described but no hardware, GPU type or training time is stated."
+P1327,compute,amount,"Training is reported to take about 8 hours (inference 31/81 minutes) with GPU tensor parallelism up to 8, giving both hardware and time."
+P1329,compute,none,"Implementation appendices describe models, steps and hyperparameters but never state hardware or compute time."
+P1331,compute,none,"The benchmark evaluates LLMs and describes data curation, with no statement of hardware or compute time."
+P1334,variance,no,"Main benchmark results are given as single scores and average gains (e.g. +4.2%) with no seeds, standard deviations or intervals."
+P1336,variance,no,"Results are theory curves checked against numerical simulations with no seeds, error bars or intervals reported for the main results."
+P1337,variance,no,Only a secondary CellProfiler table reports mean and 95% CI; the main FID/KID/MoA results show no variance or repeated runs.
+P1349,variance,no,"The excerpt reports benchmark construction and splits with no mention of seeds, repeated runs, standard deviations or intervals."
+P1350,variance,no,"Main PACS/Digits5 comparisons are reported as single accuracies and gains with no seeds, standard deviations or intervals."
+P1350,compute,none,Only training time per epoch versus data size is mentioned (Table 12) with no hardware and no stated amount.
+P1352,variance,no,"5-fold cross-validation is described but no standard deviations, intervals or repeated-run variance are reported for the main results."
+P1355,variance,no,"The only standard deviations concern dataset statistics; no seeds, error bars or intervals are given for main results."
+P1358,compute,amount,"Compute ran on 8 A40 GPUs and wall-clock sampling time is benchmarked on a single A40 (rapid scans finish in minutes), giving hardware with time."
+P1360,variance,no,"Standard deviations refer to strain-energy distributions of generated molecules and fixed seeds are for docking, not variance of main results over runs."
+P1361,variance,no,"Loss and downstream results are reported as single values (e.g. 0.0306 lower loss) with no seeds, error bars or intervals."
+P1365,compute,none,Implementation details and results tables are given but no hardware or compute time is stated.
+P1371,compute,none,"The text covers method, toy experiments and reproducibility with no hardware or compute time stated."
+P1372,compute,unclear,"The excerpts never state hardware or runtime and include no experimental-setup section, with the text cut at the length cap, so compute reporting cannot be judged."
+P1380,variance,no,"The implementation and setup excerpts report single FID/LPIPS/DISTS numbers and latencies with no mention of seeds, repeated runs or error bars."
+P1396,compute,none,The implementation and appendix excerpts describe the differentiable simulator and data-collection durations but state no computing hardware and no training time or GPU-hours.
+P1413,variance,no,"The main MedVQA result tables report single accuracy values per method with no seeds, standard deviations or intervals mentioned anywhere."
+P1416,variance,no,"The only standard deviations in the text are within-group competition-score statistics in the method, while the six-benchmark main results are reported as single accuracies with no seeds or error bars."
+P1419,compute,none,"The experimental setup states PyTorch, datasets and architectures but names no hardware and gives no runtime or GPU-hours."
+P1426,variance,no,"The text says seeds and initialization were kept identical across methods for fairness, and all reported ACC/H-ACC numbers are single values without error bars or repeated runs."
+P1430,compute,unclear,"The implementation-details excerpt is cut off exactly where training configuration would be given, so whether hardware or runtime is reported cannot be determined."
+P1431,compute,hardware_only,The hyperparameter table states the framework ran on NVIDIA GPUs with CUDA 12.1 but gives no training time or GPU-hours.
+P1440,variance,no,"Training is described as single runs of 50 epochs plus fine-tuning, and all reported NMSE/PSNR/SSIM results are single values with no seeds or error bars."
+P1441,variance,no,"The text reports single AUROC/CPC/ECE/AURAC values per metric and mentions significance tests only, never seeds, repeated runs or error bars for the main results."
+P1449,variance,unclear,"Five random seeds with a shaded interval are reported only for the pretraining-scalability analysis, and the text does not say whether the main linear-probing results carry seeds or intervals."
+P1464,compute,none,The evaluation-protocol section names vLLM and official APIs for inference but states no hardware and no runtime or GPU-hours.
+P1467,compute,none,"The training appendix gives optimizer, learning rates, batch size and epochs but no hardware and no training time or GPU-hours."
+P1472,compute,none,The implementation appendices discuss reducing decoder forward passes but state no hardware and no wall-clock time or GPU-hours.
+P1473,variance,unclear,"The text mentions lower mean and variance of nMSE across OOD environments rather than across seeds or repeated runs, so whether the main results carry run-to-run variance cannot be determined."
+P1473,compute,none,"The implementation-details section lists epochs, batch size and hyperparameters for every method but names no hardware and gives no runtime or GPU-hours."
+P1474,variance,no,"The variance discussed is the action-value variance inside the uncertainty metric, while the accuracy results for the three model sizes are single numbers with no seeds or error bars."
+P1474,compute,none,"The only compute-related figure is a decoding speed of up to 2,500 tokens/sec/GPU, with no hardware named and no training time or GPU-hours."
+P1475,compute,none,"The implementation section gives steps, batch sizes and learning rates for the three stages but states no hardware and no training time."
+P1476,variance,unclear,"Visible text mentions significant differences but never states seeds, repeated runs or error bars, and the results sections are truncated."
+P1476,compute,none,"No hardware, runtime or GPU-hours appear anywhere in the visible text, including the implementation details."
+P1493,variance,no,"The only variance-related passage concerns data-generation noise (std 0.1), and no repeated runs, seeds or error bars are reported for results."
+P1493,compute,none,"No hardware or compute time is mentioned anywhere in the visible text, including experimental settings."
+P1500,variance,no,"Main results are single numbers and the 12 runs are optimization configurations, not seeds; no error bars or std are stated."
+P1501,compute,unclear,No compute is visible but the implementation-details section is cut off mid-paragraph where hardware would typically appear.
+P1503,variance,unclear,No seeds or variance are visible and the sentence describing what is reported in evaluation is cut off.
+P1503,compute,none,The visible setup lists evaluated models and evaluator but states no hardware or compute time.
+P1504,compute,unclear,No hardware is visible but the implementation paragraph is cut off mid-sentence right after model details.
+P1505,variance,no,"Results are reported as single recall percentages with no seeds, repeated runs or intervals mentioned."
+P1505,compute,none,"No hardware, runtime or GPU-hours are mentioned in the visible text."
+P1508,variance,no,"Results are reported as single accuracy gains with no seeds, repeated runs or error bars mentioned."
+P1508,compute,none,No hardware or compute time appears in the visible text.
+P1511,variance,no,"The only seed mention refers to seeding dialogues with scenarios; no repeated runs, error bars or intervals are reported."
+P1511,compute,none,No hardware or compute time is stated in the visible text.
+P1512,variance,no,"Table 1 averages over evaluation sets and Table 8 gives single numbers; no seeds, std or intervals are reported."
+P1513,variance,no,"Results are given as single perplexity/accuracy values with no seeds, error bars or std mentioned."
+P1513,compute,none,"Training setup gives model sizes, tokens and relative FLOPs but no hardware or compute time."
+P1531,compute,unclear,Only the checklist claims Appendix C and D give compute times and resources; no actual hardware or time is visible in the text.
+P1537,variance,no,"Experiments are described as single runs with no seeds, repeated runs, error bars or std reported."
+P1537,compute,none,"The excerpts describe FFHQ experiments, a camera dataset and a code link but state no GPU hardware or training time."
+P1545,variance,no,"Results are reported as single averaged MSE/MAE values with no seeds, standard deviations or error bars; RevIN normalization is unrelated to run variance."
+P1567,compute,none,The excerpts describe five random seeds and dataset sizes but mention no hardware or compute time.
+P1569,variance,no,"The standard deviations reported quantify disparity between quality scores across scoring models, not variability of the main results across runs."
+P1570,variance,no,"Only a fixed sampling seed list is mentioned; no repeated runs, standard deviations or intervals are reported for the detection results."
+P1576,variance,no,"Implementation details give a single training setup with no mention of seeds, repeated runs, standard deviations or error bars."
+P1577,compute,none,The excerpts report seeds and confidence intervals but say nothing about hardware or compute time.
+P1580,variance,unclear,"Two independent motion seeds are drawn per simulated severity level, but the text does not say that spread across seeds is reported for the main results."
+P1580,compute,none,"The excerpts describe the scanner, dataset and baselines but give no compute hardware or run time."
+P1581,variance,no,"Decoding temperature is set to 0 and no seeds, repeated runs or error bars are reported for the benchmark scores."
+P1586,variance,no,"The text reports single-run metrics and user studies with no seeds, standard deviations or intervals."
+P1587,variance,no,The only occurrence of Seed in the excerpt is the ByteDance Seed affiliation; no repeated runs or error bars are reported.
+P1587,compute,none,The excerpts discuss context parallelism and modern accelerators but state no specific hardware or compute amount.
+P1595,compute,none,The excerpts describe five seeds and 660 training runs but give no hardware or compute time.
+P1597,variance,no,"The text gives training details on two A100 GPUs but reports no seeds, repeated runs or error bars for the main results."
+P1599,variance,no,"The excerpts report single accuracy@k results with no seeds, standard deviations or intervals; the GPT-4 temperature is noted but no repeated runs."
+P1600,variance,no,"A fixed seed of 42 is used only to shuffle the RL data, and no repeated runs, standard deviations or intervals are reported."
+P1600,compute,none,The excerpts name the models used but state no training hardware or compute time.
+P1601,variance,no,"The text reports single NoC/mIoU results with no seeds, standard deviations or error bars."
+P1602,variance,no,"The excerpts report single top-k accuracies with no seeds, repeated runs or error bars."
+P1602,compute,none,"Shown setup gives architecture, optimizer and learning rate but no hardware or training time."
+P1605,variance,no,"Results are described and tabled with no mention of seeds, standard deviations or intervals."
+P1606,compute,none,Text describes small simulations and MNIST experiments with no hardware or runtime stated.
+P1607,variance,no,"Results tables report average W1/W2 distances only; the only variance mention is a probability-path variance, not run variability."
+P1609,compute,unclear,Text says the appendix details hardware and training time (App. I) but no hardware or time values are shown.
+P1612,variance,no,"Main results are single scores (e.g. average 0.754) with no seeds, standard deviations or intervals mentioned."
+P1612,compute,none,"Training details section lists learning rates, epochs, DeepSpeed and BF16 but no GPUs or training time."
+P1614,variance,no,Generation used a single fixed random seed (12) and no error bars or standard deviations are reported.
+P1614,compute,none,Implementation and metric sections give no hardware or compute time.
+P1617,variance,unclear,Excerpts cover only datasets and introduction; no results or repeated-run information is visible in the truncated text.
+P1617,compute,unclear,Excerpts cover only datasets and introduction; no implementation or hardware section is visible in the truncated text.
+P1625,variance,unclear,Truncated text covers dataset construction and methods only; no results or variance information is visible.
+P1631,variance,no,"Experimental setup and metrics are described with no seeds, standard deviations or intervals; the only variance mention is a VAE feature alignment term."
+P1636,compute,none,Methods and data sections describe analyses of 600+ models with no hardware or compute time stated.
+P1642,compute,none,Text mentions seeds and setup but no hardware or training time anywhere in the excerpts.
+P1653,compute,none,Excerpts discuss model scales and compute allocations conceptually but state no hardware or GPU time.
+P1656,compute,none,Simulation and TCGA experiment sections state no hardware or runtime.
+P1663,compute,none,"Experimental setup mentions bfloat16, FSDP and FLOPs but no hardware or GPU hours."
+P1665,compute,none,"Only inference time in milliseconds is mentioned, with no hardware or training compute stated."
+P1677,variance,no,"Results (Table 1, SOTA claims) are given with no seeds, standard deviations or error bars."
+P1677,compute,none,"The Implementation paragraph gives optimizer, batch size and 350K steps but no hardware or training time anywhere in the excerpts."
+P1685,compute,unclear,"The checklist claims the hardware platform and training steps are described, but the actual hardware is not visible in the excerpts."
+P1690,variance,no,"Main classification and retrieval results are reported as single accuracy numbers with no seeds, error bars or standard deviations mentioned."
+P1690,compute,unclear,"Training hyperparameters and details are deferred to Section C, which is not included in the truncated excerpts, so compute cannot be judged."
+P1698,compute,none,"Training setup (LoRA steps, batch sizes) and a cost proxy of model x batch x steps are given, but no hardware or GPU time is stated."
+P1702,variance,no,Implementation and results sections report single PSNR/SSIM/LPIPS values with no repeated runs or variance; only a single RTX 4090 is mentioned.
+P1704,compute,none,Pretraining details give DDP with per-GPU and global batch sizes and epochs but never name the GPU type or training time.
+P1710,compute,unclear,"Training and propagator hyperparameters are deferred to appendix sections not shown, and no hardware or time appears in the truncated excerpts."
+P1714,variance,no,Seed variation is only a side analysis of search patterns with two seeds; main results are reported without error bars or standard deviations.
+P1714,compute,unclear,"Own training and search configurations are deferred to Sec. E.1, not shown; the only GPU-hours mentioned refer to prior methods."
+P1717,variance,no,"Results tables are described as best/second-best single values with no seeds, error bars or standard deviations."
+P1717,compute,none,"Appendix B Implementation Details gives LLM, backbones, optimizer, epochs and batch size but no hardware or time."
+P1718,variance,no,"No repeated runs, seeds or variance are reported for the main results; the only standard deviation mentioned is a data-filtering threshold."
+P1718,compute,unclear,The shown appendix covers architecture only; training setup and any hardware are not visible in the truncated excerpts.
+P1721,variance,no,"Results and ablations are reported without seeds, error bars or intervals; seed mentions refer to the noise-generation mechanism, not repeated runs."
+P1721,compute,none,"Fine-tuning details (140 epochs, batch 64, AdamW) and key parameters are given without any hardware or compute time."
+P1722,compute,unclear,"No hardware or time appears in the excerpts, and the training-setup sentence is cut off, so compute reporting cannot be determined."
+P1723,compute,unclear,"Convergence times in seconds, node counts and bandwidth are reported, but the GPU or machine type is not visible in the truncated excerpts."
+P1726,variance,no,"Training details and results are reported without multiple seeds, error bars or standard deviations for main results."
+P1727,variance,no,Main LUAD and BCSS tables report single values per metric with no standard deviations or repeated runs.
+P1732,variance,no,"Main results are reported as single accuracy and perfect-rate numbers with no seeds, standard deviations or intervals; the only std is in the GRPO advantage formula."
+P1735,variance,no,"Visible experimental text gives single-run results and training settings with no mention of seeds, error bars or standard deviations."
+P1737,variance,no,"R2 results in the tables are described as single scores with no repeated runs, seeds or standard deviations; variance mentions are feature statistics only."
+P1741,variance,no,"Main MW-detection and decoding results are single scores (e.g., up to 0.609 AUROC); the only standard error shaded is on the FRP data-validation figure, not the main results."
+P1744,variance,no,Result tables give single accuracy values with no seeds or standard deviations; the std mentioned belongs to the loss definition.
+P1754,compute,none,The text mentions offline compute cost only qualitatively and states no hardware or run time.
+P1756,variance,no,"Visible results and setup sections mention no seeds, error bars, standard deviations or intervals."
+P1756,compute,none,"Dataset, model configuration and training-details sections state no hardware or compute time."
+P1757,variance,no,"Main simulation results are pattern figures with no repeated seeds or error bars; the reported SD of the vector norm describes the neural data, not result variability."
+P1762,variance,no,"Visible text reports no seeds, standard deviations or intervals for the main transfer results."
+P1768,compute,none,The visible text gives seeds and hyperparameters but no hardware or run time.
+P1769,variance,no,Main validation MSEs are single values; a permutation p-value is not a seed/variance report for the main results.
+P1769,compute,none,"Implementation details give optimizer, solver and epochs but no hardware or run time."
+P1772,compute,none,Implementation details give fine-tuning hyperparameters but no hardware or run time.
+P1773,compute,none,Only EEG acquisition apparatus and session duration are described; no compute hardware or training time is stated.
+P1774,compute,none,The visible setup describes data and model sizes but states no hardware or compute time.
+P1776,variance,no,"Results are reported as single benchmark scores and percent gains with no seeds, error bars or intervals."
+P1776,compute,none,Implementation details name Gemini 3 and Blender rendering settings but no hardware or run time; the latency limitation is qualitative.
+P1782,variance,no,"FID/PFID/CLIP and user-study results are given as single values with no seeds, error bars or intervals in the visible text."
+P1786,variance,no,"Benchmark accuracies are reported as single numbers with no seeds, standard deviations or intervals in the visible text."
+P1791,variance,no,"Results are reported as single values in comparison figures and the only 'seeds' mention is the SEEDS superpixel algorithm, with no repeated runs or error bars."
+P1793,variance,no,"Closed- and open-loop planning results in Table 1 are described as single values with no seeds, standard deviations or intervals mentioned."
+P1795,variance,no,"Cleanup results are reported as PSNR/coverage averages across scenes without any mention of multiple seeds, error bars or standard deviations."
+P1796,variance,no,"Restoration results are single PSNR/SSIM values in Tables 1-5 and the only variance mention concerns the diffusion posterior, not repeated runs."
+P1801,variance,no,"Success rates on LIBERO, SimplerEnv and real-world tasks are given as single percentages with no seeds, standard deviations or intervals."
+P1809,variance,no,"Benchmark AUROC results are reported as single averages; the only standard deviation mentioned is pixel intensity of datasets, not result variability."
+P1813,variance,unclear,"The visible text describes the ACES tool and its configuration but shows no quantitative main results, so variance reporting cannot be judged."
+P1829,variance,no,"Accuracies are reported as single Pass@3 values with no seeds, standard deviations or error bars mentioned."
+P1840,variance,no,"ReID mAP results are reported as single values; the standard deviation mentioned is part of the feature normalization method, not result variability."
+P1850,compute,none,Runtime comparisons and GPU parallelization are mentioned but no specific hardware or GPU-hours are stated in the text.
+P1851,variance,no,"Benchmark zero-shot and fine-tuned results are reported as single metric values with no seeds, standard deviations or intervals."
+P1852,variance,unclear,"The reproducibility statement claims multiple runs, but the visible main results table gives only single Dice values without standard deviations or intervals."
+P1859,variance,no,"Evaluation results are described without any seeds, standard deviations, error bars or repeated runs."
+P1863,compute,none,"The text mentions only 'computational constraints' and states no hardware, training time or GPU-hours."
+P1867,variance,no,"Separation metrics are compared as single values against IIANet with no seeds, standard deviations or error bars mentioned."
+P1869,compute,none,Only API token usage and OpenRouter costs are reported; no hardware or compute time is stated.
+P1872,compute,none,Per-slice computation time is compared in Table 2 but no hardware (GPU/CPU model) or GPU-hours are stated.
+P1874,compute,none,"The visible text describes data, seeds and reproducibility but states no hardware, training time or GPU-hours."
+P1875,compute,none,The numerical simulations and real-data application are described without any hardware or runtime information.
+P1879,compute,none,"Only a relative 16x inference speedup is reported; no hardware, training time or GPU-hours are stated."
+P1887,variance,no,"Main results are given as single mAP improvements and the excerpts mention no seeds, error bars or standard deviations."
+P1893,variance,no,"Results are reported as single point metrics with greedy decoding and nothing about seeds, error bars or deviations."
+P1898,variance,no,"Control accuracy and effectiveness are reported as averages over concepts/examples with no seeds, error bars or standard deviations for the main results."
+P1898,compute,none,The excerpts state no hardware or training time.
+P1901,variance,no,"AP/AUC and reconstruction results are reported as single values with no mention of seeds, error bars or deviations."
+P1901,compute,none,"Implementation details give epochs, batch size and learning rate but no hardware or time (deferred to supplementary)."
+P1932,compute,amount,"Quantization time is reported as wall-clock runtime on a single H200 GPU, giving both hardware and time."
+P1939,variance,no,"Table 2 reports point ACC/QWK improvements with no seeds, error bars or standard deviations."
+P1942,variance,no,"Table 1 reports average of top-3 checkpoints without seeds, error bars or standard deviations."
+P1943,variance,no,"Detection AP results are reported with no mention of seeds, error bars or standard deviations."
+P1945,compute,none,The excerpts give no hardware or compute time for pre-training or fine-tuning.
+P1946,compute,none,The method is training-free and the excerpts state no hardware or runtime.
+P1947,variance,no,"Benchmark improvements are reported as single averages with no seeds, error bars or standard deviations."
+P1947,compute,none,The excerpts state no hardware or compute time.
+P1952,variance,no,"Dice scores are reported as single values with no seeds, error bars or standard deviations."
+P1956,compute,none,Only the MEG scanner is described; no compute hardware or training time is stated.
+P1958,variance,no,"Worst-task and average accuracies are reported as single values with no seeds, error bars or standard deviations."
+P1964,compute,none,The excerpts state no hardware or runtime for the BO experiments.
+P1970,variance,no,"Accuracy curves and tables are given without seeds, error bars or standard deviations."
+P1977,variance,no,"Utility and efficiency results are reported as single values with no seeds, error bars or standard deviations."
+P1978,variance,no,"Results are reported as single accuracy figures (e.g. 12.3% higher than GPT-4o) and the excerpts mention no seeds, error bars or intervals."
+P1984,variance,no,"The seeds/variance excerpt gives only training settings and results are averages over structures, with no seeds, error bars or standard deviations reported."
+P1985,variance,no,"The excerpt describes single training runs evaluated on AlpacaEval2/Arena-Hard/WildBench with no seeds, error bars or intervals for the main results."
+P1991,compute,unclear,Only a CPU node time for offline preprocessing is given; the training hardware and time are not visible in the truncated text.
+P1993,variance,no,"Figures report averages over sampled data and trajectories, with no seeds, error bars or standard deviations mentioned for the main results."
+P1994,variance,no,"The excerpts report docking success rates with no mention of multiple seeds, error bars or standard deviations."
+P1999,variance,no,Repeated LLM queries are collapsed to a majority answer and balanced accuracies are reported without any standard deviation or interval.
+P2000,compute,none,The visible text names no hardware or training time for any experiment.
+P2002,variance,no,"The excerpts report AUROC and other benchmark metrics with no seeds, error bars, standard deviations or intervals."
+P2003,variance,no,"Seed dependence is discussed only for training failures, and the main benchmark results are given without standard deviations or intervals."
+P2003,compute,none,The visible text gives no hardware or training time.
+P2008,compute,none,The implementation details give architecture and optimizer settings but no hardware or training time.
+P2017,variance,no,"The only standard deviation mentioned is a dataset length statistic; main results carry no seeds, error bars or intervals."
+P2038,variance,no,"The excerpts report FID, TopoFD and count errors with no repeated seeds, error bars or standard deviations."
+P2040,compute,none,The visible text gives no hardware or training time.
+P2041,variance,no,"Results are given as mean/median localization errors over test samples with no seeds, error bars or intervals across runs."
+P2041,compute,none,The visible text gives no hardware or training time.
+P2043,compute,none,The visible text gives no hardware or training time for pretraining or fine-tuning.
+P2045,compute,none,"The visible text, including the reproducibility appendix excerpt, gives no hardware or training time."
+P2047,compute,none,The visible text gives hyperparameters but no hardware or training time.
+P2062,variance,no,"The main AUC table reports single point values per method with no seeds, standard deviations or intervals."
+P2063,variance,no,"The only seed mention concerns few-shot examples for prompt generation; no repeated runs, error bars or deviations are reported for results."
+P2063,compute,none,"The text names only LLM APIs and models used, with no hardware or compute time stated."
+P2067,compute,none,"Only a throughput claim (1M patches in under 10 seconds) is given, with no hardware or GPU-hours stated."
+P2068,compute,none,The synthetic causal discovery experiments are described without any hardware or runtime information.
+P2072,compute,none,"The NRF experiments and setup are described without any GPU, hardware or training time."
+P2076,compute,none,Environment and implementation details mention no hardware or compute time.
+P2078,variance,no,"Main Type I/II error tables report point values only; the 95% CIs appear only on a descriptive CDF figure, not main results."
+P2078,compute,none,The experimental setup lists LLMs and datasets but states no hardware or compute time.
+P2082,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for the optimal-rate results."
+P2082,compute,none,The framework uses API LLMs and an SMT solver; no hardware or compute time is stated.
+P2084,variance,no,"Three folds are described but results are not reported with standard deviations, seeds or intervals."
+P2085,variance,no,"Implementation and evaluation sections report no seeds, repeated runs or error bars for results."
+P2090,variance,no,"Benchmark comparisons are reported as single percentages with no seeds, deviations or intervals."
+P2093,variance,no,"Results are averaged over models and strategies with greedy decoding; no seeds, deviations or intervals are reported."
+P2093,compute,none,No hardware or compute time is mentioned for running the dLLM evaluations.
+P2094,compute,none,"Training details cover optimizer, epochs and DeepSpeed but no GPU type or compute time."
+P2099,compute,none,Implementation details and appendix excerpts state no hardware or compute time.
+P2102,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for FID/m-FID/CLIP results."
+P2102,compute,none,"The setup lists models, scheduler and steps but no hardware or compute time."
+P2110,variance,no,"Main preference-accuracy results are reported as single numbers; the only variance mention is Var(r) of rewards across timesteps, not seeds or error bars for results."
+P2111,compute,none,The text describes LLM queries and released artifacts but states no hardware or compute time.
+P2114,compute,none,"Hardware is mentioned only for prior works (8xH100, 8xA100); nothing is stated about the compute used for Raptor."
+P2117,compute,unclear,"Training configuration is deferred to Table 6 whose contents are not shown, and inference times are given without hardware."
+P2122,compute,none,"The shown text gives datasets, splits and results but no hardware or runtime."
+P2125,variance,no,"No seeds, standard deviations or intervals are mentioned for any reported result in the text."
+P2125,compute,none,No hardware or compute time is stated in the text.
+P2130,variance,no,"Main evaluations are single-run scores on 400 samples; the only 95% CI shade is on a regression plot of SFT metrics, not the main results."
+P2130,compute,none,"Only vague references to 'our hardware' and 'available resources' appear, with no hardware type or time."
+P2131,compute,none,The text describes simulation and datasets but states no hardware or compute time.
+P2132,compute,none,No hardware or training time is mentioned in the text.
+P2133,variance,no,Only the mean and variance of pair distances are tabulated; no seeds or error bars are given for the main clustering/retrieval results.
+P2133,compute,none,No hardware or compute time is stated in the text.
+P2137,variance,no,"No seeds, error bars or standard deviations are mentioned for the reported results."
+P2137,compute,none,Implementation details give architecture and signal settings but no hardware or training time.
+P2139,variance,no,"The text mentions no seeds, repeated runs or error bars; the seeds section only contains an entropy analysis."
+P2147,compute,none,Training steps and data are described but no hardware or compute time is stated.
+P2151,compute,none,No hardware or compute time appears in the text.
+P2155,compute,none,Reproducibility statement and implementation specifics give architecture details but no hardware or runtime.
+P2158,variance,no,"The only 'Seed' match is the ByteDance Seed affiliation; no seeds, error bars or intervals are mentioned for results."
+P2158,compute,none,"The excerpts describe methods, datasets and a code link but state no hardware or training time."
+P2162,compute,none,The excerpts give pretraining data and hyperparameters but name no hardware or compute time.
+P2164,variance,no,"Results are described without any mention of multiple seeds, error bars or standard deviations for the main comparisons."
+P2165,compute,none,Models are queried via APIs or Hugging Face weights and no hardware or compute time is stated.
+P2170,variance,no,"Implementation and results sections mention no seeds, standard deviations or intervals for the main results."
+P2170,compute,none,Implementation details give architectures and epochs but no hardware or compute time.
+P2172,variance,yes,"Accuracy is pass@1 over 8 independent responses and throughput/latency are averaged across 3 independent runs, i.e. repeated runs for the main results."
+P2175,compute,none,The excerpts list models and baselines but state no hardware or compute time.
+P2178,variance,no,"Results are reported as single Dice/IoU/HD95 values; the 10-sample ensemble is fused, not used to report variability."
+P2179,variance,no,"No seeds, error bars or intervals are mentioned for the reported prediction results."
+P2179,compute,none,"The text only says LDSR and DeepWAS used similar computational resources, without naming hardware or time."
+P2192,compute,none,"The excerpts describe datasets, VAE/LDM configuration and baselines but no hardware or compute time."
+P2208,compute,none,The excerpts give SAE hyperparameters and checkpoints but no hardware or compute time.
+P2226,variance,no,"Training details and benchmark tables are described with no seeds, standard deviations or error bars."
+P2231,variance,no,"No repeated runs, seeds or variability measures are mentioned for the main ProteinGym or generation results."
+P2236,variance,no,"Main tables report metrics averaged over scenes with no standard deviations, seeds or intervals stated."
+P2237,variance,no,"The five random seeds serve a circular-evaluation correctness filter, not reporting of variability for the main results."
+P2239,variance,no,"Quantitative tables report best PSNR/SSIM values with no seeds, standard deviations or intervals mentioned."
+P2240,variance,no,"Benchmark results are described without any seeds, error bars or variability measures."
+P2250,variance,no,The only error bars show diversity ranges in an analysis figure; main benchmark results have no seeds or intervals stated.
+P2258,variance,no,"Main tables report values averaged over 13 prompts with no seeds, std or intervals; variance is only said to be reported in the repository, not the paper."
+P2266,compute,none,"Models are accessed through APIs plus a Qwen3-14B proxy, and no hardware or compute time is stated anywhere in the text."
+P2272,compute,none,Implementation details name only GPT-5.2/Qwen API backbones and token cost; no hardware or compute time is stated.
+P2273,variance,no,"No seeds, repeated runs, standard deviations or error bars are mentioned for the main AP results."
+P2275,compute,unclear,"No hardware appears, but the text is truncated mid-way through the training settings where compute details would follow."
+P2276,compute,none,The experimental setup and appendices shown describe tuning trials and data but state no hardware or compute time.
+P2279,compute,none,Nothing in the text states hardware or training/inference time; only code release and Appendix D hyperparameters are referenced.
+P2283,compute,none,"Experimental setup lists models, datasets and training stages but no GPUs or compute time; only latency in seconds is mentioned."
+P2284,compute,hardware_only,The text says training ran on GPU (unspecified model) with no compute time or GPU-hours.
+P2287,compute,none,No hardware or compute time is stated; limitations only call the method computationally intensive.
+P2289,compute,none,"The text describes datasets, runs and tables but states no hardware or compute time."
+P2290,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for the main accuracy results."
+P2290,compute,none,Hyperparameters follow base models and no hardware or compute time is stated.
+P2293,compute,none,Agents use API-served models and the text states no hardware or compute time.
+P2301,compute,none,"Only scikit-learn estimators and computational constraints are mentioned, with no hardware or time stated."
+P2302,variance,no,"Main results are reported without seeds, repeated runs, standard deviations or intervals; only training settings are given."
+P2306,compute,none,Implementation details cover augmentations and models but state no hardware or compute time.
+P2307,variance,no,A single fixed global seed is used and no standard deviations or intervals are shown for the main results.
+P2310,variance,no,"The text describes data collection and benchmarks with no seeds, repeated runs or error bars."
+P2310,compute,none,"Only data-collection sensors (cameras, LiDAR) are described; no compute hardware or training time is stated."
+P2311,variance,no,"Text reports no seeds, error bars or standard deviations; p=0.05 runs are only described as effectively an extra seed without any reported spread."
+P2311,compute,none,No hardware or training time is stated anywhere in the excerpt.
+P2312,compute,unclear,"Only a vague GPU-enabled laptop for deployment and inference runtimes appear, and the text is truncated in the training section where compute could be stated."
+P2313,variance,no,"No seeds, repeated runs, standard deviations or intervals are mentioned for the results."
+P2317,variance,no,"Only says random seeds are provided; no repeated runs, error bars or standard deviations are reported."
+P2317,compute,none,No hardware or compute time is stated in the excerpt.
+P2329,variance,no,"No repeated runs, error bars or standard deviations are reported; the seeds section contains only pipeline description."
+P2329,compute,none,No hardware or compute time is stated in the excerpt.
+P2331,variance,no,"No seeds, standard deviations or intervals are reported for the results."
+P2332,compute,hardware_only,Only commodity CPUs/hardware configurations with per-query inference latency are given; no training or total experiment compute time is stated.
+P2337,variance,no,"The 4 seeds only generate videos for a success-rate comparison; no variance, error bars or standard deviations are reported for main results."
+P2339,variance,no,"Seed refers to seed data for dataset synthesis, not random seeds; no variance is reported."
+P2342,variance,unclear,"Runtime measurements are repeated five times, but the excerpt does not show whether spread or intervals are reported for main results and it is truncated."
+P2344,variance,no,"Attack success rates are single values; no seeds, repeated runs or variance are mentioned."
+P2350,variance,no,"Results tables report single best/second-best values with no seeds, standard deviations or intervals."
+P2351,variance,no,Seeds section only describes mean/std of priority scores in the method; results are single IoU values without variance.
+P2357,variance,no,"No repeated runs, standard deviations or intervals are mentioned for the segmentation results."
+P2364,variance,no,"Seeds refers to slicing seeds; only runtime distributions are shown, with no variance for main KBI/FAR results."
+P2367,variance,no,Std mentioned only in GRPO advantage normalization; no seeds or variance for results.
+P2369,variance,no,"Accuracies are reported as single values with no seeds, error bars or intervals."
+P2377,variance,no,"Excerpts on variance only mention attention averaged over samples and a per-head mean/std signal-to-noise ratio; no seeds, error bars or intervals are reported for the main results."
+P2385,variance,no,"The variance excerpt only concerns GRPO group reward std and the CTAN EMA normalizer; no seeds, error bars or intervals are reported for the main results."
+P2386,variance,no,"The variance excerpt only contains a funding acknowledgement (Seed Fund) and no seeds, error bars or standard deviations for the main results appear."
+P2387,variance,no,"Variance-related text concerns confidence intervals inside the certification method itself, not repeated runs, seeds or error bars for the main experimental results."
+P2396,variance,no,"The variance excerpt contains only dataset and split descriptions; no seeds, repeated runs, standard deviations or intervals for the main results are reported."
+P2397,compute,hardware_only,The paper states training on a workstation with two NVIDIA A100 GPUs (one used per model) but the text gives no training time or GPU-hours.
+P2403,variance,no,"The only spread measures are standard-error bands across models and per-model std across question categories; the main benchmark accuracies have no seeds, repeated runs or error bars."
+P2419,variance,no,"The excerpts, including results and hyperparameter sections, mention no seeds, repeated runs, standard deviations or error bars for the main results."
+P2419,compute,none,"No hardware, runtime or GPU-hours are mentioned in the excerpts; compute appears only as complexity and fixed-budget comparisons."
+P2427,compute,unclear,"The text states wall-clock times are reported in Appendix A and that work is limited by compute, but no hardware or time values are visible in the excerpts."
+P2428,compute,none,"The excerpts mention compute constraints and an onboarding-cost analysis but state no hardware, runtime or GPU-hours."
+P2432,variance,no,"The excerpts on experiments and ablations contain no seeds, repeated runs, standard deviations or error bars for the main results."
+P2432,compute,none,"No hardware, training time or GPU-hours appear in the excerpts; only resource constraints are mentioned in the limitations."
+P2436,variance,no,"The NeurIPS checklist answers No to error bars, and the only Mean/STD tables are cardiologist ratings rather than variance over runs of the main results."
+P2437,compute,none,"The excerpts describe simulations, code availability and methods but state no hardware, runtime or GPU-hours."
+P2441,compute,unclear,"The text says runtime is reported in Appendix I.2 and shows a training-time figure, but no hardware or concrete time values are visible."
+P2446,compute,none,"The excerpts describe datasets, Qwen2.5-3B fine-tuning and evaluation but state no hardware, runtime or GPU-hours."
+P2447,compute,none,"Implementation details give only batch sizes, optimizer and epochs; no hardware, runtime or GPU-hours are stated."
+P2451,variance,unclear,"The text is truncated before any experimental section, so whether variance is reported for the main results cannot be determined."
+P2451,compute,unclear,"The text is truncated before any experimental or implementation section, so compute reporting cannot be determined."
+P2452,variance,no,"Main results are reported only as point success rates and speedups, with no seeds, error bars or standard deviations mentioned."
+P2452,compute,none,"The implementation details and setup excerpts name no hardware, training time or GPU-hours."
+P2456,variance,no,"Table 2 metrics are averaged over test images in a single setting, with no seeds, error bars or standard deviations reported."
+P2456,compute,none,"No GPU model, training time or GPU-hours are given; only CUDA kernels are mentioned."
+P2457,variance,no,"Table 1 reports fractions and average survival rates per task on 30 examples, with no repeated runs, error bars or intervals."
+P2457,compute,none,Only API token counts and dollar costs are given; no hardware or run time is stated.
+P2460,variance,no,"The reconstruction and benchmark results are described without any seeds, standard deviations or error bars."
+P2462,variance,unclear,"The text claims statistical significance for AUROC and accuracy comparisons but does not show whether the main results have error bars, intervals or several seeds."
+P2462,compute,none,"The setup lists models and hyperparameters but names no hardware, run time or GPU-hours."
+P2477,variance,no,"Training uses a single fixed random seed of 42, and no standard deviations or repeated runs are reported for the results."
+P2479,compute,hardware_only,"A single H100 is named for the FPS throughput tests, but no training time or GPU-hours are given."
+P2518,variance,yes,"Trajectory generation results are repeated over 10 independent runs and averaged, which counts as several seeds under the definition."
+P2530,compute,none,"The excerpts give training steps and setup but name no hardware, run time or GPU-hours."
+P2533,variance,no,"Results such as the OpenEQA scores in Table 2 are single values with no seeds, error bars or intervals."
+P2533,compute,none,"The text names no hardware, run time or GPU-hours for the training-free evaluations."
+P2538,compute,none,"The architecture and training excerpts give parameter counts but no hardware, time or GPU-hours."
+P2540,variance,no,"This is a theoretical paper whose numerical illustrations report no seeds, error bars or intervals."
+P2540,compute,none,"The text gives no hardware, run time or GPU-hours."
+P2542,variance,no,"Win rates are averaged over 100 games with no standard deviations, intervals or multiple training seeds reported."
+P2542,compute,none,"The hyperparameters section gives training settings but no hardware, run time or GPU-hours."
+P2543,compute,none,"The excerpts describe tasks, training and figures but state no hardware, runtime or GPU-hours."
+P2547,variance,no,"Retrieval accuracy is averaged over random pairs and results are reported without seeds, standard deviations or intervals."
+P2547,compute,none,No hardware or training time of the authors' own experiments is stated (the 76GB figure refers to other methods).
+P2549,compute,none,The text reports mean (std) results and data setup but gives no hardware or compute time.
+P2550,compute,none,The appendix excerpts give hyperparameters and batch sizes but no hardware or runtime.
+P2551,compute,none,Seeds and reproducibility settings are given but no hardware or compute time is mentioned.
+P2552,variance,no,"Benchmark accuracies are reported as single values with no seeds, standard deviations or intervals mentioned."
+P2552,compute,none,The excerpts discuss model sizes and parameters but state no hardware or training time.
+P2553,compute,none,"Only says open models were feasible on available hardware, with no specific hardware or time stated."
+P2560,variance,unclear,"Three seeds and standard deviations are used only for benchmark sample-size convergence, and the text does not say whether main results carry variance."
+P2569,compute,hardware_only,"An A100 GPU is named for runtime comparison and training cost is given only as a relative 34% GPU-day reduction, with no absolute training time."
+P2590,compute,unclear,"Only a generic CPU is mentioned for a throughput comparison and the text is cut off at the throughput section, so hardware and time are not identifiable."
+P2591,variance,no,"Results are reported as single values to four significant digits with no seeds, standard deviations or intervals."
+P2594,variance,no,The only interval mentioned is a 3-sigma Gaussian truncation radius; main PSNR results are given as single values.
+P2598,variance,no,"The excerpts give training configuration and hardware but no seeds, repeated runs or variance for results."
+P2603,variance,no,"The visible text reports dataset construction and results without any seeds, standard deviations or intervals."
+P2609,variance,no,"Five-fold cross-validation is used but no standard deviations, error bars or intervals are reported for the main results."
+P2615,variance,unclear,"Main accuracies are given as averages, but the note that statistical analysis was not done for MEG implies some for EEG that is not shown."
+P2617,variance,no,"The excerpts describe datasets and methods with no seeds, standard deviations or intervals."
+P2619,variance,no,"Training configuration and results comparison are given with no mention of seeds, standard deviations or intervals."
+P2620,variance,no,"The excerpts, including the seeds/variance section (which only shows acknowledgements), report no seeds, error bars, standard deviations or intervals for the results."
+P2628,compute,none,The excerpts describe training configurations and seed-averaged results but state no hardware or compute time.
+P2629,variance,no,"The implementation and results excerpts report single numbers with no seeds, error bars, standard deviations or intervals."
+P2634,variance,no,"The excerpts report point results (e.g. average CD 6.36) with no mention of seeds, standard deviations, error bars or intervals."
+P2638,variance,unclear,"The text claims improvements are statistically significant (p < 0.05) but never states seeds, error bars, standard deviations or intervals for the main results."
+P2639,compute,none,"No hardware, GPU type or compute time is mentioned anywhere in the excerpts."
+P2641,variance,no,"Main-result table captions and implementation details give no seeds, standard deviations, error bars or intervals; only one dataset uses 5-fold CV with no variance stated."
+P2645,variance,no,"The seeds/variance section only describes metrics averaged over paths or proteins, with no seeds, standard deviations, error bars or intervals reported."
+P2645,compute,none,The excerpts state no hardware or compute time for training or sampling.
+P2650,compute,none,Runtime comparisons are mentioned but no hardware (GPU/CPU type) or compute budget is stated.
+P2653,variance,no,"The excerpts report only point metrics on the test sets with no seeds, standard deviations, error bars or intervals."
+P2653,compute,none,No hardware or compute time is stated; bFloat16 precision is the only computational detail.
+P2654,variance,unclear,"Experiments use 5-fold cross-validation, but the excerpts (cut before results) do not say whether standard deviations or intervals are reported."
+P2654,compute,none,The visible excerpts mention no hardware or compute time.
+P2661,compute,amount,Appendix B.3/Table 7 reports A100 GPU training configurations with elapsed GPU time and consumption compared to DMD2.
+P2670,variance,no,"The excerpts report single-number benchmark results with no seeds, standard deviations, error bars or intervals."
+P2679,compute,none,The text only says operations can be optimized for GPU; no hardware type or compute time is stated.
+P2680,variance,no,"The excerpts report single benchmark scores with no seeds, standard deviations, error bars or intervals."
+P2681,compute,none,No hardware or compute time is mentioned in the excerpts.
+P2683,compute,hardware_only,"Experiments run on the SCAMP PPA hardware with per-keypoint execution times, but no total compute time or GPU-hours are stated."
+P2684,variance,no,"The excerpts, including the seeds/variance section, show no seeds, standard deviations or error bars for the main results."
+P2685,compute,none,No hardware or training time is stated anywhere in the excerpts.
+P2687,compute,none,The excerpts give only hyperparameters and mention constrained resources without stating hardware or time.
+P2688,variance,no,"The only standard deviation mentioned is a per-class diversity metric of synthetic images, not variability of the main results."
+P2688,compute,none,No hardware or compute time is stated; pretraining overhead is only deferred to a supplement.
+P2694,variance,no,"The text says seeds were fixed and reports single values with no repeated runs, error bars or deviations."
+P2696,variance,no,"Nothing in the excerpts reports seeds, error bars or deviations for the main results."
+P2696,compute,none,The excerpts state no hardware or compute time.
+P2698,compute,hardware_only,The text states one versus four GPUs for the latency measurement but gives no training time or GPU-hours.
+P2715,compute,hardware_only,"A single NVIDIA A40 GPU is named for embedding extraction, but no training time or GPU-hours appear in the text."
+P2723,compute,amount,It states 32 NVIDIA A800 GPUs and that the parallel data collection takes approximately 24 hours.
+P2725,compute,unclear,"The compute appendix gives search timings and says the evaluator runs on CPU, but specifies no training hardware or training compute."
+P2737,variance,yes,"The main posterior-alignment figure shows 10-90th percentile error bars, and seed sweeps are described."
+P2771,variance,yes,The text reports results averaged over models trained with five different random seeds.
+P2773,compute,none,The excerpts state no hardware or compute time.
+P2775,variance,no,"The results are given as single values, and no seeds, standard deviations or intervals are reported."
+P2775,compute,none,The excerpts state no hardware or compute time.
+P2776,variance,no,"Repeated rounds are reported only for the IP baseline, and the main PLA results are averages over QA pairs with no variance."
+P2776,compute,none,The excerpts state no hardware or compute time.
+P2777,variance,unclear,"The 500 random seeds are used for a motivating analysis, and the excerpts do not show whether the main benchmark results carry seeds or error bars."
+P2778,variance,no,"The experiments report single timings averaged over test examples and models, and no seeds, error bars or standard deviations appear for the main results."
+P2779,variance,unclear,"The excerpts give the training setup but not the results tables, and they say nothing about seeds or variability; the text is truncated."
+P2781,variance,no,"The main accuracy results (Fig. 3) are given as single bars per model, with no seeds, error bars or intervals mentioned."
+P2782,variance,unclear,"The text stops at the experimental setup, before the results, and the seeds section only covers a theoretical sampling bound."
+P2782,compute,unclear,"No hardware or runtime appears in the excerpts, but the text is cut off at the experimental section where such details would be."
+P2784,variance,no,"Results are compared as single metric values with no seeds, repeated runs or error bars, and the seeds section only concerns point-cloud initialisation."
+P2785,variance,unclear,The excerpts describe datasets and limitations but contain no results or any mention of seeds or variability.
+P2787,variance,unclear,"The Table 1 caption is cut off at ""All r[...]"", so the text cannot show whether results are averaged over runs with deviations."
+P2789,variance,unclear,Only the averaging of metrics over edit requests is described; the results are not shown and seeds or intervals are never mentioned.
+P2804,compute,unclear,"The excerpts state no hardware or training time and send training details to the supplementary material, which is not shown."
+P2808,compute,unclear,"No implementation or hardware section appears in the excerpts, and the text is truncated."
+P2814,variance,no,"Results and ablations are reported as single accuracy differences, with no seeds, standard deviations or error bars."
+P2819,compute,none,"The Training Details section gives epochs, batch sizes and optimiser but only says PyTorch in a Linux environment, with no hardware or time."
+P2863,variance,no,"Results come from single greedy-decoding runs in Table 1, with no seeds, standard deviations or intervals mentioned."
+P2865,variance,no,"The experimental setup and results (e.g. Table 10 gains in pp) give single values, with no seeds or variability reported."
+P2865,compute,none,"The Training Configuration paragraph lists clients, rounds, batch sizes and LoRA settings but no hardware or compute time."
+P2868,variance,no,"The main results are single values (e.g. TCS 0.9690), with no seeds, error bars or standard deviations mentioned."
+P2872,compute,unclear,"The excerpts mention only limited computational resources, give no hardware or training time, and do not show the pre-training details."
+P2873,compute,unclear,"No hardware or compute is stated, and the text is cut off in the checklist before any compute item."
+P2874,variance,no,"Accuracy and latency results are given as single percentages and speedups, with no seeds, error bars or deviations."
+P2875,variance,no,"Main results (Tables 1-2) are reported as single PSNR/SSIM/MAE values with no seeds, standard deviations or intervals mentioned."
+P2875,compute,none,"Implementation details give optimizer, batch size and sampling steps but no hardware or training time, deferring to the supplementary."
+P2877,variance,no,"The seeds/variance excerpt only describes perturbation-strength sweeps and correlations averaged over target datasets, with no seeds, error bars or intervals."
+P2877,compute,none,"No hardware, GPU or runtime is stated anywhere in the excerpts."
+P2878,variance,no,"The only standard deviation mentioned is for z-score sub-sampling of price data; no seeds, error bars or intervals are given for results."
+P2879,variance,no,"Generation results (Table 1, 10,000 samples) are described without any seeds, standard deviations or intervals."
+P2879,compute,none,The excerpts state no hardware or training time.
+P2881,variance,no,"Seeds are mentioned only for parallelizing sampling across nodes; no repeated runs, error bars or intervals are reported for main results."
+P2890,variance,no,"The only standard deviation is a deformation-regularity metric (sigma of log Jacobian), not variability of results over seeds or runs."
+P2894,variance,no,"Brain-score results are given as single values (e.g. SVCCA 0.6294) with no seeds, standard deviations or intervals."
+P2894,compute,none,No hardware or training time is stated in the excerpts.
+P2895,variance,no,"Evaluations use greedy decoding with single accuracies; the 5 runs are for self-consistency majority voting, not variance reporting."
+P2895,compute,none,No hardware or compute time is stated in the excerpts.
+P2897,variance,no,The standard deviation mentioned is of GRPO group rewards; results are single scores with no seeds or error bars.
+P2897,compute,none,"Implementation details give framework, batch size and learning rate but no hardware or time."
+P2901,variance,no,"Benchmark WERs are single numbers; seeds are used only to build an ensemble, not to report variability."
+P2901,compute,none,The excerpts give recording hours of data but no hardware or training compute.
+P2902,variance,no,"Results are given per subject and averaged activation maps, with no seeds, standard deviations or intervals."
+P2905,variance,no,The standard deviation mentioned is of rewards in retrieval filtering; benchmark results are single scores without seeds or intervals.
+P2909,compute,none,No hardware or runtime is stated; the only hours mentioned are ICU lab-measurement windows.
+P2910,compute,none,"The excerpts describe data, splits and seeds but state no hardware or training time."
+P2911,compute,none,"The excerpts give code, datasets and run averaging but state no hardware or training time."
+P2914,variance,no,"The excerpts report a 90/10 split and test-set caps but no seeds, error bars or standard deviations for the main results."
+P2914,compute,none,The excerpts describe the dataset and splits but state no hardware or training time.
+P2917,compute,none,The excerpts give hyperparameters and gradient steps but name no hardware or training time.
+P2918,variance,no,Main results use one rollout per instance with seed 42; the bootstrap intervals in Figure 7 cover only the refinement-round analysis.
+P2929,variance,no,"The implementation details and Table 1 report single values with no seeds, error bars or standard deviations."
+P2959,compute,amount,Training is stated to run on an NVIDIA L40S GPU and Table 7 reports runtimes in seconds for the methods.
+P2962,variance,no,"The tables report single accuracy/length values with no seeds, standard deviations or intervals."
+P2964,variance,no,"The excerpts describe the method and results without any seeds, error bars or standard deviations."
+P2965,compute,none,The excerpts describe the dataset and tasks but state no hardware or training time.
+P2969,variance,no,"The text mentions identical random seeds for fairness but reports no repeated runs, error bars or standard deviations."
+P2969,compute,none,The excerpts mention identical hardware environments but name no hardware or training time.
+P2971,compute,none,The excerpts describe seeds and code availability but state no hardware or training time.
+P2974,variance,no,"The text uses greedy decoding to reduce randomness and reports no seeds, error bars or standard deviations."
+P2975,compute,none,"The implementation details give learning rates, batch size and epochs but no hardware or training time."
+P2981,compute,none,The excerpts refer to a complexity discussion and substantial compute in limitations but state no hardware or time.
+P2988,compute,none,The excerpts state pretraining is costly but name no hardware or training time.
+P2999,variance,no,"The experimental setup gives hardware and splits but no seeds, error bars or standard deviations for results."
+P3008,variance,no,"The main MSD results table reports single DICE values with no seeds, error bars or standard deviations."
+P3008,compute,none,The excerpts report only #Params and #FLOPs; no hardware or training time is stated.
+P3009,compute,none,Appendix E.1 says models were run via official APIs and no hardware or runtime is stated anywhere in the excerpts.
+P3011,compute,none,"The excerpts (reproducibility statement, implementation and dataset appendices) mention no hardware or compute time."
+P3012,compute,none,"No hardware, GPU type or runtime is mentioned in the excerpts."
+P3013,variance,no,"Results are reported as single success rates with no seeds, standard deviations or error bars mentioned."
+P3013,compute,none,No hardware or training time is mentioned in the excerpts.
+P3014,variance,no,"The dataset paper excerpts give no repeated runs, standard deviations or intervals for any results."
+P3014,compute,none,Only recording equipment is described; no compute hardware or training time for experiments is stated.
+P3019,variance,no,"Main results tables report single F1 scores; the only standard deviation is from an epoch-sensitivity ablation, not repeated runs of main results."
+P3020,compute,hardware_only,Appendix F states experiments ran on a single workstation plus an HPC cluster but gives no time or GPU-hours.
+P3027,variance,no,Random seeds are used only to show sample diversity; no standard deviations or intervals are given for the quantitative results.
+P3027,compute,none,Only modest GPU resources is mentioned without any specific hardware or training time.
+P3029,compute,unclear,"The only hardware/time statement is spIsoNet needing 5 hours on a V100 versus CryoFM about 30 minutes, without clearly stating CryoFM training hardware or time."
+P3036,variance,no,Each model is trained once (30 epochs on one H200) and tables report single accuracies with no seeds or deviations.
+P3043,variance,no,"Results are reported without seeds, standard deviations or confidence intervals in the excerpts."
+P3052,compute,unclear,"The checklist says runtime information is in Appendix C and no GPU was used, but the excerpts state neither the hardware used nor the run times."
+P3058,variance,no,"Improvements are reported as single averages with no repeated runs, standard deviations or intervals mentioned."
+P3059,compute,amount,"Training timing per iteration is reported on 2 nodes with 2 H100 GPUs each for 100,000 iterations, giving hardware and time."
+P3060,variance,no,"The excerpts mention no seeds, standard deviations or intervals for results."
+P3060,compute,none,The excerpts mention no hardware or compute time.
+P3063,variance,no,"Excerpts give single results only; the 30-batch throughput averaging is a timing measurement, not seeds or error bars for main results."
+P3064,compute,none,The text mentions no training hardware or training time anywhere in the excerpts.
+P3065,variance,no,"Main results are reported as single scores (e.g. 0.87 GenEval) with no seeds, error bars or standard deviations mentioned."
+P3066,compute,none,Only vague inference speed ('seconds of GPU time') and FLOP counts are given; no hardware type or training time is stated.
+P3070,compute,none,Implementation details give epochs and learning rates but no hardware or compute time.
+P3071,variance,no,"Results are reported without any mention of seeds, repeated runs, error bars or deviations."
+P3071,compute,none,Only a vague statement that training consumes large computational resources; no hardware or time is stated.
+P3079,variance,no,"Tables report single point values per method with no seeds, error bars or standard deviations."
+P3080,variance,no,Main results are reported as single AUC/error values with no mention of seeds or variability.
+P3080,compute,none,Training is described in epochs and optimizer settings only; no hardware or training time is stated.
+P3082,compute,none,Only relative speed (18x faster) and model size are given; no hardware or GPU time is stated.
+P3086,compute,none,The excerpts state no hardware or training time for CalM or baselines.
+P3088,variance,no,"Results are described without seeds, repeated runs, error bars or standard deviations."
+P3088,compute,none,Hyperparameter table contents are not shown and the text names no hardware or training time.
+P3089,variance,no,"Main results are single accuracies (e.g. 71.6% vs 71.5%) with no seeds, error bars or intervals mentioned."
+P3091,compute,none,The excerpts mention seeds but no hardware or compute time.
+P3093,compute,none,Implementation details list models and optimizers but no hardware or training time.
+P3094,variance,no,"No seeds, repeated runs, error bars or deviations are mentioned for the reported results."
+P3094,compute,none,Only qualitative runtime/memory remarks appear; no hardware or time is stated.
+P3099,compute,none,Implementation details give optimizer and batch settings but no hardware or training time; the training budget section shows only table captions.
+P3104,compute,none,"The excerpts describe models, data and the user study but never state hardware, GPU type or compute time."
+P3109,variance,no,"Main results come from single deterministic (temperature 0) evaluations reported as point values, with no seeds, standard deviations or intervals mentioned."
+P3110,variance,unclear,"The paper claims statistically significant gains under five-fold cross-validation, but the excerpts show no standard deviations, error bars or intervals for the main results."
+P3118,variance,no,"Results are presented as win-rate curves and comparisons with no mention of multiple seeds, error bars or standard deviations."
+P3118,compute,unclear,No hardware or time is given; the text only says the computational overhead is analysed in an appendix that is not shown.
+P3119,variance,no,"The excerpts give training and evaluation details and results with no mention of multiple seeds, standard deviations, error bars or intervals."
+P3121,variance,no,"The excerpts give implementation and evaluation protocols with no mention of repeated runs, seeds, standard deviations or error bars."
+P3125,compute,unclear,"The checklist says compute resources are reported in Sec. 4, but no hardware or time appears in the excerpts shown."
+P3130,variance,no,"Results such as recovery rates are reported as single values, with no mention of seeds, standard deviations or intervals."
+P3130,compute,none,"No hardware, GPU or training time is stated anywhere in the excerpts."
+P3131,variance,no,"Main results tables report single PQ/AP/mIoU values with no seeds, standard deviations or error bars mentioned."
+P3134,variance,no,"Results are reported as single mIoU and mSTCV values with no mention of repeated runs, standard deviations or intervals."
+P3134,compute,none,"The implementation details and results give no hardware, GPU type or compute time."
+P3139,compute,none,"Evaluation uses API and open models, but the text states no hardware or compute time."
+P3140,variance,no,"Main results are single pass@10 error values; the standard deviations mentioned are per-step reward analyses within the algorithm, not variability of the main results."
+P3143,compute,none,The excerpts describe models and evaluation settings but never state hardware or compute time.
+P3156,compute,none,The setup and appendix excerpts give architecture and training details but no hardware or compute time.
+P3160,compute,none,"The checklist states compute resources were not reported, saying only that a standard personal computer suffices."
+P3173,compute,none,"The excerpts describe datasets, architectures and results but never state hardware or compute time."
+P3177,variance,no,"Metrics are averaged over 128 prefix-suffix pairs or 1000 examples, with no seeds, standard deviations or intervals reported."
+P3177,compute,none,"The excerpts describe models, data and training objective but never state hardware or training time."
+P3207,variance,no,"Results are single scores per model (e.g. 28.05% to 1.22%) with no seeds, error bars or repeated-run statistics."
+P3207,compute,none,Models are accessed via official APIs and no hardware or compute time is stated.
+P3211,variance,no,"The excerpts mention no seeds, standard deviations, error bars or repeated runs."
+P3211,compute,none,The excerpts describe dataset construction only and state no hardware or compute time.
+P3231,variance,no,"Tables report single precision/recall/F1/IoU values with no standard deviations, seeds or intervals."
+P3231,compute,none,"Training details give epochs and optimizer and tables give GMACs and ms, but no hardware is stated."
+P3235,variance,no,"OSWorld results are single average scores per configuration with no seeds, repeated runs or error bars."
+P3235,compute,none,The pipeline uses API models and no hardware or compute time is stated.
+P3236,compute,none,Only API reasoning models and a random-agent rollout count are described; no hardware or compute time is stated.
+P3239,compute,none,Only per-video latencies and a passing mention of a single GPU appear; the GPU type is never stated.
+P3240,variance,no,"Implementation details give hardware and training schedule but no seeds, standard deviations or repeated runs."
+P3241,variance,no,"The seeding text concerns tournament seeding, not random seeds; no error bars or repeated runs are reported."
+P3242,variance,no,"Results are single Spearman correlations with no seeds, standard deviations or intervals."
+P3242,compute,none,The experimental setup describes the ESM2-650M fine-tuning but states no hardware or compute time.
+P3243,variance,no,"No seeds, error bars or repeated-run statistics are reported for the main results."
+P3247,variance,no,The only standard deviation is a data-augmentation noise parameter; no seeds or error bars for results.
+P3247,compute,none,Training setup mentions memory constraints and optimizers but no hardware or compute time.
+P3250,compute,none,The excerpts state no hardware or compute time for running the decoding methods.
+P3257,variance,no,Only one retrained DiffAb run with another seed is mentioned for one discrepancy; main results have no error bars or multi-seed statistics.
+P3278,variance,no,"Results (human preference, CLIP/LPIPS tables) are reported as single values with no seeds, error bars or standard deviations mentioned."
+P3279,variance,no,"Quantitative tables and user study are reported as single values; no seeds, error bars or standard deviations are mentioned."
+P3283,variance,no,"WD/MMD comparison tables are described as single values with no repeated runs, error bars or standard deviations mentioned."
+P3296,variance,no,"Reported PSNR/SSIM/LPIPS comparisons are single values with no seeds, error bars or standard deviations mentioned."
+P3310,variance,no,"Benchmark tables report best/second-best scores per model with no repeated runs, error bars or standard deviations mentioned."
+P3313,variance,no,The seeds excerpt refers to SEEDS superpixels; result tables report single accuracy/FPA values without variance.
+P3321,variance,no,Main results table reports accuracy and token counts as single values; no seeds or error bars are mentioned.
+P3330,variance,no,Table 1 shows single FVD/FAD/etc. values per method and the user study reports averages without any variance or seeds.
+P3330,compute,none,The excerpts give implementation details and datasets but no hardware or training time.
+P3333,variance,no,The only standard deviation mentioned is inside the ESD outlier test definition; attribution results are not reported with error bars or seeds.
+P3336,compute,none,"The excerpts describe models, data and code but state no hardware or compute time."
+P3337,compute,unclear,"The checklist claims compute resources are in the appendix, but no hardware or time appears in the text shown."
+P3346,variance,no,The confidence intervals in Figure 12 concern the expert data-quality validation; main benchmark results are single values without variance.
+P3346,compute,none,"No hardware, GPU type or training time is stated in the excerpts."
+P3350,compute,none,The excerpts describe data collection and policy experiments but state no hardware or compute time.
+P3354,variance,yes,Synthetic recovery results are computed over multiple independent trials with mean errors reported across them.
+P3354,compute,none,No hardware or compute time is stated anywhere in the excerpts.
+P3364,variance,no,"The only error bars (Figure 5) describe sample-level variation in the dataset-construction teacher-student analysis, not the main RL results."
+P3374,variance,no,The variance excerpt is a model equation and result tables are described without standard deviations or repeated runs.
+P3374,compute,none,No hardware or compute time is stated in the excerpts.
+P3376,compute,unclear,"The visible excerpts give no hardware or run time for training RayletDF, but the method's own implementation details are not shown and the text is cut off in the appendix."
+P3377,compute,unclear,"Implementation details are deferred to supplementary Sec. 10, which is not in the visible excerpt, and no hardware or time is stated."
+P3380,compute,none,"The visible implementation details (E.4) give architecture, optimizer and iteration counts but no hardware or compute time."
+P3385,variance,no,"Main results are given as single point values (e.g. BLEU-4 0.192 to 0.199), and the only standard deviations are within-group reward spreads, not variance over runs."
+P3393,variance,unclear,"Seeds are used only inside the payload stability objective (S=3), and the visible text does not show whether the main results report variance across runs."
+P3393,compute,unclear,"The text says white-box compute is reported in GPU-hours on academic accelerators, but no actual hardware model or GPU-hour figures are visible."
+P3406,compute,unclear,"The ethics statement says hardware and training footprints are reported, but the SFT/training details are cut off and no actual hardware or time is visible."
+P3408,variance,no,"No visible result reports seeds, standard deviations or error bars, and no variance section was found for the main results."
+P3410,compute,unclear,"No hardware or training time is visible, and the implementation details are not included in the cut-off text."
+P3416,variance,no,"Main results are reported as point values (e.g. MEt3R 0.041 vs 0.181) with no seeds, standard deviations or intervals mentioned."
+P3416,compute,unclear,"Inference latency (about 9 minutes) is given, but the hardware is not visible and the text is cut off right in that passage."
+P3417,compute,unclear,"The implementation details section (B.3) is cut off and the training setup in Appendix B.1 is not shown, so hardware and time cannot be checked."
+P3418,variance,no,"The only standard deviation mentioned is the GRPO reward normalization, and main results show no seeds, error bars or intervals."
+P3418,compute,unclear,"No training hardware or time is visible, and the implementation details are not in the cut-off excerpt."
+P3421,variance,no,"Results are averaged over ego vehicles, with no seeds, standard deviations or intervals reported for the benchmark results."
+P3423,compute,unclear,"Solution time limits and per-structure times are given without hardware, and Appendix F with training details is not shown."
+P3429,variance,no,"No visible main result reports seeds, standard deviations or error bars."
+P3432,compute,unclear,"Training overhead is referenced in Appendix Table 4, which is not shown, and no hardware or time is visible."
+P3434,compute,unclear,"The checklist claims GPU specs and run times are given, but the actual hardware and time values are not visible in the cut-off text."
+P3435,compute,unclear,"The training setup is deferred to Appendix C, which is not shown, and no hardware or compute time is visible."
+P3436,variance,no,"The only mean/std shown is for token counts and cosine similarity in Table 5; main results (Acc@1, AUC) are reported as single values without seeds or intervals."
+P3436,compute,none,No hardware or compute time is mentioned anywhere in the excerpts.
+P3442,compute,none,"The excerpts describe data, metrics and error bars but never state hardware or run time."
+P3447,compute,none,"The excerpts (theory and PLM finetuning) never mention GPUs, hardware or compute time."
+P3448,variance,no,"Results and training details are single numbers with no seeds, standard deviations or intervals mentioned."
+P3451,variance,no,"Table 1 reports single PLCC/SRCC values per method with no repeated runs, standard deviations or intervals."
+P3451,compute,none,The method is described as training-free and no hardware or compute time is stated.
+P3459,variance,no,"Main results (Tables 1-4) are reported as single mAP values with no seeds, error bars or standard deviations."
+P3459,compute,unclear,"No hardware appears, but the Experimental Setup section is cut off before its implementation details, so compute may be in the truncated part."
+P3467,compute,unclear,"No hardware appears, but the implementation paragraph describing training is cut off mid-sentence, so compute details may be in the truncated part."
+P3470,variance,no,"Results are bar plots and a table of single accuracies with no seeds, error bars or standard deviations mentioned."
+P3470,compute,none,No hardware or compute time is mentioned in the excerpts.
+P3473,variance,no,The only standard-deviation mention concerns pair selection for training data; no seeds or intervals are given for results.
+P3474,compute,none,"The excerpts give models, datasets and seeds but never state hardware or compute time."
+P3477,variance,no,"Main accuracy results are single values; only latency means/P95 are reported, with no seeds or intervals for the main results."
+P3481,variance,no,"Results are given as Pareto/trade-off figures with no seeds, error bars or standard deviations mentioned."
+P3481,compute,none,"Training details give learning rates, batch sizes and epochs but no hardware or compute time."
+P3485,variance,no,"Table 1 reports single metric values with best/second-best highlighting and no seeds, error bars or standard deviations."
+P3492,variance,no,"Results are reported as single AbsRel/delta1 values with no seeds, error bars or standard deviations mentioned."
+P3515,variance,no,"Model accuracies are single values from one evaluation with no repeated runs, standard deviations or intervals mentioned."
+P3519,compute,none,The implementation details appendix (A.1-A.4) describes codebases and training steps but states no hardware or compute time.
+P3545,compute,none,"The implementation details (Appendix D) give preprocessing, optimizer and augmentation settings but mention no hardware or training time."
+P3554,compute,unclear,"The excerpts contain no experimental setup or training details section, so whether compute is reported cannot be determined."
+P3560,compute,none,Appendix D implementation details list hyperparameters for all methods but state no hardware or compute time.
+P3569,compute,none,"The Implementation Details paragraph gives architecture, optimizer, batch size and epochs but no hardware or training time."
+P3575,variance,no,"Results are reported as single scores in comparison tables with no mention of seeds, repeated runs, standard deviations or intervals."
+P3576,variance,no,"Although 5-fold cross-validation is used, the excerpts report no standard deviations, error bars or intervals for the main C-index results."
+P3578,variance,no,"The only standard deviation mentioned is a tunable parameter of the binning score; no seeds, error bars or intervals are reported for results."
+P3578,compute,unclear,"The excerpts contain no implementation or experimental setup section with hardware details, so compute reporting cannot be determined."
+P3593,compute,none,The Experimental Setup section describes model configurations and preprocessing but states no hardware or training time.
+P3596,variance,no,"Tables report single PSNR/SSIM/LPIPS values with no mention of seeds, standard deviations or intervals."
+P3596,compute,hardware_only,"The acknowledgements name the JUWELS and MareNostrum 5 supercomputers as compute resources, and only a relative 4-5x training-time increase is given, with no absolute time or GPU-hours."
+P3599,compute,none,"The implementation uses Claude-3.5-Sonnet via API and reports only a $0.87 per-instance cost, with no hardware or compute time stated."
+P3603,compute,unclear,"The excerpts contain no implementation or training setup section, so whether hardware or compute time is reported cannot be determined."
+P3605,variance,no,"The excerpts report no seeds, repeated runs, standard deviations or intervals for the results; standard deviation appears only in Cross-Normalization."
+P3616,variance,no,"The experiments are described with single mIoU/IoU values and nothing about seeds, repeated runs, standard deviations or intervals."
+P3618,variance,no,"The experiment setup and results report single metric values with no mention of seeds, standard deviations or confidence intervals."
+P3621,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals for the main results; averaging is only Monte Carlo estimation of FKL."
+P3626,variance,no,"The dataset and implementation section and results report single ICL gains with no seeds, standard deviations or intervals."
+P3631,compute,unclear,"The excerpts include metric and preprocessing appendices but no training setup section, so whether hardware or time is reported cannot be determined."
+P3632,variance,no,"Main ASR and ranking results are reported as single averages with no seeds, standard deviations or intervals mentioned."
+P3632,compute,none,The implementation uses GPT-3.5/GPT-4o and no hardware or compute time is stated anywhere in the text.
+P3633,variance,no,"Implementation and setup describe single training runs evaluated by macro F1 with no mention of seeds, error bars or intervals."
+P3637,compute,none,The datasets and setup text gives models and iterations but never states hardware or compute time.
+P3648,variance,yes,"Results are described as statistically surpassing the S4 baseline, indicating uncertainty estimates for the main comparisons."
+P3654,compute,none,Only FLOPs and parameter counts are reported; no hardware or training time is stated.
+P3656,compute,none,Solution times in seconds are reported but no hardware is stated.
+P3660,variance,no,Main results use a single fixed support image; mean and variance over five support images appear only in an additional ablation.
+P3668,compute,none,Data pipeline and architecture are described but no hardware or compute time is stated.
+P3669,compute,none,Evaluation uses API models in a containerized environment with no hardware or compute time stated.
+P3725,compute,amount,"A single NVIDIA A6000 GPU with 32 CPU cores is stated together with timing (real-time factor 1.2, 25 ms frame in 30 ms)."
+P3726,compute,amount,Experiments run on NVIDIA A100 GPUs and end-to-end wall-clock training time in minutes is reported (Table 5).
+P3733,variance,no,"Only latency/throughput are averaged over multiple runs; main accuracy results have no seeds, error bars or intervals."
+P3739,compute,hardware_only,The text says generation runs in real time on a single GPU but gives no training time or GPU-hours.
+P3742,variance,no,"FID results are reported as single values with no seeds, standard deviations or intervals mentioned."
+P3742,compute,none,Architecture and training sections state model size and iterations but no hardware or compute time.
+P3743,variance,no,"Results are single scores (baselines copied from prior work) with no seeds, error bars or intervals mentioned."
+P3747,variance,no,"Results are mean PCC/RMSE over genes from 5-fold CV with no standard deviations, error bars or intervals stated."
+P3749,variance,no,"The text reports accuracies without any seeds, standard deviations or intervals for the model results."
+P3749,compute,none,No hardware or compute time is stated anywhere in the text.
+P3759,variance,no,"The text says all random seeds are fixed and reports no repeated runs, standard deviations or intervals for the main results."
+P3759,compute,none,The shown experimental and implementation sections state no hardware or training time.
+P3765,variance,unclear,"The excerpt is cut before any experimental results, and the seeds section contains only method text, so repeated runs cannot be judged."
+P3765,compute,unclear,"The excerpt never reaches the experiments or implementation details, so hardware reporting cannot be judged."
+P3768,compute,none,"The shown dataset, benchmark and experiment sections mention no compute hardware or training time."
+P3772,variance,no,"Main results are single values (e.g. Pearson 0.58) with no seeds, error bars or intervals reported."
+P3773,compute,none,"The shown setup, datasets and reproducibility sections state no hardware or training time."
+P3774,compute,none,The shown experimental setup and results sections state no hardware or runtime budget.
+P3778,compute,none,"The shown experimental setup, data and code sections mention no hardware or training time."
+P3781,variance,unclear,"The seeds section only describes noise standard deviations in the method and the excerpt is cut before the results, so repeated runs cannot be judged."
+P3781,compute,unclear,"Only an acknowledgment of the DelftBlue supercomputer is given, with no specific hardware or time, and the setup is truncated."
+P3782,variance,unclear,"The seeds section contains only method text and no main results tables are shown, so variance reporting cannot be judged."
+P3782,compute,unclear,"Inference-time GPU hours are plotted but no hardware or training compute is stated, with training details deferred to an appendix not shown."
+P3784,variance,no,"Ranking improvements are reported as single values with no seeds, error bars or intervals."
+P3787,compute,unclear,"Inference times per volume are reported without hardware, and the implementation details paragraph is truncated."
+P3788,variance,no,"The shown implementation and evaluation sections mention no multiple seeds, error bars or intervals."
+P3790,variance,no,Main results are single averages (e.g. peptide recall 0.660) with no seeds or error bars reported.
+P3792,compute,unclear,"No hardware is stated in the shown text, but the training details where it would appear are cut at the length cap."
+P3802,variance,unclear,"The excerpt contains no experimental results or setup, so variance reporting cannot be judged."
+P3802,compute,unclear,"The excerpt contains no implementation or training details, so hardware reporting cannot be judged."
+P3805,variance,no,"Results are reported as single point values (e.g., AbsRel 0.138 vs 0.129) with no seeds, standard deviations or error bars mentioned."
+P3805,compute,none,The only compute-related statement is inference speed (37.6 FPS on unspecified mobile platforms); no training hardware or time is given.
+P3808,compute,amount,Appendix B.1 states a single NVIDIA A6000 GPU and training times of just under one day and one day.
+P3810,compute,hardware_only,"Experiments were run on 1 NVIDIA RTX A6000 GPU, with training given only in steps and no time stated."
+P3811,variance,no,"The checklist answers No to error bars, stating all experiments were run deterministically with a single fixed seed of 0."
+P3825,variance,yes,The text states the random seed was sampled for noise and initialization and the model always converged to 3D color vision across these variations and cone ratios.
+P3829,compute,hardware_only,"Training is stated on 8 H100 GPUs for 200k steps, with no training time or GPU-hours given."
+P3830,variance,yes,The text states all experiments are run with multiple seeds and mean and standard deviation across runs are reported in the tables.
+P3830,compute,amount,Experiments ran on an Nvidia L40S 48GB GPU and Table 11 reports total training time for all models.
+P3870,compute,none,"The excerpts give architecture, training steps and hyperparameters but no hardware or compute time."
+P3887,variance,no,"Ablation results are averaged over 5-fold cross-validation without any reported standard deviation, error bars or intervals."
+P3908,variance,unclear,"Three independent runs are used only to score candidates during evolution, while the main results (e.g., circle packing) are single solutions and no spread is reported in the excerpts."
+P3909,variance,no,"Results tables only highlight best and second-best methods, with no seeds, standard deviations or intervals mentioned."
+P3910,variance,no,Main results come from a single 200-epoch run per model and Table 1 reports mean correlations without any seed-level variance; the only standard deviation is a data noise calibration.
+P3914,variance,no,"Results are given as averages over VQA tasks and percentage-point gains, with no seeds, standard deviations or error bars mentioned."
+P3914,compute,none,No training hardware or time is stated; the only cost given is 500 dollars of GPT-4o API calls for data generation.
+P3917,variance,no,"Table 7 and other results are single accuracy values with no seeds, standard deviations or error bars."
+P3917,compute,hardware_only,The text says training runs on a single consumer-grade GPU (peak memory about 5GB) but gives no training time.
+P3918,variance,no,"No seeds, standard deviations or intervals are mentioned anywhere in the excerpts for the reported results."
+P3920,compute,none,"The excerpts describe seeds, temperatures and dataset construction but state no hardware or compute time."
+P3923,compute,none,"The excerpts state no hardware, training time or GPU-hours anywhere."
+P3926,variance,no,"Results are mean l2 errors over sequences with no seeds, standard deviations or intervals reported for the main comparisons."
+P3939,variance,unclear,Only the controlled simulation (Figure 2) reports mean +/- s.e. over 5 seeds; the truncated text shows nothing about variance for the main language/vision-language benchmark results.
+P3953,variance,no,"The full text reports single benchmark scores with no seeds, error bars or intervals."
+P3953,compute,none,The full text never mentions hardware or training time.
+P3955,compute,none,"Implementation details give iterations, batch size and learning rate but no hardware or time; limitations mention only qualitative overhead."
+P3959,variance,no,"Benchmark results are reported as counts of discovered RSRs with no repeated runs, seeds or intervals."
+P3959,compute,none,Only an 1800 s per-benchmark timeout and the LLM used are given; no hardware is stated.
+P3961,variance,no,Mean +/- variance over 10 runs is reported only for inference time; the main accuracy results in Table 1 have no seeds or error bars.
+P3964,compute,none,The evaluation uses API token prices and states no hardware or compute time.
+P3966,variance,no,"Main results (LocAcc, retrieval) are single values with no seeds, standard deviations or intervals mentioned."
+P3981,compute,amount,"The text states each task takes 1.25 seconds to evaluate on a standard laptop such as an M1 MacBook Pro, giving both hardware and time."
+P3985,variance,no,"The nnU-Net experiments report single AUC values with no seeds, error bars or confidence intervals."
+P3985,compute,none,"Training details give epochs, iterations, optimizer and batch size but no hardware or training time."
+P3999,variance,no,"FID results are reported without seeds, standard deviations or intervals; the seeds section only shows token-density averages."
+P4003,variance,no,Main results are win rates and JDR/JCR percentages with no repeated seeds or intervals; reward standard deviations appear only in the heuristic-detection appendix.
+P4011,variance,no,"The text reports single FID values with no seeds, error bars or intervals."
+P4013,variance,no,"Main results are single accuracies with greedy decoding and no seeds, standard deviations or intervals."
+P4017,compute,amount,"All experiments ran on one NVIDIA RTX 3090 GPU and inference time per 1k samples (mean +/- std) is reported in Table 10, so hardware and time are both stated."
+P4019,variance,no,"The text reports AMR/COV benchmark values with no seeds, error bars or intervals."
+P4022,variance,no,"The excerpts give pretraining details and a results table caption but no seeds, error bars, standard deviations or intervals for main results."
+P4023,variance,no,"Main results are reported as single averaged scores; the only averaging mentioned is over three annotation batches for one figure, with no seeds, error bars or intervals."
+P4048,variance,no,"The excerpts describe dataset construction and single benchmark accuracies with no seeds, error bars or standard deviations."
+P4048,compute,none,"No hardware, GPU type or training time is stated anywhere in the excerpts."
+P4059,compute,none,"Training details give learning rate, LoRA rank and epochs but no hardware or compute time."
+P4066,compute,hardware_only,"Figure 1 states peak memory was measured on an A100, but no training/run time or GPU-hours are given."
+P4067,variance,no,"The seeds section only describes perturbation noise standard deviations as inputs; no repeated runs, error bars or intervals for results are reported."
+P4067,compute,none,No hardware or compute time is mentioned in the excerpts.
+P4071,compute,unclear,"Figure 4 plots optimization against wall-clock time but no hardware is stated, so compute reporting is only partial."
+P4077,variance,no,"The experiments are illustrative dot-product plots with no seeds, error bars or standard deviations reported."
+P4077,compute,none,No hardware or compute time is mentioned for the experiments.
+P4078,compute,none,Only robot arms and cameras are described; no computing hardware or GPU-hours are stated.
+P4081,compute,none,The excerpts describe benchmark curation and evaluation with no hardware or compute time stated.
+P4106,compute,none,Only a 600s training time limit is mentioned; no hardware or actual compute amount is stated.
+P4108,compute,none,"Implementation details describe architecture and data only, with no hardware or training time."
+P4109,compute,none,"Training gives iterations, batch size and optimizer but no hardware or training time."
+P4113,compute,none,No hardware or compute time is mentioned in the excerpts.
+P4114,variance,no,"Results are single values compared across methods with no seeds, error bars or standard deviations reported."
+P4114,compute,amount,Experiments run on 2 NVIDIA RTX 4090 GPUs and Table 5 reports training time and computational costs.
+P4117,compute,hardware_only,Training on two NVIDIA 48G A6000 GPUs is stated but no training time or GPU-hours.
+P4124,compute,none,"The excerpts describe datasets, architecture and fine-tuning but state no hardware or training time."
+P4129,compute,none,The excerpts cover dataset construction and evaluation setup and state no hardware or compute time.
+P4137,compute,none,"The excerpts describe model, datasets and decoding results and mention no hardware or training time."
+P4138,compute,amount,Pre-training is stated to take 16 hours on a machine with 8 RTX 4090 GPUs.
+P4139,variance,unclear,"Table 1 bolds methods statistically indistinguishable from the best, implying some variance estimate, but no seeds, standard deviations or intervals are stated."
+P4139,compute,none,The excerpts on uncertainty estimation and synthetic data state no hardware or compute time.
+P4146,compute,amount,"The compute section states NVIDIA GPU workers with a 5-hour wall-time limit per training job, giving both hardware and time."
+P4153,compute,none,The excerpts give seeds and implementation details but no hardware or training time.
+P4169,compute,hardware_only,"Runtime is compared on an NVIDIA A100 GPU, but the text gives only relative speed-ups and no actual time."
+P4188,variance,no,"Table 1 reports single point values per method and the text mentions no seeds, repeated runs or error bars."
+P4188,compute,unclear,The implementation details paragraph on training is cut off by truncation and no hardware or time appears in the visible part.
+P4205,variance,no,"Tables 1 and 2 report only mean values over test samples with no seeds, standard deviations or intervals."
+P4219,variance,no,"Results tables report per-scene PSNR/SSIM/LPIPS scores with no seeds, error bars or standard deviations mentioned."
+P4233,compute,hardware_only,"Pretraining uses 8 NVIDIA A800 GPUs with throughput and a FLOP budget, but no training time or GPU-hours are stated."
+P4236,compute,none,The training details give datasets and hyperparameters but no hardware or compute time.
+P4238,compute,none,The compute-efficiency appendix gives relative training compute and FLOPs but no hardware or time.
+P4239,compute,none,The training details mention LoRA fine-tuning for about 1.2k steps but no hardware or time.
+P4248,compute,none,The excerpts on dataset augmentation and generalization state no hardware or compute time.
+P4249,compute,none,The training and implementation appendix describes architecture and batching but no hardware or time.
+P4256,variance,no,"The scaling-law experiments are described as single ablation runs with no seeds, error bars or standard deviations reported."
+P4261,variance,no,"Main results (90.9 PDMS, nuScenes/Bench2Drive gains) are single numbers and the shown training/experiment sections mention no seeds, error bars or intervals."
+P4265,compute,none,"The shown method, data and ablation sections state no hardware or training time."
+P4266,variance,no,"Implementation details and results report mAP/CMC with no seeds, standard deviations or repeated runs."
+P4267,compute,none,"Shown sections (experiments, datasets, ablations) state no GPU/hardware or compute time."
+P4274,variance,no,"Main results tables are given as single values with no seeds, standard deviations or intervals; only a single base architecture is noted."
+P4275,compute,none,"Training details give optimizer, batch size and epochs but no hardware or compute time."
+P4276,compute,unclear,"Implementation details state epochs and hyperparameters but the section is cut off before any hardware mention, so compute cannot be determined."
+P4280,variance,no,"Implementation details give 48 H100 GPUs and schedules but no seeds, error bars or variance for main results."
+P4298,compute,none,"Shown text describes an inference-only method, models and datasets but states no hardware or compute time."
+P4310,variance,no,"The text is theoretical bounds with numeric analysis and reports no seeds, error bars or intervals."
+P4316,variance,no,"Shown text (simulations, figure captions, limitations) reports no repeated runs, error bars or intervals for results."
+P4324,variance,no,"Full text shows main results (HPS, CLIP score, FID) as single numbers with no seeds, standard deviations or intervals."
+P4330,variance,no,"Benchmark results (Table 5 Dice) are single values with no seeds, standard deviations or intervals."
+P4335,variance,no,"Main results tables (accuracy, F1, METEOR) are single values with no seeds, standard deviations or repeated runs."
+P4335,compute,none,Shown experimental setup and hyperparameter sections state no hardware or compute time.
+P4337,variance,no,"Training and data sections give no seeds, error bars or intervals for the main navigation results."
+P4338,compute,none,"Experiments are repeated five times with standard deviations, but no hardware or compute time is stated in the shown text."

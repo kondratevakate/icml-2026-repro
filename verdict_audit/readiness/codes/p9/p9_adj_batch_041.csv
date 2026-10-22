@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1887,variance,no,"Main results are given as single mAP improvements and the excerpts mention no seeds, error bars or standard deviations."
+P1893,variance,no,"Results are reported as single point metrics with greedy decoding and nothing about seeds, error bars or deviations."
+P1898,variance,no,"Control accuracy and effectiveness are reported as averages over concepts/examples with no seeds, error bars or standard deviations for the main results."
+P1898,compute,none,The excerpts state no hardware or training time.
+P1901,variance,no,"AP/AUC and reconstruction results are reported as single values with no mention of seeds, error bars or deviations."
+P1901,compute,none,"Implementation details give epochs, batch size and learning rate but no hardware or time (deferred to supplementary)."
+P1932,compute,amount,"Quantization time is reported as wall-clock runtime on a single H200 GPU, giving both hardware and time."
+P1939,variance,no,"Table 2 reports point ACC/QWK improvements with no seeds, error bars or standard deviations."
+P1942,variance,no,"Table 1 reports average of top-3 checkpoints without seeds, error bars or standard deviations."
+P1943,variance,no,"Detection AP results are reported with no mention of seeds, error bars or standard deviations."
+P1945,compute,none,The excerpts give no hardware or compute time for pre-training or fine-tuning.
+P1946,compute,none,The method is training-free and the excerpts state no hardware or runtime.
+P1947,variance,no,"Benchmark improvements are reported as single averages with no seeds, error bars or standard deviations."
+P1947,compute,none,The excerpts state no hardware or compute time.
+P1952,variance,no,"Dice scores are reported as single values with no seeds, error bars or standard deviations."
+P1956,compute,none,Only the MEG scanner is described; no compute hardware or training time is stated.
+P1958,variance,no,"Worst-task and average accuracies are reported as single values with no seeds, error bars or standard deviations."
+P1964,compute,none,The excerpts state no hardware or runtime for the BO experiments.
+P1970,variance,no,"Accuracy curves and tables are given without seeds, error bars or standard deviations."
+P1977,variance,no,"Utility and efficiency results are reported as single values with no seeds, error bars or standard deviations."

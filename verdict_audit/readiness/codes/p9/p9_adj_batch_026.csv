@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0623,variance,no,"Evaluation uses a single fixed seed 0 and results are reported without repeated runs, standard deviations or intervals."
+P0667,variance,no,"Main results are single point scores (e.g. BLEU-1 0.437) with no mention of seeds, repeated runs or error bars."
+P0701,variance,no,"Results are single scores with temperature 0 decoding and no seeds, repeated runs or error bars are reported."
+P0702,variance,no,"The closed-form mapper results are reported as single retention values with no seeds, repeated runs or intervals."
+P0702,compute,none,The excerpts report latency speedups and mapper sizes but name no GPU or other hardware and no compute time.
+P0703,compute,none,The excerpts give training details and hyperparameters but state no hardware or compute time.
+P0704,compute,none,"The excerpts describe datasets, sweeps and seeds but state no hardware or compute time."
+P0708,variance,no,"Results are described without any mention of multiple seeds, standard deviations or error bars."
+P0709,variance,no,"The excerpts contain prompts and method description with no mention of seeds, repeated runs or error bars for results."
+P0709,compute,none,The excerpts state no hardware or compute time for training or inference.
+P0721,compute,none,"The excerpts describe datasets, baselines and the evolutionary loop but state no hardware or compute time."
+P0724,variance,no,"Main results are reported as average improvements with no mention of seeds, repeated runs or standard deviations."
+P0724,compute,none,The excerpts describe data and preprocessing but state no hardware or compute time.
+P0725,compute,none,The excerpts give LoRA and training details but name no hardware or compute time.
+P0733,compute,hardware_only,The text names an NVIDIA A100-80GB GPU (and FlashMVPA reaching 20 TFlops on an A100) but gives no training time or GPU-hours.
+P0735,variance,no,"Table 1 reports single accuracy values for all methods with no seeds, standard deviations or intervals."
+P0739,variance,no,"The excerpts give implementation details and results with no mention of seeds, repeated runs or error bars."
+P0739,compute,none,"Implementation details give batch size, optimizer and iterations but no hardware or compute time."
+P0741,variance,no,"Reconstruction results are reported as averaged PSNR/SSIM/LPIPS with no seeds, repeated runs or error bars."
+P0741,compute,none,"Only a generic GPU versus CPU fitting module is mentioned, with no specific hardware or compute time stated."

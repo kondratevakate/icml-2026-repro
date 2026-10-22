@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1791,variance,no,"Results are reported as single values in comparison figures and the only 'seeds' mention is the SEEDS superpixel algorithm, with no repeated runs or error bars."
+P1793,variance,no,"Closed- and open-loop planning results in Table 1 are described as single values with no seeds, standard deviations or intervals mentioned."
+P1795,variance,no,"Cleanup results are reported as PSNR/coverage averages across scenes without any mention of multiple seeds, error bars or standard deviations."
+P1796,variance,no,"Restoration results are single PSNR/SSIM values in Tables 1-5 and the only variance mention concerns the diffusion posterior, not repeated runs."
+P1801,variance,no,"Success rates on LIBERO, SimplerEnv and real-world tasks are given as single percentages with no seeds, standard deviations or intervals."
+P1809,variance,no,"Benchmark AUROC results are reported as single averages; the only standard deviation mentioned is pixel intensity of datasets, not result variability."
+P1813,variance,unclear,"The visible text describes the ACES tool and its configuration but shows no quantitative main results, so variance reporting cannot be judged."
+P1829,variance,no,"Accuracies are reported as single Pass@3 values with no seeds, standard deviations or error bars mentioned."
+P1840,variance,no,"ReID mAP results are reported as single values; the standard deviation mentioned is part of the feature normalization method, not result variability."
+P1850,compute,none,Runtime comparisons and GPU parallelization are mentioned but no specific hardware or GPU-hours are stated in the text.
+P1851,variance,no,"Benchmark zero-shot and fine-tuned results are reported as single metric values with no seeds, standard deviations or intervals."
+P1852,variance,unclear,"The reproducibility statement claims multiple runs, but the visible main results table gives only single Dice values without standard deviations or intervals."
+P1859,variance,no,"Evaluation results are described without any seeds, standard deviations, error bars or repeated runs."
+P1863,compute,none,"The text mentions only 'computational constraints' and states no hardware, training time or GPU-hours."
+P1867,variance,no,"Separation metrics are compared as single values against IIANet with no seeds, standard deviations or error bars mentioned."
+P1869,compute,none,Only API token usage and OpenRouter costs are reported; no hardware or compute time is stated.
+P1872,compute,none,Per-slice computation time is compared in Table 2 but no hardware (GPU/CPU model) or GPU-hours are stated.
+P1874,compute,none,"The visible text describes data, seeds and reproducibility but states no hardware, training time or GPU-hours."
+P1875,compute,none,The numerical simulations and real-data application are described without any hardware or runtime information.
+P1879,compute,none,"Only a relative 16x inference speedup is reported; no hardware, training time or GPU-hours are stated."

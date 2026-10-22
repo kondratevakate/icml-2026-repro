@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3104,compute,none,"The excerpts describe models, data and the user study but never state hardware, GPU type or compute time."
+P3109,variance,no,"Main results come from single deterministic (temperature 0) evaluations reported as point values, with no seeds, standard deviations or intervals mentioned."
+P3110,variance,unclear,"The paper claims statistically significant gains under five-fold cross-validation, but the excerpts show no standard deviations, error bars or intervals for the main results."
+P3118,variance,no,"Results are presented as win-rate curves and comparisons with no mention of multiple seeds, error bars or standard deviations."
+P3118,compute,unclear,No hardware or time is given; the text only says the computational overhead is analysed in an appendix that is not shown.
+P3119,variance,no,"The excerpts give training and evaluation details and results with no mention of multiple seeds, standard deviations, error bars or intervals."
+P3121,variance,no,"The excerpts give implementation and evaluation protocols with no mention of repeated runs, seeds, standard deviations or error bars."
+P3125,compute,unclear,"The checklist says compute resources are reported in Sec. 4, but no hardware or time appears in the excerpts shown."
+P3130,variance,no,"Results such as recovery rates are reported as single values, with no mention of seeds, standard deviations or intervals."
+P3130,compute,none,"No hardware, GPU or training time is stated anywhere in the excerpts."
+P3131,variance,no,"Main results tables report single PQ/AP/mIoU values with no seeds, standard deviations or error bars mentioned."
+P3134,variance,no,"Results are reported as single mIoU and mSTCV values with no mention of repeated runs, standard deviations or intervals."
+P3134,compute,none,"The implementation details and results give no hardware, GPU type or compute time."
+P3139,compute,none,"Evaluation uses API and open models, but the text states no hardware or compute time."
+P3140,variance,no,"Main results are single pass@10 error values; the standard deviations mentioned are per-step reward analyses within the algorithm, not variability of the main results."
+P3143,compute,none,The excerpts describe models and evaluation settings but never state hardware or compute time.
+P3156,compute,none,The setup and appendix excerpts give architecture and training details but no hardware or compute time.
+P3160,compute,none,"The checklist states compute resources were not reported, saying only that a standard personal computer suffices."
+P3173,compute,none,"The excerpts describe datasets, architectures and results but never state hardware or compute time."
+P3177,variance,no,"Metrics are averaged over 128 prefix-suffix pairs or 1000 examples, with no seeds, standard deviations or intervals reported."

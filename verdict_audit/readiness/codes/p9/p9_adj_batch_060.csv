@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3278,variance,no,"Results (human preference, CLIP/LPIPS tables) are reported as single values with no seeds, error bars or standard deviations mentioned."
+P3279,variance,no,"Quantitative tables and user study are reported as single values; no seeds, error bars or standard deviations are mentioned."
+P3283,variance,no,"WD/MMD comparison tables are described as single values with no repeated runs, error bars or standard deviations mentioned."
+P3296,variance,no,"Reported PSNR/SSIM/LPIPS comparisons are single values with no seeds, error bars or standard deviations mentioned."
+P3310,variance,no,"Benchmark tables report best/second-best scores per model with no repeated runs, error bars or standard deviations mentioned."
+P3313,variance,no,The seeds excerpt refers to SEEDS superpixels; result tables report single accuracy/FPA values without variance.
+P3321,variance,no,Main results table reports accuracy and token counts as single values; no seeds or error bars are mentioned.
+P3330,variance,no,Table 1 shows single FVD/FAD/etc. values per method and the user study reports averages without any variance or seeds.
+P3330,compute,none,The excerpts give implementation details and datasets but no hardware or training time.
+P3333,variance,no,The only standard deviation mentioned is inside the ESD outlier test definition; attribution results are not reported with error bars or seeds.
+P3336,compute,none,"The excerpts describe models, data and code but state no hardware or compute time."
+P3337,compute,unclear,"The checklist claims compute resources are in the appendix, but no hardware or time appears in the text shown."
+P3346,variance,no,The confidence intervals in Figure 12 concern the expert data-quality validation; main benchmark results are single values without variance.
+P3346,compute,none,"No hardware, GPU type or training time is stated in the excerpts."
+P3350,compute,none,The excerpts describe data collection and policy experiments but state no hardware or compute time.
+P3354,variance,yes,Synthetic recovery results are computed over multiple independent trials with mean errors reported across them.
+P3354,compute,none,No hardware or compute time is stated anywhere in the excerpts.
+P3364,variance,no,"The only error bars (Figure 5) describe sample-level variation in the dataset-construction teacher-student analysis, not the main RL results."
+P3374,variance,no,The variance excerpt is a model equation and result tables are described without standard deviations or repeated runs.
+P3374,compute,none,No hardware or compute time is stated in the excerpts.

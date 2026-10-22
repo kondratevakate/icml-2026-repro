@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1252,compute,none,"The excerpts give no hardware, GPU type or training time anywhere."
+P1254,variance,no,"Results come from a single train/validation/test split with no seeds, error bars or intervals reported."
+P1258,variance,no,"The excerpts report single-run relative improvements with no seeds, standard deviations or intervals."
+P1259,compute,none,No hardware or compute time is stated in the excerpts.
+P1260,variance,no,"The excerpts report single throughput and functionality numbers with no repeated runs, error bars or intervals."
+P1264,compute,unclear,"The checklist says compute resources and simulation time are in Supp. C, but the shown Supp. C excerpt is cut before any hardware or time appears."
+P1265,compute,none,"The 4-hour/48 GB limits are benchmark task constraints, and no hardware or time used for the experiments is stated."
+P1269,variance,no,"Main Countdown and code results use greedy decoding or pass@k with no seeds, error bars or intervals reported."
+P1272,variance,no,Models are run at temperature 0 with single success-rate numbers and no repeated runs or intervals.
+P1272,compute,none,"Only API and open models are named, with no hardware or compute time stated."
+P1275,compute,none,No hardware or compute time appears in the excerpts.
+P1276,variance,no,"The excerpts show no seeds, standard deviations or intervals for the experimental results."
+P1276,compute,none,No hardware or compute time appears in the excerpts.
+P1282,compute,none,"Table 1 gives mean and std over 5 runs, but no hardware or search/training time is stated in the visible text."
+P1298,variance,unclear,"95% confidence intervals are given only for the covariate-shift analysis, and the main SWE-bench resolution rates show no variance in the truncated text."
+P1299,variance,no,"Only hardware (4xA100) is given, and benchmark accuracies show no seeds, error bars or intervals."
+P1302,variance,no,"Results are max/average similarities across subjects with no repeated runs, error bars or intervals for model results."
+P1304,variance,no,"The ± values describe dataset morphometrics, while the main Table 2 comparisons have no seeds or error bars."
+P1309,variance,no,"WildBench and AlpacaEval2 gains are single numbers per iteration with no seeds, error bars or intervals."
+P1311,variance,no,"Benchmark accuracies are single values with no repeated runs, error bars or intervals reported."

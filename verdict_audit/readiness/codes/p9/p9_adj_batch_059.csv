@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3177,compute,none,"The excerpts describe models, data and training objective but never state hardware or training time."
+P3207,variance,no,"Results are single scores per model (e.g. 28.05% to 1.22%) with no seeds, error bars or repeated-run statistics."
+P3207,compute,none,Models are accessed via official APIs and no hardware or compute time is stated.
+P3211,variance,no,"The excerpts mention no seeds, standard deviations, error bars or repeated runs."
+P3211,compute,none,The excerpts describe dataset construction only and state no hardware or compute time.
+P3231,variance,no,"Tables report single precision/recall/F1/IoU values with no standard deviations, seeds or intervals."
+P3231,compute,none,"Training details give epochs and optimizer and tables give GMACs and ms, but no hardware is stated."
+P3235,variance,no,"OSWorld results are single average scores per configuration with no seeds, repeated runs or error bars."
+P3235,compute,none,The pipeline uses API models and no hardware or compute time is stated.
+P3236,compute,none,Only API reasoning models and a random-agent rollout count are described; no hardware or compute time is stated.
+P3239,compute,none,Only per-video latencies and a passing mention of a single GPU appear; the GPU type is never stated.
+P3240,variance,no,"Implementation details give hardware and training schedule but no seeds, standard deviations or repeated runs."
+P3241,variance,no,"The seeding text concerns tournament seeding, not random seeds; no error bars or repeated runs are reported."
+P3242,variance,no,"Results are single Spearman correlations with no seeds, standard deviations or intervals."
+P3242,compute,none,The experimental setup describes the ESM2-650M fine-tuning but states no hardware or compute time.
+P3243,variance,no,"No seeds, error bars or repeated-run statistics are reported for the main results."
+P3247,variance,no,The only standard deviation is a data-augmentation noise parameter; no seeds or error bars for results.
+P3247,compute,none,Training setup mentions memory constraints and optimizers but no hardware or compute time.
+P3250,compute,none,The excerpts state no hardware or compute time for running the decoding methods.
+P3257,variance,no,Only one retrained DiffAb run with another seed is mentioned for one discrepancy; main results have no error bars or multi-seed statistics.

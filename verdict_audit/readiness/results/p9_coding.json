@@ -71,19 +71,37 @@
   "variance": false,
   "compute": false
  },
- "disagreements": {
-  "claims": 45,
-  "compute_tier": 17,
-  "code": 71,
-  "environment": 291,
-  "main_data_access": 77,
-  "open_data_experiment": 157,
-  "compute": 176,
-  "variance": 153,
-  "weights_release": 11,
-  "data_scale": 57,
-  "synthetic_or_sample_release": 16,
-  "outputs_release": 3
+ "n_coder2_all": 3278,
+ "agreement_all_below_gate": {
+  "variance": {
+   "n": 3278,
+   "po": 0.7940817571690055,
+   "kappa": 0.6840109678248577
+  },
+  "compute": {
+   "n": 3278,
+   "po": 0.7873703477730324,
+   "kappa": 0.7104658251954492
+  }
  },
- "adjudicated": 0
+ "n_reference": 222,
+ "agreement_reference": {
+  "code_used": {
+   "n": 222,
+   "po": 0.954954954954955,
+   "kappa": 0.9196932426566344
+  },
+  "data_obtained": {
+   "n": 222,
+   "po": 0.9414414414414415,
+   "kappa": 0.9031608616871352
+  },
+  "weights_used": {
+   "n": 222,
+   "po": 0.9594594594594594,
+   "kappa": 0.8374552554506995
+  }
+ },
+ "pending": {},
+ "adjudicated": 1404
 }

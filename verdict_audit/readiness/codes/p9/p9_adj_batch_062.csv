@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3436,variance,no,"The only mean/std shown is for token counts and cosine similarity in Table 5; main results (Acc@1, AUC) are reported as single values without seeds or intervals."
+P3436,compute,none,No hardware or compute time is mentioned anywhere in the excerpts.
+P3442,compute,none,"The excerpts describe data, metrics and error bars but never state hardware or run time."
+P3447,compute,none,"The excerpts (theory and PLM finetuning) never mention GPUs, hardware or compute time."
+P3448,variance,no,"Results and training details are single numbers with no seeds, standard deviations or intervals mentioned."
+P3451,variance,no,"Table 1 reports single PLCC/SRCC values per method with no repeated runs, standard deviations or intervals."
+P3451,compute,none,The method is described as training-free and no hardware or compute time is stated.
+P3459,variance,no,"Main results (Tables 1-4) are reported as single mAP values with no seeds, error bars or standard deviations."
+P3459,compute,unclear,"No hardware appears, but the Experimental Setup section is cut off before its implementation details, so compute may be in the truncated part."
+P3467,compute,unclear,"No hardware appears, but the implementation paragraph describing training is cut off mid-sentence, so compute details may be in the truncated part."
+P3470,variance,no,"Results are bar plots and a table of single accuracies with no seeds, error bars or standard deviations mentioned."
+P3470,compute,none,No hardware or compute time is mentioned in the excerpts.
+P3473,variance,no,The only standard-deviation mention concerns pair selection for training data; no seeds or intervals are given for results.
+P3474,compute,none,"The excerpts give models, datasets and seeds but never state hardware or compute time."
+P3477,variance,no,"Main accuracy results are single values; only latency means/P95 are reported, with no seeds or intervals for the main results."
+P3481,variance,no,"Results are given as Pareto/trade-off figures with no seeds, error bars or standard deviations mentioned."
+P3481,compute,none,"Training details give learning rates, batch sizes and epochs but no hardware or compute time."
+P3485,variance,no,"Table 1 reports single metric values with best/second-best highlighting and no seeds, error bars or standard deviations."
+P3492,variance,no,"Results are reported as single AbsRel/delta1 values with no seeds, error bars or standard deviations mentioned."
+P3515,variance,no,"Model accuracies are single values from one evaluation with no repeated runs, standard deviations or intervals mentioned."

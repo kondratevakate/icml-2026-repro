@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2620,variance,no,"The excerpts, including the seeds/variance section (which only shows acknowledgements), report no seeds, error bars, standard deviations or intervals for the results."
+P2628,compute,none,The excerpts describe training configurations and seed-averaged results but state no hardware or compute time.
+P2629,variance,no,"The implementation and results excerpts report single numbers with no seeds, error bars, standard deviations or intervals."
+P2634,variance,no,"The excerpts report point results (e.g. average CD 6.36) with no mention of seeds, standard deviations, error bars or intervals."
+P2638,variance,unclear,"The text claims improvements are statistically significant (p < 0.05) but never states seeds, error bars, standard deviations or intervals for the main results."
+P2639,compute,none,"No hardware, GPU type or compute time is mentioned anywhere in the excerpts."
+P2641,variance,no,"Main-result table captions and implementation details give no seeds, standard deviations, error bars or intervals; only one dataset uses 5-fold CV with no variance stated."
+P2645,variance,no,"The seeds/variance section only describes metrics averaged over paths or proteins, with no seeds, standard deviations, error bars or intervals reported."
+P2645,compute,none,The excerpts state no hardware or compute time for training or sampling.
+P2650,compute,none,Runtime comparisons are mentioned but no hardware (GPU/CPU type) or compute budget is stated.
+P2653,variance,no,"The excerpts report only point metrics on the test sets with no seeds, standard deviations, error bars or intervals."
+P2653,compute,none,No hardware or compute time is stated; bFloat16 precision is the only computational detail.
+P2654,variance,unclear,"Experiments use 5-fold cross-validation, but the excerpts (cut before results) do not say whether standard deviations or intervals are reported."
+P2654,compute,none,The visible excerpts mention no hardware or compute time.
+P2661,compute,amount,Appendix B.3/Table 7 reports A100 GPU training configurations with elapsed GPU time and consumption compared to DMD2.
+P2670,variance,no,"The excerpts report single-number benchmark results with no seeds, standard deviations, error bars or intervals."
+P2679,compute,none,The text only says operations can be optimized for GPU; no hardware type or compute time is stated.
+P2680,variance,no,"The excerpts report single benchmark scores with no seeds, standard deviations, error bars or intervals."
+P2681,compute,none,No hardware or compute time is mentioned in the excerpts.
+P2683,compute,hardware_only,"Experiments run on the SCAMP PPA hardware with per-keypoint execution times, but no total compute time or GPU-hours are stated."
