@@ -679,3 +679,23 @@ Descriptive; post hoc. Script `posthoc_p9_areas.py`, output `results/p9_areas.js
 * PH9-e, documentation (final P9 codes, ICML 2025 and ICML 2026 frame papers, which share the area taxonomy): per row,
   shares of code `released`, main_data_access `open`, weights_release `yes`, variance `yes` (unclear excluded), Wilson
   intervals. Other papers here are the frame's random sample, so area counts are small.
+
+## Note 9-11 (2026-10-22, post hoc, frozen before computing)
+
+Note 9-10 found that medical papers are attempted about as often as others but by fewer teams (mean 1.5), and that
+within a team their claims are decided about as often. Kate asked to test each candidate reason why fewer teams take
+them up. Post hoc and descriptive. Units: attempted ICML 2026 papers as in Note 9-10 (author's namespace excluded,
+candidates labelled `no` excluded). Outcome: a second team (at least two distinct team namespaces). Entry time of a
+team on a paper = its earliest `judged_at` in the snapshot (a proxy: judging time, not submission time). Script
+`posthoc_p9_uptake.py`, output `results/p9_uptake.json`. MH differences, bootstrap over papers within group (2,000,
+seed 20261017); "accounts for the gap" as in Note 9-9, applied to the medical minus other difference in the outcome.
+
+* T1 herding: first team's first logbook decided or not. Second-team rate by that status and group; medical gap
+  adjusted for first-logbook status, and for status plus the first team's entry week (later papers had less time).
+* T2 expected points: number of anchored claims per paper (`claims_anchored.json`, tertiles of the pooled
+  distribution); gap adjusted for it. On the ICML 2026 frame papers also for P9 compute_tier (not_stated a category).
+* T3 who takes medical papers: per group, distinct teams, share of attempts by the top 1 and top 5 teams; among teams
+  with any medical attempt, share of their attempts that are medical. Descriptive only.
+* T4 entry threshold and documentation: on the ICML 2026 frame papers, gap adjusted for P9 data_scale (not_stated a
+  category); within each group, mean teams for papers with versus without code `released`, main_data_access `open`,
+  synthetic_or_sample_release `yes` (unclear excluded), difference with bootstrap CI.
