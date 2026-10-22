@@ -636,3 +636,10 @@ Kate approved completing the gate rule for variance and compute. Choices:
   specificity and Cohen's kappa.
 * NeurIPS 2025 and 2026: checklist item 5 answer parsed from the excerpt ("Answer: [Yes]" or "[No]"; `[NA]`
   left out) versus code `released` (`unclear` excluded); kappa and raw agreement.
+
+## Note 9-8 (2026-10-22, before the coder2full codes are compared or adjudicated)
+
+The coder2full file for batch 093 has one label outside the codebook (compute_tier `unclear` for one paper), so
+the batch fails the completeness check. The batch is recoded by a fresh coder with the same prompt; the earlier
+file is set aside, not used. Coder instances that stopped on a usage limit before writing their file are rerun
+with the same prompt; a file written before an instance stopped is used if it passes the check.

@@ -268,8 +268,6 @@ def a94(papers: list[dict]) -> dict:
     return out
 
 
-
-
 def checklist_item5(papers: list[dict]) -> dict:
     """NeurIPS 2025/2026: checklist item 5 answer in the excerpt versus code `released` (Note 9-7)."""
     import re
@@ -302,7 +300,7 @@ def run() -> dict:
     coverage = defaultdict(lambda: dict(frame=0, coded=0))
     for i, v in keys.items():
         coverage[f"{v['group']}|{v['stratum']}"]["frame"] += 1
-        coverage[f"{v['group']}|{v['stratum']}"]["coded"] += i in c1
+        coverage[f"{v['group']}|{v['stratum']}"]["coded"] += i in final
     res = dict(agreement=sc["agreement"], gate=sc["gate"], agreement_all_below_gate=sc["agreement_all_below_gate"],
                agreement_reference=sc["agreement_reference"], adjudicated=sc["adjudicated"],
                coverage=dict(sorted(coverage.items())), coded=dict(Counter(p["group"] for p in papers)), A9_3={})
@@ -323,7 +321,8 @@ def run() -> dict:
     sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
     (HERE / "results" / "p9_manifest.json").write_text(json.dumps(dict(
         protocol_sha256=sha(HERE / "PROTOCOL.md"),
-        code_sha256={f: sha(HERE / f) for f in ("analyze_p9.py", "build_p9_sheets.py", "build_p9_excerpts.py", "fetch_p9.py")},
+        code_sha256={f: sha(HERE / f) for f in ("analyze_p9.py", "build_p9_sheets.py", "build_p9_excerpts.py", "fetch_p9.py",
+                                                    "build_p9_reference.py", "build_p9_adjudication.py")},
         keys_sha256=sha(KEYS), git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=HERE, text=True).strip(),
         seed_boot=SEED_BOOT, resamples=B, results_sha256=sha(out)), indent=1), encoding="utf-8")
     return res
