@@ -661,3 +661,21 @@ namespace excluded; decided = at least one verified or falsified claim verdict).
   than half the unadjusted one in absolute value. If (iii) accounts for the gap while the claim-level shares do not
   differ, the gap is attributed to how many claims and teams papers had; if PH9-b accounts for it, to claim
   linkage; otherwise neither explains it. No claim texts are coded in this note.
+
+## Note 9-10 (2026-10-22, post hoc, frozen before computing)
+
+Kate asked to split the "other" papers by area and to use the whole ICML 2026 challenge instead of the A9.5 sample.
+Descriptive; post hoc. Script `posthoc_p9_areas.py`, output `results/p9_areas.json`.
+
+* Rows: medical (protocol 7 label clinical or life_science) as one row; all other papers split by ICML area, the
+  part of the `topic` field before "->" (empty topic: `unknown`). Candidates labelled `no` are excluded, as in the
+  frame, and counted.
+* PH9-c, challenge (all ICML 2026 papers, protocol 8 verdict snapshot, author's namespace excluded): per row, papers,
+  attempted share, mean teams among attempted, decided share among attempted, claim-level decisive share; Wilson
+  intervals.
+* PH9-d, medical versus all other attempted papers: decided difference unadjusted and MH-adjusted for teams (1, 2,
+  3 or more), bootstrap over papers within group (2,000, seed 20261017); reading rule as in Note 9-9. Claim-level
+  decisive difference within team: MH over team namespaces, bootstrap over papers within group.
+* PH9-e, documentation (final P9 codes, ICML 2025 and ICML 2026 frame papers, which share the area taxonomy): per row,
+  shares of code `released`, main_data_access `open`, weights_release `yes`, variance `yes` (unclear excluded), Wilson
+  intervals. Other papers here are the frame's random sample, so area counts are small.
