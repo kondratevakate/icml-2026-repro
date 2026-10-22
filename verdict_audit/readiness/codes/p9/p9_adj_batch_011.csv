@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1451,variance,no,"The excerpts show only theoretical results and proofs with no seeds, repeated runs, error bars or intervals for any results."
+P1451,compute,none,The excerpts are theoretical and state no hardware or run time.
+P1453,compute,none,The text describes averaged runs and released code but states no hardware or compute time.
+P1481,compute,hardware_only,"The acknowledgements say TPUs from Google TPU Research Cloud were used and the JAX/TPU implementation is mentioned, but no training time is given."
+P1490,variance,no,"The only std values are for training-reward curves across steps, and no seeds, error bars or intervals are reported for the main results."
+P1516,compute,amount,"The text names an RTX 3080 GPU workstation, and the checklist says Table 1 reports wall-clock training time."
+P1540,variance,no,"The only standard deviations describe dataset sequence lengths; no seeds, repeated runs or error bars are reported for the results."
+P1603,compute,none,"The implementation details give the architecture, steps and hyperparameters but no hardware or training time."
+P1622,compute,none,"The excerpts state no hardware, GPU or run time."
+P1629,compute,none,"The excerpts state no hardware, GPU or run time."
+P1635,compute,none,The experimental setup describes environments and models but states no hardware or run time.
+P1637,compute,none,"The implementation details give the optimizer, epochs and rounds but no hardware or run time."
+P1649,compute,unclear,"The reproducibility statement says the computational platform is described in Section B, but that section is not in the text."
+P1693,compute,none,The excerpts describe the dataset and feature extraction but state no training hardware or run time.
+P1730,compute,none,The fine-tuning details give steps and hyperparameters but no hardware or run time.
+P1740,variance,no,"Standard deviation appears only as a data-filtering hyperparameter; no seeds, repeated runs or error bars are reported for the results."
+P1861,variance,no,"The excerpts are theoretical bounds with no seeds, repeated runs, error bars or intervals."
+P1861,compute,none,The excerpts are theoretical and state no hardware or run time.
+P1888,variance,no,"The standard deviations describe similarity-score distributions, not variation across seeds or runs for the main results."
+P1915,variance,no,"The text reports single training runs with hardware and times but no seeds, repeated runs, error bars or intervals."

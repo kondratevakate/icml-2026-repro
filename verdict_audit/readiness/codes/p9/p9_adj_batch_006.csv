@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0485,variance,no,"The excerpts report generation and segmentation tables with no seeds, error bars, standard deviations or intervals."
+P0490,variance,no,"The excerpts report accuracies for VCWorld and baselines with no seeds, error bars, standard deviations or intervals."
+P0490,compute,none,The excerpts give no hardware or compute time for training or inference.
+P0492,variance,yes,"Each model was queried 10 times per case at temperature 1.0, and model priorities are compared to physicians with significance and inter-physician variation ranges."
+P0496,variance,no,"Results are a best-checkpoint average over 32 test repetitions, with no seeds, error bars or standard deviations reported for main results."
+P0496,compute,none,"The excerpts state no GPUs, hardware or training time."
+P0497,compute,none,The excerpts state no hardware or compute time; only hyperparameter tuning and seeds are described.
+P0502,variance,yes,Table 1 main results are annotated as mean plus or minus standard deviation (over seven SpaRED datasets).
+P0508,variance,no,"Results are qualitative image samples with a fixed seed and no error bars, standard deviations or intervals."
+P0508,compute,none,The excerpts state no hardware or compute time.
+P0512,variance,no,"Vulnerability rates and attack success rates are given as point values with no intervals, seeds or error bars."
+P0512,compute,none,"Only relative computational overhead reductions are given, with no hardware or compute time."
+P0515,variance,no,"Standard deviations appear only for comparing eff@k estimators in Table 11, not for the main LLM benchmark results."
+P0521,variance,no,"QCAI AUCs are reported as single point values with no seeds, error bars or intervals."
+P0521,compute,none,The excerpts state no hardware or compute time.
+P0523,compute,none,The excerpts state no hardware or compute time.
+P0526,variance,no,"Performance is avg@10 averaged over generations with no standard deviations, error bars or intervals for main results."
+P0526,compute,none,"Only a 600ms batch latency on an unspecified standard inference setup is given, with no hardware stated."
+P0527,variance,no,"The excerpts report no seeds, error bars, standard deviations or intervals for the main results."
+P0528,variance,no,"Benchmark results in Tables 3-4 are reported without seeds, error bars, standard deviations or intervals."

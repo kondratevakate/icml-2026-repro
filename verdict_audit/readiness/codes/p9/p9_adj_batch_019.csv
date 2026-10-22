@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3649,compute,none,"The excerpts describe environments, methods and seeds but state no hardware or training time."
+P3663,variance,no,"The excerpts report per-condition scatter plots and fixed-step checkpoint selection but no seeds, error bars or standard deviations for the main benchmark results."
+P3678,compute,none,The excerpts describe MuJoCo experiments averaged over three seeds and code release but state no hardware or run time.
+P3698,compute,none,"The excerpts cover data, seeds and code release but mention no hardware or compute time used for training."
+P3706,compute,unclear,"Tables report total runtime for embedding and SVM steps but no hardware is stated, which fits neither amount nor hardware_only cleanly."
+P3708,variance,no,"The excerpts give training setup and point results across scenes with no seeds, error bars or standard deviations."
+P3717,variance,no,Results are compared to baseline numbers cited from original papers and reported as single values with no seeds or error bars mentioned.
+P3720,variance,no,"Tables report results averaged across scenes and exposure times only, with no seeds, standard deviations or intervals over repeated runs."
+P3723,variance,no,"The excerpts describe k-fold cross-validation and accuracy/MF1 but report no standard deviations, error bars or repeated-seed variability for the main results."
+P3727,compute,none,The excerpts describe synthetic and wet-lab experiments and Adam optimization but state no hardware or compute time.
+P3762,variance,no,"Standard deviation over 10 runs is reported only for scoring latency, not for the main retrieval accuracy results."
+P3779,compute,none,The excerpts describe simulations and order-parameter runs but state no hardware or compute time.
+P3793,compute,none,"The excerpts describe the method, related work and limitations but give no hardware or training time."
+P3800,compute,none,The excerpts list the evaluated VLMs and annotation counts but state no hardware or inference time.
+P3823,variance,no,"Main results in Table 1 are single values from deterministic decoding with no seeds, standard deviations or intervals; the only standard deviation is in the GRPO advantage formula."
+P3826,compute,none,"The excerpts describe datasets, preprocessing and fine-tuning epochs but state no hardware or training time."
+P3827,variance,no,The method is training-free and results are reported as single accuracies averaged over datasets with no seeds or error bars.
+P3841,variance,no,"Benchmark results are reported as single pass/resolved rates per model with no repeated runs, error bars or intervals mentioned."
+P3841,compute,none,The excerpts describe the benchmark pipeline and Docker environments but state no hardware or compute time.
+P3846,variance,no,"The excerpts report single benchmark scores and training details with no seeds, standard deviations or intervals."

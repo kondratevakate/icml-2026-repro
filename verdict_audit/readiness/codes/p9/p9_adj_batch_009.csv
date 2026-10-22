@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0932,compute,none,"The excerpts, including training details and the reproducibility statement, name no hardware, GPU type or training time."
+P0945,variance,no,"Main results are single macro/micro accuracies per VLM with no seeds, error bars, standard deviations or intervals mentioned."
+P0978,compute,none,The text discusses relative inference cost (25x sampling) but never states hardware or GPU-hours.
+P1021,variance,unclear,The text only notes that the standard deviation of predictions decreases with context size in Fig. 6 and does not say whether the main comparisons report spread.
+P1031,variance,no,"Standard error is reported only for the human-study comparison, while the main detection tables report no seeds, deviations or intervals."
+P1083,variance,no,"Main Table 1 results are reported as single scores with no repeated runs, deviations or intervals mentioned."
+P1093,variance,no,"The method is training-free and the results are reported as single benchmark scores with no seeds, deviations or intervals mentioned."
+P1093,compute,none,"Inference latency is measured with CUDA timing, but no hardware model or training compute is stated anywhere in the text."
+P1094,variance,unclear,"The text mentions significant in-vivo effects and model instances that differ only in initial weights, but does not say whether the main results show error bars or spread."
+P1094,compute,none,Training hyperparameters are given but no hardware or compute time is stated.
+P1099,variance,unclear,"Results are averaged over five test folds, but the text does not say whether standard deviations or intervals across folds are reported."
+P1099,compute,none,The backbone and pretraining sections give architecture and data size but no hardware or training time.
+P1111,variance,unclear,The text says random seeds were used for splits but does not say whether several runs or spread are reported for the main results.
+P1112,variance,no,"The only plus/minus values are pLDDT spreads over generated sequences in a side out-of-distribution analysis, and the main tables report no seeds or deviations."
+P1114,compute,unclear,"The sentence on hardware is cut off (""All experiments are done on a sing [...]""), so the hardware is not visible in the text."
+P1179,compute,none,The experimental setup and appendix excerpts state no hardware or compute time.
+P1184,compute,none,"The text reports mean and standard deviation over runs but states no hardware or compute time, only similar resource consumption."
+P1232,variance,no,"The benchmark results are given without any repeated runs, standard deviations or intervals mentioned."
+P1238,variance,no,"The main predictor and design results are reported as averaged correlations and median ratios with no seeds or spread mentioned, and the three MD replicas are only the data source."
+P1242,variance,no,"The main zero-shot screening results are reported without any seeds, standard deviations or intervals mentioned."

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3328,compute,hardware_only,The text names NVIDIA A100 and H200 (and other) platforms used for training and evaluation but gives no training time or GPU-hours.
+P3331,variance,no,"Main results are single values; the only standard deviation shown is for a noise-injection robustness analysis, not seeds or error bars on main results."
+P3349,compute,unclear,"Training time of 7.6-14.2 hours is stated but only 'on our hardware' with no hardware named in the excerpt, so the amount cannot be fully determined."
+P3366,variance,no,"The excerpt shows results averaged over images with no seeds, standard deviations, error bars or intervals for main results."
+P3366,compute,none,"The implementation section names software (gsplat, tiny-cuda-nn) and FPS but no hardware or training time."
+P3369,compute,none,Only computational cost in general is mentioned; no hardware or training time is stated in the text.
+P3371,variance,unclear,"The text says the optimizer shows no particular seed sensitivity in RL but does not state that main results report several seeds, error bars or intervals."
+P3372,compute,none,No hardware or compute time is stated; only the test-time update budget is described.
+P3375,variance,no,"Main results are single values with paired t-test significance markers; no seeds, standard deviations, error bars or intervals are reported."
+P3379,variance,no,"No repeated runs, seeds, standard deviations or intervals are described for the reported results."
+P3381,compute,none,No hardware or compute time is given; only the computational cost of oracles is discussed qualitatively.
+P3384,variance,no,"Main training runs use the same random seed, with seed consistency shown only in an appendix figure, so main results lack seed variance."
+P3415,compute,none,Only 'computational constraints' are mentioned; no hardware or compute time is stated.
+P3430,variance,no,"No seeds, standard deviations, error bars or intervals are reported for the results in the excerpt."
+P3430,compute,none,"Training details give tokens, batch sizes and epochs but no hardware or compute time."
+P3483,variance,no,"Result tables report single mIoU values without seeds, standard deviations or intervals."
+P3572,variance,unclear,Three seeds with standard deviations are reported only for the perturbation robustness experiment; the excerpt does not say whether main results include variance.
+P3584,variance,no,"Seeds are mentioned only for building the Deep Ensemble baseline, not for reporting variance of main results."
+P3613,compute,none,Models are evaluated with default/API settings and no hardware or compute time is stated.
+P3619,compute,none,No hardware or training time is stated in the excerpt.

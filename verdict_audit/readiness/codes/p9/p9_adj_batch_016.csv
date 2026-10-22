@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2697,variance,no,"Mean and standard deviation are reported only for Loihi 2 power and time measurements; the main detection mAP results show no seeds, error bars or intervals."
+P2722,variance,no,"The only repeated-run figure is the RMSD of five projection runs for stability; main benchmark results in Tables 1-3 are reported without seeds, error bars or intervals."
+P2724,variance,no,"The excerpts describe single training runs and result tables with no mention of seeds, standard deviations, error bars or intervals."
+P2724,compute,none,"The excerpts state no training hardware, GPU type or training time."
+P2733,compute,amount,Training takes a total of 18 hours on 3 x L40S GPUs.
+P2738,compute,none,The excerpts state no hardware or training time.
+P2739,variance,no,"The text reports results without any mention of seeds, standard deviations, error bars or intervals."
+P2755,variance,no,"The excerpts report detection AP results with no mention of seeds, standard deviations, error bars or intervals."
+P2755,compute,none,The excerpts state no hardware or training time.
+P2802,variance,no,"Results in Table 2 and the analyses are reported without seeds, standard deviations, error bars or intervals."
+P2802,compute,none,The excerpts state no hardware or training time.
+P2859,compute,none,"The excerpts, including implementation details, state no hardware or run time."
+P2867,variance,no,"The excerpts report results with no mention of seeds, standard deviations, error bars or intervals."
+P2867,compute,none,Only motion-capture sensor hardware is described; no compute hardware or training time is stated.
+P2880,compute,none,The excerpts describe optimizers and epochs but state no compute hardware or training time.
+P2940,compute,unclear,Only a passing mention of data-parallel training across 4 GPUs without GPU type or time; detailed configurations are deferred to an appendix not shown.
+P2970,variance,no,"Results are reported without any mention of seeds, standard deviations, error bars or intervals."
+P2970,compute,none,"Implementation details give model, optimizer and epochs but no hardware or training time."
+P2989,compute,none,The excerpts describe training setup but state no compute hardware or run time; training details are deferred to Appendix B.
+P3000,variance,no,"Benchmark results are reported as single scores with no mention of seeds, standard deviations, error bars or intervals."

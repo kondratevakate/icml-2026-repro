@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3030,compute,none,"The excerpts describe datasets, seeds and decoders but state no hardware or training time."
+P3039,variance,no,"The seeds section only holds the abstract (seed prompts) and no seeds, error bars or intervals are reported for the main results."
+P3039,compute,none,Only Gemini API cost (about 50 dollars per evaluation) and generation settings are given; no hardware or compute time is stated.
+P3041,compute,none,The excerpts on data curation and multi-dataset training state no hardware or compute time.
+P3047,compute,none,The setup excerpts report seeds and datasets but state no hardware or training time.
+P3056,variance,no,"The excerpts mention no seeds, repeated runs, error bars or standard deviations for the results."
+P3056,compute,none,Only memory constraints for elastic inference are mentioned; no hardware or compute time is stated.
+P3073,compute,none,Only general computational limitations of spectral operators are discussed; no hardware or time is stated.
+P3090,compute,amount,"A single NVIDIA RTX 3090 GPU is stated together with training time per iteration (0.15 s/it) and total steps (138,400)."
+P3132,compute,none,The excerpts describe the pretraining dataset and architecture but state no hardware or compute time.
+P3135,compute,none,The implementation and reproducibility excerpts state no hardware or compute time.
+P3165,variance,no,"The seeds section is only acknowledgements and no seeds, error bars or deviations are reported for the main results."
+P3175,compute,amount,"Appendix B Table 5 gives pretraining compute requirements comparing hardware and training times, per its caption."
+P3197,variance,no,"The only standard deviation is a smoothing kernel width; no seeds, repeated runs or error bars for results are reported."
+P3197,compute,none,Training time is only called efficient with no hardware or time values stated.
+P3206,compute,none,"Only sampling times in seconds are given, with no hardware stated and no training compute budget."
+P3210,variance,no,"The excerpts report no seeds, repeated runs, error bars or standard deviations."
+P3210,compute,none,The excerpts discuss GED computation cost conceptually but state no hardware or compute time.
+P3215,compute,amount,Eight Nvidia V100 GPUs are stated and training time in seconds is reported per method in the result tables.
+P3238,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals."

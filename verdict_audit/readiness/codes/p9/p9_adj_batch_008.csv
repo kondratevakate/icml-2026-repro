@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0584,variance,no,"Only the method's predicted per-voxel standard deviations are discussed; no seeds, repeated runs or error bars are given for the main registration results."
+P0584,compute,none,Implementation details and appendices are shown but name no training hardware or time; the 24h on a 64-core desktop refers only to NiftyReg data preprocessing.
+P0585,compute,none,Implementation details (Section 5 and Appendix D.1) give hyperparameters and epochs but no hardware or training time.
+P0586,compute,unclear,A runtime analysis measuring wall-clock time per batch is mentioned but cut off before any hardware or totals are stated.
+P0588,variance,no,"Decoders were retrained 50 times only to average their parameters; no spread, error bars or intervals are reported for the main results."
+P0590,variance,unclear,Only an ablation figure compares seeds and the checklist claims error bars without pointing to them; the main result tables are not shown with any spread.
+P0591,compute,unclear,"The excerpt contains no implementation or compute section and is truncated, so whether hardware or time is reported cannot be determined."
+P0594,compute,none,A theory paper with a small 2D Gaussian-mixture simulation; nothing in the text states hardware or runtime.
+P0616,compute,unclear,"Training time (10 minutes for 500,000 steps) and sampling time are stated but no hardware, so neither amount nor hardware_only fits cleanly."
+P0639,compute,none,Experimental setup and additional implementation details are shown with hyperparameters only; no hardware or training time is stated.
+P0671,compute,unclear,"GPU memory use and inference latency are reported but no GPU type or training time, and the implementation details section is cut off."
+P0672,compute,none,A theory paper with simulation figures; no hardware or runtime is stated anywhere in the text.
+P0677,compute,unclear,"Appendix E is said to report the average computational cost of each method class, but that content is cut off, so hardware and time cannot be checked."
+P0681,compute,unclear,"The excerpt has no implementation or training details section and is truncated, so compute reporting cannot be determined."
+P0693,compute,unclear,"Implementation details defer to Appendix E.2, which is not shown; the visible text names backbones and seeds but no hardware or time."
+P0720,variance,no,"Results tables show single values without spread, and the setup and appendix mention no seeds or repeated runs."
+P0825,variance,no,"The full (untruncated) text describes small synthetic experiments with no seeds, repeated runs, error bars or intervals."
+P0888,variance,no,"The only standard deviation is for solver iteration counts in Table 5; the main BER results are reported with no seeds, repeats or error bars."
+P0907,variance,no,"Implementation details and results claims give point values only; nothing mentions seeds, repeated runs, standard deviations or intervals."
+P0932,variance,no,The seeds excerpt only refers to the absence of a seed dataset; main results are reported as point scores with no repeated runs or spread.
