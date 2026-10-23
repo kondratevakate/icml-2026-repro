@@ -699,3 +699,27 @@ seed 20261017); "accounts for the gap" as in Note 9-9, applied to the medical mi
 * T4 entry threshold and documentation: on the ICML 2026 frame papers, gap adjusted for P9 data_scale (not_stated a
   category); within each group, mean teams for papers with versus without code `released`, main_data_access `open`,
   synthetic_or_sample_release `yes` (unclear excluded), difference with bootstrap CI.
+
+## Note 9-12 (2026-10-23, adversarial checks of the post hoc claims, frozen before computing)
+
+Kate asked to try to refute the main claims. Each test states in advance what would refute the claim. Script
+`posthoc_p9_adversarial.py`, output `results/p9_adversarial.json`; bootstrap and MH as in Notes 9-9 to 9-11.
+
+* F1, "life-science papers document more" (code `released`, main_data_access `open`, weights_release `yes`, variance
+  `yes`): refuted for a field if any of these fails: (i) leaving out each venue-year in turn, every MH difference > 0;
+  (ii) coder 1 codes alone and coder 2 codes alone, CI lower bound > 0; (iii) only papers whose excerpt was not
+  truncated, CI lower bound > 0; (iv) MH over venue-year by excerpt-length tertile, CI lower bound > 0.
+* F2, "medical papers are decided less often in ICML 2026" (attempted papers, Note 9-10 units): refuted if any fails:
+  (i) label permutation among attempted papers (2,000, seed 20261017), two-sided p < 0.05; (ii) clinical-only and
+  life_science-only labels versus other, each CI upper bound < 0; (iii) dropping every logbook of the team with the
+  most medical attempts, CI upper bound < 0.
+* F3, "the gap is depth of the crowd, not the papers": (i) decided by the first team's first logbook only, one per
+  paper; if this gap is at least half of the all-team gap, depth alone does not explain it; (ii) that first-logbook
+  gap MH-adjusted for the first team's namespace (teams with both kinds of first attempts); if the adjusted gap is
+  under half and its CI includes 0, the residual is attributed to which teams take medical papers; (iii) the
+  within-team claim-level difference recomputed without the team with the most medical attempts; refuted if its CI
+  upper bound < 0 and its point estimate is below -5 points.
+* F4, "a decided first logbook does not draw a second team to medical papers": difference in the herding effect
+  (medical minus other) with bootstrap CI; the contrast is supported only if the CI upper bound < 0.
+* F5, "stated practices poorly predict what reproducers obtained": A9.4 kappas recomputed with ref1 codes alone, ref2
+  codes alone, and on papers whose logbook evidence was not truncated; refuted if any code or data kappa >= 0.40.
