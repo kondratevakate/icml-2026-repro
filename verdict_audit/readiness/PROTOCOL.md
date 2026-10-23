@@ -780,3 +780,8 @@ check, and does that explain the claim-level and full-verification gaps?
   MH over team by check_cost strata; K3 fully_verified difference MH over first-team strength (Note 9-13) by the
   paper's share of costly claims (0, up to half, over half). Claim cost "accounts" for a gap if the adjusted estimate
   is under half the unadjusted one with a CI including 0; otherwise it does not.
+
+## Note 9-16 (2026-10-23, before the claim coding beyond batch 000)
+
+To limit the number of instances, each claim coder instance after claim1 batch 000 codes four to six consecutive
+batches of 50 (same prompt, extended to list several sheets, one output file per batch). Roles stay separate.
