@@ -723,3 +723,22 @@ Kate asked to try to refute the main claims. Each test states in advance what wo
   (medical minus other) with bootstrap CI; the contrast is supported only if the CI upper bound < 0.
 * F5, "stated practices poorly predict what reproducers obtained": A9.4 kappas recomputed with ref1 codes alone, ref2
   codes alone, and on papers whose logbook evidence was not truncated; refuted if any code or data kappa >= 0.40.
+
+## Note 9-13 (2026-10-23, extended post hoc experiments, frozen before computing)
+
+Note 9-12 replaced "depth of the crowd" by "which teams take medical papers" and found the decided gap mainly in
+clinical papers. Kate asked to test this numerically and to extend the experiments. Script `posthoc_p9_extended.py`,
+output `results/p9_extended.json`; units, bootstrap and MH as in Notes 9-10 to 9-12.
+
+* E1, team strength. A team's strength on a paper = share of its other attempted ICML 2026 papers (this paper left
+  out) on which its own latest logbook was decided; fewer than 3 other papers = category `few`. Compare the first
+  team's strength on medical versus other papers (difference in means, bootstrap). Adjust the first-logbook gap and
+  the all-team decided gap for the first team's strength (tertiles of the pooled values, plus `few`). The
+  composition explanation is supported if both adjusted gaps are under half the unadjusted ones with CIs including 0.
+* E2, team experience: number of ICML 2026 papers the first team attempted (tertiles); same adjustments and rule.
+* E3, clinical versus life_science separately against other papers: the four documentation fields (as F1, MH over
+  venue-year) and the ICML 2026 decided gap with and without the E1 adjustment.
+* E4, outcome definitions for the decided gap: fully verified (some logbook verified every claim it rated), any
+  falsified claim, no decisive verdict; unadjusted and E1-adjusted.
+* E5, documentation by venue family: vision venues (CVPR, ICCV, ECCV) versus learning venues (ICLR, ICML, NeurIPS),
+  the four fields, MH over venue-year within family.
