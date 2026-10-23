@@ -785,3 +785,22 @@ check, and does that explain the claim-level and full-verification gaps?
 
 To limit the number of instances, each claim coder instance after claim1 batch 000 codes four to six consecutive
 batches of 50 (same prompt, extended to list several sheets, one output file per batch). Roles stay separate.
+
+## Note 9-17 (2026-10-23, extension sample for Q9.4, frozen before any paper is drawn)
+
+Kate chose to extend the Q9.4 reference standard (claim 7) with a sample, not the whole challenge.
+
+* Units: 300 drawn at random (seed 20261023, sorted ids) from the 1,709 attempted ICML 2026 papers outside the P9
+  frame (all are non-medical; candidates labelled `no` excluded as in Note 9-10). Frame file
+  `results/p9_ext_frame.json` (group `ext`), written and hashed before any full text is fetched.
+* Full texts and excerpts exactly as in Protocol 9 (`fetch_p9.py run --frame`, `build_p9_excerpts.py`); papers
+  without a full text are counted, not replaced.
+* Full-text coding: the unchanged coder prompt, two blind coders (roles ext1, ext2), batches of 20, several
+  batches per instance as in Note 9-16. Reference coding: the unchanged `REF_PROMPT.md`, two blind coders (roles
+  refx1, refx2) on the same logbook sheets as Note 9-7.
+* Full-text fields as in Note 9-5: coder 1 (ext1) codes for code, main_data_access and weights_release if their
+  kappa on this sample is at least 0.80, otherwise every disagreement on that field is adjudicated. Reference
+  disagreements are all adjudicated (Note 9-6 procedure).
+* Analysis (`analyze_p9_ext.py`, `results/p9_ext.json`): the three A9.4 agreement tables (sensitivity, specificity,
+  kappa) on the extension sample alone and pooled with the 222 frame papers. Claim 7 is strengthened if pooled code
+  and data kappas stay below 0.40; it is weakened if either reaches 0.40 or more.
