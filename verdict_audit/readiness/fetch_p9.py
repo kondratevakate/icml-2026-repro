@@ -233,9 +233,10 @@ def fetch_one(p: dict, vidx: dict) -> dict:
     return dict(rec, status="no_fulltext" if aid or url else status)
 
 
-def run(limit: int | None) -> None:
+def run(limit: int | None, frame_path: Path | None = None) -> None:
+    """frame_path: another frame in the same format (Note 9-17 extension); default the P9 frame."""
     META.mkdir(parents=True, exist_ok=True)
-    frame = json.loads((HERE / "results" / "p9_frame.json").read_text(encoding="utf-8"))
+    frame = json.loads((frame_path or HERE / "results" / "p9_frame.json").read_text(encoding="utf-8"))
     vidx = json.loads((META / "venue_index.json").read_text(encoding="utf-8"))
     done = done_keys()
     todo = [p for p in order(frame) if key_of(p) not in done][:limit]
@@ -259,4 +260,7 @@ if __name__ == "__main__":
     if mode == "index":
         index()
     else:
-        run(int(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[2] == "--limit" else None)
+        args = sys.argv[2:]
+        lim = int(args[args.index("--limit") + 1]) if "--limit" in args else None
+        fp = Path(args[args.index("--frame") + 1]) if "--frame" in args else None
+        run(lim, fp)
