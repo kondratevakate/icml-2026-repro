@@ -54,6 +54,7 @@ STEPS = [
     ("p9-areas", "readiness", [["posthoc_p9_areas.py"]], ["results/p9_areas.json"], [], {}),
     ("p9-uptake", "readiness", [["posthoc_p9_uptake.py"]], ["results/p9_uptake.json"], [], {}),
     ("p9-adversarial", "readiness", [["posthoc_p9_adversarial.py"]], ["results/p9_adversarial.json"], [], {}),
+    ("p9-extended", "readiness", [["posthoc_p9_extended.py"]], ["results/p9_extended.json"], [], {}),
 ]
 
 
