@@ -758,3 +758,25 @@ Script `posthoc_p9_more.py`, output `results/p9_more.json`; units and team stren
   within entry week. Supported if both CI upper bounds < 0.
 * G4, within-team claim-level difference for clinical and life_science separately. Refuted for a subgroup if its CI
   upper bound < 0 and its estimate is below -5 points.
+
+## Note 9-15 (2026-10-23, claim-text coding, frozen before any claim is coded)
+
+Kate asked for more coding to test the claims further. Question: do medical papers make claims that are costlier to
+check, and does that explain the claim-level and full-verification gaps?
+
+* Units: every distinct claim text (normalised) rated in any logbook of the 110 attempted medical ICML 2026 papers,
+  and of a random 110 of the 1,821 attempted other papers (seed 20261023, sorted ids). Builder
+  `build_p9_claims.py`; keys and sheets in `data/p9/` (git-ignored); codes in `codes/p9/claims/`.
+* Two blind coders (claude-sonnet-5-5 subagents, roles claim1 and claim2), batches of 50, claim text only (no title,
+  no paper id, no group, no verdict); prompt `codes/p9/CLAIM_PROMPT.md`. Fields: check_cost (`inference_only`: one run
+  of released or easily rebuilt artifacts settles it; `retrain`: the method must be trained; `large_scale`: many runs,
+  large models or datasets, or broad sweeps; `analytic`: a proof or derivation, no experiment; `unclear`),
+  quantitative (`yes`/`no`: states a number or metric value), comparison (`yes`/`no`: against a baseline, prior work
+  or state of the art). Cohen's kappa per field. Every disagreement is adjudicated as in Note 9-6
+  (claude-opus-5-5, labels in random order, reason required). Claim texts can reveal the domain; coders are blind to
+  the group label, not to the subject.
+* Analysis (`posthoc_p9_claims.py`, `results/p9_claims.json`): K1 share of `retrain` or `large_scale` claims and of
+  quantitative and comparison claims by group, bootstrap over papers. K2 within-team claim-level decisive difference
+  MH over team by check_cost strata; K3 fully_verified difference MH over first-team strength (Note 9-13) by the
+  paper's share of costly claims (0, up to half, over half). Claim cost "accounts" for a gap if the adjusted estimate
+  is under half the unadjusted one with a CI including 0; otherwise it does not.
