@@ -809,3 +809,11 @@ Kate chose to extend the Q9.4 reference standard (claim 7) with a sample, not th
 
 Full-text and logbook sheets hold up to 15,000 characters per paper, so each extension coder instance codes one
 batch of 20 (the original Protocol 9 procedure), not several as Note 9-17 allowed.
+
+## Note 9-19 (2026-10-23, state of the Note 9-17 extension when the thread was closed)
+
+All 300 extension papers have full text and were coded by ext1, ext2, refx1 and refx2 (codes in `codes/p9/ext/`).
+Agreement: full-text code and main_data_access below 0.80, so both are to be adjudicated; weights_release kappa
+0.97; reference code_used 0.72, data_obtained 0.73, weights_used 0.52. The 302 disagreements are in adjudication
+sheets (`data/p9/ext_adj_sheets/`, git-ignored) but have not been adjudicated, and `analyze_p9_ext.py run` has not
+been executed. Claim 7 in the submitted abstract rests on the 222 frame papers only.

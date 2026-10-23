@@ -1,6 +1,6 @@
-# Votes are the wrong primitive for falsification: aggregating verdicts in a crowd of reproduction agents
+# From scarcity to abundance: when AI agents reproduce every paper, who decides who is right?
 
-[Author name], [affiliation]
+Ekaterina Kondrateva, [Hertie affiliation, exact name to confirm]; Maastricht University
 
 Target: Perspectives on Scientific Error 9 (PSE9), Copenhagen, 2027. The
 submission format is not yet known (no PSE9 call found on 2026-10-18); this
@@ -11,27 +11,28 @@ DRAFT, 2026-10-18. Not peer reviewed. All numbers are traceable to files in
 
 ## Abstract
 
-The ICML 2026 agent reproduction challenge produced thousands of public
-reproduction logbooks, each scored claim by claim by a single LLM judge. Umoh
-[1] showed that this judge is stable on fixed input (Krippendorff's alpha
-0.874) while verdicts on the same claim from different logbooks agree poorly
-(alpha 0.229). We ask what follows for turning many teams' verdicts into one.
+For years the reproducibility crisis was a problem of scarcity: reproductions
+were costly, so most published claims were never checked. Agentic reproduction
+removes that scarcity, and the bottleneck moves from running the checks to
+deciding between them. In the ICML 2026 agent reproduction challenge, a single
+LLM judge scored public reproduction logbooks claim by claim; Umoh [1] showed
+that the judge is stable on fixed input (Krippendorff's alpha 0.874) while
+verdicts on the same claim from different logbooks agree poorly (alpha 0.229).
 On the public verdict snapshot (6,885 logbooks; 4,992 claims rated by at least
-two teams), agreement is weakest exactly where it matters: when one team
-reports a claim falsified, another team on the same claim also reports it
-falsified 30% of the time, against 69% for verified. Simple majority and a
-binary Dawid-Skene model recover one and none, respectively, of the four
-falsifications the organisers confirmed; in three of the four, the judge had
-marked the logbook the organisers cite as falsified, and aggregation outvoted
-it. Later logbooks that report a falsification against the first logbook's
-verdict are rated higher quality by the judge, yet the final plurality sides
-with them in only 35% of 834 such pairs. Near-verbatim copying between
-logbooks is rare and barely changes agreement, and a natural experiment on
-judge latency gives no clear evidence that later teams followed published
-verdicts. Which agent or model produced a logbook cannot be recovered from its
-text. We propose adjudication instead of votes for any claimed falsification,
-verdicts on several axes instead of one label, success criteria fixed before
-launch, and independence and provenance enforced by design.
+two teams), disagreement is worst exactly where it matters to an author: when
+one team reports a claim falsified, another team on the same claim also
+reports it falsified 30% of the time, against 69% for verified. Pooling the
+verdicts erases most falsifications: simple majority and a binary Dawid-Skene
+model recover one and none, respectively, of the four falsifications the
+organisers confirmed, and in three of the four the judge had marked the
+logbook the organisers cite as falsified, only to be outvoted. Later logbooks
+that report a falsification against the first logbook's verdict are rated
+higher quality by the judge, yet the final plurality sides with them in only
+35% of 834 such pairs. Cheap reproduction does not end the crisis; it turns it
+into a problem of adjudication. We propose adjudication instead of votes for
+any claimed falsification, verdicts on several axes instead of one label,
+success criteria fixed before launch, and independence and provenance enforced
+by design.
 
 ## 1 Introduction
 
