@@ -1,0 +1,30 @@
+item_id,field,label,reason
+C0965,comparison,yes,The +2.37 point improvement is relative to a setting without pretraining.
+C0968,check_cost,inference_only,Leakage rates come from running the existing models on the test questions.
+C0968,comparison,no,The claim ranks evaluated models rather than comparing a method against a baseline.
+C0969,quantitative,yes,The claim states the weights alpha=beta=1.0.
+C0975,check_cost,inference_only,The oracle accuracy is obtained by running inference on MedQA.
+C0980,quantitative,yes,The claim states a ratio of approximately 50%.
+C0981,check_cost,analytic,"The claim describes the training strategy by definition, not an experimental result."
+C0982,check_cost,inference_only,The error analysis comes from running the repair loop and categorizing failures.
+C0985,check_cost,large_scale,Skill-wise results across multiple frontier models require many evaluation runs.
+C0988,check_cost,inference_only,Characterizing a designed sensor needs one run of the design pipeline and analysis.
+C0988,comparison,no,"Equivalence to natural sensors is a functional characterization, not a comparison against a baseline method."
+C1002,check_cost,large_scale,Establishing systematic limitations requires evaluating multiple MLLMs across the benchmark.
+C1002,comparison,yes,The claim contrasts its findings with what existing benchmarks reflect.
+C1010,check_cost,inference_only,The design primitives are demonstrated by running the design method in silico.
+C1019,check_cost,inference_only,AUROC with a pretrained LLM backbone and verification is obtained by running inference.
+C1021,comparison,yes,Multiplicative probes are compared against an additive probe baseline.
+C1029,check_cost,retrain,Showing diversity collapse requires running on-policy distillation training.
+C1032,check_cost,analytic,The claim defines the benchmark pipeline and metrics.
+C1036,check_cost,large_scale,Accuracy trends across strata and categories for multiple models require many evaluation runs.
+C1038,check_cost,analytic,The claim is a theoretical analysis of spectral modes and regularization.
+C1040,check_cost,inference_only,Pocket recovery can be checked by running the model on the target protein.
+C1053,check_cost,analytic,The claim describes the method's design by definition.
+C1056,comparison,no,The claim ranks evaluated systems rather than comparing a proposed method against a baseline.
+C1064,check_cost,unclear,Human expert evaluation and a user study cannot be settled by a computational run category.
+C1070,check_cost,large_scale,Evaluating 16 scenarios with teacher-student training settings requires many runs.
+C1071,check_cost,analytic,The claim describes the architecture and embedding scheme by definition.
+C1071,quantitative,yes,"The claim states numeric architecture values such as 2 layers, 256 features and 16 heads."
+C1075,check_cost,large_scale,Averaging solve-time reductions over many MIPLIB instances requires many solver runs.
+C1079,check_cost,inference_only,Decoy fallback rates come from running existing models on the task.

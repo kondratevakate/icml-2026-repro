@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0380,check_cost,analytic,"The claim describes the pretraining objective, a definitional statement."
+C0381,check_cost,analytic,"The claim describes how the framework aligns models, a definitional statement."
+C0386,check_cost,analytic,"The claim describes the module-wise factor localization design, a definitional statement."
+C0387,check_cost,large_scale,"The result spans five medical benchmarks with a baseline comparison, requiring many runs."
+C0400,check_cost,inference_only,Pass rates of an API model under a fixed repair protocol can be checked by inference runs without training.
+C0402,quantitative,yes,"The claim states a number (32,000 parameters)."
+C0403,quantitative,yes,The claim states numbers of demonstrations and tolerances.
+C0413,check_cost,analytic,"The claim describes the pruning procedure, a definitional statement."
+C0413,quantitative,yes,The claim states a number (90% pruning).
+C0414,check_cost,inference_only,Scoring an API model on one benchmark task needs only inference runs.
+C0417,check_cost,large_scale,Improvement across nine downstream tasks requires many benchmark runs.
+C0419,check_cost,analytic,"The claim describes the factorized surrogate architecture, a definitional statement."
+C0423,check_cost,analytic,"The claim describes the model components, a definitional statement."
+C0429,check_cost,analytic,"The claim describes the two method variants, a definitional statement."
+C0439,check_cost,inference_only,The benchmark construction and test set can be checked by inspecting the released benchmark.
+C0448,check_cost,inference_only,The task statistics can be computed from the released benchmark data.
+C0452,check_cost,analytic,"The claim describes the bit-width allocation procedure, a definitional statement."
+C0453,comparison,yes,The theorems contrast Isolation Forest against k-NN as the reference method.
+C0456,check_cost,retrain,Attention visualizations require RFT-trained models.
+C0463,check_cost,inference_only,The difficulty-level proportions can be checked by inspecting the released dataset.
+C0464,check_cost,analytic,"The claim describes the caching mechanism, a definitional statement."
+C0473,check_cost,analytic,"The claim describes what the post-training framework does, a definitional statement."
+C0477,check_cost,large_scale,Layer-wise alignment analysis across many vision and language models requires many runs.
+C0478,check_cost,large_scale,Evaluation on about 277k UK Biobank participants against multiple baselines is a large-data experiment.
+C0478,quantitative,yes,"The claim states numbers (N about 277,291 and V=66)."
+C0480,check_cost,large_scale,"Multiple ablations over masking, decoder, losses and scale are broad sweeps."
+C0486,check_cost,large_scale,Inter-subject consistency is computed across many language and vision models.
+C0490,check_cost,retrain,Comparing allocation strategies requires fitting the surrogate and running the method across partition settings.
+C0495,comparison,no,"The claim concerns ranking shifts among evaluated models, not a method compared to a baseline."
+C0498,check_cost,inference_only,The instance count can be checked by inspecting the released benchmark.
+C0511,check_cost,inference_only,The dataset size and style coverage can be checked by inspecting the released dataset.
+C0515,comparison,yes,"The theorem states the student improves on the teacher risk, comparing against the teacher as reference."
+C0518,check_cost,inference_only,The benchmark skill categories can be checked by inspecting the released benchmark.
+C0519,check_cost,large_scale,Evaluating across many diseases on a large UK Biobank cohort with significance testing is a large-scale experiment.
+C0522,check_cost,large_scale,Results across 11 datasets with baseline comparisons require many runs.
+C0525,comparison,yes,The theorems contrast the Isolation Forest threshold with the k-NN threshold as reference.
+C0528,check_cost,inference_only,Memory storage ratios can be checked by computing storage for the stated configurations without training.
+C0531,quantitative,yes,The claim states explicit sample complexity rates O(log 1/epsilon) versus O(1/epsilon^2).
+C0533,quantitative,yes,The claim states a number (target level alpha = 0.2).
+C0534,check_cost,unclear,Being the first such benchmark is a novelty claim that no experiment or derivation settles.

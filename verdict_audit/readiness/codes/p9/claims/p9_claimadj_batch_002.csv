@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0241,check_cost,analytic,"The claim describes the method pipeline design, which is settled by definition rather than an experiment."
+C0243,check_cost,analytic,"The claim describes how the search space is constructed, a definitional statement needing no experiment."
+C0247,check_cost,large_scale,Showing that existing models fail across cell culture and tissue imaging data requires evaluating many models on multiple datasets.
+C0253,check_cost,large_scale,The correlation is computed across many language and vision models on broad benchmarks.
+C0253,comparison,no,"The claim contrasts the correlations of two model families, not a method against a baseline or prior work."
+C0264,check_cost,analytic,"The claim states the data split and preprocessing setup, which is descriptive with no experiment."
+C0266,check_cost,large_scale,Extending comparisons across further predictors and datasets is a broad multi-run experiment.
+C0267,check_cost,analytic,"The claim describes the training method design and prompt format, a definitional statement."
+C0269,check_cost,inference_only,Agent success rates with API models on one benchmark can be checked by running the released system without training.
+C0272,comparison,no,The claim reports SA-Merging scores without naming any baseline or prior work.
+C0273,comparison,yes,"The theorem states that one strategy outperforms the alternative of expanding the range, a comparison against a reference strategy."
+C0275,check_cost,unclear,The claim is a position argument about evaluation practice with no clear experimental or analytic check.
+C0277,quantitative,no,"The claim states only a direction of error difference, with no number or metric value."
+C0278,check_cost,unclear,The claim is too fragmentary to determine what check would settle it.
+C0281,check_cost,large_scale,Checking that one pretrained model replaces specialized baselines across diverse tasks requires many benchmark runs.
+C0282,comparison,yes,Improved sample efficiency and generalization implies a comparison against baselines.
+C0284,comparison,yes,The rate is explicitly stated as improving over the non-variance-reduced Theorem 6 rate.
+C0285,check_cost,inference_only,Zero-shot generalization without fine-tuning can be checked by running the pretrained model.
+C0288,check_cost,large_scale,Outperforming state-of-the-art models on multiple benchmarks requires many runs across benchmarks.
+C0291,check_cost,analytic,"The claim describes the four pipeline stages of the method, a definitional statement."
+C0293,check_cost,analytic,"The claim describes how the method is implemented in a library, settled by inspection rather than experiment."
+C0294,comparison,yes,The ablation compares the full PRISM against naive variants serving as baselines.
+C0295,check_cost,analytic,"The claim describes the regularizer design, a definitional statement."
+C0301,check_cost,analytic,"The claim describes the agent roles and coordination design, a definitional statement."
+C0311,comparison,yes,The theorem contrasts RLVR-trained policies against SFT-trained policies as the reference.
+C0312,check_cost,inference_only,The dataset size and sources can be checked by inspecting the released dataset.
+C0313,quantitative,yes,The claim states a number (over 500k medical history sequences).
+C0322,quantitative,yes,The claim states explicit bound values and an improvement factor.
+C0323,check_cost,large_scale,Comparing against seven multi-task optimizers requires many training runs.
+C0329,check_cost,inference_only,Detection-time experiments on simulation environments can be run without training the method.
+C0332,check_cost,inference_only,The dataset duration and content can be checked by inspecting the released dataset.
+C0334,check_cost,retrain,Analyzing latent usage requires trained SegFormer and U-Net segmentation models.
+C0334,comparison,no,The claim contrasts two analyzed architectures rather than comparing a method against a baseline.
+C0338,check_cost,retrain,Obtaining the MedCoG efficiency metrics requires building and running the method workflow optimization.
+C0342,comparison,no,"The claim compares backbones within the paper design, not against a baseline or prior work."
+C0345,check_cost,large_scale,Outperforming state-of-the-art baselines on multiple real-world datasets requires many runs.
+C0348,check_cost,large_scale,Checking self-reported versus independently measured F1 across nearly all submitted algorithms requires evaluating many algorithms.
+C0348,comparison,yes,The claim compares self-reported scores of algorithms against independent evaluation results.
+C0364,check_cost,inference_only,Comparing a released 7B model against named model scores needs only inference runs.
+C0369,check_cost,analytic,The trap-free property of the Green function potential is a theoretical property established by derivation.

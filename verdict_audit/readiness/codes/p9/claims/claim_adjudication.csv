@@ -1,0 +1,310 @@
+item_id,field,label,reason
+C0001,comparison,no,Improvement with reference set size is an internal trend; no baseline or prior work is named.
+C0011,quantitative,yes,The claim states explicit approximation factors such as (2+2γ).
+C0016,check_cost,large_scale,An ablation over temperature and density resolution is a sweep of many runs.
+C0017,check_cost,inference_only,Counting the tasks in the released benchmark settles it.
+C0020,quantitative,yes,The claim states a number (65 patients).
+C0020,comparison,no,"It compares algorithms' stability profiles, not a method against a baseline or prior work."
+C0023,check_cost,retrain,Ranking methods on these systems requires fitting the methods.
+C0027,comparison,yes,Accuracy with reasoning chains is compared against training without them as a baseline.
+C0032,quantitative,yes,The claim states numeric values such as probability 2/3 and a sample bound.
+C0044,check_cost,retrain,Benchmarking MiAE requires training the model.
+C0046,check_cost,inference_only,Inspecting the released dataset collection settles the count.
+C0050,check_cost,inference_only,Computing the correlation with an existing representation needs one run.
+C0054,check_cost,unclear,The claim is too vague to say what experiment would settle it.
+C0055,comparison,yes,Random partitions serve as a baseline against which degradation is measured.
+C0058,check_cost,retrain,Varying the robustness radius requires training the robust model at a few settings.
+C0063,check_cost,large_scale,Eight tasks on two datasets with several baselines require many runs.
+C0069,comparison,yes,SFT complexity is explicitly compared against RLVR.
+C0071,check_cost,large_scale,Determining the top score requires evaluating many models on the benchmark.
+C0072,check_cost,inference_only,The ablation toggles inference-time pipeline components without training.
+C0074,check_cost,unclear,No setting or metric is specified to determine the checking cost.
+C0076,check_cost,large_scale,Correlating with general benchmarks requires evaluating many LLMs.
+C0078,quantitative,yes,The claim states numeric attack strengths ε of 0.01 and 0.02.
+C0090,check_cost,large_scale,"The claim spans several models and feedback types, requiring many agentic runs."
+C0090,comparison,yes,Performance with feedback is compared against the no-feedback baseline.
+C0091,comparison,yes,The method is contrasted with standard CTMs.
+C0094,comparison,no,"The proposition is a structural impossibility result, not a comparison against a baseline."
+C0095,comparison,yes,The definition is presented as generalizing prior ℓ-smoothness work.
+C0098,check_cost,retrain,Finding optimal field sizes across environment widths requires fitting/optimizing the model.
+C0099,check_cost,large_scale,Many SFT plus RLVR training runs across trace counts are needed.
+C0100,comparison,yes,VJEPA is explicitly contrasted with deterministic JEPA.
+C0103,check_cost,analytic,"This is a design description of the method checked by definition, not experiment."
+C0107,quantitative,no,No number or metric value is stated.
+C0109,check_cost,analytic,This describes the method's construction rather than an experimental outcome.
+C0110,comparison,yes,Steering is said to improve performance relative to the unsteered baseline.
+C0112,comparison,yes,SSO is contrasted with Muon and MuonSphere.
+C0116,check_cost,inference_only,Certification with the existing LLaVA-Guard model needs no training.
+C0121,check_cost,analytic,"This is a feature description of the software, not an experimental result."
+C0123,check_cost,analytic,This describes constraints built into the representation by design.
+C0125,quantitative,yes,The claim states a number (1/10th of training steps).
+C0128,check_cost,inference_only,Best-of-N selection at fixed N is an inference-time procedure.
+C0134,check_cost,inference_only,Merging and timing existing checkpoints requires no training.
+C0136,check_cost,analytic,"This is a description of the approach's framing, not an experimental result."
+C0137,comparison,yes,The method is compared against supervised learning on labeled data alone.
+C0139,check_cost,large_scale,Multiple simulated and real-world benchmarks require many runs.
+C0141,check_cost,retrain,The connectivity model must be fitted to the recordings.
+C0143,quantitative,yes,The claim states numbers such as 800 instances and ε=0.001.
+C0152,comparison,yes,The certificate is related to classical prior certificates it recovers.
+C0153,check_cost,analytic,This describes the method's formulation by design.
+C0157,comparison,yes,The approach is said to generalize the gradient-flow approach of prior baselines.
+C0159,check_cost,inference_only,Running the verification procedure on Sudoku needs no training.
+C0160,check_cost,large_scale,Evaluating several frontier models requires many runs.
+C0164,check_cost,analytic,"This is an architecture description, not an experimental result."
+C0166,quantitative,no,Only scaling behaviour is described; no number or metric value is stated.
+C0167,check_cost,analytic,"This is a methodological reformulation, checked by definition."
+C0167,comparison,yes,It contrasts with endpoint-only feature matching used by prior approaches.
+C0168,quantitative,no,No number or metric value is stated.
+C0170,check_cost,large_scale,Results across model sizes and two benchmark suites require many runs.
+C0172,check_cost,analytic,This describes the method's design components.
+C0177,check_cost,analytic,"This describes the benchmark's design, not an outcome."
+C0182,check_cost,analytic,This describes the framework's design.
+C0184,check_cost,inference_only,Evaluating a released model on two benchmarks settles it.
+C0185,check_cost,inference_only,Swapping guideline text in an inference pipeline needs no training.
+C0187,check_cost,large_scale,Several reward-model families must be trained and evaluated.
+C0196,quantitative,yes,The claim states a numeric value (-2).
+C0201,check_cost,inference_only,Generation with and without retrieval is an inference-time comparison.
+C0204,check_cost,analytic,This describes the evaluator's dimensions by definition.
+C0212,check_cost,retrain,The method must be fitted on three datasets.
+C0213,check_cost,inference_only,The ablation removes an inference pipeline stage without training.
+C0213,comparison,yes,The ablated variant serves as a baseline for the comparison.
+C0216,check_cost,analytic,This describes the method's architecture components.
+C0219,check_cost,retrain,The VJEPA and baselines must be trained on the linear system.
+C0223,check_cost,unclear,The claim is too vague to determine what experiment would settle it.
+C0224,comparison,yes,It is positioned as strictly generalizing the prior Tensor Nuclear Norm.
+C0226,comparison,yes,It establishes equivalence to the prior formulation of Wu et al.
+C0228,quantitative,yes,The claim states numbers such as 300x and 248 perturbations.
+C0234,comparison,no,Resolving an open question is not a comparison against a baseline or prior method's performance.
+C0236,check_cost,large_scale,Sixteen agent trajectories per method with structure prediction require many runs.
+C0236,quantitative,yes,"The claim states numbers (16 trajectories, 1,000 bootstrap samples)."
+C0240,check_cost,retrain,Surrogate models must be trained per target for retrieval.
+C0240,quantitative,yes,"The claim states numbers such as k=100,000 and 0.803%."
+C0241,check_cost,analytic,"The claim describes the method pipeline design, which is settled by definition rather than an experiment."
+C0243,check_cost,analytic,"The claim describes how the search space is constructed, a definitional statement needing no experiment."
+C0247,check_cost,large_scale,Showing that existing models fail across cell culture and tissue imaging data requires evaluating many models on multiple datasets.
+C0253,check_cost,large_scale,The correlation is computed across many language and vision models on broad benchmarks.
+C0253,comparison,no,"The claim contrasts the correlations of two model families, not a method against a baseline or prior work."
+C0264,check_cost,analytic,"The claim states the data split and preprocessing setup, which is descriptive with no experiment."
+C0266,check_cost,large_scale,Extending comparisons across further predictors and datasets is a broad multi-run experiment.
+C0267,check_cost,analytic,"The claim describes the training method design and prompt format, a definitional statement."
+C0269,check_cost,inference_only,Agent success rates with API models on one benchmark can be checked by running the released system without training.
+C0272,comparison,no,The claim reports SA-Merging scores without naming any baseline or prior work.
+C0273,comparison,yes,"The theorem states that one strategy outperforms the alternative of expanding the range, a comparison against a reference strategy."
+C0275,check_cost,unclear,The claim is a position argument about evaluation practice with no clear experimental or analytic check.
+C0277,quantitative,no,"The claim states only a direction of error difference, with no number or metric value."
+C0278,check_cost,unclear,The claim is too fragmentary to determine what check would settle it.
+C0281,check_cost,large_scale,Checking that one pretrained model replaces specialized baselines across diverse tasks requires many benchmark runs.
+C0282,comparison,yes,Improved sample efficiency and generalization implies a comparison against baselines.
+C0284,comparison,yes,The rate is explicitly stated as improving over the non-variance-reduced Theorem 6 rate.
+C0285,check_cost,inference_only,Zero-shot generalization without fine-tuning can be checked by running the pretrained model.
+C0288,check_cost,large_scale,Outperforming state-of-the-art models on multiple benchmarks requires many runs across benchmarks.
+C0291,check_cost,analytic,"The claim describes the four pipeline stages of the method, a definitional statement."
+C0293,check_cost,analytic,"The claim describes how the method is implemented in a library, settled by inspection rather than experiment."
+C0294,comparison,yes,The ablation compares the full PRISM against naive variants serving as baselines.
+C0295,check_cost,analytic,"The claim describes the regularizer design, a definitional statement."
+C0301,check_cost,analytic,"The claim describes the agent roles and coordination design, a definitional statement."
+C0311,comparison,yes,The theorem contrasts RLVR-trained policies against SFT-trained policies as the reference.
+C0312,check_cost,inference_only,The dataset size and sources can be checked by inspecting the released dataset.
+C0313,quantitative,yes,The claim states a number (over 500k medical history sequences).
+C0322,quantitative,yes,The claim states explicit bound values and an improvement factor.
+C0323,check_cost,large_scale,Comparing against seven multi-task optimizers requires many training runs.
+C0329,check_cost,inference_only,Detection-time experiments on simulation environments can be run without training the method.
+C0332,check_cost,inference_only,The dataset duration and content can be checked by inspecting the released dataset.
+C0334,check_cost,retrain,Analyzing latent usage requires trained SegFormer and U-Net segmentation models.
+C0334,comparison,no,The claim contrasts two analyzed architectures rather than comparing a method against a baseline.
+C0338,check_cost,retrain,Obtaining the MedCoG efficiency metrics requires building and running the method workflow optimization.
+C0342,comparison,no,"The claim compares backbones within the paper design, not against a baseline or prior work."
+C0345,check_cost,large_scale,Outperforming state-of-the-art baselines on multiple real-world datasets requires many runs.
+C0348,check_cost,large_scale,Checking self-reported versus independently measured F1 across nearly all submitted algorithms requires evaluating many algorithms.
+C0348,comparison,yes,The claim compares self-reported scores of algorithms against independent evaluation results.
+C0364,check_cost,inference_only,Comparing a released 7B model against named model scores needs only inference runs.
+C0369,check_cost,analytic,The trap-free property of the Green function potential is a theoretical property established by derivation.
+C0380,check_cost,analytic,"The claim describes the pretraining objective, a definitional statement."
+C0381,check_cost,analytic,"The claim describes how the framework aligns models, a definitional statement."
+C0386,check_cost,analytic,"The claim describes the module-wise factor localization design, a definitional statement."
+C0387,check_cost,large_scale,"The result spans five medical benchmarks with a baseline comparison, requiring many runs."
+C0400,check_cost,inference_only,Pass rates of an API model under a fixed repair protocol can be checked by inference runs without training.
+C0402,quantitative,yes,"The claim states a number (32,000 parameters)."
+C0403,quantitative,yes,The claim states numbers of demonstrations and tolerances.
+C0413,check_cost,analytic,"The claim describes the pruning procedure, a definitional statement."
+C0413,quantitative,yes,The claim states a number (90% pruning).
+C0414,check_cost,inference_only,Scoring an API model on one benchmark task needs only inference runs.
+C0417,check_cost,large_scale,Improvement across nine downstream tasks requires many benchmark runs.
+C0419,check_cost,analytic,"The claim describes the factorized surrogate architecture, a definitional statement."
+C0423,check_cost,analytic,"The claim describes the model components, a definitional statement."
+C0429,check_cost,analytic,"The claim describes the two method variants, a definitional statement."
+C0439,check_cost,inference_only,The benchmark construction and test set can be checked by inspecting the released benchmark.
+C0448,check_cost,inference_only,The task statistics can be computed from the released benchmark data.
+C0452,check_cost,analytic,"The claim describes the bit-width allocation procedure, a definitional statement."
+C0453,comparison,yes,The theorems contrast Isolation Forest against k-NN as the reference method.
+C0456,check_cost,retrain,Attention visualizations require RFT-trained models.
+C0463,check_cost,inference_only,The difficulty-level proportions can be checked by inspecting the released dataset.
+C0464,check_cost,analytic,"The claim describes the caching mechanism, a definitional statement."
+C0473,check_cost,analytic,"The claim describes what the post-training framework does, a definitional statement."
+C0477,check_cost,large_scale,Layer-wise alignment analysis across many vision and language models requires many runs.
+C0478,check_cost,large_scale,Evaluation on about 277k UK Biobank participants against multiple baselines is a large-data experiment.
+C0478,quantitative,yes,"The claim states numbers (N about 277,291 and V=66)."
+C0480,check_cost,large_scale,"Multiple ablations over masking, decoder, losses and scale are broad sweeps."
+C0486,check_cost,large_scale,Inter-subject consistency is computed across many language and vision models.
+C0490,check_cost,retrain,Comparing allocation strategies requires fitting the surrogate and running the method across partition settings.
+C0495,comparison,no,"The claim concerns ranking shifts among evaluated models, not a method compared to a baseline."
+C0498,check_cost,inference_only,The instance count can be checked by inspecting the released benchmark.
+C0511,check_cost,inference_only,The dataset size and style coverage can be checked by inspecting the released dataset.
+C0515,comparison,yes,"The theorem states the student improves on the teacher risk, comparing against the teacher as reference."
+C0518,check_cost,inference_only,The benchmark skill categories can be checked by inspecting the released benchmark.
+C0519,check_cost,large_scale,Evaluating across many diseases on a large UK Biobank cohort with significance testing is a large-scale experiment.
+C0522,check_cost,large_scale,Results across 11 datasets with baseline comparisons require many runs.
+C0525,comparison,yes,The theorems contrast the Isolation Forest threshold with the k-NN threshold as reference.
+C0528,check_cost,inference_only,Memory storage ratios can be checked by computing storage for the stated configurations without training.
+C0531,quantitative,yes,The claim states explicit sample complexity rates O(log 1/epsilon) versus O(1/epsilon^2).
+C0533,quantitative,yes,The claim states a number (target level alpha = 0.2).
+C0534,check_cost,unclear,Being the first such benchmark is a novelty claim that no experiment or derivation settles.
+C0534,comparison,yes,Claiming to be the first benchmark is an explicit comparison against prior work.
+C0540,check_cost,retrain,Robustness across tabular availability levels can only be checked by training and evaluating the method.
+C0541,check_cost,inference_only,"The selection rates come from running the trained chunking model on one genome, which a single inference run settles."
+C0543,check_cost,inference_only,Corpus size and composition can be checked by inspecting the released dataset.
+C0547,check_cost,analytic,"The claim describes the regulator's design by definition, with no experimental outcome."
+C0548,check_cost,retrain,Verifying the condition on four real-data experiments requires fitting teacher and self-distilled models.
+C0552,comparison,no,"The claim reports two models' scores against a task ceiling, not against a baseline or prior work."
+C0554,comparison,yes,The claim compares the distributed rate with the centralized rate as a reference.
+C0562,comparison,no,"Comparing logarithmic and linear fits is an internal analysis choice, not a comparison against a baseline or prior work."
+C0565,quantitative,yes,"The claim states numeric values (d=50, m=5000)."
+C0568,check_cost,retrain,"Evaluating the screening method on four datasets requires training it, without a broad sweep."
+C0576,check_cost,analytic,"The claim describes the method's computation pipeline by definition, with no experimental outcome."
+C0581,check_cost,analytic,"The claim describes the model's factorization design, with no reported experiment."
+C0583,check_cost,large_scale,Evaluating LLM KV cache compression across 13 LongBench-E tasks involves many benchmarks with large models.
+C0585,check_cost,analytic,The claim describes the alignment kernels by definition.
+C0590,check_cost,analytic,"The claim describes the merging procedure and its settings, with no experimental outcome."
+C0590,quantitative,yes,"The claim states numeric values (T=10, p=0.2)."
+C0593,check_cost,analytic,The claim describes the training objective and a complexity reduction that follows from derivation.
+C0593,quantitative,no,"Only asymptotic complexity orders are given, not a number or metric value."
+C0594,check_cost,analytic,"The claim is a design description plus a theorem, settled by derivation."
+C0599,check_cost,large_scale,"The agent's vulnerability-discovery comparison needs many costly LLM-agent runs on a benchmark, with no training."
+C0611,quantitative,yes,The claim states numeric values (alpha values and d=200).
+C0615,check_cost,large_scale,The claim involves distillation training of three models evaluated on six benchmarks.
+C0626,check_cost,analytic,The claim describes the loss construction by definition.
+C0626,quantitative,yes,The claim states counts (11 and 3 constraints).
+C0633,check_cost,large_scale,"Generalization is evaluated over seven QA datasets, which counts as many benchmarks."
+C0634,check_cost,unclear,"The evaluation used a held-out private dataset, so how it could be checked is unclear."
+C0635,quantitative,yes,The claim states a metric value (at least 99% accuracy).
+C0636,check_cost,analytic,"The claim describes the computational formulation (Equations 6-11), with no experimental outcome."
+C0639,check_cost,large_scale,The ranking covers 36 metrics across six datasets against baselines.
+C0640,check_cost,analytic,The claim describes the actor-loss objective by definition.
+C0645,check_cost,analytic,The claim describes the method's contrastive design.
+C0647,check_cost,analytic,"The claim describes the pretraining tasks and architecture, with no experimental outcome."
+C0648,comparison,yes,Retrofitting gains are measured against the non-retrofitted model as a baseline.
+C0651,check_cost,large_scale,The claim spans three large diffusion backbones.
+C0662,check_cost,inference_only,Backward-pass timings of differentiable solvers can be measured by running the released implementations.
+C0665,check_cost,inference_only,"The theorem is backed by an empirical check in a small 2x2 game, which a single cheap run settles."
+C0667,check_cost,analytic,The claim describes the adaptive penalty update rule by definition.
+C0668,comparison,no,"Ablating the method's own components is an internal comparison, not one against a baseline or prior work."
+C0672,check_cost,retrain,Validating the decomposition on CSI indices requires fitting forecasting models.
+C0674,check_cost,analytic,"The claim describes the training procedure by definition, with no experimental outcome."
+C0675,check_cost,large_scale,Agent benchmark runs with two frontier LLMs against baselines require many costly runs.
+C0677,check_cost,inference_only,TTFT speedups of a caching scheme can be measured by running the released system.
+C0679,check_cost,large_scale,"Speedups are measured across five problem families, which is a broad evaluation."
+C0681,check_cost,analytic,The claim describes a positional-encoding design.
+C0683,check_cost,inference_only,"The LLM agent is run without training, so evaluation runs settle it."
+C0684,check_cost,analytic,The claim describes the training-pipeline design.
+C0685,check_cost,retrain,Measuring the perplexity gap requires fine-tuning models with matched and mismatched optimizers.
+C0685,comparison,yes,The gap reduction is relative to unconstrained fine-tuning as a baseline.
+C0686,check_cost,inference_only,Probing and retrieval on edited embeddings can be checked by running existing models.
+C0687,quantitative,yes,The claim states a numeric value (alpha > 0.6).
+C0691,check_cost,analytic,The claim describes the model's purpose and design.
+C0709,check_cost,analytic,The claim describes the inference formulation by derivation.
+C0711,check_cost,analytic,The claim describes the adaptation architecture.
+C0712,check_cost,analytic,The claim describes the model's architectural components.
+C0714,quantitative,no,The claim reports no number or metric value.
+C0717,check_cost,analytic,The claim describes the model's training objective by definition.
+C0720,check_cost,large_scale,Agent benchmark comparison against multiple baselines requires many costly LLM-agent runs.
+C0721,check_cost,large_scale,Results across two benchmarks and two frontier LLMs require many costly agent runs.
+C0723,comparison,yes,The claim compares against standard TD(0) as a baseline.
+C0725,check_cost,retrain,Verifying the trained 7B model's accuracy depends on the method being trained.
+C0732,check_cost,large_scale,Evaluation spans 11 datasets against baselines.
+C0736,check_cost,large_scale,Evaluating several frontier models on two benchmark splits requires many large-model runs.
+C0736,comparison,no,"Recall and reasoning splits are compared, not a method against a baseline or prior work."
+C0737,check_cost,analytic,The claim describes the framework's components.
+C0739,check_cost,large_scale,Comparison against 12 baselines on six datasets is a broad evaluation.
+C0741,check_cost,inference_only,Accuracy and speedup of an attention approximation on a pretrained ViT can be measured in one run.
+C0750,check_cost,large_scale,Benchmarking against several methods on many synthetic and real datasets is a broad evaluation.
+C0756,comparison,yes,The improved rate is stated relative to the rate without variance reduction.
+C0757,check_cost,inference_only,The library's existence and features can be checked by running the released software.
+C0759,check_cost,analytic,The claim describes how the training tasks are defined.
+C0760,check_cost,analytic,The claim describes how rewards are defined.
+C0761,check_cost,analytic,The claim describes the mitigation algorithm by definition.
+C0763,check_cost,large_scale,The effect is measured across most models and metrics.
+C0766,check_cost,analytic,The claim describes the objective by definition.
+C0769,check_cost,large_scale,Many rollouts with a 120B model across three languages is large-scale compute.
+C0770,check_cost,analytic,The claim describes the method's design.
+C0772,check_cost,analytic,The claim describes the framework formulation.
+C0773,check_cost,analytic,The claim describes the partitioning procedure by definition.
+C0774,check_cost,analytic,The claim describes the optimizer's stages by definition.
+C0783,check_cost,inference_only,Checking the existence of the released interfaces needs only running the tool.
+C0791,check_cost,retrain,The sparse latent dictionary must be learned before its dimensions can be mapped to ICD concepts.
+C0792,comparison,no,Ablation removes components of the own method rather than comparing against a baseline or prior work.
+C0793,check_cost,analytic,"The claim describes how the dataset is constructed, which is a design statement without an experimental result."
+C0795,comparison,yes,Claiming superiority implies comparison against other idea-generation approaches.
+C0798,quantitative,yes,The theorem states an explicit regret bound expression with specific exponents.
+C0804,check_cost,analytic,"The claim describes the optimizer's design by definition, not an experimental result."
+C0811,check_cost,inference_only,KV cache reuse and accuracy can be measured by running inference on the named benchmarks.
+C0821,quantitative,yes,The claim states the number k=16.
+C0822,check_cost,large_scale,Five experimental settings each requiring trained autoencoders or VAEs amount to a broad set of runs.
+C0824,check_cost,inference_only,Inference speed and FLOP counts at one sequence length can be measured without training the models.
+C0827,check_cost,retrain,Obtaining the AUROC and baseline comparison requires training the model and methods on the benchmark.
+C0841,check_cost,inference_only,The divergence rates come from evaluating existing LLM configurations without training.
+C0842,check_cost,analytic,"The claim describes the method's design goals, not an experimental outcome."
+C0845,check_cost,retrain,Linear probing requires fitting probes on the representations.
+C0849,check_cost,analytic,The claim describes the method's mechanism by definition.
+C0851,comparison,no,"The degradation is across evaluation protocols, not a comparison against a baseline method."
+C0853,comparison,yes,The mitigation raising PSNR/SSIM implies comparison to the unmitigated baseline.
+C0860,check_cost,inference_only,Parameter count and supported features can be checked by building the model once.
+C0871,check_cost,large_scale,Comparison against many neural architectures on the PFam database requires many training runs.
+C0873,check_cost,large_scale,"Genome-wide imputation over about 2,100 slides across three cohorts is a large-scale computation."
+C0879,check_cost,unclear,The claim is vague about what experiment would establish explanation quality.
+C0881,check_cost,large_scale,Correlating calibration with accuracy requires evaluating many reward models across benchmark categories.
+C0885,check_cost,retrain,"The method must be fitted on synthetic data across sample sizes, which is small in scale."
+C0891,check_cost,inference_only,Identifying designs is one run of the design workflow without training.
+C0900,comparison,yes,Improving the rate implies comparison with the non-variance-reduced Lion rate.
+C0913,check_cost,large_scale,Six models across 22 metrics and two tasks constitute many benchmark runs.
+C0914,check_cost,retrain,Outperforming baselines requires training the method and baselines.
+C0918,check_cost,inference_only,Per-category success rates come from one evaluation run on the benchmark.
+C0921,check_cost,analytic,Memory growth of the formulation follows from derivation of tensor sizes.
+C0921,comparison,no,The claim describes memory scaling of formulations without comparing against a baseline result.
+C0923,check_cost,large_scale,Evaluating 11 LLMs constitutes many runs.
+C0924,check_cost,retrain,The policy framework must be fitted and simulated on real data to estimate the gain.
+C0930,check_cost,retrain,The sparse autoencoder must be trained to obtain latent units.
+C0937,check_cost,retrain,The conditional generative model must be trained to generate molecules.
+C0948,check_cost,retrain,Outperforming baselines requires training the diffusion bridge model.
+C0949,comparison,yes,The theorem relates IQ-Learn's policy to the behavioral cloning baseline.
+C0950,check_cost,analytic,"The claim describes the method's components by definition, not an experimental result."
+C0952,check_cost,inference_only,Event-based scores of a submitted algorithm on the test set can be obtained by one evaluation run.
+C0961,check_cost,retrain,"Evaluating the trained ClinTutor-R1 model requires training it, and the scaling sweep is modest."
+C0965,comparison,yes,The +2.37 point improvement is relative to a setting without pretraining.
+C0968,check_cost,inference_only,Leakage rates come from running the existing models on the test questions.
+C0968,comparison,no,The claim ranks evaluated models rather than comparing a method against a baseline.
+C0969,quantitative,yes,The claim states the weights alpha=beta=1.0.
+C0975,check_cost,inference_only,The oracle accuracy is obtained by running inference on MedQA.
+C0980,quantitative,yes,The claim states a ratio of approximately 50%.
+C0981,check_cost,analytic,"The claim describes the training strategy by definition, not an experimental result."
+C0982,check_cost,inference_only,The error analysis comes from running the repair loop and categorizing failures.
+C0985,check_cost,large_scale,Skill-wise results across multiple frontier models require many evaluation runs.
+C0988,check_cost,inference_only,Characterizing a designed sensor needs one run of the design pipeline and analysis.
+C0988,comparison,no,"Equivalence to natural sensors is a functional characterization, not a comparison against a baseline method."
+C1002,check_cost,large_scale,Establishing systematic limitations requires evaluating multiple MLLMs across the benchmark.
+C1002,comparison,yes,The claim contrasts its findings with what existing benchmarks reflect.
+C1010,check_cost,inference_only,The design primitives are demonstrated by running the design method in silico.
+C1019,check_cost,inference_only,AUROC with a pretrained LLM backbone and verification is obtained by running inference.
+C1021,comparison,yes,Multiplicative probes are compared against an additive probe baseline.
+C1029,check_cost,retrain,Showing diversity collapse requires running on-policy distillation training.
+C1032,check_cost,analytic,The claim defines the benchmark pipeline and metrics.
+C1036,check_cost,large_scale,Accuracy trends across strata and categories for multiple models require many evaluation runs.
+C1038,check_cost,analytic,The claim is a theoretical analysis of spectral modes and regularization.
+C1040,check_cost,inference_only,Pocket recovery can be checked by running the model on the target protein.
+C1053,check_cost,analytic,The claim describes the method's design by definition.
+C1056,comparison,no,The claim ranks evaluated systems rather than comparing a proposed method against a baseline.
+C1064,check_cost,unclear,Human expert evaluation and a user study cannot be settled by a computational run category.
+C1070,check_cost,large_scale,Evaluating 16 scenarios with teacher-student training settings requires many runs.
+C1071,check_cost,analytic,The claim describes the architecture and embedding scheme by definition.
+C1071,quantitative,yes,"The claim states numeric architecture values such as 2 layers, 256 features and 16 heads."
+C1075,check_cost,large_scale,Averaging solve-time reductions over many MIPLIB instances requires many solver runs.
+C1079,check_cost,inference_only,Decoy fallback rates come from running existing models on the task.

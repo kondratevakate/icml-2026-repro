@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0134,check_cost,inference_only,Merging and timing existing checkpoints requires no training.
+C0136,check_cost,analytic,"This is a description of the approach's framing, not an experimental result."
+C0137,comparison,yes,The method is compared against supervised learning on labeled data alone.
+C0139,check_cost,large_scale,Multiple simulated and real-world benchmarks require many runs.
+C0141,check_cost,retrain,The connectivity model must be fitted to the recordings.
+C0143,quantitative,yes,The claim states numbers such as 800 instances and ε=0.001.
+C0152,comparison,yes,The certificate is related to classical prior certificates it recovers.
+C0153,check_cost,analytic,This describes the method's formulation by design.
+C0157,comparison,yes,The approach is said to generalize the gradient-flow approach of prior baselines.
+C0159,check_cost,inference_only,Running the verification procedure on Sudoku needs no training.
+C0160,check_cost,large_scale,Evaluating several frontier models requires many runs.
+C0164,check_cost,analytic,"This is an architecture description, not an experimental result."
+C0166,quantitative,no,Only scaling behaviour is described; no number or metric value is stated.
+C0167,check_cost,analytic,"This is a methodological reformulation, checked by definition."
+C0167,comparison,yes,It contrasts with endpoint-only feature matching used by prior approaches.
+C0168,quantitative,no,No number or metric value is stated.
+C0170,check_cost,large_scale,Results across model sizes and two benchmark suites require many runs.
+C0172,check_cost,analytic,This describes the method's design components.
+C0177,check_cost,analytic,"This describes the benchmark's design, not an outcome."
+C0182,check_cost,analytic,This describes the framework's design.
+C0184,check_cost,inference_only,Evaluating a released model on two benchmarks settles it.
+C0185,check_cost,inference_only,Swapping guideline text in an inference pipeline needs no training.
+C0187,check_cost,large_scale,Several reward-model families must be trained and evaluated.
+C0196,quantitative,yes,The claim states a numeric value (-2).
+C0201,check_cost,inference_only,Generation with and without retrieval is an inference-time comparison.
+C0204,check_cost,analytic,This describes the evaluator's dimensions by definition.
+C0212,check_cost,retrain,The method must be fitted on three datasets.
+C0213,check_cost,inference_only,The ablation removes an inference pipeline stage without training.
+C0213,comparison,yes,The ablated variant serves as a baseline for the comparison.
+C0216,check_cost,analytic,This describes the method's architecture components.
+C0219,check_cost,retrain,The VJEPA and baselines must be trained on the linear system.
+C0223,check_cost,unclear,The claim is too vague to determine what experiment would settle it.
+C0224,comparison,yes,It is positioned as strictly generalizing the prior Tensor Nuclear Norm.
+C0226,comparison,yes,It establishes equivalence to the prior formulation of Wu et al.
+C0228,quantitative,yes,The claim states numbers such as 300x and 248 perturbations.
+C0234,comparison,no,Resolving an open question is not a comparison against a baseline or prior method's performance.
+C0236,check_cost,large_scale,Sixteen agent trajectories per method with structure prediction require many runs.
+C0236,quantitative,yes,"The claim states numbers (16 trajectories, 1,000 bootstrap samples)."
+C0240,check_cost,retrain,Surrogate models must be trained per target for retrieval.
+C0240,quantitative,yes,"The claim states numbers such as k=100,000 and 0.803%."

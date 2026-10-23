@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0534,comparison,yes,Claiming to be the first benchmark is an explicit comparison against prior work.
+C0540,check_cost,retrain,Robustness across tabular availability levels can only be checked by training and evaluating the method.
+C0541,check_cost,inference_only,"The selection rates come from running the trained chunking model on one genome, which a single inference run settles."
+C0543,check_cost,inference_only,Corpus size and composition can be checked by inspecting the released dataset.
+C0547,check_cost,analytic,"The claim describes the regulator's design by definition, with no experimental outcome."
+C0548,check_cost,retrain,Verifying the condition on four real-data experiments requires fitting teacher and self-distilled models.
+C0552,comparison,no,"The claim reports two models' scores against a task ceiling, not against a baseline or prior work."
+C0554,comparison,yes,The claim compares the distributed rate with the centralized rate as a reference.
+C0562,comparison,no,"Comparing logarithmic and linear fits is an internal analysis choice, not a comparison against a baseline or prior work."
+C0565,quantitative,yes,"The claim states numeric values (d=50, m=5000)."
+C0568,check_cost,retrain,"Evaluating the screening method on four datasets requires training it, without a broad sweep."
+C0576,check_cost,analytic,"The claim describes the method's computation pipeline by definition, with no experimental outcome."
+C0581,check_cost,analytic,"The claim describes the model's factorization design, with no reported experiment."
+C0583,check_cost,large_scale,Evaluating LLM KV cache compression across 13 LongBench-E tasks involves many benchmarks with large models.
+C0585,check_cost,analytic,The claim describes the alignment kernels by definition.
+C0590,check_cost,analytic,"The claim describes the merging procedure and its settings, with no experimental outcome."
+C0590,quantitative,yes,"The claim states numeric values (T=10, p=0.2)."
+C0593,check_cost,analytic,The claim describes the training objective and a complexity reduction that follows from derivation.
+C0593,quantitative,no,"Only asymptotic complexity orders are given, not a number or metric value."
+C0594,check_cost,analytic,"The claim is a design description plus a theorem, settled by derivation."
+C0599,check_cost,large_scale,"The agent's vulnerability-discovery comparison needs many costly LLM-agent runs on a benchmark, with no training."
+C0611,quantitative,yes,The claim states numeric values (alpha values and d=200).
+C0615,check_cost,large_scale,The claim involves distillation training of three models evaluated on six benchmarks.
+C0626,check_cost,analytic,The claim describes the loss construction by definition.
+C0626,quantitative,yes,The claim states counts (11 and 3 constraints).
+C0633,check_cost,large_scale,"Generalization is evaluated over seven QA datasets, which counts as many benchmarks."
+C0634,check_cost,unclear,"The evaluation used a held-out private dataset, so how it could be checked is unclear."
+C0635,quantitative,yes,The claim states a metric value (at least 99% accuracy).
+C0636,check_cost,analytic,"The claim describes the computational formulation (Equations 6-11), with no experimental outcome."
+C0639,check_cost,large_scale,The ranking covers 36 metrics across six datasets against baselines.
+C0640,check_cost,analytic,The claim describes the actor-loss objective by definition.
+C0645,check_cost,analytic,The claim describes the method's contrastive design.
+C0647,check_cost,analytic,"The claim describes the pretraining tasks and architecture, with no experimental outcome."
+C0648,comparison,yes,Retrofitting gains are measured against the non-retrofitted model as a baseline.
+C0651,check_cost,large_scale,The claim spans three large diffusion backbones.
+C0662,check_cost,inference_only,Backward-pass timings of differentiable solvers can be measured by running the released implementations.
+C0665,check_cost,inference_only,"The theorem is backed by an empirical check in a small 2x2 game, which a single cheap run settles."
+C0667,check_cost,analytic,The claim describes the adaptive penalty update rule by definition.
+C0668,comparison,no,"Ablating the method's own components is an internal comparison, not one against a baseline or prior work."
+C0672,check_cost,retrain,Validating the decomposition on CSI indices requires fitting forecasting models.
