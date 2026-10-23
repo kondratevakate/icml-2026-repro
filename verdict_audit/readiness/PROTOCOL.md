@@ -742,3 +742,19 @@ output `results/p9_extended.json`; units, bootstrap and MH as in Notes 9-10 to 9
   falsified claim, no decisive verdict; unadjusted and E1-adjusted.
 * E5, documentation by venue family: vision venues (CVPR, ICCV, ECCV) versus learning venues (ICLR, ICML, NeurIPS),
   the four fields, MH over venue-year within family.
+
+## Note 9-14 (2026-10-23, further adversarial checks without new coding, frozen before computing)
+
+Script `posthoc_p9_more.py`, output `results/p9_more.json`; units and team strength as in Note 9-13.
+
+* G1, claim "full verification is harder for medical papers even with strong first teams" (outcome fully_verified):
+  label permutation p (2,000); gap adjusted for first-team strength after dropping every logbook of the team with
+  the most medical attempts; adjusted gap for clinical and life_science separately. Survives if p < 0.05, the
+  drop-top adjusted CI upper bound < 0 and the clinical adjusted CI upper bound < 0.
+* G2, claim "team strength is a property of teams, not of the papers they pick": within-paper test on papers with at
+  least two teams. Each team's strength on the paper excludes that paper; strong = above the pooled median. MH over
+  papers of decided (strong minus weak team). Supported if the CI lower bound > 0. Medical papers alone reported.
+* G3, herding contrast (Note 9-12 F4) after dropping the top medical team, and with the herding effect estimated
+  within entry week. Supported if both CI upper bounds < 0.
+* G4, within-team claim-level difference for clinical and life_science separately. Refuted for a subgroup if its CI
+  upper bound < 0 and its estimate is below -5 points.
