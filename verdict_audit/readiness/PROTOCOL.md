@@ -804,3 +804,8 @@ Kate chose to extend the Q9.4 reference standard (claim 7) with a sample, not th
 * Analysis (`analyze_p9_ext.py`, `results/p9_ext.json`): the three A9.4 agreement tables (sensitivity, specificity,
   kappa) on the extension sample alone and pooled with the 222 frame papers. Claim 7 is strengthened if pooled code
   and data kappas stay below 0.40; it is weakened if either reaches 0.40 or more.
+
+## Note 9-18 (2026-10-23, before the extension coding)
+
+Full-text and logbook sheets hold up to 15,000 characters per paper, so each extension coder instance codes one
+batch of 20 (the original Protocol 9 procedure), not several as Note 9-17 allowed.

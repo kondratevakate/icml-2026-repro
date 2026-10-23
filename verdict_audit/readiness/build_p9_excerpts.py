@@ -161,12 +161,14 @@ def main(limit: int | None) -> dict:
         except Exception as exc:  # counted and reported, the paper is excluded from coding
             ex, status = dict(excerpt="", error=f"{type(exc).__name__}: {str(exc)[:120]}"), "error"
         rows.append(dict(key=r["key"], stratum=r["stratum"], group=r["group"], source=r["source"], status=status, **ex))
-        stats[(r["source"], status)] += 1
+        if r["group"] != "ext":
+            stats[(r["source"], status)] += 1
     with (OUT / "excerpts.jsonl").open("w", encoding="utf-8") as fh:
         for row in rows:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
-    good = [x for x in rows if x["status"] == "ok"]
-    summary = dict(papers_with_fulltext=len(ok), by_source_and_status={f"{a}|{b}": n for (a, b), n in sorted(stats.items())},
+    # the P9 summary covers the frame only; Note 9-17 extension papers (group ext) are excerpted but not summarised
+    good = [x for x in rows if x["status"] == "ok" and x["group"] != "ext"]
+    summary = dict(papers_with_fulltext=sum(r["group"] != "ext" for r in ok), by_source_and_status={f"{a}|{b}": n for (a, b), n in sorted(stats.items())},
                    truncated=sum(x["truncated"] for x in good), intro_found=sum(x["intro_found"] for x in good),
                    checklist_items_found=sum(x["checklist_items_found"] for x in good),
                    median_chars=sorted(x["chars"] for x in good)[len(good) // 2] if good else None,
