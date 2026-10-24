@@ -1,0 +1,83 @@
+{
+ "papers_screened": 50185,
+ "included": 98,
+ "by_venue_year": {
+  "cvpr-2024": {
+   "papers": 2806,
+   "included": 0,
+   "share": 0.0
+  },
+  "cvpr-2025": {
+   "papers": 2966,
+   "included": 0,
+   "share": 0.0
+  },
+  "eccv-2024": {
+   "papers": 2587,
+   "included": 0,
+   "share": 0.0
+  },
+  "eccv-2026": {
+   "papers": 2997,
+   "included": 4,
+   "share": 0.001334668001334668
+  },
+  "iccv-2025": {
+   "papers": 2701,
+   "included": 0,
+   "share": 0.0
+  },
+  "iclr-2025": {
+   "papers": 4040,
+   "included": 7,
+   "share": 0.0017326732673267327
+  },
+  "iclr-2026": {
+   "papers": 5688,
+   "included": 27,
+   "share": 0.004746835443037975
+  },
+  "icml-2025": {
+   "papers": 3339,
+   "included": 3,
+   "share": 0.0008984725965858042
+  },
+  "icml-2026": {
+   "papers": 6341,
+   "included": 13,
+   "share": 0.002050149818640593
+  },
+  "neurips-2024": {
+   "papers": 4502,
+   "included": 2,
+   "share": 0.000444247001332741
+  },
+  "neurips-2025": {
+   "papers": 5998,
+   "included": 16,
+   "share": 0.00266755585195065
+  },
+  "neurips-2026": {
+   "papers": 6220,
+   "included": 26,
+   "share": 0.004180064308681672
+  }
+ },
+ "by_pattern": {
+  "ai_scientist": 16,
+  "research_agent": 39,
+  "named_benchmark": 23,
+  "automated_experimentation": 2,
+  "automated_research": 13,
+  "automated_discovery": 13
+ },
+ "icml_2026": {
+  "included": 13,
+  "attempted": 5,
+  "decided": 3,
+  "all_papers": 6341,
+  "all_attempted": 2116,
+  "all_decided": 1365
+ },
+ "verdict_snapshot_sha256": "652f1c162462d7ad142ff32e2bd13d5853e21c639681ef416971776fdd33c526"
+}
