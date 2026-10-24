@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0077,code_used,no,"The judge's evidence says the AIR loss was implemented by the logbook in its own training/air_trainer.py, i.e. a reimplementation, with no mention of the authors' code."
+E0078,code_used,unclear,"The logbooks report their own quadrature, analytic and ADMM computations but never say whether the authors' code was obtained or run."
+E0079,code_used,no,"The evidence repeatedly states the logbooks themselves implemented the mean-field dynamics on the paper's toy model, a reimplementation without the authors' code."
+E0080,code_used,unclear,Logbook 2 cross-checked feature names against the official code but the text never shows the official code being run.
+E0086,data_obtained,unclear,"This theoretical paper has no named evaluation dataset; logbooks built the paper's own constructions, so the text does not establish obtained or not obtained data."
+E0087,data_obtained,unclear,"The paper is theoretical and the text names no main evaluation dataset, only analytic computations and synthetic key sets, so data acquisition cannot be judged."
+E0091,code_used,yes,Logbook 3 ran the authors' released ATC at a pinned commit and Logbook 6 ran the paper's own ATC code.
+E0095,code_used,yes,"Logbook 3 matched its reimplementation against the vendored official logit_processor_w1.py in 25/25 instances, which required executing the official code."
+E0098,data_obtained,unclear,"The paper is prior-free mechanism design with no named dataset; logbooks used generated instances, so the text says nothing about obtaining main data."
+E0100,code_used,no,"The only logbook is a PENDING placeholder with no experiments executed, so the authors' code was not run."
+E0100,weights_used,no,"The only logbook is a PENDING placeholder with no sampling runs executed, so no authors' weights were used."
+E0101,weights_used,no,"The logbook trained networks by gradient flow and SGD from random initializations, so no authors' weights were used."
+E0102,weights_used,unclear,The logbooks run the learning algorithm on MDPs but the text never mentions authors' trained policies or checkpoints either way.
+E0105,weights_used,unclear,The logbook reports runtimes and AUROC but does not say whether models were retrained or authors' checkpoints were used.
+E0107,code_used,no,"The logbooks used generic Nystrom and Newton-Schulz proxy implementations and did not run the paper's method or code, indicating no authors' code was run."
+E0108,code_used,unclear,The logbooks report independent exact-arithmetic and reconstructed checks without stating whether the authors' code was obtained or run.
+E0108,weights_used,unclear,This theoretical paper involves no trained models and the text says nothing about authors' weights or checkpoints.
+E0110,weights_used,unclear,The logbooks run online bandit algorithms from scratch and the text never mentions authors' weights or checkpoints.
+E0112,weights_used,unclear,This theoretical paper has no trained models and the text says nothing about weights or checkpoints.
+E0116,code_used,unclear,"Logbook 1 applied the 'official' rank rule in a synthetic audit, but the text does not show whether the authors' code was obtained and run."

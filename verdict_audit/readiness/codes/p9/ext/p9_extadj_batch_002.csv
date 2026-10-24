@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0116,main_data_access,unclear,"The toy task is synthetic but the paper also applies the method to Llama 3.1-8B and Qwen 3-4B, and the text does not say what inputs were used or how to get them."
+E0118,code,released,Appendix C.1 says the code is publicly available at github.com/ambroiseodt/vit-plasticity.
+E0119,code,no,The abstract and the release-related paragraphs shown contain no statement about code availability.
+E0126,code,released,The text says the code is available at https://github.com/watml/adalina.
+E0131,code,released,A footnote says the code is available at github.com/geosada/LHSD.
+E0138,code,released,The text says the implementation is available at https://github.com/KDEGroup/RQ-MoE.
+E0139,code,released,The text points to the authors code repository at https://github.com/rusu4943/RSTR.
+E0141,main_data_access,unclear,"The main benchmarks are GSM8K and DeepMind Mathematics plus a synthetic graph task, and the text gives no access terms for the named datasets."
+E0169,main_data_access,open,"The text says all experiments used publicly available academic datasets (e.g., PACS, OfficeHome)."
+E0178,code,released,"The abstract gives a link, https://github.com/aegine/GSE-Flow, which outweighs the separate will be made publicly available sentence."
+E0181,main_data_access,unclear,"The evaluation uses an author-curated SC-IPI dataset plus NQ and BFCL-derived data, and the text does not say whether these are released or under what terms."
+E0182,code,no,The release-related paragraphs run through to the references with no statement about code availability.
+E0182,main_data_access,unclear,The text names JBB-Behaviors (JailbreakBench) and MaliciousInstructions but does not state their access terms.
+E0185,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0186,main_data_access,synthetic_only,The experiments compare noise mechanisms numerically across privacy parameters and use no real dataset.
+E0192,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0194,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0197,code,unclear,"No code statement appears, but the text is truncated in the middle of the abstract or conclusion, so a statement may have been cut off."
+E0197,main_data_access,unclear,"The paper evaluates on named streaming datasets (elec2, airlines, creditcard, etc.) without stating their access terms."
+E0198,code,unclear,"No code statement appears, but the text is cut off in the middle of the abstract, where a link would normally appear."

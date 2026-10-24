@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0005,main_data_access,unclear,"Evaluation uses the MIB benchmark and Wikipedia inputs, but the text states no access terms or download source for the evaluation data."
+E0020,code,no,The visible text contains no statement about releasing code for this work.
+E0020,main_data_access,unclear,"Data come from NOAA GHCNd and a bike-sharing platform, but the text does not state that they are downloadable or their access terms."
+E0021,main_data_access,unclear,"Evaluation uses named datasets (GLUE, Alpaca, LM-eval harness, ViT benchmarks) without any stated access terms; only code availability is stated."
+E0023,code,no,The visible text contains no code release or availability statement.
+E0024,main_data_access,unclear,Real-data experiments use Multi-MNIST/Multi-Fashion datasets with no stated access terms or download source.
+E0025,code,no,The text only links the FlowRL repository of other authors and gives no statement about releasing this paper's own code.
+E0025,main_data_access,unclear,"Benchmarks (DeepScaleR, DeepCoder, MATH500, AIME, etc.) are named but no access terms or download statement is given."
+E0026,main_data_access,unclear,"Evaluation uses ImageNet-1K and MS COCO, named without any stated access terms."
+E0028,code,no,The text mentions releasing the MEnvData-SWE dataset but contains no statement about releasing code.
+E0029,code,no,The visible text contains no code release or availability statement.
+E0029,main_data_access,unclear,"Evaluation uses KITTI, Waymo Open, 4Seasons, Complex Urban and A2D2, named without stated access terms."
+E0033,code,no,The visible text contains no code release or availability statement.
+E0033,main_data_access,unclear,"Besides synthetic data, the evaluation uses CIFAR-10, named without stated access terms."
+E0035,code,released,The abstract footnote states code is available at a GitHub link (github.com/omrilev1/HessianMix).
+E0036,main_data_access,open,The text states the code and dataset can be found on GitHub at a given link.
+E0038,main_data_access,unclear,"Evaluation uses OWT, zero-shot text sets and ImageNet-1K, named without stated access terms."
+E0046,main_data_access,open,The MBPP-Honeypot evaluation environment is stated to be available on GitHub along with the code.
+E0056,code,released,The abstract states the code is available at github.com/HZ1008/MASPOB.
+E0061,main_data_access,open,"The reproducibility statement says the proposed meta-evaluation dataset is provided in the supplementary materials, with code on GitHub."

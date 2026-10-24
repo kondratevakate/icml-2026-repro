@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0209,weights_used,no,"All logbook runs use their own CMA-ES/RB-PEM implementations or black-box runs of an optimizer with no trained model, so no authors' weights were used."
+E0211,data_obtained,unclear,"All logbooks use self-generated synthetic instances, but the text never identifies the paper's own evaluation data, so whether it was obtained cannot be judged."
+E0213,data_obtained,yes,"Logbook 2 confirmed the official EIA RECS CSV matching the paper's data and Logbook 3 ran on RECS 2020, and simulations used the paper's exact DGPs."
+E0215,code_used,no,"Logbooks 2 and 3 only inspected the authors' code and config without executing any experiment, and Logbook 1 ran its own script, so the authors' code was not run."
+E0217,data_obtained,yes,"Logbook 3 states its tests run with the paper's DGP, which is the paper's simulation data source."
+E0221,data_obtained,unclear,Only self-built Monte Carlo checks are reported and the text never identifies a paper evaluation dataset.
+E0221,weights_used,no,"The only runs are the logbook's own Monte Carlo simulations with no trained model, so no authors' weights were used."
+E0223,weights_used,no,"All logbooks fit and retrain their own logistic regressions on synthetic Gaussian data, so no authors' weights were used."
+E0226,weights_used,no,"All logbooks run their own GP-PSRL implementations or stub functions, so no authors' weights or checkpoints were used."
+E0229,data_obtained,unclear,"Synthetic benchmarks were not run for lack of code, the beam task was run with deviations and other results were digitized from figures, and the text does not state whether the data itself was available."
+E0229,weights_used,no,"The only runs were the logbook's own BO implementation with an RFF surrogate and figure digitization, so no authors' weights were used."
+E0230,weights_used,no,"Benchmark experiments were never executed for lack of pretraining compute and only synthetic smoke tests ran, so no authors' weights were used."
+E0232,weights_used,no,"All logbooks build the theoretical construction and run their own gradient descent, so no authors' weights were used."
+E0233,code_used,no,"The logbook reimplemented the formulas on its own small random GMM model and a proxy EM task, with no sign of the authors' code being run."
+E0234,weights_used,unclear,The logbook reports ManiPT results across 11 datasets without saying whether it trained prompts itself or loaded the authors' checkpoints.
+E0235,code_used,unclear,"The logbook inspected the official repo and ran unit tests of the loss formulas but no training, and it is not stated that the unit tests executed the authors' code."
+E0235,weights_used,no,"No training or evaluation run was executed and only paper table values and an authors' log file were read, so no authors' weights were used."
+E0237,data_obtained,unclear,Logbooks ran environments named as in the paper at varying scales but substituted Atari and do not state whether the environments were the paper's own or reconstructions.
+E0238,data_obtained,unclear,All logbooks use tiny self-constructed tabular games and the text never identifies the paper's own evaluation data.
+E0238,weights_used,no,"All logbooks run their own tabular ROSE/SOS-MD implementations on self-built games, so no authors' weights were used."

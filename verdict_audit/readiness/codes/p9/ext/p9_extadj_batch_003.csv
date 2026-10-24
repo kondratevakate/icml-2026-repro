@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0198,main_data_access,unclear,"The six evaluation benchmarks are only named with details deferred to the appendix, and their access terms are not stated."
+E0199,code,no,The text links only to the IHQ dataset on Hugging Face and gives no code release statement or code link.
+E0208,main_data_access,unclear,The text mentions results on 'different tasks' but does not describe the evaluation data or say they are synthetic.
+E0212,main_data_access,unclear,"LongLaMP, ALOE and LaMP are named as evaluation data, but no download link or access terms are stated."
+E0214,code,released,The text states 'The code is available at https://github.com/taozerui/DiffBCP'.
+E0214,main_data_access,unclear,"The main evaluation uses FFHQ and ImageNet test images, which are named with citations but have no stated access terms."
+E0215,code,released,"The abstract gives a code link, https://github.com/YanhuiS/CyberJurors."
+E0215,main_data_access,open,"The main benchmark VerdictBench is given with a Hugging Face dataset link (huggingface.co/datasets/piggi/VerdictBench), and no access restriction is stated."
+E0220,code,no,The text has no statement releasing Walrus code; it mentions only the baselines' public code.
+E0220,main_data_access,unclear,"The Well, Flowbench, PDEBench and the other datasets are named with citations, but no links or access terms are stated."
+E0227,code,released,The text states that all code is provided at https://github.com/erfunmirzaei/Gibbs-Generalization.
+E0228,code,no,The text contains no code availability statement or code link.
+E0229,code,no,The text contains no code availability statement or code link.
+E0229,main_data_access,synthetic_only,"All evaluations use generated GP-sampled synthetic functions, analytic engineering design problems or the HalfCheetah simulator, with no external dataset."
+E0230,code,no,The text contains no code availability statement or code link.
+E0233,code,released,"The text gives a source code link, https://github.com/MuXauJl11110/EBiEOT."
+E0234,code,no,The text contains no code availability statement or code link; it says only that the datasets are publicly available.
+E0235,code,released,The abstract states 'Code is available at https://github.com/mala-lab/FedHPro'.
+E0236,code,no,The text contains no code availability statement or code link; a reusable data pipeline is described but no release is stated.
+E0237,code,no,The text contains no code availability statement or code link.

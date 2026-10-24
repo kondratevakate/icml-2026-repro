@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0239,code_used,unclear,The logbooks ran models and the calibrator but never say whether the authors code was obtained or the method was reimplemented.
+E0240,data_obtained,unclear,The logbook only searched for released code and models and ran nothing; it says nothing about obtaining or failing to obtain the evaluation data.
+E0243,code_used,unclear,The text describes toy Gaussian experiments but says nothing about whether the authors code was obtained or run.
+E0243,data_obtained,no,"The judge describes all experiments as simplified Gaussian or toy GMM targets rather than the paper-scale settings, i.e. substituted toy data."
+E0243,weights_used,unclear,The text never mentions trained weights or checkpoints for this sampling-theory paper.
+E0245,weights_used,no,"The logbook only ran a small synthetic optimization and never used any BFQ model or D4RL policy, so the authors weights were not used."
+E0246,code_used,no,"The logbook used a numpy proxy on synthetic scenes with no actual LMM, so the authors method code was not run."
+E0247,data_obtained,yes,"The logbooks simulated the paper Gaussian-mixture setting at the paper headline scale (d=2000, alpha=8), which is the paper evaluation data."
+E0247,weights_used,unclear,The text never mentions authors trained weights or checkpoints for this theory paper.
+E0248,weights_used,unclear,The text mentions only synthetic GLMM fits and says nothing about authors trained weights or checkpoints.
+E0249,weights_used,unclear,The text describes an unrelated BT fit and never mentions authors weights or checkpoints.
+E0253,weights_used,unclear,The text concerns spectral sums and Langevin sampling runs and never mentions authors trained weights or checkpoints.
+E0254,weights_used,unclear,The text concerns finite truncations of learning-theory constructions and never mentions trained weights.
+E0255,data_obtained,unclear,"No benchmark evaluation was run and the logbook only identified benchmark locations, without stating whether the data were obtained."
+E0256,data_obtained,yes,"Logbook 1 ran SAC and HFPS on HalfCheetah-v3 and Delayed-HalfCheetah with 1M-step training, the paper non-Markovian benchmark setting."
+E0258,code_used,no,The logbook ran only synthetic toy Sinkhorn and shape checks and states training and systems components were not run or unavailable.
+E0262,code_used,no,"The logbook replaced the neural CTA OGBench experiments with its own 24-state toy MDP proxies, so the authors code was not run."
+E0263,code_used,unclear,The logbooks ran their own optimization experiments but never state whether the authors code was obtained or used.
+E0263,data_obtained,yes,"Logbooks ran on the paper own synthetic examples (the paper exponential-loss example, Prop-4 two-layer network, exact 1-D logistic example)."
+E0264,code_used,unclear,"The logbooks used their own validate.py, a small char transformer and MNIST runs but never state whether the authors code was obtained."

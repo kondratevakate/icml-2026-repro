@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0165,weights_used,no,"The logbook never implemented or executed CE-Graph (only unrelated quadratic/noise toys), so no authors' weights were used."
+E0170,code_used,unclear,The logbooks report their own synthetic simulations and never say whether the authors' code was obtained or run.
+E0172,weights_used,unclear,The logbook ran on gpt2-small instead of the paper's model and says nothing about authors' trained weights or checkpoints.
+E0174,code_used,no,"Logbooks used their own count-lattice DP, a documented simplification of Algorithm 2 and an MLP replacing NanoDO, i.e. reimplementations, with no authors' code run."
+E0175,code_used,unclear,The logbook tests a synthetic Fourier model and does not state whether the authors' code was obtained or run.
+E0175,weights_used,no,"The image-scale networks were not reproduced and only single neurons trained by the logbook in a synthetic model were used, so no authors' weights were used."
+E0176,code_used,unclear,Logbook 1 mentions the released code's default parameter count but no logbook states that the authors' code was actually run (logbook 3 used its own reconstruction).
+E0177,weights_used,unclear,The logbook ran only mathematical checks of the allocation algorithm and says nothing about trained weights or checkpoints.
+E0179,code_used,unclear,The logbooks run their own verification scripts for this theory paper and never mention whether authors' code exists or was run.
+E0180,weights_used,no,"No UNLS training or benchmark run was executed, only a toy LP-dual smoke test, so the authors' weights were not used."
+E0183,data_obtained,unclear,All logbooks run synthetic bandit simulations and the text does not identify any paper evaluation dataset that was or was not obtained.
+E0186,weights_used,unclear,The logbooks ran the official Julia code for noise mechanisms but the text says nothing about trained weights or checkpoints.
+E0187,data_obtained,unclear,All logbooks use synthetic optimization problems and the text does not identify a paper evaluation dataset to obtain.
+E0189,data_obtained,unclear,All logbooks use synthetic sampling/numerical checks and the text does not identify a paper evaluation dataset to obtain.
+E0190,weights_used,unclear,"The logbook ran public Qwen3-VL models and the authors' similarity script, but the text says nothing about authors' own trained weights."
+E0201,data_obtained,unclear,All logbooks use synthetic heavy-tailed noise objectives and the text does not say what evaluation data the paper used.
+E0204,data_obtained,yes,"Logbooks 2 and 4 ran the paper's own Figure-1 synthetic quadratic Markovian-oracle setup, i.e. the paper's evaluation setting was obtained."
+E0206,weights_used,no,"The logbook used an unverified from-scratch implementation without accessing the paper, so no authors' weights were used."
+E0207,code_used,unclear,The logbook mentions only a deterministic Python/PyTorch harness with no evidence of execution and never states whether the authors' code was obtained or run.
+E0208,data_obtained,unclear,All logbooks use small synthetic MRPs and the text does not identify a paper evaluation dataset to obtain.

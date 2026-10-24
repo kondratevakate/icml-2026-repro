@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0052,code_used,no,"The logbook ran no experiments because GPTQModel failed to import without CUDA, so the authors code was never run."
+E0052,data_obtained,unclear,The text reports no experiments and says nothing about whether the evaluation data such as WikiText-2 was obtained.
+E0052,weights_used,unclear,The text says nothing about obtaining or using the authors trained weights or checkpoints.
+E0053,data_obtained,unclear,The text describes a toy 1x CPU 45-second run but does not say which data was used or whether the paper benchmarks were obtained.
+E0053,weights_used,no,"Both InfoDLM and LLaDA were trained for about 600 steps in a toy CPU run, so models were retrained rather than using the authors weights."
+E0055,data_obtained,no,The paper synthetic settings were not rerun and only small hand-built toy witnesses and simplified noise models were used instead.
+E0055,weights_used,unclear,The text says nothing about trained weights or checkpoints for this estimation paper.
+E0056,weights_used,unclear,"Logbook 2 ran the authors released code with Qwen2.5-7B, but the text does not say whether any authors trained surrogate weights were used."
+E0057,weights_used,unclear,The full COVID run used the official code but the text does not say whether the authors trained classifier weights were used.
+E0058,data_obtained,unclear,"Logbooks used small MDPs and a RiverSwim ATST-MDP, and the text does not say what the paper main evaluation data is."
+E0058,weights_used,unclear,The text says nothing about authors weights or checkpoints; the algorithms were run on small MDPs.
+E0064,weights_used,unclear,"Logbook 2 mentions an official EBM run, but no logbook clearly states it used the authors pretrained checkpoint, and logbook 4 trained its own MNIST EBM."
+E0066,code_used,no,"The logbook implements its own KT-SPLIT-Compress routine and proxy experiments, with no mention of running the authors code."
+E0069,weights_used,yes,Logbook 5 audited all nine author-released Gemma3-4B safety checkpoints.
+E0071,code_used,no,"The judge states no diffusion policy, denoising MDP or PPO implementation is evidenced, so the authors code was not run."
+E0071,data_obtained,no,"The judge states no Robomimic, Adroit or Franka Kitchen tasks were used, only unrelated generic proxy numbers."
+E0071,weights_used,unclear,The text does not address the authors weights or checkpoints; it only says no policy experiments were present.
+E0072,code_used,no,"The experiments used a Euclidean BatchNorm1d proxy on synthetic data, indicating a reimplementation rather than the authors code."
+E0075,code_used,no,"All experiments are the logbook own CPU surrogates (2D ring8, small VelNet), and SANA training was explicitly not run, so the authors code was not used."
+E0076,code_used,unclear,"A miniature VAR model was run on CPU, but the text does not say whether it was the authors code or a reimplementation."

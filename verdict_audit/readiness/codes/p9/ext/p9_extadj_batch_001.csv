@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0063,code,no,The excerpts only say code was implemented in Python/PyTorch and give no code link or release statement; the only GitHub link is for the folktables data.
+E0071,code,no,No code link or release statement appears anywhere in the excerpts.
+E0076,code,no,The excerpts contain no code link or statement about releasing code.
+E0077,code,no,The excerpts give no code link or release statement.
+E0080,code,released,The implementation details state the code is available at https://github.com/lxd99/CBS_public.
+E0084,main_data_access,synthetic_only,Main evaluations run in simulated robotic-control environments the authors built themselves; the D4MORL offline dataset is used only in an appendix check.
+E0087,main_data_access,unclear,"Experiments use synthetic random strings plus ISBNs sampled from a named Open Library editions dump, and the excerpts give no access terms or download link for that dump."
+E0095,code,released,A footnote states the code is released at https://github.com/arashgholami/top-w-decoding.
+E0100,code,unclear,"The text says a PyTorch implementation is provided in a blank location, so it is unclear whether a link, an appendix or a release is meant."
+E0103,code,released,"The abstract area gives Code: https://github.com/silent-commit/CLEAR, even though a later passage speaks of planned release."
+E0103,main_data_access,private,"The benchmark is built from 160,000 self-collected video pairs, and the authors only plan to make the dataset public, so it is not available now."
+E0104,code,released,"The abstract states the code is available at this link, which is a hyperlinked code release even though the URL text was stripped."
+E0105,code,released,The abstract states the code is publicly available at https://github.com/Junyi-Yan/MV-FGAD.
+E0106,code,no,The excerpts give no code link or release statement.
+E0107,code,released,"The text points to open-source PyTorch code that recreates all experiments, which indicates released code even though the target reference is cut off."
+E0109,code,no,The excerpts give no code link or release statement.
+E0111,code,released,The abstract states the code is available at https://github.com/hyzhang98/PiNDA.
+E0113,code,released,A footnote states the code is available at https://github.com/YsTvT/PA-MoE.
+E0114,code,no,The excerpts describe data and experiments but give no code link or release statement.
+E0116,code,no,The excerpts give no code link or release statement.

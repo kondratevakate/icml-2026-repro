@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0287,code,released,"The paper states in present tense that the code, data and models are publicly available at a link (given as an anonymised LINK placeholder)."
+E0289,code,no,"The excerpts mention only third-party implementations (Mctx, Pgx, alpha-zero-general) and contain no statement releasing or promising the authors' own code."
+E0290,code,released,A footnote says the authors provide code for their implementation at a GitHub URL.
+E0291,main_data_access,unclear,"Evaluation uses named datasets (BeaverTails, SST-2, AGNEWS, GSM8K, AlpacaEval) but the text does not state their access terms."
+E0292,code,no,The excerpts contain no statement that code is released or will be released.
+E0294,code,no,"The excerpts mention only Numba use and implementation details, with no code release statement."
+E0297,code,no,"The excerpts, including the data/code/releases section, contain no code release statement."
+E0298,code,no,The only link is to the third-party verl framework; there is no statement releasing or promising the authors' code.
+E0298,main_data_access,unclear,"Named benchmarks (MATH, MATH500, AMC23, AIME, Minerva Math, OlympiadBench) are used but their access terms are not stated."
+E0299,code,no,The excerpts contain no statement about releasing code.
+E0299,main_data_access,unclear,"The nine named domain datasets (Aircraft, Caltech101, DTD, etc.) are listed without stating access terms."
+E0001,code_used,no,"Both logbooks used their own simplified pipelines (MLP or ridge classifier on spectra instead of the paper's GFM backbone), indicating reimplementation rather than running the authors' code."
+E0002,weights_used,unclear,"The logbook ran the authors' code on SDAR-8B-Chat, but nothing says whether this model is the authors' own trained checkpoint, and FOCUS involves no training."
+E0003,weights_used,unclear,The evidence describes simulated online-scheduling and bandit runs and says nothing about trained weights or checkpoints.
+E0005,data_obtained,yes,"Logbook 1 evaluated the released MFA on real Gemma-2-2B activations from The Pile, which the judge calls non-toy."
+E0006,data_obtained,unclear,"The logbook ran on an unspecified dataset, so it is not shown whether CIFAR-10 or ImageNet64 data were obtained or not."
+E0009,weights_used,no,"All experiments used freshly sampled random initialisations, not authors' trained weights."
+E0014,data_obtained,unclear,"Synthetic data was generated but CESM2 was never run, and the evidence does not say whether CESM2 data was obtained or unavailable."
+E0014,weights_used,no,The logbook attempted its own training from scratch (which failed or timed out) and used no authors' checkpoints.
+E0017,data_obtained,yes,"The logbook ran the paper's benchmark problems (ZDT1, ZDT2, DTLZ7, rocket injector, coil spring, etc.)."
