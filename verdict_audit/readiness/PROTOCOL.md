@@ -817,3 +817,12 @@ Agreement: full-text code and main_data_access below 0.80, so both are to be adj
 0.97; reference code_used 0.72, data_obtained 0.73, weights_used 0.52. The 302 disagreements are in adjudication
 sheets (`data/p9/ext_adj_sheets/`, git-ignored) but have not been adjudicated, and `analyze_p9_ext.py run` has not
 been executed. Claim 7 in the submitted abstract rests on the 222 frame papers only.
+
+## Note 9-20 (2026-10-24, result of the Note 9-17 extension)
+
+All 302 extension disagreements were adjudicated by 16 blind claude-opus instances (unchanged `ADJ_PROMPT.md`,
+paths `ext_adj_sheets/` -> `codes/p9/ext/`; `codes/p9/ext/ext_adjudication.csv`). `analyze_p9_ext.py run` gives
+identical `results/p9_ext.json` under PYTHONHASHSEED 0 and 1; the frame tables recompute to the reported values.
+A9.4 kappas, extension alone / pooled with the 222 frame papers: code vs code_used 0.34 (n 185) / 0.28 (n 347);
+main_data_access vs data_obtained 0.22 (n 74) / 0.16 (n 163); weights_release vs weights_used 0.63 (n 75) /
+0.60 (n 118). Pooled code and data kappas stay below 0.40, so claim 7 is strengthened by the Note 9-17 rule.
