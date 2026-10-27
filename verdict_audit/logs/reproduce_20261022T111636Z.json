@@ -1,0 +1,41 @@
+{
+ "started": "20261022T111636Z",
+ "environment": {
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "packages": {
+   "numpy": "1.26.4",
+   "pandas": "2.3.3",
+   "scipy": "1.15.3",
+   "statsmodels": "0.14.6",
+   "pypdf": "6.11.0",
+   "huggingface_hub": "1.24.0",
+   "httpx": "0.28.1",
+   "requests": "2.32.5"
+  },
+  "git_commit": "aca0d8253580de80b0f3320b4efaf6d7465101bd",
+  "git_dirty_verdict_audit": true
+ },
+ "steps": [
+  {
+   "step": "p9",
+   "folder": "readiness",
+   "commands": [
+    "analyze_p9.py run"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/p9_coding.json": "7a768af0824031da9b8f30d11ba374254a48475424b1bc5df217d9500b3324b7",
+    "results/p9.json": "5549991198d138a5e7fd4aeac3363c093bce928ec638f882d1ed2e04214a3ede"
+   },
+   "seconds": 42.3
+  }
+ ],
+ "summary": {
+  "match": 1,
+  "differs": 0,
+  "error": 0
+ }
+}
