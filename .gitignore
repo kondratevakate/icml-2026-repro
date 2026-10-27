@@ -58,6 +58,15 @@ reproductions/*/repo_ref/
 /verdicts_live.json
 /verdicts_latest_tmp.json
 
+# Downloaded challenge snapshots now live in the shared data root, registered as
+# icml2026-challenge-snapshots. The three paths below are compatibility junctions into
+# it, kept so the groundtruth scripts keep resolving. They must stay untracked: a
+# tracked junction lets an ordinary git checkout or git clean write into, or delete,
+# canonical raw data, which the data policy requires to stay immutable.
+/groundtruth/data/
+/groundtruth/data_live/
+/groundtruth/hf_dataset/
+
 # Scratch: drafts, copies of other teams' logbooks, large verdict dumps
 /tmp/
 
