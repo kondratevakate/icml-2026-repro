@@ -1,0 +1,999 @@
+{
+ "criteria": "consensus>=3 AND non-Theory AND STRICT cpu-only/no-gpu (hw_signals from README, no hard-gpu, cpu mentioned)",
+ "scanned": 497,
+ "strict_cpu_count": 41,
+ "strict_cpu_by_time": [
+  {
+   "orid": "JOyxs9ElI7",
+   "title": "Context-free Recognition with Transformers",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-08-02T08:35:23+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "NinueNAODD",
+   "title": "Efficient Bayesian Inference from Noisy Pairwise Comparisons",
+   "area": "Probabilistic Methods",
+   "submissions": 4,
+   "judged_at": "2026-08-02T07:33:53+00:00",
+   "hw_signals": [
+    "cpu",
+    "seconds"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "arc2pWtZLN",
+   "title": "Collapsed Effective Operators for Higher-order Structures",
+   "area": "General Machine Learning",
+   "submissions": 5,
+   "judged_at": "2026-08-02T07:31:38+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "K5blb595KX",
+   "title": "Token Sample Complexity of Attention",
+   "area": "Theory",
+   "submissions": 6,
+   "judged_at": "2026-08-02T07:10:00+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "mL4i6z7Miy",
+   "title": "Momentum Further Constrains Sharpness at the Edge of Stochastic Stability",
+   "area": "Theory",
+   "submissions": 7,
+   "judged_at": "2026-08-02T06:34:59+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "P0eayHlqb7",
+   "title": "Geometric Entropy and Retrieval Phase Transitions in Continuous Thermal Dense Associative Memory",
+   "area": "Theory",
+   "submissions": 8,
+   "judged_at": "2026-08-02T06:26:50+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "xrUgA8PrNN",
+   "title": "On the Sharp Input-Output Analysis of Nonlinear Systems under Adversarial Attacks",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-08-02T06:07:54+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "QYpByrxSTg",
+   "title": "Differentially Private Range Subgraph Counting",
+   "area": "Social Aspects",
+   "submissions": 6,
+   "judged_at": "2026-08-02T04:05:01+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "418BWmKIzX",
+   "title": "Efficiently Learning Drifting Halfspaces with Massart Noise",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T23:37:07+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "9uENnRAcSl",
+   "title": "Understanding Behavior Cloning with Action Quantization",
+   "area": "Theory",
+   "submissions": 15,
+   "judged_at": "2026-08-01T21:00:59+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "sW8U2TYDMp",
+   "title": "Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+   "area": "Social Aspects",
+   "submissions": 10,
+   "judged_at": "2026-08-01T20:31:36+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "69IOkVkTQX",
+   "title": "Bregman meets Lévy: Stochastic Mirror Descent with Heavy-Tailed Noise in Continuous and Discrete Time",
+   "area": "Theory",
+   "submissions": 9,
+   "judged_at": "2026-08-01T18:51:47+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "NHWsF72zPP",
+   "title": "Upper-Linearizability of Online Non-Monotone DR-Submodular Maximization over Down-Closed Convex Sets",
+   "area": "Theory",
+   "submissions": 8,
+   "judged_at": "2026-08-01T18:11:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "e6hVbhHEXh",
+   "title": "Efficient Neural Controlled Differential Equations via Attentive Kernel Smoothing",
+   "area": "Deep Learning",
+   "submissions": 3,
+   "judged_at": "2026-08-01T17:50:35+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "TBSyYj4VV6",
+   "title": "Accelerating Regression Tasks with Quantum Algorithms",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T16:05:33+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "l35QweVxgn",
+   "title": "On the Theory of Continual Learning with Gradient Descent for Neural Networks",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T10:45:35+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "hMTCuqjCW8",
+   "title": "Adalina: Adaptive Linear Approximation for the Shapley Value and Beyond",
+   "area": "Social Aspects",
+   "submissions": 8,
+   "judged_at": "2026-08-01T10:14:45+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "tRsnpaRO0m",
+   "title": "A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+   "area": "Deep Learning",
+   "submissions": 7,
+   "judged_at": "2026-08-01T09:57:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "OmmKEy9Ixf",
+   "title": "Harmful Overfitting in Sobolev Spaces",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-31T23:05:45+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "KFIW6LOeT1",
+   "title": "When More Data Doesn't Help: Limits of Adaptation in Multitask Learning",
+   "area": "Theory",
+   "submissions": 4,
+   "judged_at": "2026-07-31T22:49:31+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "LJdacnMXkr",
+   "title": "Sinkhorn Normalization of Diffusion Kernels",
+   "area": "General Machine Learning",
+   "submissions": 13,
+   "judged_at": "2026-07-31T21:28:30+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "frRHI1zK86",
+   "title": "Next-Token Prediction and Regret Minimization",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-31T21:19:03+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "KqMqJpSMnQ",
+   "title": "Compact Conformal Subgraphs",
+   "area": "Optimization",
+   "submissions": 16,
+   "judged_at": "2026-07-31T15:44:39+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "omkG80XURl",
+   "title": "Bridging the Gap Between Average and Discounted TD Learning",
+   "area": "Theory",
+   "submissions": 15,
+   "judged_at": "2026-07-31T15:43:58+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "uiw8P2JGbW",
+   "title": "Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+   "area": "Theory",
+   "submissions": 16,
+   "judged_at": "2026-07-31T15:41:46+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "title": "Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-07-31T14:54:05+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "vSzRJyg6k0",
+   "title": "Reward-free Alignment for Conflicting Objectives",
+   "area": "Deep Learning",
+   "submissions": 11,
+   "judged_at": "2026-07-31T14:25:52+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "ay4Q69fAJL",
+   "title": "Conservation Laws for Modern Neural Architectures",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-31T11:35:19+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "qV7yFzdK1R",
+   "title": "Optimal Rates for Feasible Payoff Set Estimation in Games",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-31T09:14:48+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "rZTiFcDihH",
+   "title": "Online Packet Scheduling with Deadlines and Learning",
+   "area": "Theory",
+   "submissions": 17,
+   "judged_at": "2026-07-31T05:07:09+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "vqxprtjuKH",
+   "title": "Allocating Variance to Maximize Expectation",
+   "area": "Probabilistic Methods",
+   "submissions": 13,
+   "judged_at": "2026-07-31T04:58:41+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "y3qyP3ycQi",
+   "title": "Federated Causal Inference on Multi-Site Observational Data via Propensity Score Aggregation",
+   "area": "General Machine Learning",
+   "submissions": 3,
+   "judged_at": "2026-07-30T19:55:18+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "KS6RbZMt8L",
+   "title": "Complexity of Decentralized Optimization with Mixed Affine Constraints",
+   "area": "Optimization",
+   "submissions": 9,
+   "judged_at": "2026-07-30T14:57:06+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "nB0TrIRAs1",
+   "title": "HiPPO Zoo: Explicit Memory Mechanisms for Interpretable State Space Models",
+   "area": "General Machine Learning",
+   "submissions": 12,
+   "judged_at": "2026-07-30T14:56:48+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "HDBpda5Vih",
+   "title": "Efficient privacy loss accounting for subsampling and random allocation",
+   "area": "Social Aspects",
+   "submissions": 12,
+   "judged_at": "2026-07-30T05:15:58+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "w0JhOFWPJl",
+   "title": "The Devil is in the Condition Numbers: Why is GLU Better than non-GLU Structure?",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-29T12:08:21+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "ZEP68RaUeR",
+   "title": "Revisiting the Bertrand Paradox via Equilibrium Analysis of No-regret Learners",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-07-29T08:48:34+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "jhNMY6jHJw",
+   "title": "Reinforcement Learning with Action-Triggered Observations",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-28T19:00:01+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "DpIc1cpNKG",
+   "title": "The Implicit Bias of Adam and Muon on Smooth Homogeneous Neural Networks",
+   "area": "Theory",
+   "submissions": 13,
+   "judged_at": "2026-07-28T13:56:51+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "wpKA7G7Cqu",
+   "title": "Explaining Concept Shift with Interpretable Feature Attribution",
+   "area": "General Machine Learning",
+   "submissions": 4,
+   "judged_at": "2026-07-27T21:10:02+00:00",
+   "hw_signals": [
+    "cpu",
+    "numpy",
+    "scikit"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "dfqmQ9WhCP",
+   "title": "AI4SLT: Empirical Processes in Lean 4 for Formal Statistical Learning Theory",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-25T13:35:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  }
+ ],
+ "strict_cpu_by_claims": [
+  {
+   "orid": "JOyxs9ElI7",
+   "title": "Context-free Recognition with Transformers",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-08-02T08:35:23+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "NinueNAODD",
+   "title": "Efficient Bayesian Inference from Noisy Pairwise Comparisons",
+   "area": "Probabilistic Methods",
+   "submissions": 4,
+   "judged_at": "2026-08-02T07:33:53+00:00",
+   "hw_signals": [
+    "cpu",
+    "seconds"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "arc2pWtZLN",
+   "title": "Collapsed Effective Operators for Higher-order Structures",
+   "area": "General Machine Learning",
+   "submissions": 5,
+   "judged_at": "2026-08-02T07:31:38+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "mL4i6z7Miy",
+   "title": "Momentum Further Constrains Sharpness at the Edge of Stochastic Stability",
+   "area": "Theory",
+   "submissions": 7,
+   "judged_at": "2026-08-02T06:34:59+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "418BWmKIzX",
+   "title": "Efficiently Learning Drifting Halfspaces with Massart Noise",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T23:37:07+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "9uENnRAcSl",
+   "title": "Understanding Behavior Cloning with Action Quantization",
+   "area": "Theory",
+   "submissions": 15,
+   "judged_at": "2026-08-01T21:00:59+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "sW8U2TYDMp",
+   "title": "Probabilistic Modeling of Latent Agentic Substructures in Deep Neural Networks",
+   "area": "Social Aspects",
+   "submissions": 10,
+   "judged_at": "2026-08-01T20:31:36+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "69IOkVkTQX",
+   "title": "Bregman meets Lévy: Stochastic Mirror Descent with Heavy-Tailed Noise in Continuous and Discrete Time",
+   "area": "Theory",
+   "submissions": 9,
+   "judged_at": "2026-08-01T18:51:47+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "e6hVbhHEXh",
+   "title": "Efficient Neural Controlled Differential Equations via Attentive Kernel Smoothing",
+   "area": "Deep Learning",
+   "submissions": 3,
+   "judged_at": "2026-08-01T17:50:35+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "TBSyYj4VV6",
+   "title": "Accelerating Regression Tasks with Quantum Algorithms",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T16:05:33+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "l35QweVxgn",
+   "title": "On the Theory of Continual Learning with Gradient Descent for Neural Networks",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-08-01T10:45:35+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "tRsnpaRO0m",
+   "title": "A Graphop Analysis of Graph Neural Networks on Sparse Graphs: Generalization and Universal Approximation",
+   "area": "Deep Learning",
+   "submissions": 7,
+   "judged_at": "2026-08-01T09:57:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "LJdacnMXkr",
+   "title": "Sinkhorn Normalization of Diffusion Kernels",
+   "area": "General Machine Learning",
+   "submissions": 13,
+   "judged_at": "2026-07-31T21:28:30+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "KqMqJpSMnQ",
+   "title": "Compact Conformal Subgraphs",
+   "area": "Optimization",
+   "submissions": 16,
+   "judged_at": "2026-07-31T15:44:39+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "omkG80XURl",
+   "title": "Bridging the Gap Between Average and Discounted TD Learning",
+   "area": "Theory",
+   "submissions": 15,
+   "judged_at": "2026-07-31T15:43:58+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "uiw8P2JGbW",
+   "title": "Model Monotonicity in Autobidding Auctions: When Do Better Predictions Lead to Better Outcomes?",
+   "area": "Theory",
+   "submissions": 16,
+   "judged_at": "2026-07-31T15:41:46+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "ugjBMARbyt",
+   "title": "Linear Bandits beyond Inner Product Spaces, the case of Bandit Optimal Transport",
+   "area": "Theory",
+   "submissions": 10,
+   "judged_at": "2026-07-31T14:54:05+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "rZTiFcDihH",
+   "title": "Online Packet Scheduling with Deadlines and Learning",
+   "area": "Theory",
+   "submissions": 17,
+   "judged_at": "2026-07-31T05:07:09+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "vqxprtjuKH",
+   "title": "Allocating Variance to Maximize Expectation",
+   "area": "Probabilistic Methods",
+   "submissions": 13,
+   "judged_at": "2026-07-31T04:58:41+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "y3qyP3ycQi",
+   "title": "Federated Causal Inference on Multi-Site Observational Data via Propensity Score Aggregation",
+   "area": "General Machine Learning",
+   "submissions": 3,
+   "judged_at": "2026-07-30T19:55:18+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "nB0TrIRAs1",
+   "title": "HiPPO Zoo: Explicit Memory Mechanisms for Interpretable State Space Models",
+   "area": "General Machine Learning",
+   "submissions": 12,
+   "judged_at": "2026-07-30T14:56:48+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "HDBpda5Vih",
+   "title": "Efficient privacy loss accounting for subsampling and random allocation",
+   "area": "Social Aspects",
+   "submissions": 12,
+   "judged_at": "2026-07-30T05:15:58+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "w0JhOFWPJl",
+   "title": "The Devil is in the Condition Numbers: Why is GLU Better than non-GLU Structure?",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-29T12:08:21+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "ZEP68RaUeR",
+   "title": "Revisiting the Bertrand Paradox via Equilibrium Analysis of No-regret Learners",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-07-29T08:48:34+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "jhNMY6jHJw",
+   "title": "Reinforcement Learning with Action-Triggered Observations",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-28T19:00:01+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "DpIc1cpNKG",
+   "title": "The Implicit Bias of Adam and Muon on Smooth Homogeneous Neural Networks",
+   "area": "Theory",
+   "submissions": 13,
+   "judged_at": "2026-07-28T13:56:51+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 6
+  },
+  {
+   "orid": "K5blb595KX",
+   "title": "Token Sample Complexity of Attention",
+   "area": "Theory",
+   "submissions": 6,
+   "judged_at": "2026-08-02T07:10:00+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "P0eayHlqb7",
+   "title": "Geometric Entropy and Retrieval Phase Transitions in Continuous Thermal Dense Associative Memory",
+   "area": "Theory",
+   "submissions": 8,
+   "judged_at": "2026-08-02T06:26:50+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "xrUgA8PrNN",
+   "title": "On the Sharp Input-Output Analysis of Nonlinear Systems under Adversarial Attacks",
+   "area": "Theory",
+   "submissions": 11,
+   "judged_at": "2026-08-02T06:07:54+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "QYpByrxSTg",
+   "title": "Differentially Private Range Subgraph Counting",
+   "area": "Social Aspects",
+   "submissions": 6,
+   "judged_at": "2026-08-02T04:05:01+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "NHWsF72zPP",
+   "title": "Upper-Linearizability of Online Non-Monotone DR-Submodular Maximization over Down-Closed Convex Sets",
+   "area": "Theory",
+   "submissions": 8,
+   "judged_at": "2026-08-01T18:11:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "hMTCuqjCW8",
+   "title": "Adalina: Adaptive Linear Approximation for the Shapley Value and Beyond",
+   "area": "Social Aspects",
+   "submissions": 8,
+   "judged_at": "2026-08-01T10:14:45+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "OmmKEy9Ixf",
+   "title": "Harmful Overfitting in Sobolev Spaces",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-31T23:05:45+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "KFIW6LOeT1",
+   "title": "When More Data Doesn't Help: Limits of Adaptation in Multitask Learning",
+   "area": "Theory",
+   "submissions": 4,
+   "judged_at": "2026-07-31T22:49:31+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "frRHI1zK86",
+   "title": "Next-Token Prediction and Regret Minimization",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-31T21:19:03+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "vSzRJyg6k0",
+   "title": "Reward-free Alignment for Conflicting Objectives",
+   "area": "Deep Learning",
+   "submissions": 11,
+   "judged_at": "2026-07-31T14:25:52+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "ay4Q69fAJL",
+   "title": "Conservation Laws for Modern Neural Architectures",
+   "area": "Theory",
+   "submissions": 3,
+   "judged_at": "2026-07-31T11:35:19+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "qV7yFzdK1R",
+   "title": "Optimal Rates for Feasible Payoff Set Estimation in Games",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-31T09:14:48+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "KS6RbZMt8L",
+   "title": "Complexity of Decentralized Optimization with Mixed Affine Constraints",
+   "area": "Optimization",
+   "submissions": 9,
+   "judged_at": "2026-07-30T14:57:06+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "wpKA7G7Cqu",
+   "title": "Explaining Concept Shift with Interpretable Feature Attribution",
+   "area": "General Machine Learning",
+   "submissions": 4,
+   "judged_at": "2026-07-27T21:10:02+00:00",
+   "hw_signals": [
+    "cpu",
+    "numpy",
+    "scikit"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  },
+  {
+   "orid": "dfqmQ9WhCP",
+   "title": "AI4SLT: Empirical Processes in Lean 4 for Formal Statistical Learning Theory",
+   "area": "Theory",
+   "submissions": 5,
+   "judged_at": "2026-07-25T13:35:27+00:00",
+   "hw_signals": [
+    "cpu"
+   ],
+   "cpu_friendly_strict": true,
+   "n_anchored_claims": 5
+  }
+ ]
+}

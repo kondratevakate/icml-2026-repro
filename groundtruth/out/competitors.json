@@ -1,0 +1,9188 @@
+{
+ "summary": {
+  "competitors_total": 346,
+  "competitors_with_min_logbooks": 103,
+  "min_logbooks": 5,
+  "field_points": 36829,
+  "field_max": 59560,
+  "field_rate": 0.6184,
+  "median_rate_eligible": 0.5,
+  "kate_rate": 0.3812,
+  "kate_rank_by_rate": 72,
+  "kate_beaten_by": 71,
+  "field_by_stratum": {
+   "theory": {
+    "pts": 30989,
+    "max": 44926,
+    "n": 4248,
+    "rate": 0.6898
+   },
+   "other": {
+    "pts": 5282,
+    "max": 13288,
+    "n": 1484,
+    "rate": 0.3975
+   },
+   "simulation": {
+    "pts": 437,
+    "max": 946,
+    "n": 91,
+    "rate": 0.4619
+   },
+   "open_data": {
+    "pts": 121,
+    "max": 400,
+    "n": 36,
+    "rate": 0.3025
+   }
+  }
+ },
+ "rows": [
+  {
+   "author": "ai-sherpa",
+   "logbooks": 303,
+   "papers": 303,
+   "points": 3164,
+   "max_points": 3244,
+   "rate": 0.9753,
+   "full_papers": 268,
+   "medical_logbooks": 19,
+   "claims": 1622,
+   "verified_rate": 0.8921,
+   "falsified_rate": 0.0727,
+   "toy_rate": 0.021,
+   "inconclusive_rate": 0.0142,
+   "by_stratum": {
+    "theory": {
+     "n": 265,
+     "pts": 2852,
+     "max": 2888,
+     "rate": 0.9875
+    },
+    "other": {
+     "n": 34,
+     "pts": 275,
+     "max": 316,
+     "rate": 0.8703
+    },
+    "simulation": {
+     "n": 4,
+     "pts": 37,
+     "max": 40,
+     "rate": 0.925
+    }
+   }
+  },
+  {
+   "author": "ProCreations",
+   "logbooks": 309,
+   "papers": 289,
+   "points": 3139,
+   "max_points": 3280,
+   "rate": 0.957,
+   "full_papers": 259,
+   "medical_logbooks": 17,
+   "claims": 1640,
+   "verified_rate": 0.8409,
+   "falsified_rate": 0.1037,
+   "toy_rate": 0.025,
+   "inconclusive_rate": 0.0305,
+   "by_stratum": {
+    "theory": {
+     "n": 281,
+     "pts": 2880,
+     "max": 2996,
+     "rate": 0.9613
+    },
+    "other": {
+     "n": 26,
+     "pts": 237,
+     "max": 262,
+     "rate": 0.9046
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 22,
+     "max": 22,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "SabaPivot",
+   "logbooks": 260,
+   "papers": 255,
+   "points": 2706,
+   "max_points": 2806,
+   "rate": 0.9644,
+   "full_papers": 223,
+   "medical_logbooks": 13,
+   "claims": 1403,
+   "verified_rate": 0.8517,
+   "falsified_rate": 0.0912,
+   "toy_rate": 0.0428,
+   "inconclusive_rate": 0.0143,
+   "by_stratum": {
+    "other": {
+     "n": 33,
+     "pts": 244,
+     "max": 308,
+     "rate": 0.7922
+    },
+    "theory": {
+     "n": 223,
+     "pts": 2420,
+     "max": 2456,
+     "rate": 0.9853
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 32,
+     "max": 32,
+     "rate": 1.0
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "snaykey",
+   "logbooks": 242,
+   "papers": 240,
+   "points": 2244,
+   "max_points": 2640,
+   "rate": 0.85,
+   "full_papers": 83,
+   "medical_logbooks": 16,
+   "claims": 1320,
+   "verified_rate": 0.7424,
+   "falsified_rate": 0.0114,
+   "toy_rate": 0.1924,
+   "inconclusive_rate": 0.0538,
+   "by_stratum": {
+    "theory": {
+     "n": 225,
+     "pts": 2107,
+     "max": 2470,
+     "rate": 0.853
+    },
+    "other": {
+     "n": 13,
+     "pts": 102,
+     "max": 122,
+     "rate": 0.8361
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 25,
+     "max": 36,
+     "rate": 0.6944
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "DineshAI",
+   "logbooks": 245,
+   "papers": 243,
+   "points": 2231,
+   "max_points": 2696,
+   "rate": 0.8275,
+   "full_papers": 114,
+   "medical_logbooks": 18,
+   "claims": 1348,
+   "verified_rate": 0.655,
+   "falsified_rate": 0.0979,
+   "toy_rate": 0.1491,
+   "inconclusive_rate": 0.0979,
+   "by_stratum": {
+    "theory": {
+     "n": 227,
+     "pts": 2110,
+     "max": 2544,
+     "rate": 0.8294
+    },
+    "other": {
+     "n": 17,
+     "pts": 112,
+     "max": 142,
+     "rate": 0.7887
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 9,
+     "max": 10,
+     "rate": 0.9
+    }
+   }
+  },
+  {
+   "author": "Srishti280992",
+   "logbooks": 218,
+   "papers": 213,
+   "points": 2156,
+   "max_points": 2394,
+   "rate": 0.9006,
+   "full_papers": 150,
+   "medical_logbooks": 12,
+   "claims": 1197,
+   "verified_rate": 0.7828,
+   "falsified_rate": 0.0627,
+   "toy_rate": 0.1103,
+   "inconclusive_rate": 0.0443,
+   "by_stratum": {
+    "theory": {
+     "n": 177,
+     "pts": 1850,
+     "max": 2004,
+     "rate": 0.9232
+    },
+    "other": {
+     "n": 35,
+     "pts": 255,
+     "max": 320,
+     "rate": 0.7969
+    },
+    "simulation": {
+     "n": 6,
+     "pts": 51,
+     "max": 70,
+     "rate": 0.7286
+    }
+   }
+  },
+  {
+   "author": "amkkk",
+   "logbooks": 203,
+   "papers": 198,
+   "points": 1274,
+   "max_points": 2082,
+   "rate": 0.6119,
+   "full_papers": 27,
+   "medical_logbooks": 11,
+   "claims": 1041,
+   "verified_rate": 0.3612,
+   "falsified_rate": 0.0144,
+   "toy_rate": 0.4726,
+   "inconclusive_rate": 0.1518,
+   "by_stratum": {
+    "other": {
+     "n": 22,
+     "pts": 97,
+     "max": 174,
+     "rate": 0.5575
+    },
+    "theory": {
+     "n": 181,
+     "pts": 1177,
+     "max": 1908,
+     "rate": 0.6169
+    }
+   }
+  },
+  {
+   "author": "michaldobiezynski",
+   "logbooks": 151,
+   "papers": 151,
+   "points": 1273,
+   "max_points": 1632,
+   "rate": 0.78,
+   "full_papers": 40,
+   "medical_logbooks": 4,
+   "claims": 816,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0184,
+   "toy_rate": 0.19,
+   "inconclusive_rate": 0.125,
+   "by_stratum": {
+    "theory": {
+     "n": 148,
+     "pts": 1253,
+     "max": 1602,
+     "rate": 0.7821
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    },
+    "other": {
+     "n": 2,
+     "pts": 14,
+     "max": 18,
+     "rate": 0.7778
+    }
+   }
+  },
+  {
+   "author": "agharsallah",
+   "logbooks": 124,
+   "papers": 124,
+   "points": 1094,
+   "max_points": 1336,
+   "rate": 0.8189,
+   "full_papers": 60,
+   "medical_logbooks": 5,
+   "claims": 668,
+   "verified_rate": 0.7275,
+   "falsified_rate": 0.0075,
+   "toy_rate": 0.1677,
+   "inconclusive_rate": 0.0973,
+   "by_stratum": {
+    "theory": {
+     "n": 105,
+     "pts": 961,
+     "max": 1136,
+     "rate": 0.846
+    },
+    "other": {
+     "n": 18,
+     "pts": 127,
+     "max": 188,
+     "rate": 0.6755
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "tomyimkc",
+   "logbooks": 120,
+   "papers": 119,
+   "points": 1024,
+   "max_points": 1256,
+   "rate": 0.8153,
+   "full_papers": 27,
+   "medical_logbooks": 6,
+   "claims": 628,
+   "verified_rate": 0.6354,
+   "falsified_rate": 0.008,
+   "toy_rate": 0.3439,
+   "inconclusive_rate": 0.0127,
+   "by_stratum": {
+    "theory": {
+     "n": 117,
+     "pts": 1016,
+     "max": 1238,
+     "rate": 0.8207
+    },
+    "other": {
+     "n": 3,
+     "pts": 8,
+     "max": 18,
+     "rate": 0.4444
+    }
+   }
+  },
+  {
+   "author": "ParetoOptimal",
+   "logbooks": 121,
+   "papers": 121,
+   "points": 1009,
+   "max_points": 1272,
+   "rate": 0.7932,
+   "full_papers": 45,
+   "medical_logbooks": 8,
+   "claims": 636,
+   "verified_rate": 0.6541,
+   "falsified_rate": 0.0503,
+   "toy_rate": 0.1777,
+   "inconclusive_rate": 0.1179,
+   "by_stratum": {
+    "theory": {
+     "n": 102,
+     "pts": 876,
+     "max": 1070,
+     "rate": 0.8187
+    },
+    "other": {
+     "n": 18,
+     "pts": 121,
+     "max": 190,
+     "rate": 0.6368
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "rahit",
+   "logbooks": 109,
+   "papers": 109,
+   "points": 948,
+   "max_points": 1252,
+   "rate": 0.7572,
+   "full_papers": 39,
+   "medical_logbooks": 5,
+   "claims": 626,
+   "verified_rate": 0.6406,
+   "falsified_rate": 0.0032,
+   "toy_rate": 0.2268,
+   "inconclusive_rate": 0.1294,
+   "by_stratum": {
+    "theory": {
+     "n": 101,
+     "pts": 917,
+     "max": 1160,
+     "rate": 0.7905
+    },
+    "other": {
+     "n": 8,
+     "pts": 31,
+     "max": 92,
+     "rate": 0.337
+    }
+   }
+  },
+  {
+   "author": "sotayamashita",
+   "logbooks": 121,
+   "papers": 106,
+   "points": 852,
+   "max_points": 1246,
+   "rate": 0.6838,
+   "full_papers": 25,
+   "medical_logbooks": 6,
+   "claims": 623,
+   "verified_rate": 0.4896,
+   "falsified_rate": 0.0674,
+   "toy_rate": 0.2536,
+   "inconclusive_rate": 0.1894,
+   "by_stratum": {
+    "theory": {
+     "n": 101,
+     "pts": 732,
+     "max": 1054,
+     "rate": 0.6945
+    },
+    "simulation": {
+     "n": 4,
+     "pts": 29,
+     "max": 40,
+     "rate": 0.725
+    },
+    "other": {
+     "n": 15,
+     "pts": 89,
+     "max": 140,
+     "rate": 0.6357
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "sabaridsnfuji",
+   "logbooks": 96,
+   "papers": 91,
+   "points": 741,
+   "max_points": 1088,
+   "rate": 0.6811,
+   "full_papers": 17,
+   "medical_logbooks": 4,
+   "claims": 544,
+   "verified_rate": 0.4871,
+   "falsified_rate": 0.0331,
+   "toy_rate": 0.3217,
+   "inconclusive_rate": 0.1581,
+   "by_stratum": {
+    "theory": {
+     "n": 87,
+     "pts": 676,
+     "max": 990,
+     "rate": 0.6828
+    },
+    "other": {
+     "n": 7,
+     "pts": 54,
+     "max": 78,
+     "rate": 0.6923
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "AceVikings",
+   "logbooks": 113,
+   "papers": 101,
+   "points": 734,
+   "max_points": 1252,
+   "rate": 0.5863,
+   "full_papers": 37,
+   "medical_logbooks": 3,
+   "claims": 626,
+   "verified_rate": 0.4345,
+   "falsified_rate": 0.0703,
+   "toy_rate": 0.1629,
+   "inconclusive_rate": 0.3323,
+   "by_stratum": {
+    "theory": {
+     "n": 95,
+     "pts": 656,
+     "max": 1040,
+     "rate": 0.6308
+    },
+    "other": {
+     "n": 14,
+     "pts": 74,
+     "max": 164,
+     "rate": 0.4512
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 1,
+     "max": 24,
+     "rate": 0.0417
+    },
+    "open_data": {
+     "n": 2,
+     "pts": 3,
+     "max": 24,
+     "rate": 0.125
+    }
+   }
+  },
+  {
+   "author": "algorise",
+   "logbooks": 143,
+   "papers": 141,
+   "points": 681,
+   "max_points": 1374,
+   "rate": 0.4956,
+   "full_papers": 16,
+   "medical_logbooks": 7,
+   "claims": 687,
+   "verified_rate": 0.2489,
+   "falsified_rate": 0.0175,
+   "toy_rate": 0.4585,
+   "inconclusive_rate": 0.2751,
+   "by_stratum": {
+    "other": {
+     "n": 25,
+     "pts": 97,
+     "max": 196,
+     "rate": 0.4949
+    },
+    "theory": {
+     "n": 115,
+     "pts": 574,
+     "max": 1152,
+     "rate": 0.4983
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 10,
+     "max": 26,
+     "rate": 0.3846
+    }
+   }
+  },
+  {
+   "author": "neonforestmist",
+   "logbooks": 238,
+   "papers": 238,
+   "points": 666,
+   "max_points": 2720,
+   "rate": 0.2449,
+   "full_papers": 51,
+   "medical_logbooks": 17,
+   "claims": 1360,
+   "verified_rate": 0.2206,
+   "falsified_rate": 0.0096,
+   "toy_rate": 0.0294,
+   "inconclusive_rate": 0.7404,
+   "by_stratum": {
+    "theory": {
+     "n": 209,
+     "pts": 624,
+     "max": 2398,
+     "rate": 0.2602
+    },
+    "other": {
+     "n": 27,
+     "pts": 42,
+     "max": 298,
+     "rate": 0.1409
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "rdubwiley",
+   "logbooks": 123,
+   "papers": 115,
+   "points": 652,
+   "max_points": 1172,
+   "rate": 0.5563,
+   "full_papers": 17,
+   "medical_logbooks": 3,
+   "claims": 586,
+   "verified_rate": 0.4215,
+   "falsified_rate": 0.0102,
+   "toy_rate": 0.2491,
+   "inconclusive_rate": 0.3191,
+   "by_stratum": {
+    "theory": {
+     "n": 109,
+     "pts": 594,
+     "max": 1042,
+     "rate": 0.5701
+    },
+    "other": {
+     "n": 13,
+     "pts": 54,
+     "max": 120,
+     "rate": 0.45
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "MarxistLeninist",
+   "logbooks": 98,
+   "papers": 95,
+   "points": 612,
+   "max_points": 984,
+   "rate": 0.622,
+   "full_papers": 16,
+   "medical_logbooks": 7,
+   "claims": 492,
+   "verified_rate": 0.437,
+   "falsified_rate": 0.0467,
+   "toy_rate": 0.2764,
+   "inconclusive_rate": 0.2398,
+   "by_stratum": {
+    "theory": {
+     "n": 69,
+     "pts": 451,
+     "max": 700,
+     "rate": 0.6443
+    },
+    "other": {
+     "n": 28,
+     "pts": 157,
+     "max": 272,
+     "rate": 0.5772
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "RyeCatcher",
+   "logbooks": 99,
+   "papers": 99,
+   "points": 488,
+   "max_points": 1054,
+   "rate": 0.463,
+   "full_papers": 2,
+   "medical_logbooks": 5,
+   "claims": 527,
+   "verified_rate": 0.1708,
+   "falsified_rate": 0.019,
+   "toy_rate": 0.5465,
+   "inconclusive_rate": 0.2638,
+   "by_stratum": {
+    "theory": {
+     "n": 98,
+     "pts": 482,
+     "max": 1046,
+     "rate": 0.4608
+    },
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 8,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "arvkevi",
+   "logbooks": 72,
+   "papers": 71,
+   "points": 420,
+   "max_points": 620,
+   "rate": 0.6774,
+   "full_papers": 37,
+   "medical_logbooks": 3,
+   "claims": 310,
+   "verified_rate": 0.5387,
+   "falsified_rate": 0.0387,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.2226,
+   "by_stratum": {
+    "theory": {
+     "n": 67,
+     "pts": 392,
+     "max": 576,
+     "rate": 0.6806
+    },
+    "other": {
+     "n": 5,
+     "pts": 28,
+     "max": 44,
+     "rate": 0.6364
+    }
+   }
+  },
+  {
+   "author": "vissutagunawan",
+   "logbooks": 68,
+   "papers": 60,
+   "points": 398,
+   "max_points": 602,
+   "rate": 0.6611,
+   "full_papers": 20,
+   "medical_logbooks": 3,
+   "claims": 301,
+   "verified_rate": 0.6113,
+   "falsified_rate": 0.0133,
+   "toy_rate": 0.0731,
+   "inconclusive_rate": 0.3023,
+   "by_stratum": {
+    "theory": {
+     "n": 52,
+     "pts": 300,
+     "max": 454,
+     "rate": 0.6608
+    },
+    "other": {
+     "n": 15,
+     "pts": 88,
+     "max": 138,
+     "rate": 0.6377
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Edd16",
+   "logbooks": 132,
+   "papers": 131,
+   "points": 375,
+   "max_points": 1260,
+   "rate": 0.2976,
+   "full_papers": 0,
+   "medical_logbooks": 12,
+   "claims": 630,
+   "verified_rate": 0.019,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5571,
+   "inconclusive_rate": 0.4238,
+   "by_stratum": {
+    "other": {
+     "n": 86,
+     "pts": 244,
+     "max": 784,
+     "rate": 0.3112
+    },
+    "theory": {
+     "n": 40,
+     "pts": 115,
+     "max": 408,
+     "rate": 0.2819
+    },
+    "open_data": {
+     "n": 4,
+     "pts": 11,
+     "max": 44,
+     "rate": 0.25
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 5,
+     "max": 24,
+     "rate": 0.2083
+    }
+   }
+  },
+  {
+   "author": "nstp",
+   "logbooks": 52,
+   "papers": 52,
+   "points": 299,
+   "max_points": 538,
+   "rate": 0.5558,
+   "full_papers": 7,
+   "medical_logbooks": 3,
+   "claims": 269,
+   "verified_rate": 0.3903,
+   "falsified_rate": 0.0112,
+   "toy_rate": 0.3086,
+   "inconclusive_rate": 0.29,
+   "by_stratum": {
+    "theory": {
+     "n": 52,
+     "pts": 299,
+     "max": 538,
+     "rate": 0.5558
+    }
+   }
+  },
+  {
+   "author": "jomasego",
+   "logbooks": 105,
+   "papers": 104,
+   "points": 285,
+   "max_points": 1170,
+   "rate": 0.2436,
+   "full_papers": 0,
+   "medical_logbooks": 7,
+   "claims": 585,
+   "verified_rate": 0.106,
+   "falsified_rate": 0.0051,
+   "toy_rate": 0.265,
+   "inconclusive_rate": 0.6239,
+   "by_stratum": {
+    "theory": {
+     "n": 49,
+     "pts": 154,
+     "max": 540,
+     "rate": 0.2852
+    },
+    "other": {
+     "n": 53,
+     "pts": 129,
+     "max": 598,
+     "rate": 0.2157
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 2,
+     "max": 32,
+     "rate": 0.0625
+    }
+   }
+  },
+  {
+   "author": "tpls",
+   "logbooks": 30,
+   "papers": 30,
+   "points": 282,
+   "max_points": 346,
+   "rate": 0.815,
+   "full_papers": 11,
+   "medical_logbooks": 2,
+   "claims": 173,
+   "verified_rate": 0.6879,
+   "falsified_rate": 0.0405,
+   "toy_rate": 0.1734,
+   "inconclusive_rate": 0.0983,
+   "by_stratum": {
+    "theory": {
+     "n": 26,
+     "pts": 247,
+     "max": 300,
+     "rate": 0.8233
+    },
+    "other": {
+     "n": 4,
+     "pts": 35,
+     "max": 46,
+     "rate": 0.7609
+    }
+   }
+  },
+  {
+   "author": "Crusadersk",
+   "logbooks": 48,
+   "papers": 48,
+   "points": 268,
+   "max_points": 454,
+   "rate": 0.5903,
+   "full_papers": 5,
+   "medical_logbooks": 4,
+   "claims": 227,
+   "verified_rate": 0.4714,
+   "falsified_rate": 0.0132,
+   "toy_rate": 0.2115,
+   "inconclusive_rate": 0.304,
+   "by_stratum": {
+    "theory": {
+     "n": 37,
+     "pts": 210,
+     "max": 362,
+     "rate": 0.5801
+    },
+    "other": {
+     "n": 10,
+     "pts": 52,
+     "max": 80,
+     "rate": 0.65
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "Deepakkambala",
+   "logbooks": 37,
+   "papers": 37,
+   "points": 194,
+   "max_points": 398,
+   "rate": 0.4874,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 199,
+   "verified_rate": 0.2563,
+   "falsified_rate": 0.0101,
+   "toy_rate": 0.4422,
+   "inconclusive_rate": 0.2915,
+   "by_stratum": {
+    "theory": {
+     "n": 37,
+     "pts": 194,
+     "max": 398,
+     "rate": 0.4874
+    }
+   }
+  },
+  {
+   "author": "JG1310",
+   "logbooks": 25,
+   "papers": 25,
+   "points": 174,
+   "max_points": 250,
+   "rate": 0.696,
+   "full_papers": 9,
+   "medical_logbooks": 0,
+   "claims": 125,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.032,
+   "toy_rate": 0.128,
+   "inconclusive_rate": 0.24,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    },
+    "theory": {
+     "n": 23,
+     "pts": 166,
+     "max": 238,
+     "rate": 0.6975
+    }
+   }
+  },
+  {
+   "author": "vimarsh",
+   "logbooks": 33,
+   "papers": 32,
+   "points": 163,
+   "max_points": 292,
+   "rate": 0.5582,
+   "full_papers": 6,
+   "medical_logbooks": 0,
+   "claims": 146,
+   "verified_rate": 0.3699,
+   "falsified_rate": 0.0411,
+   "toy_rate": 0.2945,
+   "inconclusive_rate": 0.2945,
+   "by_stratum": {
+    "other": {
+     "n": 11,
+     "pts": 38,
+     "max": 92,
+     "rate": 0.413
+    },
+    "theory": {
+     "n": 21,
+     "pts": 120,
+     "max": 188,
+     "rate": 0.6383
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "Umong",
+   "logbooks": 33,
+   "papers": 25,
+   "points": 152,
+   "max_points": 322,
+   "rate": 0.472,
+   "full_papers": 3,
+   "medical_logbooks": 2,
+   "claims": 161,
+   "verified_rate": 0.2857,
+   "falsified_rate": 0.0559,
+   "toy_rate": 0.2609,
+   "inconclusive_rate": 0.3975,
+   "by_stratum": {
+    "other": {
+     "n": 11,
+     "pts": 33,
+     "max": 92,
+     "rate": 0.3587
+    },
+    "theory": {
+     "n": 20,
+     "pts": 108,
+     "max": 208,
+     "rate": 0.5192
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 11,
+     "max": 22,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "bertfil",
+   "logbooks": 62,
+   "papers": 62,
+   "points": 145,
+   "max_points": 570,
+   "rate": 0.2544,
+   "full_papers": 1,
+   "medical_logbooks": 5,
+   "claims": 285,
+   "verified_rate": 0.1474,
+   "falsified_rate": 0.014,
+   "toy_rate": 0.186,
+   "inconclusive_rate": 0.6526,
+   "by_stratum": {
+    "other": {
+     "n": 38,
+     "pts": 64,
+     "max": 328,
+     "rate": 0.1951
+    },
+    "theory": {
+     "n": 21,
+     "pts": 73,
+     "max": 212,
+     "rate": 0.3443
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 8,
+     "max": 30,
+     "rate": 0.2667
+    }
+   }
+  },
+  {
+   "author": "Joshi2312",
+   "logbooks": 20,
+   "papers": 20,
+   "points": 145,
+   "max_points": 192,
+   "rate": 0.7552,
+   "full_papers": 4,
+   "medical_logbooks": 1,
+   "claims": 96,
+   "verified_rate": 0.75,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0104,
+   "inconclusive_rate": 0.2396,
+   "by_stratum": {
+    "theory": {
+     "n": 16,
+     "pts": 121,
+     "max": 160,
+     "rate": 0.7562
+    },
+    "other": {
+     "n": 4,
+     "pts": 24,
+     "max": 32,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "GwendalTsang",
+   "logbooks": 24,
+   "papers": 24,
+   "points": 144,
+   "max_points": 216,
+   "rate": 0.6667,
+   "full_papers": 5,
+   "medical_logbooks": 3,
+   "claims": 108,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0463,
+   "toy_rate": 0.2407,
+   "inconclusive_rate": 0.213,
+   "by_stratum": {
+    "theory": {
+     "n": 15,
+     "pts": 114,
+     "max": 152,
+     "rate": 0.75
+    },
+    "other": {
+     "n": 9,
+     "pts": 30,
+     "max": 64,
+     "rate": 0.4688
+    }
+   }
+  },
+  {
+   "author": "jbhati305",
+   "logbooks": 39,
+   "papers": 39,
+   "points": 143,
+   "max_points": 348,
+   "rate": 0.4109,
+   "full_papers": 9,
+   "medical_logbooks": 1,
+   "claims": 174,
+   "verified_rate": 0.2586,
+   "falsified_rate": 0.0057,
+   "toy_rate": 0.2931,
+   "inconclusive_rate": 0.4425,
+   "by_stratum": {
+    "other": {
+     "n": 7,
+     "pts": 22,
+     "max": 52,
+     "rate": 0.4231
+    },
+    "theory": {
+     "n": 32,
+     "pts": 121,
+     "max": 296,
+     "rate": 0.4088
+    }
+   }
+  },
+  {
+   "author": "kondratevakate",
+   "logbooks": 36,
+   "papers": 33,
+   "points": 138,
+   "max_points": 362,
+   "rate": 0.3812,
+   "full_papers": 4,
+   "medical_logbooks": 31,
+   "claims": 181,
+   "verified_rate": 0.2486,
+   "falsified_rate": 0.0608,
+   "toy_rate": 0.1436,
+   "inconclusive_rate": 0.547,
+   "by_stratum": {
+    "other": {
+     "n": 12,
+     "pts": 37,
+     "max": 98,
+     "rate": 0.3776
+    },
+    "theory": {
+     "n": 22,
+     "pts": 97,
+     "max": 242,
+     "rate": 0.4008
+    },
+    "open_data": {
+     "n": 2,
+     "pts": 4,
+     "max": 22,
+     "rate": 0.1818
+    }
+   }
+  },
+  {
+   "author": "kshitijthakkar",
+   "logbooks": 26,
+   "papers": 26,
+   "points": 138,
+   "max_points": 270,
+   "rate": 0.5111,
+   "full_papers": 3,
+   "medical_logbooks": 2,
+   "claims": 135,
+   "verified_rate": 0.4074,
+   "falsified_rate": 0.0074,
+   "toy_rate": 0.1926,
+   "inconclusive_rate": 0.3926,
+   "by_stratum": {
+    "theory": {
+     "n": 19,
+     "pts": 108,
+     "max": 200,
+     "rate": 0.54
+    },
+    "other": {
+     "n": 7,
+     "pts": 30,
+     "max": 70,
+     "rate": 0.4286
+    }
+   }
+  },
+  {
+   "author": "ICML-2026-agent-repro",
+   "logbooks": 35,
+   "papers": 33,
+   "points": 136,
+   "max_points": 288,
+   "rate": 0.4722,
+   "full_papers": 4,
+   "medical_logbooks": 9,
+   "claims": 144,
+   "verified_rate": 0.2986,
+   "falsified_rate": 0.0208,
+   "toy_rate": 0.3056,
+   "inconclusive_rate": 0.375,
+   "by_stratum": {
+    "other": {
+     "n": 20,
+     "pts": 52,
+     "max": 136,
+     "rate": 0.3824
+    },
+    "theory": {
+     "n": 13,
+     "pts": 77,
+     "max": 134,
+     "rate": 0.5746
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 7,
+     "max": 18,
+     "rate": 0.3889
+    }
+   }
+  },
+  {
+   "author": "Firemedic15",
+   "logbooks": 30,
+   "papers": 30,
+   "points": 136,
+   "max_points": 294,
+   "rate": 0.4626,
+   "full_papers": 1,
+   "medical_logbooks": 5,
+   "claims": 147,
+   "verified_rate": 0.2245,
+   "falsified_rate": 0.0068,
+   "toy_rate": 0.4626,
+   "inconclusive_rate": 0.3061,
+   "by_stratum": {
+    "other": {
+     "n": 22,
+     "pts": 83,
+     "max": 214,
+     "rate": 0.3879
+    },
+    "theory": {
+     "n": 8,
+     "pts": 53,
+     "max": 80,
+     "rate": 0.6625
+    }
+   }
+  },
+  {
+   "author": "HamsterSashka",
+   "logbooks": 29,
+   "papers": 29,
+   "points": 128,
+   "max_points": 288,
+   "rate": 0.4444,
+   "full_papers": 4,
+   "medical_logbooks": 0,
+   "claims": 144,
+   "verified_rate": 0.3125,
+   "falsified_rate": 0.0278,
+   "toy_rate": 0.2083,
+   "inconclusive_rate": 0.4514,
+   "by_stratum": {
+    "theory": {
+     "n": 28,
+     "pts": 125,
+     "max": 276,
+     "rate": 0.4529
+    },
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "divaspoudel",
+   "logbooks": 24,
+   "papers": 24,
+   "points": 127,
+   "max_points": 256,
+   "rate": 0.4961,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 128,
+   "verified_rate": 0.3125,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3672,
+   "inconclusive_rate": 0.3203,
+   "by_stratum": {
+    "theory": {
+     "n": 18,
+     "pts": 103,
+     "max": 188,
+     "rate": 0.5479
+    },
+    "other": {
+     "n": 4,
+     "pts": 12,
+     "max": 44,
+     "rate": 0.2727
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "abhishekkataria16",
+   "logbooks": 244,
+   "papers": 244,
+   "points": 121,
+   "max_points": 2306,
+   "rate": 0.0525,
+   "full_papers": 0,
+   "medical_logbooks": 24,
+   "claims": 1153,
+   "verified_rate": 0.0078,
+   "falsified_rate": 0.0026,
+   "toy_rate": 0.0841,
+   "inconclusive_rate": 0.9055,
+   "by_stratum": {
+    "theory": {
+     "n": 60,
+     "pts": 11,
+     "max": 622,
+     "rate": 0.0177
+    },
+    "other": {
+     "n": 175,
+     "pts": 100,
+     "max": 1592,
+     "rate": 0.0628
+    },
+    "simulation": {
+     "n": 6,
+     "pts": 10,
+     "max": 60,
+     "rate": 0.1667
+    },
+    "open_data": {
+     "n": 3,
+     "pts": 0,
+     "max": 32,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "pranaysuyash",
+   "logbooks": 40,
+   "papers": 35,
+   "points": 119,
+   "max_points": 360,
+   "rate": 0.3306,
+   "full_papers": 2,
+   "medical_logbooks": 2,
+   "claims": 180,
+   "verified_rate": 0.1833,
+   "falsified_rate": 0.0222,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.5444,
+   "by_stratum": {
+    "theory": {
+     "n": 18,
+     "pts": 51,
+     "max": 162,
+     "rate": 0.3148
+    },
+    "other": {
+     "n": 21,
+     "pts": 66,
+     "max": 190,
+     "rate": 0.3474
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "bsenst",
+   "logbooks": 51,
+   "papers": 50,
+   "points": 118,
+   "max_points": 438,
+   "rate": 0.2694,
+   "full_papers": 0,
+   "medical_logbooks": 37,
+   "claims": 219,
+   "verified_rate": 0.1096,
+   "falsified_rate": 0.0046,
+   "toy_rate": 0.3105,
+   "inconclusive_rate": 0.5753,
+   "by_stratum": {
+    "other": {
+     "n": 43,
+     "pts": 95,
+     "max": 354,
+     "rate": 0.2684
+    },
+    "theory": {
+     "n": 5,
+     "pts": 16,
+     "max": 54,
+     "rate": 0.2963
+    },
+    "open_data": {
+     "n": 2,
+     "pts": 7,
+     "max": 20,
+     "rate": 0.35
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 0,
+     "max": 10,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "lastmass",
+   "logbooks": 28,
+   "papers": 26,
+   "points": 109,
+   "max_points": 212,
+   "rate": 0.5142,
+   "full_papers": 4,
+   "medical_logbooks": 2,
+   "claims": 106,
+   "verified_rate": 0.3868,
+   "falsified_rate": 0.0094,
+   "toy_rate": 0.2358,
+   "inconclusive_rate": 0.3679,
+   "by_stratum": {
+    "theory": {
+     "n": 20,
+     "pts": 84,
+     "max": 150,
+     "rate": 0.56
+    },
+    "other": {
+     "n": 8,
+     "pts": 25,
+     "max": 62,
+     "rate": 0.4032
+    }
+   }
+  },
+  {
+   "author": "Vassilbek",
+   "logbooks": 17,
+   "papers": 17,
+   "points": 106,
+   "max_points": 174,
+   "rate": 0.6092,
+   "full_papers": 4,
+   "medical_logbooks": 0,
+   "claims": 87,
+   "verified_rate": 0.4713,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2759,
+   "inconclusive_rate": 0.2529,
+   "by_stratum": {
+    "theory": {
+     "n": 16,
+     "pts": 98,
+     "max": 164,
+     "rate": 0.5976
+    },
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "nkapila6",
+   "logbooks": 27,
+   "papers": 26,
+   "points": 94,
+   "max_points": 274,
+   "rate": 0.3431,
+   "full_papers": 0,
+   "medical_logbooks": 4,
+   "claims": 137,
+   "verified_rate": 0.2263,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2336,
+   "inconclusive_rate": 0.5401,
+   "by_stratum": {
+    "other": {
+     "n": 15,
+     "pts": 48,
+     "max": 154,
+     "rate": 0.3117
+    },
+    "theory": {
+     "n": 9,
+     "pts": 37,
+     "max": 90,
+     "rate": 0.4111
+    },
+    "simulation": {
+     "n": 3,
+     "pts": 9,
+     "max": 30,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "HHDZ",
+   "logbooks": 11,
+   "papers": 11,
+   "points": 92,
+   "max_points": 118,
+   "rate": 0.7797,
+   "full_papers": 4,
+   "medical_logbooks": 2,
+   "claims": 59,
+   "verified_rate": 0.6949,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1695,
+   "inconclusive_rate": 0.1356,
+   "by_stratum": {
+    "theory": {
+     "n": 11,
+     "pts": 92,
+     "max": 118,
+     "rate": 0.7797
+    }
+   }
+  },
+  {
+   "author": "gchauhan",
+   "logbooks": 13,
+   "papers": 13,
+   "points": 86,
+   "max_points": 144,
+   "rate": 0.5972,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 72,
+   "verified_rate": 0.4306,
+   "falsified_rate": 0.0139,
+   "toy_rate": 0.3056,
+   "inconclusive_rate": 0.25,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 28,
+     "max": 44,
+     "rate": 0.6364
+    },
+    "theory": {
+     "n": 8,
+     "pts": 57,
+     "max": 88,
+     "rate": 0.6477
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 1,
+     "max": 12,
+     "rate": 0.0833
+    }
+   }
+  },
+  {
+   "author": "nmaher",
+   "logbooks": 15,
+   "papers": 15,
+   "points": 85,
+   "max_points": 126,
+   "rate": 0.6746,
+   "full_papers": 6,
+   "medical_logbooks": 0,
+   "claims": 63,
+   "verified_rate": 0.4286,
+   "falsified_rate": 0.0317,
+   "toy_rate": 0.4286,
+   "inconclusive_rate": 0.1111,
+   "by_stratum": {
+    "theory": {
+     "n": 9,
+     "pts": 59,
+     "max": 92,
+     "rate": 0.6413
+    },
+    "other": {
+     "n": 6,
+     "pts": 26,
+     "max": 34,
+     "rate": 0.7647
+    }
+   }
+  },
+  {
+   "author": "NaveenVenu",
+   "logbooks": 19,
+   "papers": 18,
+   "points": 82,
+   "max_points": 188,
+   "rate": 0.4362,
+   "full_papers": 2,
+   "medical_logbooks": 1,
+   "claims": 94,
+   "verified_rate": 0.3191,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.234,
+   "inconclusive_rate": 0.4468,
+   "by_stratum": {
+    "theory": {
+     "n": 13,
+     "pts": 55,
+     "max": 124,
+     "rate": 0.4435
+    },
+    "other": {
+     "n": 6,
+     "pts": 27,
+     "max": 64,
+     "rate": 0.4219
+    }
+   }
+  },
+  {
+   "author": "wrice",
+   "logbooks": 33,
+   "papers": 31,
+   "points": 81,
+   "max_points": 344,
+   "rate": 0.2355,
+   "full_papers": 0,
+   "medical_logbooks": 4,
+   "claims": 172,
+   "verified_rate": 0.1279,
+   "falsified_rate": 0.0174,
+   "toy_rate": 0.1802,
+   "inconclusive_rate": 0.6744,
+   "by_stratum": {
+    "theory": {
+     "n": 7,
+     "pts": 14,
+     "max": 70,
+     "rate": 0.2
+    },
+    "other": {
+     "n": 19,
+     "pts": 52,
+     "max": 200,
+     "rate": 0.26
+    },
+    "simulation": {
+     "n": 5,
+     "pts": 10,
+     "max": 52,
+     "rate": 0.1923
+    },
+    "open_data": {
+     "n": 2,
+     "pts": 5,
+     "max": 22,
+     "rate": 0.2273
+    }
+   }
+  },
+  {
+   "author": "Storm1t",
+   "logbooks": 11,
+   "papers": 10,
+   "points": 81,
+   "max_points": 118,
+   "rate": 0.6864,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 59,
+   "verified_rate": 0.4576,
+   "falsified_rate": 0.0339,
+   "toy_rate": 0.3898,
+   "inconclusive_rate": 0.1186,
+   "by_stratum": {
+    "theory": {
+     "n": 11,
+     "pts": 81,
+     "max": 118,
+     "rate": 0.6864
+    }
+   }
+  },
+  {
+   "author": "JIghomena",
+   "logbooks": 40,
+   "papers": 36,
+   "points": 80,
+   "max_points": 474,
+   "rate": 0.1688,
+   "full_papers": 0,
+   "medical_logbooks": 3,
+   "claims": 237,
+   "verified_rate": 0.0253,
+   "falsified_rate": 0.0084,
+   "toy_rate": 0.27,
+   "inconclusive_rate": 0.6962,
+   "by_stratum": {
+    "theory": {
+     "n": 39,
+     "pts": 80,
+     "max": 462,
+     "rate": 0.1732
+    },
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "YMRohit",
+   "logbooks": 11,
+   "papers": 11,
+   "points": 80,
+   "max_points": 118,
+   "rate": 0.678,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 59,
+   "verified_rate": 0.5424,
+   "falsified_rate": 0.0339,
+   "toy_rate": 0.2034,
+   "inconclusive_rate": 0.2203,
+   "by_stratum": {
+    "theory": {
+     "n": 8,
+     "pts": 50,
+     "max": 82,
+     "rate": 0.6098
+    },
+    "other": {
+     "n": 2,
+     "pts": 20,
+     "max": 24,
+     "rate": 0.8333
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "prarabdhmisra",
+   "logbooks": 10,
+   "papers": 10,
+   "points": 79,
+   "max_points": 110,
+   "rate": 0.7182,
+   "full_papers": 2,
+   "medical_logbooks": 1,
+   "claims": 55,
+   "verified_rate": 0.5818,
+   "falsified_rate": 0.1091,
+   "toy_rate": 0.0545,
+   "inconclusive_rate": 0.2545,
+   "by_stratum": {
+    "theory": {
+     "n": 8,
+     "pts": 63,
+     "max": 92,
+     "rate": 0.6848
+    },
+    "other": {
+     "n": 2,
+     "pts": 16,
+     "max": 18,
+     "rate": 0.8889
+    }
+   }
+  },
+  {
+   "author": "the-kristina-dimitrova",
+   "logbooks": 12,
+   "papers": 12,
+   "points": 77,
+   "max_points": 132,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 66,
+   "verified_rate": 0.3485,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4697,
+   "inconclusive_rate": 0.1818,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 18,
+     "max": 24,
+     "rate": 0.75
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    },
+    "theory": {
+     "n": 8,
+     "pts": 49,
+     "max": 84,
+     "rate": 0.5833
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "Yashp2003",
+   "logbooks": 19,
+   "papers": 17,
+   "points": 74,
+   "max_points": 190,
+   "rate": 0.3895,
+   "full_papers": 1,
+   "medical_logbooks": 5,
+   "claims": 95,
+   "verified_rate": 0.1158,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5474,
+   "inconclusive_rate": 0.3368,
+   "by_stratum": {
+    "other": {
+     "n": 11,
+     "pts": 41,
+     "max": 108,
+     "rate": 0.3796
+    },
+    "theory": {
+     "n": 7,
+     "pts": 29,
+     "max": 72,
+     "rate": 0.4028
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "Sor0ush",
+   "logbooks": 19,
+   "papers": 18,
+   "points": 72,
+   "max_points": 200,
+   "rate": 0.36,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 100,
+   "verified_rate": 0.13,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.46,
+   "inconclusive_rate": 0.41,
+   "by_stratum": {
+    "other": {
+     "n": 10,
+     "pts": 27,
+     "max": 96,
+     "rate": 0.2812
+    },
+    "theory": {
+     "n": 9,
+     "pts": 45,
+     "max": 104,
+     "rate": 0.4327
+    }
+   }
+  },
+  {
+   "author": "sugan04",
+   "logbooks": 31,
+   "papers": 30,
+   "points": 70,
+   "max_points": 248,
+   "rate": 0.2823,
+   "full_papers": 6,
+   "medical_logbooks": 2,
+   "claims": 124,
+   "verified_rate": 0.2258,
+   "falsified_rate": 0.0081,
+   "toy_rate": 0.0968,
+   "inconclusive_rate": 0.6694,
+   "by_stratum": {
+    "other": {
+     "n": 20,
+     "pts": 54,
+     "max": 148,
+     "rate": 0.3649
+    },
+    "theory": {
+     "n": 10,
+     "pts": 16,
+     "max": 96,
+     "rate": 0.1667
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "kpshinnik",
+   "logbooks": 22,
+   "papers": 21,
+   "points": 69,
+   "max_points": 140,
+   "rate": 0.4929,
+   "full_papers": 2,
+   "medical_logbooks": 3,
+   "claims": 70,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.0286,
+   "toy_rate": 0.3286,
+   "inconclusive_rate": 0.3429,
+   "by_stratum": {
+    "theory": {
+     "n": 8,
+     "pts": 40,
+     "max": 62,
+     "rate": 0.6452
+    },
+    "other": {
+     "n": 14,
+     "pts": 29,
+     "max": 78,
+     "rate": 0.3718
+    }
+   }
+  },
+  {
+   "author": "txus",
+   "logbooks": 9,
+   "papers": 8,
+   "points": 66,
+   "max_points": 86,
+   "rate": 0.7674,
+   "full_papers": 4,
+   "medical_logbooks": 0,
+   "claims": 43,
+   "verified_rate": 0.6279,
+   "falsified_rate": 0.0698,
+   "toy_rate": 0.1395,
+   "inconclusive_rate": 0.1628,
+   "by_stratum": {
+    "theory": {
+     "n": 8,
+     "pts": 58,
+     "max": 78,
+     "rate": 0.7436
+    },
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 8,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "shayekh",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 66,
+   "max_points": 92,
+   "rate": 0.7174,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 46,
+   "verified_rate": 0.587,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2609,
+   "inconclusive_rate": 0.1522,
+   "by_stratum": {
+    "theory": {
+     "n": 7,
+     "pts": 63,
+     "max": 82,
+     "rate": 0.7683
+    },
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "gkalyanaraman3",
+   "logbooks": 17,
+   "papers": 17,
+   "points": 65,
+   "max_points": 182,
+   "rate": 0.3571,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 91,
+   "verified_rate": 0.2967,
+   "falsified_rate": 0.022,
+   "toy_rate": 0.0769,
+   "inconclusive_rate": 0.6044,
+   "by_stratum": {
+    "other": {
+     "n": 9,
+     "pts": 24,
+     "max": 102,
+     "rate": 0.2353
+    },
+    "theory": {
+     "n": 7,
+     "pts": 39,
+     "max": 72,
+     "rate": 0.5417
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "imadreamerboy",
+   "logbooks": 40,
+   "papers": 39,
+   "points": 53,
+   "max_points": 368,
+   "rate": 0.144,
+   "full_papers": 0,
+   "medical_logbooks": 4,
+   "claims": 184,
+   "verified_rate": 0.038,
+   "falsified_rate": 0.0163,
+   "toy_rate": 0.1793,
+   "inconclusive_rate": 0.7663,
+   "by_stratum": {
+    "theory": {
+     "n": 26,
+     "pts": 35,
+     "max": 246,
+     "rate": 0.1423
+    },
+    "other": {
+     "n": 12,
+     "pts": 18,
+     "max": 106,
+     "rate": 0.1698
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 0,
+     "max": 16,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "junwatu",
+   "logbooks": 39,
+   "papers": 38,
+   "points": 51,
+   "max_points": 272,
+   "rate": 0.1875,
+   "full_papers": 1,
+   "medical_logbooks": 5,
+   "claims": 136,
+   "verified_rate": 0.0882,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1985,
+   "inconclusive_rate": 0.7132,
+   "by_stratum": {
+    "other": {
+     "n": 32,
+     "pts": 28,
+     "max": 220,
+     "rate": 0.1273
+    },
+    "theory": {
+     "n": 7,
+     "pts": 23,
+     "max": 52,
+     "rate": 0.4423
+    }
+   }
+  },
+  {
+   "author": "abidlabs",
+   "logbooks": 20,
+   "papers": 13,
+   "points": 49,
+   "max_points": 140,
+   "rate": 0.35,
+   "full_papers": 0,
+   "medical_logbooks": 4,
+   "claims": 70,
+   "verified_rate": 0.0857,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5286,
+   "inconclusive_rate": 0.3857,
+   "by_stratum": {
+    "other": {
+     "n": 18,
+     "pts": 40,
+     "max": 120,
+     "rate": 0.3333
+    },
+    "theory": {
+     "n": 2,
+     "pts": 9,
+     "max": 20,
+     "rate": 0.45
+    }
+   }
+  },
+  {
+   "author": "ashish-soni08",
+   "logbooks": 15,
+   "papers": 15,
+   "points": 48,
+   "max_points": 138,
+   "rate": 0.3478,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 69,
+   "verified_rate": 0.1449,
+   "falsified_rate": 0.0145,
+   "toy_rate": 0.3768,
+   "inconclusive_rate": 0.4638,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 19,
+     "max": 40,
+     "rate": 0.475
+    },
+    "other": {
+     "n": 11,
+     "pts": 29,
+     "max": 98,
+     "rate": 0.2959
+    }
+   }
+  },
+  {
+   "author": "Boopster",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 48,
+   "max_points": 82,
+   "rate": 0.5854,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 41,
+   "verified_rate": 0.5366,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0976,
+   "inconclusive_rate": 0.3659,
+   "by_stratum": {
+    "theory": {
+     "n": 6,
+     "pts": 34,
+     "max": 60,
+     "rate": 0.5667
+    },
+    "other": {
+     "n": 2,
+     "pts": 14,
+     "max": 22,
+     "rate": 0.6364
+    }
+   }
+  },
+  {
+   "author": "745H1N",
+   "logbooks": 23,
+   "papers": 23,
+   "points": 47,
+   "max_points": 178,
+   "rate": 0.264,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 89,
+   "verified_rate": 0.0449,
+   "falsified_rate": 0.0112,
+   "toy_rate": 0.4157,
+   "inconclusive_rate": 0.5281,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    },
+    "theory": {
+     "n": 21,
+     "pts": 43,
+     "max": 160,
+     "rate": 0.2687
+    },
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 6,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "AITrailblazer",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 44,
+   "max_points": 60,
+   "rate": 0.7333,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 30,
+   "verified_rate": 0.5333,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.2667,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 36,
+     "max": 40,
+     "rate": 0.9
+    },
+    "other": {
+     "n": 2,
+     "pts": 8,
+     "max": 20,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "SaiPavankumar22",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 43,
+   "max_points": 66,
+   "rate": 0.6515,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 33,
+   "verified_rate": 0.3939,
+   "falsified_rate": 0.0303,
+   "toy_rate": 0.4545,
+   "inconclusive_rate": 0.1212,
+   "by_stratum": {
+    "theory": {
+     "n": 6,
+     "pts": 38,
+     "max": 56,
+     "rate": 0.6786
+    },
+    "other": {
+     "n": 2,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "PinoCookie",
+   "logbooks": 9,
+   "papers": 9,
+   "points": 42,
+   "max_points": 84,
+   "rate": 0.5,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 42,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 20,
+     "max": 34,
+     "rate": 0.5882
+    },
+    "theory": {
+     "n": 5,
+     "pts": 22,
+     "max": 50,
+     "rate": 0.44
+    }
+   }
+  },
+  {
+   "author": "Auenchanters",
+   "logbooks": 6,
+   "papers": 5,
+   "points": 41,
+   "max_points": 52,
+   "rate": 0.7885,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 26,
+   "verified_rate": 0.6923,
+   "falsified_rate": 0.0769,
+   "toy_rate": 0.0385,
+   "inconclusive_rate": 0.1923,
+   "by_stratum": {
+    "theory": {
+     "n": 6,
+     "pts": 41,
+     "max": 52,
+     "rate": 0.7885
+    }
+   }
+  },
+  {
+   "author": "latticetower",
+   "logbooks": 7,
+   "papers": 7,
+   "points": 38,
+   "max_points": 56,
+   "rate": 0.6786,
+   "full_papers": 1,
+   "medical_logbooks": 4,
+   "claims": 28,
+   "verified_rate": 0.4643,
+   "falsified_rate": 0.0357,
+   "toy_rate": 0.3571,
+   "inconclusive_rate": 0.1429,
+   "by_stratum": {
+    "other": {
+     "n": 6,
+     "pts": 31,
+     "max": 46,
+     "rate": 0.6739
+    },
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "ConductorAILabs",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 38,
+   "max_points": 58,
+   "rate": 0.6552,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 29,
+   "verified_rate": 0.5517,
+   "falsified_rate": 0.069,
+   "toy_rate": 0.069,
+   "inconclusive_rate": 0.3103,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 12,
+     "max": 26,
+     "rate": 0.4615
+    },
+    "theory": {
+     "n": 3,
+     "pts": 26,
+     "max": 32,
+     "rate": 0.8125
+    }
+   }
+  },
+  {
+   "author": "erobinson",
+   "logbooks": 11,
+   "papers": 10,
+   "points": 38,
+   "max_points": 100,
+   "rate": 0.38,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 50,
+   "verified_rate": 0.24,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.28,
+   "inconclusive_rate": 0.48,
+   "by_stratum": {
+    "other": {
+     "n": 7,
+     "pts": 19,
+     "max": 58,
+     "rate": 0.3276
+    },
+    "theory": {
+     "n": 4,
+     "pts": 19,
+     "max": 42,
+     "rate": 0.4524
+    }
+   }
+  },
+  {
+   "author": "Eishaan",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 38,
+   "max_points": 40,
+   "rate": 0.95,
+   "full_papers": 3,
+   "medical_logbooks": 0,
+   "claims": 20,
+   "verified_rate": 0.95,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.05,
+   "by_stratum": {
+    "theory": {
+     "n": 3,
+     "pts": 28,
+     "max": 30,
+     "rate": 0.9333
+    },
+    "other": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "kaustubh",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 36,
+   "max_points": 36,
+   "rate": 1.0,
+   "full_papers": 5,
+   "medical_logbooks": 0,
+   "claims": 18,
+   "verified_rate": 0.7222,
+   "falsified_rate": 0.2778,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 26,
+     "max": 26,
+     "rate": 1.0
+    },
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "byte-vortex",
+   "logbooks": 5,
+   "papers": 4,
+   "points": 35,
+   "max_points": 52,
+   "rate": 0.6731,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 26,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3462,
+   "inconclusive_rate": 0.1538,
+   "by_stratum": {
+    "theory": {
+     "n": 3,
+     "pts": 17,
+     "max": 32,
+     "rate": 0.5312
+    },
+    "other": {
+     "n": 2,
+     "pts": 18,
+     "max": 20,
+     "rate": 0.9
+    }
+   }
+  },
+  {
+   "author": "VeigaPunk",
+   "logbooks": 20,
+   "papers": 19,
+   "points": 34,
+   "max_points": 212,
+   "rate": 0.1604,
+   "full_papers": 0,
+   "medical_logbooks": 3,
+   "claims": 106,
+   "verified_rate": 0.0755,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1698,
+   "inconclusive_rate": 0.7547,
+   "by_stratum": {
+    "other": {
+     "n": 6,
+     "pts": 4,
+     "max": 66,
+     "rate": 0.0606
+    },
+    "theory": {
+     "n": 11,
+     "pts": 29,
+     "max": 114,
+     "rate": 0.2544
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    },
+    "simulation": {
+     "n": 2,
+     "pts": 1,
+     "max": 20,
+     "rate": 0.05
+    }
+   }
+  },
+  {
+   "author": "IvanMiao",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 33,
+   "max_points": 54,
+   "rate": 0.6111,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 27,
+   "verified_rate": 0.2222,
+   "falsified_rate": 0.2222,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.2222,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 22,
+     "max": 22,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 3,
+     "pts": 6,
+     "max": 20,
+     "rate": 0.3
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "debajyotidasgupta",
+   "logbooks": 11,
+   "papers": 11,
+   "points": 31,
+   "max_points": 52,
+   "rate": 0.5962,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 26,
+   "verified_rate": 0.3846,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4231,
+   "inconclusive_rate": 0.1923,
+   "by_stratum": {
+    "theory": {
+     "n": 7,
+     "pts": 21,
+     "max": 32,
+     "rate": 0.6562
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 1,
+     "max": 4,
+     "rate": 0.25
+    },
+    "other": {
+     "n": 3,
+     "pts": 9,
+     "max": 16,
+     "rate": 0.5625
+    }
+   }
+  },
+  {
+   "author": "VINAY-UMRETHE",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 30,
+   "max_points": 60,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 30,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 5,
+     "pts": 21,
+     "max": 42,
+     "rate": 0.5
+    },
+    "other": {
+     "n": 3,
+     "pts": 9,
+     "max": 18,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "feliksier",
+   "logbooks": 6,
+   "papers": 5,
+   "points": 30,
+   "max_points": 60,
+   "rate": 0.5,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 30,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.3,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    },
+    "other": {
+     "n": 4,
+     "pts": 22,
+     "max": 40,
+     "rate": 0.55
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "qy2100",
+   "logbooks": 4,
+   "papers": 3,
+   "points": 30,
+   "max_points": 42,
+   "rate": 0.7143,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 21,
+   "verified_rate": 0.5714,
+   "falsified_rate": 0.0952,
+   "toy_rate": 0.0952,
+   "inconclusive_rate": 0.2381,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 30,
+     "max": 42,
+     "rate": 0.7143
+    }
+   }
+  },
+  {
+   "author": "FloorIsAwake",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 29,
+   "max_points": 50,
+   "rate": 0.58,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 25,
+   "verified_rate": 0.32,
+   "falsified_rate": 0.08,
+   "toy_rate": 0.36,
+   "inconclusive_rate": 0.24,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 19,
+     "max": 40,
+     "rate": 0.475
+    },
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Outrun32",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 29,
+   "max_points": 44,
+   "rate": 0.6591,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 22,
+   "verified_rate": 0.3636,
+   "falsified_rate": 0.1818,
+   "toy_rate": 0.2273,
+   "inconclusive_rate": 0.2273,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 16,
+     "max": 22,
+     "rate": 0.7273
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    },
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "Alogotron",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 27,
+   "max_points": 60,
+   "rate": 0.45,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 30,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 3,
+     "pts": 12,
+     "max": 30,
+     "rate": 0.4
+    },
+    "other": {
+     "n": 3,
+     "pts": 15,
+     "max": 30,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "alphaXiv",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 25,
+   "max_points": 44,
+   "rate": 0.5682,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 22,
+   "verified_rate": 0.4091,
+   "falsified_rate": 0.0455,
+   "toy_rate": 0.2273,
+   "inconclusive_rate": 0.3182,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 18,
+     "max": 34,
+     "rate": 0.5294
+    },
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "Silvestre-PO",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 25,
+   "max_points": 68,
+   "rate": 0.3676,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 34,
+   "verified_rate": 0.1765,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3824,
+   "inconclusive_rate": 0.4412,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 17,
+     "max": 48,
+     "rate": 0.3542
+    },
+    "other": {
+     "n": 2,
+     "pts": 8,
+     "max": 20,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "wakeupmh",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 25,
+   "max_points": 32,
+   "rate": 0.7812,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 16,
+   "verified_rate": 0.625,
+   "falsified_rate": 0.125,
+   "toy_rate": 0.0625,
+   "inconclusive_rate": 0.1875,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "avithal",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 24,
+   "max_points": 34,
+   "rate": 0.7059,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 17,
+   "verified_rate": 0.5882,
+   "falsified_rate": 0.0588,
+   "toy_rate": 0.1176,
+   "inconclusive_rate": 0.2353,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 14,
+     "max": 24,
+     "rate": 0.5833
+    },
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Jaycee766",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 23,
+   "max_points": 48,
+   "rate": 0.4792,
+   "full_papers": 2,
+   "medical_logbooks": 1,
+   "claims": 24,
+   "verified_rate": 0.4167,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.125,
+   "inconclusive_rate": 0.4583,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 18,
+     "max": 18,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 3,
+     "pts": 5,
+     "max": 30,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "arthrod",
+   "logbooks": 3,
+   "papers": 2,
+   "points": 22,
+   "max_points": 28,
+   "rate": 0.7857,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 14,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0714,
+   "toy_rate": 0.4286,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 22,
+     "max": 28,
+     "rate": 0.7857
+    }
+   }
+  },
+  {
+   "author": "ancs21",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 22,
+   "max_points": 56,
+   "rate": 0.3929,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 28,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0714,
+   "toy_rate": 0.1429,
+   "inconclusive_rate": 0.5357,
+   "by_stratum": {
+    "other": {
+     "n": 5,
+     "pts": 20,
+     "max": 44,
+     "rate": 0.4545
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "yaegerknight",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 22,
+   "max_points": 36,
+   "rate": 0.6111,
+   "full_papers": 0,
+   "medical_logbooks": 4,
+   "claims": 18,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2222,
+   "inconclusive_rate": 0.2778,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 17,
+     "max": 30,
+     "rate": 0.5667
+    },
+    "theory": {
+     "n": 1,
+     "pts": 5,
+     "max": 6,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "xubayer",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 22,
+   "max_points": 22,
+   "rate": 1.0,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "DamianBoborzi",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 21,
+   "max_points": 22,
+   "rate": 0.9545,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.5455,
+   "falsified_rate": 0.3636,
+   "toy_rate": 0.0909,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 9,
+     "max": 10,
+     "rate": 0.9
+    }
+   }
+  },
+  {
+   "author": "arinpt",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 20,
+   "max_points": 34,
+   "rate": 0.5882,
+   "full_papers": 2,
+   "medical_logbooks": 1,
+   "claims": 17,
+   "verified_rate": 0.4706,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2353,
+   "inconclusive_rate": 0.2941,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 20,
+     "max": 34,
+     "rate": 0.5882
+    }
+   }
+  },
+  {
+   "author": "Kiy-K",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 20,
+   "max_points": 40,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 20,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.05,
+   "toy_rate": 0.3,
+   "inconclusive_rate": 0.35,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 10,
+     "max": 22,
+     "rate": 0.4545
+    },
+    "theory": {
+     "n": 2,
+     "pts": 10,
+     "max": 18,
+     "rate": 0.5556
+    }
+   }
+  },
+  {
+   "author": "svdrecbd",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 20,
+   "max_points": 28,
+   "rate": 0.7143,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 14,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.1429,
+   "toy_rate": 0.1429,
+   "inconclusive_rate": 0.2143,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 18,
+     "max": 24,
+     "rate": 0.75
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "deepakgudla",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 20,
+   "max_points": 42,
+   "rate": 0.4762,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 21,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.9524,
+   "inconclusive_rate": 0.0476,
+   "by_stratum": {
+    "theory": {
+     "n": 3,
+     "pts": 15,
+     "max": 30,
+     "rate": 0.5
+    },
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "Rjchauhan",
+   "logbooks": 7,
+   "papers": 6,
+   "points": 18,
+   "max_points": 44,
+   "rate": 0.4091,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 22,
+   "verified_rate": 0.2273,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3636,
+   "inconclusive_rate": 0.4091,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 12,
+     "max": 24,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 4,
+     "pts": 6,
+     "max": 20,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "LucasBeziers",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 18,
+   "max_points": 42,
+   "rate": 0.4286,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 21,
+   "verified_rate": 0.1905,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4762,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 16,
+     "max": 32,
+     "rate": 0.5
+    },
+    "open_data": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "sanjaymalladi",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 18,
+   "max_points": 40,
+   "rate": 0.45,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 20,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 8,
+     "rate": 0.875
+    },
+    "other": {
+     "n": 3,
+     "pts": 11,
+     "max": 32,
+     "rate": 0.3438
+    }
+   }
+  },
+  {
+   "author": "Harshvardhan-Mestha",
+   "logbooks": 5,
+   "papers": 5,
+   "points": 18,
+   "max_points": 56,
+   "rate": 0.3214,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 28,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6429,
+   "inconclusive_rate": 0.3571,
+   "by_stratum": {
+    "theory": {
+     "n": 4,
+     "pts": 15,
+     "max": 44,
+     "rate": 0.3409
+    },
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Nish228",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 18,
+   "max_points": 28,
+   "rate": 0.6429,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 14,
+   "verified_rate": 0.5714,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1429,
+   "inconclusive_rate": 0.2857,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 10,
+     "max": 16,
+     "rate": 0.625
+    },
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "heitorefer",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 18,
+   "max_points": 60,
+   "rate": 0.3,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 30,
+   "verified_rate": 0.1,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 1,
+     "max": 12,
+     "rate": 0.0833
+    },
+    "other": {
+     "n": 7,
+     "pts": 17,
+     "max": 48,
+     "rate": 0.3542
+    }
+   }
+  },
+  {
+   "author": "rakshi-the-neural-nexus",
+   "logbooks": 3,
+   "papers": 2,
+   "points": 18,
+   "max_points": 30,
+   "rate": 0.6,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 15,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    },
+    "theory": {
+     "n": 2,
+     "pts": 12,
+     "max": 20,
+     "rate": 0.6
+    }
+   }
+  },
+  {
+   "author": "gauravmishra9",
+   "logbooks": 3,
+   "papers": 2,
+   "points": 18,
+   "max_points": 30,
+   "rate": 0.6,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 15,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 18,
+     "max": 30,
+     "rate": 0.6
+    }
+   }
+  },
+  {
+   "author": "Sugutt",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 17,
+   "max_points": 28,
+   "rate": 0.6071,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 14,
+   "verified_rate": 0.2857,
+   "falsified_rate": 0.0714,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.1429,
+   "by_stratum": {
+    "theory": {
+     "n": 3,
+     "pts": 17,
+     "max": 28,
+     "rate": 0.6071
+    }
+   }
+  },
+  {
+   "author": "gogorun12",
+   "logbooks": 8,
+   "papers": 8,
+   "points": 17,
+   "max_points": 72,
+   "rate": 0.2361,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 36,
+   "verified_rate": 0.1111,
+   "falsified_rate": 0.1111,
+   "toy_rate": 0.0278,
+   "inconclusive_rate": 0.75,
+   "by_stratum": {
+    "other": {
+     "n": 5,
+     "pts": 14,
+     "max": 48,
+     "rate": 0.2917
+    },
+    "theory": {
+     "n": 3,
+     "pts": 3,
+     "max": 24,
+     "rate": 0.125
+    }
+   }
+  },
+  {
+   "author": "dmitry-rov",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 16,
+   "max_points": 24,
+   "rate": 0.6667,
+   "full_papers": 2,
+   "medical_logbooks": 2,
+   "claims": 12,
+   "verified_rate": 0.5833,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.25,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 12,
+     "max": 18,
+     "rate": 0.6667
+    },
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 6,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "gizaom",
+   "logbooks": 11,
+   "papers": 11,
+   "points": 16,
+   "max_points": 122,
+   "rate": 0.1311,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 61,
+   "verified_rate": 0.0984,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0656,
+   "inconclusive_rate": 0.8361,
+   "by_stratum": {
+    "theory": {
+     "n": 8,
+     "pts": 12,
+     "max": 88,
+     "rate": 0.1364
+    },
+    "other": {
+     "n": 3,
+     "pts": 4,
+     "max": 34,
+     "rate": 0.1176
+    }
+   }
+  },
+  {
+   "author": "rcgp",
+   "logbooks": 10,
+   "papers": 9,
+   "points": 16,
+   "max_points": 72,
+   "rate": 0.2222,
+   "full_papers": 0,
+   "medical_logbooks": 3,
+   "claims": 36,
+   "verified_rate": 0.0556,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6111,
+   "by_stratum": {
+    "other": {
+     "n": 6,
+     "pts": 13,
+     "max": 32,
+     "rate": 0.4062
+    },
+    "theory": {
+     "n": 4,
+     "pts": 3,
+     "max": 40,
+     "rate": 0.075
+    }
+   }
+  },
+  {
+   "author": "toqi",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 16,
+   "max_points": 22,
+   "rate": 0.7273,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 11,
+   "verified_rate": 0.5455,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3636,
+   "inconclusive_rate": 0.0909,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 16,
+     "max": 22,
+     "rate": 0.7273
+    }
+   }
+  },
+  {
+   "author": "dwahdany",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 16,
+   "max_points": 22,
+   "rate": 0.7273,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.7273,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.2727,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 16,
+     "max": 22,
+     "rate": 0.7273
+    }
+   }
+  },
+  {
+   "author": "vbabenko97",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 15,
+   "max_points": 20,
+   "rate": 0.75,
+   "full_papers": 1,
+   "medical_logbooks": 2,
+   "claims": 10,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3,
+   "inconclusive_rate": 0.1,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 15,
+     "max": 20,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "Sidseren",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 14,
+   "max_points": 16,
+   "rate": 0.875,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 8,
+   "verified_rate": 0.125,
+   "falsified_rate": 0.625,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "su3su2u1",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 14,
+   "max_points": 14,
+   "rate": 1.0,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 7,
+   "verified_rate": 0.8571,
+   "falsified_rate": 0.1429,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 14,
+     "max": 14,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "nielsr",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 13,
+   "max_points": 38,
+   "rate": 0.3421,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 19,
+   "verified_rate": 0.2105,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2632,
+   "inconclusive_rate": 0.5263,
+   "by_stratum": {
+    "other": {
+     "n": 5,
+     "pts": 5,
+     "max": 30,
+     "rate": 0.1667
+    },
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 8,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "GAMI000",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 13,
+   "max_points": 18,
+   "rate": 0.7222,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.4444,
+   "falsified_rate": 0.1111,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.1111,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 13,
+     "max": 18,
+     "rate": 0.7222
+    }
+   }
+  },
+  {
+   "author": "ToluClassics",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 13,
+   "max_points": 30,
+   "rate": 0.4333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 15,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0667,
+   "toy_rate": 0.0667,
+   "inconclusive_rate": 0.5333,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 13,
+     "max": 30,
+     "rate": 0.4333
+    }
+   }
+  },
+  {
+   "author": "ramgopal-reddy",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 13,
+   "max_points": 40,
+   "rate": 0.325,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 20,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.55,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    },
+    "theory": {
+     "n": 4,
+     "pts": 10,
+     "max": 30,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "Roman81",
+   "logbooks": 4,
+   "papers": 3,
+   "points": 13,
+   "max_points": 46,
+   "rate": 0.2826,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 23,
+   "verified_rate": 0.1304,
+   "falsified_rate": 0.087,
+   "toy_rate": 0.1304,
+   "inconclusive_rate": 0.6522,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 6,
+     "max": 24,
+     "rate": 0.25
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    },
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "kaleido-jean",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 12,
+   "max_points": 32,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 16,
+   "verified_rate": 0.375,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.625,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 12,
+     "max": 32,
+     "rate": 0.375
+    }
+   }
+  },
+  {
+   "author": "Pabloler21",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 12,
+   "max_points": 12,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "balade",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 12,
+   "max_points": 42,
+   "rate": 0.2857,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 21,
+   "verified_rate": 0.0952,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.381,
+   "inconclusive_rate": 0.5238,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    },
+    "theory": {
+     "n": 3,
+     "pts": 8,
+     "max": 32,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "binzhango",
+   "logbooks": 6,
+   "papers": 4,
+   "points": 12,
+   "max_points": 42,
+   "rate": 0.2857,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 21,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5714,
+   "inconclusive_rate": 0.4286,
+   "by_stratum": {
+    "other": {
+     "n": 6,
+     "pts": 12,
+     "max": 42,
+     "rate": 0.2857
+    }
+   }
+  },
+  {
+   "author": "jrcrittenden",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 12,
+   "max_points": 18,
+   "rate": 0.6667,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.4444,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4444,
+   "inconclusive_rate": 0.1111,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    },
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 8,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "yugimani",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 12,
+   "max_points": 24,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 3,
+   "claims": 12,
+   "verified_rate": 0.0833,
+   "falsified_rate": 0.25,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    },
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "alcray",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 12,
+   "max_points": 12,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "debo3",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 12,
+   "max_points": 12,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.8333,
+   "falsified_rate": 0.1667,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "basilwong",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 12,
+   "max_points": 22,
+   "rate": 0.5455,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 11,
+   "verified_rate": 0.4545,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1818,
+   "inconclusive_rate": 0.3636,
+   "by_stratum": {
+    "open_data": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "JUNGU",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 12,
+   "max_points": 22,
+   "rate": 0.5455,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 11,
+   "verified_rate": 0.5455,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4545,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 10,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "huxingyu",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 12,
+   "max_points": 12,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.8333,
+   "falsified_rate": 0.1667,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 12,
+     "max": 12,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "tammy357",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 11,
+   "max_points": 16,
+   "rate": 0.6875,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 8,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.375,
+   "inconclusive_rate": 0.125,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 11,
+     "max": 16,
+     "rate": 0.6875
+    }
+   }
+  },
+  {
+   "author": "debrajsingha",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 11,
+   "max_points": 32,
+   "rate": 0.3438,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 16,
+   "verified_rate": 0.1875,
+   "falsified_rate": 0.0625,
+   "toy_rate": 0.1875,
+   "inconclusive_rate": 0.5625,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 11,
+     "max": 32,
+     "rate": 0.3438
+    }
+   }
+  },
+  {
+   "author": "El1iasss",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 11,
+   "max_points": 22,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 11,
+   "verified_rate": 0.2727,
+   "falsified_rate": 0.0909,
+   "toy_rate": 0.2727,
+   "inconclusive_rate": 0.3636,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 11,
+     "max": 22,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "robot-lev",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 11,
+   "max_points": 16,
+   "rate": 0.6875,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 8,
+   "verified_rate": 0.375,
+   "falsified_rate": 0.125,
+   "toy_rate": 0.375,
+   "inconclusive_rate": 0.125,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 11,
+     "max": 16,
+     "rate": 0.6875
+    }
+   }
+  },
+  {
+   "author": "Girgie",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 11,
+   "max_points": 12,
+   "rate": 0.9167,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.8333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 11,
+     "max": 12,
+     "rate": 0.9167
+    }
+   }
+  },
+  {
+   "author": "noelthekke",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 11,
+   "max_points": 22,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.1818,
+   "falsified_rate": 0.2727,
+   "toy_rate": 0.0909,
+   "inconclusive_rate": 0.4545,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "kineticdrive",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 11,
+   "max_points": 22,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.1818,
+   "falsified_rate": 0.1818,
+   "toy_rate": 0.2727,
+   "inconclusive_rate": 0.3636,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 11,
+     "max": 22,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "FrancescoBellingeri",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "PestoRosso",
+   "logbooks": 3,
+   "papers": 2,
+   "points": 10,
+   "max_points": 16,
+   "rate": 0.625,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 8,
+   "verified_rate": 0.625,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.375,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    },
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "swaption2009",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 10,
+   "max_points": 18,
+   "rate": 0.5556,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.4444,
+   "falsified_rate": 0.1111,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4444,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 6,
+     "rate": 1.0
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "tc043",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 10,
+   "max_points": 18,
+   "rate": 0.5556,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.4444,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2222,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 8,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "j14i",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 10,
+   "max_points": 28,
+   "rate": 0.3571,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 14,
+   "verified_rate": 0.1429,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4286,
+   "inconclusive_rate": 0.4286,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 6,
+     "max": 18,
+     "rate": 0.3333
+    },
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "EdSheeranCoding",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 10,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Papajams",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 10,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "galexdav",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 10,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.4,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "ashishk1331",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.6667,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "sci-m-wang",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 10,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.6,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "sarahsl-prog",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 10,
+   "max_points": 22,
+   "rate": 0.4545,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.3636,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1818,
+   "inconclusive_rate": 0.4545,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 10,
+     "max": 22,
+     "rate": 0.4545
+    }
+   }
+  },
+  {
+   "author": "JAEMP",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "rajpragur",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 10,
+   "max_points": 22,
+   "rate": 0.4545,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.9091,
+   "inconclusive_rate": 0.0909,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 10,
+     "max": 22,
+     "rate": 0.4545
+    }
+   }
+  },
+  {
+   "author": "nizda",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "vantuan5644",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.8333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "lutetjeff",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 10,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 10,
+     "max": 10,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "hameefy",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 10,
+   "max_points": 14,
+   "rate": 0.7143,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 7,
+   "verified_rate": 0.5714,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2857,
+   "inconclusive_rate": 0.1429,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "jiawei2ch",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 10,
+   "max_points": 12,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.5,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 10,
+     "max": 12,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "Hrushi",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 9,
+   "max_points": 10,
+   "rate": 0.9,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.8,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 9,
+     "max": 10,
+     "rate": 0.9
+    }
+   }
+  },
+  {
+   "author": "WissalAlia",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 9,
+   "max_points": 12,
+   "rate": 0.75,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 9,
+     "max": 12,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "scarwizz",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 9,
+   "max_points": 12,
+   "rate": 0.75,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 1,
+     "pts": 6,
+     "max": 6,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "salgadev",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 9,
+   "max_points": 24,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "Saugatkafley",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 9,
+   "max_points": 24,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 9,
+     "max": 24,
+     "rate": 0.375
+    }
+   }
+  },
+  {
+   "author": "taogenna",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 9,
+   "max_points": 12,
+   "rate": 0.75,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 9,
+     "max": 12,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "ofou",
+   "logbooks": 2,
+   "papers": 1,
+   "points": 9,
+   "max_points": 20,
+   "rate": 0.45,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 10,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.9,
+   "inconclusive_rate": 0.1,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 9,
+     "max": 20,
+     "rate": 0.45
+    }
+   }
+  },
+  {
+   "author": "Meriem-DH",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 9,
+   "max_points": 12,
+   "rate": 0.75,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 9,
+     "max": 12,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "adamcnoonan",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "semsorock",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 8,
+   "max_points": 36,
+   "rate": 0.2222,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 18,
+   "verified_rate": 0.1111,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2222,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 6,
+     "max": 24,
+     "rate": 0.25
+    },
+    "simulation": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "dmitry-rovniaguin",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 8,
+   "max_points": 10,
+   "rate": 0.8,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 6,
+     "rate": 0.6667
+    },
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 4,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Bluntmachetti7",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 10,
+   "rate": 0.8,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.4,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "Pauloimpar",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 10,
+   "rate": 0.8,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.8,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "mechramc",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "taesiri",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "noir-kalakaar",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "open_data": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "SteveaWong",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 8,
+   "max_points": 22,
+   "rate": 0.3636,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.0909,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5455,
+   "inconclusive_rate": 0.3636,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "TCrawley11",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 10,
+   "rate": 0.8,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "StochasticRhapsody",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "Stffens",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.3333,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "Lumasik2006",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 10,
+   "rate": 0.8,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.8,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 8,
+     "max": 10,
+     "rate": 0.8
+    }
+   }
+  },
+  {
+   "author": "ponyyuhan",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 8,
+   "max_points": 12,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 8,
+     "max": 12,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "Aswini-Kumar",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 12,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.1667,
+   "toy_rate": 0.8333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "Earther",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 10,
+   "rate": 0.7,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "ThreeSixNine",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 20,
+   "rate": 0.35,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 10,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.7,
+   "inconclusive_rate": 0.3,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 7,
+     "max": 20,
+     "rate": 0.35
+    }
+   }
+  },
+  {
+   "author": "aditya123579",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 8,
+   "rate": 0.875,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.75,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 7,
+     "max": 8,
+     "rate": 0.875
+    }
+   }
+  },
+  {
+   "author": "kalikho",
+   "logbooks": 4,
+   "papers": 4,
+   "points": 7,
+   "max_points": 20,
+   "rate": 0.35,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 10,
+   "verified_rate": 0.1,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    },
+    "theory": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    },
+    "other": {
+     "n": 2,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "JacobLinCool",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 10,
+   "rate": 0.7,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.4,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "sharktide",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 7,
+   "max_points": 26,
+   "rate": 0.2692,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 13,
+   "verified_rate": 0.1538,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2308,
+   "inconclusive_rate": 0.6154,
+   "by_stratum": {
+    "theory": {
+     "n": 5,
+     "pts": 7,
+     "max": 22,
+     "rate": 0.3182
+    },
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "andreagemelli",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 20,
+   "rate": 0.35,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 10,
+   "verified_rate": 0.3,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 7,
+     "max": 20,
+     "rate": 0.35
+    }
+   }
+  },
+  {
+   "author": "Manan013",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 12,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "MSGEncrypted",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 14,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 7,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 7,
+     "max": 14,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "suehuynh",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 14,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 7,
+   "verified_rate": 0.1429,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.7143,
+   "inconclusive_rate": 0.1429,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "harshamohan25",
+   "logbooks": 2,
+   "papers": 1,
+   "points": 7,
+   "max_points": 24,
+   "rate": 0.2917,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0833,
+   "toy_rate": 0.4167,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 7,
+     "max": 24,
+     "rate": 0.2917
+    }
+   }
+  },
+  {
+   "author": "AshwinP",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 12,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "mahiuchun",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 12,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "geekwrestler",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 12,
+   "rate": 0.5833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 12,
+     "rate": 0.5833
+    }
+   }
+  },
+  {
+   "author": "aapoorv75",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 7,
+   "max_points": 10,
+   "rate": 0.7,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 7,
+     "max": 10,
+     "rate": 0.7
+    }
+   }
+  },
+  {
+   "author": "RobvanGastel",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 7,
+   "max_points": 16,
+   "rate": 0.4375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 8,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.375,
+   "inconclusive_rate": 0.375,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    },
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 6,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "alinia",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 6,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 6,
+     "max": 6,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "stephenslee",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 12,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "randomyellowdude",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 6,
+   "max_points": 22,
+   "rate": 0.2727,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.2727,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.7273,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 6,
+     "max": 22,
+     "rate": 0.2727
+    }
+   }
+  },
+  {
+   "author": "trackio-tests",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 12,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "agulaya24",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 10,
+   "rate": 0.6,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.6,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    }
+   }
+  },
+  {
+   "author": "EraChanZ",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 6,
+   "max_points": 22,
+   "rate": 0.2727,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 11,
+   "verified_rate": 0.1818,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1818,
+   "inconclusive_rate": 0.6364,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    },
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Ma120",
+   "logbooks": 4,
+   "papers": 1,
+   "points": 6,
+   "max_points": 16,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 8,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.375,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.625,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 6,
+     "max": 16,
+     "rate": 0.375
+    }
+   }
+  },
+  {
+   "author": "artbob",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 6,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 3,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.3333,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 6,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "LamTNguyen",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 6,
+   "max_points": 14,
+   "rate": 0.4286,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 7,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.1429,
+   "toy_rate": 0.5714,
+   "inconclusive_rate": 0.2857,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 6,
+     "max": 14,
+     "rate": 0.4286
+    }
+   }
+  },
+  {
+   "author": "baimamboukar",
+   "logbooks": 2,
+   "papers": 1,
+   "points": 6,
+   "max_points": 24,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 6,
+     "max": 24,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "solarkyle",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 10,
+   "rate": 0.6,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    }
+   }
+  },
+  {
+   "author": "Rajdeep",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 10,
+   "rate": 0.6,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 6,
+     "max": 10,
+     "rate": 0.6
+    }
+   }
+  },
+  {
+   "author": "carlosveras",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 6,
+   "max_points": 14,
+   "rate": 0.4286,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 7,
+   "verified_rate": 0.1429,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5714,
+   "inconclusive_rate": 0.2857,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 4,
+     "rate": 0.75
+    },
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "coffee3699",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 6,
+   "max_points": 12,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 6,
+     "max": 12,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "andresnowak",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 5,
+   "max_points": 16,
+   "rate": 0.3125,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 8,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.625,
+   "inconclusive_rate": 0.375,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 5,
+     "max": 16,
+     "rate": 0.3125
+    }
+   }
+  },
+  {
+   "author": "tbrittoborges",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 6,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 3,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 6,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "thepushkarp",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "jgallego9",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "kaustubhg73",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 5,
+   "max_points": 18,
+   "rate": 0.2778,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5556,
+   "inconclusive_rate": 0.4444,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 5,
+     "max": 18,
+     "rate": 0.2778
+    }
+   }
+  },
+  {
+   "author": "Artgor",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 5,
+   "max_points": 14,
+   "rate": 0.3571,
+   "full_papers": 1,
+   "medical_logbooks": 1,
+   "claims": 7,
+   "verified_rate": 0.2857,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1429,
+   "inconclusive_rate": 0.5714,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 4,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    }
+   }
+  },
+  {
+   "author": "sisaacson",
+   "logbooks": 2,
+   "papers": 1,
+   "points": 5,
+   "max_points": 24,
+   "rate": 0.2083,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 12,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4167,
+   "inconclusive_rate": 0.5833,
+   "by_stratum": {
+    "open_data": {
+     "n": 2,
+     "pts": 5,
+     "max": 24,
+     "rate": 0.2083
+    }
+   }
+  },
+  {
+   "author": "gopaljigaur",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 12,
+   "rate": 0.4167,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.3333,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "Supreeth",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "wip07",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "mickr",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 12,
+   "rate": 0.4167,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8333,
+   "inconclusive_rate": 0.1667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "uchihamadara1816",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "aayu-outdooragi",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 12,
+   "rate": 0.4167,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "ygoldi",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "brettold",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 10,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "open_data": {
+     "n": 1,
+     "pts": 5,
+     "max": 10,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "harveechen",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 6,
+   "rate": 0.8333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.3333,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 5,
+     "max": 6,
+     "rate": 0.8333
+    }
+   }
+  },
+  {
+   "author": "ChefThomas",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 5,
+   "max_points": 12,
+   "rate": 0.4167,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 5,
+     "max": 12,
+     "rate": 0.4167
+    }
+   }
+  },
+  {
+   "author": "Sasikanth",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "MarcoLee321",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "JavRedstone",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 4,
+   "max_points": 16,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 8,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.125,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.625,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 4,
+     "max": 16,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "shivank21",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "sattwik21",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 4,
+   "max_points": 20,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 10,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "Noihat",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "karaguldal",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "tensorov",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "noxeon",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 6,
+   "rate": 0.6667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.6667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 6,
+     "rate": 0.6667
+    }
+   }
+  },
+  {
+   "author": "Shibashish",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "jaytau",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 4,
+   "max_points": 4,
+   "rate": 1.0,
+   "full_papers": 2,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 1.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 2,
+     "rate": 1.0
+    },
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 2,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "Danilocorrea",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 8,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 8,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "MunchProductionz",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 8,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 8,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "apararti",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "alboom",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "aaidenko",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "squaredcuber",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "JohnDoe12321",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 4,
+   "rate": 1.0,
+   "full_papers": 1,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 1.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 4,
+     "rate": 1.0
+    }
+   }
+  },
+  {
+   "author": "GwenTsang",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "FishSimple",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "stresearch-dev",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "nickvdw",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "tqela",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "jkaunert",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "srilearns",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.1667,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "schaefer",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 8,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 8,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "BeardedAmbivert",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "leeisbadk",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.8,
+   "inconclusive_rate": 0.2,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "garikyeranosyan",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "K4ru4k4i",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 12,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.1667,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 12,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "iravikr",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "dstrijker",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 8,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 8,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "skapoor18ancde",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "Lu032145",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "Mindcraft",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 4,
+   "max_points": 10,
+   "rate": 0.4,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.4,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 4,
+     "max": 10,
+     "rate": 0.4
+    }
+   }
+  },
+  {
+   "author": "rsingh135",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "sandeepbh",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "Jkeisler75",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "eldzh344",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 3,
+   "max_points": 26,
+   "rate": 0.1154,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 13,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2308,
+   "inconclusive_rate": 0.7692,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 1,
+     "max": 16,
+     "rate": 0.0625
+    },
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "mykoname",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.3333,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "vvidyasagarr",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 8,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.75,
+   "inconclusive_rate": 0.25,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 8,
+     "rate": 0.375
+    }
+   }
+  },
+  {
+   "author": "Varshith19",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "sandeshrajx",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "Manaiakalani",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 4,
+   "rate": 0.75,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.5,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 4,
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "author": "gimias",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "HanzoHuang",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 3,
+   "max_points": 18,
+   "rate": 0.1667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 9,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 3,
+     "max": 18,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "Pratiksha95",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "perceptronBee",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 8,
+   "rate": 0.375,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 4,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 8,
+     "rate": 0.375
+    }
+   }
+  },
+  {
+   "author": "ahmedjammoussi",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 3,
+   "max_points": 24,
+   "rate": 0.125,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.75,
+   "by_stratum": {
+    "theory": {
+     "n": 2,
+     "pts": 3,
+     "max": 24,
+     "rate": 0.125
+    }
+   }
+  },
+  {
+   "author": "WillyOwl",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "vmwherez",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "polats",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 3,
+   "max_points": 20,
+   "rate": 0.15,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 10,
+   "verified_rate": 0.1,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    },
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    }
+   }
+  },
+  {
+   "author": "leasonlyx",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Tannu576",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "open_data": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "charlescearl",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "Tissiany",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "slantie",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Small-Hackathon",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "digantodebbarma",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "dave1368",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 10,
+   "rate": 0.3,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6,
+   "inconclusive_rate": 0.4,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 3,
+     "max": 10,
+     "rate": 0.3
+    }
+   }
+  },
+  {
+   "author": "Sidharth1743",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 6,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 6,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "speak2arpit",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "simulation": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Crocolil",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 3,
+   "max_points": 12,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.1667,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 3,
+     "max": 12,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "beccabakespi",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 4,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "stephendwalley",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 6,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.3333,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 6,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "aakashmallik",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 8,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "soure",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 4,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.5,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "KKKONNK",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 10,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "phantomcoder1996",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 6,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 6,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "amazingtylor",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 8,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.75,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Techiiot",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 4,
+   "rate": 0.5,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 1.0,
+   "inconclusive_rate": 0.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 4,
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "author": "tejasri19",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 6,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 6,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "ra-XOr",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 12,
+   "rate": 0.1667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "akshitag001",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 10,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "radhakrishnadeshpande",
+   "logbooks": 3,
+   "papers": 3,
+   "points": 2,
+   "max_points": 26,
+   "rate": 0.0769,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 13,
+   "verified_rate": 0.0769,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.9231,
+   "by_stratum": {
+    "other": {
+     "n": 3,
+     "pts": 2,
+     "max": 26,
+     "rate": 0.0769
+    }
+   }
+  },
+  {
+   "author": "Redvirex",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 12,
+   "rate": 0.1667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "isiahw1",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 10,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.4,
+   "inconclusive_rate": 0.6,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "Shrividyahegde111",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 6,
+   "rate": 0.3333,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.6667,
+   "inconclusive_rate": 0.3333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 6,
+     "rate": 0.3333
+    }
+   }
+  },
+  {
+   "author": "Aman8180",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 2,
+   "max_points": 24,
+   "rate": 0.0833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.0833,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.9167,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 2,
+     "max": 24,
+     "rate": 0.0833
+    }
+   }
+  },
+  {
+   "author": "chupilka",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 8,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.25,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.75,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "mlandia",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 12,
+   "rate": 0.1667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "iaecafe",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 12,
+   "rate": 0.1667,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.3333,
+   "inconclusive_rate": 0.6667,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 2,
+     "max": 12,
+     "rate": 0.1667
+    }
+   }
+  },
+  {
+   "author": "rvt832",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 8,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "open_data": {
+     "n": 1,
+     "pts": 2,
+     "max": 8,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "khusshvii",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 10,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.2,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "dnoever",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 2,
+   "max_points": 10,
+   "rate": 0.2,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.2,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 2,
+     "max": 10,
+     "rate": 0.2
+    }
+   }
+  },
+  {
+   "author": "rinabuoy",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 4,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 4,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "adityasasidhar",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 4,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 4,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "nikshhiremath",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 4,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 4,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "alreadyinuse003",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 1,
+   "max_points": 12,
+   "rate": 0.0833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.8333,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 1,
+     "max": 12,
+     "rate": 0.0833
+    }
+   }
+  },
+  {
+   "author": "keepsloading",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 4,
+   "rate": 0.25,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.5,
+   "inconclusive_rate": 0.5,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 4,
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "author": "Aza33",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 8,
+   "rate": 0.125,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.25,
+   "inconclusive_rate": 0.75,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 8,
+     "rate": 0.125
+    }
+   }
+  },
+  {
+   "author": "Observer04",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 12,
+   "rate": 0.0833,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1667,
+   "inconclusive_rate": 0.8333,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 12,
+     "rate": 0.0833
+    }
+   }
+  },
+  {
+   "author": "tongxinb",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 10,
+   "rate": 0.1,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    }
+   }
+  },
+  {
+   "author": "eamag",
+   "logbooks": 2,
+   "papers": 2,
+   "points": 1,
+   "max_points": 18,
+   "rate": 0.0556,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 9,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.1111,
+   "inconclusive_rate": 0.8889,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 1,
+     "max": 18,
+     "rate": 0.0556
+    }
+   }
+  },
+  {
+   "author": "ShubhamSetia",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 10,
+   "rate": 0.1,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    }
+   }
+  },
+  {
+   "author": "imcypr",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 1,
+   "max_points": 10,
+   "rate": 0.1,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.2,
+   "inconclusive_rate": 0.8,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 1,
+     "max": 10,
+     "rate": 0.1
+    }
+   }
+  },
+  {
+   "author": "rkv1990",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "Takosaga",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 6,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 1,
+   "claims": 3,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 6,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "TobiasLogic",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "Raj000",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "hinabarun",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "oerdogan",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 8,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 8,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "nathanael-fijalkow",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 12,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "batesm",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 10,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 10,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "aaditya025",
+   "logbooks": 6,
+   "papers": 6,
+   "points": 0,
+   "max_points": 72,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 2,
+   "claims": 36,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 4,
+     "pts": 0,
+     "max": 48,
+     "rate": 0.0
+    },
+    "theory": {
+     "n": 2,
+     "pts": 0,
+     "max": 24,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "Shengxia",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 8,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 8,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "nuojohnchen",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 12,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 6,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 12,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "zheng520",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 8,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 4,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 8,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "90debasish",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 10,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "theory": {
+     "n": 1,
+     "pts": 0,
+     "max": 10,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "Jahaur2001",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 2,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 1,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 2,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "ihsanandrinal",
+   "logbooks": 2,
+   "papers": 1,
+   "points": 0,
+   "max_points": 24,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 12,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 2,
+     "pts": 0,
+     "max": 24,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "ernikhil411",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "codemaivanngu",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 10,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 5,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 10,
+     "rate": 0.0
+    }
+   }
+  },
+  {
+   "author": "satojkovic",
+   "logbooks": 1,
+   "papers": 1,
+   "points": 0,
+   "max_points": 4,
+   "rate": 0.0,
+   "full_papers": 0,
+   "medical_logbooks": 0,
+   "claims": 2,
+   "verified_rate": 0.0,
+   "falsified_rate": 0.0,
+   "toy_rate": 0.0,
+   "inconclusive_rate": 1.0,
+   "by_stratum": {
+    "other": {
+     "n": 1,
+     "pts": 0,
+     "max": 4,
+     "rate": 0.0
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,708 @@
+{
+ "selection_criteria": "hard-GT (consensus>=3) AND CPU-feasible (explicit cpu-only/no-gpu OR cpu-mention w/o hard-gpu) per leaderboard logbook, non-Theory; priority disputed + area diversity; cap 8/area, target 20-50 [LIVE snapshot 2026-08-02]",
+ "total_selected": 69,
+ "disputed_count": 69,
+ "area_distribution": {
+  "Applications": 8,
+  "Theory": 8,
+  "Reinforcement Learning": 8,
+  "Deep Learning": 8,
+  "Optimization": 8,
+  "General Machine Learning": 8,
+  "Probabilistic Methods": 8,
+  "Social Aspects": 8,
+  "": 5
+ },
+ "papers": [
+  {
+   "orid": "5TiuerrwR8",
+   "title": "Olaf-World: Orienting Latent Actions for Video World Modeling",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 14
+  },
+  {
+   "orid": "DfZS0M8leJ",
+   "title": "Generalized Linear Bandits with Memory",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "iEtOxzAs51",
+   "title": "SGERA: Stein-Guided ECG-Report Alignment for ECG Representation Learning",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "fR1FjJwrnN",
+   "title": "Transformers Efficiently Perform In-Context Logistic Regression via Normalized Gradient Descent",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "Jh6gq9QsFa",
+   "title": "NonZero: Interaction-Guided Exploration for Multi-Agent Monte Carlo Tree Search",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "68AMoK2YNk",
+   "title": "Understanding Generalization and Forgetting in In-Context Continual Learning",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 12
+  },
+  {
+   "orid": "UbzajT84Nd",
+   "title": "Domain-Shift-Aware Conformal Prediction for Large Language Models",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "NOIl9L4Y7S",
+   "title": "Learning High-Dimensional Parity Functions with Product Networks using Gradient Descent",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "WNqIX3IFZU",
+   "title": "CausalGame: Benchmarking Causal Thinking of LLM Agents in Games",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "trn64znfNx",
+   "title": "Rotary Position Encodings for Graphs",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 19
+  },
+  {
+   "orid": "4doFQgswAu",
+   "title": "Benchmarking Dense and Indiscernible Object Counting with Blueberries",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "J0y3sNbo9G",
+   "title": "Theoretical Investigation on Inductive Bias of Isolation Forest",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 18
+  },
+  {
+   "orid": "zPjmtawzT8",
+   "title": "Persistent Semantic Entities in Tool-Augmented LLM Systems",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "PfarHkQG8e",
+   "title": "CSG: Cognitive Structure Generation for Intelligent Education",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "tNvmMTsRqh",
+   "title": "Stability Analysis of Sharpness-Aware Minimization",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 8
+  },
+  {
+   "orid": "4vztmTrGhd",
+   "title": "Balancing Learning Rates Across Layers: Exact Two-Step Dynamics and Optimal Scaling in Linear Neural Networks",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 24
+  },
+  {
+   "orid": "HwXyyvK7ZJ",
+   "title": "VLM-RobustBench: A Comprehensive Benchmark for Robustness of Vision-Language Models",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 5
+  },
+  {
+   "orid": "tiF3tA5pau",
+   "title": "Continuous Variable Hamiltonian Learning at Heisenberg Limit via Displacement-Random Unitary Transformation",
+   "area": "Theory",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 11
+  },
+  {
+   "orid": "2iDtIht7W4",
+   "title": "A Sketch-and-Project Analysis of Subsampled Natural Gradient Algorithms",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 23
+  },
+  {
+   "orid": "syG9I9ofd8",
+   "title": "Latent Collaboration in Multi-Agent Systems",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 7
+  },
+  {
+   "orid": "OMdQJQwp26",
+   "title": "MedMosaic: A Challenging Large Scale Benchmark of Diverse Medical Audio",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "vaApZm6MKM",
+   "title": "Conditional Coverage Diagnostics for Conformal Prediction",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 12
+  },
+  {
+   "orid": "dyRD6lBH8K",
+   "title": "A Tight Theory of Error Feedback Algorithms in Distributed Optimization",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 25
+  },
+  {
+   "orid": "dWuxvV7ekd",
+   "title": "Are Two Datasets Close Enough With Statistical Significance? A Kernel Distributional Closeness Testing Approach",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 11
+  },
+  {
+   "orid": "oiMjaUbSWp",
+   "title": "On the Epistemic Uncertainty of Overparametrized Neural Networks",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 17
+  },
+  {
+   "orid": "15SdFmonYz",
+   "title": "Float8@2bits: Entropy Coding Enables Data-Free Model Compression",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "uZ8JZ1Lw9a",
+   "title": "Chain-of-Thought Gradient Descent",
+   "area": "Deep Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "Zkj9ctQdMM",
+   "title": "Accurate Large-sample Uncertainty Quantification using Stochastic Gradient Markov Chain Monte Carlo",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 17
+  },
+  {
+   "orid": "llwW6nVdsa",
+   "title": "CyberJurors: A Multi-Agent Simulation Task for E-Commerce Disputes Verdict",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "O8jabXEYlQ",
+   "title": "Phase-Aware Mixture of Experts for Agentic Reinforcement Learning",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "5hDvooOKUP",
+   "title": "Adaptive Estimation and Inference in Semi-parametric Heterogeneous Clustered Multitask Learning via Neyman Orthogonality",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "qj4EnIvNU4",
+   "title": "HEARTS: Benchmarking LLM Reasoning on Health Time Series",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "EzpJxPDqXB",
+   "title": "MarketSim: Simulating Stock Markets with Large-Scale Generative Agents",
+   "area": "Applications",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "GAQE4Wr53f",
+   "title": "Row-Stochastic Matrices Can Provably Outperform Doubly Stochastic Matrices in Decentralized Learning",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 21
+  },
+  {
+   "orid": "KJq0iScNM6",
+   "title": "Let the Prototype Guide You: Robust Aggregation of Sparse Multi-Class Annotations via Annotator Prototype Learning",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 12
+  },
+  {
+   "orid": "dDkl5ZcyTl",
+   "title": "Markov Chain Monte Carlo without Evaluating the Target: an Auxiliary Variable Approach",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "mvm6NhIT8k",
+   "title": "Noisy Pairwise-Comparison Random Search for Smooth Nonconvex Optimization",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "oCNT5PcMSQ",
+   "title": "CapBencher: Give Your LLM Benchmark a Built-in Alarm for Test-Set Overfitting",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 11
+  },
+  {
+   "orid": "qC9FEfYjai",
+   "title": "Exact Functional ANOVA Decomposition for Categorical Inputs Models",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 18
+  },
+  {
+   "orid": "qhG8ONjZK0",
+   "title": "An Exterior Method for Nonnegative Matrix Factorization",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "NpSI4x2vBS",
+   "title": "Flatland: The Adventures of Gradient Descent with Large Step Sizes",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "j9aoIFr5aM",
+   "title": "Mirror Descent Under Generalized Smoothness",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 18
+  },
+  {
+   "orid": "lq8fNVME8v",
+   "title": "Minimum Distance Summaries for Robust Neural Posterior Estimation",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 26
+  },
+  {
+   "orid": "QIBu6vtRMI",
+   "title": "Exact and Approximate Algorithms for Polytree Learning",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "wpKA7G7Cqu",
+   "title": "Explaining Concept Shift with Interpretable Feature Attribution",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "WgrRyHYbo5",
+   "title": "Component-Wise Composite Likelihood Distillation for Censored Time-to-Event Data",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "EhJ1R2N6sn",
+   "title": "Geometric Coherence Learning for Structuring Value Functions in Plain MDPs",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "3NQSeJOfkz",
+   "title": "SVRG and Beyond via Posterior Correction",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 7
+  },
+  {
+   "orid": "vMcu1h3fOV",
+   "title": "Joint Model and Data Sparsification via the Marginal Likelihood",
+   "area": "Probabilistic Methods",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "71132",
+   "title": "",
+   "area": "",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 11
+  },
+  {
+   "orid": "71065",
+   "title": "",
+   "area": "",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "OwLuqetJuB",
+   "title": "Provably Data-driven Lagrangian Relaxation for Mixed Integer Linear Programming",
+   "area": "Optimization",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 17
+  },
+  {
+   "orid": "NUyt4uxzx0",
+   "title": "Chain-of-Thought Reasoning In The Wild Is Not Always Faithful",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "tibRKqUHcv",
+   "title": "Optimal Transport under Group Fairness Constraints",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "KUBkuPwGf4",
+   "title": "Unveiling the Structure of Do-Calculus Reasoning via Derivation Graphs",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 18
+  },
+  {
+   "orid": "bA6BgSbaUi",
+   "title": "How much can language models memorize?",
+   "area": "General Machine Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 10
+  },
+  {
+   "orid": "aGaBFE9pta",
+   "title": "Is Your LLM Overcharging You? Tokenization, Transparency, and Incentives",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "Ol99zoW31J",
+   "title": "Non-Uniform Noise-to-Signal Ratio in the REINFORCE Policy-Gradient Estimator",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 17
+  },
+  {
+   "orid": "HigEPnWgLQ",
+   "title": "Adaptive Multi-Round Allocation with Stochastic Arrivals",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 6
+  },
+  {
+   "orid": "XiD5RhcEDK",
+   "title": "Fair Decisions from Calibrated Scores: Achieving Optimal Classification While Satisfying Sufficiency",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 9
+  },
+  {
+   "orid": "gc7Gg18ejz",
+   "title": "Stable Deep Reinforcement Learning via Isotropic Gaussian Representations",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 11
+  },
+  {
+   "orid": "hMTCuqjCW8",
+   "title": "Adalina: Adaptive Linear Approximation for the Shapley Value and Beyond",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 8
+  },
+  {
+   "orid": "UXzfLdXrBJ",
+   "title": "Quantifying LLM Attention-Head Stability: Implications for Circuit Universality",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 15
+  },
+  {
+   "orid": "wnfPEhGqic",
+   "title": "Impact of Connectivity on Laplacian Representations in Reinforcement Learning",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 7
+  },
+  {
+   "orid": "32XNOcwH1z",
+   "title": "Efficient Preference Poisoning Attack on Offline RLHF",
+   "area": "Reinforcement Learning",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 13
+  },
+  {
+   "orid": "r3h23Jv26a",
+   "title": "Questioning the Coverage-Length Metric in Conformal Prediction: When Shorter Intervals Are Not Better",
+   "area": "Social Aspects",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 14
+  },
+  {
+   "orid": "71122",
+   "title": "",
+   "area": "",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 4
+  },
+  {
+   "orid": "71069",
+   "title": "",
+   "area": "",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  },
+  {
+   "orid": "71029",
+   "title": "",
+   "area": "",
+   "n_claims": 0,
+   "disputed": true,
+   "space": "",
+   "hw_signals": [],
+   "submissions": 3
+  }
+ ]
+}

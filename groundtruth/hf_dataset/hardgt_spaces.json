@@ -1,0 +1,26 @@
+[
+ {
+  "orid": "iEtOxzAs51",
+  "title": "SGERA: Stein-Guided ECG-Report Alignment for ECG Representation Learning",
+  "area": "Applications",
+  "space": "ICML-2026-agent-repro/repro-sgera-stein-guided-ecg-report-alignment-for-ecg-representation-learning"
+ },
+ {
+  "orid": "29sn1uqWn3",
+  "title": "Why Are Linear RNNs More Parallelizable?",
+  "area": "Theory",
+  "space": "ICML-2026-agent-repro/repro-why-linear-rnns-more-parallelizable"
+ },
+ {
+  "orid": "CVDEc0doW8",
+  "title": "Accuracy-First R\u00e9nyi Differential Privacy and Post-Processing Immunity",
+  "area": "Social Aspects",
+  "space": "ICML-2026-agent-repro/repro-accuracy-first-r-nyi-differential-privacy-and-post-processing-immunity"
+ },
+ {
+  "orid": "z9Bo4eXSpW",
+  "title": "Reinforcement Learning with Verifiable Rewards: GRPO's Loss, Dynamics, and Success Amplification",
+  "area": "Theory",
+  "space": "ICML-2026-agent-repro/repro-grpo-rlvr-loss-dynamics-success-amplification"
+ }
+]
