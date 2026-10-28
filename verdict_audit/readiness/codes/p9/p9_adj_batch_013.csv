@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2171,compute,unclear,"Text was cut at its length cap and the shown excerpts state no hardware or training time, so compute reporting cannot be determined."
+P2176,variance,no,"Full text shown; standard deviations are only per-design structure-prediction confidence filters, with no seeds, error bars or intervals for the main success results."
+P2180,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or standard deviations for the main results."
+P2185,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time; only training details without hardware appear.
+P2188,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.
+P2195,variance,unclear,Text was cut at its length cap and the shown excerpts state no repeated runs or error bars for the main RMSE results; MCMC standard deviation is used only as a prediction-uncertainty score.
+P2201,compute,hardware_only,Full text shown; it states experiments use 4 to 8 GPU cores but gives no total compute time or GPU-hours.
+P2203,variance,unclear,Text was cut at its length cap and the shown excerpts state no seeds or error bars for main results; the Gaussian noise standard deviation is a perturbation setting.
+P2234,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results; standard deviation appears only in the advantage normalisation."
+P2238,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results."
+P2243,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main benchmark results."
+P2248,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results."
+P2251,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main evaluation results."
+P2253,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or training time; only optimiser settings and epochs appear.
+P2299,compute,unclear,"Text was cut at its length cap and the shown excerpts state no hardware or compute time, although experiments with 100 seeds are described."
+P2309,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals; 'variance' appears only as a model component."
+P2309,compute,unclear,Text was cut at its length cap and the shown excerpts state no training hardware or time; only on-device inference latency on a phone is given.
+P2316,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.
+P2318,variance,unclear,"Text was cut at its length cap and the shown excerpts state no seeds, error bars or intervals for the main results; single accuracy values are reported."
+P2318,compute,unclear,Text was cut at its length cap and the shown excerpts state no hardware or compute time.

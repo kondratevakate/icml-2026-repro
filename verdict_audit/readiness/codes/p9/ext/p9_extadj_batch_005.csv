@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0269,main_data_access,unclear,"Evaluation uses named benchmarks (GSM8K, MBPP, HumanEval, MMLU etc.) plus custom swearing/rhyming datasets, but no access terms or download source are stated."
+E0271,code,no,The excerpts contain no code availability statement; the data are confidential platform data and no code link is given.
+E0272,main_data_access,unclear,"The 40-task set draws on CLRS-30, NP-Hard-Eval and a custom suite, with no access terms or release statement given."
+E0273,code,no,The excerpts describe a 'reproducible framework' but give no code link or release statement.
+E0273,main_data_access,unclear,"Named datasets (dSprites, COIL-20) and generated manifolds are used, but no access terms or download source are stated."
+E0274,main_data_access,unclear,"GSM8K and MATH/MATH500 are named, but their access terms are not stated in the text."
+E0276,code,no,The excerpts contain no code link or code release statement.
+E0276,main_data_access,unclear,"Image, video and point-cloud benchmarks are mentioned without naming datasets or stating access terms."
+E0277,main_data_access,unclear,The text mentions 14 reranking benchmarks but does not name them or state access terms.
+E0279,code,no,The excerpts contain no code link or code release statement.
+E0280,main_data_access,unclear,"GLUE, GSM8K and HumanEval are named, but no access terms are stated."
+E0281,code,no,The excerpts contain no code link or code release statement.
+E0281,main_data_access,unclear,"AgentDojo and ASB benchmarks are named, but no access terms or download source are stated."
+E0283,main_data_access,unclear,"Datasets come from the UCR archive, but access terms are not stated (the code link does not state data access)."
+E0284,code,released,The abstract states 'Code and data are available at' a GitHub URL.
+E0284,main_data_access,open,The abstract states the code and data (including the constructed TRM-Preference dataset) are available at a public GitHub URL.
+E0285,code,no,The excerpts contain no code link or code release statement.
+E0285,main_data_access,unclear,"MJHQ-30K and DCI are named and a self-collected prompt set is used, but no access terms are stated."
+E0286,code,no,The excerpts contain no code link or code release statement.
+E0286,main_data_access,unclear,"The MNIST INR benchmark is named, but its access terms are not stated."

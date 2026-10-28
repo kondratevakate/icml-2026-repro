@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1732,variance,no,"Main results are reported as single accuracy and perfect-rate numbers with no seeds, standard deviations or intervals; the only std is in the GRPO advantage formula."
+P1735,variance,no,"Visible experimental text gives single-run results and training settings with no mention of seeds, error bars or standard deviations."
+P1737,variance,no,"R2 results in the tables are described as single scores with no repeated runs, seeds or standard deviations; variance mentions are feature statistics only."
+P1741,variance,no,"Main MW-detection and decoding results are single scores (e.g., up to 0.609 AUROC); the only standard error shaded is on the FRP data-validation figure, not the main results."
+P1744,variance,no,Result tables give single accuracy values with no seeds or standard deviations; the std mentioned belongs to the loss definition.
+P1754,compute,none,The text mentions offline compute cost only qualitatively and states no hardware or run time.
+P1756,variance,no,"Visible results and setup sections mention no seeds, error bars, standard deviations or intervals."
+P1756,compute,none,"Dataset, model configuration and training-details sections state no hardware or compute time."
+P1757,variance,no,"Main simulation results are pattern figures with no repeated seeds or error bars; the reported SD of the vector norm describes the neural data, not result variability."
+P1762,variance,no,"Visible text reports no seeds, standard deviations or intervals for the main transfer results."
+P1768,compute,none,The visible text gives seeds and hyperparameters but no hardware or run time.
+P1769,variance,no,Main validation MSEs are single values; a permutation p-value is not a seed/variance report for the main results.
+P1769,compute,none,"Implementation details give optimizer, solver and epochs but no hardware or run time."
+P1772,compute,none,Implementation details give fine-tuning hyperparameters but no hardware or run time.
+P1773,compute,none,Only EEG acquisition apparatus and session duration are described; no compute hardware or training time is stated.
+P1774,compute,none,The visible setup describes data and model sizes but states no hardware or compute time.
+P1776,variance,no,"Results are reported as single benchmark scores and percent gains with no seeds, error bars or intervals."
+P1776,compute,none,Implementation details name Gemini 3 and Blender rendering settings but no hardware or run time; the latency limitation is qualitative.
+P1782,variance,no,"FID/PFID/CLIP and user-study results are given as single values with no seeds, error bars or intervals in the visible text."
+P1786,variance,no,"Benchmark accuracies are reported as single numbers with no seeds, standard deviations or intervals in the visible text."

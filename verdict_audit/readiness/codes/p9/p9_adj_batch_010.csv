@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1271,compute,amount,"Implementation details state a single NVIDIA RTX 3090 GPU and Table 5 reports per-sample inference time (2.93 s) and memory, so hardware and time are both given."
+P1301,variance,no,No seeds or repeated-runs passage is extracted and the results are reported as single recall numbers without standard deviations or intervals.
+P1301,compute,none,"The implementation details list models and hyperparameters but no hardware or compute time, and the limitations only say costs are comparable to other methods."
+P1303,variance,no,"The seeds passage contains only methodological uses of standard deviation and Monte Carlo sampling, with no seeds, error bars or intervals for the main results."
+P1303,compute,unclear,"No hardware or training time appears in the shown text, but the pre-training settings section is cut off mid-sentence, so whether compute is reported cannot be determined."
+P1305,variance,no,No seeds or repeated-runs passage is extracted and the main results are single scores and rates without spread.
+P1305,compute,none,"The experimental setup names ComfyUI and Gemini 2.5 Flash as an API engine and reports tokens, but states no hardware or compute time."
+P1321,compute,hardware_only,"Appendix C gives NVIDIA H200 GPUs and GPU counts (16, 48, 1008) plus FLOPs, but no wall-clock time or GPU-hours."
+P1330,variance,no,"The seeds passage is about sub-slice construction and contains no seeds, error bars or standard deviations for the results."
+P1330,compute,unclear,"No training or implementation details section appears in the truncated text, so whether hardware or compute is reported cannot be seen."
+P1335,compute,unclear,"The truncated text shows no implementation or training details section and mentions no hardware, so compute reporting cannot be determined."
+P1342,variance,no,"The seeds passage only defines a Gaussian shape token, and the main results (e.g., 72.29%, mIoU 38.1) are reported without spread."
+P1342,compute,unclear,"The truncated text contains no implementation details section or hardware statement, so compute reporting cannot be determined."
+P1343,compute,none,"The implementation detail sections (3.3, A.6) and setup describe features, splits and three seeds but no hardware or compute time."
+P1344,compute,none,"The implementation details give batch size, epochs and iterations but no GPU type or training time."
+P1347,compute,none,The implementation sections give epochs and models trained but state no hardware or compute time.
+P1354,variance,no,No seeds or repeated-runs passage is extracted and no error bars or standard deviations for the main results appear in the text.
+P1406,compute,unclear,"The implementation details excerpt starts mid-paragraph and mentions no hardware, so whether compute is stated in the cut part cannot be determined."
+P1432,variance,no,No seeds or repeated-runs passage is extracted and results are given as single Macro-F1 values without spread.
+P1433,variance,no,No seeds or repeated-runs passage is extracted and results are single terminal losses without error bars or multiple seeds.

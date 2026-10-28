@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0390,variance,no,"The excerpts give training details (4 A100s, 500 epochs) and results discussion but mention no seeds, repeated runs, error bars or intervals for the main results."
+P0391,compute,none,"Implementation and setup sections give hyperparameters, epochs and seeds but no hardware or training time anywhere in the text."
+P0393,compute,none,"The pre-training and evaluation setup sections describe model size, epochs and optimizer but state no hardware or compute time."
+P0394,variance,no,"Results are reported as single quantitative comparisons across datasets with no mention of seeds, standard deviations or error bars."
+P0394,compute,none,"The training paragraph gives optimizer, samples, epochs and batch size but no hardware or training time."
+P0397,compute,none,"Model, training and probing details are given (epochs, learning rate, seeds) but no GPUs or compute time are stated."
+P0402,variance,no,The only std/variance mentions concern the GRPO advantage normalization; main results tables report single exact-match and accuracy scores without seeds or error bars.
+P0404,compute,none,"The text includes training, data and reproducibility sections but never states hardware or compute time."
+P0406,compute,unclear,"The text is truncated in the middle of the Implementation Details paragraph, before any hardware statement could appear, so whether compute is reported cannot be determined."
+P0409,variance,no,The seeds/variance excerpt only gives training hyperparameters and normalization standard deviations; results are single-number comparisons with no seeds or error bars.
+P0410,variance,no,"Main results are single-number comparisons; the only mean scores are for the human validation of the benchmark, not seeds or intervals for main results."
+P0433,variance,no,"Each configuration is run once for a fixed 10-second duration per QPS level with no repeated runs, error bars or intervals reported."
+P0439,variance,no,"Results such as Table 7 report single Spearman/Recall/nDCG values per model and learning rate with no seeds, standard deviations or intervals."
+P0463,variance,no,"Averaging over 10 runs appears only for the MFOS-vs-MAOS theorem-validation figure without any spread, and the main experiments report no seeds, error bars or intervals."
+P0470,variance,no,"Main results report a single average AUC (88.86%) with no mention of seeds, standard deviations or error bars."
+P0470,compute,none,"Implementation details give backbone, optimizer, learning rate and batch sizes but no hardware or training time."
+P0471,compute,none,"Experimental setup describes architecture, optimizer and inference, and only says clustering takes seconds, with no hardware stated."
+P0475,variance,no,"Quantitative results are single-value metric comparisons; variance appears only as a Laplacian-variance filtering criterion, not seeds or error bars."
+P0478,variance,no,"The seeds/variance excerpt concerns diffusion noise standard deviation and a failed variant; accuracy results are reported without seeds, error bars or intervals."
+P0480,variance,no,"Table 1 reports single average accuracies per LLM with greedy decoding and no seeds, standard deviations or intervals."

@@ -1,0 +1,49 @@
+{
+  "papers_json_sha256": "d496b0d1945d5645766a8104c4fd0d4ac17e662cddcc63c6fa938e2aa0ff13c4",
+  "page_abstracts_sha256": {
+    "iclr-2026": "5cf930131e9d4a2c7e560a280e7742448e206018cfcc619fe198f9fc1a65b894",
+    "neurips-2026": "85f30f28fffcffa882085db0e5bf1b6a25f273fc1ae48d91a537e28450e8c35b",
+    "eccv-2026": "314ba879edd858a2adfb0ca7e8ad17c40ac4c3d5bf272bdd7812a65ae1f0b358"
+  },
+  "units": 50185,
+  "excluded": {
+    "duplicate": 3478,
+    "no_abstract": 300
+  },
+  "by_stratum": {
+    "iclr-2025": 4040,
+    "iclr-2026": 5688,
+    "neurips-2024": 4502,
+    "neurips-2025": 5998,
+    "neurips-2026": 6220,
+    "icml-2025": 3339,
+    "icml-2026": 6341,
+    "iccv-2025": 2701,
+    "cvpr-2024": 2806,
+    "cvpr-2025": 2966,
+    "eccv-2024": 2587,
+    "eccv-2026": 2997
+  },
+  "candidates": 6532,
+  "candidates_by_stratum": {
+    "iclr-2025": 548,
+    "iclr-2026": 834,
+    "neurips-2024": 616,
+    "neurips-2025": 892,
+    "neurips-2026": 1181,
+    "icml-2025": 416,
+    "icml-2026": 950,
+    "iccv-2025": 184,
+    "cvpr-2024": 208,
+    "cvpr-2025": 223,
+    "eccv-2024": 178,
+    "eccv-2026": 302
+  },
+  "candidates_by_topic_only": 175,
+  "candidates_by_regex_only": 4994,
+  "overlap_candidates": 1633,
+  "non_candidate_sample": 200,
+  "reclaim": 100,
+  "coder1_items": 6832,
+  "coder2_items": 1933
+}

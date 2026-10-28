@@ -1,0 +1,41 @@
+{
+  "folds_completed": [
+    "00"
+  ],
+  "n_folds_planned": 4,
+  "epochs": 15,
+  "seed": 0,
+  "n_test_epochs": 1960,
+  "ConfSleepNet (CMAM)": {
+    "acc": 86.17,
+    "mf1": 77.4,
+    "f1_per_class": [
+      92.8,
+      32.1,
+      87.0,
+      87.9,
+      87.2
+    ]
+  },
+  "ConfSleepNet- (average)": {
+    "acc": 86.33,
+    "mf1": 78.06,
+    "f1_per_class": [
+      92.9,
+      35.0,
+      87.3,
+      87.9,
+      87.3
+    ]
+  },
+  "paper_SleepEDF20": {
+    "ConfSleepNet": {
+      "acc": 87.2,
+      "mf1": 81.8
+    },
+    "ConfSleepNet-": {
+      "acc": 86.3,
+      "mf1": 81.3
+    }
+  }
+}

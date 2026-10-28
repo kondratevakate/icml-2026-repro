@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Theorem 1 KL decomposition and LINCS supervision",
+    "prepared_score": 2,
+    "verdict": "VERIFIED"
+  },
+  {
+    "id": "C2",
+    "title": "Corollary 1 unsupervised-GCL limit",
+    "prepared_score": 2,
+    "verdict": "VERIFIED"
+  },
+  {
+    "id": "C3",
+    "title": "Node-level TCGA task performance",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  },
+  {
+    "id": "C4",
+    "title": "Graph-level TCGA task performance",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  },
+  {
+    "id": "C5",
+    "title": "SupGCL superiority across 13 tasks",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  },
+  {
+    "id": "C6",
+    "title": "Embedding-space collapse and separation",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  }
+]

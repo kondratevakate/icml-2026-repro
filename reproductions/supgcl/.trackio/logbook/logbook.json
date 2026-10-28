@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Supervised Graph Contrastive Learning for Gene Regulatory Networks",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-supervised-graph-contrastive-learning-grn",
+  "paper": {
+    "arxiv_id": "2505.17786"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-0Y7itV1kb7",
+    "arxiv:2505.17786"
+  ],
+  "updated_at": "2026-07-30T07:21:19+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Supervised Graph Contrastive Learning for Gene Regulatory Networks",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-theorem-1-and-lincs-supervision",
+        "title": "Claim 1: Theorem 1 and LINCS supervision",
+        "file": "pages/claim-1-theorem-1-and-lincs-supervision/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-corollary-1-temperature-limit",
+        "title": "Claim 2: Corollary 1 temperature limit",
+        "file": "pages/claim-2-corollary-1-temperature-limit/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-node-level-tcga-performance",
+        "title": "Claim 3: node-level TCGA performance",
+        "file": "pages/claim-3-node-level-tcga-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-graph-level-tcga-performance",
+        "title": "Claim 4: graph-level TCGA performance",
+        "file": "pages/claim-4-graph-level-tcga-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-superiority-across-13-tasks",
+        "title": "Claim 5: superiority across 13 tasks",
+        "file": "pages/claim-5-superiority-across-13-tasks/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-embedding-space-analysis",
+        "title": "Claim 6: embedding-space analysis",
+        "file": "pages/claim-6-embedding-space-analysis/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 1929,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "9cfa30a847ec637f24d5"
+}

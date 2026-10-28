@@ -1,0 +1,6 @@
+official/
+.venv/
+.pytest_cache/
+repro_lvcg/.pytest_cache/
+repro_lvcg/__pycache__/
+repro_lvcg/audit-console.txt

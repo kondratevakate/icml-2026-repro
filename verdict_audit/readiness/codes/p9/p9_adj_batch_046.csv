@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2258,variance,no,"Main tables report values averaged over 13 prompts with no seeds, std or intervals; variance is only said to be reported in the repository, not the paper."
+P2266,compute,none,"Models are accessed through APIs plus a Qwen3-14B proxy, and no hardware or compute time is stated anywhere in the text."
+P2272,compute,none,Implementation details name only GPT-5.2/Qwen API backbones and token cost; no hardware or compute time is stated.
+P2273,variance,no,"No seeds, repeated runs, standard deviations or error bars are mentioned for the main AP results."
+P2275,compute,unclear,"No hardware appears, but the text is truncated mid-way through the training settings where compute details would follow."
+P2276,compute,none,The experimental setup and appendices shown describe tuning trials and data but state no hardware or compute time.
+P2279,compute,none,Nothing in the text states hardware or training/inference time; only code release and Appendix D hyperparameters are referenced.
+P2283,compute,none,"Experimental setup lists models, datasets and training stages but no GPUs or compute time; only latency in seconds is mentioned."
+P2284,compute,hardware_only,The text says training ran on GPU (unspecified model) with no compute time or GPU-hours.
+P2287,compute,none,No hardware or compute time is stated; limitations only call the method computationally intensive.
+P2289,compute,none,"The text describes datasets, runs and tables but states no hardware or compute time."
+P2290,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for the main accuracy results."
+P2290,compute,none,Hyperparameters follow base models and no hardware or compute time is stated.
+P2293,compute,none,Agents use API-served models and the text states no hardware or compute time.
+P2301,compute,none,"Only scikit-learn estimators and computational constraints are mentioned, with no hardware or time stated."
+P2302,variance,no,"Main results are reported without seeds, repeated runs, standard deviations or intervals; only training settings are given."
+P2306,compute,none,Implementation details cover augmentations and models but state no hardware or compute time.
+P2307,variance,no,A single fixed global seed is used and no standard deviations or intervals are shown for the main results.
+P2310,variance,no,"The text describes data collection and benchmarks with no seeds, repeated runs or error bars."
+P2310,compute,none,"Only data-collection sensors (cameras, LiDAR) are described; no compute hardware or training time is stated."

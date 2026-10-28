@@ -1,0 +1,313 @@
+{
+  "claims": {
+    "C1": {
+      "checks": {
+        "adjoint_completeness_is_injective": true,
+        "appendix_adds_hilbert_schmidt_condition": true,
+        "appendix_adds_picard_summability": true,
+        "completeness_operator_is_injective": true,
+        "no_future_dependence_holds_by_construction": true,
+        "one_stage_augmented_process_is_markov": true,
+        "paper_theorem_has_regularity_qualification": true,
+        "partial_inverse_norm_explodes": true,
+        "picard_terms_fail_to_tend_to_zero": true,
+        "positivity_is_uniform": true,
+        "relevance_holds": true,
+        "reward_is_bounded": true
+      },
+      "counterexample": {
+        "checks": {
+          "adjoint_completeness_is_injective": true,
+          "completeness_operator_is_injective": true,
+          "no_future_dependence_holds_by_construction": true,
+          "one_stage_augmented_process_is_markov": true,
+          "partial_inverse_norm_explodes": true,
+          "picard_terms_fail_to_tend_to_zero": true,
+          "positivity_is_uniform": true,
+          "relevance_holds": true,
+          "reward_is_bounded": true
+        },
+        "conclusion": "All assumptions named by the anchored claim hold, but the inverse Fourier coefficients are not square summable, so no L2 bridge exists. The omitted Picard regularity condition is necessary.",
+        "construction": {
+          "fourier_multiplier": "lambda_k = exp(-sigma^2*k^2/2)",
+          "missingness": "O | R ~ Bernoulli(expit(0.5*R))",
+          "next_state": "S_next = (R + wrapped_normal(0, sigma^2)) mod 2*pi",
+          "reward": "R ~ Uniform[-pi, pi)",
+          "sigma": 0.25,
+          "target_sine_coefficient": "2*(-1)^(k+1)/k"
+        },
+        "picard_last_terms": {
+          "10": 10.36025649336684,
+          "20": 360024496.6869294,
+          "30": 5.96831990208213e+21,
+          "5": 0.3816586545574082
+        },
+        "picard_partial_sums": {
+          "10": 21.249558153117455,
+          "20": 399294377.2641959,
+          "30": 6.133256746403522e+21,
+          "5": 3.882457655285555
+        },
+        "positivity_range": [
+          0.1721028986836638,
+          0.8278971013163362
+        ],
+        "smallest_reported_nonzero_multiplier": 6.101936677605324e-13
+      },
+      "scope": "Falsifies the anchored unqualified sufficiency claim. It does not falsify the paper theorem with its additional regularity conditions.",
+      "verdict": "FALSIFIED"
+    },
+    "C2": {
+      "checks": {
+        "missingness_draw_uses_only_probability": true,
+        "missingness_logit_uses_current_action": true,
+        "missingness_logit_uses_current_reward": true,
+        "missingness_logit_uses_current_state": true,
+        "next_state_reduces_conditional_mse": true,
+        "observed_subset_is_nonempty": true,
+        "residual_association_is_material": true,
+        "residual_association_is_significant": true,
+        "reward_has_nonzero_next_state_weights": true,
+        "reward_uses_next_state": true,
+        "source_has_exact_relevance_condition": true
+      },
+      "diagnostic": {
+        "base_mse": 0.0170553900876781,
+        "checks": {
+          "next_state_reduces_conditional_mse": true,
+          "observed_subset_is_nonempty": true,
+          "residual_association_is_material": true,
+          "residual_association_is_significant": true
+        },
+        "n_observed": 52580,
+        "n_total": 60000,
+        "relative_mse": 0.9360410787935518,
+        "residual_pearson_p": 0.0,
+        "residual_pearson_r": 0.2528497630908562,
+        "with_next_state_mse": 0.01596454573691506
+      },
+      "scope": "Exact semantic claim plus an independent observed-subset diagnostic on the official data-generating process.",
+      "verdict": "VERIFIED"
+    },
+    "C3": {
+      "checks": {
+        "all_finite_dimensional_reductions_hold": true,
+        "bound_is_nonvacuously_exercised": true,
+        "source_has_ill_posedness_factor": true,
+        "source_has_l2_error": true,
+        "source_has_norm_factor": true,
+        "source_reports_probability": true
+      },
+      "finite_dimensional_reduction": {
+        "checks": {
+          "all_finite_dimensional_reductions_hold": true,
+          "bound_is_nonvacuously_exercised": true
+        },
+        "dimensions": [
+          3,
+          5,
+          8,
+          13
+        ],
+        "seed": 1729,
+        "trials": 2000,
+        "violations": 0,
+        "worst_normalized_ratio": 0.8705741657135864
+      },
+      "scope": "Checks the theorem statement and independently exercises the projected-error-to-L2 reduction. The upstream empirical-process bound remains conditional on the theorem's stated assumptions.",
+      "verdict": "VERIFIED"
+    },
+    "C4": {
+      "checks": {
+        "additional_assumptions_are_explicit": true,
+        "backward_recurrence_unrolls_exactly": true,
+        "bounded_cumulative_concentrability": true,
+        "nonparametric_exponents_are_below_half": true,
+        "parametric_term_is_absorbable": true,
+        "proof_contains_backward_induction": true,
+        "proof_contains_critical_radius_substitution": true,
+        "proof_decomposes_I_II_III": true,
+        "proof_restores_stage_sum_after_display_typo": true,
+        "source_has_T_squared": true,
+        "source_has_log_n": true,
+        "source_has_log_probability_factor": true,
+        "source_has_nonparametric_exponent": true,
+        "source_has_tau_max": true,
+        "uniform_K_controls_recurrence": true
+      },
+      "rate_reduction": {
+        "a": 0.8,
+        "alpha": 1.4,
+        "checks": {
+          "backward_recurrence_unrolls_exactly": true,
+          "bounded_cumulative_concentrability": true,
+          "nonparametric_exponents_are_below_half": true,
+          "parametric_term_is_absorbable": true,
+          "uniform_K_controls_recurrence": true
+        },
+        "cumulative_concentrability": {
+          "16": {
+            "holds": true,
+            "sqrt_product_kappa": 2.173453132298435,
+            "uniform_K": 3.463289677419076
+          },
+          "2": {
+            "holds": true,
+            "sqrt_product_kappa": 1.5315541008869857,
+            "uniform_K": 3.463289677419076
+          },
+          "32": {
+            "holds": true,
+            "sqrt_product_kappa": 2.3473385811280902,
+            "uniform_K": 3.463289677419076
+          },
+          "4": {
+            "holds": true,
+            "sqrt_product_kappa": 1.75056519078706,
+            "uniform_K": 3.463289677419076
+          },
+          "8": {
+            "holds": true,
+            "sqrt_product_kappa": 1.971327335103936,
+            "uniform_K": 3.463289677419076
+          }
+        },
+        "recurrence": {
+          "16": {
+            "K_bound_holds": true,
+            "backward_recurrence": 2.0443783186228277,
+            "explicit_unrolling": 2.044378318622828,
+            "identity_holds": true,
+            "uniform_K_upper_bound": 5.551480366701966
+          },
+          "2": {
+            "K_bound_holds": true,
+            "backward_recurrence": 0.11758879386716767,
+            "explicit_unrolling": 0.11758879386716767,
+            "identity_holds": true,
+            "uniform_K_upper_bound": 0.38852487939929725
+          },
+          "32": {
+            "K_bound_holds": true,
+            "backward_recurrence": 6.093894099026508,
+            "explicit_unrolling": 6.0938940990265085,
+            "identity_holds": true,
+            "uniform_K_upper_bound": 15.353664191386754
+          },
+          "4": {
+            "K_bound_holds": true,
+            "backward_recurrence": 0.2779022373191028,
+            "explicit_unrolling": 0.2779022373191028,
+            "identity_holds": true,
+            "uniform_K_upper_bound": 0.8664872232689584
+          },
+          "8": {
+            "K_bound_holds": true,
+            "backward_recurrence": 0.7230944311190342,
+            "explicit_unrolling": 0.7230944311190342,
+            "identity_holds": true,
+            "uniform_K_upper_bound": 2.110416050136184
+          }
+        },
+        "sample_rate_exponents": {
+          "0.6": {
+            "absorbs_parametric_term_at_n_4096": true,
+            "below_one_half": true,
+            "exponent": 0.2727272727272727
+          },
+          "1.0": {
+            "absorbs_parametric_term_at_n_4096": true,
+            "below_one_half": true,
+            "exponent": 0.3333333333333333
+          },
+          "2.0": {
+            "absorbs_parametric_term_at_n_4096": true,
+            "below_one_half": true,
+            "exponent": 0.4
+          },
+          "4.0": {
+            "absorbs_parametric_term_at_n_4096": true,
+            "below_one_half": true,
+            "exponent": 0.4444444444444444
+          }
+        },
+        "uniform_K": 3.463289677419076
+      },
+      "scope": "The theorem statement, recurrence, concentrability product, critical-radius substitution, and final T^2 rate were audited. The appendix has a dropped summation symbol in one intermediate display and an implicit zeta/T union-bound adjustment; the next display and final logarithmic factor repair both bookkeeping issues.",
+      "verdict": "VERIFIED"
+    },
+    "C5": {
+      "checks": {
+        "base_coefficients_match_generator": true,
+        "future_terms_are_not_jointly_significant": true,
+        "future_terms_do_not_materially_improve_fit": true,
+        "missingness_draw_uses_only_probability": true,
+        "missingness_logit_uses_current_action": true,
+        "missingness_logit_uses_current_reward": true,
+        "missingness_logit_uses_current_state": true,
+        "reward_has_nonzero_next_state_weights": true,
+        "reward_uses_next_state": true,
+        "source_has_exact_no_future_condition": true
+      },
+      "diagnostic": {
+        "base_coefficients": [
+          1.0911724948293937,
+          -0.0856652399907545,
+          0.2426476521167673,
+          -0.3857685160149999,
+          2.3189211778534635
+        ],
+        "checks": {
+          "base_coefficients_match_generator": true,
+          "future_terms_are_not_jointly_significant": true,
+          "future_terms_do_not_materially_improve_fit": true
+        },
+        "expected_base_coefficients": [
+          1.0,
+          -0.1,
+          0.2,
+          -0.4,
+          2.5
+        ],
+        "extended_future_coefficients": [
+          0.20398936325778633,
+          -0.14976792838408173
+        ],
+        "likelihood_ratio": 3.838022440773784,
+        "likelihood_ratio_p": 0.14675199579699427,
+        "n": 60000,
+        "nll_base": 20121.81939556638,
+        "nll_extended": 20119.900384345994,
+        "per_sample_nll_gain": 3.198352033978153e-05
+      },
+      "scope": "Exact semantic claim plus structural and numerical checks of the official missingness mechanism.",
+      "verdict": "VERIFIED"
+    }
+  },
+  "environment": {
+    "numpy": "1.26.4",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
+  },
+  "generated_at": "2026-07-29T15:05:10.458900+00:00",
+  "provenance": {
+    "arxiv_id": "2606.20206v1",
+    "generator": {
+      "checks": {
+        "missingness_draw_uses_only_probability": true,
+        "missingness_logit_uses_current_action": true,
+        "missingness_logit_uses_current_reward": true,
+        "missingness_logit_uses_current_state": true,
+        "reward_has_nonzero_next_state_weights": true,
+        "reward_uses_next_state": true
+      },
+      "path": "C:\\Projects\\02_academia\\icml-repro\\mnar_ope\\official\\ShadOPE\\src\\envs\\sim_envs.py",
+      "sha256": "4a1ea1f71619ad181de130a47731c0b21b64857c0fba1d32ce6ae8123e05a3c1"
+    },
+    "official_commit": "4231ba5d46046c66c0efae6d58662bfca5087147",
+    "official_commit_date": "2026-05-19T13:30:16+08:00",
+    "official_repo": "https://github.com/NAIVlab/ShadOPE",
+    "paper_id": "vpSFJoxyDz",
+    "paper_source_archive_sha256": "2a3ddc551f79f95d6e9a4448c61656c5b2dbcf828faa4a99662e67ef2345229c"
+  }
+}

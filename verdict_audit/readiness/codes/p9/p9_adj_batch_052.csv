@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2684,variance,no,"The excerpts, including the seeds/variance section, show no seeds, standard deviations or error bars for the main results."
+P2685,compute,none,No hardware or training time is stated anywhere in the excerpts.
+P2687,compute,none,The excerpts give only hyperparameters and mention constrained resources without stating hardware or time.
+P2688,variance,no,"The only standard deviation mentioned is a per-class diversity metric of synthetic images, not variability of the main results."
+P2688,compute,none,No hardware or compute time is stated; pretraining overhead is only deferred to a supplement.
+P2694,variance,no,"The text says seeds were fixed and reports single values with no repeated runs, error bars or deviations."
+P2696,variance,no,"Nothing in the excerpts reports seeds, error bars or deviations for the main results."
+P2696,compute,none,The excerpts state no hardware or compute time.
+P2698,compute,hardware_only,The text states one versus four GPUs for the latency measurement but gives no training time or GPU-hours.
+P2715,compute,hardware_only,"A single NVIDIA A40 GPU is named for embedding extraction, but no training time or GPU-hours appear in the text."
+P2723,compute,amount,It states 32 NVIDIA A800 GPUs and that the parallel data collection takes approximately 24 hours.
+P2725,compute,unclear,"The compute appendix gives search timings and says the evaluator runs on CPU, but specifies no training hardware or training compute."
+P2737,variance,yes,"The main posterior-alignment figure shows 10-90th percentile error bars, and seed sweeps are described."
+P2771,variance,yes,The text reports results averaged over models trained with five different random seeds.
+P2773,compute,none,The excerpts state no hardware or compute time.
+P2775,variance,no,"The results are given as single values, and no seeds, standard deviations or intervals are reported."
+P2775,compute,none,The excerpts state no hardware or compute time.
+P2776,variance,no,"Repeated rounds are reported only for the IP baseline, and the main PLA results are averages over QA pairs with no variance."
+P2776,compute,none,The excerpts state no hardware or compute time.
+P2777,variance,unclear,"The 500 random seeds are used for a motivating analysis, and the excerpts do not show whether the main benchmark results carry seeds or error bars."

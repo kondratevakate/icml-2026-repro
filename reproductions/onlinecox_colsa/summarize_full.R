@@ -1,0 +1,8 @@
+ks<-c(6,20,50,200); m<-c("Oracle","COLSA","Meta","Online","SGD","SGD_Offline")
+reps<-sapply(ks,function(k)readRDS(sprintf("runs/claim2full_K%d.rds",k))$REPS)
+cat("reps:",paste(paste0("K",ks,"=",reps),collapse=" "),"\n\nRMSE by K:\n")
+tab<-sapply(ks,function(k){s<-readRDS(sprintf("runs/claim2full_K%d.rds",k))$summ; rownames(s)<-s$method; s[m,"RMSE"]})
+dimnames(tab)<-list(m,paste0("K",ks)); print(round(tab,4))
+cat("\nAvgCP (coverage) by K:\n")
+tc<-sapply(ks,function(k){s<-readRDS(sprintf("runs/claim2full_K%d.rds",k))$summ; rownames(s)<-s$method; s[m,"AvgCP"]})
+dimnames(tc)<-list(m,paste0("K",ks)); print(round(tc,3))

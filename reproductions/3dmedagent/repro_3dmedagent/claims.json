@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "OAMI, CFLT and T1S released architecture",
+    "verdict": "VERIFIED_RELEASED_ARCHITECTURE",
+    "score": 2
+  },
+  {
+    "id": "C2",
+    "title": "DeepChestVQA composition",
+    "verdict": "VERIFIED_WITH_QUALITY_CAVEATS",
+    "score": 2
+  },
+  {
+    "id": "C3",
+    "title": "Forty-plus-task headline gain",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C4",
+    "title": "DeepChestVQA model comparison",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C5",
+    "title": "OAMI, CFLT and T1S ablations",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C6",
+    "title": "Radiologist agreement and per-turn analysis",
+    "verdict": "INCONCLUSIVE_MISSING_EXPERT_TRACES",
+    "score": 0
+  }
+]

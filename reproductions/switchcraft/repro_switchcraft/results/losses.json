@@ -1,0 +1,25 @@
+{
+  "status": "passed_with_divergences",
+  "seed": 260531236,
+  "official_repo": "C:\\Users\\kondr\\AppData\\Local\\Temp\\icml-repro-probe-switchcraft",
+  "torch_version": "2.10.0+cpu",
+  "equation_checks": {
+    "motif_code_rule_absolute_error": 0.0,
+    "anti_motif_coefficient_absolute_error": 0.0,
+    "binding_absolute_error": 0.0,
+    "conformational_change_absolute_error": 0.0,
+    "conformational_gradient_norm": 0.1116180961915014
+  },
+  "code_paper_divergences": {
+    "motif_loss": {
+      "official_code_value": 73.22311273345146,
+      "literal_equation_1_value": 206.3610184472369,
+      "reason": "Official code excludes motif pairs at distances >=22 A; Equation 1 sums all distinct motif pairs."
+    },
+    "anti_binding": {
+      "official_default_ratio_to_binding": -1.0,
+      "paper_ratio_to_binding": -0.5,
+      "reason": "AntiLigandContactLoss defaults to -1 times the contact loss, while Section 3.1 states -0.5."
+    }
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "pairs": {
+    "n_pairs": 111644,
+    "n_pairs_no_copy": 110740,
+    "excluded": {
+      "d_negative": 16221,
+      "no_commit_history_unordered_pairs": 4069,
+      "a_sha_not_in_history": 27
+    },
+    "exposed_share": 0.8601499006682319,
+    "commit_history": {
+      "ok": 5195,
+      "missing": 138
+    },
+    "judge_latency_hours": {
+      "q25": 0.3036111111111111,
+      "median": 1.1797222222222221,
+      "q75": 4.8225,
+      "n_records": 4277
+    },
+    "copy_edges": 164
+  },
+  "H1": {
+    "rd": -0.01075742680882873,
+    "ci": [
+      -0.035735867390840316,
+      0.01611392356253595
+    ],
+    "n_exposed": 95253,
+    "n_unexposed": 15487,
+    "agree_exposed": 0.49922837075997606,
+    "agree_unexposed": 0.5219861819590624,
+    "permutation": {
+      "n": 2000,
+      "null_mean": -0.02255997728261075,
+      "null_q975": -0.010532275948623906,
+      "p_one_sided": 0.02948525737131434
+    },
+    "label_herding_on_published_verdicts": false,
+    "sensitivity": {
+      "strict_exposure": {
+        "rd": -0.013711228009957143,
+        "ci": [
+          -0.038763303680635755,
+          0.013530375131239825
+        ],
+        "n_exposed": 86894,
+        "n_unexposed": 15487,
+        "agree_exposed": 0.49708840656431974,
+        "agree_unexposed": 0.5219861819590624
+      },
+      "both_judged_from_2026_07_22": {
+        "rd": -0.02557501261449404,
+        "ci": [
+          -0.0514041409651497,
+          0.0025625623073797996
+        ],
+        "n_exposed": 69652,
+        "n_unexposed": 10517,
+        "agree_exposed": 0.48927525412048467,
+        "agree_unexposed": 0.5209660549586383
+      },
+      "binary_decisive": {
+        "rd": -0.02205816256467108,
+        "ci": [
+          -0.04423058438088257,
+          0.0010192163570562824
+        ],
+        "n_exposed": 95253,
+        "n_unexposed": 15487,
+        "agree_exposed": 0.5951203636630867,
+        "agree_unexposed": 0.6262026215535611
+      },
+      "copy_pairs_included": {
+        "rd": -0.008133599166715692,
+        "ci": [
+          -0.03269518443561625,
+          0.01861639488699698
+        ],
+        "n_exposed": 96124,
+        "n_unexposed": 15520,
+        "agree_exposed": 0.503131371977862,
+        "agree_unexposed": 0.5227448453608248
+      },
+      "exclude_organiser": {
+        "rd": -0.011503496613823192,
+        "ci": [
+          -0.03631399866476632,
+          0.01581978140050763
+        ],
+        "n_exposed": 94909,
+        "n_unexposed": 15389,
+        "agree_exposed": 0.49900430939110096,
+        "agree_unexposed": 0.5228409903177594
+      },
+      "exclude_author": {
+        "rd": -0.010505679487841358,
+        "ci": [
+          -0.03557001779166601,
+          0.016411903889867564
+        ],
+        "n_exposed": 93913,
+        "n_unexposed": 15446,
+        "agree_exposed": 0.4998243054742155,
+        "agree_unexposed": 0.5220769131166645
+      }
+    }
+  },
+  "H2": {
+    "ref_verified": {
+      "rd": -0.03858945548465685,
+      "ci": [
+        -0.06395396460469108,
+        -0.012512397509235596
+      ],
+      "n_exposed": 57013,
+      "n_unexposed": 8410,
+      "agree_exposed": 0.6709697788223739,
+      "agree_unexposed": 0.7115338882282997
+    },
+    "ref_falsified": {
+      "rd": 0.051808468267496896,
+      "ci": [
+        -0.08902023439364126,
+        0.17310777290277274
+      ],
+      "n_exposed": 3643,
+      "n_unexposed": 217,
+      "agree_exposed": 0.3357123250068625,
+      "agree_unexposed": 0.2534562211981567
+    },
+    "difference": {
+      "rd": -0.09039792375215375,
+      "ci": [
+        -0.2132137898644424,
+        0.05037571343303005
+      ]
+    }
+  },
+  "H3": {
+    "n_claims": 2485,
+    "skipped": {
+      "no_plurality": 712,
+      "lt3_dated": 1795
+    },
+    "first_minus_nonfirst": -0.028237636448190655,
+    "ci": [
+      -0.058345100864308046,
+      0.0004577380471739029
+    ]
+  },
+  "H4": {
+    "all_disagreeing": {
+      "n_pairs": 11588,
+      "n_with_quality": 11588,
+      "mean_quality_later_minus_first": 0.039955125992405936,
+      "ci": [
+        -0.06528765494355122,
+        0.1474055348217389
+      ],
+      "final_plurality": {
+        "later": 0.3962720055229548,
+        "first": 0.3504487400759406,
+        "neither": 0.09242319641007939,
+        "tie": 0.1608560579910252
+      }
+    },
+    "later_falsified": {
+      "n_pairs": 834,
+      "n_with_quality": 834,
+      "mean_quality_later_minus_first": 0.6019184652278178,
+      "ci": [
+        0.4500617806166548,
+        0.7521119918389536
+      ],
+      "final_plurality": {
+        "later": 0.354916067146283,
+        "first": 0.33093525179856115,
+        "neither": 0.14388489208633093,
+        "tie": 0.17026378896882494
+      }
+    },
+    "reference_claims": {
+      "frank_wolfe": {
+        "first_verdict": "verified",
+        "first_quality": "high",
+        "later": [
+          {
+            "verdict": "falsified",
+            "quality": "high",
+            "order": 2
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 3
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 4
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 5
+          },
+          {
+            "verdict": "toy",
+            "quality": "medium",
+            "order": 6
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 7
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 8
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 9
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 10
+          },
+          {
+            "verdict": "verified",
+            "quality": "medium",
+            "order": 11
+          },
+          {
+            "verdict": "verified",
+            "quality": "medium",
+            "order": 12
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 13
+          },
+          {
+            "verdict": "falsified",
+            "quality": "high",
+            "order": 14
+          },
+          {
+            "verdict": "verified",
+            "quality": "medium",
+            "order": 15
+          },
+          {
+            "verdict": "inconclusive",
+            "quality": "low",
+            "order": 16
+          },
+          {
+            "verdict": "toy",
+            "quality": "medium",
+            "order": 17
+          },
+          {
+            "verdict": "verified",
+            "quality": "medium",
+            "order": 18
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 19
+          },
+          {
+            "verdict": "verified",
+            "quality": "medium",
+            "order": 20
+          },
+          {
+            "verdict": "falsified",
+            "quality": "high",
+            "order": 21
+          }
+        ]
+      },
+      "self_distillation": {
+        "first_verdict": "falsified",
+        "first_quality": "medium",
+        "later": [
+          {
+            "verdict": "falsified",
+            "quality": "high",
+            "order": 2
+          }
+        ]
+      },
+      "three_projections": {
+        "first_verdict": "inconclusive",
+        "first_quality": "low",
+        "later": [
+          {
+            "verdict": "toy",
+            "quality": "medium",
+            "order": 2
+          }
+        ]
+      },
+      "paging": {
+        "first_verdict": "verified",
+        "first_quality": "high",
+        "later": [
+          {
+            "verdict": "falsified",
+            "quality": "high",
+            "order": 2
+          },
+          {
+            "verdict": "verified",
+            "quality": "high",
+            "order": 3
+          }
+        ]
+      }
+    }
+  },
+  "H5": {
+    "status": "pending: synthesis_logbooks.csv not provided yet"
+  },
+  "exploratory": {
+    "h1_a_is_organiser": {
+      "rd": 0.5496011964107677,
+      "ci": [
+        0.08333333333333333,
+        1.0
+      ],
+      "n_exposed": 165,
+      "n_unexposed": 67,
+      "agree_exposed": 0.4909090909090909,
+      "agree_unexposed": 0.23880597014925373
+    },
+    "protocol1_q2_prevalence_robust": {
+      "categories": [
+        "falsified",
+        "inconclusive",
+        "toy",
+        "verified"
+      ],
+      "pa": 0.5034097150399647,
+      "pe_ac1": 0.22654224352983973,
+      "ac1": 0.3579606891185225,
+      "specific_agreement": {
+        "falsified": 0.2995547640249332,
+        "inconclusive": 0.24673864147548358,
+        "toy": 0.21865368294099255,
+        "verified": 0.6872889650110106
+      }
+    }
+  }
+}

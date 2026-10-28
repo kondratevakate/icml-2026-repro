@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0001,comparison,no,Improvement with reference set size is an internal trend; no baseline or prior work is named.
+C0011,quantitative,yes,The claim states explicit approximation factors such as (2+2γ).
+C0016,check_cost,large_scale,An ablation over temperature and density resolution is a sweep of many runs.
+C0017,check_cost,inference_only,Counting the tasks in the released benchmark settles it.
+C0020,quantitative,yes,The claim states a number (65 patients).
+C0020,comparison,no,"It compares algorithms' stability profiles, not a method against a baseline or prior work."
+C0023,check_cost,retrain,Ranking methods on these systems requires fitting the methods.
+C0027,comparison,yes,Accuracy with reasoning chains is compared against training without them as a baseline.
+C0032,quantitative,yes,The claim states numeric values such as probability 2/3 and a sample bound.
+C0044,check_cost,retrain,Benchmarking MiAE requires training the model.
+C0046,check_cost,inference_only,Inspecting the released dataset collection settles the count.
+C0050,check_cost,inference_only,Computing the correlation with an existing representation needs one run.
+C0054,check_cost,unclear,The claim is too vague to say what experiment would settle it.
+C0055,comparison,yes,Random partitions serve as a baseline against which degradation is measured.
+C0058,check_cost,retrain,Varying the robustness radius requires training the robust model at a few settings.
+C0063,check_cost,large_scale,Eight tasks on two datasets with several baselines require many runs.
+C0069,comparison,yes,SFT complexity is explicitly compared against RLVR.
+C0071,check_cost,large_scale,Determining the top score requires evaluating many models on the benchmark.
+C0072,check_cost,inference_only,The ablation toggles inference-time pipeline components without training.
+C0074,check_cost,unclear,No setting or metric is specified to determine the checking cost.
+C0076,check_cost,large_scale,Correlating with general benchmarks requires evaluating many LLMs.
+C0078,quantitative,yes,The claim states numeric attack strengths ε of 0.01 and 0.02.
+C0090,check_cost,large_scale,"The claim spans several models and feedback types, requiring many agentic runs."
+C0090,comparison,yes,Performance with feedback is compared against the no-feedback baseline.
+C0091,comparison,yes,The method is contrasted with standard CTMs.
+C0094,comparison,no,"The proposition is a structural impossibility result, not a comparison against a baseline."
+C0095,comparison,yes,The definition is presented as generalizing prior ℓ-smoothness work.
+C0098,check_cost,retrain,Finding optimal field sizes across environment widths requires fitting/optimizing the model.
+C0099,check_cost,large_scale,Many SFT plus RLVR training runs across trace counts are needed.
+C0100,comparison,yes,VJEPA is explicitly contrasted with deterministic JEPA.
+C0103,check_cost,analytic,"This is a design description of the method checked by definition, not experiment."
+C0107,quantitative,no,No number or metric value is stated.
+C0109,check_cost,analytic,This describes the method's construction rather than an experimental outcome.
+C0110,comparison,yes,Steering is said to improve performance relative to the unsteered baseline.
+C0112,comparison,yes,SSO is contrasted with Muon and MuonSphere.
+C0116,check_cost,inference_only,Certification with the existing LLaVA-Guard model needs no training.
+C0121,check_cost,analytic,"This is a feature description of the software, not an experimental result."
+C0123,check_cost,analytic,This describes constraints built into the representation by design.
+C0125,quantitative,yes,The claim states a number (1/10th of training steps).
+C0128,check_cost,inference_only,Best-of-N selection at fixed N is an inference-time procedure.

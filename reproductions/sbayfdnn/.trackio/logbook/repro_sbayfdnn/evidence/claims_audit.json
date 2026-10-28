@@ -1,0 +1,180 @@
+{
+  "claims": [
+    {
+      "analytic_norm2_threshold": 0.0036393783154664815,
+      "id": "C1",
+      "interval_mapping_max_error": 0.0,
+      "mapped_intervals": [
+        [
+          0.0,
+          0.15000000000000002
+        ],
+        [
+          0.65,
+          1.0
+        ]
+      ],
+      "max_pip_absolute_error": 7.216449660063518e-15,
+      "pip_at_analytic_threshold": 0.5000000000000071,
+      "pip_grid_points": 1201,
+      "score": 2,
+      "selected_basis_probe": [
+        0,
+        1,
+        2,
+        17,
+        18,
+        19
+      ],
+      "verdict": "VERIFIED"
+    },
+    {
+      "counterexample": {
+        "X_t": 1,
+        "all_network_outputs_max_abs": [
+          0.02,
+          0.005,
+          0.00125,
+          0.0003125,
+          7.8125e-05,
+          1.953125e-05
+        ],
+        "beta_t": 1,
+        "claimed_rate_without_constant": [
+          0.11,
+          0.052500000000000005,
+          0.025625000000000002,
+          0.01265625,
+          0.0062890625,
+          0.003134765625
+        ],
+        "error_lower_bound_over_rate": [
+          8.909090909090908,
+          18.95238095238095,
+          38.97560975609756,
+          78.98765432098764,
+          158.99378881987576,
+          318.9968847352025
+        ],
+        "g_u": "u",
+        "hidden_width": 1,
+        "parameter_bound_E_n": [
+          0.01,
+          0.0025,
+          0.000625,
+          0.00015625,
+          3.90625e-05,
+          9.765625e-06
+        ],
+        "sample_size_n": [
+          100,
+          400,
+          1600,
+          6400,
+          25600,
+          102400
+        ],
+        "scales_J_equals_H": [
+          10,
+          20,
+          40,
+          80,
+          160,
+          320
+        ],
+        "true_mean": 1,
+        "uniform_error_lower_bound": [
+          0.98,
+          0.995,
+          0.99875,
+          0.9996875,
+          0.999921875,
+          0.99998046875
+        ]
+      },
+      "exponent_combinations_checked": 60,
+      "finding": "Theorem 5.4 does not lower-bound E_n. With positive E_n=1/n and width one, every admissible network output is O(1/n), while a constant nonzero truth satisfies the three stated assumptions.",
+      "id": "C2",
+      "max_exponent_composition_error": 1.3877787807814457e-17,
+      "monotone_bound_failures": 0,
+      "paper_anchors": {
+        "bounded_network_class": true,
+        "only_assumptions_1_to_3": true,
+        "proof_decomposition": true,
+        "relu_approximation": true,
+        "spline_projection": true,
+        "theorem_54": true
+      },
+      "score": 2,
+      "verdict": "FALSIFIED_AS_STATED"
+    },
+    {
+      "counterexample_n": [
+        10,
+        100,
+        1000,
+        10000,
+        100000,
+        1000000
+      ],
+      "finding": "The statement permits epsilon^2=complexity^2, while the proof requires complexity=O(epsilon^2); the ratio diverges. This is a proof gap, not a failed posterior contraction sequence.",
+      "id": "C3",
+      "paper_anchors": {
+        "entropy_obligation": true,
+        "proof_required_lower_direction": true,
+        "statement_upper_direction": true
+      },
+      "proof_required_complexity_over_epsilon2": [
+        9.999999999999998,
+        100.0,
+        1000.0000000000001,
+        10000.0,
+        99999.99999999999,
+        1000000.0
+      ],
+      "score": 0,
+      "statement_epsilon2_le_complexity": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "verdict": "INCONCLUSIVE_PROOF_GAP"
+    },
+    {
+      "finding": "The proof introduces posterior-to-MAP equivalence under an appropriate hyperparameter choice not stated among Theorem 5.9 assumptions.",
+      "id": "C4",
+      "paper_anchors": {
+        "map_transition": true,
+        "posterior_q": true,
+        "stated_assumptions": true
+      },
+      "score": 0,
+      "verdict": "INCONCLUSIVE"
+    },
+    {
+      "id": "C5",
+      "released_real_data_pipeline_missing": true,
+      "score": 0,
+      "verdict": "NOT_EXECUTED"
+    },
+    {
+      "id": "C6",
+      "released_real_data_pipeline_missing": true,
+      "score": 0,
+      "verdict": "NOT_EXECUTED"
+    }
+  ],
+  "leaderboard_or_peer_evidence_used": false,
+  "maximum_score": 12,
+  "prepared_score": 4,
+  "provenance": {
+    "arxiv_source_archive_sha256": "f9dae2ec3769e93f5887eca672e0d94c04fcf41b50580c0dc37a070ddeef2ccf",
+    "evaluate_sha256": "7ad70d533b67cfd401c317d48e0e37d8f17895ecf3b3c932c75a1237414b6075",
+    "official_code_commit": "276d87949c8b973bf8b6748aa8df4f56086e063e",
+    "paper_tex_sha256": "dc998374c660f66877c23afe3e703d2e121a85546d85e3bae5ff8faf5c252a08",
+    "train_module_sha256": "06f1f5fa978f47bd50fbc5e03c5ef2c606b5f10648e23e33cb1d1e879387ab0d"
+  }
+}

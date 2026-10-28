@@ -1,0 +1,59 @@
+{
+  "clinical": {
+    "without_kate": {
+      "estimate": -0.0334,
+      "ci": [
+        -0.0991,
+        0.0322
+      ],
+      "p": 0.318538357974138,
+      "n_claims": 7439,
+      "n_reproducers": 18,
+      "n_papers": 924,
+      "medical_claims": 299,
+      "theory_coef": 0.1364
+    },
+    "with_kate": {
+      "estimate": -0.0913,
+      "ci": [
+        -0.218,
+        0.0353
+      ],
+      "p": 0.15755488484444813,
+      "n_claims": 7609,
+      "n_reproducers": 19,
+      "n_papers": 936,
+      "medical_claims": 350,
+      "theory_coef": 0.1394
+    }
+  },
+  "life_science": {
+    "without_kate": {
+      "estimate": 0.0681,
+      "ci": [
+        -0.0287,
+        0.1649
+      ],
+      "p": 0.1679451270561162,
+      "n_claims": 12385,
+      "n_reproducers": 22,
+      "n_papers": 986,
+      "medical_claims": 148,
+      "theory_coef": 0.157
+    },
+    "with_kate": {
+      "estimate": 0.0423,
+      "ci": [
+        -0.0628,
+        0.1474
+      ],
+      "p": 0.42987354920139365,
+      "n_claims": 12521,
+      "n_reproducers": 23,
+      "n_papers": 992,
+      "medical_claims": 165,
+      "theory_coef": 0.1574
+    }
+  },
+  "decision_clinical_not_judged_more_severely": true
+}

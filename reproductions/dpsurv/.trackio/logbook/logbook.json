@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: DPsurv: Dual-Prototype Evidential Fusion for Uncertainty-Aware and Interpretable Whole-Slide Image Survival Prediction",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-dpsurv-release-audit",
+  "paper": {
+    "arxiv_id": "2510.00053"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-RKqL4GYXz3",
+    "pathology",
+    "survival-analysis",
+    "uncertainty"
+  ],
+  "updated_at": "2026-07-30T08:55:40+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: DPsurv: Dual-Prototype Evidential Fusion for Uncertainty-Aware and Interpretable Whole-Slide Image Survival Prediction",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-five-cohort-data-and-evaluation-protocol",
+        "title": "Claim 1: five-cohort data and evaluation protocol",
+        "file": "pages/claim-1-five-cohort-data-and-evaluation-protocol/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-dual-prototype-evidential-fusion",
+        "title": "Claim 2: dual-prototype evidential fusion",
+        "file": "pages/claim-2-dual-prototype-evidential-fusion/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-grfn-survival-bounds-and-mixture",
+        "title": "Claim 3: GRFN survival bounds and mixture",
+        "file": "pages/claim-3-grfn-survival-bounds-and-mixture/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-headline-discrimination",
+        "title": "Claim 4: headline discrimination",
+        "file": "pages/claim-4-headline-discrimination/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-calibration-and-uncertainty",
+        "title": "Claim 5: calibration and uncertainty",
+        "file": "pages/claim-5-calibration-and-uncertainty/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-interpretability-ablations-and-robustness",
+        "title": "Claim 6: interpretability, ablations, and robustness",
+        "file": "pages/claim-6-interpretability-ablations-and-robustness/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 1867,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "e0e7acd1c67677f161a5"
+}

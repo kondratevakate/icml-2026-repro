@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P4028,variance,no,"The excerpts give implementation, data and training details but report no seeds, standard deviations, error bars or intervals for the main results."
+P4029,compute,none,"The excerpts name no hardware, run time or GPU-hours anywhere."
+P4041,compute,none,Only GFLOPs and parameter counts are given (Table 6); no hardware or training time is stated.
+P4064,variance,no,"Speedup and MAT results are reported as single values on a single A6000 setup with no seeds, standard deviations or intervals mentioned."
+P4065,variance,no,"Main results (Table 1, FPR) are single point values with no seeds, error bars or standard deviations reported."
+P4080,compute,hardware_only,"The only compute statement is that a baseline (JT-VAE) was trained and sampled on an NVIDIA GeForce RTX 2080 Ti, with no time or GPU-hours given."
+P4084,compute,none,"The excerpts mention no hardware, run time or GPU-hours."
+P4102,variance,no,"Results are reported as average accuracies with no seeds, standard deviations or error bars; the only seed remark concerns optional data splits."
+P4102,compute,none,The text only says running all configurations is computationally prohibitive and names no hardware or time.
+P4135,variance,yes,The main comparison table reports FID and CLIP-Score with plus-minus standard deviations for all methods.
+P4154,variance,no,"Main results report pass@k and token savings without seeds, error bars or standard deviations; the violin plots show per-task token spread, not run-to-run variance."
+P4154,compute,none,"Experiments use API/foundation models and the excerpts state no hardware, run time or GPU-hours."
+P4158,variance,unclear,The only mean plus-minus sd over five runs is for the compute-overhead timing table; the excerpts do not show whether the main regret results carry variance.
+P4158,compute,amount,Appendix C.13 states an NVIDIA A6000 GPU and per-iteration wall-clock times (e.g. 28.3 s per iteration on HDBO-200D).
+P4179,compute,none,"The excerpts state no hardware, run time or GPU-hours (only model sizes and an inference-efficiency table)."
+P4181,variance,no,"No seeds, standard deviations, error bars or intervals are reported for the quality-diversity or human-evaluation results in the excerpts."
+P4181,compute,none,"The excerpts mention no hardware, run time or GPU-hours."
+P4207,variance,no,"Main FID results are single values; the only variability mention is a plus-minus 0.01 run-to-run figure for toy 2D sliced-W2, not the main results."
+P4207,compute,none,"The excerpts give no hardware, training time or GPU-hours."
+P4208,compute,unclear,"Training and inference times and GPU memory are reported (e.g. 6.55 s inference) but no hardware is named, which fits neither amount nor hardware_only cleanly."

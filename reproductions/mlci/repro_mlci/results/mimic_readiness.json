@@ -1,0 +1,94 @@
+{
+  "paper": "A Machine-Learned Comorbidity Index",
+  "root": "C:\\Projects\\data\\digitaltwin",
+  "required_tables": {
+    "admissions": [
+      "admittime",
+      "deathtime",
+      "dischtime",
+      "hadm_id",
+      "subject_id"
+    ],
+    "patients": [
+      "dod",
+      "subject_id"
+    ],
+    "diagnoses_icd": [
+      "hadm_id",
+      "icd_code",
+      "subject_id"
+    ],
+    "icustays": [
+      "hadm_id",
+      "intime",
+      "subject_id"
+    ]
+  },
+  "candidates": {
+    "admissions": [],
+    "patients": [
+      {
+        "path": "C:\\Projects\\data\\digitaltwin\\synthea_sample_data_csv_apr2020\\csv\\patients.csv",
+        "release": "unknown",
+        "bytes": 332570,
+        "columns": [
+          "id",
+          "birthdate",
+          "deathdate",
+          "ssn",
+          "drivers",
+          "passport",
+          "prefix",
+          "first",
+          "last",
+          "suffix",
+          "maiden",
+          "marital",
+          "race",
+          "ethnicity",
+          "gender",
+          "birthplace",
+          "address",
+          "city",
+          "state",
+          "county",
+          "zip",
+          "lat",
+          "lon",
+          "healthcare_expenses",
+          "healthcare_coverage"
+        ],
+        "missing_required_columns": [
+          "dod",
+          "subject_id"
+        ]
+      }
+    ],
+    "diagnoses_icd": [],
+    "icustays": []
+  },
+  "release_status": {
+    "mimic-iv": {
+      "ready_tables": [],
+      "missing_or_invalid_tables": [
+        "admissions",
+        "patients",
+        "diagnoses_icd",
+        "icustays"
+      ],
+      "ready": false
+    },
+    "mimic-iii": {
+      "ready_tables": [],
+      "missing_or_invalid_tables": [
+        "admissions",
+        "patients",
+        "diagnoses_icd",
+        "icustays"
+      ],
+      "ready": false
+    }
+  },
+  "scan_errors": [],
+  "status": "blocked"
+}

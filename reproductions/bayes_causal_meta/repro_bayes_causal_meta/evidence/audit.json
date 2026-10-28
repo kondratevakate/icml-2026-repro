@@ -1,0 +1,132 @@
+{
+  "paper": {
+    "title": "Bayesian Meta-Learning with Expert Feedback for Task-Shift Adaptation through Causal Embeddings",
+    "openreview_id": "k76ll7aQyE",
+    "arxiv": "2602.19788v1"
+  },
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.10.0+cpu",
+    "cuda_available": false
+  },
+  "released_prior": {
+    "global_norm": 5.0,
+    "adaptation_scale": 0.2,
+    "offset_z0": [
+      0.0,
+      0.0
+    ],
+    "offset_z_epsilon": [
+      1.0,
+      0.0
+    ],
+    "offset_z1": [
+      1.0,
+      0.0
+    ],
+    "offset_z2": [
+      1.0,
+      0.0
+    ],
+    "scale_invariance_error": 0.0,
+    "jump_norm_at_zero": 1.0,
+    "epsilon": 1e-09,
+    "exact_tv_jump_for_unit_covariance_gaussians": 0.3829249225480261,
+    "paper_linear_lipschitz_rhs_M1_W1_sigma1": 5e-10,
+    "released_map_violates_linear_bound": true
+  },
+  "paper_proposition": {
+    "rows": [
+      {
+        "embedding_distance": 0.0,
+        "exact_total_variation": 0.0,
+        "paper_bound_M1_W1_sigma1": 0.0,
+        "bound_holds": true
+      },
+      {
+        "embedding_distance": 0.01,
+        "exact_total_variation": 0.003989406181481644,
+        "paper_bound_M1_W1_sigma1": 0.005,
+        "bound_holds": true
+      },
+      {
+        "embedding_distance": 0.1,
+        "exact_total_variation": 0.039877611676744924,
+        "paper_bound_M1_W1_sigma1": 0.05,
+        "bound_holds": true
+      },
+      {
+        "embedding_distance": 1.0,
+        "exact_total_variation": 0.3829249225480261,
+        "paper_bound_M1_W1_sigma1": 0.5,
+        "bound_holds": true
+      },
+      {
+        "embedding_distance": 3.0,
+        "exact_total_variation": 0.8663855974622838,
+        "paper_bound_M1_W1_sigma1": 1.5,
+        "bound_holds": true
+      }
+    ],
+    "all_bounds_hold": true,
+    "error_decomposition_is_triangle_inequality": true
+  },
+  "theorem_constant": {
+    "singular_values": [
+      10.0,
+      1.0
+    ],
+    "condition_number": 10.0,
+    "kappa": 1.0,
+    "kappa0": 0.5,
+    "z_norm": 1.0,
+    "embedding_error_norm": 0.1,
+    "appendix_constant_kappa0_over_kappa": 0.5,
+    "condition_number_aware_constant": 0.05,
+    "appendix_embedding_condition_holds": true,
+    "required_parameter_condition_holds": false,
+    "counterexample": true
+  },
+  "release_inventory": {
+    "tracked_file_count": 38,
+    "python_file_count": 16,
+    "python_compile_errors": {},
+    "example_tabular_rows": 12500,
+    "example_embedding_rows": 25,
+    "has_tests": false,
+    "has_cached_metrics_or_checkpoints": false,
+    "has_ukbb_data": false,
+    "paper_linear_prior": true,
+    "release_normalizes_adaptation": true,
+    "main_sets_torch_seed": false,
+    "main_sets_numpy_seed": false
+  },
+  "toy_smoke": {
+    "command_scope": "Official sequence/adaptive toy path, one epoch, one MC sample, one inner update, seed argument 999, CPU.",
+    "attempt_1": {
+      "validation_auroc": 0.7188,
+      "outcome": "failed because the entrypoint did not create results/"
+    },
+    "attempt_2": {
+      "validation_auroc": 0.7276,
+      "average_test_auroc": 0.616,
+      "outcome": "metrics saved, then cp1252 failed on final emoji print"
+    },
+    "attempt_3_utf8": {
+      "validation_auroc": 0.6531,
+      "average_test_auroc": 0.5666037752884746,
+      "average_test_auprc": 0.38805493598625074,
+      "outcome": "completed with PYTHONUTF8=1"
+    },
+    "same_seed_validation_auroc_range": 0.07450000000000001,
+    "interpretation": "The random_seed argument controls data splitting but method/main.py does not seed torch or NumPy, so training is not repeatable.",
+    "expert_smoke": {
+      "mode": "BALD",
+      "targets": 5,
+      "queries_per_target": 2,
+      "svi_steps": 20,
+      "svi_steps_per_query": 20,
+      "completed": true
+    }
+  }
+}

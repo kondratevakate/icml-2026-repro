@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0027,compute,amount,"States a single T4 GPU runs the 10-billion-compound top-k search in about 30 seconds, giving hardware and time."
+P0029,variance,no,"Only a single re-run of the evaluator with a different seed on one task as a robustness check; no seeds, error bars or intervals for main results."
+P0038,variance,unclear,"No seeds, error bars or deviations appear in the excerpts and the checklist is cut off before the statistical-significance item."
+P0038,compute,unclear,No hardware or compute time appears and the text is truncated before the checklist compute-resources item.
+P0039,compute,none,"The excerpts describe data, model and evaluation but never mention GPUs, hardware or compute time."
+P0041,compute,none,"The method uses LLM agents and the text names no hardware, GPUs or compute time."
+P0042,variance,no,"Only an algorithm for mean and best scores over generated samples is mentioned; no seeds, standard deviations or error bars for main results."
+P0045,variance,no,"The only seed mention is theoretical (shared initialization); experiments report no repeated runs, deviations or intervals."
+P0045,compute,none,The text gives complexity analysis and millisecond unlearning claims but names no hardware or compute time.
+P0047,compute,unclear,"The Implementation Details paragraph is cut off right after naming the backbone, so any hardware statement is not visible."
+P0048,variance,no,"Detailed setup and compute sections are shown but there is no mention of seeds, standard deviations, error bars or intervals."
+P0049,compute,none,All LLM agents are accessed through OpenRouter and no hardware or compute time is stated.
+P0062,compute,none,Only retrieval timing with standard errors and Diamond thread count are mentioned; no GPU or hardware for training/evaluation is named in the text.
+P0066,variance,no,"The seeds section contains only an intensity-filtering note and no repeated runs, deviations or intervals are reported for main results."
+P0069,compute,none,No hardware or GPU-hours are stated; only API use and a self-hosting throughput remark appear.
+P0071,compute,none,"Only an acknowledgement of unspecified GPU access appears, with no hardware type or compute time."
+P0072,compute,none,"The text describes datasets, architecture and results but states no hardware or compute time."
+P0074,compute,none,"Training scale is given in samples only; no hardware, GPUs or compute time are stated."
+P0076,compute,none,The text covers theory and the inference algorithm but names no hardware or compute time.
+P0078,compute,none,Training epochs are given and details are deferred to an appendix not shown; no hardware or compute time is stated.

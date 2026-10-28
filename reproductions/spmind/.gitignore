@@ -1,0 +1,6 @@
+.venv/
+official/
+tmp/
+/evidence/
+__pycache__/
+*.pyc

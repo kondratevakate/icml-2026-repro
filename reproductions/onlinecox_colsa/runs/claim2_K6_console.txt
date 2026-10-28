@@ -1,0 +1,34 @@
+﻿rep 25 / 200  elapsed 2.4 min
+rep 50 / 200  elapsed 7.2 min
+rep 75 / 200  elapsed 13.3 min
+rep 100 / 200  elapsed 18.4 min
+rep 125 / 200  elapsed 22.8 min
+rep 150 / 200  elapsed 27 min
+rep 175 / 200  elapsed 32.1 min
+rep 200 / 200  elapsed 36.8 min
+Rscript.exe : Warning messages:
+At line:5 char:1
++ & $rscript reproduce_claim2.R > runs\claim2_K6_console.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning messages::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+1: In coxph.fit(X, Y, istrat, offset, init, control, weights = weights,  :
+  Loglik converged before variable  4,5,6 ; coefficient may be infinite. 
+2: In coxph.fit(X, Y, istrat, offset, init, control, weights = weights,  :
+  Loglik converged before variable  4,5,6 ; coefficient may be infinite. 
+3: In coxph.fit(X, Y, istrat, offset, init, control, weights = weights,  :
+  Loglik converged before variable  4,5,6 ; coefficient may be infinite. 
+4: In coxph.fit(X, Y, istrat, offset, init, control, weights = weights,  :
+  Loglik converged before variable  4,5,6 ; coefficient may be infinite. 
+
+== Claim 2 metrics, K= 6 , 200 reps (Appendix B DGP) ==
+       method    Abias   RMSE  AvgCP
+1      Oracle 0.011151 0.1156 0.9442
+2       COLSA 0.008298 0.1157 0.9417
+3        Meta 0.004043 0.1172 0.9400
+4         SGD 0.204564 0.3255     NA
+5 SGD_Offline 0.061325 0.1162     NA
+
+Ranking by RMSE (low=better): Oracle < COLSA < SGD_Offline < Meta < SGD 
+Saved runs/claim2_K6.rds

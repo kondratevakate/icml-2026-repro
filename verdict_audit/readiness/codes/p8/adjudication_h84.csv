@@ -1,0 +1,21 @@
+item_id,field,label,reason
+C00666,label,headline_performance,main comparison with baselines on the paper's epidemic metrics
+C00947,label,secondary_empirical,"scope of empirical validation, not dataset construction"
+C00271,label,theory,bias order O(h^2) to O(h^4) is a rate statement
+C00454,label,headline_performance,main finding of an evaluation paper
+C00701,label,headline_performance,main empirical comparison of methods across benchmarks
+C00987,label,headline_performance,the paper's main empirical conclusion
+C00577,label,headline_performance,main comparison with 12 baselines across datasets
+C00601,label,secondary_empirical,convergence speed on synthetic data is an efficiency result
+C00211,label,secondary_empirical,appendix comparison at varying budgets
+C00366,label,headline_performance,main benchmark against five methods with stated metrics
+C00391,label,mechanism,explains how the method generalizes (patch recombination)
+C00039,label,headline_performance,main finding of a benchmark evaluation
+C00874,label,mechanism,demonstrated capabilities of the method in silico
+C00379,label,headline_performance,main utility metrics of the synthetic data versus ground truth
+C00778,label,secondary_empirical,generalization and few-shot robustness
+C00125,label,headline_performance,main empirical comparison of regularizers on regret
+C00855,label,headline_performance,main finding of a model evaluation
+C00403,label,secondary_empirical,out-of-distribution robustness result
+C00533,label,mechanism,states what the method does (imputation from slides) and on which cohorts
+C00154,label,headline_performance,metric values versus a baseline in the main table

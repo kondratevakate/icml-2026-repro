@@ -1,0 +1,308 @@
+{
+  "claims": {
+    "C1": {
+      "checks": {
+        "all_modalities_have_exported_witnesses": true,
+        "all_named_methods_are_exported": true,
+        "paper_dataset_count_at_least_15": true,
+        "paper_interpretability_count_at_least_5": true,
+        "paper_model_count_at_least_25": true,
+        "paper_task_count_at_least_20": true,
+        "repo_dataset_exports_at_least_15": true,
+        "repo_interpreter_exports_at_least_5": true,
+        "repo_model_exports_at_least_25": true,
+        "repo_task_exports_at_least_20": true
+      },
+      "claim": "PyHealth 2.0 unifies 15+ datasets, 20+ clinical tasks, 25+ models, and 5+ interpretability methods (Attention-Grad, GIM, DeepLift, SHAP among them) spanning EHR, imaging, physiological signal, and genomic modalities (Section 3; Appendices F-J).",
+      "method_witnesses": {
+        "Attention-Grad": "CheferRelevance",
+        "DeepLift": "DeepLift",
+        "GIM": "GIM",
+        "SHAP": "ShapExplainer"
+      },
+      "modality_witnesses": {
+        "EHR": "MIMIC4Dataset",
+        "genomics": "ClinVarDataset",
+        "imaging": "ChestXray14Dataset",
+        "physiological_signal": "SleepEDFDataset"
+      },
+      "paper_category_counts": {
+        "datasets": {
+          "Clinical Text": 1,
+          "EHR Datasets": 7,
+          "Genomics": 3,
+          "Medical Imaging": 3,
+          "Physiological Signals": 8
+        },
+        "interpretability": {
+          "Attention-Based": 1,
+          "Gradient-Based": 4,
+          "Perturbation-Based": 2,
+          "Visualization Tools": 4
+        },
+        "models": {
+          "Drug Recommendation": 4,
+          "General Sequence Models": 5,
+          "Healthcare-Specific": 10,
+          "Specialized Models": 9
+        },
+        "tasks": {
+          "Cardiology Detection": 5,
+          "Drug Recommendation": 2,
+          "EEG Analysis": 2,
+          "Genomics/Cancer": 4,
+          "Length of Stay": 4,
+          "Medical Imaging": 3,
+          "Mortality Prediction": 9,
+          "Other Specialized": 6,
+          "Readmission Prediction": 4,
+          "Sleep Staging": 4
+        }
+      },
+      "paper_totals": {
+        "datasets": 22,
+        "interpretability_methods": 7,
+        "models": 28,
+        "tasks": 43
+      },
+      "repo_export_counts": {
+        "datasets": 24,
+        "interpreters": 8,
+        "models": 40,
+        "tasks": 51
+      },
+      "repo_exports": {
+        "datasets": [
+          "BMDHSDataset",
+          "COSMICDataset",
+          "COVID19CXRDataset",
+          "CardiologyDataset",
+          "ChestXray14Dataset",
+          "ClinVarDataset",
+          "DREAMTDataset",
+          "EHRShotDataset",
+          "ISRUCDataset",
+          "MIMIC3Dataset",
+          "MIMIC4CXRDataset",
+          "MIMIC4Dataset",
+          "MIMIC4EHRDataset",
+          "MIMIC4NoteDataset",
+          "MIMICExtractDataset",
+          "MedicalTranscriptionsDataset",
+          "OMOPDataset",
+          "SHHSDataset",
+          "SleepEDFDataset",
+          "Support2Dataset",
+          "TCGAPRADDataset",
+          "TUABDataset",
+          "TUEVDataset",
+          "eICUDataset"
+        ],
+        "interpreters": [
+          "BasicGradientSaliencyMaps",
+          "CheferRelevance",
+          "DeepLift",
+          "GIM",
+          "IntegratedGradientGIM",
+          "IntegratedGradients",
+          "LimeExplainer",
+          "ShapExplainer"
+        ],
+        "models": [
+          "AdaCare",
+          "Agent",
+          "BIOT",
+          "CNN",
+          "ConCare",
+          "ContraWR",
+          "Deepr",
+          "EHRMamba",
+          "EmbeddingModel",
+          "GAMENet",
+          "GAN",
+          "GAT",
+          "GCN",
+          "GRASP",
+          "GraphCare",
+          "Graph_TorchvisionModel",
+          "JambaEHR",
+          "LogisticRegression",
+          "MICRON",
+          "MLP",
+          "MedLink",
+          "MoleRec",
+          "MultimodalAdaCare",
+          "MultimodalRETAIN",
+          "MultimodalRNN",
+          "RETAIN",
+          "RNN",
+          "SafeDrug",
+          "SdohClassifier",
+          "SparcNet",
+          "StageAttentionNet",
+          "StageNet",
+          "TCN",
+          "TextEmbedding",
+          "TorchvisionModel",
+          "Transformer",
+          "TransformersModel",
+          "UnifiedMultimodalEmbeddingModel",
+          "VAE",
+          "VisionEmbeddingModel"
+        ],
+        "tasks": [
+          "BMDHSDiseaseClassification",
+          "BenchmarkEHRShot",
+          "COVID19CXRClassification",
+          "CancerMutationBurden",
+          "CancerSurvivalPrediction",
+          "ChestXray14BinaryClassification",
+          "ChestXray14MultilabelClassification",
+          "DKAPredictionMIMIC4",
+          "DrugRecommendationEICU",
+          "DrugRecommendationMIMIC3",
+          "DrugRecommendationMIMIC4",
+          "EEGAbnormalTUAB",
+          "EEGEventsTUEV",
+          "InHospitalMortalityMIMIC4",
+          "LengthOfStayPredictionMIMIC3",
+          "LengthOfStayPredictionMIMIC4",
+          "LengthOfStayPredictionOMOP",
+          "LengthOfStayPredictioneICU",
+          "LengthOfStayStageNetMIMIC4",
+          "MIMIC3ICD9Coding",
+          "MedicalTranscriptionsClassification",
+          "MortalityPredictionEICU",
+          "MortalityPredictionEICU2",
+          "MortalityPredictionMIMIC3",
+          "MortalityPredictionMIMIC4",
+          "MortalityPredictionOMOP",
+          "MortalityPredictionStageNetMIMIC4",
+          "MultimodalMortalityPredictionMIMIC3",
+          "MultimodalMortalityPredictionMIMIC4",
+          "MutationPathogenicityPrediction",
+          "PatientLinkageMIMIC3Task",
+          "ReadmissionPredictionEICU",
+          "ReadmissionPredictionMIMIC3",
+          "ReadmissionPredictionMIMIC4",
+          "ReadmissionPredictionOMOP",
+          "SleepStagingSleepEDF",
+          "SurvivalPreprocessSupport2",
+          "T1DDKAPredictionMIMIC4",
+          "VariantClassificationClinVar",
+          "cardiology_isAD_fn",
+          "cardiology_isAR_fn",
+          "cardiology_isBBBFB_fn",
+          "cardiology_isCD_fn",
+          "cardiology_isWA_fn",
+          "drug_recommendation_mimic3_fn",
+          "drug_recommendation_mimic4_fn",
+          "drug_recommendation_omop_fn",
+          "patient_linkage_mimic3_fn",
+          "sleep_staging_isruc_fn",
+          "sleep_staging_shhs_fn",
+          "sleep_staging_sleepedf_fn"
+        ]
+      },
+      "scope": "Full source-level inventory at the paper's public v2.0.1 release; this claim is about toolkit coverage, not benchmark performance.",
+      "verdict": "VERIFIED"
+    },
+    "C4": {
+      "checks": {
+        "abstract_contains_7_line_statement": true,
+        "methodology_contains_7_line_statement": true,
+        "table2_has_claimed_pyhealth_116_24": false,
+        "table2_has_claimed_pyhealth_20_7": false,
+        "table2_has_expected_pandas_51": true
+      },
+      "claim": "PyHealth 2.0 reduces the code required to implement standard ML tasks (e.g., mortality prediction) to as few as 7 lines, down from 24 lines in PyHealth 1.16 and up to 51 lines with raw pandas (Table 2).",
+      "expected_mortality_loc_from_challenge_claim": {
+        "Pandas": 51,
+        "PyHealth 1.16": 24,
+        "PyHealth 2.0": 7
+      },
+      "finding": "The paper does make a separate seven-line training statement, but Table 2 reports mortality-task counts of 34 for PyHealth 2.0, 27 for PyHealth 1.16, and 51 for Pandas. The anchored challenge claim conflates the standalone seven-line statement with Table 2 and gives two Table 2 values incorrectly.",
+      "observed_mortality_loc": {
+        "Pandas": 51,
+        "PyHealth 1.16": 27,
+        "PyHealth 2.0": 34
+      },
+      "observed_table2": {
+        "MEDS ETL + MEDS\\_Reader": {
+          "drug_recommendation": 39,
+          "length_of_stay": 38,
+          "mortality_prediction": 43,
+          "patient_exploration": 12
+        },
+        "Pandas": {
+          "drug_recommendation": 24,
+          "length_of_stay": 22,
+          "mortality_prediction": 51,
+          "patient_exploration": 16
+        },
+        "PyHealth 1.16": {
+          "drug_recommendation": 16,
+          "length_of_stay": 14,
+          "mortality_prediction": 27,
+          "patient_exploration": 14
+        },
+        "PyHealth 2.0": {
+          "drug_recommendation": 23,
+          "length_of_stay": 18,
+          "mortality_prediction": 34,
+          "patient_exploration": 10
+        }
+      },
+      "verdict": "FALSIFIED"
+    },
+    "C5": {
+      "checks": {
+        "independent_historical_membership_artifact_available": null,
+        "paper_asserts_400_plus_members": true,
+        "paper_asserts_50_plus_examples_tutorials": true,
+        "paper_bibliography_links_rhealth_repository": true,
+        "paper_discussion_names_rhealth": true,
+        "repo_has_at_least_50_example_or_tutorial_files": true
+      },
+      "claim": "PyHealth 2.0 has an active open-source community of 400+ members and provides 50+ tutorials alongside multi-language support via an R interface (RHealth) (Section 5, Discussion).",
+      "example_or_tutorial_file_count": 184,
+      "finding": "The public release contains 50+ example/tutorial files and the paper identifies a public RHealth repository. The paper provides no immutable roster or measurement procedure for the historical '400+ members' component, so the composite claim cannot be fully verified or falsified independently.",
+      "verdict": "INCONCLUSIVE"
+    }
+  },
+  "not_attempted": {
+    "C2": "Requires the full MIMIC-IV v2.2 benchmark, exact hardware, worker sweep, PyHealth 1.16, MEDS, and Pandas baselines.",
+    "C3": "Requires full MIMIC-IV v2.2 drug-recommendation and length-of-stay throughput benchmark runs."
+  },
+  "paper": {
+    "arxiv": "2601.16414v2",
+    "openreview_id": "gMLVFN9hl8",
+    "title": "PyHealth 2.0: A Comprehensive Open-Source Toolkit for Accessible and Reproducible Clinical Deep Learning"
+  },
+  "provenance": {
+    "arxiv_source_archive_sha256": "8f592e99599e609ced3216700c1d4e878baffcb792c35a63a9c767c8224d078c",
+    "input_sha256": {
+      "official_pyhealth/pyhealth/datasets/__init__.py": "66600a15c120ec1103d483d28a3ea23d46fa34ce2ceebd4fff6f6ee0b56fe41b",
+      "official_pyhealth/pyhealth/interpret/methods/__init__.py": "11ece8efb1d8572d35bef11dc345dc691248336495b4599f140f492253c4e7c2",
+      "official_pyhealth/pyhealth/models/__init__.py": "4191d35779ad77318b806adf7769a07497085364fb778373d582fe3cf91f6545",
+      "official_pyhealth/pyhealth/tasks/__init__.py": "80c9f295e760ac42c2bc7839144fac8e0e7f6262d1e69398584ebf80e512d981",
+      "paper_source/sections/abstract.tex": "21e00063e62270d09dd03584c47906141cab8306ab91eb69ae818a9ca673c3ad",
+      "paper_source/sections/appendix_datasets_models_task.tex": "5c6ba3da0f3a890e322fb16d0e96d44540d857c57cac9c91b3c92e2284d09e96",
+      "paper_source/sections/appendix_processors_uq_interp.tex": "0f6260346bd89f06b99b97a96f53ed2505b7097d9b110450e7676702dfb1bebb",
+      "paper_source/sections/bib.bib": "a62dc2d80dd529426a104b05d10ac64db285613209206d5f658932d05049e0f0",
+      "paper_source/sections/discussion.tex": "b25705fb91509b0704289eb7c55edf8ae3313a5ad623fb5414197ebbc22b7c65",
+      "paper_source/sections/methodology.tex": "dcd181bd513246be08b8e1ae59825b81c3e787070361e7196dd547e01afb4734",
+      "paper_source/sections/results.tex": "78036b89d4caeb92ee3005fb64c564f3c4ac8f0a7c660e6f5ef5d92a1ac55da1"
+    },
+    "official_repo_clean": true,
+    "official_repo_commit": "ed562121b5bae185b36322c64ce6215c2095dd50",
+    "official_repo_tag": "v2.0.1",
+    "official_repo_url": "https://github.com/sunlabuiuc/PyHealth.git"
+  },
+  "run": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "script_sha256": "69d7b5c52aeb147208d86cd50f9ca13b97e8db72825091700f8533caa2d49800",
+    "timestamp_utc": "2026-07-29T14:26:49.325296+00:00"
+  }
+}

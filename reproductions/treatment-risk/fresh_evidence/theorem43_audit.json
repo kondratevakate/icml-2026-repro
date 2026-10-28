@@ -1,0 +1,111 @@
+{
+  "claim": "Theorem 4.3 / Equations (13)-(20)",
+  "protocol": {
+    "equation18": {
+      "training_size": 1,
+      "sample_space": 2,
+      "policy_class": 2,
+      "tolerance": "1/4",
+      "off_atom_value": "3/4",
+      "arithmetic": "fractions.Fraction"
+    },
+    "finite_grid": {
+      "maximum_size": 10,
+      "enumerates": "all safe/unsafe and UCB pass/fail patterns",
+      "prefix_rule": "candidate j feasible only if all UCB[k] < tau for k <= j"
+    },
+    "bentkus": {
+      "sample_sizes": [
+        5,
+        8,
+        10,
+        20,
+        50
+      ],
+      "alphas": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "probabilities": [
+        0.05,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        0.95
+      ],
+      "enumeration": "all n+1 binomial counts",
+      "destructive_controls": [
+        "0.98 * UCB",
+        "raw empirical mean"
+      ]
+    }
+  },
+  "protocol_sha256": "93ecce1dbf297f3caca64abc8018adea7f5946bd347321f6f0205cdf09e90fdf",
+  "equation18_counterexample": {
+    "sample_space": [
+      0,
+      1
+    ],
+    "sample_probabilities": [
+      0.5,
+      0.5
+    ],
+    "tolerance": 0.25,
+    "high_loss": 0.75,
+    "learned_policy_by_sample": [
+      0,
+      1
+    ],
+    "empirical_constraint_values": [
+      0.25,
+      0.25
+    ],
+    "equality_holds_for_every_training_sample": true,
+    "expected_training_value": 0.25,
+    "fresh_value_by_learned_policy": [
+      0.5,
+      0.5
+    ],
+    "expected_fresh_value": 0.5,
+    "excess_over_tolerance": 0.25,
+    "equation18_fails": true
+  },
+  "finite_grid_audit": {
+    "maximum_grid_size": 10,
+    "safety_patterns_checked": 2046,
+    "ucb_pass_patterns_checked": 1396054,
+    "feasible_candidates_checked": 231997,
+    "counterexamples_when_first_unsafe_ucb_covers": 0,
+    "implication_holds": true,
+    "implication": "unsafe selection implies UCB undercoverage at the first unsafe candidate on an ordered finite grid"
+  },
+  "bentkus_audit": {
+    "instances": 165,
+    "valid_instances": 165,
+    "minimum_coverage_margin": 0.0187499999999996,
+    "tightest_instance": {
+      "n": 5.0,
+      "alpha": 0.05,
+      "p": 0.5,
+      "coverage": 0.9687499999999996,
+      "margin": 0.0187499999999996
+    },
+    "shrink_factor": 0.98,
+    "shrunken_bound_violations": 3,
+    "raw_mean_violations": 165,
+    "passed": true
+  },
+  "verdict": "PUBLISHED_PROOF_STEP_INVALID; FINITE_ORDERED_GRID_CERTIFICATE_REPAIRED_CONDITIONALLY",
+  "limitations": [
+    "The paper states t in the continuum (0, 1), while the repair assumes an ordered finite grid.",
+    "Equation (13) must hold conditional on the independent policy-learning split D_m."
+  ],
+  "passed": true
+}

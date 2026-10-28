@@ -1,0 +1,303 @@
+item_id,field,label,reason
+E0005,main_data_access,unclear,"Evaluation uses the MIB benchmark and Wikipedia inputs, but the text states no access terms or download source for the evaluation data."
+E0020,code,no,The visible text contains no statement about releasing code for this work.
+E0020,main_data_access,unclear,"Data come from NOAA GHCNd and a bike-sharing platform, but the text does not state that they are downloadable or their access terms."
+E0021,main_data_access,unclear,"Evaluation uses named datasets (GLUE, Alpaca, LM-eval harness, ViT benchmarks) without any stated access terms; only code availability is stated."
+E0023,code,no,The visible text contains no code release or availability statement.
+E0024,main_data_access,unclear,Real-data experiments use Multi-MNIST/Multi-Fashion datasets with no stated access terms or download source.
+E0025,code,no,The text only links the FlowRL repository of other authors and gives no statement about releasing this paper's own code.
+E0025,main_data_access,unclear,"Benchmarks (DeepScaleR, DeepCoder, MATH500, AIME, etc.) are named but no access terms or download statement is given."
+E0026,main_data_access,unclear,"Evaluation uses ImageNet-1K and MS COCO, named without any stated access terms."
+E0028,code,no,The text mentions releasing the MEnvData-SWE dataset but contains no statement about releasing code.
+E0029,code,no,The visible text contains no code release or availability statement.
+E0029,main_data_access,unclear,"Evaluation uses KITTI, Waymo Open, 4Seasons, Complex Urban and A2D2, named without stated access terms."
+E0033,code,no,The visible text contains no code release or availability statement.
+E0033,main_data_access,unclear,"Besides synthetic data, the evaluation uses CIFAR-10, named without stated access terms."
+E0035,code,released,The abstract footnote states code is available at a GitHub link (github.com/omrilev1/HessianMix).
+E0036,main_data_access,open,The text states the code and dataset can be found on GitHub at a given link.
+E0038,main_data_access,unclear,"Evaluation uses OWT, zero-shot text sets and ImageNet-1K, named without stated access terms."
+E0046,main_data_access,open,The MBPP-Honeypot evaluation environment is stated to be available on GitHub along with the code.
+E0056,code,released,The abstract states the code is available at github.com/HZ1008/MASPOB.
+E0061,main_data_access,open,"The reproducibility statement says the proposed meta-evaluation dataset is provided in the supplementary materials, with code on GitHub."
+E0063,code,no,The excerpts only say code was implemented in Python/PyTorch and give no code link or release statement; the only GitHub link is for the folktables data.
+E0071,code,no,No code link or release statement appears anywhere in the excerpts.
+E0076,code,no,The excerpts contain no code link or statement about releasing code.
+E0077,code,no,The excerpts give no code link or release statement.
+E0080,code,released,The implementation details state the code is available at https://github.com/lxd99/CBS_public.
+E0084,main_data_access,synthetic_only,Main evaluations run in simulated robotic-control environments the authors built themselves; the D4MORL offline dataset is used only in an appendix check.
+E0087,main_data_access,unclear,"Experiments use synthetic random strings plus ISBNs sampled from a named Open Library editions dump, and the excerpts give no access terms or download link for that dump."
+E0095,code,released,A footnote states the code is released at https://github.com/arashgholami/top-w-decoding.
+E0100,code,unclear,"The text says a PyTorch implementation is provided in a blank location, so it is unclear whether a link, an appendix or a release is meant."
+E0103,code,released,"The abstract area gives Code: https://github.com/silent-commit/CLEAR, even though a later passage speaks of planned release."
+E0103,main_data_access,private,"The benchmark is built from 160,000 self-collected video pairs, and the authors only plan to make the dataset public, so it is not available now."
+E0104,code,released,"The abstract states the code is available at this link, which is a hyperlinked code release even though the URL text was stripped."
+E0105,code,released,The abstract states the code is publicly available at https://github.com/Junyi-Yan/MV-FGAD.
+E0106,code,no,The excerpts give no code link or release statement.
+E0107,code,released,"The text points to open-source PyTorch code that recreates all experiments, which indicates released code even though the target reference is cut off."
+E0109,code,no,The excerpts give no code link or release statement.
+E0111,code,released,The abstract states the code is available at https://github.com/hyzhang98/PiNDA.
+E0113,code,released,A footnote states the code is available at https://github.com/YsTvT/PA-MoE.
+E0114,code,no,The excerpts describe data and experiments but give no code link or release statement.
+E0116,code,no,The excerpts give no code link or release statement.
+E0116,main_data_access,unclear,"The toy task is synthetic but the paper also applies the method to Llama 3.1-8B and Qwen 3-4B, and the text does not say what inputs were used or how to get them."
+E0118,code,released,Appendix C.1 says the code is publicly available at github.com/ambroiseodt/vit-plasticity.
+E0119,code,no,The abstract and the release-related paragraphs shown contain no statement about code availability.
+E0126,code,released,The text says the code is available at https://github.com/watml/adalina.
+E0131,code,released,A footnote says the code is available at github.com/geosada/LHSD.
+E0138,code,released,The text says the implementation is available at https://github.com/KDEGroup/RQ-MoE.
+E0139,code,released,The text points to the authors code repository at https://github.com/rusu4943/RSTR.
+E0141,main_data_access,unclear,"The main benchmarks are GSM8K and DeepMind Mathematics plus a synthetic graph task, and the text gives no access terms for the named datasets."
+E0169,main_data_access,open,"The text says all experiments used publicly available academic datasets (e.g., PACS, OfficeHome)."
+E0178,code,released,"The abstract gives a link, https://github.com/aegine/GSE-Flow, which outweighs the separate will be made publicly available sentence."
+E0181,main_data_access,unclear,"The evaluation uses an author-curated SC-IPI dataset plus NQ and BFCL-derived data, and the text does not say whether these are released or under what terms."
+E0182,code,no,The release-related paragraphs run through to the references with no statement about code availability.
+E0182,main_data_access,unclear,The text names JBB-Behaviors (JailbreakBench) and MaliciousInstructions but does not state their access terms.
+E0185,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0186,main_data_access,synthetic_only,The experiments compare noise mechanisms numerically across privacy parameters and use no real dataset.
+E0192,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0194,code,no,The abstract and the release-related paragraphs shown contain no code availability statement.
+E0197,code,unclear,"No code statement appears, but the text is truncated in the middle of the abstract or conclusion, so a statement may have been cut off."
+E0197,main_data_access,unclear,"The paper evaluates on named streaming datasets (elec2, airlines, creditcard, etc.) without stating their access terms."
+E0198,code,unclear,"No code statement appears, but the text is cut off in the middle of the abstract, where a link would normally appear."
+E0198,main_data_access,unclear,"The six evaluation benchmarks are only named with details deferred to the appendix, and their access terms are not stated."
+E0199,code,no,The text links only to the IHQ dataset on Hugging Face and gives no code release statement or code link.
+E0208,main_data_access,unclear,The text mentions results on 'different tasks' but does not describe the evaluation data or say they are synthetic.
+E0212,main_data_access,unclear,"LongLaMP, ALOE and LaMP are named as evaluation data, but no download link or access terms are stated."
+E0214,code,released,The text states 'The code is available at https://github.com/taozerui/DiffBCP'.
+E0214,main_data_access,unclear,"The main evaluation uses FFHQ and ImageNet test images, which are named with citations but have no stated access terms."
+E0215,code,released,"The abstract gives a code link, https://github.com/YanhuiS/CyberJurors."
+E0215,main_data_access,open,"The main benchmark VerdictBench is given with a Hugging Face dataset link (huggingface.co/datasets/piggi/VerdictBench), and no access restriction is stated."
+E0220,code,no,The text has no statement releasing Walrus code; it mentions only the baselines' public code.
+E0220,main_data_access,unclear,"The Well, Flowbench, PDEBench and the other datasets are named with citations, but no links or access terms are stated."
+E0227,code,released,The text states that all code is provided at https://github.com/erfunmirzaei/Gibbs-Generalization.
+E0228,code,no,The text contains no code availability statement or code link.
+E0229,code,no,The text contains no code availability statement or code link.
+E0229,main_data_access,synthetic_only,"All evaluations use generated GP-sampled synthetic functions, analytic engineering design problems or the HalfCheetah simulator, with no external dataset."
+E0230,code,no,The text contains no code availability statement or code link.
+E0233,code,released,"The text gives a source code link, https://github.com/MuXauJl11110/EBiEOT."
+E0234,code,no,The text contains no code availability statement or code link; it says only that the datasets are publicly available.
+E0235,code,released,The abstract states 'Code is available at https://github.com/mala-lab/FedHPro'.
+E0236,code,no,The text contains no code availability statement or code link; a reusable data pipeline is described but no release is stated.
+E0237,code,no,The text contains no code availability statement or code link.
+E0239,code,no,The excerpts describe datasets and methods but contain no code link or statement about releasing code; the footnotes point only to dataset source files.
+E0240,main_data_access,unclear,"The text names FineWeb-Edu, AIME 24, MATH 500, GPQA and LiveCodeBench but never says how the evaluation data can be accessed."
+E0245,main_data_access,unclear,The text names D4RL and OGBench as the evaluation benchmarks but never states their access terms or gives a download link.
+E0246,main_data_access,unclear,"The text names GAR-Bench, INST-IT, VIP-Bench and BLINK but gives a link only to code, not to the data, and states no data access terms."
+E0247,main_data_access,unclear,"The theory is checked on synthetic Gaussian data, but the real-data check uses the named chest X-ray dataset (Kermany et al.) with no access terms stated, so the data are not synthetic only."
+E0248,main_data_access,unclear,"The text names GPQA Diamond, BIG-Bench Hard and Global-MMLU Lite, plus the authors' own LLM evaluation results, but states no access terms for either."
+E0250,main_data_access,unclear,"The text names ImageNet-R, CIFAR-100, DomainNet and ImageNet-100 and links only to code; it states no data access terms."
+E0252,code,released,A footnote states that the code and data are available at a GitHub URL (github.com/Airleave/DPRSC).
+E0255,main_data_access,unclear,"The text names RewardBench, RM-Bench and JudgeBench (and the training sets) but never states their access terms or gives links."
+E0258,main_data_access,unclear,"The text mentions only an unnamed pretraining corpus, unnamed downstream benchmarks and in-house training; it never says whether the data are open or proprietary."
+E0259,main_data_access,unclear,"The text says only 'four grounding benchmarks', cited but not named in these excerpts, and states no access terms."
+E0261,code,no,The excerpts contain no code link or code release statement; the only URL points to Gemini search documentation.
+E0262,code,no,"The only link is a project page, and the text never says that code is or will be released."
+E0262,main_data_access,unclear,The text says it uses the standard datasets provided by OGBench but does not state their access terms or give a download link.
+E0264,main_data_access,unclear,The text names the FineWeb dataset for the NanoGPT experiments but does not state its access terms.
+E0265,code,no,The excerpts contain no code link or statement about releasing code.
+E0265,main_data_access,unclear,"The text uses the NACA, Pipe and Elasticity benchmarks from Li et al. 2023b plus a custom Poly-Poisson dataset, and states access terms for none of them."
+E0266,code,no,The excerpts contain no code link or statement about releasing code.
+E0266,main_data_access,unclear,The text names D4RL and a self-collected Frozen-Lake dataset but states no access terms or download source for either.
+E0267,code,no,The excerpts link only to baseline data on Hugging Face; they give no code link and no statement about releasing code.
+E0269,main_data_access,unclear,"Evaluation uses named benchmarks (GSM8K, MBPP, HumanEval, MMLU etc.) plus custom swearing/rhyming datasets, but no access terms or download source are stated."
+E0271,code,no,The excerpts contain no code availability statement; the data are confidential platform data and no code link is given.
+E0272,main_data_access,unclear,"The 40-task set draws on CLRS-30, NP-Hard-Eval and a custom suite, with no access terms or release statement given."
+E0273,code,no,The excerpts describe a 'reproducible framework' but give no code link or release statement.
+E0273,main_data_access,unclear,"Named datasets (dSprites, COIL-20) and generated manifolds are used, but no access terms or download source are stated."
+E0274,main_data_access,unclear,"GSM8K and MATH/MATH500 are named, but their access terms are not stated in the text."
+E0276,code,no,The excerpts contain no code link or code release statement.
+E0276,main_data_access,unclear,"Image, video and point-cloud benchmarks are mentioned without naming datasets or stating access terms."
+E0277,main_data_access,unclear,The text mentions 14 reranking benchmarks but does not name them or state access terms.
+E0279,code,no,The excerpts contain no code link or code release statement.
+E0280,main_data_access,unclear,"GLUE, GSM8K and HumanEval are named, but no access terms are stated."
+E0281,code,no,The excerpts contain no code link or code release statement.
+E0281,main_data_access,unclear,"AgentDojo and ASB benchmarks are named, but no access terms or download source are stated."
+E0283,main_data_access,unclear,"Datasets come from the UCR archive, but access terms are not stated (the code link does not state data access)."
+E0284,code,released,The abstract states 'Code and data are available at' a GitHub URL.
+E0284,main_data_access,open,The abstract states the code and data (including the constructed TRM-Preference dataset) are available at a public GitHub URL.
+E0285,code,no,The excerpts contain no code link or code release statement.
+E0285,main_data_access,unclear,"MJHQ-30K and DCI are named and a self-collected prompt set is used, but no access terms are stated."
+E0286,code,no,The excerpts contain no code link or code release statement.
+E0286,main_data_access,unclear,"The MNIST INR benchmark is named, but its access terms are not stated."
+E0287,code,released,"The paper states in present tense that the code, data and models are publicly available at a link (given as an anonymised LINK placeholder)."
+E0289,code,no,"The excerpts mention only third-party implementations (Mctx, Pgx, alpha-zero-general) and contain no statement releasing or promising the authors' own code."
+E0290,code,released,A footnote says the authors provide code for their implementation at a GitHub URL.
+E0291,main_data_access,unclear,"Evaluation uses named datasets (BeaverTails, SST-2, AGNEWS, GSM8K, AlpacaEval) but the text does not state their access terms."
+E0292,code,no,The excerpts contain no statement that code is released or will be released.
+E0294,code,no,"The excerpts mention only Numba use and implementation details, with no code release statement."
+E0297,code,no,"The excerpts, including the data/code/releases section, contain no code release statement."
+E0298,code,no,The only link is to the third-party verl framework; there is no statement releasing or promising the authors' code.
+E0298,main_data_access,unclear,"Named benchmarks (MATH, MATH500, AMC23, AIME, Minerva Math, OlympiadBench) are used but their access terms are not stated."
+E0299,code,no,The excerpts contain no statement about releasing code.
+E0299,main_data_access,unclear,"The nine named domain datasets (Aircraft, Caltech101, DTD, etc.) are listed without stating access terms."
+E0001,code_used,no,"Both logbooks used their own simplified pipelines (MLP or ridge classifier on spectra instead of the paper's GFM backbone), indicating reimplementation rather than running the authors' code."
+E0002,weights_used,unclear,"The logbook ran the authors' code on SDAR-8B-Chat, but nothing says whether this model is the authors' own trained checkpoint, and FOCUS involves no training."
+E0003,weights_used,unclear,The evidence describes simulated online-scheduling and bandit runs and says nothing about trained weights or checkpoints.
+E0005,data_obtained,yes,"Logbook 1 evaluated the released MFA on real Gemma-2-2B activations from The Pile, which the judge calls non-toy."
+E0006,data_obtained,unclear,"The logbook ran on an unspecified dataset, so it is not shown whether CIFAR-10 or ImageNet64 data were obtained or not."
+E0009,weights_used,no,"All experiments used freshly sampled random initialisations, not authors' trained weights."
+E0014,data_obtained,unclear,"Synthetic data was generated but CESM2 was never run, and the evidence does not say whether CESM2 data was obtained or unavailable."
+E0014,weights_used,no,The logbook attempted its own training from scratch (which failed or timed out) and used no authors' checkpoints.
+E0017,data_obtained,yes,"The logbook ran the paper's benchmark problems (ZDT1, ZDT2, DTLZ7, rocket injector, coil spring, etc.)."
+E0021,code_used,no,"The only experiment is a self-constructed synthetic linear classifier with no Transformer, indicating the method was reimplemented as a toy rather than the authors code being run."
+E0022,data_obtained,unclear,"The logbook uses analytical counterexamples and self-built synthetic witnesses for a theory paper, and the text does not identify any main evaluation dataset that was or was not obtained."
+E0025,code_used,no,"The judge states no training or evaluation runs were executed and the logbook only restated or did arithmetic on the paper numbers, so no authors code was run."
+E0025,data_obtained,unclear,"No experiments were run, but the text says nothing about whether the AIME or other evaluation data were obtained or unavailable."
+E0025,weights_used,no,"No training or evaluation runs of PACED-RL were executed, so no authors trained weights were used."
+E0026,code_used,no,"The judge states no model inference or training was performed and the only jobs were metadata probes, so the authors code was not run."
+E0031,code_used,no,"The judge says the logbook implements and runs PC-AC and PC-M itself on synthetic SCMs, i.e. a reimplementation, with no mention of the authors code."
+E0032,data_obtained,unclear,All logbooks run numerical evaluations of the theorems on self-chosen synthetic settings and the truncated text never identifies a main evaluation dataset of the paper.
+E0033,data_obtained,unclear,The logbooks use synthetic graphs and quadratic or least-squares instances and the truncated text does not say what the paper main evaluation data are or whether they were obtained.
+E0039,code_used,no,"The judge states the PAVE losses were not implemented or run and no TD3 or SAC training is evident, so the authors code was not run."
+E0039,data_obtained,no,"The logbook substituted a small synthetic optimization and no MuJoCo environment runs are shown, so the main evaluation environments were not used."
+E0039,weights_used,no,"No TD3 or SAC training or MuJoCo runs are shown, so no authors trained policies were used."
+E0042,code_used,unclear,"The logbooks run their own quadrature, estimators and simulations for this theory paper, and the text never mentions whether authors code exists or was obtained."
+E0042,weights_used,unclear,This is a theory paper with no trained models and the text says nothing about weights or checkpoints.
+E0043,code_used,unclear,"Logbooks trained transformers at reduced scale and classified IPC domains, but the text never says whether this used the authors code or a reimplementation."
+E0045,weights_used,no,"Logbook 2 reimplemented and retrained the model on HF Jobs while the others recomputed from released CSVs or ran released code, with no trained checkpoint mentioned as used."
+E0046,weights_used,unclear,"Logbook 1 trained its own Llama run and Logbook 2 only audited released models without running GPU inference, so it is not clear that authors weights were actually used."
+E0049,weights_used,no,"The logbook ran its own PANDA implementation on the synthetic game, computing policies itself with no authors checkpoint used."
+E0050,weights_used,unclear,The sampler experiments use analytic Gaussian-mixture scores and the text says nothing about trained weights or checkpoints.
+E0051,weights_used,unclear,"The logbooks run their own tensor optimization on synthetic tensors for a method without trained models, and the text says nothing about weights."
+E0052,code_used,no,"The logbook ran no experiments because GPTQModel failed to import without CUDA, so the authors code was never run."
+E0052,data_obtained,unclear,The text reports no experiments and says nothing about whether the evaluation data such as WikiText-2 was obtained.
+E0052,weights_used,unclear,The text says nothing about obtaining or using the authors trained weights or checkpoints.
+E0053,data_obtained,unclear,The text describes a toy 1x CPU 45-second run but does not say which data was used or whether the paper benchmarks were obtained.
+E0053,weights_used,no,"Both InfoDLM and LLaDA were trained for about 600 steps in a toy CPU run, so models were retrained rather than using the authors weights."
+E0055,data_obtained,no,The paper synthetic settings were not rerun and only small hand-built toy witnesses and simplified noise models were used instead.
+E0055,weights_used,unclear,The text says nothing about trained weights or checkpoints for this estimation paper.
+E0056,weights_used,unclear,"Logbook 2 ran the authors released code with Qwen2.5-7B, but the text does not say whether any authors trained surrogate weights were used."
+E0057,weights_used,unclear,The full COVID run used the official code but the text does not say whether the authors trained classifier weights were used.
+E0058,data_obtained,unclear,"Logbooks used small MDPs and a RiverSwim ATST-MDP, and the text does not say what the paper main evaluation data is."
+E0058,weights_used,unclear,The text says nothing about authors weights or checkpoints; the algorithms were run on small MDPs.
+E0064,weights_used,unclear,"Logbook 2 mentions an official EBM run, but no logbook clearly states it used the authors pretrained checkpoint, and logbook 4 trained its own MNIST EBM."
+E0066,code_used,no,"The logbook implements its own KT-SPLIT-Compress routine and proxy experiments, with no mention of running the authors code."
+E0069,weights_used,yes,Logbook 5 audited all nine author-released Gemma3-4B safety checkpoints.
+E0071,code_used,no,"The judge states no diffusion policy, denoising MDP or PPO implementation is evidenced, so the authors code was not run."
+E0071,data_obtained,no,"The judge states no Robomimic, Adroit or Franka Kitchen tasks were used, only unrelated generic proxy numbers."
+E0071,weights_used,unclear,The text does not address the authors weights or checkpoints; it only says no policy experiments were present.
+E0072,code_used,no,"The experiments used a Euclidean BatchNorm1d proxy on synthetic data, indicating a reimplementation rather than the authors code."
+E0075,code_used,no,"All experiments are the logbook own CPU surrogates (2D ring8, small VelNet), and SANA training was explicitly not run, so the authors code was not used."
+E0076,code_used,unclear,"A miniature VAR model was run on CPU, but the text does not say whether it was the authors code or a reimplementation."
+E0077,code_used,no,"The judge's evidence says the AIR loss was implemented by the logbook in its own training/air_trainer.py, i.e. a reimplementation, with no mention of the authors' code."
+E0078,code_used,unclear,"The logbooks report their own quadrature, analytic and ADMM computations but never say whether the authors' code was obtained or run."
+E0079,code_used,no,"The evidence repeatedly states the logbooks themselves implemented the mean-field dynamics on the paper's toy model, a reimplementation without the authors' code."
+E0080,code_used,unclear,Logbook 2 cross-checked feature names against the official code but the text never shows the official code being run.
+E0086,data_obtained,unclear,"This theoretical paper has no named evaluation dataset; logbooks built the paper's own constructions, so the text does not establish obtained or not obtained data."
+E0087,data_obtained,unclear,"The paper is theoretical and the text names no main evaluation dataset, only analytic computations and synthetic key sets, so data acquisition cannot be judged."
+E0091,code_used,yes,Logbook 3 ran the authors' released ATC at a pinned commit and Logbook 6 ran the paper's own ATC code.
+E0095,code_used,yes,"Logbook 3 matched its reimplementation against the vendored official logit_processor_w1.py in 25/25 instances, which required executing the official code."
+E0098,data_obtained,unclear,"The paper is prior-free mechanism design with no named dataset; logbooks used generated instances, so the text says nothing about obtaining main data."
+E0100,code_used,no,"The only logbook is a PENDING placeholder with no experiments executed, so the authors' code was not run."
+E0100,weights_used,no,"The only logbook is a PENDING placeholder with no sampling runs executed, so no authors' weights were used."
+E0101,weights_used,no,"The logbook trained networks by gradient flow and SGD from random initializations, so no authors' weights were used."
+E0102,weights_used,unclear,The logbooks run the learning algorithm on MDPs but the text never mentions authors' trained policies or checkpoints either way.
+E0105,weights_used,unclear,The logbook reports runtimes and AUROC but does not say whether models were retrained or authors' checkpoints were used.
+E0107,code_used,no,"The logbooks used generic Nystrom and Newton-Schulz proxy implementations and did not run the paper's method or code, indicating no authors' code was run."
+E0108,code_used,unclear,The logbooks report independent exact-arithmetic and reconstructed checks without stating whether the authors' code was obtained or run.
+E0108,weights_used,unclear,This theoretical paper involves no trained models and the text says nothing about authors' weights or checkpoints.
+E0110,weights_used,unclear,The logbooks run online bandit algorithms from scratch and the text never mentions authors' weights or checkpoints.
+E0112,weights_used,unclear,This theoretical paper has no trained models and the text says nothing about weights or checkpoints.
+E0116,code_used,unclear,"Logbook 1 applied the 'official' rank rule in a synthetic audit, but the text does not show whether the authors' code was obtained and run."
+E0117,weights_used,no,"All logbooks evaluate self-constructed synthetic scatter/spike or toy models, so no author-trained weights were used."
+E0118,data_obtained,yes,"The logbook ran finetuning on CIFAR-10, one of the paper's image classification benchmarks, albeit on a reduced setup."
+E0129,data_obtained,no,"HunyuanVoyager/WorldScore evaluation was never run and Aether was tested only on a single real image without the GT reconstruction data, so the main evaluation data was not obtained."
+E0132,code_used,no,"The logbook only inspected the public dataset and states no LLM evaluation or prompting ablation was run, so no authors' code was run."
+E0140,code_used,no,"The logbook used a self-built synthetic hidden-state simulation with a planted direction and a simulated MLP block, not the authors' method code on real LLMs."
+E0140,data_obtained,yes,"The local run loaded the real PrivacyLens benchmark (493 rows), even though negatives were synthetic."
+E0141,code_used,no,The logbooks implemented the bound formulas and recursive maps themselves and no authors' code is mentioned.
+E0141,data_obtained,no,"All experiments use synthetic proxy distributions and recursions, explicitly not real LLM self-improvement data."
+E0142,code_used,no,"The logbooks implemented the algorithms, centroid computations and adversaries themselves, with no mention of obtaining the authors' code."
+E0143,weights_used,no,"The logbooks trained their own MLPs and used generic ImageNet-pretrained architectures, not the authors' trained checkpoints."
+E0147,code_used,no,"The logbooks wrote their own audit scripts integrating the paper's equations, with no authors' code obtained."
+E0151,code_used,no,"Both logbooks implemented their own synthetic single/multi-index distillation experiments, with no mention of the authors' code."
+E0151,weights_used,no,"The logbooks trained small two-layer networks from scratch on synthetic data, so no author weights were used."
+E0155,weights_used,no,"The logbooks retrained ICGNN across seeds and datasets with the released code, with no use of author checkpoints."
+E0156,code_used,no,"All logbooks ran only hand-built toy proxies (quadratic/ridge/diagonal Hessian) and no LLM annealing, so the authors' code was not run."
+E0157,code_used,yes,"Logbook 2 imports ManifoldKVPress from the kvpress fork and runs it on RULER, and Logbook 4 reruns the same adakv_manifold_kv code."
+E0157,weights_used,no,"The method is training-free and the logbooks used public base LLMs (e.g., Llama-3.1-8B, Qwen3-8B), not author-trained checkpoints."
+E0159,data_obtained,yes,"Logbook 2 ran parse_season2.py successfully on the iPinYou Season-2 data, detecting its advertiser IDs, and synthetic settings were reproduced."
+E0162,code_used,no,"The logbooks built independent SymPy/numerical/Monte Carlo implementations of the mechanisms, with no authors' code mentioned."
+E0164,weights_used,no,"No agents or models were run at all; the logbook only quoted the paper text, so no author weights were used."
+E0165,weights_used,no,"The logbook never implemented or executed CE-Graph (only unrelated quadratic/noise toys), so no authors' weights were used."
+E0170,code_used,unclear,The logbooks report their own synthetic simulations and never say whether the authors' code was obtained or run.
+E0172,weights_used,unclear,The logbook ran on gpt2-small instead of the paper's model and says nothing about authors' trained weights or checkpoints.
+E0174,code_used,no,"Logbooks used their own count-lattice DP, a documented simplification of Algorithm 2 and an MLP replacing NanoDO, i.e. reimplementations, with no authors' code run."
+E0175,code_used,unclear,The logbook tests a synthetic Fourier model and does not state whether the authors' code was obtained or run.
+E0175,weights_used,no,"The image-scale networks were not reproduced and only single neurons trained by the logbook in a synthetic model were used, so no authors' weights were used."
+E0176,code_used,unclear,Logbook 1 mentions the released code's default parameter count but no logbook states that the authors' code was actually run (logbook 3 used its own reconstruction).
+E0177,weights_used,unclear,The logbook ran only mathematical checks of the allocation algorithm and says nothing about trained weights or checkpoints.
+E0179,code_used,unclear,The logbooks run their own verification scripts for this theory paper and never mention whether authors' code exists or was run.
+E0180,weights_used,no,"No UNLS training or benchmark run was executed, only a toy LP-dual smoke test, so the authors' weights were not used."
+E0183,data_obtained,unclear,All logbooks run synthetic bandit simulations and the text does not identify any paper evaluation dataset that was or was not obtained.
+E0186,weights_used,unclear,The logbooks ran the official Julia code for noise mechanisms but the text says nothing about trained weights or checkpoints.
+E0187,data_obtained,unclear,All logbooks use synthetic optimization problems and the text does not identify a paper evaluation dataset to obtain.
+E0189,data_obtained,unclear,All logbooks use synthetic sampling/numerical checks and the text does not identify a paper evaluation dataset to obtain.
+E0190,weights_used,unclear,"The logbook ran public Qwen3-VL models and the authors' similarity script, but the text says nothing about authors' own trained weights."
+E0201,data_obtained,unclear,All logbooks use synthetic heavy-tailed noise objectives and the text does not say what evaluation data the paper used.
+E0204,data_obtained,yes,"Logbooks 2 and 4 ran the paper's own Figure-1 synthetic quadratic Markovian-oracle setup, i.e. the paper's evaluation setting was obtained."
+E0206,weights_used,no,"The logbook used an unverified from-scratch implementation without accessing the paper, so no authors' weights were used."
+E0207,code_used,unclear,The logbook mentions only a deterministic Python/PyTorch harness with no evidence of execution and never states whether the authors' code was obtained or run.
+E0208,data_obtained,unclear,All logbooks use small synthetic MRPs and the text does not identify a paper evaluation dataset to obtain.
+E0209,weights_used,no,"All logbook runs use their own CMA-ES/RB-PEM implementations or black-box runs of an optimizer with no trained model, so no authors' weights were used."
+E0211,data_obtained,unclear,"All logbooks use self-generated synthetic instances, but the text never identifies the paper's own evaluation data, so whether it was obtained cannot be judged."
+E0213,data_obtained,yes,"Logbook 2 confirmed the official EIA RECS CSV matching the paper's data and Logbook 3 ran on RECS 2020, and simulations used the paper's exact DGPs."
+E0215,code_used,no,"Logbooks 2 and 3 only inspected the authors' code and config without executing any experiment, and Logbook 1 ran its own script, so the authors' code was not run."
+E0217,data_obtained,yes,"Logbook 3 states its tests run with the paper's DGP, which is the paper's simulation data source."
+E0221,data_obtained,unclear,Only self-built Monte Carlo checks are reported and the text never identifies a paper evaluation dataset.
+E0221,weights_used,no,"The only runs are the logbook's own Monte Carlo simulations with no trained model, so no authors' weights were used."
+E0223,weights_used,no,"All logbooks fit and retrain their own logistic regressions on synthetic Gaussian data, so no authors' weights were used."
+E0226,weights_used,no,"All logbooks run their own GP-PSRL implementations or stub functions, so no authors' weights or checkpoints were used."
+E0229,data_obtained,unclear,"Synthetic benchmarks were not run for lack of code, the beam task was run with deviations and other results were digitized from figures, and the text does not state whether the data itself was available."
+E0229,weights_used,no,"The only runs were the logbook's own BO implementation with an RFF surrogate and figure digitization, so no authors' weights were used."
+E0230,weights_used,no,"Benchmark experiments were never executed for lack of pretraining compute and only synthetic smoke tests ran, so no authors' weights were used."
+E0232,weights_used,no,"All logbooks build the theoretical construction and run their own gradient descent, so no authors' weights were used."
+E0233,code_used,no,"The logbook reimplemented the formulas on its own small random GMM model and a proxy EM task, with no sign of the authors' code being run."
+E0234,weights_used,unclear,The logbook reports ManiPT results across 11 datasets without saying whether it trained prompts itself or loaded the authors' checkpoints.
+E0235,code_used,unclear,"The logbook inspected the official repo and ran unit tests of the loss formulas but no training, and it is not stated that the unit tests executed the authors' code."
+E0235,weights_used,no,"No training or evaluation run was executed and only paper table values and an authors' log file were read, so no authors' weights were used."
+E0237,data_obtained,unclear,Logbooks ran environments named as in the paper at varying scales but substituted Atari and do not state whether the environments were the paper's own or reconstructions.
+E0238,data_obtained,unclear,All logbooks use tiny self-constructed tabular games and the text never identifies the paper's own evaluation data.
+E0238,weights_used,no,"All logbooks run their own tabular ROSE/SOS-MD implementations on self-built games, so no authors' weights were used."
+E0239,code_used,unclear,The logbooks ran models and the calibrator but never say whether the authors code was obtained or the method was reimplemented.
+E0240,data_obtained,unclear,The logbook only searched for released code and models and ran nothing; it says nothing about obtaining or failing to obtain the evaluation data.
+E0243,code_used,unclear,The text describes toy Gaussian experiments but says nothing about whether the authors code was obtained or run.
+E0243,data_obtained,no,"The judge describes all experiments as simplified Gaussian or toy GMM targets rather than the paper-scale settings, i.e. substituted toy data."
+E0243,weights_used,unclear,The text never mentions trained weights or checkpoints for this sampling-theory paper.
+E0245,weights_used,no,"The logbook only ran a small synthetic optimization and never used any BFQ model or D4RL policy, so the authors weights were not used."
+E0246,code_used,no,"The logbook used a numpy proxy on synthetic scenes with no actual LMM, so the authors method code was not run."
+E0247,data_obtained,yes,"The logbooks simulated the paper Gaussian-mixture setting at the paper headline scale (d=2000, alpha=8), which is the paper evaluation data."
+E0247,weights_used,unclear,The text never mentions authors trained weights or checkpoints for this theory paper.
+E0248,weights_used,unclear,The text mentions only synthetic GLMM fits and says nothing about authors trained weights or checkpoints.
+E0249,weights_used,unclear,The text describes an unrelated BT fit and never mentions authors weights or checkpoints.
+E0253,weights_used,unclear,The text concerns spectral sums and Langevin sampling runs and never mentions authors trained weights or checkpoints.
+E0254,weights_used,unclear,The text concerns finite truncations of learning-theory constructions and never mentions trained weights.
+E0255,data_obtained,unclear,"No benchmark evaluation was run and the logbook only identified benchmark locations, without stating whether the data were obtained."
+E0256,data_obtained,yes,"Logbook 1 ran SAC and HFPS on HalfCheetah-v3 and Delayed-HalfCheetah with 1M-step training, the paper non-Markovian benchmark setting."
+E0258,code_used,no,The logbook ran only synthetic toy Sinkhorn and shape checks and states training and systems components were not run or unavailable.
+E0262,code_used,no,"The logbook replaced the neural CTA OGBench experiments with its own 24-state toy MDP proxies, so the authors code was not run."
+E0263,code_used,unclear,The logbooks ran their own optimization experiments but never state whether the authors code was obtained or used.
+E0263,data_obtained,yes,"Logbooks ran on the paper own synthetic examples (the paper exponential-loss example, Prop-4 two-layer network, exact 1-D logistic example)."
+E0264,code_used,unclear,"The logbooks used their own validate.py, a small char transformer and MNIST runs but never state whether the authors code was obtained."
+E0269,code_used,unclear,The judge evidence describes a CSS run on Qwen2.5-0.5B but never says whether the authors' code was obtained or a reimplementation was used.
+E0270,code_used,unclear,All logbooks describe their own simulations of the bounds and the text says nothing about obtaining or running the authors' code.
+E0270,data_obtained,unclear,The logbooks run simulations of a theoretical result and the text does not identify any paper evaluation dataset that could have been obtained or substituted.
+E0274,code_used,unclear,"Code inspection of the gating mechanism and diagnostics on the published checkpoint are reported, but the authors' custom architecture was never run and it is not stated whether their code was executed."
+E0275,data_obtained,unclear,The logbooks use self-generated synthetic multi-task instances and the text does not say what the paper's main evaluation data was.
+E0278,data_obtained,unclear,"The logbook uses its own data up to n=1e5 and the text never identifies the paper's evaluation datasets, so substitution cannot be established."
+E0279,code_used,unclear,Logbooks mention their own verify.py and distilgpt2 runs but never state whether the authors' code was obtained or run.
+E0279,data_obtained,yes,"The paper's experiments use synthetic Gaussian-process benchmarks with 2,000 tasks, and logbooks ran full-scale 2,000-task GP benchmarks of that kind."
+E0282,data_obtained,yes,"Logbooks ran the MNIST ranking and Warcraft shortest-path tasks (reduced models, not substituted data), although teapot and cryo-ET assets were missing."
+E0283,data_obtained,no,"The paper's benchmark uses UCR Shapes, Wave and Symbols, but the logbook used other UCR datasets (ECG200, Trace, Coffee, GunPoint, FordA) and simulated curves."
+E0286,data_obtained,unclear,The logbooks check theorems on small constructed instances and the text identifies no paper evaluation dataset.
+E0286,weights_used,unclear,The logbooks check theoretical results on constructed small networks and say nothing about obtaining or using the authors' trained weights.
+E0288,data_obtained,unclear,The logbook generates Boolean-function data at reduced model scale and the text does not identify the paper's evaluation data as obtained or substituted.
+E0293,data_obtained,unclear,The logbooks simulate Levy-driven SDEs for a theory paper and the text identifies no paper evaluation dataset.
+E0293,weights_used,unclear,This is a theory paper with simulated processes and the text says nothing about authors' trained weights.
+E0294,data_obtained,unclear,"Logbook 1 used MNIST and CoverType subsamples, but the abstract-only claims do not say which datasets the paper evaluated on."
+E0294,weights_used,unclear,The logbooks implement kernel algorithms with no trained models and the text says nothing about authors' weights.
+E0295,data_obtained,unclear,"The logbooks build constructed covariance instances from the paper's proofs, but the text does not identify the paper's main evaluation data."
+E0295,weights_used,unclear,The logbooks run covariance-estimation algorithms with no trained models and the text says nothing about authors' weights.
+E0296,data_obtained,unclear,The logbooks use self-generated synthetic bandit instances and the text never identifies the paper's evaluation data.
+E0296,weights_used,no,All visible logbooks implement OFD-UCB themselves and learn the utility parameters online in their own synthetic runs; none obtains or loads any author-provided trained weights or checkpoints.
+E0297,weights_used,no,"No logbook ran any trained model: Logbook 1 analyses released scenes and code with no VLM called, and Logbook 2 only inspects source code and runs unit and dry-run tests, so no author weights were used."

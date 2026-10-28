@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Learning Cardiac Latent Representations in VCG Space",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-lvcg-release-audit",
+  "paper": {
+    "arxiv_id": "2605.31249"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-hS6iw4PM8K",
+    "medical-ecg"
+  ],
+  "updated_at": "2026-07-30T07:31:25+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Learning Cardiac Latent Representations in VCG Space",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-fixed-ecg-vcg-geometry",
+        "title": "Claim 1: fixed ECG/VCG geometry",
+        "file": "pages/claim-1-fixed-ecg-vcg-geometry/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-model-and-training-objective",
+        "title": "Claim 2: model and training objective",
+        "file": "pages/claim-2-model-and-training-objective/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-six-dataset-linear-probing",
+        "title": "Claim 3: six-dataset linear probing",
+        "file": "pages/claim-3-six-dataset-linear-probing/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-multi-lead-reconstruction",
+        "title": "Claim 4: multi-lead reconstruction",
+        "file": "pages/claim-4-multi-lead-reconstruction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-geometry-and-component-ablations",
+        "title": "Claim 5: geometry and component ablations",
+        "file": "pages/claim-5-geometry-and-component-ablations/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-non-cardiac-detection",
+        "title": "Claim 6: non-cardiac detection",
+        "file": "pages/claim-6-non-cardiac-detection/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-lvcg-release-audit-artifacts"
+  },
+  "agent_view_tokens": 1757,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "f936d28a1af7a5a30f6a"
+}

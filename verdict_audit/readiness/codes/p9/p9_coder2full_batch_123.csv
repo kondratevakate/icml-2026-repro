@@ -1,0 +1,6 @@
+item_id,claims,code,main_data_access,open_data_experiment,synthetic_or_sample_release,weights_release,outputs_release,variance,environment,compute,compute_tier,data_scale
+P4331,listed,released,open,yes,unclear,unclear,unclear,yes,unclear,hardware_only,not_stated,1e4_1e6
+P4332,listed,released,open,yes,unclear,unclear,unclear,yes,unclear,hardware_only,not_stated,not_stated
+P4335,listed,no,unclear,unclear,unclear,unclear,unclear,unclear,unclear,unclear,not_stated,not_stated
+P4337,listed,no,unclear,yes,unclear,unclear,unclear,unclear,unclear,amount,high,not_stated
+P4338,listed,unclear,unclear,yes,unclear,unclear,unclear,yes,unclear,unclear,not_stated,not_stated

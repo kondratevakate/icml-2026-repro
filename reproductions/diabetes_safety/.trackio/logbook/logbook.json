@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-safety-generalization-diabetes-testbed",
+  "paper": {
+    "arxiv_id": "2601.21094"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-kSUGLBHd0T"
+  ],
+  "updated_at": "2026-07-29T20:21:46+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-unified-diabetes-simulator",
+        "title": "Claim 1: unified diabetes simulator",
+        "file": "pages/claim-1-unified-diabetes-simulator/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-safety-generalization-gap",
+        "title": "Claim 2: safety-generalization gap",
+        "file": "pages/claim-2-safety-generalization-gap/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-ba-node-prediction-accuracy",
+        "title": "Claim 3: BA-NODE prediction accuracy",
+        "file": "pages/claim-3-ba-node-prediction-accuracy/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-conditional-safety-theorem",
+        "title": "Claim 4: conditional safety theorem",
+        "file": "pages/claim-4-conditional-safety-theorem/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-released-predictive-shield",
+        "title": "Claim 5: released predictive shield",
+        "file": "pages/claim-5-released-predictive-shield/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 2048,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "f2298b6010e6794cdff6"
+}

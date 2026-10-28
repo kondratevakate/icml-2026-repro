@@ -1,0 +1,359 @@
+{
+  "agreement": {
+    "n": 255,
+    "po": 0.9804,
+    "kappa": 0.9688
+  },
+  "disagreements": 5,
+  "consensus_counts": {
+    "clinical": 92,
+    "no": 48,
+    "life_science": 115
+  },
+  "medical_n": 207,
+  "clinical_n": 92,
+  "other_n": 5638,
+  "excluded_ambiguous": 496,
+  "without_kate": {
+    "medical": {
+      "papers": 207,
+      "attempted": 68,
+      "D1_attempt_rate": 0.3285,
+      "D1_ci": [
+        0.2657,
+        0.3913
+      ],
+      "D2_mean_teams": 1.4853,
+      "D2_mean_teams_ci": [
+        1.2794,
+        1.7353
+      ],
+      "D2_share_ge2": 0.3088,
+      "D2_share_ge2_ci": [
+        0.2059,
+        0.4118
+      ],
+      "D2_share_ge3": 0.0882,
+      "D2_share_ge3_ci": [
+        0.0294,
+        0.1618
+      ],
+      "D3_fully_verified": 0.0147,
+      "D3_fully_verified_ci": [
+        0.0,
+        0.0441
+      ],
+      "D3_any_falsified": 0.1029,
+      "D3_any_falsified_ci": [
+        0.0294,
+        0.1765
+      ],
+      "D3_undecided": 0.6176,
+      "D3_undecided_ci": [
+        0.5,
+        0.7353
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.1901,
+        "falsified": 0.0372,
+        "toy": 0.2541,
+        "inconclusive": 0.5186
+      },
+      "D4_claims": 484,
+      "D5_mean_reliability_rho0.23": 0.2881,
+      "D5_mean_reliability_rho0.15": 0.1967
+    },
+    "clinical_only": {
+      "papers": 92,
+      "attempted": 45,
+      "D1_attempt_rate": 0.4891,
+      "D1_ci": [
+        0.3913,
+        0.587
+      ],
+      "D2_mean_teams": 1.4667,
+      "D2_mean_teams_ci": [
+        1.2444,
+        1.7556
+      ],
+      "D2_share_ge2": 0.3111,
+      "D2_share_ge2_ci": [
+        0.1778,
+        0.4444
+      ],
+      "D2_share_ge3": 0.0889,
+      "D2_share_ge3_ci": [
+        0.0222,
+        0.1778
+      ],
+      "D3_fully_verified": 0.0,
+      "D3_fully_verified_ci": [
+        0.0,
+        0.0
+      ],
+      "D3_any_falsified": 0.0667,
+      "D3_any_falsified_ci": [
+        0.0,
+        0.1333
+      ],
+      "D3_undecided": 0.6444,
+      "D3_undecided_ci": [
+        0.4889,
+        0.7778
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.1097,
+        "falsified": 0.0226,
+        "toy": 0.3226,
+        "inconclusive": 0.5452
+      },
+      "D4_claims": 310,
+      "D5_mean_reliability_rho0.23": 0.2873,
+      "D5_mean_reliability_rho0.15": 0.1958
+    },
+    "other": {
+      "papers": 5638,
+      "attempted": 1871,
+      "D1_attempt_rate": 0.3319,
+      "D1_ci": [
+        0.3196,
+        0.3444
+      ],
+      "D2_mean_teams": 3.2507,
+      "D2_mean_teams_ci": [
+        3.0647,
+        3.4463
+      ],
+      "D2_share_ge2": 0.4714,
+      "D2_share_ge2_ci": [
+        0.4495,
+        0.4944
+      ],
+      "D2_share_ge3": 0.3127,
+      "D2_share_ge3_ci": [
+        0.2902,
+        0.3324
+      ],
+      "D3_fully_verified": 0.2036,
+      "D3_fully_verified_ci": [
+        0.186,
+        0.2207
+      ],
+      "D3_any_falsified": 0.2352,
+      "D3_any_falsified_ci": [
+        0.2165,
+        0.2539
+      ],
+      "D3_undecided": 0.3511,
+      "D3_undecided_ci": [
+        0.3303,
+        0.3736
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.492,
+        "falsified": 0.0468,
+        "toy": 0.2098,
+        "inconclusive": 0.2514
+      },
+      "D4_claims": 32063,
+      "D5_mean_reliability_rho0.23": 0.3818,
+      "D5_mean_reliability_rho0.15": 0.2849
+    },
+    "medical_minus_other": {
+      "D2_share_ge3": {
+        "diff": -0.2244,
+        "ci": [
+          -0.2889,
+          -0.1509
+        ]
+      },
+      "D3_fully_verified": {
+        "diff": -0.1889,
+        "ci": [
+          -0.2186,
+          -0.151
+        ]
+      },
+      "D3_undecided": {
+        "diff": 0.2665,
+        "ci": [
+          0.1456,
+          0.3788
+        ]
+      }
+    }
+  },
+  "with_kate": {
+    "medical": {
+      "papers": 207,
+      "attempted": 78,
+      "D1_attempt_rate": 0.3768,
+      "D1_ci": [
+        0.3092,
+        0.4444
+      ],
+      "D2_mean_teams": 1.4615,
+      "D2_mean_teams_ci": [
+        1.2692,
+        1.6923
+      ],
+      "D2_share_ge2": 0.2949,
+      "D2_share_ge2_ci": [
+        0.1923,
+        0.3974
+      ],
+      "D2_share_ge3": 0.0897,
+      "D2_share_ge3_ci": [
+        0.0256,
+        0.1667
+      ],
+      "D3_fully_verified": 0.0128,
+      "D3_fully_verified_ci": [
+        0.0,
+        0.0385
+      ],
+      "D3_any_falsified": 0.1026,
+      "D3_any_falsified_ci": [
+        0.0385,
+        0.1667
+      ],
+      "D3_undecided": 0.6154,
+      "D3_undecided_ci": [
+        0.5128,
+        0.7179
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.1775,
+        "falsified": 0.0344,
+        "toy": 0.2409,
+        "inconclusive": 0.5471
+      },
+      "D4_claims": 552,
+      "D5_mean_reliability_rho0.23": 0.2856,
+      "D5_mean_reliability_rho0.15": 0.1947
+    },
+    "clinical_only": {
+      "papers": 92,
+      "attempted": 52,
+      "D1_attempt_rate": 0.5652,
+      "D1_ci": [
+        0.4674,
+        0.6739
+      ],
+      "D2_mean_teams": 1.4615,
+      "D2_mean_teams_ci": [
+        1.25,
+        1.7308
+      ],
+      "D2_share_ge2": 0.3077,
+      "D2_share_ge2_ci": [
+        0.1923,
+        0.4423
+      ],
+      "D2_share_ge3": 0.0962,
+      "D2_share_ge3_ci": [
+        0.0192,
+        0.1923
+      ],
+      "D3_fully_verified": 0.0,
+      "D3_fully_verified_ci": [
+        0.0,
+        0.0
+      ],
+      "D3_any_falsified": 0.0577,
+      "D3_any_falsified_ci": [
+        0.0,
+        0.1346
+      ],
+      "D3_undecided": 0.6731,
+      "D3_undecided_ci": [
+        0.5385,
+        0.8077
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.0997,
+        "falsified": 0.0194,
+        "toy": 0.2992,
+        "inconclusive": 0.5817
+      },
+      "D4_claims": 361,
+      "D5_mean_reliability_rho0.23": 0.287,
+      "D5_mean_reliability_rho0.15": 0.1955
+    },
+    "other": {
+      "papers": 5638,
+      "attempted": 1871,
+      "D1_attempt_rate": 0.3319,
+      "D1_ci": [
+        0.3193,
+        0.3446
+      ],
+      "D2_mean_teams": 3.2619,
+      "D2_mean_teams_ci": [
+        3.0754,
+        3.4559
+      ],
+      "D2_share_ge2": 0.4714,
+      "D2_share_ge2_ci": [
+        0.449,
+        0.4939
+      ],
+      "D2_share_ge3": 0.3127,
+      "D2_share_ge3_ci": [
+        0.2908,
+        0.333
+      ],
+      "D3_fully_verified": 0.2036,
+      "D3_fully_verified_ci": [
+        0.1849,
+        0.2207
+      ],
+      "D3_any_falsified": 0.2352,
+      "D3_any_falsified_ci": [
+        0.2165,
+        0.2539
+      ],
+      "D3_undecided": 0.3511,
+      "D3_undecided_ci": [
+        0.3303,
+        0.3731
+      ],
+      "D4_verdict_mix": {
+        "verified": 0.4921,
+        "falsified": 0.0467,
+        "toy": 0.2099,
+        "inconclusive": 0.2513
+      },
+      "D4_claims": 32182,
+      "D5_mean_reliability_rho0.23": 0.3821,
+      "D5_mean_reliability_rho0.15": 0.2852
+    },
+    "medical_minus_other": {
+      "D2_share_ge3": {
+        "diff": -0.2229,
+        "ci": [
+          -0.2817,
+          -0.1492
+        ]
+      },
+      "D3_fully_verified": {
+        "diff": -0.1908,
+        "ci": [
+          -0.2175,
+          -0.1577
+        ]
+      },
+      "D3_undecided": {
+        "diff": 0.2642,
+        "ci": [
+          0.1547,
+          0.3711
+        ]
+      }
+    }
+  },
+  "teams_needed": {
+    "0.7": 7.8,
+    "0.8": 13.4
+  }
+}

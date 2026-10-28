@@ -1,0 +1,6 @@
+item,label,reason
+7,no,Brain-inspired ML world model; neuroscience is motivation
+94,no,General symbolic-regression method; biology is one case study
+156,no,Psychology text dataset without patients or clinical data
+170,no,Molecular reconstruction without drug-discovery framing
+223,life_science,EEG affective and cognitive decoding without patients

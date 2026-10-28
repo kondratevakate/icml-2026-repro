@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Off-Policy Evaluation for Missingness-Aware Policies in MDPs with Rewards Missing Not at Random",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r",
+  "paper": {
+    "arxiv_id": "2606.20206"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-vpSFJoxyDz"
+  ],
+  "updated_at": "2026-07-29T15:05:41+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Off-Policy Evaluation for Missingness-Aware Policies in MDPs with Rewards Missing Not at Random",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-bridge-existence-and-identification",
+        "title": "Claim 1: bridge existence and identification",
+        "file": "pages/claim-1-bridge-existence-and-identification/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-shadow-variable-relevance",
+        "title": "Claim 2: shadow-variable relevance",
+        "file": "pages/claim-2-shadow-variable-relevance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-bridge-estimation-error-bound",
+        "title": "Claim 3: bridge estimation error bound",
+        "file": "pages/claim-3-bridge-estimation-error-bound/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-policy-value-error-rate",
+        "title": "Claim 4: policy-value error rate",
+        "file": "pages/claim-4-policy-value-error-rate/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-no-future-dependence",
+        "title": "Claim 5: no future dependence",
+        "file": "pages/claim-5-no-future-dependence/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-off-policy-evaluation-for-missingness-aware-policies-in-mdps-with-rewards-missing-not-at-r-artifacts"
+  },
+  "agent_view_tokens": 3440,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "8b0bc7603b5174a0a25f"
+}

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3008,compute,none,The excerpts report only #Params and #FLOPs; no hardware or training time is stated.
+P3009,compute,none,Appendix E.1 says models were run via official APIs and no hardware or runtime is stated anywhere in the excerpts.
+P3011,compute,none,"The excerpts (reproducibility statement, implementation and dataset appendices) mention no hardware or compute time."
+P3012,compute,none,"No hardware, GPU type or runtime is mentioned in the excerpts."
+P3013,variance,no,"Results are reported as single success rates with no seeds, standard deviations or error bars mentioned."
+P3013,compute,none,No hardware or training time is mentioned in the excerpts.
+P3014,variance,no,"The dataset paper excerpts give no repeated runs, standard deviations or intervals for any results."
+P3014,compute,none,Only recording equipment is described; no compute hardware or training time for experiments is stated.
+P3019,variance,no,"Main results tables report single F1 scores; the only standard deviation is from an epoch-sensitivity ablation, not repeated runs of main results."
+P3020,compute,hardware_only,Appendix F states experiments ran on a single workstation plus an HPC cluster but gives no time or GPU-hours.
+P3027,variance,no,Random seeds are used only to show sample diversity; no standard deviations or intervals are given for the quantitative results.
+P3027,compute,none,Only modest GPU resources is mentioned without any specific hardware or training time.
+P3029,compute,unclear,"The only hardware/time statement is spIsoNet needing 5 hours on a V100 versus CryoFM about 30 minutes, without clearly stating CryoFM training hardware or time."
+P3036,variance,no,Each model is trained once (30 epochs on one H200) and tables report single accuracies with no seeds or deviations.
+P3043,variance,no,"Results are reported without seeds, standard deviations or confidence intervals in the excerpts."
+P3052,compute,unclear,"The checklist says runtime information is in Appendix C and no GPU was used, but the excerpts state neither the hardware used nor the run times."
+P3058,variance,no,"Improvements are reported as single averages with no repeated runs, standard deviations or intervals mentioned."
+P3059,compute,amount,"Training timing per iteration is reported on 2 nodes with 2 H100 GPUs each for 100,000 iterations, giving hardware and time."
+P3060,variance,no,"The excerpts mention no seeds, standard deviations or intervals for results."
+P3060,compute,none,The excerpts mention no hardware or compute time.

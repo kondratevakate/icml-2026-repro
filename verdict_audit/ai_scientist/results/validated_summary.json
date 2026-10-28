@@ -1,0 +1,43 @@
+{
+ "score": {
+  "candidates": 327,
+  "coded": 327,
+  "kappa_label": {
+   "n": 327,
+   "po": 0.9418960244648318,
+   "kappa": 0.8743172715135331
+  },
+  "disagreements": 26
+ },
+ "candidates": 327,
+ "included": 111,
+ "unclear": 2,
+ "by_venue_year": {
+  "eccv-2026": 2,
+  "iclr-2025": 10,
+  "iclr-2026": 22,
+  "icml-2025": 10,
+  "icml-2026": 26,
+  "neurips-2024": 2,
+  "neurips-2025": 16,
+  "neurips-2026": 23
+ },
+ "by_category": {
+  "ai_scientist": 15,
+  "benchmark": 46,
+  "research_step": 46,
+  "lab": 2,
+  "reproduction": 2
+ },
+ "keyword_screen": {
+  "matches": 95,
+  "included": 45,
+  "precision": 0.47368421052631576,
+  "validated_found_by_screen": 45
+ },
+ "icml_2026": {
+  "included": 26,
+  "attempted": 14,
+  "decided": 7
+ }
+}

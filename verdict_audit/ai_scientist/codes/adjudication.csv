@@ -1,0 +1,27 @@
+item_id,label,category,reason
+A0013,include,benchmark,Main subject is a controlled evaluation and new benchmark of autonomous ML engineering agents that run experiments.
+A0032,exclude,,"Benchmark of LLMs predicting experiment outcomes as a reasoning task, with no agent carrying out research steps."
+A0043,include,research_step,Agent framework for hypothesis generation and selection in scientific discovery.
+A0044,exclude,,"Multiple-choice VQA benchmark of scientific reasoning, not an evaluation of agents performing research steps."
+A0074,include,research_step,"Models that assess papers by predicting acceptance, an automated paper-review step aimed at AI reviewing."
+A0078,exclude,,"Multimodal understanding benchmark on paper inconsistencies posed as model tasks, not research agents performing review."
+A0091,include,research_step,"Agent that autonomously analyses data and iteratively proposes and evaluates equations, a single discovery step."
+A0098,exclude,,Primarily an Earth-science question-answering and dialogue benchmark for LLMs rather than an evaluation of research agents.
+A0103,include,ai_scientist,"Multi-agent system automating the full research loop of hypothesis, implementation, backtest experiments and feedback."
+A0120,include,research_step,Agentic harness that automatically sets up and runs reproduction and evaluation experiments in robot learning research.
+A0122,include,benchmark,Benchmark evaluating AI agents on ML engineering tasks including training models and running experiments.
+A0142,include,benchmark,Benchmark evaluating agents' ability to reproduce known research improvements.
+A0183,include,ai_scientist,Automated AI research system combining LLM ideation with automated experiment execution and learning from results.
+A0190,include,research_step,Autonomous agent that performs end-to-end single-cell data analysis for research questions.
+A0203,include,research_step,"Agent that produces publication-ready scientific figures, part of the paper-writing step."
+A0228,include,benchmark,Environment and benchmark for evaluating and training LLM agents on iterative ML experimentation.
+A0240,include,research_step,LLM-driven equation discovery generates and tests candidate scientific hypotheses from data.
+A0244,include,research_step,Multi-agent system with a scientist agent that proposes and evaluates candidate governing equations.
+A0250,include,research_step,Multi-agent system autonomously developing and running ML solutions on research problems.
+A0251,include,benchmark,Evaluation framework for hallucinations in scientific research agents including experimental execution.
+A0272,include,benchmark,Large-scale human evaluation of an LLM research ideation agent against expert researchers.
+A0273,include,benchmark,Evaluation study of the execution outcomes of LLM-generated research ideas.
+A0277,exclude,,Domain-specific molecular design system for peptides rather than an AI system carrying out general research steps.
+A0284,include,research_step,"Method for LLM generation of novel solutions to open scientific problems, a research ideation step."
+A0293,exclude,,"Wet-lab replay dataset for variant ranking models, not an evaluation of research agents."
+A0301,include,benchmark,Benchmark evaluating LLMs performing in-context scientific discovery by exploring data and producing theories.

@@ -1,0 +1,34 @@
+{
+  "commits": {
+    "digest": "6bb7c5da3e06a8fb9a42d02dbf007402b71a36917ff2f4b9889940b438f5f3e1",
+    "n_commits": 45387,
+    "status": {
+      "missing": 138,
+      "ok": 5195
+    }
+  },
+  "note": "aggregate only: counts and one sha256 digest per source over sorted per-Space content digests",
+  "pages": {
+    "digest": "de6a572a6f1a548808754ac3063549e2b77f0350d7ffe3476c928d8cce231e5e",
+    "n_files": 50896,
+    "status": {
+      "missing": 138,
+      "ok": 5195
+    }
+  },
+  "trees": {
+    "digest": "f87f86b3e556e00db2c2221352f378aa21a2ed9d7caa0e907a29d35d11a4d31c",
+    "n_files": 71610,
+    "status": {
+      "missing": 36,
+      "ok": 2447
+    }
+  },
+  "verdict_dataset": {
+    "file": "verdicts.json",
+    "lfs_sha256": "652f1c162462d7ad142ff32e2bd13d5853e21c639681ef416971776fdd33c526",
+    "repo": "ICML-2026-agent-repro/verdicts",
+    "repo_type": "dataset",
+    "revision": "f0c5a8b369d6d618ecc9fa060aa2e2f27f9e2602"
+  }
+}

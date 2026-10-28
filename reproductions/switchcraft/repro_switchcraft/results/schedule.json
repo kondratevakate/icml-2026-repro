@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "official_repo": "C:\\Users\\kondr\\AppData\\Local\\Temp\\icml-repro-probe-switchcraft",
+  "paper_anchor": "Section 3.2, Algorithm 1, Appendix A.1",
+  "logit_scale": 2.0,
+  "total_iterations": 240,
+  "stages": [
+    {
+      "stage": 1,
+      "iterations": 30,
+      "learning_rate": 0.2,
+      "paper_beta_start": 0.0,
+      "paper_beta_end": 0.0,
+      "paper_gamma_start": 1.0,
+      "paper_gamma_end": 1.0,
+      "effective_tau_start": 0.5,
+      "effective_tau_end": 0.5
+    },
+    {
+      "stage": 2,
+      "iterations": 100,
+      "learning_rate": 0.1,
+      "paper_beta_start": 0.0,
+      "paper_beta_end": 0.0,
+      "paper_gamma_start": 0.0,
+      "paper_gamma_end": 1.0,
+      "effective_tau_start": 0.5,
+      "effective_tau_end": 0.5
+    },
+    {
+      "stage": 3,
+      "iterations": 100,
+      "learning_rate": 0.1,
+      "paper_beta_start": 0.0,
+      "paper_beta_end": 0.0,
+      "paper_gamma_start": 1.0,
+      "paper_gamma_end": 1.0,
+      "effective_tau_start": 0.5,
+      "effective_tau_end": 0.005
+    },
+    {
+      "stage": 4,
+      "iterations": 10,
+      "learning_rate": 0.1,
+      "paper_beta_start": 1.0,
+      "paper_beta_end": 1.0,
+      "paper_gamma_start": 1.0,
+      "paper_gamma_end": 1.0,
+      "effective_tau_start": 0.005,
+      "effective_tau_end": 0.005
+    }
+  ],
+  "transitions": [
+    "stage1: z <- z_pseudo",
+    "stage2: z <- 2z"
+  ],
+  "note": "Code temperatures are twice the paper temperatures because get_restype_from_logits multiplies logits by alpha=2 before softmax."
+}

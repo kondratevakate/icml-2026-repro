@@ -1,0 +1,25 @@
+{
+  "space_id": "kondratevakate/repro-multi-distribution-robust-conformal-prediction",
+  "emoji": "🎯",
+  "created_at": "2026-07-20T08:32:00+00:00",
+  "last_page": "claim-6-fmow-evaluation",
+  "tags": [
+    "icml2026-repro",
+    "paper-Vv4XRZDMM0"
+  ],
+  "paper": {
+    "arxiv_id": "2601.02998"
+  },
+  "local_artifacts": [
+    "repro-multi-distribution-robust-conformal-prediction/repro-bundle:v0"
+  ],
+  "private": false,
+  "local_dashboards": {},
+  "artifacts_bucket": "kondratevakate/repro-multi-distribution-robust-conformal-prediction-artifacts",
+  "repos_public": true,
+  "embed_content": true,
+  "trace_dataset": "kondratevakate/repro-multi-distribution-robust-conformal-prediction-traces",
+  "workspace_bucket": "kondratevakate/repro-multi-distribution-robust-conformal-prediction-artifacts",
+  "trace_publication": "public",
+  "workspace_publication": "public"
+}

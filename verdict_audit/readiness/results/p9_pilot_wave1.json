@@ -1,0 +1,47 @@
+{
+ "wave": 1,
+ "papers": 5,
+ "claims": 26,
+ "note": "aggregate counts only (protocol 9, Note 9-2)",
+ "all_claims": {
+  "not_checkable_on_synthetic": 18,
+  "blocked": 2,
+  "consistent": 5,
+  "inconsistent": 1
+ },
+ "theory_mechanism": {
+  "n": 6,
+  "outcomes": {
+   "blocked": 2,
+   "consistent": 4
+  },
+  "checkable": 4,
+  "share": 0.6666666666666666,
+  "wilson": [
+   0.29998832134152864,
+   0.9032306674407831
+  ]
+ },
+ "other_claim_types": {
+  "n": 20,
+  "outcomes": {
+   "not_checkable_on_synthetic": 18,
+   "inconsistent": 1,
+   "consistent": 1
+  }
+ },
+ "confirmations": {
+  "n": 6,
+  "rerun_matches": 6,
+  "check_tests_claim": 5
+ },
+ "time_to_running_pipeline_min": {
+  "median": 25,
+  "range": [
+   14.5,
+   45
+  ]
+ },
+ "container_minutes_total": 364.3,
+ "blocked_reasons_summary": "training-dependent behaviour did not leave chance level within the CPU budget"
+}

@@ -1,0 +1,248 @@
+{
+  "paper": {
+    "title": "Mitigating Gradient Pathology in PINNs through Aligned Constraint",
+    "openreview_id": "Fisw2kc7EY",
+    "arxiv_id": "2605.25001v1"
+  },
+  "artifacts": {
+    "paper": {
+      "bytes": 4338132,
+      "sha256": "4ca6809002a0ab786781b53e30dc7c200c7a1bf7b9acee676d1cf09c8af6152c",
+      "expected_sha256": "4ca6809002a0ab786781b53e30dc7c200c7a1bf7b9acee676d1cf09c8af6152c",
+      "matches": true
+    },
+    "source": {
+      "bytes": 3431751,
+      "sha256": "13c19394c76c86f337f8fe37dd538134fbfd93c5b8b6aee4d64efc6cdedd1646",
+      "expected_sha256": "13c19394c76c86f337f8fe37dd538134fbfd93c5b8b6aee4d64efc6cdedd1646",
+      "matches": true
+    },
+    "repository": {
+      "commit": "8f4daabf0db60f4f185a1a9b791ad7d7be41a033",
+      "expected_commit": "8f4daabf0db60f4f185a1a9b791ad7d7be41a033",
+      "commit_matches": true,
+      "tracked_files": 28,
+      "result_files": [],
+      "test_files": [],
+      "requirements_file": false
+    }
+  },
+  "theorem_counterexample": {
+    "operator": "N(u) = u^2",
+    "rhs": 1.0,
+    "solutions": [
+      -1.0,
+      1.0
+    ],
+    "residuals": [
+      0.0,
+      0.0
+    ],
+    "non_unique": true,
+    "minimum_pairwise_distance": 2.0,
+    "solutions_are_isolated": true,
+    "solution_set_connected": false,
+    "headline_implication_valid": false,
+    "missing_nonlinear_assumptions": [
+      "non-trivial kernel of DN[u*]",
+      "constant-rank or regular-value condition",
+      "connected parameter domain for a continuous solution family",
+      "representability of that family by the neural network"
+    ]
+  },
+  "aligned_constraint": {
+    "seed": 260525001,
+    "expected_c": -0.33486423514651853,
+    "official_c": -0.33486423514651853,
+    "absolute_difference": 0.0,
+    "offset_detached": true,
+    "schedule": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.3333333333333333,
+      "4": 0.6666666666666666,
+      "5": 1.0,
+      "6": 1.0
+    },
+    "expected_schedule": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.3333333333333333,
+      "4": 0.6666666666666666,
+      "5": 1.0,
+      "6": 1.0
+    },
+    "total_is_finite": true
+  },
+  "degenerate_offset": {
+    "case": "all zeroth-order coefficients are zero",
+    "official_c": NaN,
+    "is_finite": false,
+    "denominator_guard_present": false
+  },
+  "release_conformance": {
+    "script_assignments": {
+      "heat": {
+        "backbone": "'mlp'",
+        "loss": "'caml'",
+        "lr": "1e-3",
+        "w_res": "1.0",
+        "w_bc": "1.0",
+        "t_d": "25",
+        "t_r": "50",
+        "min_epochs": "6000",
+        "max_epochs": "20000",
+        "target_l2": "1e-3"
+      },
+      "poisson": {
+        "backbone": "'mlp'",
+        "loss": "'caml'",
+        "lr": "1e-3",
+        "w_res": "1.0",
+        "w_bc": "100.0",
+        "t_d": "200",
+        "t_r": "800",
+        "min_epochs": "6000",
+        "max_epochs": "20000",
+        "target_l2": "1e-2"
+      },
+      "ns": {
+        "backbone": "'mlp'",
+        "loss": "'caml'",
+        "lr": "1e-3",
+        "w_res": "1.0",
+        "w_bc": "100.0",
+        "t_d": "25",
+        "t_r": "50",
+        "min_epochs": "6000",
+        "max_epochs": "20000",
+        "target_l2": "1e-2"
+      },
+      "helm": {
+        "backbone": "'mlp'",
+        "loss": "'caml'",
+        "lr": "1e-3",
+        "w_res": "1.0",
+        "w_bc": "1.0",
+        "t_d": "25",
+        "t_r": "50",
+        "min_epochs": "6000",
+        "max_epochs": "20000",
+        "target_l2": "1e-3"
+      }
+    },
+    "paper_mlp_subset": {
+      "heat": {
+        "w_bc": "5",
+        "min_epochs": "6000",
+        "target_l2": "2.0e-3"
+      },
+      "poisson": {
+        "w_bc": "100",
+        "min_epochs": "6000",
+        "target_l2": "1.0e-2"
+      },
+      "ns": {
+        "w_bc": "100",
+        "min_epochs": "6000",
+        "target_l2": "5.0e-3"
+      },
+      "helm": {
+        "w_bc": "10",
+        "min_epochs": "4000",
+        "target_l2": "1.0e-3"
+      }
+    },
+    "mismatches": [
+      {
+        "benchmark": "heat",
+        "parameter": "w_bc",
+        "paper": "5",
+        "code": "1.0"
+      },
+      {
+        "benchmark": "heat",
+        "parameter": "target_l2",
+        "paper": "2.0e-3",
+        "code": "1e-3"
+      },
+      {
+        "benchmark": "ns",
+        "parameter": "target_l2",
+        "paper": "5.0e-3",
+        "code": "1e-2"
+      },
+      {
+        "benchmark": "helm",
+        "parameter": "w_bc",
+        "paper": "10",
+        "code": "1.0"
+      },
+      {
+        "benchmark": "helm",
+        "parameter": "min_epochs",
+        "paper": "4000",
+        "code": "6000"
+      }
+    ],
+    "mismatch_count": 5,
+    "readme_claims_only_standard_torch": true,
+    "undocumented_overrides_import": true,
+    "baseline_loss_implementations_released": [
+      "pinn",
+      "caml"
+    ],
+    "paper_baseline_loss_count": 6,
+    "cached_empirical_outputs_released": false
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C2",
+      "score": 2,
+      "max_score": 2
+    },
+    {
+      "id": "C3",
+      "score": 1,
+      "max_score": 2
+    },
+    {
+      "id": "C4",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C5",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C6",
+      "score": 1,
+      "max_score": 2
+    }
+  ],
+  "prepared_score": 4,
+  "score_denominator": 12,
+  "limits": {
+    "canonical_gpu": "NVIDIA RTX 5090",
+    "canonical_five_seed_runs_completed": false,
+    "full_table_regenerated": false
+  },
+  "mini_heat": {
+    "seed": 999,
+    "epochs": 10,
+    "l2_at_last_epoch": 0.08415783196687698,
+    "reached_target_epoch": -1,
+    "positive_cosine_rate": 1.0,
+    "wall_seconds": 2.2592973000137135,
+    "canonical_table_reproduction": false
+  }
+}

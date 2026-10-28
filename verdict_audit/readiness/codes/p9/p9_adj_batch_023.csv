@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1175,data_obtained,yes,"The judge states the reproduction ran on real AG News data, so the evaluation dataset was obtained even though the model was a small proxy."
+P1301,weights_used,unclear,The text only mentions a frozen off-the-shelf Qwen2.5-VL-3B in a training-free setup and says nothing about authors' trained weights or checkpoints.
+P1357,code_used,yes,"Logbooks report code inspection of the NT-SSM implementation with type-specific alphas and full LightGCN runs on ML-1M reproducing 0.3216 exactly, indicating the authors' code was obtained and run."
+P1514,data_obtained,yes,"Logbook 3 used the paper's adjudicated examples, released config files and downloaded the 4 NCAA PDB targets from RCSB, so the evaluation data was obtained."
+P1551,code_used,unclear,"The logbook ran only prompt-only inference on Qwen3-0.6B and table transcription, and the text never mentions whether the authors' code was obtained."
+P1594,code_used,no,"The mechanism was re-exercised only on synthetic activations and stand-in models rather than the authors' SegFormer/U-Net pipeline, indicating a reimplementation rather than running the authors' code."
+P1608,code_used,yes,"The logbook ran the authors' released W1.58A2 and W1.58A4 checkpoints with packed-layer loading to generate images, which means the authors' release was obtained and executed."
+P1656,data_obtained,no,"The real datasets were explicitly not obtained (TCGA-BRCA needed Kaggle API and UNI2-h; ACTG download not done), with work done only on synthetic scenarios."
+P1745,weights_used,unclear,This is a theory/simulation bandit paper and the text says nothing about any authors' trained weights or checkpoints.
+P1755,data_obtained,yes,"MedCoG-Meta and the CoT baseline were evaluated on samples from the five hard medical benchmark subsets, and the CoT match is said to validate the benchmark, so the evaluation data was obtained."
+P1860,data_obtained,yes,"The reproduction used genuine NQ/HotpotQA state-action pairs, indicating the evaluation datasets were obtained."
+P2092,data_obtained,unclear,"No experiments were run and only a Hub artifact search is reported, so the text says nothing about obtaining EPHNOGRAM or PhysioNet data."
+P2268,data_obtained,unclear,"Only source inspection and arithmetic were done, and the text never mentions whether the training/evaluation data was obtained."
+P2278,weights_used,unclear,"This is a theory paper with empty or not-assessed logbook pages, and nothing in the text mentions trained weights or checkpoints."
+P2535,data_obtained,unclear,The logbook only performed textual and arithmetic checks of the paper's tables and never states whether MagicBrush or other evaluation data was obtained.
+P2695,weights_used,unclear,This is a theoretical distribution-estimation paper and the text says nothing about authors' trained weights or checkpoints.
+P2709,data_obtained,yes,"Training-free TCS and pruning were evaluated on real DeiT/Swin models on a 1000-image subset with reported accuracies, indicating the classification evaluation data was obtained."
+P2828,data_obtained,no,The judge states the official EngDesign benchmark is unreleased and a 12-task EngDesign-lite substitute was used for the main evaluation.
+P3138,data_obtained,unclear,"The logbook used a 200,000-molecule thymidylate-kinase library, and the text does not establish whether this is one of the paper's evaluation datasets or a substitute."
+P3208,data_obtained,no,"Only a reduced wave demo was run instead of the full benchmark, and no BAIR or CLEVRER data was used, so the main evaluation data was replaced by toy-scale data."

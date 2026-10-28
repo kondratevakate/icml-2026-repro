@@ -1,0 +1,27 @@
+{
+  "tests": [
+    {
+      "release": "mimic-iv",
+      "admissions": 4,
+      "patients": 3,
+      "tokens": 5,
+      "status": "passed"
+    },
+    {
+      "release": "mimic-iii",
+      "admissions": 5,
+      "patients": 4,
+      "tokens": 6,
+      "status": "passed"
+    }
+  ],
+  "checks": {
+    "mimic_iv_icd10_filter": true,
+    "mimic_iii_late_icu_threshold": true,
+    "mimic_iv_any_post_admission_icu_threshold": true,
+    "mortality_and_time_labels": true,
+    "patient_disjoint_split": true,
+    "icd_normalization": true
+  },
+  "status": "passed"
+}

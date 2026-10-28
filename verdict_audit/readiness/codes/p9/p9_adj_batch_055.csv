@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2910,compute,none,"The excerpts describe data, splits and seeds but state no hardware or training time."
+P2911,compute,none,"The excerpts give code, datasets and run averaging but state no hardware or training time."
+P2914,variance,no,"The excerpts report a 90/10 split and test-set caps but no seeds, error bars or standard deviations for the main results."
+P2914,compute,none,The excerpts describe the dataset and splits but state no hardware or training time.
+P2917,compute,none,The excerpts give hyperparameters and gradient steps but name no hardware or training time.
+P2918,variance,no,Main results use one rollout per instance with seed 42; the bootstrap intervals in Figure 7 cover only the refinement-round analysis.
+P2929,variance,no,"The implementation details and Table 1 report single values with no seeds, error bars or standard deviations."
+P2959,compute,amount,Training is stated to run on an NVIDIA L40S GPU and Table 7 reports runtimes in seconds for the methods.
+P2962,variance,no,"The tables report single accuracy/length values with no seeds, standard deviations or intervals."
+P2964,variance,no,"The excerpts describe the method and results without any seeds, error bars or standard deviations."
+P2965,compute,none,The excerpts describe the dataset and tasks but state no hardware or training time.
+P2969,variance,no,"The text mentions identical random seeds for fairness but reports no repeated runs, error bars or standard deviations."
+P2969,compute,none,The excerpts mention identical hardware environments but name no hardware or training time.
+P2971,compute,none,The excerpts describe seeds and code availability but state no hardware or training time.
+P2974,variance,no,"The text uses greedy decoding to reduce randomness and reports no seeds, error bars or standard deviations."
+P2975,compute,none,"The implementation details give learning rates, batch size and epochs but no hardware or training time."
+P2981,compute,none,The excerpts refer to a complexity discussion and substantial compute in limitations but state no hardware or time.
+P2988,compute,none,The excerpts state pretraining is costly but name no hardware or training time.
+P2999,variance,no,"The experimental setup gives hardware and splits but no seeds, error bars or standard deviations for results."
+P3008,variance,no,"The main MSD results table reports single DICE values with no seeds, error bars or standard deviations."

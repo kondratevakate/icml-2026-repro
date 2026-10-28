@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0021,code_used,no,"The only experiment is a self-constructed synthetic linear classifier with no Transformer, indicating the method was reimplemented as a toy rather than the authors code being run."
+E0022,data_obtained,unclear,"The logbook uses analytical counterexamples and self-built synthetic witnesses for a theory paper, and the text does not identify any main evaluation dataset that was or was not obtained."
+E0025,code_used,no,"The judge states no training or evaluation runs were executed and the logbook only restated or did arithmetic on the paper numbers, so no authors code was run."
+E0025,data_obtained,unclear,"No experiments were run, but the text says nothing about whether the AIME or other evaluation data were obtained or unavailable."
+E0025,weights_used,no,"No training or evaluation runs of PACED-RL were executed, so no authors trained weights were used."
+E0026,code_used,no,"The judge states no model inference or training was performed and the only jobs were metadata probes, so the authors code was not run."
+E0031,code_used,no,"The judge says the logbook implements and runs PC-AC and PC-M itself on synthetic SCMs, i.e. a reimplementation, with no mention of the authors code."
+E0032,data_obtained,unclear,All logbooks run numerical evaluations of the theorems on self-chosen synthetic settings and the truncated text never identifies a main evaluation dataset of the paper.
+E0033,data_obtained,unclear,The logbooks use synthetic graphs and quadratic or least-squares instances and the truncated text does not say what the paper main evaluation data are or whether they were obtained.
+E0039,code_used,no,"The judge states the PAVE losses were not implemented or run and no TD3 or SAC training is evident, so the authors code was not run."
+E0039,data_obtained,no,"The logbook substituted a small synthetic optimization and no MuJoCo environment runs are shown, so the main evaluation environments were not used."
+E0039,weights_used,no,"No TD3 or SAC training or MuJoCo runs are shown, so no authors trained policies were used."
+E0042,code_used,unclear,"The logbooks run their own quadrature, estimators and simulations for this theory paper, and the text never mentions whether authors code exists or was obtained."
+E0042,weights_used,unclear,This is a theory paper with no trained models and the text says nothing about weights or checkpoints.
+E0043,code_used,unclear,"Logbooks trained transformers at reduced scale and classified IPC domains, but the text never says whether this used the authors code or a reimplementation."
+E0045,weights_used,no,"Logbook 2 reimplemented and retrained the model on HF Jobs while the others recomputed from released CSVs or ran released code, with no trained checkpoint mentioned as used."
+E0046,weights_used,unclear,"Logbook 1 trained its own Llama run and Logbook 2 only audited released models without running GPU inference, so it is not clear that authors weights were actually used."
+E0049,weights_used,no,"The logbook ran its own PANDA implementation on the synthetic game, computing policies itself with no authors checkpoint used."
+E0050,weights_used,unclear,The sampler experiments use analytic Gaussian-mixture scores and the text says nothing about trained weights or checkpoints.
+E0051,weights_used,unclear,"The logbooks run their own tensor optimization on synthetic tensors for a method without trained models, and the text says nothing about weights."

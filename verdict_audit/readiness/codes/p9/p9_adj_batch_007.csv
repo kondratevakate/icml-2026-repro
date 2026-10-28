@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0528,compute,none,"The excerpts describe data collection, fine-tuning splits and benchmarks but never state GPUs, hardware or training time."
+P0530,variance,no,"Experiments use greedy decoding on fixed setups and no seeds, error bars, standard deviations or intervals are reported for the benchmark results."
+P0533,variance,unclear,"Standard deviations are mentioned only for per-model similarity scores in an appendix, while the main SFT benchmark results show no seeds or error bars, so variance reporting for the main results cannot be determined."
+P0562,compute,none,"The text gives datasets, backbones and setup but no hardware or runtime; the limitations only mention computational overhead in general terms."
+P0563,variance,no,"The excerpts describe dataset construction and model training with no mention of seeds, repeated runs, error bars or standard deviations."
+P0563,compute,none,"No GPUs, hardware or training time are stated anywhere in the excerpts."
+P0570,variance,no,"Main results are single best or average scores from search and RL with no seeds, error bars or intervals reported."
+P0572,variance,no,"Confidence intervals are mentioned only for the user-study preference rates, while the main quantitative results (Table 1 speed and quality) show no seeds or variability."
+P0573,compute,none,The text reports results with standard deviations and data splits but states no hardware or training time.
+P0574,compute,unclear,"No hardware is stated, but the text is cut off inside the Implementation Details paragraph where compute would be described."
+P0575,variance,unclear,"The text says differences are statistically significant for most metrics but does not show seeds, error bars, standard deviations or intervals for the main Table 1 results, and is truncated there."
+P0576,compute,unclear,"Inference time is reported and measured on idle GPU and CPU systems, but the text is cut off before naming the hardware."
+P0577,variance,no,"The only standard-deviation language is an effect size derived from the judge error rate; main results have no seeds, error bars or intervals."
+P0577,compute,none,"Implementation details give frameworks and hyperparameters but no GPUs, hardware or training time."
+P0578,variance,no,"Table 1 Tractometer results are single values with no seeds, repeated runs, error bars or standard deviations reported."
+P0580,compute,none,The text reports three-seed standard deviations and implementation details but no hardware or runtime.
+P0581,variance,no,"Main MCC results in Tables 1 and 2 are reported as single values without seeds, error bars or standard deviations."
+P0581,compute,none,"Training details give epochs, optimizer and input size but no GPUs, hardware or training time."
+P0582,compute,none,"Experimental setup and appendices describe models, sampling and hyperparameters but state no hardware or compute time."
+P0583,compute,none,"The text describes dataset acquisition hardware (camera, EEG headset) and five-seed results but no computing hardware or training time."

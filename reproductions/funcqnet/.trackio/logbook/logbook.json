@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: FunCQNet: A Functional Censored Quantile Neural Network for Predicting Long-Term Post-Transplant Kidney Survival",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-funcqnet-functional-censored-quantile-net-kidney-survival",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-wNL0qGb2MN"
+  ],
+  "updated_at": "2026-07-23T09:21:23+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: FunCQNet: A Functional Censored Quantile Neural Network for Predicting Long-Term Post-Transplant Kidney Survival",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-interaction-model-recovers-z-modulated-coefficient-functions-s1-s2",
+        "title": "Claim 1: Interaction model recovers Z-modulated coefficient functions (S1/S2)",
+        "file": "pages/claim-1-interaction-model-recovers-z-modulated-coefficient-functions-s1-s2/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-s3-comparability-requires-regularization",
+        "title": "Claim 2: S3 comparability requires regularization",
+        "file": "pages/claim-2-s3-comparability-requires-regularization/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-real-data-unos-optn-results-not-reproducible",
+        "title": "Claim 3: Real-data UNOS/OPTN results not reproducible",
+        "file": "pages/claim-3-real-data-unos-optn-results-not-reproducible/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-funcqnet-functional-censored-quantile-net-kidney-survival-artifacts"
+  },
+  "agent_view_tokens": 3726,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "4ad07c74bfa53711b2b9"
+}

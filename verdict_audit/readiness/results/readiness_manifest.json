@@ -1,0 +1,15 @@
+{
+  "protocol_sha256": "da1d30fd8073ada5677f3e10936ac5b43a647c4e760907528567db6f4f613e13",
+  "code_sha256": "c0ac08423f349c04be817f3f780195eb99be3038c6e9c39f3d9e0ea8b4a84e93",
+  "labels_sha256": "170087ae2d7fedb01a4cbffaca20d627e25699bcf62b275a312a172e081d6ee1",
+  "papers_sha256": "fbff09a068393db51d06240260566651a12bdb324b19551cd894d82578946dfc",
+  "reclaim_runs_index_sha256": "54cb1a75569f7ec48b521f6603d2fc4df2f87c29b3e1e451971f1f1c93b3be2a",
+  "reclaim_repo_commit": "dd9b876ba6b6dfc67361d167af5110c24d6a2ee0",
+  "git_commit": "cf498f8c78417d3bc9db57b43c39aae7506fe5de",
+  "seed": 20261017,
+  "resamples": 2000,
+  "numpy": "1.26.4",
+  "python": "3.11.9",
+  "seconds": 11.9,
+  "results_sha256": "42f917da9c5daf16c876dc850189ff793eb98210b8baeddcfd3c24da5a170add"
+}

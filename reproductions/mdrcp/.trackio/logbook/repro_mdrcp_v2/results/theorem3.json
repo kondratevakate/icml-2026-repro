@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "paper_anchor": "Theorem 3; Section 3.2; Eqs. (6)-(7)",
+  "seed": 260102999,
+  "seeds_per_sample_size": 20,
+  "n_sources": 3,
+  "n_outcomes": 64,
+  "alpha": 0.1,
+  "oracle_boundary_measure_count": 3,
+  "oracle_set_size": 45,
+  "summaries": [
+    {
+      "n_per_source": 100,
+      "sup_density_error": 0.07707112380273987,
+      "sup_dual_weight_error": 37.30935783571764,
+      "sup_shared_score_error": 3.9203383030841046,
+      "plugin_symmetric_difference": 16.3,
+      "conformal_symmetric_difference": 18.45,
+      "conformal_set_size_gap": 17.85,
+      "frozen_weight_sup_shared_score_error": 2.535951319936856
+    },
+    {
+      "n_per_source": 250,
+      "sup_density_error": 0.044776201707297986,
+      "sup_dual_weight_error": 15.613478628611727,
+      "sup_shared_score_error": 2.5316000003659385,
+      "plugin_symmetric_difference": 10.65,
+      "conformal_symmetric_difference": 11.25,
+      "conformal_set_size_gap": 8.35,
+      "frozen_weight_sup_shared_score_error": 1.671754621254624
+    },
+    {
+      "n_per_source": 500,
+      "sup_density_error": 0.0355056664637034,
+      "sup_dual_weight_error": 11.60232848099768,
+      "sup_shared_score_error": 1.820421616911159,
+      "plugin_symmetric_difference": 7.9,
+      "conformal_symmetric_difference": 8.2,
+      "conformal_set_size_gap": 5.2,
+      "frozen_weight_sup_shared_score_error": 1.4455439985145306
+    },
+    {
+      "n_per_source": 1000,
+      "sup_density_error": 0.026282208592166068,
+      "sup_dual_weight_error": 11.626267653573617,
+      "sup_shared_score_error": 1.7834863104380028,
+      "plugin_symmetric_difference": 6.15,
+      "conformal_symmetric_difference": 6.15,
+      "conformal_set_size_gap": 3.95,
+      "frozen_weight_sup_shared_score_error": 1.2302135154484213
+    },
+    {
+      "n_per_source": 2500,
+      "sup_density_error": 0.015349520163550057,
+      "sup_dual_weight_error": 8.26743800693122,
+      "sup_shared_score_error": 1.1974074355605082,
+      "plugin_symmetric_difference": 4.1,
+      "conformal_symmetric_difference": 4.0,
+      "conformal_set_size_gap": 2.1,
+      "frozen_weight_sup_shared_score_error": 1.0316179819941813
+    },
+    {
+      "n_per_source": 5000,
+      "sup_density_error": 0.010382825933457764,
+      "sup_dual_weight_error": 6.307431741074721,
+      "sup_shared_score_error": 0.9098260117760179,
+      "plugin_symmetric_difference": 3.2,
+      "conformal_symmetric_difference": 2.95,
+      "conformal_set_size_gap": 1.65,
+      "frozen_weight_sup_shared_score_error": 1.013452414948839
+    },
+    {
+      "n_per_source": 10000,
+      "sup_density_error": 0.007859263176332764,
+      "sup_dual_weight_error": 4.947129626374466,
+      "sup_shared_score_error": 0.653226221020704,
+      "plugin_symmetric_difference": 1.8,
+      "conformal_symmetric_difference": 1.7,
+      "conformal_set_size_gap": 1.4,
+      "frozen_weight_sup_shared_score_error": 0.988443199765987
+    },
+    {
+      "n_per_source": 25000,
+      "sup_density_error": 0.004715146710397176,
+      "sup_dual_weight_error": 3.187645897234326,
+      "sup_shared_score_error": 0.39220298530006775,
+      "plugin_symmetric_difference": 1.85,
+      "conformal_symmetric_difference": 1.8,
+      "conformal_set_size_gap": 1.3,
+      "frozen_weight_sup_shared_score_error": 0.9192077143509371
+    }
+  ],
+  "spearman_log_n_vs_density_error": -1.0,
+  "spearman_log_n_vs_dual_weight_error": -0.9761904761904763,
+  "spearman_log_n_vs_shared_score_error": -1.0,
+  "spearman_log_n_vs_conformal_symmetric_difference": -0.9761904761904763,
+  "largest_n_error_ratio_vs_smallest": 0.1000431480598305,
+  "frozen_control_error_ratio_at_largest_n": 2.3437040226699626,
+  "interpretation": "Estimated densities and dual weights converge to the oracle shared score, while the calibrated max-p set approaches the oracle set up to its boundary. Freezing the dual weights breaks the consistency precondition and leaves a 2.34x larger score error at the largest audited sample size."
+}

@@ -1,0 +1,50 @@
+{
+  "h83": {
+    "agreement": {
+      "label": {
+        "n": 300,
+        "po": 0.9166666666666666,
+        "kappa": 0.8853806889384724
+      }
+    },
+    "pending": 0,
+    "gate_met": null
+  },
+  "h84": {
+    "agreement": {
+      "label": {
+        "n": 256,
+        "po": 0.921875,
+        "kappa": 0.8969570117533409
+      }
+    },
+    "pending": 0,
+    "gate_met": true
+  },
+  "h85": {
+    "agreement": {
+      "main_data_access": {
+        "n": 176,
+        "po": 0.9602272727272727,
+        "kappa": 0.9351374118142571
+      },
+      "open_data_experiment": {
+        "n": 176,
+        "po": 0.9545454545454546,
+        "kappa": 0.9217081850533808
+      },
+      "synthetic_or_sample_release": {
+        "n": 176,
+        "po": 0.5965909090909091,
+        "kappa": 0.12437810945273628
+      },
+      "weights_release": {
+        "n": 176,
+        "po": 0.7556818181818182,
+        "kappa": 0.399031207813865
+      }
+    },
+    "pending": 0,
+    "gate_met": null
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Spike-and-slab PIPs and region selection",
+    "prepared_score": 2,
+    "verdict": "VERIFIED"
+  },
+  {
+    "id": "C2",
+    "title": "Theorem 5.4 approximation bound",
+    "prepared_score": 2,
+    "verdict": "FALSIFIED_AS_STATED"
+  },
+  {
+    "id": "C3",
+    "title": "Theorem 5.7 posterior contraction",
+    "prepared_score": 0,
+    "verdict": "INCONCLUSIVE_PROOF_GAP"
+  },
+  {
+    "id": "C4",
+    "title": "Theorem 5.9 region selection consistency",
+    "prepared_score": 0,
+    "verdict": "INCONCLUSIVE"
+  },
+  {
+    "id": "C5",
+    "title": "ECG performance and QRS alignment",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  },
+  {
+    "id": "C6",
+    "title": "Tecator performance and spectral interpretation",
+    "prepared_score": 0,
+    "verdict": "NOT_EXECUTED"
+  }
+]

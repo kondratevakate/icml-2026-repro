@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Asymmetric masked cross-modal ECG reconstruction",
+    "verdict": "PARTIAL_CORE_PRESENT_CURRICULUM_CONFIG_AND_UPDATE_MISMATCH",
+    "score": 1
+  },
+  {
+    "id": "C2",
+    "title": "Released placeholder checkpoint and synthetic PVC example",
+    "verdict": "PARTIAL_ARTIFACTS_RUN_ONLY_AS_SMOKE_NOT_VALID_EVALUATION",
+    "score": 1
+  },
+  {
+    "id": "C3",
+    "title": "Outperforms baselines on 15 of 19 downstream tasks",
+    "verdict": "INCONCLUSIVE_REAL_WEIGHTS_DATA_UNRELEASED",
+    "score": 0
+  },
+  {
+    "id": "C4",
+    "title": "9.4k-hour MIMIC-III pretraining cohort",
+    "verdict": "INCONCLUSIVE_COHORT_NOT_AVAILABLE",
+    "score": 0
+  },
+  {
+    "id": "C5",
+    "title": "Learned ECG-PPG timing structure",
+    "verdict": "INCONCLUSIVE_REAL_WEIGHTS_DATA_UNRELEASED",
+    "score": 0
+  },
+  {
+    "id": "C6",
+    "title": "Generalization across six studies and acquisition settings",
+    "verdict": "INCONCLUSIVE_EVALUATION_STUDIES_UNRELEASED",
+    "score": 0
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "finite_penalty": {
+    "hard_pruning": false,
+    "penalty": 10.0,
+    "unsafe_action_probability": 4.5397868702434395e-05,
+    "verdict": "FINITE_PENALTY_DOES_NOT_ENFORCE_THEOREM_PERMISSION_SET"
+  },
+  "release_source": {
+    "cohort_indices_match": false,
+    "cohort_literal_comparison_anchor": true,
+    "expected_cohort_indices": {
+      "adolescent#001": 20,
+      "adult#001": 0,
+      "child#001": 10
+    },
+    "finite_logit_penalty_anchor": true,
+    "path_contract_matches": false,
+    "released_cohort_indices": {
+      "adolescent#001": 0,
+      "adult#001": 0,
+      "child#001": 0
+    },
+    "shield_folder_expression": "f'saved_files/dynamics_predictor/fe_b5_p24_h24/1'",
+    "shield_source": "../official/GlucoAlg/shield/predictive_shield.py",
+    "train_folder_expression": "f'saved_files/dynamics_predictor/ba_node_b{args.n_basis}_p{args.prediction_length}_h{args.history_length}/{args.seed}'",
+    "train_source": "../official/GlucoAlg/2.train_dynamics_predictor.py",
+    "verdict": "RELEASED_PREDICTIVE_SHIELD_NOT_RUNNABLE_AS_DOCUMENTED"
+  },
+  "safety_theorem": {
+    "checked_implications": 320,
+    "hyperglycemia_checked_implications": 160,
+    "hyperglycemia_mutation_failures": 20,
+    "hypoglycemia_checked_implications": 160,
+    "hypoglycemia_mutation_failures": 20,
+    "max_safety_margin_residual": 0.0,
+    "verdict": "VERIFIED_CONDITIONAL_IMPLICATION",
+    "weakened_reliability_mutation_failures": 40
+  }
+}

@@ -1,0 +1,72 @@
+timestamp_utc,kind,target
+2026-10-17T19:51:52.201Z,web_search,ICML 2026 agent reproduction challenge falsified claims counterexample Frank-Wolfe paging organisers
+2026-10-17T19:52:03.792Z,web_fetch,https://huggingface.co/blog/what-we-learned-by-reproducing-2200-papers-from-icml
+2026-10-17T19:52:08.712Z,web_fetch,https://www.plushcap.com/content/huggingface/blog/huggingface-what-we-learned-by-reproducing-2200-papers-from-icml
+2026-10-18T02:13:28.439Z,web_fetch,https://huggingface.co/blog/icml-2026-open-reproductions
+2026-10-18T07:00:27.976Z,subagent_launch,Blind coder 1 for Q3 (model param: not set)
+2026-10-18T07:00:33.879Z,subagent_launch,Blind coder 2 for Q3 (model param: not set)
+2026-10-18T07:40:14.007Z,web_fetch,https://www.jstor.org/stable/2346806
+2026-10-18T07:40:14.599Z,web_fetch,https://www.jstor.org/stable/2111584
+2026-10-18T07:40:21.144Z,web_search,"Dawid Skene 1979 ""Maximum likelihood estimation of observer error-rates using the EM algorithm"" Applied Statistics 28 pages"
+2026-10-18T07:40:21.831Z,web_search,"Ladha 1992 ""The Condorcet Jury Theorem, Free Speech, and Correlated Votes"" American Journal of Political Science 36 617 pages"
+2026-10-18T07:40:35.436Z,consensus_search,Social influence bias: a randomized experiment Muchnik Aral Taylor
+2026-10-18T07:40:39.883Z,consensus_search,How social influence can undermine the wisdom of crowd effect Lorenz Rauhut Schweitzer Helbing
+2026-10-18T07:40:46.260Z,consensus_search,A solution to the single-question crowd wisdom problem surprisingly popular Prelec Seung McCoy
+2026-10-18T07:40:55.972Z,consensus_search,"A theory of fads, fashion, custom, and cultural change as informational cascades"
+2026-10-18T07:41:01.365Z,consensus_search,Condorcet jury theorem free speech and correlated votes Ladha
+2026-10-18T07:41:07.079Z,consensus_search,Dawid Skene maximum likelihood estimation of observer error-rates using the EM algorithm
+2026-10-18T07:41:10.905Z,consensus_search,High agreement but low kappa: the problems of two paradoxes Feinstein Cicchetti
+2026-10-18T07:41:16.319Z,consensus_search,Gwet computing inter-rater reliability and its variance in the presence of high agreement
+2026-10-18T07:41:21.515Z,consensus_search,"Many analysts, one data set: making transparent how variations in analytic choices affect results"
+2026-10-18T07:41:26.981Z,consensus_search,Using prediction markets to estimate the reproducibility of scientific research Dreber
+2026-10-18T07:41:32.145Z,consensus_search,NeurIPS 2021 consistency experiment review process arbitrary two independent committees
+2026-10-18T13:09:10.129Z,web_search,ICML 2026 agent reproduction challenge analysis inter-team agreement kappa logbooks verdicts
+2026-10-18T13:09:40.764Z,consensus_search,Reward hacking challenges oversight of autonomous research agents
+2026-10-18T13:09:48.292Z,consensus_search,RECLAIM: Can agents reproduce the claims of machine learning papers
+2026-10-18T13:10:00.256Z,web_search,Umoh 2026 poster ICML agent reproduction challenge kappa inter-team agreement
+2026-10-18T13:11:29.863Z,web_search,"""PaperBench"" Starace ICML 2025 proceedings PMLR volume 267"
+2026-10-18T13:11:38.832Z,web_fetch,https://proceedings.mlr.press/v267/starace25a.html
+2026-10-18T13:38:42.307Z,web_fetch,https://huggingface.co/blog/icml-2026-open-reproductions
+2026-10-18T13:38:43.947Z,web_fetch,https://medium.com/@avithaljunk/trust-but-run-the-agent-inside-the-icml-2026-agent-reproductions-challenge-3ca944b5bfe4
+2026-10-18T13:39:04.538Z,web_fetch,https://www.developersdigest.tech/blog/icml-2026-reproduction-audit
+2026-10-18T13:39:05.276Z,web_search,Hugging Face agent reproduction challenge next edition NeurIPS 2026 OR ICLR 2027 OR ICML 2027 announcement
+2026-10-18T13:39:34.156Z,consensus_search,Estimating the reproducibility of psychological science Open Science Collaboration
+2026-10-18T13:39:52.160Z,consensus_search,Mass reproducibility and replicability: a new hope Brodeur Institute for Replication
+2026-10-18T13:40:06.505Z,web_fetch,https://i4replication.org/games.html
+2026-10-18T13:40:07.569Z,web_fetch,https://training.cochrane.org/handbook/current/chapter-12
+2026-10-18T13:40:08.439Z,web_fetch,https://training.cochrane.org/handbook/current/chapter-04
+2026-10-18T13:40:16.423Z,web_fetch,https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-12
+2026-10-18T13:40:17.673Z,web_fetch,https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04
+2026-10-18T13:40:17.695Z,web_search,Institute for Replication replication games how it works teams report original authors response
+2026-10-18T13:40:33.268Z,web_fetch,https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04
+2026-10-18T13:40:34.578Z,web_fetch,https://communities.springernature.com/amp/posts/behind-the-paper-a-new-hope-studying-reproducibility-at-scale
+2026-10-18T13:40:35.648Z,web_fetch,https://reproml.org/
+2026-10-18T13:49:22.842Z,web_search,"Umoh ""reproduction"" ICML 2026 agents logbooks poster inter-rater"
+2026-10-18T13:50:04.265Z,consensus_search,Umoh inter-team agreement crowd reproduction challenge AI agents verdicts kappa
+2026-10-18T13:50:22.566Z,web_search,"""Umoh"" 2026 reproducibility ""kappa"" agents verdicts OR ""inter-rater"" OR ""agreement"" machine learning papers crowd"
+2026-10-18T13:51:09.025Z,web_fetch,https://raw.githubusercontent.com/SturdivantAI/who-verifies-the-verifier/main/README.md
+2026-10-18T13:54:46.641Z,web_fetch,https://huggingface.co/blog/icml-2026-open-reproductions
+2026-10-18T13:57:06.003Z,"url_in_shell_command (may be text written to a file, not an access)",https://communities.springernature.com/amp/posts/behind-the-paper-a-new-hope-studying-reproducibility-at-scale
+2026-10-18T13:57:06.003Z,"url_in_shell_command (may be text written to a file, not an access)",https://github.com/SturdivantAI/who-verifies-the-verifier
+2026-10-18T13:57:06.003Z,"url_in_shell_command (may be text written to a file, not an access)",https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04
+2026-10-18T13:57:06.003Z,"url_in_shell_command (may be text written to a file, not an access)",https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-12
+,literature_api_commands,api.crossref.org: 6 shell commands
+,literature_api_commands,api.openalex.org: 7 shell commands
+,literature_api_commands,api.semanticscholar.org: 1 shell commands
+,literature_api_commands,dblp.org: 1 shell commands
+,literature_api_commands,eutils.ncbi.nlm.nih.gov: 2 shell commands
+,literature_api_commands,export.arxiv.org: 5 shell commands
+,huggingface_api_in_commands,cat_file: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,get_paths_info: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,huggingface.co URL in command: 8 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_datasets: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_models: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_repo_commits: 3 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_repo_files: 6 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_repo_tree: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,list_spaces: 1 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,resolve/: 2 shell commands (bulk downloads are counted in the manifests)
+,huggingface_api_in_commands,snapshot_download: 3 shell commands (bulk downloads are counted in the manifests)
+,session_model,claude-opus-5-5: 539 assistant messages
+,subagent_model,agent-a903d848afc0a9733: claude-opus-5-5 (19 messages)
+,subagent_model,agent-adfc49757b105e0ff: claude-opus-5-5 (19 messages)

@@ -1,0 +1,143 @@
+{
+ "score": {
+  "drawn": 300,
+  "with_fulltext": 300,
+  "coded_ext": 300,
+  "coded_ref": 300,
+  "fulltext_kappa": {
+   "code": {
+    "n": 300,
+    "po": 0.7533333333333333,
+    "kappa": 0.623767074534793
+   },
+   "main_data_access": {
+    "n": 300,
+    "po": 0.81,
+    "kappa": 0.6758355291842809
+   },
+   "weights_release": {
+    "n": 300,
+    "po": 0.9866666666666667,
+    "kappa": 0.9728260869565218
+   }
+  },
+  "reference_kappa": {
+   "code_used": {
+    "n": 300,
+    "po": 0.8233333333333334,
+    "kappa": 0.7165320639674815
+   },
+   "data_obtained": {
+    "n": 300,
+    "po": 0.8233333333333334,
+    "kappa": 0.7256965410161303
+   },
+   "weights_used": {
+    "n": 300,
+    "po": 0.7833333333333333,
+    "kappa": 0.5212256623045004
+   }
+  },
+  "fields_adjudicated": [
+   "code",
+   "main_data_access"
+  ]
+ },
+ "extension": {
+  "code_vs_code_used": {
+   "n": 185,
+   "tp": 37,
+   "fp": 47,
+   "fn": 11,
+   "tn": 90,
+   "sensitivity": 0.7708333333333334,
+   "specificity": 0.656934306569343,
+   "kappa": 0.34397163120567376
+  },
+  "main_data_access_vs_data_obtained": {
+   "n": 74,
+   "tp": 30,
+   "fp": 18,
+   "fn": 10,
+   "tn": 16,
+   "sensitivity": 0.75,
+   "specificity": 0.47058823529411764,
+   "kappa": 0.22455089820359272
+  },
+  "weights_release_vs_weights_used": {
+   "n": 75,
+   "tp": 5,
+   "fp": 3,
+   "fn": 2,
+   "tn": 65,
+   "sensitivity": 0.7142857142857143,
+   "specificity": 0.9558823529411765,
+   "kappa": 0.629812438302073
+  }
+ },
+ "frame": {
+  "code_vs_code_used": {
+   "n": 162,
+   "tp": 28,
+   "fp": 54,
+   "fn": 10,
+   "tn": 70,
+   "sensitivity": 0.7368421052631579,
+   "specificity": 0.5645161290322581,
+   "kappa": 0.21502119927316782
+  },
+  "main_data_access_vs_data_obtained": {
+   "n": 89,
+   "tp": 33,
+   "fp": 37,
+   "fn": 5,
+   "tn": 14,
+   "sensitivity": 0.868421052631579,
+   "specificity": 0.27450980392156865,
+   "kappa": 0.12907735321528416
+  },
+  "weights_release_vs_weights_used": {
+   "n": 43,
+   "tp": 3,
+   "fp": 3,
+   "fn": 1,
+   "tn": 36,
+   "sensitivity": 0.75,
+   "specificity": 0.9230769230769231,
+   "kappa": 0.5497382198952878
+  }
+ },
+ "pooled": {
+  "code_vs_code_used": {
+   "n": 347,
+   "tp": 65,
+   "fp": 101,
+   "fn": 21,
+   "tn": 160,
+   "sensitivity": 0.7558139534883721,
+   "specificity": 0.6130268199233716,
+   "kappa": 0.28115873123684043
+  },
+  "main_data_access_vs_data_obtained": {
+   "n": 163,
+   "tp": 63,
+   "fp": 55,
+   "fn": 15,
+   "tn": 30,
+   "sensitivity": 0.8076923076923077,
+   "specificity": 0.35294117647058826,
+   "kappa": 0.15731166912850822
+  },
+  "weights_release_vs_weights_used": {
+   "n": 118,
+   "tp": 8,
+   "fp": 6,
+   "fn": 3,
+   "tn": 101,
+   "sensitivity": 0.7272727272727273,
+   "specificity": 0.9439252336448598,
+   "kappa": 0.5980317940953821
+  }
+ },
+ "claim7_weakened": false
+}

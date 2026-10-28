@@ -1,0 +1,725 @@
+{
+  "paper": {
+    "title": "Learning Cardiac Latent Representations in Vectorcardiogram Space",
+    "openreview_id": "hS6iw4PM8K",
+    "arxiv_id": "2605.31249v1"
+  },
+  "artifacts": {
+    "paper": {
+      "bytes": 2101074,
+      "sha256": "199e996c786e10cffe8b39eca2ef26dfae5f2474573c63b3a3a9f3c556f3cdea",
+      "expected_sha256": "199e996c786e10cffe8b39eca2ef26dfae5f2474573c63b3a3a9f3c556f3cdea",
+      "matches": true
+    },
+    "source": {
+      "bytes": 1836694,
+      "sha256": "09577a0fe30f6fe5f76b65e6defb30169e146bfdb3082fe146c2832ffc4e74af",
+      "expected_sha256": "09577a0fe30f6fe5f76b65e6defb30169e146bfdb3082fe146c2832ffc4e74af",
+      "matches": true
+    },
+    "repository": {
+      "commit": "0fcacbf34784cd876b4c197599253a9130707f93",
+      "expected_commit": "0fcacbf34784cd876b4c197599253a9130707f93",
+      "commit_matches": true,
+      "tracked_files": 108,
+      "checkpoints": [],
+      "result_files": [],
+      "test_files": []
+    }
+  },
+  "runtime_import": {
+    "command": "import lvcg.models.vcg; from lvcg.models.lvcg import LVCG",
+    "returncode": 1,
+    "succeeded": false,
+    "last_error_line": "ModuleNotFoundError: No module named 'lvcg.data'",
+    "missing_relative_imports": [
+      {
+        "file": "lvcg/models/lvcg.py",
+        "line": 68,
+        "import": "..data.angle",
+        "resolved": "lvcg/data/angle"
+      },
+      {
+        "file": "lvcg/models/lvcg.py",
+        "line": 69,
+        "import": "..data.beat_segmentation",
+        "resolved": "lvcg/data/beat_segmentation"
+      },
+      {
+        "file": "lvcg/models/vcg.py",
+        "line": 20,
+        "import": "..data.angle",
+        "resolved": "lvcg/data/angle"
+      }
+    ]
+  },
+  "geometry": {
+    "seed": 260531249,
+    "shape": {
+      "directions": [
+        4,
+        5,
+        3
+      ],
+      "visible": [
+        4,
+        5,
+        128
+      ],
+      "latent": [
+        4,
+        3,
+        128
+      ]
+    },
+    "max_latent_abs_error": 6.895039269760872e-06,
+    "max_visible_reprojection_abs_error": 3.7422574732381975e-06,
+    "passes_1e_4": true
+  },
+  "splits": {
+    "tasks": {
+      "chapman": {
+        "rows": {
+          "train": 16546,
+          "val": 1860,
+          "test": 4620
+        },
+        "record_key": "ecg_path",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {},
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": true,
+        "label_columns": {
+          "train": [
+            "ecg_path",
+            "age",
+            "diagnose",
+            "AQW",
+            "UW",
+            "SR",
+            "WPW",
+            "2AVB",
+            "AT",
+            "VB",
+            "ARS",
+            "STTC",
+            "SA",
+            "STE",
+            "VPB",
+            "TWO",
+            "STTU",
+            "ALS",
+            "APB",
+            "2AVB1",
+            "PRIE",
+            "CCR",
+            "CR",
+            "AF",
+            "AVB",
+            "QTIE",
+            "LBBB",
+            "VEB",
+            "SVT",
+            "RBBB",
+            "1AVB",
+            "STDD",
+            "MI",
+            "AFIB",
+            "TWC",
+            "PWC",
+            "ERV",
+            "RVH",
+            "LVH",
+            "ST",
+            "JEB"
+          ],
+          "val": [
+            "ecg_path",
+            "age",
+            "diagnose",
+            "AQW",
+            "UW",
+            "SR",
+            "WPW",
+            "2AVB",
+            "AT",
+            "VB",
+            "ARS",
+            "STTC",
+            "SA",
+            "STE",
+            "VPB",
+            "TWO",
+            "STTU",
+            "ALS",
+            "APB",
+            "2AVB1",
+            "PRIE",
+            "CCR",
+            "CR",
+            "AF",
+            "AVB",
+            "QTIE",
+            "LBBB",
+            "VEB",
+            "SVT",
+            "RBBB",
+            "1AVB",
+            "STDD",
+            "MI",
+            "AFIB",
+            "TWC",
+            "PWC",
+            "ERV",
+            "RVH",
+            "LVH",
+            "ST",
+            "JEB"
+          ],
+          "test": [
+            "ecg_path",
+            "age",
+            "diagnose",
+            "AQW",
+            "UW",
+            "SR",
+            "WPW",
+            "2AVB",
+            "AT",
+            "VB",
+            "ARS",
+            "STTC",
+            "SA",
+            "STE",
+            "VPB",
+            "TWO",
+            "STTU",
+            "ALS",
+            "APB",
+            "2AVB1",
+            "PRIE",
+            "CCR",
+            "CR",
+            "AF",
+            "AVB",
+            "QTIE",
+            "LBBB",
+            "VEB",
+            "SVT",
+            "RBBB",
+            "1AVB",
+            "STDD",
+            "MI",
+            "AFIB",
+            "TWC",
+            "PWC",
+            "ERV",
+            "RVH",
+            "LVH",
+            "ST",
+            "JEB"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": true
+        }
+      },
+      "icbeb": {
+        "rows": {
+          "train": 4950,
+          "val": 551,
+          "test": 1376
+        },
+        "record_key": "ecg_id",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": true,
+        "label_columns": {
+          "train": [
+            "patient_id",
+            "ecg_id",
+            "filename",
+            "validation",
+            "age",
+            "sex",
+            "scp_codes",
+            "AFIB",
+            "VPC",
+            "NORM",
+            "1AVB",
+            "CRBBB",
+            "STE",
+            "PAC",
+            "CLBBB",
+            "STD"
+          ],
+          "val": [
+            "patient_id",
+            "ecg_id",
+            "filename",
+            "validation",
+            "age",
+            "sex",
+            "scp_codes",
+            "AFIB",
+            "VPC",
+            "NORM",
+            "1AVB",
+            "CRBBB",
+            "STE",
+            "PAC",
+            "CLBBB",
+            "STD"
+          ],
+          "test": [
+            "patient_id",
+            "ecg_id",
+            "filename",
+            "validation",
+            "age",
+            "sex",
+            "scp_codes",
+            "AFIB",
+            "VPC",
+            "NORM",
+            "1AVB",
+            "CRBBB",
+            "STE",
+            "PAC",
+            "CLBBB",
+            "STD"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": false
+        }
+      },
+      "ptbxl_form": {
+        "rows": {
+          "train": 7197,
+          "val": 901,
+          "test": 880
+        },
+        "record_key": "ecg_id",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": true,
+        "label_columns": {
+          "train": [
+            "PAC",
+            "DIG",
+            "HVOLT",
+            "STD",
+            "LPR",
+            "QWAVE",
+            "VCLVH",
+            "NDT",
+            "TAB",
+            "LOWT",
+            "ABQRS",
+            "LNGQT",
+            "PRC(S)",
+            "NT",
+            "STE",
+            "NST",
+            "PVC",
+            "INVT",
+            "LVOLT"
+          ],
+          "val": [
+            "PAC",
+            "DIG",
+            "HVOLT",
+            "STD",
+            "LPR",
+            "QWAVE",
+            "VCLVH",
+            "NDT",
+            "TAB",
+            "LOWT",
+            "ABQRS",
+            "LNGQT",
+            "PRC(S)",
+            "NT",
+            "STE",
+            "NST",
+            "PVC",
+            "INVT",
+            "LVOLT"
+          ],
+          "test": [
+            "PAC",
+            "DIG",
+            "HVOLT",
+            "STD",
+            "LPR",
+            "QWAVE",
+            "VCLVH",
+            "NDT",
+            "TAB",
+            "LOWT",
+            "ABQRS",
+            "LNGQT",
+            "PRC(S)",
+            "NT",
+            "STE",
+            "NST",
+            "PVC",
+            "INVT",
+            "LVOLT"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": false
+        }
+      },
+      "ptbxl_rhythm": {
+        "rows": {
+          "train": 16832,
+          "val": 2100,
+          "test": 2098
+        },
+        "record_key": "ecg_id",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": true,
+        "label_columns": {
+          "train": [
+            "SVARR",
+            "BIGU",
+            "STACH",
+            "SARRH",
+            "SBRAD",
+            "TRIGU",
+            "AFIB",
+            "SR",
+            "SVTAC",
+            "PSVT",
+            "AFLT",
+            "PACE"
+          ],
+          "val": [
+            "SVARR",
+            "BIGU",
+            "STACH",
+            "SARRH",
+            "SBRAD",
+            "TRIGU",
+            "AFIB",
+            "SR",
+            "SVTAC",
+            "PSVT",
+            "AFLT",
+            "PACE"
+          ],
+          "test": [
+            "SVARR",
+            "BIGU",
+            "STACH",
+            "SARRH",
+            "SBRAD",
+            "TRIGU",
+            "AFIB",
+            "SR",
+            "SVTAC",
+            "PSVT",
+            "AFLT",
+            "PACE"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": false
+        }
+      },
+      "ptbxl_sub_class": {
+        "rows": {
+          "train": 17084,
+          "val": 2146,
+          "test": 2158
+        },
+        "record_key": "ecg_id",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": false,
+        "label_columns": {
+          "train": [
+            "AMI",
+            "LAFB/LPFB",
+            "LVH",
+            "STTC",
+            "IMI",
+            "SEHYP",
+            "CRBBB",
+            "WPW",
+            "LAO/LAE",
+            "NORM",
+            "AVB",
+            "RAO/RAE",
+            "ISC",
+            "LMI",
+            "ISCI",
+            "ISCA",
+            "NST",
+            "CLBBB",
+            "ILBBB",
+            "IRBBB",
+            "PMI",
+            "RVH",
+            "IVCD"
+          ],
+          "val": [
+            "AMI",
+            "LAFB/LPFB",
+            "LVH",
+            "STTC",
+            "IMI",
+            "SEHYP",
+            "CRBBB",
+            "WPW",
+            "LAO/LAE",
+            "NORM",
+            "ISC",
+            "AVB",
+            "RAO/RAE",
+            "LMI",
+            "ISCI",
+            "ISCA",
+            "NST",
+            "CLBBB",
+            "ILBBB",
+            "IRBBB",
+            "PMI",
+            "RVH",
+            "IVCD"
+          ],
+          "test": [
+            "AMI",
+            "LAFB/LPFB",
+            "LVH",
+            "STTC",
+            "IMI",
+            "SEHYP",
+            "CRBBB",
+            "WPW",
+            "LAO/LAE",
+            "NORM",
+            "ISC",
+            "AVB",
+            "RAO/RAE",
+            "LMI",
+            "ISCI",
+            "ISCA",
+            "NST",
+            "CLBBB",
+            "ILBBB",
+            "IRBBB",
+            "PMI",
+            "RVH",
+            "IVCD"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": false
+        }
+      },
+      "ptbxl_super_class": {
+        "rows": {
+          "train": 17084,
+          "val": 2146,
+          "test": 2158
+        },
+        "record_key": "ecg_id",
+        "record_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "patient_overlap": {
+          "train_val": 0,
+          "train_test": 0,
+          "val_test": 0
+        },
+        "duplicate_records": {
+          "train": 0,
+          "val": 0,
+          "test": 0
+        },
+        "column_schema_equal": true,
+        "label_columns": {
+          "train": [
+            "HYP",
+            "NORM",
+            "MI",
+            "CD",
+            "STTC"
+          ],
+          "val": [
+            "HYP",
+            "NORM",
+            "MI",
+            "CD",
+            "STTC"
+          ],
+          "test": [
+            "HYP",
+            "NORM",
+            "MI",
+            "CD",
+            "STTC"
+          ]
+        },
+        "leading_blank_line": {
+          "train": false,
+          "val": false,
+          "test": false
+        }
+      }
+    },
+    "all_record_splits_disjoint": true,
+    "all_available_patient_splits_disjoint": true
+  },
+  "table_arithmetic": {
+    "calculated_average": [
+      67.30166666666668,
+      74.54166666666667,
+      80.46499999999999
+    ],
+    "printed_average": [
+      67.3,
+      74.54,
+      80.47
+    ],
+    "absolute_difference": [
+      0.0016666666666793617,
+      0.0016666666666651508,
+      0.005000000000009663
+    ],
+    "agrees_at_printed_precision": true,
+    "cpsc_1pct_gain_over_heartlang_points": 10.650000000000006,
+    "csn_1pct_gain_over_heartlang_points": 4.530000000000001
+  },
+  "conformance": {
+    "paper_objective_has_three_terms": true,
+    "released_training_adds_base_loss": true,
+    "post_paper_gru_shape_fix": {
+      "commit": "0fcacbf34784cd876b4c197599253a9130707f93",
+      "message": "Fix beat loss shape mismatch in GRU path; add project links to README.",
+      "changed_training_file": true
+    },
+    "checkpoint_override_is_not_serialized": true,
+    "paper_noncardiac_dataset": "MIMIC-IV-ECG-Ext-ICD",
+    "released_noncardiac_dataset": "AI-READI",
+    "release_config_mentions_aireadi": true,
+    "release_config_mentions_mimic_ext_icd": false,
+    "paper_source_mentions_mimic_ext_icd": true
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "score": 1,
+      "max_score": 2
+    },
+    {
+      "id": "C2",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C3",
+      "score": 1,
+      "max_score": 2
+    },
+    {
+      "id": "C4",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C5",
+      "score": 0,
+      "max_score": 2
+    },
+    {
+      "id": "C6",
+      "score": 0,
+      "max_score": 2
+    }
+  ],
+  "prepared_score": 2,
+  "score_denominator": 12,
+  "limits": {
+    "full_pretraining_run": false,
+    "headline_tables_regenerated": false,
+    "reason": "The official release omits required internal data modules, the pretrained checkpoint, empirical outputs, and ablation artifacts."
+  }
+}

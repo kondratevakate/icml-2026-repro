@@ -1,0 +1,17 @@
+{
+  "space_id": "kondratevakate/repro-lvcg-release-audit",
+  "emoji": "🎯",
+  "created_at": "2026-07-30T07:29:41+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-hS6iw4PM8K",
+    "medical-ecg"
+  ],
+  "paper": {
+    "arxiv_id": "2605.31249"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": false,
+  "last_page": "conclusion"
+}

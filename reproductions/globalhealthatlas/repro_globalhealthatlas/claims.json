@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Corpus scale and coverage",
+    "score": 1,
+    "max_score": 2
+  },
+  {
+    "id": "C2",
+    "title": "Corpus composition and quality control",
+    "score": 1,
+    "max_score": 2
+  },
+  {
+    "id": "C3",
+    "title": "Evaluator validity and stability",
+    "score": 0,
+    "max_score": 2
+  },
+  {
+    "id": "C4",
+    "title": "Multilingual and multi-domain benchmark",
+    "score": 2,
+    "max_score": 2
+  },
+  {
+    "id": "C5",
+    "title": "Supervised fine-tuning and transfer",
+    "score": 1,
+    "max_score": 2
+  },
+  {
+    "id": "C6",
+    "title": "Robustness and leakage",
+    "score": 1,
+    "max_score": 2
+  }
+]

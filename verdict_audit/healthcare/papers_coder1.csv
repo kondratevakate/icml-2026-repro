@@ -1,0 +1,17 @@
+folder,orid,healthcare,forecast_score,forecast_max,prepared_score,prepared_max,code_release
+3dmedagent,TH6pLxCOQ3,yes,4,12,4,12,partial
+bayes_causal_meta,k76ll7aQyE,yes,5,10,5,10,full
+came_grad,T7y2wavrFM,yes,2,10,2,10,partial
+caml,Fisw2kc7EY,no,7,12,4,12,partial
+dc_pnpdp,jEBkuuETjr,yes,6,12,5,12,partial
+dpsurv,RKqL4GYXz3,yes,5,12,4,12,full
+flow_density_ratio,5zbPdMNcl9,yes,7,12,7,12,full
+glean,FP23eFYhAy,yes,2,12,2,12,none
+globalhealthatlas,02Nq73lCe6,yes,6,12,6,12,partial
+lvcg,hS6iw4PM8K,yes,4,12,2,12,partial
+ma_rag,S7lpdz7NAW,yes,4,12,2,12,partial
+medcrp_cl,v0DWbfP3b9,yes,5,10,4,10,full
+ophiuchus,coJqVkqb03,yes,3,10,2,10,partial
+spmind,UJcB3XrffF,yes,4,10,3,10,full
+sprout,qYfNhYenuu,yes,4,12,5,12,partial
+xmae,NxbSbkLNMc,yes,4,12,2,12,partial

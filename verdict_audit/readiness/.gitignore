@@ -1,0 +1,9 @@
+data/
+__pycache__/
+pilot/*/work/
+codes/to_adjudicate.csv
+codes/p8/to_adjudicate_*.csv
+# Note 9-2: per-paper pilot material stays local
+pilot/*/checks/
+pilot/*/results.json
+pilot/*/confirm.json

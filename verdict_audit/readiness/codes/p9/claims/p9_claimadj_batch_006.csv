@@ -1,0 +1,41 @@
+item_id,field,label,reason
+C0783,check_cost,inference_only,Checking the existence of the released interfaces needs only running the tool.
+C0791,check_cost,retrain,The sparse latent dictionary must be learned before its dimensions can be mapped to ICD concepts.
+C0792,comparison,no,Ablation removes components of the own method rather than comparing against a baseline or prior work.
+C0793,check_cost,analytic,"The claim describes how the dataset is constructed, which is a design statement without an experimental result."
+C0795,comparison,yes,Claiming superiority implies comparison against other idea-generation approaches.
+C0798,quantitative,yes,The theorem states an explicit regret bound expression with specific exponents.
+C0804,check_cost,analytic,"The claim describes the optimizer's design by definition, not an experimental result."
+C0811,check_cost,inference_only,KV cache reuse and accuracy can be measured by running inference on the named benchmarks.
+C0821,quantitative,yes,The claim states the number k=16.
+C0822,check_cost,large_scale,Five experimental settings each requiring trained autoencoders or VAEs amount to a broad set of runs.
+C0824,check_cost,inference_only,Inference speed and FLOP counts at one sequence length can be measured without training the models.
+C0827,check_cost,retrain,Obtaining the AUROC and baseline comparison requires training the model and methods on the benchmark.
+C0841,check_cost,inference_only,The divergence rates come from evaluating existing LLM configurations without training.
+C0842,check_cost,analytic,"The claim describes the method's design goals, not an experimental outcome."
+C0845,check_cost,retrain,Linear probing requires fitting probes on the representations.
+C0849,check_cost,analytic,The claim describes the method's mechanism by definition.
+C0851,comparison,no,"The degradation is across evaluation protocols, not a comparison against a baseline method."
+C0853,comparison,yes,The mitigation raising PSNR/SSIM implies comparison to the unmitigated baseline.
+C0860,check_cost,inference_only,Parameter count and supported features can be checked by building the model once.
+C0871,check_cost,large_scale,Comparison against many neural architectures on the PFam database requires many training runs.
+C0873,check_cost,large_scale,"Genome-wide imputation over about 2,100 slides across three cohorts is a large-scale computation."
+C0879,check_cost,unclear,The claim is vague about what experiment would establish explanation quality.
+C0881,check_cost,large_scale,Correlating calibration with accuracy requires evaluating many reward models across benchmark categories.
+C0885,check_cost,retrain,"The method must be fitted on synthetic data across sample sizes, which is small in scale."
+C0891,check_cost,inference_only,Identifying designs is one run of the design workflow without training.
+C0900,comparison,yes,Improving the rate implies comparison with the non-variance-reduced Lion rate.
+C0913,check_cost,large_scale,Six models across 22 metrics and two tasks constitute many benchmark runs.
+C0914,check_cost,retrain,Outperforming baselines requires training the method and baselines.
+C0918,check_cost,inference_only,Per-category success rates come from one evaluation run on the benchmark.
+C0921,check_cost,analytic,Memory growth of the formulation follows from derivation of tensor sizes.
+C0921,comparison,no,The claim describes memory scaling of formulations without comparing against a baseline result.
+C0923,check_cost,large_scale,Evaluating 11 LLMs constitutes many runs.
+C0924,check_cost,retrain,The policy framework must be fitted and simulated on real data to estimate the gain.
+C0930,check_cost,retrain,The sparse autoencoder must be trained to obtain latent units.
+C0937,check_cost,retrain,The conditional generative model must be trained to generate molecules.
+C0948,check_cost,retrain,Outperforming baselines requires training the diffusion bridge model.
+C0949,comparison,yes,The theorem relates IQ-Learn's policy to the behavioral cloning baseline.
+C0950,check_cost,analytic,"The claim describes the method's components by definition, not an experimental result."
+C0952,check_cost,inference_only,Event-based scores of a submitted algorithm on the test set can be obtained by one evaluation run.
+C0961,check_cost,retrain,"Evaluating the trained ClinTutor-R1 model requires training it, and the scaling sweep is modest."

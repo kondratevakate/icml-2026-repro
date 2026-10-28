@@ -1,0 +1,8 @@
+item_id,field,label,reason
+P3418,data_obtained,no,"The main CT-RATE-Report data was gated and not obtained, and the only other data use was a 20-study AMOS-MM proxy run judged a simplified setup."
+P3628,code_used,unclear,"The official repo was obtained and audited, but the text does not show the actual TPE pipeline being run (the compression run used a simplified proxy), so whether the authors code was executed is not established."
+P4067,weights_used,unclear,"The logbooks evaluate public Bio-FMs such as ESM-2 and CryoDRGN, but the text says nothing about obtaining or using the authors own trained weights or checkpoints."
+P4130,code_used,unclear,"The logbook mentions the released repository with evaluation code pending but shows no runs, so it is not stated whether any authors code was run."
+P4258,weights_used,no,"The logbooks used public Qwen/Llama models or their own trained checkpoints, and the paper merged model was never obtained (merge not rerun or attempted with own models)."
+P4313,code_used,unclear,"Logbook 1 only statically inspected the pipeline code while executing released task environments, and Logbook 2 states no code was run, so running the authors code is not clearly established."
+P4329,weights_used,unclear,"Runs used public SD v1.5 and SDXL Turbo with the authors code, but the text says nothing about authors own trained weights or checkpoints."

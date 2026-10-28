@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Tailoring Strictly Proper Scoring Rules for Downstream Tasks: An Application to Causal Inference",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-tailored-scoring-rules-causal-inference",
+  "paper": {
+    "arxiv_id": "2606.03332"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-JTwryHNicJ"
+  ],
+  "updated_at": "2026-07-29T19:11:26+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Tailoring Strictly Proper Scoring Rules for Downstream Tasks: An Application to Causal Inference",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-ipw-mse-bound",
+        "title": "Claim 1: IPW MSE bound",
+        "file": "pages/claim-1-ipw-mse-bound/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-task-curvature",
+        "title": "Claim 2: task curvature",
+        "file": "pages/claim-2-task-curvature/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-strictly-proper-loss",
+        "title": "Claim 3: strictly proper loss",
+        "file": "pages/claim-3-strictly-proper-loss/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-quartic-canonical-mapping",
+        "title": "Claim 4: quartic canonical mapping",
+        "file": "pages/claim-4-quartic-canonical-mapping/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-kang-schafer-mechanism",
+        "title": "Claim 5: Kang-Schafer mechanism",
+        "file": "pages/claim-5-kang-schafer-mechanism/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-broad-benchmark-superiority",
+        "title": "Claim 6: broad benchmark superiority",
+        "file": "pages/claim-6-broad-benchmark-superiority/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 2517,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "849941d4f8d205de1ede"
+}

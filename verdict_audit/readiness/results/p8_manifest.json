@@ -1,0 +1,15 @@
+{
+  "protocol_sha256": "23231bb4268bc91657203d7b77ea23d04cc6cad9730370b974e2f695e26e5be5",
+  "code_sha256": {
+    "analyze_p8.py": "cfd3e9ae1c649d0dbe708b590b4b12c10b30b86b6954cc794dfd6dc86ad2fcdf",
+    "p8_common.py": "c6da1c0c8daba9e5e5d43cc1081da0fdcb766974b44def8b6c88b199087bc89e",
+    "build_p8.py": "48efce356f50a3419f2a37e5a8012709f0b4922d64d1f2a5430fc91495ce46b0",
+    "fetch_p8_fulltext.py": "ba30e1bb6b4f68035dd4ee24d47f2cba9259d7ba7bef7f365d382f8e5342c646"
+  },
+  "keys_sha256": "798e9d0e04560b07a2c9d07415a37bafc62ab9a576236801418174fc02c759ec",
+  "git_commit": "9d8d75beceeb467b396e5bc6ef81a3cecdec1cc3",
+  "seed_boot": 20261017,
+  "seed_sample": 20261018,
+  "resamples": 2000,
+  "results_sha256": "bde696ffd7ed986cc43267728c863997582f89324f0fce4fb150f5974684eece"
+}

@@ -1,0 +1,25 @@
+
+=== N-MTLR on semi-SUPPORT (3 splits) ===
+  [N-MTLR] split 0 seed=100: C=0.7667 IBS=0.0033 MAEh=73.790 (63.3s)
+  [N-MTLR] split 1 seed=101: C=0.7470 IBS=0.0050 MAEh=65.240 (90.6s)
+  [N-MTLR] split 2 seed=102: C=0.7363 IBS=0.0070 MAEh=74.324 (48.5s)
+
+=== N-MTLR-2B on semi-SUPPORT (3 splits) ===
+  [N-MTLR-2B] split 0 seed=100: C=0.7718 IBS=0.0033 MAEh=73.756 (74.9s)
+  [N-MTLR-2B] split 1 seed=101: C=0.7505 IBS=0.0050 MAEh=65.201 (87.7s)
+  [N-MTLR-2B] split 2 seed=102: C=0.7336 IBS=0.0070 MAEh=74.309 (67.9s)
+
+=== N-MTLR-salad on semi-SUPPORT (3 splits) ===
+  [N-MTLR-salad] split 0 seed=100: C=0.7667 IBS=0.0033 MAEh=73.746 (394.6s)
+  [N-MTLR-salad] split 1 seed=101: C=0.7508 IBS=0.0050 MAEh=65.306 (348.8s)
+  [N-MTLR-salad] split 2 seed=102: C=0.7261 IBS=0.0070 MAEh=74.327 (342.8s)
+
+================ SUMMARY ================
+model                           C-index              IBS        MAE-Hinge
+N-MTLR                 0.7500+-0.0126   0.0051+-0.0015   71.118+-4.162
+N-MTLR-2B              0.7520+-0.0156   0.0051+-0.0015   71.088+-4.169
+N-MTLR-salad           0.7479+-0.0167   0.0051+-0.0015   71.126+-4.122
+
+SALaD vs baseline: dC-index=-0.0021 (higher better), dIBS=-0.0000 (lower better)
+
+saved runs/semisupport_nmtlr_s100.json

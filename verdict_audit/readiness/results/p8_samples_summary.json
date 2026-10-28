@@ -1,0 +1,29 @@
+{
+  "attempted": {
+    "other": 1821,
+    "medical": 110
+  },
+  "h83_medical": {
+    "pool": 582,
+    "chosen": 150,
+    "papers": 80
+  },
+  "h83_other": {
+    "pool": 14398,
+    "chosen": 150,
+    "papers": 144
+  },
+  "h83_batches": 2,
+  "h84": {
+    "medical_claims": 513,
+    "other_claims": 513,
+    "overlap": 256
+  },
+  "h84_batches_coder1": 5,
+  "h84_batches_coder2": 2,
+  "h85": {
+    "medical": 110,
+    "other": 110,
+    "without_arxiv": 43
+  }
+}

@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0269,code_used,unclear,The judge evidence describes a CSS run on Qwen2.5-0.5B but never says whether the authors' code was obtained or a reimplementation was used.
+E0270,code_used,unclear,All logbooks describe their own simulations of the bounds and the text says nothing about obtaining or running the authors' code.
+E0270,data_obtained,unclear,The logbooks run simulations of a theoretical result and the text does not identify any paper evaluation dataset that could have been obtained or substituted.
+E0274,code_used,unclear,"Code inspection of the gating mechanism and diagnostics on the published checkpoint are reported, but the authors' custom architecture was never run and it is not stated whether their code was executed."
+E0275,data_obtained,unclear,The logbooks use self-generated synthetic multi-task instances and the text does not say what the paper's main evaluation data was.
+E0278,data_obtained,unclear,"The logbook uses its own data up to n=1e5 and the text never identifies the paper's evaluation datasets, so substitution cannot be established."
+E0279,code_used,unclear,Logbooks mention their own verify.py and distilgpt2 runs but never state whether the authors' code was obtained or run.
+E0279,data_obtained,yes,"The paper's experiments use synthetic Gaussian-process benchmarks with 2,000 tasks, and logbooks ran full-scale 2,000-task GP benchmarks of that kind."
+E0282,data_obtained,yes,"Logbooks ran the MNIST ranking and Warcraft shortest-path tasks (reduced models, not substituted data), although teapot and cryo-ET assets were missing."
+E0283,data_obtained,no,"The paper's benchmark uses UCR Shapes, Wave and Symbols, but the logbook used other UCR datasets (ECG200, Trace, Coffee, GunPoint, FordA) and simulated curves."
+E0286,data_obtained,unclear,The logbooks check theorems on small constructed instances and the text identifies no paper evaluation dataset.
+E0286,weights_used,unclear,The logbooks check theoretical results on constructed small networks and say nothing about obtaining or using the authors' trained weights.
+E0288,data_obtained,unclear,The logbook generates Boolean-function data at reduced model scale and the text does not identify the paper's evaluation data as obtained or substituted.
+E0293,data_obtained,unclear,The logbooks simulate Levy-driven SDEs for a theory paper and the text identifies no paper evaluation dataset.
+E0293,weights_used,unclear,This is a theory paper with simulated processes and the text says nothing about authors' trained weights.
+E0294,data_obtained,unclear,"Logbook 1 used MNIST and CoverType subsamples, but the abstract-only claims do not say which datasets the paper evaluated on."
+E0294,weights_used,unclear,The logbooks implement kernel algorithms with no trained models and the text says nothing about authors' weights.
+E0295,data_obtained,unclear,"The logbooks build constructed covariance instances from the paper's proofs, but the text does not identify the paper's main evaluation data."
+E0295,weights_used,unclear,The logbooks run covariance-estimation algorithms with no trained models and the text says nothing about authors' weights.
+E0296,data_obtained,unclear,The logbooks use self-generated synthetic bandit instances and the text never identifies the paper's evaluation data.

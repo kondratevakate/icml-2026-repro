@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: SP-Mind: An Autonomous Reasoning Agent for Spatial Proteomics Analysis",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-spmind-artifact-audit",
+  "paper": {
+    "arxiv_id": "2606.24235"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-UJcB3XrffF"
+  ],
+  "updated_at": "2026-07-29T17:06:45+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: SP-Mind: An Autonomous Reasoning Agent for Spatial Proteomics Analysis",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-autonomous-agent-architecture",
+        "title": "Claim 1: autonomous agent architecture",
+        "file": "pages/claim-1-autonomous-agent-architecture/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-sp-bench-execution-accuracy",
+        "title": "Claim 2: SP-Bench execution accuracy",
+        "file": "pages/claim-2-sp-bench-execution-accuracy/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-sp-bench-construction",
+        "title": "Claim 3: SP-Bench construction",
+        "file": "pages/claim-3-sp-bench-construction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-crc-codex-quantification",
+        "title": "Claim 4: CRC-CODEX quantification",
+        "file": "pages/claim-4-crc-codex-quantification/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-cell-annotation-similarity",
+        "title": "Claim 5: cell-annotation similarity",
+        "file": "pages/claim-5-cell-annotation-similarity/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-spmind-artifact-audit-artifacts"
+  },
+  "agent_view_tokens": 2090,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "73e3d6b2139b4e645d91"
+}

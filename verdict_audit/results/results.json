@@ -1,0 +1,386 @@
+{
+  "snapshot": {
+    "logbooks_total": 4980,
+    "logbooks_dedup": 4822,
+    "dropped_by_dedup": 158,
+    "papers": 1858,
+    "reproducers": 330,
+    "judged_from": "2026-07-08T08:39:09+00:00",
+    "judged_to": "2026-07-28T12:51:33+00:00",
+    "judge_models": {
+      "zai-org/GLM-5.2": 4980
+    },
+    "verdict_counts": {
+      "inconclusive": 7395,
+      "toy": 5583,
+      "verified": 10663,
+      "falsified": 768
+    },
+    "logbooks_without_anchored_entry": 353
+  },
+  "C1_anchoring": {
+    "n_claims": 24409,
+    "anchored": 16155,
+    "loose_only": 1488,
+    "neither": 6766,
+    "share_anchored": 0.6618,
+    "share_loose_only": 0.061,
+    "share_neither": 0.2772
+  },
+  "C2_agreement": {
+    "n_papers": 648,
+    "n_claims": 2709,
+    "n_ratings": 12386,
+    "po": 0.5032265890095312,
+    "pe": 0.35284491804071144,
+    "kappa": 0.23237346837103262,
+    "kappa_ci": [
+      0.19867971168166249,
+      0.26660545106829386
+    ],
+    "vf_conflict_share": 0.04614248800295312,
+    "binary_decisive": {
+      "po": 0.6857976371474547,
+      "pe": 0.500154889094272,
+      "kappa": 0.3714005478953166,
+      "kappa_ci": [
+        0.33062189073632026,
+        0.410203449225769
+      ]
+    },
+    "null_po_mean": 0.35255948798970815,
+    "null_po_ci": [
+      0.33994872985885277,
+      0.3656264946134177
+    ],
+    "perm_p_po": 0.0004997501249375312
+  },
+  "C3_medical_gap": {
+    "n_papers_medical": 221,
+    "n_papers_other": 1637,
+    "n_claims_medical": 1813,
+    "n_claims_other": 22596,
+    "share_medical": {
+      "verified": 0.3337,
+      "falsified": 0.0392,
+      "toy": 0.2234,
+      "inconclusive": 0.4038,
+      "other": 0.0
+    },
+    "share_other": {
+      "verified": 0.4451,
+      "falsified": 0.0308,
+      "toy": 0.2292,
+      "inconclusive": 0.2949,
+      "other": 0.0
+    },
+    "diff": {
+      "verified": -0.1114,
+      "falsified": 0.0083,
+      "toy": -0.0058,
+      "inconclusive": 0.1089,
+      "other": 0.0
+    },
+    "diff_ci": {
+      "verified": [
+        -0.17821796533176254,
+        -0.049350017529616715
+      ],
+      "falsified": [
+        -0.010226514968461274,
+        0.031173539459699036
+      ],
+      "toy": [
+        -0.03916247213872763,
+        0.02952175809877777
+      ],
+      "inconclusive": [
+        0.05479247749276297,
+        0.16581766635602518
+      ],
+      "other": [
+        0.0,
+        0.0
+      ]
+    },
+    "perm_p_verified": 0.0004997501249375312
+  },
+  "C4_judge_retest": {
+    "n_claims": 465,
+    "n_ratings": 930,
+    "po": 0.9268817204301075,
+    "pe": 0.3198681928546653,
+    "kappa": 0.8924939566099896,
+    "kappa_ci": [
+      0.8494987454927015,
+      0.9296974354729545
+    ],
+    "binary_decisive": {
+      "po": 0.9634408602150538,
+      "pe": 0.5290068215978727,
+      "kappa": 0.9223786214718114,
+      "kappa_ci": [
+        0.8650107734361557,
+        0.9632776543901048
+      ]
+    },
+    "n_logbooks": 106,
+    "unpaired_claims": 1809,
+    "vf_flip_share": 0.0,
+    "any_change_share": 0.07311827956989247
+  },
+  "C3_secondary_agreement": {
+    "medical": {
+      "n_papers": 56,
+      "n_claims": 257,
+      "n_ratings": 769,
+      "po": 0.5521927056946512,
+      "pe": 0.32511613041779897,
+      "kappa": 0.3364676287454137,
+      "kappa_ci": [
+        0.21726889698032112,
+        0.44330269707851766
+      ],
+      "vf_conflict_share": 0.023346303501945526,
+      "binary_decisive": {
+        "po": 0.7558514334778927,
+        "pe": 0.5163360451568499,
+        "kappa": 0.49521033337850556,
+        "kappa_ci": [
+          0.3545325068129172,
+          0.6069293450735825
+        ]
+      }
+    },
+    "other": {
+      "n_papers": 592,
+      "n_claims": 2452,
+      "n_ratings": 11617,
+      "po": 0.49809433289693905,
+      "pe": 0.356026510497905,
+      "kappa": 0.22061129023941267,
+      "kappa_ci": [
+        0.18651203731767899,
+        0.25519093020482936
+      ],
+      "vf_conflict_share": 0.04853181076672104,
+      "binary_decisive": {
+        "po": 0.678455130762087,
+        "pe": 0.5004721918183961,
+        "kappa": 0.3563023640097029,
+        "kappa_ci": [
+          0.3128579849021474,
+          0.3963607717014483
+        ]
+      }
+    }
+  },
+  "sensitivity": {
+    "exclude_organiser": {
+      "C2": {
+        "n_papers": 644,
+        "n_claims": 2689,
+        "n_ratings": 12307,
+        "po": 0.499441540127709,
+        "pe": 0.35344605902425225,
+        "kappa": 0.2258055698850548,
+        "kappa_ci": [
+          0.19119323214208167,
+          0.2566905067944922
+        ],
+        "vf_conflict_share": 0.04648568240981778,
+        "binary_decisive": {
+          "po": 0.6827222433371263,
+          "pe": 0.5001885651387628,
+          "kappa": 0.36520508629227416,
+          "kappa_ci": [
+            0.32409713228159115,
+            0.40422854211657305
+          ]
+        }
+      },
+      "C3": {
+        "n_papers_medical": 220,
+        "n_papers_other": 1633,
+        "n_claims_medical": 1787,
+        "n_claims_other": 22507,
+        "share_medical": {
+          "verified": 0.3358,
+          "falsified": 0.0381,
+          "toy": 0.2205,
+          "inconclusive": 0.4057,
+          "other": 0.0
+        },
+        "share_other": {
+          "verified": 0.446,
+          "falsified": 0.031,
+          "toy": 0.2287,
+          "inconclusive": 0.2943,
+          "other": 0.0
+        },
+        "diff": {
+          "verified": -0.1103,
+          "falsified": 0.0071,
+          "toy": -0.0082,
+          "inconclusive": 0.1114,
+          "other": 0.0
+        },
+        "diff_ci": {
+          "verified": [
+            -0.17698003340847093,
+            -0.04715058588207572
+          ],
+          "falsified": [
+            -0.011102120988626198,
+            0.030920378241430523
+          ],
+          "toy": [
+            -0.041335143273726144,
+            0.02805923176434699
+          ],
+          "inconclusive": [
+            0.05726826087511796,
+            0.16886894470887748
+          ],
+          "other": [
+            0.0,
+            0.0
+          ]
+        },
+        "perm_p_verified": 0.0009995002498750624
+      }
+    },
+    "exact_text": {
+      "C2": {
+        "n_papers": 648,
+        "n_claims": 2709,
+        "n_ratings": 12386,
+        "po": 0.5032265890095312,
+        "pe": 0.35284491804071144,
+        "kappa": 0.23237346837103262,
+        "kappa_ci": [
+          0.19867971168166249,
+          0.26660545106829386
+        ],
+        "vf_conflict_share": 0.04614248800295312,
+        "binary_decisive": {
+          "po": 0.6857976371474547,
+          "pe": 0.500154889094272,
+          "kappa": 0.3714005478953166,
+          "kappa_ci": [
+            0.33062189073632026,
+            0.410203449225769
+          ]
+        }
+      }
+    },
+    "narrow_medical_label": {
+      "C3": {
+        "n_papers_medical": 76,
+        "n_papers_other": 1782,
+        "n_claims_medical": 456,
+        "n_claims_other": 23953,
+        "share_medical": {
+          "verified": 0.1535,
+          "falsified": 0.0285,
+          "toy": 0.2654,
+          "inconclusive": 0.5526,
+          "other": 0.0
+        },
+        "share_other": {
+          "verified": 0.4422,
+          "falsified": 0.0315,
+          "toy": 0.228,
+          "inconclusive": 0.2982,
+          "other": 0.0
+        },
+        "diff": {
+          "verified": -0.2887,
+          "falsified": -0.003,
+          "toy": 0.0373,
+          "inconclusive": 0.2544,
+          "other": 0.0
+        },
+        "diff_ci": {
+          "verified": [
+            -0.3378982031042245,
+            -0.23425861707469017
+          ],
+          "falsified": [
+            -0.024606633061857255,
+            0.027079355092343594
+          ],
+          "toy": [
+            -0.018555309431339914,
+            0.10163716272828008
+          ],
+          "inconclusive": [
+            0.18674531563393537,
+            0.31672284417007524
+          ],
+          "other": [
+            0.0,
+            0.0
+          ]
+        },
+        "perm_p_verified": 0.0004997501249375312
+      }
+    },
+    "no_dedup": {
+      "C3": {
+        "n_papers_medical": 221,
+        "n_papers_other": 1637,
+        "n_claims_medical": 1857,
+        "n_claims_other": 23191,
+        "share_medical": {
+          "verified": 0.3301,
+          "falsified": 0.0382,
+          "toy": 0.2267,
+          "inconclusive": 0.405,
+          "other": 0.0
+        },
+        "share_other": {
+          "verified": 0.4447,
+          "falsified": 0.0309,
+          "toy": 0.2291,
+          "inconclusive": 0.2952,
+          "other": 0.0
+        },
+        "diff": {
+          "verified": -0.1146,
+          "falsified": 0.0074,
+          "toy": -0.0024,
+          "inconclusive": 0.1097,
+          "other": 0.0
+        },
+        "diff_ci": {
+          "verified": [
+            -0.18057915840195896,
+            -0.05321963299704899
+          ],
+          "falsified": [
+            -0.010829528809726683,
+            0.02983670526915444
+          ],
+          "toy": [
+            -0.0361435151745546,
+            0.03159982073256369
+          ],
+          "inconclusive": [
+            0.0568266595781762,
+            0.16639572480938797
+          ],
+          "other": [
+            0.0,
+            0.0
+          ]
+        },
+        "perm_p_verified": 0.0004997501249375312
+      }
+    }
+  },
+  "prespecified_labels": {
+    "substantial_reproducer_disagreement": true,
+    "medical_gap_in_verified_share": true
+  }
+}

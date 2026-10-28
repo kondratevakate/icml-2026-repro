@@ -1,0 +1,26 @@
+[
+  {
+    "id": "C1",
+    "text": "Across all three deterministic-policy contrasts in the limited time-varying-confounding semi-synthetic DGP, PEQ-Net achieves lower RMSE than DeepLTMLE (Table 1)."
+  },
+  {
+    "id": "C2",
+    "text": "Across all three deterministic-policy contrasts in the expanded time-varying-confounding semi-synthetic DGP, PEQ-Net achieves lower RMSE than DeepLTMLE (Table 1)."
+  },
+  {
+    "id": "C3",
+    "text": "For dynamic policies that differ in only the first two steps or in all steps, PEQ-Net achieves lower RMSE than DeepLTMLE in both semi-synthetic DGPs (Table 2)."
+  },
+  {
+    "id": "C4",
+    "text": "PEQ-Net represents each policy using Gaussian-kernel mean embeddings, pairwise MMD and metric MDS, then encodes the policy tail to condition shared Q-functions."
+  },
+  {
+    "id": "C5",
+    "text": "Theorem 4.2 establishes a finite Lipschitz bound on the CATE second-order remainder contrast in terms of trajectory-level policy MMD under the stated model, encoder, outcome and density-product regularity assumptions."
+  },
+  {
+    "id": "C6",
+    "text": "In a MIMIC-IV cohort of 999 adult ICU sepsis patients with hypotension, higher MAP targets for vasopressor weaning are associated with higher serum lactate at 72 hours."
+  }
+]

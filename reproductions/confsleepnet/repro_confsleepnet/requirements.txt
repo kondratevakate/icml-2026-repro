@@ -1,0 +1,10 @@
+# ConfSleepNet reproduction — pure-Python pins (torch handled separately).
+#
+# torch is intentionally NOT pinned here. On a GPU host it must be a CUDA build,
+# and managed GPU images (HF Jobs l4x1, Colab, GCP DL images) already ship a
+# driver-matched torch — reinstalling it from pip usually breaks CUDA. Install
+# torch via run_l4.sh only when the image lacks it. Reproduced locally on
+# torch 2.10.0 (CPU) and intended for torch >= 2.2 on CUDA 12.x.
+numpy==1.26.4
+scikit-learn==1.8.0
+mne==1.12.1

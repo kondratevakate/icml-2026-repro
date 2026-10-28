@@ -1,0 +1,27 @@
+item,label,reason
+7,not_attempted,"Truncated page, no results produced"
+27,not_attempted,CIFAR-10 entirely absent: not attempted precedes reduced scope
+39,not_attempted,No output results shown
+48,not_attempted,Theorem 5.4 not run at all
+52,not_attempted,Sub-claim not tested
+56,not_attempted,Claimed model never tested
+76,reduced_scale,"Only small-scale evidence, nothing stated as not run"
+79,not_attempted,No simulation of the protocol was run
+93,not_attempted,No sampler implemented or run
+95,not_attempted,"Scaling runs deadlocked: blocked, insufficient results"
+101,reduced_scale,Run executed only at drastically reduced scale
+107,not_attempted,Full set never evaluated
+112,not_attempted,No experiment tests Proposition 1
+115,not_attempted,Benchmarks not run
+126,reduced_scale,Only synthetic constructed data
+128,not_attempted,10-dimensional benchmarks not run: precedes reduced scale
+133,not_attempted,Accuracy never computed and comparisons not run
+134,not_attempted,DNN3 not tested at all: precedes reduced scope
+137,not_attempted,MTEB half not reproduced at all: precedes reduced scale
+147,not_attempted,No algorithm executed
+159,not_attempted,Lemmas never tested
+169,not_attempted,Mechanism never tested
+174,reduced_scale,Instances below the theorem regime: scale too small
+180,not_attempted,No verification performed
+182,not_attempted,Critical ablation not tested: precedes reduced scale
+192,not_attempted,"Simulated results, no experiments"

@@ -1,0 +1,90 @@
+{
+ "papers": 6341,
+ "map_papers": 703,
+ "map_papers_not_in_icml_2026": [],
+ "protocol7_life_science": 328,
+ "medical_set": {
+  "n": 6341,
+  "both": 317,
+  "map_only": 386,
+  "reference_only": 11,
+  "neither": 5627,
+  "kappa": 0.5857126329507771
+ },
+ "map_papers_by_protocol7": {
+  "life_science": 317,
+  "candidate_labelled_no": 320,
+  "not_a_candidate": 66
+ },
+ "map_only_by_area": {
+  "Applications": 115,
+  "Deep Learning": 94,
+  "General Machine Learning": 84,
+  "Social Aspects": 38,
+  "Theory": 24,
+  "Probabilistic Methods": 15,
+  "Reinforcement Learning": 10,
+  "Optimization": 6
+ },
+ "fields_on_shared_papers": {
+  "n": 317,
+  "code": {
+   "n": 317,
+   "both": 34,
+   "map_only": 40,
+   "reference_only": 60,
+   "neither": 183,
+   "kappa": 0.19428629524196828
+  },
+  "restricted_vs_abstract_mention": {
+   "n": 317,
+   "both": 5,
+   "map_only": 0,
+   "reference_only": 20,
+   "neither": 292,
+   "kappa": 0.3153347732181418
+  },
+  "full_text_subset": {
+   "n": 77,
+   "restricted_vs_full_text": {
+    "n": 50,
+    "both": 1,
+    "map_only": 0,
+    "reference_only": 13,
+    "neither": 36,
+    "kappa": 0.09972299168975049
+   },
+   "map_access_by_full_text": {
+    "open_or_public_signal | open": 27,
+    "open_or_public_signal | credentialed_or_request": 12,
+    "simulation_or_synthetic | open": 8,
+    "private_or_restricted_signal | private": 1,
+    "open_or_public_signal | synthetic_only": 1,
+    "simulation_or_synthetic | credentialed_or_request": 1
+   },
+   "weights_vs_full_text": {
+    "n": 41,
+    "both": 2,
+    "map_only": 4,
+    "reference_only": 2,
+    "neither": 33,
+    "kappa": 0.3204419889502763
+   }
+  }
+ },
+ "contest": {
+  "map_july": {
+   "attempted": 224,
+   "decided": 132
+  },
+  "snapshot_oct_on_map_set": {
+   "attempted": 265,
+   "decided": 163
+  },
+  "snapshot_oct_on_protocol7_set": {
+   "n": 328,
+   "attempted": 125,
+   "decided": 57
+  }
+ }
+}

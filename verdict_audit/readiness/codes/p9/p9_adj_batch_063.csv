@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3519,compute,none,The implementation details appendix (A.1-A.4) describes codebases and training steps but states no hardware or compute time.
+P3545,compute,none,"The implementation details (Appendix D) give preprocessing, optimizer and augmentation settings but mention no hardware or training time."
+P3554,compute,unclear,"The excerpts contain no experimental setup or training details section, so whether compute is reported cannot be determined."
+P3560,compute,none,Appendix D implementation details list hyperparameters for all methods but state no hardware or compute time.
+P3569,compute,none,"The Implementation Details paragraph gives architecture, optimizer, batch size and epochs but no hardware or training time."
+P3575,variance,no,"Results are reported as single scores in comparison tables with no mention of seeds, repeated runs, standard deviations or intervals."
+P3576,variance,no,"Although 5-fold cross-validation is used, the excerpts report no standard deviations, error bars or intervals for the main C-index results."
+P3578,variance,no,"The only standard deviation mentioned is a tunable parameter of the binning score; no seeds, error bars or intervals are reported for results."
+P3578,compute,unclear,"The excerpts contain no implementation or experimental setup section with hardware details, so compute reporting cannot be determined."
+P3593,compute,none,The Experimental Setup section describes model configurations and preprocessing but states no hardware or training time.
+P3596,variance,no,"Tables report single PSNR/SSIM/LPIPS values with no mention of seeds, standard deviations or intervals."
+P3596,compute,hardware_only,"The acknowledgements name the JUWELS and MareNostrum 5 supercomputers as compute resources, and only a relative 4-5x training-time increase is given, with no absolute time or GPU-hours."
+P3599,compute,none,"The implementation uses Claude-3.5-Sonnet via API and reports only a $0.87 per-instance cost, with no hardware or compute time stated."
+P3603,compute,unclear,"The excerpts contain no implementation or training setup section, so whether hardware or compute time is reported cannot be determined."
+P3605,variance,no,"The excerpts report no seeds, repeated runs, standard deviations or intervals for the results; standard deviation appears only in Cross-Normalization."
+P3616,variance,no,"The experiments are described with single mIoU/IoU values and nothing about seeds, repeated runs, standard deviations or intervals."
+P3618,variance,no,"The experiment setup and results report single metric values with no mention of seeds, standard deviations or confidence intervals."
+P3621,variance,no,"The excerpts report no seeds, repeated runs, error bars or intervals for the main results; averaging is only Monte Carlo estimation of FKL."
+P3626,variance,no,"The dataset and implementation section and results report single ICL gains with no seeds, standard deviations or intervals."
+P3631,compute,unclear,"The excerpts include metric and preprocessing appendices but no training setup section, so whether hardware or time is reported cannot be determined."

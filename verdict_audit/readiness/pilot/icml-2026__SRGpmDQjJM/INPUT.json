@@ -1,0 +1,34 @@
+{
+ "key": "icml-2026__SRGpmDQjJM",
+ "forum_id": "SRGpmDQjJM",
+ "title": "From Token to Token Pair: Efficient Prompt Compression for Large Language Models in Clinical Prediction",
+ "arxiv": "2605.11774",
+ "repo_url": "https://github.com/JasonZuu/MedTPE",
+ "claims": [
+  {
+   "claim_id": "C00126",
+   "text": "MedTPE combines token-pair encoding (TPE), dependency-aware token replacement of roughly 3% of least-common tokens, and self-supervised fine-tuning (SSFT) that updates only 0.5-1.0% of model parameters to align new token embeddings with the pretrained latent space (Figure 2).",
+   "type": "mechanism"
+  },
+  {
+   "claim_id": "C00445",
+   "text": "On MIMIC-IV ICU Mortality and Phenotyping (25 conditions) with Qwen2.5-1.5B, MedTPE maintains F1 on ICU Mortality (0.122 to 0.122) while improving Phenotyping F1 (0.201 to 0.218), alongside inference time dropping from 38.3 to 23.5 minutes (-38.6%) (Table 2).",
+   "type": "headline_performance"
+  },
+  {
+   "claim_id": "C00583",
+   "text": "MedTPE is evaluated across four clinical prediction tasks (ICU Mortality, Phenotyping, 30-day Hospital Readmission, 1-year Pancreatic Cancer prediction) and three LLM backbones spanning Qwen2.5, Llama3, and Gemma2 families, plus the clinically specialized Meditron3-8B (Table 2).",
+   "type": "data_protocol"
+  },
+  {
+   "claim_id": "C00590",
+   "text": "MedTPE's compression approach is additionally tested for generalization beyond clinical text, including scientific reasoning (ARC-Challenge), financial summarization (ECTSum), and Chinese medical QA (CMedQA2).",
+   "type": "secondary_empirical"
+  },
+  {
+   "claim_id": "C00959",
+   "text": "MedTPE reduces input token length by up to 31% and inference latency by 34-63%, with compression rates ranging 22.8-32.4% across datasets (Abstract; Table 2).",
+   "type": "headline_performance"
+  }
+ ]
+}

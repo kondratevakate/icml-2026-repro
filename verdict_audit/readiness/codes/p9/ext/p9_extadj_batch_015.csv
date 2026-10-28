@@ -1,0 +1,3 @@
+item_id,field,label,reason
+E0296,weights_used,no,All visible logbooks implement OFD-UCB themselves and learn the utility parameters online in their own synthetic runs; none obtains or loads any author-provided trained weights or checkpoints.
+E0297,weights_used,no,"No logbook ran any trained model: Logbook 1 analyses released scenes and code with no VLM called, and Logbook 2 only inspects source code and runs unit and dry-run tests, so no author weights were used."

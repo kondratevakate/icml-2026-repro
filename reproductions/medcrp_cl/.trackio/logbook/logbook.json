@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: MedCRP-CL: Continual Medical Image Segmentation via Bayesian Nonparametric Semantic Modality Discovery",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-medcrp-cl-release-audit",
+  "paper": {
+    "arxiv_id": "2605.20297"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-v0DWbfP3b9",
+    "medical-image-segmentation",
+    "continual-learning"
+  ],
+  "updated_at": "2026-07-30T08:21:24+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: MedCRP-CL: Continual Medical Image Segmentation via Bayesian Nonparametric Semantic Modality Discovery",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-online-semantic-modality-discovery",
+        "title": "Claim 1: online semantic-modality discovery",
+        "file": "pages/claim-1-online-semantic-modality-discovery/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-replay-free-structure-aware-continual-learning",
+        "title": "Claim 2: replay-free structure-aware continual learning",
+        "file": "pages/claim-2-replay-free-structure-aware-continual-learning/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-headline-continual-segmentation-performance",
+        "title": "Claim 3: headline continual-segmentation performance",
+        "file": "pages/claim-3-headline-continual-segmentation-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-robustness-and-ablation-evidence",
+        "title": "Claim 4: robustness and ablation evidence",
+        "file": "pages/claim-4-robustness-and-ablation-evidence/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-efficiency-and-clinical-breadth",
+        "title": "Claim 5: efficiency and clinical breadth",
+        "file": "pages/claim-5-efficiency-and-clinical-breadth/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 1916,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "00a61ad4d242f1200b73"
+}

@@ -1,0 +1,18 @@
+item_id,field,label,reason
+P4261,variance,no,"Main results (90.9 PDMS, nuScenes/Bench2Drive gains) are single numbers and the shown training/experiment sections mention no seeds, error bars or intervals."
+P4265,compute,none,"The shown method, data and ablation sections state no hardware or training time."
+P4266,variance,no,"Implementation details and results report mAP/CMC with no seeds, standard deviations or repeated runs."
+P4267,compute,none,"Shown sections (experiments, datasets, ablations) state no GPU/hardware or compute time."
+P4274,variance,no,"Main results tables are given as single values with no seeds, standard deviations or intervals; only a single base architecture is noted."
+P4275,compute,none,"Training details give optimizer, batch size and epochs but no hardware or compute time."
+P4276,compute,unclear,"Implementation details state epochs and hyperparameters but the section is cut off before any hardware mention, so compute cannot be determined."
+P4280,variance,no,"Implementation details give 48 H100 GPUs and schedules but no seeds, error bars or variance for main results."
+P4298,compute,none,"Shown text describes an inference-only method, models and datasets but states no hardware or compute time."
+P4310,variance,no,"The text is theoretical bounds with numeric analysis and reports no seeds, error bars or intervals."
+P4316,variance,no,"Shown text (simulations, figure captions, limitations) reports no repeated runs, error bars or intervals for results."
+P4324,variance,no,"Full text shows main results (HPS, CLIP score, FID) as single numbers with no seeds, standard deviations or intervals."
+P4330,variance,no,"Benchmark results (Table 5 Dice) are single values with no seeds, standard deviations or intervals."
+P4335,variance,no,"Main results tables (accuracy, F1, METEOR) are single values with no seeds, standard deviations or repeated runs."
+P4335,compute,none,Shown experimental setup and hyperparameter sections state no hardware or compute time.
+P4337,variance,no,"Training and data sections give no seeds, error bars or intervals for the main navigation results."
+P4338,compute,none,"Experiments are repeated five times with standard deviations, but no hardware or compute time is stated in the shown text."

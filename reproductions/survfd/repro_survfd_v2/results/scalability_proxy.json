@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "paper_anchor": "Figure 7 scalability direction",
+  "scope": "Toy proxy only: four synthetic coalition games with 10-16 features, not the paper's four real datasets or full estimator suite.",
+  "seeds": 20,
+  "noise_standard_deviation": 0.35,
+  "tasks": {
+    "10": {
+      "pair_interactions": 45,
+      "regression_parameters": 56,
+      "budgets": {
+        "112": {
+          "regression_rmse_mean": 0.19868846943470694,
+          "permutation_rmse_mean": 0.6465769354732525,
+          "regression_to_permutation_ratio": 0.30729285029209996,
+          "regression_wins": true
+        },
+        "224": {
+          "regression_rmse_mean": 0.10545231562517772,
+          "permutation_rmse_mean": 0.6516027181598626,
+          "regression_to_permutation_ratio": 0.16183529117707934,
+          "regression_wins": true
+        }
+      }
+    },
+    "12": {
+      "pair_interactions": 66,
+      "regression_parameters": 79,
+      "budgets": {
+        "158": {
+          "regression_rmse_mean": 0.15854585007095667,
+          "permutation_rmse_mean": 0.6590264982825255,
+          "regression_to_permutation_ratio": 0.240575834938564,
+          "regression_wins": true
+        },
+        "316": {
+          "regression_rmse_mean": 0.0935664766558664,
+          "permutation_rmse_mean": 0.6631041168473949,
+          "regression_to_permutation_ratio": 0.14110374868536602,
+          "regression_wins": true
+        }
+      }
+    },
+    "14": {
+      "pair_interactions": 91,
+      "regression_parameters": 106,
+      "budgets": {
+        "212": {
+          "regression_rmse_mean": 0.13746577717857147,
+          "permutation_rmse_mean": 0.6574883536248286,
+          "regression_to_permutation_ratio": 0.2090771287745292,
+          "regression_wins": true
+        },
+        "424": {
+          "regression_rmse_mean": 0.07674708844100024,
+          "permutation_rmse_mean": 0.6591514293168458,
+          "regression_to_permutation_ratio": 0.11643316698947623,
+          "regression_wins": true
+        }
+      }
+    },
+    "16": {
+      "pair_interactions": 120,
+      "regression_parameters": 137,
+      "budgets": {
+        "274": {
+          "regression_rmse_mean": 0.12096790586961192,
+          "permutation_rmse_mean": 0.6593836084478367,
+          "regression_to_permutation_ratio": 0.1834560403379842,
+          "regression_wins": true
+        },
+        "548": {
+          "regression_rmse_mean": 0.07056079098360768,
+          "permutation_rmse_mean": 0.6835041519328382,
+          "regression_to_permutation_ratio": 0.10323388787628177,
+          "regression_wins": true
+        }
+      }
+    }
+  },
+  "interpretation": "At equal coalition-evaluation budgets, joint regression reuses each coalition across all pair coefficients and has lower RMSE than the pairwise permutation estimator on every synthetic task."
+}

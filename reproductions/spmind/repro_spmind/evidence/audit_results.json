@@ -1,0 +1,218 @@
+{
+  "audit_version": 1,
+  "benchmark": {
+    "category_count": 18,
+    "category_counts": {
+      "ARTIFACT_REMOVAL": 5,
+      "CELL_SEGMENTATION": 7,
+      "CHALLENGING_PIPELINEs": 4,
+      "CORE_LEVEL_SEGMENTATION": 7,
+      "DOWNSTREAM_INTERPRETATION": 7,
+      "FEATURE_EXTRACTION": 5,
+      "GRAND_PIPELINE": 5,
+      "HIGH_FIDELITY_SEGMENTATION": 7,
+      "IMAGE_REGISTRATION": 5,
+      "PHENOTYPIC_ANALYSIS": 5,
+      "POPULATION_PROFILING": 7,
+      "PRE_PROCESSING": 7,
+      "PROBABILITY_MAPPING": 5,
+      "SEGMENTATION": 5,
+      "SIGNAL_CALIBRATION": 5,
+      "TISSUE_SEGMENTATION": 5,
+      "TMA_FULL_PIPELINE": 4,
+      "TMA_POST_PROCESSING": 7
+    },
+    "context_specific_counts": {
+      "false": 52,
+      "true": 50
+    },
+    "errors": [],
+    "num_stages_counts": {
+      "1": 40,
+      "2": 28,
+      "3": 21,
+      "4": 8,
+      "8": 5
+    },
+    "passed": true,
+    "path": "sp_bench.jsonl",
+    "placeholder_counts": {
+      "illum_profiles_dir": 2,
+      "input_dir": 122,
+      "markers_csv": 35,
+      "output_dir": 130
+    },
+    "record_count": 102,
+    "sha256": "286a58a7d5087fe1837c48076f4ddf199cdc89bb4d67f767623a53ce0ff57973",
+    "stage_count": 8,
+    "stage_counts": {
+      "background_subtraction": 28,
+      "clustering": 28,
+      "dearray": 28,
+      "illumination": 21,
+      "probability_mapping": 35,
+      "quantification": 28,
+      "registration": 28,
+      "segmentation": 35
+    },
+    "stage_invocation_count": 231,
+    "tier_counts": {
+      "advanced": 21,
+      "basic": 40,
+      "challenging": 13,
+      "intermediate": 28
+    },
+    "unique_ids": 102,
+    "unique_normalized_queries": 102,
+    "warnings": [
+      "category labels are not consistently uppercase: CHALLENGING_PIPELINEs"
+    ]
+  },
+  "passed": true,
+  "provenance": {
+    "official_commit": "d5b889c3649fbdfd1489e5b2f60fc52a0d3ddbc6",
+    "official_file_sha256": {
+      "experiments/run_annotation_eval.py": "257c70c28173780c802efea86034e9bab3e9baee823304a1b5c6c9d0d7cd3a89",
+      "spmind/agent/agent.py": "93446d6c11fce8a1f2bcc5d9f2dd8d89c1e030c441f46bb6f30c6f7983c2a62f",
+      "spmind/utils.py": "8a7487172afa6f7daf5a9c5189a4c9d9c410839d34c02abc99b1e21fe0942f24"
+    }
+  },
+  "source": {
+    "experiments_tex_sha256": "bb80a9afaa9fd190d65a8f90e58f6ed05a2ec3d14b5e9c4f4ea9f8f1d1235ce4",
+    "note": "Source concordance only; this is not an experimental rerun.",
+    "passed": true,
+    "published_value_tokens": {
+      "annotation_average_0_681": true,
+      "crc_pearson_0_953": true,
+      "spbench_102": true,
+      "spbench_18_categories": true,
+      "spbench_8_stages": true,
+      "spbench_overall_68_9": true
+    },
+    "spbench_tex_sha256": "9f45238af8bdcd6c29e7e4033775c05c683e01430748ae8d63757ed34478d627"
+  },
+  "tools": {
+    "all_descriptions_have_implementations": true,
+    "architecture_evidence": {
+      "claude_agent_options": true,
+      "explicit_locally_implemented_react_loop": false,
+      "sdk_query_stream": true,
+      "system_prompt_requests_stepwise_tool_execution": true
+    },
+    "benchmark_stage_modules_present": true,
+    "benchmark_stage_to_module": {
+      "background_subtraction": "background_subtraction",
+      "clustering": "clustering",
+      "dearray": "unetcoreograph",
+      "illumination": "basic_illumination",
+      "probability_mapping": "segmentation_unmicst",
+      "quantification": "quantification",
+      "registration": "registration",
+      "segmentation": "segmentation_s3segmenter"
+    },
+    "errors": [],
+    "passed": true,
+    "registered_tool_count": 19,
+    "registered_tools": [
+      {
+        "module": "registration",
+        "name": "stitch_and_register_tiles_ashlar"
+      },
+      {
+        "module": "registration",
+        "name": "align_cyclic_images_ashlar"
+      },
+      {
+        "module": "registration",
+        "name": "stitch_microscopy_tiles_ashlar"
+      },
+      {
+        "module": "phenoimager2mc",
+        "name": "convert_phenoimager_to_mcmicro"
+      },
+      {
+        "module": "phenoimager2mc",
+        "name": "batch_convert_phenoimager_cycles"
+      },
+      {
+        "module": "basic_illumination",
+        "name": "generate_illumination_profiles"
+      },
+      {
+        "module": "basic_illumination",
+        "name": "batch_generate_illumination_profiles"
+      },
+      {
+        "module": "background_subtraction",
+        "name": "subtract_background"
+      },
+      {
+        "module": "background_subtraction",
+        "name": "batch_subtract_background"
+      },
+      {
+        "module": "unetcoreograph",
+        "name": "dearray_tma"
+      },
+      {
+        "module": "unetcoreograph",
+        "name": "batch_dearray_tma"
+      },
+      {
+        "module": "segmentation_unmicst",
+        "name": "generate_probability_maps"
+      },
+      {
+        "module": "segmentation_unmicst",
+        "name": "batch_generate_probability_maps"
+      },
+      {
+        "module": "segmentation_s3segmenter",
+        "name": "segment_cells"
+      },
+      {
+        "module": "segmentation_s3segmenter",
+        "name": "batch_segment_cells"
+      },
+      {
+        "module": "quantification",
+        "name": "quantify_cells"
+      },
+      {
+        "module": "quantification",
+        "name": "batch_quantify_cells"
+      },
+      {
+        "module": "clustering",
+        "name": "cluster_cells"
+      },
+      {
+        "module": "clustering",
+        "name": "phenotype_cells_supervised"
+      }
+    ],
+    "registry_modules": [
+      "registration",
+      "phenoimager2mc",
+      "basic_illumination",
+      "background_subtraction",
+      "unetcoreograph",
+      "segmentation_unmicst",
+      "segmentation_s3segmenter",
+      "quantification",
+      "clustering"
+    ],
+    "skill_document_count": 8,
+    "skill_documents": [
+      "spmind/skills/annotation/cell_type_annotation.md",
+      "spmind/skills/clustering/cell_clustering.md",
+      "spmind/skills/imaging/background_subtraction.md",
+      "spmind/skills/imaging/illumination_correction.md",
+      "spmind/skills/imaging/stitching.md",
+      "spmind/skills/quantification/cell_quantification.md",
+      "spmind/skills/quantification/cell_quantification_basic.md",
+      "spmind/skills/segmentation/cell_segmentation.md"
+    ],
+    "unique_tool_names": 19
+  }
+}

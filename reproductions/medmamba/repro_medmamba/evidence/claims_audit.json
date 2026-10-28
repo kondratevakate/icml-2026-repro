@@ -1,0 +1,145 @@
+{
+  "audit_seed": 20260729,
+  "claims": [
+    {
+      "conv_groups": [
+        1,
+        1,
+        1
+      ],
+      "id": "C1",
+      "input_channels": 4,
+      "observed_embedding_shape": [
+        2,
+        16,
+        12
+      ],
+      "observed_rank": 3,
+      "paper_anchor_present": true,
+      "paper_declared_rank": 4,
+      "reason": "The channel axis is collapsed into BxLxD and convolutions use groups=1.",
+      "score": 2,
+      "verdict": "FALSIFIED_IN_RELEASED_IMPLEMENTATION"
+    },
+    {
+      "declared_first_step_max_abs": 0.0,
+      "id": "C2",
+      "observed_first_step_equals_input": true,
+      "observed_first_step_max_abs": 72.0,
+      "operator_max_abs_difference": 72.0,
+      "paper_anchor_present": true,
+      "reason": "Left zero-padding followed by x - padded[:-1] makes delta[0]=x[0], not zero.",
+      "score": 2,
+      "verdict": "FALSIFIED_IN_RELEASED_IMPLEMENTATION"
+    },
+    {
+      "fft_bins_for_probe": 9,
+      "has_frequency_axis": false,
+      "id": "C3",
+      "imag_weight_shape": [
+        12
+      ],
+      "paper_anchor_present": true,
+      "real_weight_shape": [
+        12
+      ],
+      "reason": "The learned complex gain has shape D and is broadcast identically across all FFT bins.",
+      "score": 2,
+      "verdict": "FALSIFIED_IN_RELEASED_IMPLEMENTATION"
+    },
+    {
+      "adjacency_input_change_max_abs": 0.0,
+      "adjacency_parameter_mutation_max_abs": 0.5020374059677124,
+      "classification_proxy_graph_gradients": {
+        "dynamic_gate.0.bias": null,
+        "dynamic_gate.0.weight": null,
+        "nodevec1": null,
+        "nodevec2": null
+      },
+      "id": "C4",
+      "output_parameter_mutation_max_abs": 0.0,
+      "paper_anchor_present": true,
+      "reason": "The learner ignores x and adjacency is disconnected from the returned representation.",
+      "score": 2,
+      "verdict": "FALSIFIED_IN_RELEASED_IMPLEMENTATION"
+    },
+    {
+      "all_mamba_sequence_axes_equal_time": true,
+      "id": "C5",
+      "input_channel_count": 4,
+      "input_time_length": 16,
+      "logits_shape": [
+        2,
+        3
+      ],
+      "mamba_input_shapes": [
+        [
+          2,
+          16,
+          12
+        ],
+        [
+          2,
+          16,
+          12
+        ],
+        [
+          2,
+          16,
+          12
+        ],
+        [
+          2,
+          16,
+          12
+        ],
+        [
+          2,
+          16,
+          12
+        ]
+      ],
+      "paper_anchor_present": true,
+      "reason": "All released Mamba calls scan L=time; adjacency is computed but not used in the output path.",
+      "score": 2,
+      "verdict": "FALSIFIED_IN_RELEASED_IMPLEMENTATION"
+    },
+    {
+      "id": "C6",
+      "paper_anchor_present": true,
+      "reason": "No fresh five-dataset, five-seed execution was performed.",
+      "released_dataset_scripts": [
+        "scripts/APAVA_Subject.sh"
+      ],
+      "required_datasets": [
+        "ADFTD",
+        "APAVA",
+        "PTB",
+        "PTB-XL",
+        "TDBRAIN"
+      ],
+      "score": 0,
+      "verdict": "INCONCLUSIVE_NOT_EXECUTED"
+    }
+  ],
+  "code_sha256": {
+    "DiffMamba_Layer.py": "380d1b07c481a782e5372050c1503483487eea817182b9ef96d72a189fbef26b",
+    "MedMamba.py": "6fddd259369aa84530e004ad6a2b0f3842be5089a294896c30d3d7c792362e31",
+    "SpatialMamba_Layer.py": "fa77d582ae4c07508a1a32d77585d47b622cd052511a8dec99848faab431e76b",
+    "exp_classification.py": "af03e8a9dcfbdb6526d2b79d4e25c507ed5b71f27a7096caa98db163baf80df6"
+  },
+  "maximum_score": 12,
+  "official_commit": "418da50664338bc1d766394ee9c231496ab4de97",
+  "paper": {
+    "arxiv": "2605.24961v1",
+    "forum_id": "qPqJH0heR0",
+    "title": "MedMamba: Multi-View State Space Models with Adaptive Graph Learning for Medical Time Series Classification"
+  },
+  "paper_source_sha256": {
+    "example_paper.tex": "523b9dd0c69706881963131187355c7eaf8688ec2eb4acd6ac7c249fdc98d19a",
+    "exp.tex": "e538ec03868237b61ce6d090975479c8d6b4359ded2a58a07724e715bb2dc3dc",
+    "method.tex": "e8eff589a88ecf042d80c2dac0609144b743a5c678e514d447edd4b51b3659d1"
+  },
+  "prepared_score": 10,
+  "scope": "Implementation conformance; fake Mamba is used only for shape and dependency tracing."
+}

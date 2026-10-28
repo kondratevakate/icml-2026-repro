@@ -1,0 +1,14 @@
+{
+ "papers_with_fulltext": 3278,
+ "by_source_and_status": {
+  "arxiv_html|ok": 2845,
+  "arxiv_pdf|ok": 18,
+  "cvf|ok": 103,
+  "pmlr|ok": 312
+ },
+ "truncated": 2793,
+ "intro_found": 3191,
+ "checklist_items_found": 204,
+ "median_chars": 15000,
+ "with_matched_section": 2976
+}

@@ -1,0 +1,82 @@
+{
+  "paper": {
+    "title": "Plug-and-Play Diffusion Meets ADMM: Dual-Variable Coupling for Robust Medical Image Reconstruction",
+    "openreview_id": "jEBkuuETjr",
+    "arxiv": "2602.23214v2"
+  },
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.10.0+cpu",
+    "cuda_available": false
+  },
+  "fixed_points": {
+    "parameters": {
+      "a": 2.5,
+      "y": 1.7,
+      "q": 0.8,
+      "rho": 1.3,
+      "gamma": 0.4
+    },
+    "dual": {
+      "x": 1.4574759945130316,
+      "u": 0.4663923182441702,
+      "consensus_residual": 0.0,
+      "data_update_residual": 3.3306690738754696e-16,
+      "prox_update_residual": 5.551115123125783e-17,
+      "original_objective_residual": 2.220446049250313e-16
+    },
+    "loose": {
+      "x": 1.5096878363832076,
+      "denoised": 1.1437029063509148,
+      "fixed_point_equation_residual": 2.7755575615628914e-16,
+      "original_objective_residual": 0.15224973089343352,
+      "moreau_envelope_objective_residual": 2.7755575615628914e-16,
+      "interpretation": "The released theorem's algebraic loose fixed-point equation holds, but for an exact proximal denoiser it is the stationarity equation of a Moreau-envelope objective, not the original regularized objective."
+    }
+  },
+  "released_cg_penalty": {
+    "zero_penalty_anchor_difference": 0.0,
+    "positive_penalty_anchor_difference": 0.5000000000000002,
+    "zero_penalty_solution_error_vs_y": 0.0,
+    "paper_requires_positive_rho": true,
+    "release_example_w_tik": 0,
+    "paper_reported_lact_w_tik": 1e-05
+  },
+  "spectral_homogenization": {
+    "shape_preserved": true,
+    "dtype_preserved": true,
+    "finite": true,
+    "reported_info": {
+      "sigma": 1.0,
+      "P_white": 1024.0,
+      "xi_std": 0.9974527359008789,
+      "r_std": 0.0070710680447518826,
+      "P_r_mean": 0.027167348191142082,
+      "P_xi_mean": 1023.9727783203125
+    },
+    "complement_hermitian_asymmetry_ratio": 0.0005224485648795962,
+    "effective_psd_relative_rmse_to_white": 0.09309865794565178,
+    "effective_psd_peak_ratio": 1.3469285670355333,
+    "effective_psd_valley_ratio": 0.7619166556251002,
+    "trials": 128,
+    "paper_vs_code_sampling": "The paper uses sqrt(Delta S) times random phase; code multiplies the full random FFT by sqrt(Delta S / HW) and then drops the imaginary inverse-FFT component."
+  },
+  "release_inventory": {
+    "tracked_file_count": 30,
+    "python_file_count": 22,
+    "python_compile_errors": {},
+    "has_mri_implementation": false,
+    "has_cached_outputs": false,
+    "has_tests": false,
+    "has_requirements": false,
+    "example_method": "DiffPIR",
+    "readme_quickstart_w_tik_zero": true,
+    "paper_lact_rho_1e_minus_5": true,
+    "theorem_scaling_inconsistency": {
+      "main_theorem_omits_effective_lambda": true,
+      "appendix_sets_lambda_rho_gamma": true,
+      "loose_statement_uses_rho_over_sigma2": true,
+      "loose_proof_uses_rho_times_residual": true
+    }
+  }
+}

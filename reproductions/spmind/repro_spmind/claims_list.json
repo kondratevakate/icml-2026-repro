@@ -1,0 +1,7 @@
+[
+  {"id": "C1", "prepared_points": 1, "verdict": "PARTIALLY_VERIFIED_RELEASED_IMPLEMENTATION"},
+  {"id": "C2", "prepared_points": 0, "verdict": "INCONCLUSIVE_NOT_RERUN"},
+  {"id": "C3", "prepared_points": 2, "verdict": "VERIFIED"},
+  {"id": "C4", "prepared_points": 0, "verdict": "INCONCLUSIVE_MISSING_ARTIFACTS"},
+  {"id": "C5", "prepared_points": 0, "verdict": "INCONCLUSIVE_MISSING_PREDICTIONS"}
+]

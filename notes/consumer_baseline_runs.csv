@@ -1,0 +1,1 @@
+run_id,paper_id,paper_title,system,product_tier,displayed_model,mode,client_version,prompt_version,repo_commit,started_at,ended_at,wall_minutes,cpu_hours,external_compute_usd,human_interventions,predicted_points,actual_points,verified_claims,falsified_claims,toy_claims,inconclusive_claims,preflight_passed,artifact_path,verdict_frozen_at,judged_at,failure_category,notes

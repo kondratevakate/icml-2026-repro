@@ -1,0 +1,9 @@
+[
+  "MCE preserves channel-wise tokens using depthwise multi-scale convolutions",
+  "The differential view has a zero first time step",
+  "The frequency branch learns frequency-specific spectral modulation",
+  "The graph is sample-conditioned and affects classification",
+  "SGM performs graph diffusion and scans the channel axis",
+  "Five-dataset subject-independent gains, ablations, and robustness"
+]
+

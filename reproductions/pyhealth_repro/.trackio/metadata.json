@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T14:28:02+00:00",
+  "last_page": "conclusion",
+  "tags": [
+    "icml2026-repro",
+    "paper-gMLVFN9hl8"
+  ],
+  "paper": {
+    "arxiv_id": "2601.16414"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "trace_dataset": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit-traces",
+  "artifacts_bucket": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit-artifacts",
+  "workspace_bucket": "kondratevakate/repro-pyhealth-2-0-clinical-deep-learning-toolkit-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

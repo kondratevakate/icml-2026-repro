@@ -1,0 +1,24 @@
+{
+  "protocol_sha256": "bc9ed249c102236e854e2d1f3438c5f4ba78b44f76670e91e3095bc20fe0833c",
+  "code_sha256": {
+    "analyze_exposure.py": "5ac2cfcec4f3945f0f193b3d15bbcd593802e83f6eff2cc8f3cc8fd34c0685c5",
+    "analyze_voters.py": "4ede5b5a8d4bd6f99ba41ab66eecd17737441dca3246ef8f6d0b9b31aec2e232",
+    "common.py": "41c09f3dba759363eb5e7154bef887f50796a20a6d49e0254cc8276671000920"
+  },
+  "commits_manifest_sha256": "f7311fe24241077c6490ff73e5e10d45ca536b1be10e0e60bc486cb4d7a57610",
+  "pages_manifest_sha256": "0742a3047e236fa2cef3e18759d833e17e64034cea5db452e05505f8793cd9b6",
+  "git_commit": "573d8eb9e42ccc9919e9f613db59cc2c11f0b1f4",
+  "inputs": {
+    "data/verdicts_confirmation_2026-10-17/verdicts.json": "652f1c162462d7ad142ff32e2bd13d5853e21c639681ef416971776fdd33c526",
+    "data/spaces_2026-10-17/spaces.json": "71fbe96bbc5d543a55aa69d19701fa5dbc34c2e6e0019719a154f41b53aa3c5a",
+    "claims_anchored.json": "eb3f2d878646ca5c40da121741a613c1f9e1e10c14845f373db107e74a4ef439",
+    "verdicts_live.json": "76eeb935cc0972ec5b0ef9464a43d0920e00af1328db5460a71b61971351d544",
+    "verdicts_latest_tmp.json": "b4bae4eb8a333dc98c3edd6865452ff96009b5b1a6dd1685d96a61bdaf31c239"
+  },
+  "seed": 20261017,
+  "resamples": 2000,
+  "numpy": "1.26.4",
+  "python": "3.11.9",
+  "seconds": 146.3,
+  "results_sha256": "e9874084613edaa84915cc00f689b92958e879073757badc5897614f21a73a74"
+}

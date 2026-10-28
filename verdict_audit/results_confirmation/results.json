@@ -1,0 +1,111 @@
+{
+  "snapshot": {
+    "logbooks_total": 1910,
+    "logbooks_dedup": 1890,
+    "dropped_by_dedup": 20,
+    "papers": 997,
+    "reproducers": 94,
+    "judged_from": "2026-07-28T13:08:58+00:00",
+    "judged_to": "2026-08-03T19:41:20+00:00",
+    "judge_models": [
+      "zai-org/GLM-5.2"
+    ]
+  },
+  "C1_anchoring": {
+    "n_claims": 10092,
+    "anchored": 9882,
+    "loose_only": 210,
+    "neither": 0,
+    "share_anchored": 0.9792,
+    "share_loose_only": 0.0208,
+    "share_neither": 0.0
+  },
+  "C2_agreement": {
+    "n_papers": 392,
+    "n_claims": 2141,
+    "n_ratings": 7089,
+    "po": 0.4901729647175701,
+    "pe": 0.3982273343407373,
+    "kappa": 0.15279130413160788,
+    "kappa_ci": [
+      0.10902188550278272,
+      0.19542975219626202
+    ],
+    "vf_conflict_share": 0.07099486221391874,
+    "binary_decisive": {
+      "po": 0.6011039196933639,
+      "pe": 0.5491675962956204,
+      "kappa": 0.11520095488033999,
+      "kappa_ci": [
+        0.0575701180168034,
+        0.17267004676668807
+      ]
+    },
+    "null_po_mean": 0.39790501175092485,
+    "null_po_ci": [
+      0.38524469354922414,
+      0.410684658185242
+    ],
+    "perm_p_po": 0.0004997501249375312
+  },
+  "C3_medical_gap": {
+    "n_papers_medical": 99,
+    "n_papers_other": 898,
+    "n_claims_medical": 874,
+    "n_claims_other": 9218,
+    "share_medical": {
+      "verified": 0.3936,
+      "falsified": 0.0973,
+      "toy": 0.2105,
+      "inconclusive": 0.2986,
+      "other": 0.0
+    },
+    "share_other": {
+      "verified": 0.4911,
+      "falsified": 0.0726,
+      "toy": 0.2345,
+      "inconclusive": 0.2018,
+      "other": 0.0
+    },
+    "diff": {
+      "verified": -0.0975,
+      "falsified": 0.0247,
+      "toy": -0.024,
+      "inconclusive": 0.0968,
+      "other": 0.0
+    },
+    "diff_ci": {
+      "verified": [
+        -0.18414579210989118,
+        -0.017768183472743643
+      ],
+      "falsified": [
+        -0.021090683103961068,
+        0.07277988583779461
+      ],
+      "toy": [
+        -0.07471527129044636,
+        0.03210138775353863
+      ],
+      "inconclusive": [
+        0.03357787139110863,
+        0.17277515773035215
+      ],
+      "other": [
+        0.0,
+        0.0
+      ]
+    },
+    "perm_p_verified": 0.010494752623688156
+  },
+  "C4_judge_retest": {
+    "evaluable": false,
+    "rejudged_same_sha_spaces": 238,
+    "paired_claims": 0
+  },
+  "prespecified_labels": {
+    "reproducer_kappa_upper_below_060": true,
+    "reproducer_kappa_below_discovery_judge_retest": true,
+    "medical_gap_in_verified_share": true
+  }
+}

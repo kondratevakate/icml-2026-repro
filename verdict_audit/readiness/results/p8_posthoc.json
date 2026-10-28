@@ -1,0 +1,171 @@
+{
+  "PH8_a": {
+    "medical_open_1": {
+      "n": 39,
+      "synthetic_only": 0,
+      "no_empirical_claim": 0
+    },
+    "medical_open_0": {
+      "n": 12,
+      "synthetic_only": 1,
+      "no_empirical_claim": 0
+    },
+    "other_open_1": {
+      "n": 59,
+      "synthetic_only": 0,
+      "no_empirical_claim": 7
+    },
+    "other_open_0": {
+      "n": 22,
+      "synthetic_only": 13,
+      "no_empirical_claim": 10
+    }
+  },
+  "PH8_b": {
+    "cells": {
+      "medical_open": {
+        "n": 36,
+        "decided": 0.5,
+        "wilson": [
+          0.34474067624730526,
+          0.6552593237526947
+        ]
+      },
+      "medical_restricted": {
+        "n": 15,
+        "decided": 0.4666666666666667,
+        "wilson": [
+          0.24809225259746442,
+          0.6988336984894921
+        ]
+      },
+      "other_open": {
+        "n": 57,
+        "decided": 0.631578947368421,
+        "wilson": [
+          0.5017755948554761,
+          0.7447662449383492
+        ]
+      },
+      "other_restricted": {
+        "n": 1,
+        "decided": 1.0,
+        "wilson": [
+          0.20654329147389294,
+          1.0
+        ]
+      }
+    },
+    "medical_restricted_minus_open": -0.033333333333333326,
+    "medical_restricted_minus_open_ci": [
+      -0.3277777777777778,
+      0.26666666666666666
+    ],
+    "access_counts": {
+      "medical": {
+        "open": 36,
+        "credentialed_or_request": 14,
+        "unclear": 27,
+        "synthetic_only": 1,
+        "private": 1
+      },
+      "other": {
+        "unclear": 26,
+        "open": 57,
+        "synthetic_only": 13,
+        "credentialed_or_request": 1
+      }
+    }
+  },
+  "PH8_c": {
+    "cells": {
+      "medical_open_1": {
+        "n": 39,
+        "decided": 0.48717948717948717,
+        "wilson": [
+          0.3386492878313309,
+          0.6380089135430342
+        ]
+      },
+      "medical_open_0": {
+        "n": 11,
+        "decided": 0.5454545454545454,
+        "wilson": [
+          0.28008775568998817,
+          0.7872904245601196
+        ]
+      },
+      "other_open_1": {
+        "n": 52,
+        "decided": 0.5769230769230769,
+        "wilson": [
+          0.4419408497943149,
+          0.7013215209113954
+        ]
+      },
+      "other_open_0": {
+        "n": 3,
+        "decided": 1.0,
+        "wilson": [
+          0.43849391955098227,
+          1.0
+        ]
+      }
+    },
+    "mh_diff": -0.14890906195254022,
+    "mh_ci": [
+      -0.40215400541487495,
+      0.09469660774008547
+    ]
+  },
+  "PH8_d": {
+    "cells": {
+      "medical_o3_1": {
+        "n": 25,
+        "attempted": 20,
+        "rate": 0.8,
+        "wilson": [
+          0.6086866446346177,
+          0.9113954589934752
+        ]
+      },
+      "medical_o3_0": {
+        "n": 303,
+        "attempted": 90,
+        "rate": 0.297029702970297,
+        "wilson": [
+          0.248378734326636,
+          0.350762972664854
+        ]
+      },
+      "other_o3_1": {
+        "n": 56,
+        "attempted": 12,
+        "rate": 0.21428571428571427,
+        "wilson": [
+          0.127057803147445,
+          0.33819713656004946
+        ]
+      },
+      "other_o3_0": {
+        "n": 5335,
+        "attempted": 1809,
+        "rate": 0.33908153701968136,
+        "wilson": [
+          0.3264981194673918,
+          0.35189653453395553
+        ]
+      }
+    },
+    "medical_o3_minus_no_o3": 0.502970297029703,
+    "medical_o3_minus_no_o3_ci": [
+      0.32646864686468646,
+      0.6592739273927393
+    ],
+    "teams_o3_1": {
+      "papers_with_claims": 20,
+      "distinct_teams": 16,
+      "max_papers_one_team": 11
+    }
+  }
+}

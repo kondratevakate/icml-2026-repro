@@ -1,0 +1,17 @@
+{
+  "space_id": "kondratevakate/repro-sparse-bayesian-functional-deep-learning",
+  "emoji": "🎯",
+  "created_at": "2026-07-30T07:12:50+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-3IFIedDIoN",
+    "arxiv:2602.20651"
+  ],
+  "paper": {
+    "arxiv_id": "2602.20651"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": false,
+  "last_page": "conclusion"
+}

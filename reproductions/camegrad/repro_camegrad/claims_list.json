@@ -1,0 +1,7 @@
+[
+  "Conflicting task gradients create a negative interaction term and can collapse joint-gradient energy",
+  "Stage 1 guarantees strict local Pareto descent for every task",
+  "Stage 2 enforces the target norm and scales gradient-noise covariance by kappa squared",
+  "The complete three-stage optimizer preserves geometric validity after adaptive fusion",
+  "CAME-Grad improves clinical efficacy across eight report-generation methods on MIMIC-CXR and IU X-Ray"
+]

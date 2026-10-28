@@ -1,0 +1,7 @@
+[
+  {"id": "C1", "title": "Interleaved medical agent and three visual tools", "verdict": "PARTIAL_TOOL_LOOP_FORMAT_AND_EARLY_STOP_MISMATCH", "score": 1},
+  {"id": "C2", "title": "Cold-start, reflection, and ATRL training", "verdict": "PARTIAL_THREE_STAGES_PRESENT_RUN_CONFIG_MISMATCH", "score": 1},
+  {"id": "C3", "title": "Curated 64k tool-integrated trajectory corpus", "verdict": "INCONCLUSIVE_64K_CORPUS_UNRELEASED", "score": 0},
+  {"id": "C4", "title": "Superiority across eight medical benchmarks", "verdict": "INCONCLUSIVE_CHECKPOINT_EVALUATION_UNRELEASED", "score": 0},
+  {"id": "C5", "title": "Grounded segmentation and reflective tool behavior", "verdict": "INCONCLUSIVE_CHECKPOINT_ABLATIONS_UNRELEASED", "score": 0}
+]

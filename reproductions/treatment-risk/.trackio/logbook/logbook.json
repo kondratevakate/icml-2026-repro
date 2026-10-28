@@ -1,0 +1,74 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Learning Treatment Allocations with Risk Control Under Partial Identifiability",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability",
+  "paper": {
+    "arxiv_id": "2505.08378"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-9kWVQtpvJi"
+  ],
+  "updated_at": "2026-07-28T18:01:08+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Learning Treatment Allocations with Risk Control Under Partial Identifiability",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-lemma-4-1-upper-bounds-population-and-treatment-risks-under-propensity-or-selection-odds-miscalibration",
+        "title": "Claim 1: Lemma 4.1 upper bounds population and treatment risks under propensity or selection odds miscalibration.",
+        "file": "pages/claim-1-lemma-4-1-upper-bounds-population-and-treatment-risks-under-propensity-or-selection-odds-miscalibration/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-theorem-4-3-provides-finite-sample-treatment-risk-certification-using-sample-splitting-and-an-upper-confidence-bound",
+        "title": "Claim 2: Theorem 4.3 provides finite-sample treatment-risk certification using sample splitting and an upper confidence bound.",
+        "file": "pages/claim-2-theorem-4-3-provides-finite-sample-treatment-risk-certification-using-sample-splitting-and-an-upper-confidence-bound/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-the-synthetic-experiments-demonstrate-valid-risk-control-for-valid-gamma-and-failure-when-gamma-is-underestimated",
+        "title": "Claim 3: The synthetic experiments demonstrate valid risk control for valid Gamma and failure when Gamma is underestimated.",
+        "file": "pages/claim-3-the-synthetic-experiments-demonstrate-valid-risk-control-for-valid-gamma-and-failure-when-gamma-is-underestimated/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-the-method-controls-treatment-risk-on-the-tennessee-star-study",
+        "title": "Claim 4: The method controls treatment risk on the Tennessee STAR study.",
+        "file": "pages/claim-4-the-method-controls-treatment-risk-on-the-tennessee-star-study/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-the-method-yields-treatment-allocation-results-on-the-international-stroke-trial",
+        "title": "Claim 5: The method yields treatment allocation results on the International Stroke Trial.",
+        "file": "pages/claim-5-the-method-yields-treatment-allocation-results-on-the-international-stroke-trial/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-learning-treatment-allocations-with-risk-control-under-partial-identifiability-artifacts"
+  },
+  "agent_view_tokens": 3875,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "275ab2abe09c66192462"
+}

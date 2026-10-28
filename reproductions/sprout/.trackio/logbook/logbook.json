@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Supervise Less, See More: Training-free Nuclear Instance Segmentation with Prototype-Guided Prompting",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-sprout-release-audit",
+  "paper": {
+    "arxiv_id": "2511.19953"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-qYfNhYenuu",
+    "pathology",
+    "instance-segmentation",
+    "training-free"
+  ],
+  "updated_at": "2026-07-30T08:35:09+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Supervise Less, See More: Training-free Nuclear Instance Segmentation with Prototype-Guided Prompting",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-fully-training-free-automatic-prompting",
+        "title": "Claim 1: fully training-free automatic prompting",
+        "file": "pages/claim-1-fully-training-free-automatic-prompting/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-self-reference-feature-calibration",
+        "title": "Claim 2: self-reference feature calibration",
+        "file": "pages/claim-2-self-reference-feature-calibration/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-pot-scan-formulation-and-guarantee",
+        "title": "Claim 3: POT-Scan formulation and guarantee",
+        "file": "pages/claim-3-pot-scan-formulation-and-guarantee/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-containment-aware-refinement",
+        "title": "Claim 4: containment-aware refinement",
+        "file": "pages/claim-4-containment-aware-refinement/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-benchmark-performance",
+        "title": "Claim 5: benchmark performance",
+        "file": "pages/claim-5-benchmark-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-robustness-and-efficiency",
+        "title": "Claim 6: robustness and efficiency",
+        "file": "pages/claim-6-robustness-and-efficiency/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 2012,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "f46ce550fa7779fb049d"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "C1",
+    "title": "Three-stage optimizer mechanics",
+    "verdict": "VERIFIED_EQUATION_LEVEL_WITH_QUALIFICATIONS",
+    "score": 2
+  },
+  {
+    "id": "C2",
+    "title": "SDE mechanism and convergence assertions",
+    "verdict": "NOT_ESTABLISHED_BY_PRINTED_EQUATIONS",
+    "score": 0
+  },
+  {
+    "id": "C3",
+    "title": "Eight-backbone clinical-efficacy gains",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C4",
+    "title": "Multi-task optimizer comparison",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  },
+  {
+    "id": "C5",
+    "title": "Stage ablation effects",
+    "verdict": "INCONCLUSIVE_NOT_RERUN",
+    "score": 0
+  }
+]

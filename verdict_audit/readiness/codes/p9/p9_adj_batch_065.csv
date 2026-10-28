@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3759,variance,no,"The text says all random seeds are fixed and reports no repeated runs, standard deviations or intervals for the main results."
+P3759,compute,none,The shown experimental and implementation sections state no hardware or training time.
+P3765,variance,unclear,"The excerpt is cut before any experimental results, and the seeds section contains only method text, so repeated runs cannot be judged."
+P3765,compute,unclear,"The excerpt never reaches the experiments or implementation details, so hardware reporting cannot be judged."
+P3768,compute,none,"The shown dataset, benchmark and experiment sections mention no compute hardware or training time."
+P3772,variance,no,"Main results are single values (e.g. Pearson 0.58) with no seeds, error bars or intervals reported."
+P3773,compute,none,"The shown setup, datasets and reproducibility sections state no hardware or training time."
+P3774,compute,none,The shown experimental setup and results sections state no hardware or runtime budget.
+P3778,compute,none,"The shown experimental setup, data and code sections mention no hardware or training time."
+P3781,variance,unclear,"The seeds section only describes noise standard deviations in the method and the excerpt is cut before the results, so repeated runs cannot be judged."
+P3781,compute,unclear,"Only an acknowledgment of the DelftBlue supercomputer is given, with no specific hardware or time, and the setup is truncated."
+P3782,variance,unclear,"The seeds section contains only method text and no main results tables are shown, so variance reporting cannot be judged."
+P3782,compute,unclear,"Inference-time GPU hours are plotted but no hardware or training compute is stated, with training details deferred to an appendix not shown."
+P3784,variance,no,"Ranking improvements are reported as single values with no seeds, error bars or intervals."
+P3787,compute,unclear,"Inference times per volume are reported without hardware, and the implementation details paragraph is truncated."
+P3788,variance,no,"The shown implementation and evaluation sections mention no multiple seeds, error bars or intervals."
+P3790,variance,no,Main results are single averages (e.g. peptide recall 0.660) with no seeds or error bars reported.
+P3792,compute,unclear,"No hardware is stated in the shown text, but the training details where it would appear are cut at the length cap."
+P3802,variance,unclear,"The excerpt contains no experimental results or setup, so variance reporting cannot be judged."
+P3802,compute,unclear,"The excerpt contains no implementation or training details, so hardware reporting cannot be judged."

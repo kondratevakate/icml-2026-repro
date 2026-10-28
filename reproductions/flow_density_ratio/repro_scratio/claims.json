@@ -1,0 +1,9 @@
+[
+  {"id": "C1", "title": "Single-ODE density-ratio dynamics", "verdict": "SUPPORTED_ANALYTIC_ORACLE_AND_RELEASED_ODE", "score": 2},
+  {"id": "C2", "title": "Gaussian accuracy and inference efficiency", "verdict": "PARTIAL_SMALL_RUN_AND_CACHED_RESULTS_REPLICATE_MISMATCH", "score": 1},
+  {"id": "C3", "title": "Mutual-information estimation", "verdict": "PARTIAL_QUALITATIVE_RANKING_NUMERIC_NOTEBOOK_TABLE_MISMATCH", "score": 1},
+  {"id": "C4", "title": "Single-cell differential abundance", "verdict": "PARTIAL_EXECUTED_METRICS_MATCH_TABLE_RAW_INPUTS_EXTERNAL", "score": 1},
+  {"id": "C5", "title": "Batch-correction evaluation", "verdict": "PARTIAL_EXECUTED_SHAPES_AND_FIGURES_RAW_LLR_EXTERNAL", "score": 1},
+  {"id": "C6", "title": "Treatment-response applications", "verdict": "PARTIAL_COMBOSCIPLEX_CORRELATION_PATIENT_RESULT_VISUAL_ONLY", "score": 1}
+]
+

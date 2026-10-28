@@ -1,0 +1,21 @@
+item_id,field,label,reason
+E0239,code,no,The excerpts describe datasets and methods but contain no code link or statement about releasing code; the footnotes point only to dataset source files.
+E0240,main_data_access,unclear,"The text names FineWeb-Edu, AIME 24, MATH 500, GPQA and LiveCodeBench but never says how the evaluation data can be accessed."
+E0245,main_data_access,unclear,The text names D4RL and OGBench as the evaluation benchmarks but never states their access terms or gives a download link.
+E0246,main_data_access,unclear,"The text names GAR-Bench, INST-IT, VIP-Bench and BLINK but gives a link only to code, not to the data, and states no data access terms."
+E0247,main_data_access,unclear,"The theory is checked on synthetic Gaussian data, but the real-data check uses the named chest X-ray dataset (Kermany et al.) with no access terms stated, so the data are not synthetic only."
+E0248,main_data_access,unclear,"The text names GPQA Diamond, BIG-Bench Hard and Global-MMLU Lite, plus the authors' own LLM evaluation results, but states no access terms for either."
+E0250,main_data_access,unclear,"The text names ImageNet-R, CIFAR-100, DomainNet and ImageNet-100 and links only to code; it states no data access terms."
+E0252,code,released,A footnote states that the code and data are available at a GitHub URL (github.com/Airleave/DPRSC).
+E0255,main_data_access,unclear,"The text names RewardBench, RM-Bench and JudgeBench (and the training sets) but never states their access terms or gives links."
+E0258,main_data_access,unclear,"The text mentions only an unnamed pretraining corpus, unnamed downstream benchmarks and in-house training; it never says whether the data are open or proprietary."
+E0259,main_data_access,unclear,"The text says only 'four grounding benchmarks', cited but not named in these excerpts, and states no access terms."
+E0261,code,no,The excerpts contain no code link or code release statement; the only URL points to Gemini search documentation.
+E0262,code,no,"The only link is a project page, and the text never says that code is or will be released."
+E0262,main_data_access,unclear,The text says it uses the standard datasets provided by OGBench but does not state their access terms or give a download link.
+E0264,main_data_access,unclear,The text names the FineWeb dataset for the NanoGPT experiments but does not state its access terms.
+E0265,code,no,The excerpts contain no code link or statement about releasing code.
+E0265,main_data_access,unclear,"The text uses the NACA, Pipe and Elasticity benchmarks from Li et al. 2023b plus a custom Poly-Poisson dataset, and states access terms for none of them."
+E0266,code,no,The excerpts contain no code link or statement about releasing code.
+E0266,main_data_access,unclear,The text names D4RL and a self-collected Frozen-Lake dataset but states no access terms or download source for either.
+E0267,code,no,The excerpts link only to baseline data on Hugging Face; they give no code link and no statement about releasing code.

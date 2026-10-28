@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: MedMamba: Multi-View State Space Models with Adaptive Graph Learning for Medical Time Series Classification",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-medmamba-implementation",
+  "paper": {
+    "arxiv_id": "2605.24961"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-qPqJH0heR0"
+  ],
+  "updated_at": "2026-07-29T16:41:07+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: MedMamba: Multi-View State Space Models with Adaptive Graph Learning for Medical Time Series Classification",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-channel-wise-embedding",
+        "title": "Claim 1: channel-wise embedding",
+        "file": "pages/claim-1-channel-wise-embedding/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-zero-padded-difference",
+        "title": "Claim 2: zero-padded difference",
+        "file": "pages/claim-2-zero-padded-difference/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-frequency-specific-filter",
+        "title": "Claim 3: frequency-specific filter",
+        "file": "pages/claim-3-frequency-specific-filter/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-sample-conditioned-graph",
+        "title": "Claim 4: sample-conditioned graph",
+        "file": "pages/claim-4-sample-conditioned-graph/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-graph-diffusion-and-spatial-scan",
+        "title": "Claim 5: graph diffusion and spatial scan",
+        "file": "pages/claim-5-graph-diffusion-and-spatial-scan/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-five-dataset-results",
+        "title": "Claim 6: five-dataset results",
+        "file": "pages/claim-6-five-dataset-results/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-medmamba-implementation-artifacts"
+  },
+  "agent_view_tokens": 2089,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "e3340273ffe9f68b1973"
+}

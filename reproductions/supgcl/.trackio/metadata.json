@@ -1,0 +1,17 @@
+{
+  "space_id": "kondratevakate/repro-supervised-graph-contrastive-learning-grn",
+  "emoji": "🎯",
+  "created_at": "2026-07-30T07:21:19+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-0Y7itV1kb7",
+    "arxiv:2505.17786"
+  ],
+  "paper": {
+    "arxiv_id": "2505.17786"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": false,
+  "last_page": "conclusion"
+}

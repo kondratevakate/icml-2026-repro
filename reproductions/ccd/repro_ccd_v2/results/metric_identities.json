@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "paper_anchor": "Section 3.1 and Table 1",
+  "target_coverage": 0.9,
+  "probability_grid_size": 99,
+  "prediction_grid_size": 100,
+  "metrics": {
+    "L1": {
+      "maximum_oracle_identity_error": 0.0,
+      "maximum_constant_target_score": 0.0,
+      "maximum_supporting_plane_violation": 1.1102230246251565e-16
+    },
+    "L2": {
+      "maximum_oracle_identity_error": 0.0,
+      "maximum_constant_target_score": 0.0,
+      "maximum_supporting_plane_violation": 0.0
+    },
+    "KL": {
+      "maximum_oracle_identity_error": 0.0,
+      "maximum_constant_target_score": 0.0,
+      "maximum_supporting_plane_violation": 0.0
+    }
+  },
+  "interpretation": "For L1, L2, and KL, the expected supporting score equals f(p) at the true conditional coverage, is zero for the constant target predictor, and never exceeds f(p)."
+}

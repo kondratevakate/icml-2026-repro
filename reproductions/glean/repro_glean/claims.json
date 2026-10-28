@@ -1,0 +1,9 @@
+[
+  {"id": "C1", "title": "Evidence accumulation and calibration analysis", "score": 1, "max_score": 2},
+  {"id": "C2", "title": "Data and trajectory construction", "score": 1, "max_score": 2},
+  {"id": "C3", "title": "Main verification performance", "score": 0, "max_score": 2},
+  {"id": "C4", "title": "Active verification and ablations", "score": 0, "max_score": 2},
+  {"id": "C5", "title": "Best-of-N and computational efficiency", "score": 0, "max_score": 2},
+  {"id": "C6", "title": "Clinician utility study", "score": 0, "max_score": 2}
+]
+

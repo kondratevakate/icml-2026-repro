@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P4211,variance,no,"The excerpts report BD-rate tables and setup with no mention of seeds, standard deviations or intervals."
+P4223,variance,no,"Main probing and patching results are reported without seeds or error bars; the only standard deviation is of probe-weight cosine similarity, not run-to-run variance."
+P4223,compute,none,No hardware or training time is stated in the excerpts.
+P4226,variance,no,"Classifier and CLIP results are given as single numbers with no seeds, error bars or intervals mentioned."
+P4234,variance,no,"Ensemble spread and IC perturbations are forecast properties, not repeated runs or error bars on main results, and no seeds or intervals are reported."
+P4234,compute,none,"Only epochs, batch sizes and a speed ratio are given; no hardware or GPU time is stated."
+P4244,variance,no,"Continual anomaly detection tables report single values with no seeds, standard deviations or intervals; the only std mentioned is image normalization."
+P4244,compute,none,Memory consumption figures are given but no hardware type or training time is stated.
+P4282,variance,no,"Results tables for synthetic and real-data ablations are described with no seeds, error bars or intervals."
+P4282,compute,none,The excerpts state no hardware or compute time.
+P4283,variance,no,"Table 3 reports single metric values per method without seeds, standard deviations or intervals."
+P4283,compute,none,Only training epochs and learning rate are given; no hardware or time is stated.
+P4284,variance,no,"Throughput results are averages over steps without seeds, standard deviations or intervals reported."
+P4293,compute,none,The excerpts describe synthetic setups with no hardware or compute time.
+P4301,compute,none,The excerpts describe probing over seeds but state no hardware or compute time.
+P0040,weights_used,unclear,"Logbook 1 ran the pre-existing Sybil model being audited, but the text does not attribute those weights to the paper authors and their own diffusion-bridge model was never used."
+P0309,weights_used,no,"The evidence states the trained FINDR network and intermediates needed are absent from the public release, and the Connector checkpoint was trained in the logbook itself."
+P0310,code_used,unclear,"No logbook mentions obtaining or running the authors code, nor explicitly states it was unavailable or reimplemented."
+P0440,code_used,unclear,The independent GPU run trained the paper models but the text does not say whether the authors code was used; only released result TSVs are explicitly the authors.
+P0707,code_used,unclear,Logbook 1 read official result CSVs from the repo and the judge says it is unclear whether code was run; Logbook 2 does not say whose code it ran.

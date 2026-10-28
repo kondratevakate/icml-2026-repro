@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1372,compute,unclear,"The excerpts never state hardware or runtime and include no experimental-setup section, with the text cut at the length cap, so compute reporting cannot be judged."
+P1380,variance,no,"The implementation and setup excerpts report single FID/LPIPS/DISTS numbers and latencies with no mention of seeds, repeated runs or error bars."
+P1396,compute,none,The implementation and appendix excerpts describe the differentiable simulator and data-collection durations but state no computing hardware and no training time or GPU-hours.
+P1413,variance,no,"The main MedVQA result tables report single accuracy values per method with no seeds, standard deviations or intervals mentioned anywhere."
+P1416,variance,no,"The only standard deviations in the text are within-group competition-score statistics in the method, while the six-benchmark main results are reported as single accuracies with no seeds or error bars."
+P1419,compute,none,"The experimental setup states PyTorch, datasets and architectures but names no hardware and gives no runtime or GPU-hours."
+P1426,variance,no,"The text says seeds and initialization were kept identical across methods for fairness, and all reported ACC/H-ACC numbers are single values without error bars or repeated runs."
+P1430,compute,unclear,"The implementation-details excerpt is cut off exactly where training configuration would be given, so whether hardware or runtime is reported cannot be determined."
+P1431,compute,hardware_only,The hyperparameter table states the framework ran on NVIDIA GPUs with CUDA 12.1 but gives no training time or GPU-hours.
+P1440,variance,no,"Training is described as single runs of 50 epochs plus fine-tuning, and all reported NMSE/PSNR/SSIM results are single values with no seeds or error bars."
+P1441,variance,no,"The text reports single AUROC/CPC/ECE/AURAC values per metric and mentions significance tests only, never seeds, repeated runs or error bars for the main results."
+P1449,variance,unclear,"Five random seeds with a shaded interval are reported only for the pretraining-scalability analysis, and the text does not say whether the main linear-probing results carry seeds or intervals."
+P1464,compute,none,The evaluation-protocol section names vLLM and official APIs for inference but states no hardware and no runtime or GPU-hours.
+P1467,compute,none,"The training appendix gives optimizer, learning rates, batch size and epochs but no hardware and no training time or GPU-hours."
+P1472,compute,none,The implementation appendices discuss reducing decoder forward passes but state no hardware and no wall-clock time or GPU-hours.
+P1473,variance,unclear,"The text mentions lower mean and variance of nMSE across OOD environments rather than across seeds or repeated runs, so whether the main results carry run-to-run variance cannot be determined."
+P1473,compute,none,"The implementation-details section lists epochs, batch size and hyperparameters for every method but names no hardware and gives no runtime or GPU-hours."
+P1474,variance,no,"The variance discussed is the action-value variance inside the uncertainty metric, while the accuracy results for the three model sizes are single numbers with no seeds or error bars."
+P1474,compute,none,"The only compute-related figure is a decoding speed of up to 2,500 tokens/sec/GPU, with no hardware named and no training time or GPU-hours."
+P1475,compute,none,"The implementation section gives steps, batch sizes and learning rates for the three stages but states no hardware and no training time."

@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Guideline-Grounded Evidence Accumulation for High-Stakes Agent Verification",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-glean-release-audit",
+  "paper": {
+    "arxiv_id": "2603.02798"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-FP23eFYhAy",
+    "clinical-verification"
+  ],
+  "updated_at": "2026-07-30T07:16:34+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Guideline-Grounded Evidence Accumulation for High-Stakes Agent Verification",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-evidence-accumulation-and-calibration",
+        "title": "Claim 1: evidence accumulation and calibration",
+        "file": "pages/claim-1-evidence-accumulation-and-calibration/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-data-and-trajectory-construction",
+        "title": "Claim 2: data and trajectory construction",
+        "file": "pages/claim-2-data-and-trajectory-construction/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-main-verification-performance",
+        "title": "Claim 3: main verification performance",
+        "file": "pages/claim-3-main-verification-performance/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-active-verification-and-ablations",
+        "title": "Claim 4: active verification and ablations",
+        "file": "pages/claim-4-active-verification-and-ablations/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-best-of-n-and-computational-efficiency",
+        "title": "Claim 5: Best-of-N and computational efficiency",
+        "file": "pages/claim-5-best-of-n-and-computational-efficiency/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-clinician-utility-study",
+        "title": "Claim 6: clinician utility study",
+        "file": "pages/claim-6-clinician-utility-study/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-glean-release-audit-artifacts"
+  },
+  "agent_view_tokens": 2009,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "923be10319173461d1f0"
+}

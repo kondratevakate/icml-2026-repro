@@ -1,0 +1,19 @@
+{
+  "space_id": "kondratevakate/repro-sprout-release-audit",
+  "emoji": "🎯",
+  "created_at": "2026-07-30T08:35:09+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-qYfNhYenuu",
+    "pathology",
+    "instance-segmentation",
+    "training-free"
+  ],
+  "paper": {
+    "arxiv_id": "2511.19953"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": false,
+  "last_page": "conclusion"
+}

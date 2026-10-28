@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2875,variance,no,"Main results (Tables 1-2) are reported as single PSNR/SSIM/MAE values with no seeds, standard deviations or intervals mentioned."
+P2875,compute,none,"Implementation details give optimizer, batch size and sampling steps but no hardware or training time, deferring to the supplementary."
+P2877,variance,no,"The seeds/variance excerpt only describes perturbation-strength sweeps and correlations averaged over target datasets, with no seeds, error bars or intervals."
+P2877,compute,none,"No hardware, GPU or runtime is stated anywhere in the excerpts."
+P2878,variance,no,"The only standard deviation mentioned is for z-score sub-sampling of price data; no seeds, error bars or intervals are given for results."
+P2879,variance,no,"Generation results (Table 1, 10,000 samples) are described without any seeds, standard deviations or intervals."
+P2879,compute,none,The excerpts state no hardware or training time.
+P2881,variance,no,"Seeds are mentioned only for parallelizing sampling across nodes; no repeated runs, error bars or intervals are reported for main results."
+P2890,variance,no,"The only standard deviation is a deformation-regularity metric (sigma of log Jacobian), not variability of results over seeds or runs."
+P2894,variance,no,"Brain-score results are given as single values (e.g. SVCCA 0.6294) with no seeds, standard deviations or intervals."
+P2894,compute,none,No hardware or training time is stated in the excerpts.
+P2895,variance,no,"Evaluations use greedy decoding with single accuracies; the 5 runs are for self-consistency majority voting, not variance reporting."
+P2895,compute,none,No hardware or compute time is stated in the excerpts.
+P2897,variance,no,The standard deviation mentioned is of GRPO group rewards; results are single scores with no seeds or error bars.
+P2897,compute,none,"Implementation details give framework, batch size and learning rate but no hardware or time."
+P2901,variance,no,"Benchmark WERs are single numbers; seeds are used only to build an ensemble, not to report variability."
+P2901,compute,none,The excerpts give recording hours of data but no hardware or training compute.
+P2902,variance,no,"Results are given per subject and averaged activation maps, with no seeds, standard deviations or intervals."
+P2905,variance,no,The standard deviation mentioned is of rewards in retrieval filtering; benchmark results are single scores without seeds or intervals.
+P2909,compute,none,No hardware or runtime is stated; the only hours mentioned are ICU lab-measurement windows.

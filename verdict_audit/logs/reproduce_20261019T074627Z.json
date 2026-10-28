@@ -1,0 +1,259 @@
+{
+ "started": "20261019T074627Z",
+ "environment": {
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "packages": {
+   "numpy": "1.26.4",
+   "pandas": "2.3.3",
+   "scipy": "1.15.3",
+   "statsmodels": "0.14.6",
+   "pypdf": "6.11.0",
+   "huggingface_hub": "1.24.0",
+   "httpx": "0.28.1",
+   "requests": "2.32.5"
+  },
+  "git_commit": "0d871307b0d4f861e0e9a019b8f406937d89f0a9",
+  "git_dirty_verdict_audit": true
+ },
+ "steps": [
+  {
+   "step": "verdicts",
+   "folder": ".",
+   "commands": [
+    "analyze.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/results.json": "966029e38fd9fa68ba338f9ea6214e47cfe191509e1d9abbbc6c94ee1657ce00"
+   },
+   "seconds": 13.3
+  },
+  {
+   "step": "verdicts-confirmation",
+   "folder": ".",
+   "commands": [
+    "confirm.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results_confirmation/results.json": "51d0a02d3f9b1a5bc6f092251d4f90f568b717c6c602033f69a9acf25812f8a4"
+   },
+   "seconds": 10.0
+  },
+  {
+   "step": "healthcare",
+   "folder": "healthcare",
+   "commands": [
+    "analyze.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results.json": "358b9ebd3016878da5e8ed31fff2c9137c7b81725be4a3fc6006d89e654665db"
+   },
+   "seconds": 1.0
+  },
+  {
+   "step": "e1",
+   "folder": "e1_adjusted",
+   "commands": [
+    "analyze_e1.py validate",
+    "analyze_e1.py models"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "validation_e1.json": "0ca2e542ea358413c2b98f9eff891363307dcb422c95b8bb3b6d8cf0562b6bff",
+    "results_e1.json": "4f9549802323c37c7d922b26b531ddd666592c4c56e88c0959d1d984bde057b9"
+   },
+   "seconds": 46.1
+  },
+  {
+   "step": "e1-validated",
+   "folder": "e1_adjusted",
+   "commands": [
+    "e1_validated.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results_e1_validated.json": "8cc442e7416de6b843f2aa212414a1e1fc19d651a24e095523ab6b7bec339977"
+   },
+   "seconds": 17.5
+  },
+  {
+   "step": "falsifiability",
+   "folder": "falsifiability",
+   "commands": [
+    "analyze6.py results"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results6.json": "8ded76481f536dda5ef2cd0851f9d3965fbebf84c0a63010e9af06d8b7bb2d11"
+   },
+   "seconds": 40.8
+  },
+  {
+   "step": "voters",
+   "folder": "voters",
+   "commands": [
+    "analyze_voters.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/results.json": "e12f5c60d54a130a304596cf0c2b85908eb999da0fbc99642f4dc9169aff3e42"
+   },
+   "seconds": 1772.3
+  },
+  {
+   "step": "voters-q3",
+   "folder": "voters",
+   "commands": [
+    "q3_score.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/q3.json": "8d6ef081634442540284fdefa3fa4b673fa941beb5655d87444e5f656d6fadf8"
+   },
+   "seconds": 0.9
+  },
+  {
+   "step": "voters-exposure",
+   "folder": "voters",
+   "commands": [
+    "analyze_exposure.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/exposure.json": "e9874084613edaa84915cc00f689b92958e879073757badc5897614f21a73a74"
+   },
+   "seconds": 304.9
+  },
+  {
+   "step": "voters-posthoc",
+   "folder": "voters",
+   "commands": [
+    "posthoc_blog_logbooks.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/posthoc_blog_logbooks.json": "b247829ee6cd09437bdd3168abf82ae66dffbb6639c714c9aac773189accf21d"
+   },
+   "seconds": 2.5
+  },
+  {
+   "step": "voters-review",
+   "folder": "voters",
+   "commands": [
+    "review_checks.py"
+   ],
+   "ignored": {
+    "results/review_checks.json": {
+     "differences": [
+      ".local_trace_indexes.dirs_skipped_unreadable: committed 1 -> new 5"
+     ],
+     "reasons": {
+      ".local_trace_indexes.dirs_skipped_unreadable": "counts local folders the trace scan could not read; it depends on the checkout (it rose after the 2026-10-19 reorganisation added long-path clones)"
+     }
+    }
+   },
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/review_checks.json": "8dfbb1980a226644dfe1553631fb37c62df904a385d593e9448b7052ba128260"
+   },
+   "seconds": 62.8
+  },
+  {
+   "step": "readiness-labels",
+   "folder": "readiness",
+   "commands": [
+    "score_labels.py"
+   ],
+   "ignored": {
+    "results/labelling.json": {
+     "differences": [
+      ".coder_model (only in committed)"
+     ],
+     "reasons": {
+      ".coder_model": "coder provenance added by hand in c058d2e from the subagent transcripts; not computed by score_labels.py"
+     }
+    }
+   },
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/labelling.json": "2450e79e4a86322c3036961122ade34af4106da9588983f18f6005eae2d4b759"
+   },
+   "seconds": 0.5
+  },
+  {
+   "step": "readiness",
+   "folder": "readiness",
+   "commands": [
+    "analyze_readiness.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/readiness.json": "42f917da9c5daf16c876dc850189ff793eb98210b8baeddcfd3c24da5a170add"
+   },
+   "seconds": 30.8
+  },
+  {
+   "step": "p8",
+   "folder": "readiness",
+   "commands": [
+    "analyze_p8.py run"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/p8_coding.json": "f9ba853538f2a8280ecc4edb8c65298f75a722c4bd72c24591bf1f298202955e",
+    "results/p8.json": "bde696ffd7ed986cc43267728c863997582f89324f0fce4fb150f5974684eece"
+   },
+   "seconds": 143.0
+  },
+  {
+   "step": "p8-posthoc",
+   "folder": "readiness",
+   "commands": [
+    "posthoc_p8.py"
+   ],
+   "status": "match",
+   "differences": {},
+   "missing": [],
+   "new_sha256": {
+    "results/p8_posthoc.json": "b04b8c2ca7016a773236ade6138142c2a7384ef8cc0d5a249cd86753d8335ad2"
+   },
+   "seconds": 8.9
+  }
+ ],
+ "summary": {
+  "match": 15,
+  "differs": 0,
+  "error": 0
+ }
+}

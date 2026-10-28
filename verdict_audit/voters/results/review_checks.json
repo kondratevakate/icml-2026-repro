@@ -1,0 +1,37 @@
+{
+  "note": "post hoc diagnostics; counts only",
+  "judge_latency_hours": {
+    "n": 5187,
+    "share_gt_24h": 0.01870059764796607,
+    "share_gt_7d": 0.003470213996529786
+  },
+  "h4_falsified_dissent": {
+    "n_pairs": 834,
+    "n_claims": 451,
+    "n_papers": 252,
+    "top_claim_share": 0.01079136690647482,
+    "top10_papers_share": 0.21103117505995203
+  },
+  "resubmission": {
+    "events": {
+      "same_sha": 996,
+      "new_sha": 1307
+    },
+    "spaces_new_sha": 1176,
+    "teams_new_sha": 62,
+    "top1_share": 0.11629686304514154,
+    "top5_share": 0.47819433817903595,
+    "top10_share": 0.7719969395562356
+  },
+  "empty_evidence": {
+    "total_claims": 35166,
+    "by_verdict": {
+      "inconclusive": 15
+    }
+  },
+  "local_trace_indexes": {
+    "n": 49,
+    "empty_sessions": 49,
+    "dirs_skipped_unreadable": 1
+  }
+}

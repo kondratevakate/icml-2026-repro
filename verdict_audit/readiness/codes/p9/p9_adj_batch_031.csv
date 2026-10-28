@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1185,variance,no,"Seed 42 is used only for cohort sampling and no standard deviations, intervals or repeated runs are shown for the main Table 2 results."
+P1186,variance,no,"The text notes SimPO has large variance across runs but reports no seeds, standard deviations or intervals for the main Table 1 results."
+P1187,variance,no,The only standard deviations are of portfolio sparsity across trading periods in an appendix table; main cumulative-wealth results show no seeds or intervals.
+P1188,variance,no,"The excerpts describe data, models and hyperparameters but report no seeds, error bars or standard deviations for main results."
+P1188,compute,none,No hardware or training time is stated; only a relative training-time comparison to MoELoRA (67%) is given.
+P1191,variance,no,"Main results (GenEval, reward metrics) are given as single numbers with no seeds, error bars or intervals mentioned."
+P1191,compute,none,Compute is described only relatively (370x less training compute than FLUX); no hardware or time is stated.
+P1192,variance,no,"The benchmark results are described without any repeated runs, seeds, standard deviations or intervals; only a McNemar test for prompt design is mentioned."
+P1192,compute,none,The excerpts state no hardware or run time for the evaluations.
+P1196,variance,yes,"The paper says only for the 10M-point dataset it reports RMSE of one execution due to resource limits, implying repeated executions are reported for the other main results."
+P1197,variance,no,"Results are reported as single rates per model with no seeds, repeated runs or intervals mentioned."
+P1197,compute,none,"No hardware, GPU or runtime information appears in the excerpts."
+P1198,compute,none,Hyperparameters and iterations are given but no hardware or training time is stated.
+P1212,compute,none,Optimizer settings are given but no hardware or training time appears in the excerpts.
+P1217,compute,unclear,"The text says hardware details are in App. C, but that appendix content is not shown, so hardware and time cannot be confirmed."
+P1221,variance,no,"Main results are described as point metrics (MSE, MAE, PCC, RVD) with no seeds, error bars or standard deviations mentioned."
+P1221,compute,none,"No hardware, GPU or training time is stated in the excerpts."
+P1244,compute,amount,Experiments ran on NVIDIA RTX 4090 GPUs and a Compute resources table gives approximate compute accounting for reproducing the reported experiments.
+P1245,variance,no,"LLM scores are reported as single averages with default sampling and no seeds, repeated runs or intervals; the Std. Dev. cited is judge score spread, not result variance."
+P1247,compute,none,Implementation details give architectures and learning rates but no hardware or training time.

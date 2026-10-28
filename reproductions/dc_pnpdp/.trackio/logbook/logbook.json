@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Dual-Coupled PnP Diffusion",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-dc-pnpdp-release-audit",
+  "paper": {
+    "arxiv_id": "2602.23214"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-jEBkuuETjr",
+    "medical-imaging"
+  ],
+  "updated_at": "2026-07-30T07:55:17+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Dual-Coupled PnP Diffusion",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-dual-fixed-point-optimality",
+        "title": "Claim 1: dual fixed-point optimality",
+        "file": "pages/claim-1-dual-fixed-point-optimality/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-loose-pnp-bias",
+        "title": "Claim 2: loose-PnP bias",
+        "file": "pages/claim-2-loose-pnp-bias/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-spectral-homogenization",
+        "title": "Claim 3: Spectral Homogenization",
+        "file": "pages/claim-3-spectral-homogenization/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-ct-reconstruction-gains",
+        "title": "Claim 4: CT reconstruction gains",
+        "file": "pages/claim-4-ct-reconstruction-gains/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-mri-reconstruction-breadth",
+        "title": "Claim 5: MRI reconstruction breadth",
+        "file": "pages/claim-5-mri-reconstruction-breadth/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-components-and-efficiency",
+        "title": "Claim 6: components and efficiency",
+        "file": "pages/claim-6-components-and-efficiency/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-dc-pnpdp-release-audit-artifacts"
+  },
+  "agent_view_tokens": 1798,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "5fab1fa5a170f7432a26"
+}

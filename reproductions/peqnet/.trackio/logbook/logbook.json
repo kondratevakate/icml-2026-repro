@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Smooth Multi-Policy Causal Effect Estimation in Longitudinal Settings",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings",
+  "paper": {
+    "arxiv_id": "2605.14284"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-bIcz7bIZSo"
+  ],
+  "updated_at": "2026-07-29T15:44:43+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Smooth Multi-Policy Causal Effect Estimation in Longitudinal Settings",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-limited-confounding-rmse",
+        "title": "Claim 1: limited-confounding RMSE",
+        "file": "pages/claim-1-limited-confounding-rmse/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-expanded-confounding-rmse",
+        "title": "Claim 2: expanded-confounding RMSE",
+        "file": "pages/claim-2-expanded-confounding-rmse/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-dynamic-policy-rmse",
+        "title": "Claim 3: dynamic-policy RMSE",
+        "file": "pages/claim-3-dynamic-policy-rmse/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-policy-embedding-pipeline",
+        "title": "Claim 4: policy embedding pipeline",
+        "file": "pages/claim-4-policy-embedding-pipeline/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-remainder-lipschitz-theorem",
+        "title": "Claim 5: remainder Lipschitz theorem",
+        "file": "pages/claim-5-remainder-lipschitz-theorem/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-6-mimic-iv-sepsis-result",
+        "title": "Claim 6: MIMIC-IV sepsis result",
+        "file": "pages/claim-6-mimic-iv-sepsis-result/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": "kondratevakate/repro-smooth-multi-policy-causal-effect-estimation-in-longitudinal-settings-artifacts"
+  },
+  "agent_view_tokens": 3421,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "762cacfd52d1c5cae117"
+}

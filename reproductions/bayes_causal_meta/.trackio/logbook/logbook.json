@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "title": "Reproduction: Bayesian Causal Meta-Learning",
+  "emoji": "🎯",
+  "space_id": "kondratevakate/repro-bayes-causal-meta-release-audit",
+  "paper": {
+    "arxiv_id": "2602.19788"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-k76ll7aQyE",
+    "clinical-meta-learning"
+  ],
+  "updated_at": "2026-07-30T08:08:16+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Reproduction: Bayesian Causal Meta-Learning",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "executive-summary",
+        "title": "Executive summary",
+        "file": "pages/executive-summary/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-1-embedding-conditional-prior",
+        "title": "Claim 1: embedding-conditional prior",
+        "file": "pages/claim-1-embedding-conditional-prior/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-2-prior-risk-continuity",
+        "title": "Claim 2: prior-risk continuity",
+        "file": "pages/claim-2-prior-risk-continuity/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-3-negative-transfer-theorem",
+        "title": "Claim 3: negative-transfer theorem",
+        "file": "pages/claim-3-negative-transfer-theorem/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-4-synthetic-task-shift-evidence",
+        "title": "Claim 4: synthetic task-shift evidence",
+        "file": "pages/claim-4-synthetic-task-shift-evidence/page.md",
+        "children": []
+      },
+      {
+        "slug": "claim-5-clinical-cross-disease-evidence",
+        "title": "Claim 5: clinical cross-disease evidence",
+        "file": "pages/claim-5-clinical-cross-disease-evidence/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      }
+    ]
+  },
+  "traces": [],
+  "workspace": {
+    "file": "workspace.json",
+    "file_count": 0,
+    "total_size": 0,
+    "bucket_id": null
+  },
+  "agent_view_tokens": 1614,
+  "trace_view_tokens": 10,
+  "workspace_view_tokens": 8,
+  "revision": "5c725a35bda804be9ec3"
+}

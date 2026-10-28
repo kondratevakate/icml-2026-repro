@@ -1,0 +1,8 @@
+official/
+__pycache__/
+*.pyc
+.pytest_cache/
+.trackio/logbook/traces/
+.trackio/logbook/workspace.json
+.trackio/logbook/trackio-*.png
+results/raw/

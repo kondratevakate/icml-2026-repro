@@ -1,0 +1,446 @@
+{
+  "artifact_hashes": {
+    "paper_sha256": "5dcf4b1fde10bc33d4b6c188c866b863dfa27fd4deedb5da059a7269e95aeed5",
+    "source_sha256": "3acd6fe980928018e937e3d1001379023d40b4c10a9e8b830cf4e6ac9b4e52e9"
+  },
+  "checks": {
+    "five_cohorts_and_five_folds_present": true,
+    "train_test_splits_are_disjoint": true,
+    "all_released_rows_have_dss_endpoint": false,
+    "each_case_appears_once_in_test": true,
+    "synthetic_forward_and_backward_execute": true,
+    "belief_is_bounded_by_plausibility": true,
+    "training_matches_paper_at_lambda_half": true,
+    "training_matches_paper_away_from_lambda_half": false,
+    "evaluation_matches_paper_away_from_lambda_half": false,
+    "all_low_probability_component_is_supported": false,
+    "run_level_empirical_artifacts_present": false,
+    "visualization_entrypoint_executes": false
+  },
+  "passed": 6,
+  "failed": 6,
+  "splits": {
+    "cohorts": {
+      "BLCA": {
+        "folds": [
+          {
+            "fold": 0,
+            "train_rows": 356,
+            "test_rows": 81,
+            "train_cases": 299,
+            "test_cases": 74,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 13
+          },
+          {
+            "fold": 1,
+            "train_rows": 365,
+            "test_rows": 72,
+            "train_cases": 301,
+            "test_cases": 72,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 13
+          },
+          {
+            "fold": 2,
+            "train_rows": 314,
+            "test_rows": 123,
+            "train_cases": 294,
+            "test_cases": 79,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 13
+          },
+          {
+            "fold": 3,
+            "train_rows": 351,
+            "test_rows": 86,
+            "train_cases": 297,
+            "test_cases": 76,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 13
+          },
+          {
+            "fold": 4,
+            "train_rows": 362,
+            "test_rows": 75,
+            "train_cases": 301,
+            "test_cases": 72,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 13
+          }
+        ],
+        "unique_cases": 373,
+        "unique_slides": 437,
+        "each_case_once_in_test": true,
+        "each_slide_once_in_test": true
+      },
+      "BRCA": {
+        "folds": [
+          {
+            "fold": 0,
+            "train_rows": 904,
+            "test_rows": 207,
+            "train_cases": 837,
+            "test_cases": 204,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 20
+          },
+          {
+            "fold": 1,
+            "train_rows": 870,
+            "test_rows": 241,
+            "train_cases": 819,
+            "test_cases": 222,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 20
+          },
+          {
+            "fold": 2,
+            "train_rows": 894,
+            "test_rows": 217,
+            "train_cases": 828,
+            "test_cases": 213,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 20
+          },
+          {
+            "fold": 3,
+            "train_rows": 931,
+            "test_rows": 180,
+            "train_cases": 861,
+            "test_cases": 180,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 20
+          },
+          {
+            "fold": 4,
+            "train_rows": 845,
+            "test_rows": 266,
+            "train_cases": 819,
+            "test_cases": 222,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 20
+          }
+        ],
+        "unique_cases": 1041,
+        "unique_slides": 1111,
+        "each_case_once_in_test": true,
+        "each_slide_once_in_test": true
+      },
+      "KIRC": {
+        "folds": [
+          {
+            "fold": 0,
+            "train_rows": 458,
+            "test_rows": 59,
+            "train_cases": 453,
+            "test_cases": 58,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 9
+          },
+          {
+            "fold": 1,
+            "train_rows": 433,
+            "test_rows": 84,
+            "train_cases": 431,
+            "test_cases": 80,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 9
+          },
+          {
+            "fold": 2,
+            "train_rows": 377,
+            "test_rows": 140,
+            "train_cases": 371,
+            "test_cases": 140,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 9
+          },
+          {
+            "fold": 3,
+            "train_rows": 421,
+            "test_rows": 96,
+            "train_cases": 416,
+            "test_cases": 95,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 9
+          },
+          {
+            "fold": 4,
+            "train_rows": 379,
+            "test_rows": 138,
+            "train_cases": 373,
+            "test_cases": 138,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 9
+          }
+        ],
+        "unique_cases": 511,
+        "unique_slides": 517,
+        "each_case_once_in_test": true,
+        "each_slide_once_in_test": true
+      },
+      "LUAD": {
+        "folds": [
+          {
+            "fold": 0,
+            "train_rows": 364,
+            "test_rows": 155,
+            "train_cases": 359,
+            "test_cases": 97,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 44
+          },
+          {
+            "fold": 1,
+            "train_rows": 387,
+            "test_rows": 132,
+            "train_cases": 325,
+            "test_cases": 131,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 44
+          },
+          {
+            "fold": 2,
+            "train_rows": 409,
+            "test_rows": 110,
+            "train_cases": 346,
+            "test_cases": 110,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 44
+          },
+          {
+            "fold": 3,
+            "train_rows": 425,
+            "test_rows": 94,
+            "train_cases": 366,
+            "test_cases": 90,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 44
+          },
+          {
+            "fold": 4,
+            "train_rows": 491,
+            "test_rows": 28,
+            "train_cases": 428,
+            "test_cases": 28,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 44
+          }
+        ],
+        "unique_cases": 456,
+        "unique_slides": 519,
+        "each_case_once_in_test": true,
+        "each_slide_once_in_test": true
+      },
+      "UCEC": {
+        "folds": [
+          {
+            "fold": 0,
+            "train_rows": 444,
+            "test_rows": 121,
+            "train_cases": 415,
+            "test_cases": 89,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 0
+          },
+          {
+            "fold": 1,
+            "train_rows": 439,
+            "test_rows": 126,
+            "train_cases": 406,
+            "test_cases": 98,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 0
+          },
+          {
+            "fold": 2,
+            "train_rows": 440,
+            "test_rows": 125,
+            "train_cases": 379,
+            "test_cases": 125,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 0
+          },
+          {
+            "fold": 3,
+            "train_rows": 464,
+            "test_rows": 101,
+            "train_cases": 403,
+            "test_cases": 101,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 0
+          },
+          {
+            "fold": 4,
+            "train_rows": 473,
+            "test_rows": 92,
+            "train_cases": 413,
+            "test_cases": 91,
+            "case_overlap": 0,
+            "slide_overlap": 0,
+            "required_columns_present": true,
+            "missing_dss_values": 0
+          }
+        ],
+        "unique_cases": 504,
+        "unique_slides": 565,
+        "each_case_once_in_test": true,
+        "each_slide_once_in_test": true
+      }
+    },
+    "cohort_count": 5,
+    "fold_directory_count": 25,
+    "csv_count": 50,
+    "all_train_test_folds_disjoint": true,
+    "all_released_rows_have_dss_endpoint": false,
+    "all_cases_once_in_test": true,
+    "all_slides_once_in_test": true,
+    "directory_endpoint_label": "overall_survival",
+    "trainer_endpoint_columns": [
+      "dss_survival_days",
+      "dss_censorship"
+    ]
+  },
+  "model_and_theory": {
+    "output_shapes": {
+      "mux": [
+        2,
+        4
+      ],
+      "sig2x": [
+        2,
+        4
+      ],
+      "hx": [
+        2,
+        4
+      ],
+      "penalty1": [
+        2
+      ],
+      "penalty2": [
+        2
+      ]
+    },
+    "forward_finite": true,
+    "loss": 1.1716276407241821,
+    "loss_finite": true,
+    "finite_gradient_tensors": 12,
+    "gradient_tensor_count": 12,
+    "belief_never_exceeds_plausibility": true,
+    "component_mixture_weights_sum_to_one": true,
+    "lambda_audit": {
+      "0.0": {
+        "training_vs_paper_max_abs": 0.9999999403953552,
+        "evaluation_vs_paper_max_abs": 0.8982377052307129,
+        "official_training_curve_max": 0.0,
+        "paper_curve_max": 0.9999999403953552
+      },
+      "0.25": {
+        "training_vs_paper_max_abs": 0.4999999403953552,
+        "evaluation_vs_paper_max_abs": 0.44911885261535645,
+        "official_training_curve_max": 0.4714241623878479,
+        "paper_curve_max": 0.9714239835739136
+      },
+      "0.5": {
+        "training_vs_paper_max_abs": 0.0,
+        "evaluation_vs_paper_max_abs": 0.0,
+        "official_training_curve_max": 0.9428483247756958,
+        "paper_curve_max": 0.9428483247756958
+      },
+      "0.75": {
+        "training_vs_paper_max_abs": 0.5,
+        "evaluation_vs_paper_max_abs": 0.44911885261535645,
+        "official_training_curve_max": 1.4142725467681885,
+        "paper_curve_max": 0.9142726063728333
+      },
+      "1.0": {
+        "training_vs_paper_max_abs": 1.0,
+        "evaluation_vs_paper_max_abs": 0.8982377052307129,
+        "official_training_curve_max": 1.8856966495513916,
+        "paper_curve_max": 0.8856968879699707
+      }
+    },
+    "lambda_interpretation": "The paper uses lambda*Bel+(1-lambda)*Pl. Training uses lambda*Pl+lambda*Bel; evaluation uses lambda*Pl+(1-lambda)*Bel, reversing the stated direction. Both coincide with the paper only at lambda=0.5.",
+    "all_low_probability_component": {
+      "selected_prototype_count": 0,
+      "error": "RuntimeError: stack expects a non-empty TensorList"
+    }
+  },
+  "release": {
+    "python_files": 30,
+    "split_csv_files": 50,
+    "empirical_binary_or_metric_artifacts": [],
+    "notebook_outputs": {
+      "examples\\kirc_dpsurv.ipynb": {
+        "cells": 8,
+        "output_objects": 0,
+        "executed_cells": 0
+      },
+      "visualization\\prototypical_assignment_map_visualization_LUAD.ipynb": {
+        "cells": 14,
+        "output_objects": 6,
+        "executed_cells": 5
+      }
+    },
+    "external_inputs_required": [
+      "TCGA whole-slide images",
+      "UNI2-h patch features",
+      "PANTHER GMM embeddings"
+    ]
+  },
+  "visualization": {
+    "get_panther_encoder_definition_count": 2,
+    "effective_entrypoint_error": "NameError: name 'create_embedding_model' is not defined",
+    "interpretation": "The second get_panther_encoder definition shadows the first and calls create_embedding_model, which is neither defined nor imported in the release."
+  }
+}

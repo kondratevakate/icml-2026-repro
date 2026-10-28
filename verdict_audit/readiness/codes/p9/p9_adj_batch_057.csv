@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3063,variance,no,"Excerpts give single results only; the 30-batch throughput averaging is a timing measurement, not seeds or error bars for main results."
+P3064,compute,none,The text mentions no training hardware or training time anywhere in the excerpts.
+P3065,variance,no,"Main results are reported as single scores (e.g. 0.87 GenEval) with no seeds, error bars or standard deviations mentioned."
+P3066,compute,none,Only vague inference speed ('seconds of GPU time') and FLOP counts are given; no hardware type or training time is stated.
+P3070,compute,none,Implementation details give epochs and learning rates but no hardware or compute time.
+P3071,variance,no,"Results are reported without any mention of seeds, repeated runs, error bars or deviations."
+P3071,compute,none,Only a vague statement that training consumes large computational resources; no hardware or time is stated.
+P3079,variance,no,"Tables report single point values per method with no seeds, error bars or standard deviations."
+P3080,variance,no,Main results are reported as single AUC/error values with no mention of seeds or variability.
+P3080,compute,none,Training is described in epochs and optimizer settings only; no hardware or training time is stated.
+P3082,compute,none,Only relative speed (18x faster) and model size are given; no hardware or GPU time is stated.
+P3086,compute,none,The excerpts state no hardware or training time for CalM or baselines.
+P3088,variance,no,"Results are described without seeds, repeated runs, error bars or standard deviations."
+P3088,compute,none,Hyperparameter table contents are not shown and the text names no hardware or training time.
+P3089,variance,no,"Main results are single accuracies (e.g. 71.6% vs 71.5%) with no seeds, error bars or intervals mentioned."
+P3091,compute,none,The excerpts mention seeds but no hardware or compute time.
+P3093,compute,none,Implementation details list models and optimizers but no hardware or training time.
+P3094,variance,no,"No seeds, repeated runs, error bars or deviations are mentioned for the reported results."
+P3094,compute,none,Only qualitative runtime/memory remarks appear; no hardware or time is stated.
+P3099,compute,none,Implementation details give optimizer and batch settings but no hardware or training time; the training budget section shows only table captions.

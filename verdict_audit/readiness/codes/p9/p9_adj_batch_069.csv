@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P4124,compute,none,"The excerpts describe datasets, architecture and fine-tuning but state no hardware or training time."
+P4129,compute,none,The excerpts cover dataset construction and evaluation setup and state no hardware or compute time.
+P4137,compute,none,"The excerpts describe model, datasets and decoding results and mention no hardware or training time."
+P4138,compute,amount,Pre-training is stated to take 16 hours on a machine with 8 RTX 4090 GPUs.
+P4139,variance,unclear,"Table 1 bolds methods statistically indistinguishable from the best, implying some variance estimate, but no seeds, standard deviations or intervals are stated."
+P4139,compute,none,The excerpts on uncertainty estimation and synthetic data state no hardware or compute time.
+P4146,compute,amount,"The compute section states NVIDIA GPU workers with a 5-hour wall-time limit per training job, giving both hardware and time."
+P4153,compute,none,The excerpts give seeds and implementation details but no hardware or training time.
+P4169,compute,hardware_only,"Runtime is compared on an NVIDIA A100 GPU, but the text gives only relative speed-ups and no actual time."
+P4188,variance,no,"Table 1 reports single point values per method and the text mentions no seeds, repeated runs or error bars."
+P4188,compute,unclear,The implementation details paragraph on training is cut off by truncation and no hardware or time appears in the visible part.
+P4205,variance,no,"Tables 1 and 2 report only mean values over test samples with no seeds, standard deviations or intervals."
+P4219,variance,no,"Results tables report per-scene PSNR/SSIM/LPIPS scores with no seeds, error bars or standard deviations mentioned."
+P4233,compute,hardware_only,"Pretraining uses 8 NVIDIA A800 GPUs with throughput and a FLOP budget, but no training time or GPU-hours are stated."
+P4236,compute,none,The training details give datasets and hyperparameters but no hardware or compute time.
+P4238,compute,none,The compute-efficiency appendix gives relative training compute and FLOPs but no hardware or time.
+P4239,compute,none,The training details mention LoRA fine-tuning for about 1.2k steps but no hardware or time.
+P4248,compute,none,The excerpts on dataset augmentation and generalization state no hardware or compute time.
+P4249,compute,none,The training and implementation appendix describes architecture and batching but no hardware or time.
+P4256,variance,no,"The scaling-law experiments are described as single ablation runs with no seeds, error bars or standard deviations reported."

@@ -1,0 +1,435 @@
+{
+  "protocol": {
+    "seed_offset": 20260728,
+    "log_gsr_thresholds": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5
+    ],
+    "ground_truth_n": 5000,
+    "ground_truth_max_len": 20000,
+    "n_sequences": 10000,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "figure_13_setups": [
+      [
+        "fixed-1000",
+        1000,
+        1000,
+        0.5
+      ],
+      [
+        "irregular-50-500",
+        50,
+        500,
+        0.5
+      ]
+    ],
+    "pre_stated_success_rule": "In the censoring-active, non-extrapolation region (0.2*Tmax <= true ARL <= Tmax), KM's normalized ARL-ADD distance beats LB in at least 80% of seed-cells and its median distance is at most 75% of LB. Low-censoring points are a null region, not wins."
+  },
+  "protocol_sha256": "6246a279e5590e889d4b2cbcd8697bd9168685176391e0c98169af10380fb86f",
+  "ground_truth": {
+    "0.5": {
+      "arl": 10.7064,
+      "add": 0.3042,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "1.0": {
+      "arl": 11.1792,
+      "add": 0.3178,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "1.5": {
+      "arl": 27.2286,
+      "add": 0.6138,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "2.0": {
+      "arl": 38.3556,
+      "add": 0.6408,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "2.5": {
+      "arl": 41.7106,
+      "add": 0.6606,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "3.0": {
+      "arl": 96.1556,
+      "add": 1.033,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "3.5": {
+      "arl": 143.5172,
+      "add": 1.0986,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "4.0": {
+      "arl": 201.865,
+      "add": 1.4382,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "4.5": {
+      "arl": 385.6424,
+      "add": 1.5478,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "5.0": {
+      "arl": 555.6418,
+      "add": 1.6234,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    },
+    "5.5": {
+      "arl": 978.1288,
+      "add": 2.0048,
+      "arl_alarm_rate": 1.0,
+      "add_alarm_rate": 1.0
+    }
+  },
+  "results": {
+    "fixed-1000": {
+      "0.5": {
+        "km_arl_relative_bias_mean": -0.021112600593662535,
+        "km_arl_relative_bias_sd": 0.010322605352281206,
+        "lb_arl_relative_bias_mean": -0.020348737735689647,
+        "km_add_relative_bias_mean": -0.1846797033947049,
+        "lb_add_relative_bias_mean": -0.18467970339470494,
+        "km_curve_distance_mean": 0.23054987237508606,
+        "lb_curve_distance_mean": 0.22898101618211236,
+        "km_curve_beats_lb_fraction": 0.4,
+        "true_arl": 10.7064,
+        "true_add": 0.3042,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "1.0": {
+        "km_arl_relative_bias_mean": 0.02436163087576234,
+        "km_arl_relative_bias_sd": 0.007950227135428716,
+        "lb_arl_relative_bias_mean": 0.0317972207164869,
+        "km_add_relative_bias_mean": 0.06562690967843808,
+        "lb_add_relative_bias_mean": 0.06562690967843816,
+        "km_curve_distance_mean": 0.23635455140693154,
+        "lb_curve_distance_mean": 0.2387375027253515,
+        "km_curve_beats_lb_fraction": 0.4,
+        "true_arl": 11.1792,
+        "true_add": 0.3178,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "1.5": {
+        "km_arl_relative_bias_mean": -0.013195158809910493,
+        "km_arl_relative_bias_sd": 0.010102698807472752,
+        "lb_arl_relative_bias_mean": -0.01578141550866099,
+        "km_add_relative_bias_mean": -0.11264153611109162,
+        "lb_add_relative_bias_mean": -0.11264153611109158,
+        "km_curve_distance_mean": 0.15405155490127298,
+        "lb_curve_distance_mean": 0.15513722073461128,
+        "km_curve_beats_lb_fraction": 0.6,
+        "true_arl": 27.2286,
+        "true_add": 0.6138,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "2.0": {
+        "km_arl_relative_bias_mean": -0.014418160159176577,
+        "km_arl_relative_bias_sd": 0.008311944334807054,
+        "lb_arl_relative_bias_mean": -0.008389508411201892,
+        "km_add_relative_bias_mean": -0.09891157401553184,
+        "lb_add_relative_bias_mean": -0.09891157401553195,
+        "km_curve_distance_mean": 0.1025180320063664,
+        "lb_curve_distance_mean": 0.09958217526253352,
+        "km_curve_beats_lb_fraction": 0.2,
+        "true_arl": 38.3556,
+        "true_add": 0.6408,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "2.5": {
+        "km_arl_relative_bias_mean": -0.007025596319043,
+        "km_arl_relative_bias_sd": 0.010855838296598756,
+        "lb_arl_relative_bias_mean": 0.0024515912455713466,
+        "km_add_relative_bias_mean": -0.012797986055758482,
+        "lb_add_relative_bias_mean": -0.012797986055758414,
+        "km_curve_distance_mean": 0.04752177537803924,
+        "lb_curve_distance_mean": 0.051855074611116235,
+        "km_curve_beats_lb_fraction": 0.8,
+        "true_arl": 41.7106,
+        "true_add": 0.6606,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "3.0": {
+        "km_arl_relative_bias_mean": -0.020414002439089092,
+        "km_arl_relative_bias_sd": 0.00761314018285149,
+        "lb_arl_relative_bias_mean": 0.008419043932761144,
+        "km_add_relative_bias_mean": -0.10954669539637182,
+        "lb_add_relative_bias_mean": -0.10954669539637181,
+        "km_curve_distance_mean": 0.11225734147578681,
+        "lb_curve_distance_mean": 0.10996416098929465,
+        "km_curve_beats_lb_fraction": 0.2,
+        "true_arl": 96.1556,
+        "true_add": 1.033,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "3.5": {
+        "km_arl_relative_bias_mean": -0.01918787347055583,
+        "km_arl_relative_bias_sd": 0.004330179788063754,
+        "lb_arl_relative_bias_mean": 0.006618952806759992,
+        "km_add_relative_bias_mean": -0.056397700002433646,
+        "lb_add_relative_bias_mean": -0.056397700002433715,
+        "km_curve_distance_mean": 0.06413320877221013,
+        "lb_curve_distance_mean": 0.05891441589680002,
+        "km_curve_beats_lb_fraction": 0.0,
+        "true_arl": 143.5172,
+        "true_add": 1.0986,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "4.0": {
+        "km_arl_relative_bias_mean": -0.05023381486899666,
+        "km_arl_relative_bias_sd": 0.008245010816831374,
+        "lb_arl_relative_bias_mean": -0.04374689587318163,
+        "km_add_relative_bias_mean": -0.17502307606034112,
+        "lb_add_relative_bias_mean": -0.17502307606034112,
+        "km_curve_distance_mean": 0.18225935231495846,
+        "lb_curve_distance_mean": 0.1806279180660624,
+        "km_curve_beats_lb_fraction": 0.4,
+        "true_arl": 201.865,
+        "true_add": 1.4382,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "4.5": {
+        "km_arl_relative_bias_mean": -0.11439856319004793,
+        "km_arl_relative_bias_sd": 0.006436027363353744,
+        "lb_arl_relative_bias_mean": -0.20692063646641773,
+        "km_add_relative_bias_mean": -0.07022544853969939,
+        "lb_add_relative_bias_mean": -0.07054338635613637,
+        "km_curve_distance_mean": 0.1343046604885222,
+        "lb_curve_distance_mean": 0.21864903624473692,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 385.6424,
+        "true_add": 1.5478,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "5.0": {
+        "km_arl_relative_bias_mean": -0.20131923966235882,
+        "km_arl_relative_bias_sd": 0.006934502492893393,
+        "lb_arl_relative_bias_mean": -0.3520068511616268,
+        "km_add_relative_bias_mean": -0.04859871683218502,
+        "lb_add_relative_bias_mean": -0.04916560185427717,
+        "km_curve_distance_mean": 0.2074143427447106,
+        "lb_curve_distance_mean": 0.3556241924119014,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 555.6418,
+        "true_add": 1.6234,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "5.5": {
+        "km_arl_relative_bias_mean": -0.39189710910463615,
+        "km_arl_relative_bias_sd": 0.0037924051861395946,
+        "lb_arl_relative_bias_mean": -0.5746350609396761,
+        "km_add_relative_bias_mean": -0.11320808175560719,
+        "lb_add_relative_bias_mean": -0.11414417529582954,
+        "km_curve_distance_mean": 0.40847777829051235,
+        "lb_curve_distance_mean": 0.5862569406280986,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 978.1288,
+        "true_add": 2.0048,
+        "extrapolation": false,
+        "censoring_active": true
+      }
+    },
+    "irregular-50-500": {
+      "0.5": {
+        "km_arl_relative_bias_mean": -0.040925960052562084,
+        "km_arl_relative_bias_sd": 0.005577287221760245,
+        "lb_arl_relative_bias_mean": -0.022126404047016268,
+        "km_add_relative_bias_mean": -0.0056592101282064485,
+        "lb_add_relative_bias_mean": -0.005659210128206302,
+        "km_curve_distance_mean": 0.08228844498285323,
+        "lb_curve_distance_mean": 0.07410643927876306,
+        "km_curve_beats_lb_fraction": 0.0,
+        "true_arl": 10.7064,
+        "true_add": 0.3042,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "1.0": {
+        "km_arl_relative_bias_mean": 0.005780260231108591,
+        "km_arl_relative_bias_sd": 0.011831814126405986,
+        "lb_arl_relative_bias_mean": 0.020161603208344408,
+        "km_add_relative_bias_mean": -0.0010488653512061464,
+        "lb_add_relative_bias_mean": -0.0010488653512061145,
+        "km_curve_distance_mean": 0.08422148050059777,
+        "lb_curve_distance_mean": 0.09192367051581488,
+        "km_curve_beats_lb_fraction": 0.8,
+        "true_arl": 11.1792,
+        "true_add": 0.3178,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "1.5": {
+        "km_arl_relative_bias_mean": -0.040684506725430836,
+        "km_arl_relative_bias_sd": 0.00806847739919971,
+        "lb_arl_relative_bias_mean": -0.02280449608141884,
+        "km_add_relative_bias_mean": -0.1489127501096776,
+        "lb_add_relative_bias_mean": -0.14891275010967767,
+        "km_curve_distance_mean": 0.1545815710796707,
+        "lb_curve_distance_mean": 0.1511339882372882,
+        "km_curve_beats_lb_fraction": 0.0,
+        "true_arl": 27.2286,
+        "true_add": 0.6138,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "2.0": {
+        "km_arl_relative_bias_mean": -0.06030849365373018,
+        "km_arl_relative_bias_sd": 0.010532878208100525,
+        "lb_arl_relative_bias_mean": -0.059985140679817514,
+        "km_add_relative_bias_mean": -0.08517665992539349,
+        "lb_add_relative_bias_mean": -0.08732796982956915,
+        "km_curve_distance_mean": 0.10617195873096974,
+        "lb_curve_distance_mean": 0.1072021956277401,
+        "km_curve_beats_lb_fraction": 0.6,
+        "true_arl": 38.3556,
+        "true_add": 0.6408,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "2.5": {
+        "km_arl_relative_bias_mean": -0.05665081604568216,
+        "km_arl_relative_bias_sd": 0.012487058396328138,
+        "lb_arl_relative_bias_mean": -0.05973092100020052,
+        "km_add_relative_bias_mean": -0.012891767159768624,
+        "lb_add_relative_bias_mean": -0.020383039207697313,
+        "km_curve_distance_mean": 0.08102593112023852,
+        "lb_curve_distance_mean": 0.08664499245800958,
+        "km_curve_beats_lb_fraction": 0.6,
+        "true_arl": 41.7106,
+        "true_add": 0.6606,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "3.0": {
+        "km_arl_relative_bias_mean": -0.0904340992962748,
+        "km_arl_relative_bias_sd": 0.01607481141070505,
+        "lb_arl_relative_bias_mean": -0.20855740909850823,
+        "km_add_relative_bias_mean": -0.11381300003904751,
+        "lb_add_relative_bias_mean": -0.11922167227779101,
+        "km_curve_distance_mean": 0.14602525529951413,
+        "lb_curve_distance_mean": 0.240625598205588,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 96.1556,
+        "true_add": 1.033,
+        "extrapolation": false,
+        "censoring_active": false
+      },
+      "3.5": {
+        "km_arl_relative_bias_mean": -0.12883380708530617,
+        "km_arl_relative_bias_sd": 0.005732110030968631,
+        "lb_arl_relative_bias_mean": -0.32747516414546607,
+        "km_add_relative_bias_mean": -0.04273663974106397,
+        "lb_add_relative_bias_mean": -0.05308260569816177,
+        "km_curve_distance_mean": 0.13630067746162305,
+        "lb_curve_distance_mean": 0.33203449214280456,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 143.5172,
+        "true_add": 1.0986,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "4.0": {
+        "km_arl_relative_bias_mean": -0.20013239319722215,
+        "km_arl_relative_bias_sd": 0.008923723473798158,
+        "lb_arl_relative_bias_mean": -0.45049943044715623,
+        "km_add_relative_bias_mean": -0.168511220363516,
+        "lb_add_relative_bias_mean": -0.17456609211242763,
+        "km_curve_distance_mean": 0.2618514257995829,
+        "lb_curve_distance_mean": 0.4833731894335025,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 201.865,
+        "true_add": 1.4382,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "4.5": {
+        "km_arl_relative_bias_mean": -0.3541794027434605,
+        "km_arl_relative_bias_sd": 0.009307047518157018,
+        "lb_arl_relative_bias_mean": -0.6463306472456531,
+        "km_add_relative_bias_mean": -0.09553898811347311,
+        "lb_add_relative_bias_mean": -0.10486909420448862,
+        "km_curve_distance_mean": 0.36696887319394134,
+        "lb_curve_distance_mean": 0.6548783333247089,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 385.6424,
+        "true_add": 1.5478,
+        "extrapolation": false,
+        "censoring_active": true
+      },
+      "5.0": {
+        "km_arl_relative_bias_mean": -0.4733120295448199,
+        "km_arl_relative_bias_sd": 0.004892135876685961,
+        "lb_arl_relative_bias_mean": -0.7374573769690826,
+        "km_add_relative_bias_mean": -0.049826715616591376,
+        "lb_add_relative_bias_mean": -0.05895404917495173,
+        "km_curve_distance_mean": 0.4760892690706142,
+        "lb_curve_distance_mean": 0.7399518974560857,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 555.6418,
+        "true_add": 1.6234,
+        "extrapolation": true,
+        "censoring_active": false
+      },
+      "5.5": {
+        "km_arl_relative_bias_mean": -0.6389095566043349,
+        "km_arl_relative_bias_sd": 0.0022265712584175756,
+        "lb_arl_relative_bias_mean": -0.8406829710042805,
+        "km_add_relative_bias_mean": -0.10698462782954325,
+        "lb_add_relative_bias_mean": -0.1162417487751271,
+        "km_curve_distance_mean": 0.6478726856487238,
+        "lb_curve_distance_mean": 0.8487239923125477,
+        "km_curve_beats_lb_fraction": 1.0,
+        "true_arl": 978.1288,
+        "true_add": 2.0048,
+        "extrapolation": true,
+        "censoring_active": false
+      }
+    }
+  },
+  "checks": {
+    "stress_seed_cells": 35,
+    "finite_lb_stress_seed_cells": 35,
+    "stress_km_curve_beats_lb_fraction": 0.9142857142857143,
+    "stress_median_km_to_lb_distance_ratio": 0.583075234495567,
+    "null_seed_cells": 65,
+    "null_median_km_to_lb_distance_ratio": 1.0019682455775012
+  },
+  "passed": true
+}

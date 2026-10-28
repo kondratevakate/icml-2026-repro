@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2311,variance,no,"Text reports no seeds, error bars or standard deviations; p=0.05 runs are only described as effectively an extra seed without any reported spread."
+P2311,compute,none,No hardware or training time is stated anywhere in the excerpt.
+P2312,compute,unclear,"Only a vague GPU-enabled laptop for deployment and inference runtimes appear, and the text is truncated in the training section where compute could be stated."
+P2313,variance,no,"No seeds, repeated runs, standard deviations or intervals are mentioned for the results."
+P2317,variance,no,"Only says random seeds are provided; no repeated runs, error bars or standard deviations are reported."
+P2317,compute,none,No hardware or compute time is stated in the excerpt.
+P2329,variance,no,"No repeated runs, error bars or standard deviations are reported; the seeds section contains only pipeline description."
+P2329,compute,none,No hardware or compute time is stated in the excerpt.
+P2331,variance,no,"No seeds, standard deviations or intervals are reported for the results."
+P2332,compute,hardware_only,Only commodity CPUs/hardware configurations with per-query inference latency are given; no training or total experiment compute time is stated.
+P2337,variance,no,"The 4 seeds only generate videos for a success-rate comparison; no variance, error bars or standard deviations are reported for main results."
+P2339,variance,no,"Seed refers to seed data for dataset synthesis, not random seeds; no variance is reported."
+P2342,variance,unclear,"Runtime measurements are repeated five times, but the excerpt does not show whether spread or intervals are reported for main results and it is truncated."
+P2344,variance,no,"Attack success rates are single values; no seeds, repeated runs or variance are mentioned."
+P2350,variance,no,"Results tables report single best/second-best values with no seeds, standard deviations or intervals."
+P2351,variance,no,Seeds section only describes mean/std of priority scores in the method; results are single IoU values without variance.
+P2357,variance,no,"No repeated runs, standard deviations or intervals are mentioned for the segmentation results."
+P2364,variance,no,"Seeds refers to slicing seeds; only runtime distributions are shown, with no variance for main KBI/FAR results."
+P2367,variance,no,Std mentioned only in GRPO advantage normalization; no seeds or variance for results.
+P2369,variance,no,"Accuracies are reported as single values with no seeds, error bars or intervals."

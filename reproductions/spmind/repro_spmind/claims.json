@@ -1,0 +1,32 @@
+[
+  {
+    "id": "C1",
+    "title": "Autonomous spatial-proteomics agent architecture",
+    "verdict": "PARTIALLY_VERIFIED_FOR_RELEASED_ARCHITECTURE",
+    "score": 1
+  },
+  {
+    "id": "C2",
+    "title": "SP-Bench execution accuracy",
+    "verdict": "INCONCLUSIVE_NOT_EXECUTED",
+    "score": 0
+  },
+  {
+    "id": "C3",
+    "title": "SP-Bench construction",
+    "verdict": "VERIFIED",
+    "score": 2
+  },
+  {
+    "id": "C4",
+    "title": "CRC-CODEX quantification",
+    "verdict": "INCONCLUSIVE_MISSING_INPUTS_AND_OUTPUTS",
+    "score": 0
+  },
+  {
+    "id": "C5",
+    "title": "Cell-annotation GHK similarity",
+    "verdict": "INCONCLUSIVE_MISSING_PREDICTIONS",
+    "score": 0
+  }
+]

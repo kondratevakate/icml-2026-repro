@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1677,compute,none,"The Implementation paragraph gives optimizer, batch size and 350K steps but no hardware or training time anywhere in the excerpts."
+P1685,compute,unclear,"The checklist claims the hardware platform and training steps are described, but the actual hardware is not visible in the excerpts."
+P1690,variance,no,"Main classification and retrieval results are reported as single accuracy numbers with no seeds, error bars or standard deviations mentioned."
+P1690,compute,unclear,"Training hyperparameters and details are deferred to Section C, which is not included in the truncated excerpts, so compute cannot be judged."
+P1698,compute,none,"Training setup (LoRA steps, batch sizes) and a cost proxy of model x batch x steps are given, but no hardware or GPU time is stated."
+P1702,variance,no,Implementation and results sections report single PSNR/SSIM/LPIPS values with no repeated runs or variance; only a single RTX 4090 is mentioned.
+P1704,compute,none,Pretraining details give DDP with per-GPU and global batch sizes and epochs but never name the GPU type or training time.
+P1710,compute,unclear,"Training and propagator hyperparameters are deferred to appendix sections not shown, and no hardware or time appears in the truncated excerpts."
+P1714,variance,no,Seed variation is only a side analysis of search patterns with two seeds; main results are reported without error bars or standard deviations.
+P1714,compute,unclear,"Own training and search configurations are deferred to Sec. E.1, not shown; the only GPU-hours mentioned refer to prior methods."
+P1717,variance,no,"Results tables are described as best/second-best single values with no seeds, error bars or standard deviations."
+P1717,compute,none,"Appendix B Implementation Details gives LLM, backbones, optimizer, epochs and batch size but no hardware or time."
+P1718,variance,no,"No repeated runs, seeds or variance are reported for the main results; the only standard deviation mentioned is a data-filtering threshold."
+P1718,compute,unclear,The shown appendix covers architecture only; training setup and any hardware are not visible in the truncated excerpts.
+P1721,variance,no,"Results and ablations are reported without seeds, error bars or intervals; seed mentions refer to the noise-generation mechanism, not repeated runs."
+P1721,compute,none,"Fine-tuning details (140 epochs, batch 64, AdamW) and key parameters are given without any hardware or compute time."
+P1722,compute,unclear,"No hardware or time appears in the excerpts, and the training-setup sentence is cut off, so compute reporting cannot be determined."
+P1723,compute,unclear,"Convergence times in seconds, node counts and bandwidth are reported, but the GPU or machine type is not visible in the truncated excerpts."
+P1726,variance,no,"Training details and results are reported without multiple seeds, error bars or standard deviations for main results."
+P1727,variance,no,Main LUAD and BCSS tables report single values per metric with no standard deviations or repeated runs.

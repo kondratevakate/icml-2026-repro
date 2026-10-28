@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0225,compute,none,The experimental setup and reproducibility details describe inference settings and models but state no hardware or run time.
+P0227,variance,no,"Main results are single point accuracies (e.g. 69.90% vs 62.26%) with no seeds, error bars or spread; the only standard deviations mentioned are GRPO reward normalisation terms."
+P0227,compute,none,"Implementation details give data and PRPO hyperparameters but no hardware, GPU type or training time."
+P0230,compute,none,The text describes experimental protocols and an attack budget in FLOPs but states no hardware or compute time.
+P0231,compute,none,"Training details give iterations, batch size and learning rates but no hardware or training time."
+P0233,compute,none,Implementation details give zero-shot settings and slice sampling but state no hardware or run time.
+P0235,compute,amount,"Appendix B has a pretraining compute requirements table whose caption says PopT needs smaller hardware and shorter training time, so hardware and train times are reported."
+P0236,variance,no,"The only seeds mentioned are fixed seeds for conformer embedding and docking, and the standard deviations describe the spread of strain energies across generated molecules, not repeated runs of the main results."
+P0239,variance,unclear,"A standard deviation is mentioned only for the secondary grounding mIoU analysis without saying what it is computed over, and nothing is said about seeds or spread for the main VQA accuracy results."
+P0245,variance,no,"The untruncated text reports 1000 samples per structure but mentions no repeated runs, seeds, error bars or standard deviations for the results."
+P0246,variance,no,"Main accuracy is the mean correctness over K=8 samples per problem with no reported spread, and standard deviation or confidence intervals are mentioned only as optional for the Gini analysis."
+P0252,variance,yes,The simulation results are Monte Carlo summaries over repeated simulated datasets that report each estimator's standard deviation (bias as 125%-203% of SD) together with type I error and power.
+P0258,compute,amount,"The text states that the pipeline generates a new task in under 2 hours for less than USD 4 in model API cost, which quantifies the compute for this API-only pipeline."
+P0265,variance,no,"Main results are averaged over unseen subjects with no standard deviations or error bars, and the 30 repeated NSD test draws are reported only as averages."
+P0265,compute,none,"Implementation details give optimizer, batch size, learning rate and epochs but no hardware or training time."
+P0269,compute,none,"The text gives datasets, architecture and hyperparameter references but states no hardware or training time; the only compute mention is a baseline running out of memory."
+P0270,compute,none,"Training details give epochs, early stopping and optimizer, and cite computational constraints, but state no hardware or training time."
+P0275,variance,no,"The text reports results in figures of predictions and PEHE across privacy budgets but mentions no repeated runs, seeds, error bars or standard deviations."
+P0275,compute,none,"Implementation details give the models, optimizer and solver but state no hardware or run time."
+P0278,variance,no,"The text describes datasets, preprocessing and method but mentions no repeated runs, seeds, error bars or standard deviations for the segmentation results."

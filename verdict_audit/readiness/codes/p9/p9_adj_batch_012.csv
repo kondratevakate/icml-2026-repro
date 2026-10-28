@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P1928,variance,no,"Results are reported as single accuracy figures and the seeds/variance excerpt mentions only seed problems for augmentation, with no seeds, standard deviations or error bars."
+P1928,compute,none,The experimental setup and other excerpts mention no hardware or training time; only use of the Azure OpenAI service is noted.
+P1929,compute,none,"No GPU, hardware or runtime information appears anywhere in the excerpts."
+P1930,variance,no,"Main and ablation tables report single accuracy values with no seeds, standard deviations or error bars."
+P1971,compute,amount,"States all experiments run on CPU and reports measured runtimes per method (e.g. SPVI 59 to 7,933 s) with a 10-hour wall-clock limit."
+P1986,compute,none,Only says GMM resource consumption remains modest; no hardware or runtime is given.
+P1988,compute,none,Reports MACs and parameter counts only; no hardware or training time is stated.
+P2004,compute,amount,States experiments ran on an Apple MacBook Air M4 with 24 GB RAM and reports running times (percentiles in Figure 4) with a 60-second cutoff.
+P2027,compute,none,"The data, model and training details give no hardware or training time."
+P2053,variance,no,"Table 1 caption and results describe single metric values with no seeds, standard deviations or error bars."
+P2053,compute,unclear,"The implementation details section is cut off mid-appendix before any hardware or time could appear, so the excerpt cannot settle it."
+P2056,variance,no,"Standard deviations appear only for loss normalization; results are reported without seeds, repeated runs or error bars."
+P2065,variance,no,"Benchmark scores in Tables 3 and 4 are single values with no seeds, standard deviations or intervals."
+P2098,compute,none,Tuning budget and training settings are given but no hardware or compute time is stated.
+P2100,compute,none,The excerpts on experiments and datasets give no hardware or compute time.
+P2101,compute,none,"Datasets, splits and predictors are described without any hardware or runtime information."
+P2118,compute,none,"Implementation details (kernels, grids, Nystrom approximation) give no hardware or compute time."
+P2148,compute,none,"Software, data and training descriptions give no hardware or compute time."
+P2166,compute,none,"The excerpts on method, data and reproducibility give no hardware or compute time."
+P2168,variance,no,"Table 1 and the reported improvements are single values with no seeds, standard deviations or error bars mentioned."

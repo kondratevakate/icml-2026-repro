@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P0172,variance,no,"The only std terms are in the GRPO advantage formula and Table 1 main results are described with no seeds, std or intervals."
+P0172,compute,none,The excerpts give implementation and training details but state no hardware or training time.
+P0175,variance,no,"Main results (Tables 1-3) are described as average Pearson correlations with no seeds, std or error bars."
+P0175,compute,none,No hardware or training time is mentioned anywhere in the excerpts.
+P0176,variance,no,The only std terms are in the GRPO formula; main benchmark results give no seeds or variance.
+P0177,compute,none,The text mentions NVIDIA IsaacLab as software and prior GPU ray tracing but states no hardware or training time for its experiments.
+P0178,compute,none,The excerpts describe the benchmark and models but state no hardware or runtime.
+P0179,variance,no,"Table 1 main results are described with no seeds, standard deviations or intervals."
+P0180,variance,unclear,Three random seeds are stated only for the IRIS baseline reproduction; the number of seeds or variance for the main ResDreamer results is not stated.
+P0182,compute,unclear,"The text says computational and monetary costs are in Appendix C, but that appendix is not in the excerpts."
+P0190,variance,no,Main ScanNet200/ScanNetv2 results are reported as single mIoU values with no seeds or variance.
+P0201,variance,no,"Main benchmark results (Tables 2-3) are reported as accuracy/ppl with no seeds, std or intervals."
+P0206,compute,none,"The excerpts give architecture, data and generation details but state no hardware or training time."
+P0208,variance,no,"Results are described without seeds, std or intervals; only the compute-resource section and dataset construction are given."
+P0217,variance,no,Std is used only for an instruction-sensitivity analysis; main Table 4 results report CR without seeds or variance.
+P0220,compute,none,The excerpts give implementation and dataset details but state no hardware or training time.
+P0222,variance,no,The only ± is a patient age statistic; main Table 1/3/4 results give no seeds or variance.
+P0222,compute,none,"Experiments use GPT-4o and specialist models, with no hardware or training time stated."
+P0224,compute,none,Only a mention of skipped experiments due to excessive runtime; no hardware or training time is stated.
+P0225,variance,no,"Main benchmark accuracies are reported without seeds, std or intervals."

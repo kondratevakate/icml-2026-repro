@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3855,compute,none,"The excerpts name only the Gemini 2.5 Flash API backbone and give no hardware, runtime or GPU-hours."
+P3872,compute,none,"The setup and complexity sections give datasets, models and communication volume but no hardware or training time."
+P3873,compute,none,"The excerpts describe datasets, preprocessing and model adaptations but name no hardware or compute time."
+P3902,compute,none,"Only throughput (10/25 FPS) and a 2GB GPU memory footprint are given, with no named hardware or training time."
+P3904,variance,no,"The main results are reported as single aggregated scores with no seeds, error bars or standard deviations mentioned."
+P3904,compute,none,"The excerpts name models and datasets but give no hardware, training time or GPU-hours."
+P3916,compute,none,"Running times are compared in Table 4, but no hardware is stated and no compute budget is given."
+P3919,compute,none,The setup and reproducibility statement list frameworks and data scales but no hardware or compute time.
+P3922,variance,no,"Results are reported as single correction rates with no seeds, error bars or standard deviations for the main results."
+P3922,compute,none,The text describes LLM APIs and the data pipeline but gives no hardware or compute amounts.
+P3928,variance,no,"Metrics are averaged over 100 classification trials, but no standard deviations, error bars or intervals are reported for the main Table 1 results."
+P3928,compute,none,Only a 10-second inference time per video is given; no hardware or training compute is stated.
+P3950,variance,unclear,Mean plus or minus std appears only for the layer-permutation robustness analysis (Table 5); the excerpt does not show whether the main results carry variance.
+P3956,variance,no,"The main DSC/ASD results are given as single values with no seeds, std or error bars mentioned."
+P3963,compute,unclear,"Only the checklist claims GPU usage and approximate duration are given, and the only hardware named is 'cluster GPUs'; no actual hardware type or time appears in the excerpts."
+P3971,variance,no,"Table 1 reports single values per metric with no seeds, std or error bars indicated."
+P3971,compute,none,"The excerpts give no hardware, training time or GPU-hours."
+P3976,compute,amount,Appendix F explicitly states that Section F.2 describes the hardware and the wall-clock budget under which the Table 2 and 3 experiments ran.
+P3994,variance,no,"The setup and results excerpts report no seeds, error bars or standard deviations for the main metrics."
+P3995,variance,no,"Three images per prompt are generated, but Table 1 metrics are reported without std, error bars or intervals."

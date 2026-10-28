@@ -1,0 +1,22 @@
+{
+  "space_id": "kondratevakate/repro-medmamba-implementation",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T16:40:28+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-qPqJH0heR0"
+  ],
+  "paper": {
+    "arxiv_id": "2605.24961"
+  },
+  "private": false,
+  "repos_public": false,
+  "embed_content": false,
+  "last_page": "conclusion",
+  "trace_dataset": "kondratevakate/repro-medmamba-implementation-traces",
+  "artifacts_bucket": "kondratevakate/repro-medmamba-implementation-artifacts",
+  "workspace_bucket": "kondratevakate/repro-medmamba-implementation-artifacts",
+  "trace_publication": "private",
+  "workspace_publication": "private",
+  "local_dashboards": {}
+}

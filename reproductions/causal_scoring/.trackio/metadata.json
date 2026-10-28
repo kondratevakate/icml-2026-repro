@@ -1,0 +1,16 @@
+{
+  "space_id": "kondratevakate/repro-tailored-scoring-rules-causal-inference",
+  "emoji": "🎯",
+  "created_at": "2026-07-29T19:11:25+00:00",
+  "tags": [
+    "icml2026-repro",
+    "paper-JTwryHNicJ"
+  ],
+  "paper": {
+    "arxiv_id": "2606.03332"
+  },
+  "private": false,
+  "repos_public": true,
+  "embed_content": false,
+  "last_page": "conclusion"
+}

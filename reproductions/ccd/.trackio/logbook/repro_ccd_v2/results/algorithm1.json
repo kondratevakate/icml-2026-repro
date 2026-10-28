@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "paper_anchor": "Algorithm 1",
+  "seed": 251211779,
+  "repetitions": 20,
+  "sample_size": 2000,
+  "folds": 5,
+  "maximum_train_evaluation_overlap": 0,
+  "mean_in_sample_null_ert": 0.088859999999,
+  "mean_crossfit_null_ert": 0.0,
+  "mean_crossfit_signal_ert": 0.010128609591880068,
+  "interpretation": "A label memorizer creates a large false ERT signal in sample. Five-fold evaluation removes that signal while retaining a genuine conditional-coverage signal learned from held-out data."
+}

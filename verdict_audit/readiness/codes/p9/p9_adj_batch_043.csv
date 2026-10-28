@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P2062,variance,no,"The main AUC table reports single point values per method with no seeds, standard deviations or intervals."
+P2063,variance,no,"The only seed mention concerns few-shot examples for prompt generation; no repeated runs, error bars or deviations are reported for results."
+P2063,compute,none,"The text names only LLM APIs and models used, with no hardware or compute time stated."
+P2067,compute,none,"Only a throughput claim (1M patches in under 10 seconds) is given, with no hardware or GPU-hours stated."
+P2068,compute,none,The synthetic causal discovery experiments are described without any hardware or runtime information.
+P2072,compute,none,"The NRF experiments and setup are described without any GPU, hardware or training time."
+P2076,compute,none,Environment and implementation details mention no hardware or compute time.
+P2078,variance,no,"Main Type I/II error tables report point values only; the 95% CIs appear only on a descriptive CDF figure, not main results."
+P2078,compute,none,The experimental setup lists LLMs and datasets but states no hardware or compute time.
+P2082,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for the optimal-rate results."
+P2082,compute,none,The framework uses API LLMs and an SMT solver; no hardware or compute time is stated.
+P2084,variance,no,"Three folds are described but results are not reported with standard deviations, seeds or intervals."
+P2085,variance,no,"Implementation and evaluation sections report no seeds, repeated runs or error bars for results."
+P2090,variance,no,"Benchmark comparisons are reported as single percentages with no seeds, deviations or intervals."
+P2093,variance,no,"Results are averaged over models and strategies with greedy decoding; no seeds, deviations or intervals are reported."
+P2093,compute,none,No hardware or compute time is mentioned for running the dLLM evaluations.
+P2094,compute,none,"Training details cover optimizer, epochs and DeepSpeed but no GPU type or compute time."
+P2099,compute,none,Implementation details and appendix excerpts state no hardware or compute time.
+P2102,variance,no,"No seeds, repeated runs, standard deviations or intervals are reported for FID/m-FID/CLIP results."
+P2102,compute,none,"The setup lists models, scheduler and steps but no hardware or compute time."

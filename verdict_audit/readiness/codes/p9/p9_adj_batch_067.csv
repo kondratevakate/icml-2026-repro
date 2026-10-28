@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P3923,compute,none,"The excerpts state no hardware, training time or GPU-hours anywhere."
+P3926,variance,no,"Results are mean l2 errors over sequences with no seeds, standard deviations or intervals reported for the main comparisons."
+P3939,variance,unclear,Only the controlled simulation (Figure 2) reports mean +/- s.e. over 5 seeds; the truncated text shows nothing about variance for the main language/vision-language benchmark results.
+P3953,variance,no,"The full text reports single benchmark scores with no seeds, error bars or intervals."
+P3953,compute,none,The full text never mentions hardware or training time.
+P3955,compute,none,"Implementation details give iterations, batch size and learning rate but no hardware or time; limitations mention only qualitative overhead."
+P3959,variance,no,"Benchmark results are reported as counts of discovered RSRs with no repeated runs, seeds or intervals."
+P3959,compute,none,Only an 1800 s per-benchmark timeout and the LLM used are given; no hardware is stated.
+P3961,variance,no,Mean +/- variance over 10 runs is reported only for inference time; the main accuracy results in Table 1 have no seeds or error bars.
+P3964,compute,none,The evaluation uses API token prices and states no hardware or compute time.
+P3966,variance,no,"Main results (LocAcc, retrieval) are single values with no seeds, standard deviations or intervals mentioned."
+P3981,compute,amount,"The text states each task takes 1.25 seconds to evaluate on a standard laptop such as an M1 MacBook Pro, giving both hardware and time."
+P3985,variance,no,"The nnU-Net experiments report single AUC values with no seeds, error bars or confidence intervals."
+P3985,compute,none,"Training details give epochs, iterations, optimizer and batch size but no hardware or training time."
+P3999,variance,no,"FID results are reported without seeds, standard deviations or intervals; the seeds section only shows token-density averages."
+P4003,variance,no,Main results are win rates and JDR/JCR percentages with no repeated seeds or intervals; reward standard deviations appear only in the heuristic-detection appendix.
+P4011,variance,no,"The text reports single FID values with no seeds, error bars or intervals."
+P4013,variance,no,"Main results are single accuracies with greedy decoding and no seeds, standard deviations or intervals."
+P4017,compute,amount,"All experiments ran on one NVIDIA RTX 3090 GPU and inference time per 1k samples (mean +/- std) is reported in Table 10, so hardware and time are both stated."
+P4019,variance,no,"The text reports AMR/COV benchmark values with no seeds, error bars or intervals."

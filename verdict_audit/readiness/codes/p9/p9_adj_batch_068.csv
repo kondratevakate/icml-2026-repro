@@ -1,0 +1,21 @@
+item_id,field,label,reason
+P4022,variance,no,"The excerpts give pretraining details and a results table caption but no seeds, error bars, standard deviations or intervals for main results."
+P4023,variance,no,"Main results are reported as single averaged scores; the only averaging mentioned is over three annotation batches for one figure, with no seeds, error bars or intervals."
+P4048,variance,no,"The excerpts describe dataset construction and single benchmark accuracies with no seeds, error bars or standard deviations."
+P4048,compute,none,"No hardware, GPU type or training time is stated anywhere in the excerpts."
+P4059,compute,none,"Training details give learning rate, LoRA rank and epochs but no hardware or compute time."
+P4066,compute,hardware_only,"Figure 1 states peak memory was measured on an A100, but no training/run time or GPU-hours are given."
+P4067,variance,no,"The seeds section only describes perturbation noise standard deviations as inputs; no repeated runs, error bars or intervals for results are reported."
+P4067,compute,none,No hardware or compute time is mentioned in the excerpts.
+P4071,compute,unclear,"Figure 4 plots optimization against wall-clock time but no hardware is stated, so compute reporting is only partial."
+P4077,variance,no,"The experiments are illustrative dot-product plots with no seeds, error bars or standard deviations reported."
+P4077,compute,none,No hardware or compute time is mentioned for the experiments.
+P4078,compute,none,Only robot arms and cameras are described; no computing hardware or GPU-hours are stated.
+P4081,compute,none,The excerpts describe benchmark curation and evaluation with no hardware or compute time stated.
+P4106,compute,none,Only a 600s training time limit is mentioned; no hardware or actual compute amount is stated.
+P4108,compute,none,"Implementation details describe architecture and data only, with no hardware or training time."
+P4109,compute,none,"Training gives iterations, batch size and optimizer but no hardware or training time."
+P4113,compute,none,No hardware or compute time is mentioned in the excerpts.
+P4114,variance,no,"Results are single values compared across methods with no seeds, error bars or standard deviations reported."
+P4114,compute,amount,Experiments run on 2 NVIDIA RTX 4090 GPUs and Table 5 reports training time and computational costs.
+P4117,compute,hardware_only,Training on two NVIDIA 48G A6000 GPUs is stated but no training time or GPU-hours.
