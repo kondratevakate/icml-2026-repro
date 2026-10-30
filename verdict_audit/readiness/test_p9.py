@@ -72,3 +72,22 @@ def test_p9_label_set_matches_the_coder_prompt():
     for field, labels in S.LABELS.items():
         for lab in labels:
             assert lab in prompt, (field, lab)
+
+
+def test_p9_release_table_is_publishable_and_matches_results():
+    import csv
+    import json
+    from collections import Counter
+    from analyze_p9 import INDICATOR
+    import build_p9_release as R
+    rows = list(csv.DictReader(R.OUT.open(encoding="utf-8")))
+    assert tuple(rows[0]) == R.COLUMNS
+    assert not {"abstract", "text", "excerpt", "url", "media_urls"} & set(R.COLUMNS)  # no listing or full-text content
+    assert Counter(r["group"] for r in rows) == {"life_science": 2170, "other": 2170}
+    res = json.loads((R.HERE / "results" / "p9.json").read_text(encoding="utf-8"))
+    assert Counter(r["group"] for r in rows if r["code"]) == res["coded"]
+    for field, pos in INDICATOR.items():
+        for g in ("life_science", "other"):
+            known = [r for r in rows if r["group"] == g and r[field] and r[field] != "unclear"]
+            share = sum(r[field] == pos for r in known) / len(known)
+            assert abs(share - res["A9_3"][field][g]["share"]) < 1e-12, (field, g)

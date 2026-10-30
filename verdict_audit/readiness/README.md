@@ -30,6 +30,10 @@ in its Appendix A.
 * Protocol 9: frame [`results/p9_frame.json`](results/p9_frame.json); pilot prompts in
   [`codes/p9/PILOT_PROMPTS.md`](codes/p9/PILOT_PROMPTS.md); pilot inputs in [`pilot/`](pilot/); aggregate
   outcomes in [`results/p9_pilot_wave1.json`](results/p9_pilot_wave1.json) (Note 9-2).
+* Protocol 9 release table: [`results/p9_papers.csv`](results/p9_papers.csv), one row per frame paper (4,340) with
+  identifiers, title, group, full-text status and the final codes; no abstracts or full texts, which may not be
+  redistributed. Built by `build_p9_release.py`; columns are in its docstring. `test_p9.py` checks that the
+  protocol 9 prevalences recomputed from it match `results/p9.json`.
 
 ## Run
 
@@ -49,6 +53,7 @@ python posthoc_p8.py                    # Notes 8-2 and 8-3 -> results/p8_postho
 # protocol 9
 python build_p9_frame.py                # once -> results/p9_frame.json
 python fetch_p9.py index && python fetch_p9.py run
+python build_p9_release.py              # -> results/p9_papers.csv (publishable table)
 python -m pytest test_readiness.py test_p9.py
 ```
 
