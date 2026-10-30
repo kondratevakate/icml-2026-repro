@@ -11,10 +11,6 @@ This repository has two parts.
    many teams were aggregated, and why medical and life-science papers were rarely decided. Frozen
    protocols, analysis code, coding sheets, results and run logs.
 
-[![Medical reproducibility map of ICML 2026: all papers by area, the medical and life-science papers by data access, and a heatmap of contest reproduction, claim load, author code, released weights and GPU need](docs/assets/medical-reproducibility-map.png)](#medical-reproducibility-map)
-
-*Medical reproducibility map of the 6,341 ICML 2026 papers in the challenge metadata (July 2026 snapshot). Top: all papers by area, with the medical and life-science share. Middle: the 703 medical papers by data access. Bottom: one column per paper in the open real-data plus simulation subset (green favourable, red a burden). Details [below](#medical-reproducibility-map).*
-
 ## Contents
 
 | Folder | What is in it | Start with |
@@ -22,8 +18,8 @@ This repository has two parts.
 | [`reproductions/`](reproductions/) | 47 folders, one per reproduced paper: scripts, `.trackio/` logbook mirror, `repro_*` bundle | [`reproductions/INDEX.md`](reproductions/INDEX.md): paper, Space and the judge's verdict counts per folder |
 | [`verdict_audit/`](verdict_audit/) | Protocols 1–9 with code, coding sheets, results and the drafts of two PSE9 abstracts | [`verdict_audit/README.md`](verdict_audit/README.md), then [`verdict_audit/STUDIES.md`](verdict_audit/STUDIES.md) |
 | [`notes/`](notes/) | Working notes: lessons learned and judged scores, target selection, model and subscription baselines | [`notes/HANDOFF.md`](notes/HANDOFF.md) |
-| [`tools/`](tools/) | Logbook scaffold and validator, medical target scan, the pipeline of the project page, the index builder | the docstring of each script |
-| [`audit/`](audit/), [`docs/`](docs/) | Tables, source and a static render of the medical reproducibility map | [the map section](#medical-reproducibility-map) and the [live page](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html) |
+| [`tools/`](tools/) | Logbook scaffold and validator, medical target scan, the project-page builder with its tests and the check behind it, the index builder | the docstring of each script |
+| [`audit/`](audit/), [`docs/`](docs/) | Audit tables and the source of the medical reproducibility map | [the map section](#medical-reproducibility-map) and the [live page](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html) |
 
 ## Papers built on this repository
 
@@ -59,35 +55,76 @@ paper texts are not included; [`notes/HANDOFF.md`](notes/HANDOFF.md) and, where 
 
 ## Medical reproducibility map
 
-Interactive version: [`kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html`](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html)
-(GitHub Pages, served from `docs/` of this branch; click any cell to inspect an area, a data type or a paper).
-The page is one self-contained file, [`docs/medical-reproducibility.html`](docs/medical-reproducibility.html),
-which also works when downloaded and opened locally. The picture at the top of this README is a static render
-of the same page.
+Live page: [`kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html`](https://kondratevakate.github.io/icml-2026-repro/medical-reproducibility.html)
+(GitHub Pages, served from `docs/` of this branch). It is one self-contained file,
+[`docs/medical-reproducibility.html`](docs/medical-reproducibility.html), which also works when downloaded and
+opened locally: static SVG, no script, no embedded data blob.
 
-The page is a public audit of how reproducible medical and life-science ICML papers look from the challenge
-metadata one month after the conference. It starts with the full scale of the corpus, then narrows to the
-medically relevant papers, and finally focuses the heatmap on papers that combine synthetic experiments with
-real or open datasets.
+The page opens on the corpus and then presents the Protocol 9 result, the second PSE9 abstract
+*Well documented, rarely picked*, as five steps, each a figure with its confidence intervals.
 
-Headline counts shown on the page:
+0. **What was read.** One block per venue, block area proportional to the full texts coded there: 3,278 in
+   all, `icml` 987, `neurips` 918, `iclr` 774, `cvpr` 215, `iccv` 207, `eccv` 177. Both the count and its
+   life-science / other split are printed inside the block. The split is not encoded as area, because the
+   other group is an equal matched sample drawn per venue-year and so carries no information.
+1. **On paper.** Rate differences, life-science minus other, over the nine venue-years: code released `+13.1`
+   points, main data openly downloadable `+15.0`, weights released `+28.6`, variance reported `+24.4`. The
+   protocol pre-registered the opposite direction for L9.1-L9.3 and none of those labels was assigned.
+   Variance is marked provisional: that field did not meet the agreement gate and comes from coder 1 only.
+   A second figure gives the same four axes as levels rather than differences, with the counts behind them:
+   code `59.4%` (874 of 1,471) against `46.2%` (747 of 1,618), main data open `83.7%` (725 of 866) against
+   `67.3%` (422 of 627), weights `48.6%` (136 of 280) against `19.4%` (96 of 495), variance `75.1%`
+   (846 of 1,127) against `50.7%` (590 of 1,163). Those are raw observed shares from coder 1, so the
+   difference printed beside each axis is the crude one (`+13.2`, `+16.4`, `+29.2`, `+24.3`) and not the
+   stratified estimate above it. `unclear` leaves the denominator rather than counting as a negative.
+2. **In practice.** Among papers attempted in the challenge, `46.4%` of the 110 medical ones reached a
+   verified or falsified verdict against `65.5%` of the 1,821 others: a gap of `-19.1` points, permutation
+   p = 0.0005. A second figure repeats the question on the matched set, one square per attempted paper, over
+   the 656 coded ICML 2026 papers only: 51 of 110 medical settled against 71 of 112 others from the same
+   venue, `-17.0` points, CI `[-29.7, -4.4]`. The two gaps differ because they have different comparison
+   groups - every other attempted paper in the challenge, against other papers from the one venue - and both
+   are on the page so neither reading has to stand in for the other.
+3. **Where the gap goes.** The same gap after adjusting for the first team's settle rate on its other papers
+   (`-13.0`), then for that and the claims' check cost (`-5.6`, CI `[-11.9, +1.4]`).
+4. **The two factors.** Teams that took a medical paper first settled `40.0%` of their other papers against
+   `60.3%`; `56.7%` of medical claims needed retraining or a large-scale run against `39.1%`, from two blind
+   coders on 1,083 claims.
+5. **The caveat on any artifact map.** Agreement between what a paper states and what a reproducer obtained:
+   kappa `0.22` for a code link against the authors' code actually being run, `0.13` for stated data access
+   against data obtained, `0.55` for weights.
 
-- `6,341` total ICML papers in the challenge metadata.
-- `703` life-science or medical papers, `11.1%` of the full corpus.
-- `355` synthetic-plus-real/open-data target papers used for the detailed reproducibility heatmap.
+A provenance table at the foot of the page lists every number with the result file and key it was read from.
+Colour is used on one figure only, the verdict squares, where it names a verdict; its settled squares are
+grouped first so the comparison is the length of two blocks and does not depend on telling two hues apart.
+Everything else is monochrome.
 
-The focused heatmap answers the practical reproduction questions: whether the paper was reproduced in the
-contest, how many claims were checked, whether authors released code, whether weights or checkpoints are
-available, and whether GPU use appears necessary. Restricted, private and unknown data are shown in the
-medical data-type carpet above the heatmap instead of being hidden inside the open-data subset. Dataset size
-is intentionally excluded until a dedicated artifact-size audit is run.
+The page is generated, not hand-written. [`tools/build_medical_map.py`](tools/build_medical_map.py) reads the
+frozen Protocol 9 results and emits the HTML, so the page can be diffed against the JSON and regenerated:
 
-The generated audit tables are in [`audit/`](audit/), and the pipeline is
+```bash
+python tools/build_medical_map.py                      # regenerate the page
+python -m pytest tools/test_build_medical_map.py       # check it
+```
+
+[`tools/test_build_medical_map.py`](tools/test_build_medical_map.py) checks what a reader cannot: that the
+counts behind each figure come out of the coding sheets with `unclear` left in the denominator rather than
+counted as a negative, that block areas track their paper counts, that no label runs past the box it sits in,
+and that two builds of the page are byte-identical.
+
+### The layer this page used to show
+
+Until this build the page showed a different figure: 703 ICML 2026 papers selected from the challenge's area
+tags and a title scan, with artifact signals from the challenge metadata and a July 2026 leaderboard snapshot.
+Checked against the two-blind-coder label for the same venue, which marks 328 papers life-science,
+[`tools/check_map_against_labels.py`](tools/check_map_against_labels.py) found that set agrees at kappa `0.59`:
+386 of its papers are not life-science and 11 life-science papers are missing. Its artifact signals agree with
+the coded reference at kappa `0.19` for code and `0.10` for restricted data. The check is in
+[`audit/map_label_check.json`](audit/map_label_check.json).
+
+That layer is retired. `docs/assets/medical-reproducibility-map.png` is a static render of it, kept so the
+check above can be read against the picture it describes; it is not a render of the current page. The audit
+tables behind it stay in [`audit/`](audit/), produced by
 [`tools/audit_medical_repro.py`](tools/audit_medical_repro.py).
-
-Note: the page selects medical papers from the challenge's area tags and a title scan
-(`medical_neuro_papers.csv`, [`notes/medical_throughput_shortlist.csv`](notes/medical_throughput_shortlist.csv));
-the verdict audit uses labels validated by two blind coders (protocols 4, 6 and 7), so its counts differ.
 
 ## How this was made
 
