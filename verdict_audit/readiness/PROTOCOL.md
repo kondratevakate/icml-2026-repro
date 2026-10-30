@@ -826,3 +826,18 @@ identical `results/p9_ext.json` under PYTHONHASHSEED 0 and 1; the frame tables r
 A9.4 kappas, extension alone / pooled with the 222 frame papers: code vs code_used 0.34 (n 185) / 0.28 (n 347);
 main_data_access vs data_obtained 0.22 (n 74) / 0.16 (n 163); weights_release vs weights_used 0.63 (n 75) /
 0.60 (n 118). Pooled code and data kappas stay below 0.40, so claim 7 is strengthened by the Note 9-17 rule.
+
+## Note 9-21 (2026-10-29, post hoc, lexicon frozen before computing)
+
+Kate asked which life-science papers at these venues bear on biosecurity. Descriptive; post hoc; not part of the
+PSE9 abstracts. Script `posthoc_p9_biosec.py`, output `results/p9_biosec.json`.
+
+* Units: the 2,170 frame papers with group `life_science` (`results/p9_frame.json`). Titles only; the frame has no
+  abstracts.
+* Six regex topics, case-insensitive, frozen in the script before any count: pathogens_infection, protein_design,
+  dna_genome_models, epidemics_surveillance, countermeasures_trials, biosafety_dual_use. A paper can hit several.
+  "Direct" = pathogens_infection, epidemics_surveillance or biosafety_dual_use.
+* Reading rule: report counts as a lower bound and as a screen, not a coded variable. Hand check on 2026-10-29: all
+  direct hits and 25 random hits read as on-topic; misses include drug-target affinity and synthesis-library titles.
+* Result: 523 of 2,170 (24%) hit any topic; 22 (about 1%) are direct (NeurIPS 10, ICML 8, ICLR 4; none at CVPR,
+  ICCV, ECCV).
