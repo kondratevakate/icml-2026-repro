@@ -25,9 +25,9 @@ This repository has two parts.
 
 | Paper | Status | Draft | Evidence |
 |---|---|---|---|
-| Voters: how the ICML 2026 agent reproduction challenge aggregated verdicts | PSE9 2027 abstract, draft | [`verdict_audit/voters/PAPER_DRAFT.md`](verdict_audit/voters/PAPER_DRAFT.md) | [`verdict_audit/voters/`](verdict_audit/voters/README.md) |
-| Unfalsifiable by default: medical papers in the ICML 2026 agent reproduction challenge | PSE9 2027 abstract, draft | [`verdict_audit/readiness/ABSTRACT_DRAFT.md`](verdict_audit/readiness/ABSTRACT_DRAFT.md) | provenance table in its Appendix A |
-| A 2025–2026 baseline of reproducibility practice in life-science ML | protocol 9, data collection running | none yet | [`verdict_audit/readiness/README.md`](verdict_audit/readiness/README.md) |
+| Voters: how the ICML 2026 agent reproduction challenge aggregated verdicts | PSE9 2027 abstract, submitted 2026-10-23 | [`verdict_audit/voters/PAPER_DRAFT.md`](verdict_audit/voters/PAPER_DRAFT.md); submitted text in [`verdict_audit/PSE9_SUBMITTED.md`](verdict_audit/PSE9_SUBMITTED.md) | [`verdict_audit/voters/`](verdict_audit/voters/README.md) |
+| Well documented, rarely picked: medical AI papers under agentic reproduction (Protocol 9) | PSE9 2027 abstract, submitted 2026-10-23; full paper in preparation for medRxiv, developed further in a separate repository | submitted text in [`verdict_audit/PSE9_SUBMITTED.md`](verdict_audit/PSE9_SUBMITTED.md) | [`verdict_audit/readiness/README.md`](verdict_audit/readiness/README.md) |
+| Unfalsifiable by default: medical papers in the ICML 2026 agent reproduction challenge (Protocols 6–8) | earlier draft, superseded by the row above | [`verdict_audit/readiness/ABSTRACT_DRAFT.md`](verdict_audit/readiness/ABSTRACT_DRAFT.md) | provenance table in its Appendix A |
 
 ## Reproducing the verdict audit
 
@@ -70,13 +70,16 @@ The page opens on the corpus and then presents the Protocol 9 result, the second
 1. **On paper.** Rate differences, life-science minus other, over the nine venue-years: code released `+13.1`
    points, main data openly downloadable `+15.0`, weights released `+28.6`, variance reported `+24.4`. The
    protocol pre-registered the opposite direction for L9.1-L9.3 and none of those labels was assigned.
-   Variance is marked provisional: that field did not meet the agreement gate and comes from coder 1 only.
+   Variance did not meet the agreement gate, so coder 2 coded it for every paper and every disagreement was
+   adjudicated before the numbers were computed.
    A second figure gives the same four axes as levels rather than differences, with the counts behind them:
    code `59.4%` (874 of 1,471) against `46.2%` (747 of 1,618), main data open `83.7%` (725 of 866) against
-   `67.3%` (422 of 627), weights `48.6%` (136 of 280) against `19.4%` (96 of 495), variance `75.1%`
-   (846 of 1,127) against `50.7%` (590 of 1,163). Those are raw observed shares from coder 1, so the
-   difference printed beside each axis is the crude one (`+13.2`, `+16.4`, `+29.2`, `+24.3`) and not the
-   stratified estimate above it. `unclear` leaves the denominator rather than counting as a negative.
+   `67.3%` (422 of 627), weights `48.6%` (136 of 280) against `19.4%` (96 of 495), variance `66.4%`
+   (842 of 1,269) against `42.1%` (578 of 1,372). These are the shares from the final codes the analysis
+   uses, so the difference printed beside each axis is the crude one (`+13.2`, `+16.4`, `+29.2`, `+24.2`)
+   and not the stratified estimate above it. `unclear` leaves the denominator rather than counting as a
+   negative. (Until 2026-10-30 the levels were drawn from coder 1's raw sheet, which showed variance at
+   `75.1%` against `50.7%` before adjudication.)
 2. **In practice.** Among papers attempted in the challenge, `46.4%` of the 110 medical ones reached a
    verified or falsified verdict against `65.5%` of the 1,821 others: a gap of `-19.1` points, permutation
    p = 0.0005. A second figure repeats the question on the matched set, one square per attempted paper, over

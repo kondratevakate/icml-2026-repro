@@ -2,7 +2,8 @@
 
 Each test here corresponds to a defect that reached a rendered page: a signed
 axis printing "-0" at the origin, an in-block label running past the viewBox,
-and `unclear` counted as a negative. Run from this directory:
+`unclear` counted as a negative, and variance levels drawn from coder 1's raw
+sheet instead of the adjudicated codes. Run from this directory:
 
     python -m pytest tools/test_build_medical_map.py        # from the repo root
     python -m pytest test_build_medical_map.py              # from tools/
@@ -29,7 +30,7 @@ ADVANCE = {
 
 def panels():
     """Every panel on the page, built from the committed result files."""
-    rows, keys = B.coder1_rows()
+    rows, keys = B.final_rows()
     den = B.coded_counts(rows, keys)
     venues = B.coded_by_venue(rows, keys)
     axes = [dict(label=label,
@@ -97,6 +98,17 @@ class CodedCountTests(unittest.TestCase):
         keys = {"A": {"group": "other", "stratum": "icml-2026"}}
         out = B.coded_counts({"A": {"code": "released"}}, keys)["code"]["life_science"]
         self.assertEqual((out["num"], out["den"], out["share"]), (0, 0, 0.0))
+
+    def test_page_levels_are_the_analysis_shares(self):
+        # The levels panel once showed variance at 75.1% vs 50.7% from coder 1's
+        # raw sheet while p9.json, after adjudication, has 66.4% vs 42.1%.
+        rows, keys = B.final_rows()
+        den = B.coded_counts(rows, keys)
+        a93 = B.load("p9.json")["A9_3"]
+        for field in B.POSITIVE:
+            for group in ("life_science", "other"):
+                self.assertEqual(den[field][group]["den"], a93[field][group]["n_known"], (field, group))
+                self.assertAlmostEqual(den[field][group]["share"], a93[field][group]["share"], 12, (field, group))
 
     def test_committed_sheet_has_a_denominator_per_field_and_group(self):
         den = B.coded_counts(self.rows, self.keys)
@@ -180,7 +192,7 @@ class GeometryTests(unittest.TestCase):
         pairs = re.findall(r'class="m-field"[^>]*>([^<]+)</text>'
                            r'<text class="m-val"[^>]*>([^<]+)</text>', self.panels["levels"])
         self.assertEqual(len(pairs), 4)
-        rows, keys = B.coder1_rows()
+        rows, keys = B.final_rows()
         den = B.coded_counts(rows, keys)
         by_label = {"Code released": "code",
                     "Main data openly downloadable": "main_data_access",

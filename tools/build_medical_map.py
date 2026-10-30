@@ -11,7 +11,8 @@ Inputs (all tracked):
   verdict_audit/readiness/results/p9_claims.json      score, K1 (check cost), K3 (decomposition)
   verdict_audit/readiness/results/readiness.json      R_A3 cells (decided share of the other group)
   audit/map_label_check.json                          retired keyword layer vs the coded label
-  verdict_audit/readiness/codes/p9/p9_coder1_batch_*.csv  coded counts per field, venue, group
+  verdict_audit/readiness/codes/p9/                    final codes per field, venue, group (analyze_p9.final_codes:
+                                                       coder 1 above the gate, adjudicated variance and compute)
 
 Usage: python tools/build_medical_map.py   -> docs/medical-reproducibility.html
 """
@@ -47,6 +48,16 @@ def coder1_rows() -> tuple[dict, dict]:
             for r in csv.DictReader(fh):
                 rows[r["item_id"]] = r
     return rows, keys
+
+
+def final_rows() -> tuple[dict, dict]:
+    """The final codes the analysis uses (Note 9-5, 9-6): coder 1 for fields above the agreement gate, and for
+    variance and compute coder 1 where both coders agree, else the adjudicated label. Coder 1's raw sheet would
+    show variance before adjudication."""
+    import sys
+    sys.path.insert(0, str(ROOT / "verdict_audit" / "readiness"))
+    from analyze_p9 import final_codes
+    return final_codes(), json.loads(KEYS.read_text(encoding="utf-8"))
 
 
 def coded_counts(rows: dict, keys: dict) -> dict:
@@ -443,7 +454,7 @@ def build() -> str:
     ext, clm = load("p9_extended.json"), load("p9_claims.json")
     rdy = load("readiness.json")
     check = json.loads((ROOT / "audit" / "map_label_check.json").read_text(encoding="utf-8"))
-    rows1, keys = coder1_rows()
+    rows1, keys = final_rows()
     den = coded_counts(rows1, keys)
     venues = coded_by_venue(rows1, keys)
 
@@ -462,7 +473,7 @@ def build() -> str:
         dict(label="Weights released", rd=labels["L9.2"]["rd"], ci=labels["L9.2"]["ci"],
              sub=f"{den['weights_release']['n']} coded  ·  gate met"),
         dict(label="Variance reported", rd=labels["L9.3"]["rd"], ci=labels["L9.3"]["ci"],
-             sub=f"{den['variance']['n']} coded  ·  provisional, coder 1"),
+             sub=f"{den['variance']['n']} coded  ·  adjudicated"),
     ]
 
     axes = [
@@ -548,7 +559,7 @@ def build() -> str:
         ("Code released, +pts", pts(code_eff["rd"]), "p9_adversarial.json", "F1.code.coder1_only"),
         ("Main data open, +pts", pts(labels["L9.1"]["rd"]), "p9.json", "labels.L9.1"),
         ("Weights released, +pts", pts(labels["L9.2"]["rd"]), "p9.json", "labels.L9.2"),
-        ("Variance reported, +pts", pts(labels["L9.3"]["rd"]), "p9.json", "labels.L9.3 (provisional)"),
+        ("Variance reported, +pts", pts(labels["L9.3"]["rd"]), "p9.json", "labels.L9.3"),
         ("Attempted papers", f"{units['medical']} / {units['other']:,}", "p9_extended.json", "units"),
         ("Matched set, decided", f"{pct(a95['cells']['life_science']['decided'])} / "
          f"{pct(a95['cells']['other']['decided'])}", "p9.json", "A9_5.cells"),
@@ -617,7 +628,7 @@ venue-year.</p>
 </section>
 
 <div class="kpis">
-  <div class="kpi"><span class="k">{n_coded:,}</span><span class="t">full texts read by two blind coders</span></div>
+  <div class="kpi"><span class="k">{n_coded:,}</span><span class="t">full texts coded by blind coders (coder 2 on a random 25%)</span></div>
   <div class="kpi"><span class="k">{pts(code_eff['rd'])}</span><span class="t">points more code released, life-science minus other</span></div>
   <div class="kpi"><span class="k">{pts(decided_gap['rd'])}</span><span class="t">points less often settled once attempted</span></div>
   <div class="kpi"><span class="k">{pts(k3['strength_and_cost']['rd'])}</span><span class="t">points of that gap left after two factors</span></div>
@@ -632,12 +643,13 @@ confidence intervals. The protocol pre-registered the opposite direction for all
 None of those labels was assigned, because each difference came out positive.</p>
 {diff_rows(doc, 0, 0.40, 0.10)}
 <p class="note" style="margin:26px 0 0">The same four axes as levels rather than differences: the share of
-coded papers on each side that met the field, and the count behind it. These are raw observed shares from
-coder 1, so the difference printed on the right of each axis is the crude one — it is close to, but not the
-same as, the venue-year–stratified estimate above.</p>
+coded papers on each side that met the field, and the count behind it, from the final codes the analysis uses
+(adjudicated for variance). The difference printed on the right of each axis is the crude one: it is close to,
+but not the same as, the venue-year–stratified estimate above.</p>
 {paired_bars(axes)}
 <p class="read">Read it as: nothing here supports the premise that medical papers withhold their materials.
-Variance stays provisional — that field did not meet the agreement gate and is reported from coder 1 only.</p>
+Variance did not meet the agreement gate, so coder 2 coded it for every paper and all {p9['adjudicated']:,}
+disagreements on variance and compute were adjudicated before these numbers were computed.</p>
 </section>
 
 <section>
